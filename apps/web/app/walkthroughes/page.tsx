@@ -4,7 +4,9 @@ export default function Page(): JSX.Element {
   return (
     <>
       <br />
-      <Link href="/walkthroughes">Walkthroughes</Link>
+      <Link href="/">Back</Link>
+      <br />
+      Walkthroughes go here
     </>
   );
 }
