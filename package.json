@@ -10,6 +10,7 @@
   "devDependencies": {
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
+    "lefthook": "^1.6.10",
     "prettier": "^3.2.5",
     "turbo": "latest"
   },
