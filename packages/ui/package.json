@@ -9,6 +9,7 @@
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
+    "format": "prettier --write \"**/*.{ts,tsx,md,css}\"",
     "generate:component": "turbo gen react-component"
   },
   "devDependencies": {
