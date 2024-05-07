@@ -21,6 +21,7 @@ This Turborepo uses some additional tools to help with development, including:
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
 - [ESLint](https://eslint.org/) for code linting
 - [Prettier](https://prettier.io) for code formatting
+- [Lefthook](https://github.com/evilmartians/lefthook) for git hooks
 
 ### Install
 
@@ -47,6 +48,15 @@ To build all apps and packages, run the following command:
 ```
 npm run build
 ```
+
+### Hooks
+
+As noted above, this repository uses [Lefthook](https://github.com/evilmartians/lefthook) to run git hooks.
+
+#### Pre-Commit
+
+Pre-commit the `format` and `lint` turbo tasks will fun. This will run any `scripts` called `format` or `lint` in any of the workspaces. Look at the `package.json` in each workspace for what executes in each. If there are any errors, the commit will be aborted.
+
 
 ## Useful Links
 
