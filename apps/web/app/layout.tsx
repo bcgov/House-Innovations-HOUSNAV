@@ -27,7 +27,7 @@ export default function RootLayout({
         <LocalizedStringProvider locale="en" />
         <ClientProviders>
           <main>
-            Nav bar goes here
+            <div className="container">Nav bar goes here</div>
             {children}
           </main>
         </ClientProviders>

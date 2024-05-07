@@ -4,6 +4,7 @@
  * Generated on Wed, 01 May 2024 18:02:21 GMT
  */
 
+/* MOBILE - DEFAULT */
 :root {
   --surface-opacity-0: 0;
   --surface-opacity-10: 0.1;
@@ -84,6 +85,7 @@
   --layout-padding-medium: 1rem;
   --layout-padding-large: 1.5rem;
   --layout-padding-xlarge: 2rem;
+  --layout-padding-container: var(--layout-padding-medium);
   --layout-margin-none: 0rem;
   --layout-margin-hair: 0.125rem;
   --layout-margin-xsmall: 0.25rem;
@@ -98,6 +100,7 @@
   --layout-border-radius-small: 2px;
   --layout-border-radius-medium: 4px;
   --layout-border-radius-large: 6px;
+  --layout-max-width: 85.25rem; /* 1364px */
   --typography-font-families-bc-sans: "BC Sans", sans-serif;
   --typography-line-heights-xxxdense: 1.125rem;
   --typography-line-heights-xxdense: 1.313rem;
@@ -201,4 +204,23 @@
   --theme-gray-white: #ffffff;
   --theme-primary-blue: #013366;
   --theme-primary-gold: #fcba19;
+}
+
+/* TABLET - 608px */
+@media (min-width: 38rem) {
+  :root {
+    --layout-padding-container: var(--layout-padding-xlarge);
+  }
+}
+
+/* DESKTOP - 912px */
+@media (min-width: 57rem) {
+  :root {
+  }
+}
+
+/* DESKTOP - LARGE - 1504px */
+@media (min-width: 94rem) {
+  :root {
+  }
 }
