@@ -1,11 +1,14 @@
 // 3rd party
 import type { Metadata } from "next";
+import { ReactNode, JSX } from "react";
+import { LocalizedStringProvider } from "react-aria-components/i18n";
 // BC Gov
 import "@bcgov/bc-sans/css/BC_Sans.css";
+// packages
+import "@repo/ui/cssVariables";
 // local
 import { ClientProviders } from "./ClientProviders";
 import "./globals.css";
-import "@repo/ui/cssVariables";
 
 export const metadata: Metadata = {
   title: "BC Gov - Building Code - Walkthroughes",
@@ -16,11 +19,12 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }): JSX.Element {
   return (
     <html lang="en">
       <body>
+        <LocalizedStringProvider locale="en" />
         <ClientProviders>
           <main>
             Nav bar goes here
