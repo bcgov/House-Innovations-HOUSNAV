@@ -5,7 +5,7 @@ import {
   ButtonProps as ReactAriaButtonProps,
 } from "react-aria-components";
 
-import "./button.css";
+import "./Button.css";
 
 export interface ButtonProps extends ReactAriaButtonProps {
   /**
@@ -31,13 +31,14 @@ export default function Button({
   variant = "primary",
   danger = false,
   isIconButton = false,
+  className,
   ...props
 }: ButtonProps) {
   return (
     <ReactAriaButton
-      className={`react-aria-Button ${size} ${variant} ${
+      className={`ui-Button ${size} ${variant} ${
         danger ? "danger" : ""
-      } ${isIconButton ? "icon" : ""}`}
+      } ${isIconButton ? "icon" : ""} ${className}`}
       {...props}
     />
   );

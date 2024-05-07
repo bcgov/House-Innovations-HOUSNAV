@@ -1,4 +1,4 @@
-.react-aria-Button {
+.ui-Button {
   border: none;
   border-radius: var(--layout-border-radius-medium);
   cursor: pointer;
@@ -9,33 +9,33 @@
   padding-left: 16px;
   padding-right: 16px;
 }
-.react-aria-Button[data-disabled] {
+.ui-Button[data-disabled] {
   cursor: not-allowed;
 }
-.react-aria-Button[data-focused] {
+.ui-Button[data-focused] {
   outline: 2px solid var(--surface-color-border-active);
 }
 
 /* Icon button */
-.react-aria-Button.icon {
+.ui-Button.icon {
   align-items: center;
   justify-content: space-around;
 }
 
 /* Sizes */
-.react-aria-Button.small {
+.ui-Button.small {
   min-height: 32px;
 }
-.react-aria-Button.small.icon {
+.ui-Button.small.icon {
   padding: unset;
   height: 32px;
   width: 32px;
   min-width: 32px;
 }
-.react-aria-Button.medium {
+.ui-Button.medium {
   min-height: 40px;
 }
-.react-aria-Button.medium.icon {
+.ui-Button.medium.icon {
   padding: unset;
   height: 40px;
   width: 40px;
@@ -43,72 +43,72 @@
 }
 
 /* Variant - Primary */
-.react-aria-Button.primary {
+.ui-Button.primary {
   background: var(--surface-color-primary-button-default);
   color: var(--icons-color-primary-invert);
 }
-.react-aria-Button.primary.danger {
+.ui-Button.primary.danger {
   background-color: var(--surface-color-primary-danger-button-default);
 }
-.react-aria-Button.primary[data-disabled] {
+.ui-Button.primary[data-disabled] {
   background-color: var(--surface-color-primary-danger-button-disabled);
   color: var(--typography-color-disabled);
 }
-.react-aria-Button.primary[data-hovered] {
+.ui-Button.primary[data-hovered] {
   background-color: var(--surface-color-primary-button-hover);
 }
-.react-aria-Button.primary.danger[data-hovered] {
+.ui-Button.primary.danger[data-hovered] {
   background-color: var(--surface-color-primary-danger-button-hover);
 }
 
 /* Variant - Secondary */
-.react-aria-Button.secondary {
+.ui-Button.secondary {
   background-color: var(--surface-color-secondary-button-default);
   border: 1px solid var(--surface-color-border-dark);
   color: var(--typography-color-primary);
 }
-.react-aria-Button.secondary.danger {
+.ui-Button.secondary.danger {
   border-color: var(--support-border-color-danger);
   color: var(--surface-color-primary-danger-button-default);
 }
-.react-aria-Button.secondary[data-disabled] {
+.ui-Button.secondary[data-disabled] {
   background-color: var(--surface-color-secondary-button-disabled);
   border-color: var(--surface-color-border-default);
   color: var(--typography-color-disabled);
 }
-.react-aria-Button.secondary[data-hovered] {
+.ui-Button.secondary[data-hovered] {
   background-color: var(--surface-color-secondary-button-hover);
 }
-.react-aria-Button.secondary.danger[data-hovered] {
+.ui-Button.secondary.danger[data-hovered] {
   background-color: var(--support-surface-color-danger);
 }
 
 /* Variant - Tertiary */
-.react-aria-Button.tertiary {
+.ui-Button.tertiary {
   background-color: var(--surface-color-tertiary-button-default);
   color: var(--typography-color-primary);
 }
-.react-aria-Button.tertiary.danger {
+.ui-Button.tertiary.danger {
   color: var(--surface-color-primary-danger-button-default);
 }
-.react-aria-Button.tertiary[data-disabled] {
+.ui-Button.tertiary[data-disabled] {
   background-color: var(--surface-color-tertiary-button-default);
   color: var(--typography-color-disabled);
 }
-.react-aria-Button.tertiary[data-hovered] {
+.ui-Button.tertiary[data-hovered] {
   background-color: var(--surface-color-tertiary-button-hover);
 }
-.react-aria-Button.tertiary.danger[data-hovered] {
+.ui-Button.tertiary.danger[data-hovered] {
   background-color: var(--support-surface-color-danger);
 }
 
 /* Variant - Link */
-.react-aria-Button.link {
+.ui-Button.link {
   background-color: var(--surface-color-tertiary-button-default);
   color: var(--typography-color-link);
   text-decoration: underline;
   text-underline-offset: 0.3em;
 }
-.react-aria-Button.link[data-disabled] {
+.ui-Button.link[data-disabled] {
   color: var(--typography-color-disabled);
 }

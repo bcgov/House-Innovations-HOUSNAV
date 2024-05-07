@@ -5,10 +5,10 @@ import {
   LinkProps as ReactAriaLinkProps,
 } from "react-aria-components";
 
-import "./link.css";
+import "./Link.css";
 
 export interface LinkProps extends ReactAriaLinkProps {}
 
-export default function Link({ ...props }: LinkProps) {
-  return <ReactAriaLink {...props} />;
+export default function Link({ className, ...props }: LinkProps) {
+  return <ReactAriaLink className={`ui-Link ${className}`} {...props} />;
 }
