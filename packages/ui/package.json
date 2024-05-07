@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
-    "./cssVariables": "./src/variables.css",
     "./button": "./src/button/Button.tsx",
-    "./link": "./src/link/Link.tsx"
+    "./link": "./src/link/Link.tsx",
+    "./cssVariables": "./src/variables.css"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",

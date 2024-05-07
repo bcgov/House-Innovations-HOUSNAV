@@ -1,9 +1,10 @@
-.react-aria-Link {
+.ui-Link {
   background-color: var(--surface-color-tertiary-button-default);
   color: var(--typography-color-link);
   text-decoration: underline;
   text-underline-offset: 0.3em;
 }
-.react-aria-Link[data-disabled] {
+
+.ui-Link[data-disabled] {
   color: var(--typography-color-disabled);
 }
