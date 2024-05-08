@@ -1,12 +1,11 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import { defineProject, mergeConfig } from "vitest/config";
+import configShared from "../../vitest.shared.ts";
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  test: {
-    globals: true,
-    environment: "jsdom",
-    setupFiles: "./tests/setup.ts",
-  },
-});
+export default mergeConfig(
+  configShared,
+  defineProject({
+    test: {
+      setupFiles: "./tests/setup.ts",
+    },
+  }),
+);
