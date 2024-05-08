@@ -12,6 +12,9 @@
     "format": {
       "dependsOn": ["^format"]
     },
+    "test": {
+      "dependsOn": ["^test"]
+    },
     "dev": {
       "cache": false,
       "persistent": true
