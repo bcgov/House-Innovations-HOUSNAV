@@ -55,7 +55,7 @@ As noted above, this repository uses [Lefthook](https://github.com/evilmartians/
 
 #### Pre-Commit
 
-Pre-commit the `format` and `lint` turbo tasks will fun. This will run any `scripts` called `format` or `lint` in any of the workspaces. Look at the `package.json` in each workspace for what executes in each. If there are any errors, the commit will be aborted.
+Pre-commit the `format` and `lint` turbo tasks will run. This will run any `scripts` called `format` or `lint` in any of the workspaces. Look at the `package.json` in each workspace for what executes in each. If there are any errors, the commit will be aborted.
 
 
 ## Useful Links
