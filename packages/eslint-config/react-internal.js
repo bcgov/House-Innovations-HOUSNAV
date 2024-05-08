@@ -17,6 +17,7 @@ module.exports = {
     JSX: true,
   },
   env: {
+    node: true,
     browser: true,
   },
   settings: {
