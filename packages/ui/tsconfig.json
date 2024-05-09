@@ -3,6 +3,6 @@
   "compilerOptions": {
     "outDir": "dist"
   },
-  "include": ["src", "turbo", "tests", "vitest.config.ts"],
+  "include": ["src", "turbo", "tests"],
   "exclude": ["node_modules", "dist"]
 }
