@@ -6,20 +6,17 @@ import {
 } from "react-aria-components";
 
 import "./Button.css";
+import Icon from "../icon/Icon";
 
 export interface ButtonProps extends ReactAriaButtonProps {
   /**
-   * Defaults to `medium`. `small` is shorter vertically.
-   */
-  size?: "small" | "medium";
-  /**
    * Defaults to `primary`.
    */
-  variant?: "primary" | "secondary" | "tertiary" | "link";
+  variant?: "primary" | "secondary" | "link" | "code";
   /**
-   * For destructive/deletion actions.
+   * If true, renders a larger button.
    */
-  danger?: boolean;
+  isLargeButton?: boolean;
   /**
    * If true, renders a square button intended for a single icon.
    */
@@ -27,19 +24,22 @@ export interface ButtonProps extends ReactAriaButtonProps {
 }
 
 export default function Button({
-  size = "medium",
   variant = "primary",
-  danger = false,
   isIconButton = false,
+  isLargeButton = false,
   className,
+  children,
   ...props
 }: ButtonProps) {
   return (
     <ReactAriaButton
-      className={`ui-Button ${size} ${variant} ${
-        danger ? "danger" : ""
-      } ${isIconButton ? "icon" : ""} ${className}`}
+      className={`ui-Button ${variant} ${isLargeButton ? "large" : ""} ${isIconButton ? "icon" : ""} ${className}`}
       {...props}
-    />
+    >
+      <>
+        {children}
+        {variant === "code" ? <Icon type={"arrowOutward"} /> : null}
+      </>
+    </ReactAriaButton>
   );
 }
