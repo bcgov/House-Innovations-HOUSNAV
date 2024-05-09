@@ -80,6 +80,7 @@
   --layout-border-width-medium: 2px;
   --layout-border-width-large: 4px;
   --layout-padding-none: 0;
+  --layout-padding-xxsmall: 0.125rem;
   --layout-padding-xsmall: 0.25rem;
   --layout-padding-small: 0.5rem;
   --layout-padding-medium: 1rem;
@@ -204,6 +205,13 @@
   --theme-gray-white: #ffffff;
   --theme-primary-blue: #013366;
   --theme-primary-gold: #fcba19;
+  --size-button: 40px;
+  --size-button-large: 52px;
+  --outline-offset: 2px;
+  --link-underline-offset: 0.35em;
+  --transition-link-background-color: background-color 150ms ease-in;
+  --transition-link-color: color 150ms ease-in;
+  --transition-link-icon-fill-color: fill 150ms ease-in;
 }
 
 /* TABLET - 608px */

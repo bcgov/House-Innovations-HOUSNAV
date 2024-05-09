@@ -8,6 +8,7 @@ html,
 body {
   margin: 0;
   font: var(--typography-regular-body);
+  -webkit-font-smoothing: antialiased;
 }
 
 h1,
@@ -39,4 +40,8 @@ h5,
   max-width: var(--layout-max-width);
   margin: 0 auto;
   padding: 0 var(--layout-padding-container);
+}
+
+p {
+  margin-top: var(--layout-margin-medium);
 }

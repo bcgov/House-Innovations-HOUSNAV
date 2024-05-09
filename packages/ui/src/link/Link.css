@@ -1,10 +1,51 @@
 .ui-Link {
-  background-color: var(--surface-color-tertiary-button-default);
   color: var(--typography-color-link);
   text-decoration: underline;
-  text-underline-offset: 0.3em;
+  text-underline-offset: var(--link-underline-offset);
+  outline: none;
+  transition: var(--transition-link-background-color),
+    var(--transition-link-color);
+}
+
+.ui-Link[data-hovered] {
+  color: var(--theme-blue-80);
+}
+
+.ui-Link[data-pressed] {
+  color: var(--typography-color-link);
+}
+
+.ui-Link[data-focus-visible] {
+  outline: var(--layout-border-width-medium) solid
+    var(--surface-color-border-active);
+  outline-offset: var(--outline-offset);
 }
 
 .ui-Link[data-disabled] {
   color: var(--typography-color-disabled);
+}
+
+/* glossary link */
+.ui-Link.glossary {
+  color: var(--typography-color-link);
+  text-decoration: dotted underline;
+}
+
+.ui-Link.glossary[data-hovered] {
+  background-color: var(--theme-blue-20);
+}
+
+.ui-Link.glossary[data-pressed] {
+  color: var(--typography-color-primary);
+  background-color: var(--theme-blue-40);
+}
+
+.ui-Link[target="_blank"] .ui-Icon {
+  margin-left: 2px;
+  position: relative;
+  top: 0.125em;
+  flex-shrink: 0;
+  height: 1em;
+  width: 1em;
+  transition: var(--transition-link-icon-fill-color);
 }

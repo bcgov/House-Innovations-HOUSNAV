@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
+    "./icon": "./src/icon/Icon.tsx",
     "./button": "./src/button/Button.tsx",
     "./link": "./src/link/Link.tsx",
     "./cssVariables": "./src/variables.css"
