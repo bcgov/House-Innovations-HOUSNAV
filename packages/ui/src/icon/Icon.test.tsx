@@ -2,7 +2,7 @@
 import { describe, expect, it } from "vitest";
 import { render } from "@testing-library/react";
 // repo
-import { TESTID_ICON } from "@repo/constants/testids";
+import { TESTID_ICON } from "@repo/constants/src/testids";
 // workspace
 import Icon, { IconType } from "./Icon";
 

@@ -10,7 +10,11 @@
       "dependsOn": ["^lint"]
     },
     "format": {
+      "cache": false,
       "dependsOn": ["^format"]
+    },
+    "format:check": {
+      "dependsOn": ["^format:check"]
     },
     "test": {
       "dependsOn": ["^test"]

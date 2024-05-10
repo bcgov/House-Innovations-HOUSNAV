@@ -5,7 +5,7 @@ import {
   ButtonProps as ReactAriaButtonProps,
 } from "react-aria-components";
 // repo
-import { TESTID_BUTTON } from "@repo/constants/testids";
+import { TESTID_BUTTON } from "@repo/constants/src/testids";
 // workspace
 import "./Button.css";
 import Icon from "../icon/Icon";
