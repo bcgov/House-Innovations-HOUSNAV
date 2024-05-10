@@ -1,18 +1,21 @@
 "use client";
-
+// 3rd party
 import {
   Button as ReactAriaButton,
   ButtonProps as ReactAriaButtonProps,
 } from "react-aria-components";
-
+// repo
+import { TESTID_BUTTON } from "@repo/constants/testids";
+// workspace
 import "./Button.css";
 import Icon from "../icon/Icon";
 
+export type ButtonVariant = "primary" | "secondary" | "link" | "code";
 export interface ButtonProps extends ReactAriaButtonProps {
   /**
    * Defaults to `primary`.
    */
-  variant?: "primary" | "secondary" | "link" | "code";
+  variant?: ButtonVariant;
   /**
    * If true, renders a larger button.
    */
@@ -21,24 +24,34 @@ export interface ButtonProps extends ReactAriaButtonProps {
    * If true, renders a square button intended for a single icon.
    */
   isIconButton?: boolean;
+  /**
+   * Optional testid string for targeting specific buttons.
+   * Will default to `button-[variant]`.
+   * eg. `data-testid="button-passedValue"`.
+   */
+  "data-testid"?: string;
 }
+
+export const codeIconType = "arrowOutward";
 
 export default function Button({
   variant = "primary",
   isIconButton = false,
   isLargeButton = false,
+  "data-testid": testid = "",
   className,
   children,
   ...props
 }: ButtonProps) {
   return (
     <ReactAriaButton
+      data-testid={`${TESTID_BUTTON}-${testid || variant}`}
       className={`ui-Button ${variant} ${isLargeButton ? "large" : ""} ${isIconButton ? "icon" : ""} ${className}`}
       {...props}
     >
       <>
         {children}
-        {variant === "code" ? <Icon type={"arrowOutward"} /> : null}
+        {variant === "code" ? <Icon type={codeIconType} /> : null}
       </>
     </ReactAriaButton>
   );

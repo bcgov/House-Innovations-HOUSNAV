@@ -1,13 +1,15 @@
 // 3rd party
 import type { FunctionComponent, SVGProps } from "react";
-// local
+// repo
+import { TESTID_ICON } from "@repo/constants/testids";
+// workspace
 import MenuIcon from "./icons/MenuIcon";
 import CloseIcon from "./icons/CloseIcon";
 import ArrowOutwardIcon from "./icons/ArrowOutwardIcon";
 import OpenInNew from "./icons/OpenInNew";
 
 // NOTE: When adding a new icon, make sure to add the string here, and the icon component below in the ICONS object
-type IconType = "close" | "menu" | "arrowOutward" | "openInNew";
+export type IconType = "close" | "menu" | "arrowOutward" | "openInNew";
 
 export interface IconComponentProps extends SVGProps<SVGSVGElement> {
   /**
@@ -26,6 +28,12 @@ export interface IconComponentProps extends SVGProps<SVGSVGElement> {
    * The ID of the icon. Used for accessibility.
    */
   id?: string;
+  /**
+   * Optional testid string for targeting specific icons.
+   * Will default to `icon-[type]`.
+   * eg. `data-testid="icon-passedValue"`.
+   */
+  "data-testid"?: string;
 }
 
 export interface IconProps extends Omit<IconComponentProps, "type"> {}
@@ -41,9 +49,16 @@ const ICONS: Record<IconType, FunctionComponent<IconProps>> = {
 export default function Icon({
   type,
   className,
+  "data-testid": testid = "",
   ...props
 }: IconComponentProps) {
   const IconComponent = ICONS[type];
 
-  return <IconComponent className={`ui-Icon ${className}`} {...props} />;
+  return (
+    <IconComponent
+      className={`ui-Icon ${className}`}
+      data-testid={`${TESTID_ICON}-${testid || type}`}
+      {...props}
+    />
+  );
 }
