@@ -22,6 +22,18 @@
     "test:coverage": {
       "dependsOn": ["^test:coverage"]
     },
+    "e2e": {
+      "dependsOn": ["^e2e"]
+    },
+    "e2e:chrome": {
+      "dependsOn": ["^e2e:chrome"]
+    },
+    "e2e:firefox": {
+      "dependsOn": ["^e2e:firefox"]
+    },
+    "e2e:open": {
+      "dependsOn": ["^e2e:open"]
+    },
     "dev": {
       "cache": false,
       "persistent": true

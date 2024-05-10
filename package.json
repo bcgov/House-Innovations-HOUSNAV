@@ -8,7 +8,10 @@
     "format": "turbo format",
     "format:check": "turbo format:check",
     "test": "turbo test",
-    "test:coverage": "turbo test:coverage"
+    "test:coverage": "turbo test:coverage",
+    "e2e": "turbo e2e",
+    "e2e:firefox": "turbo e2e:firefox",
+    "e2e:open": "turbo e2e:open"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
