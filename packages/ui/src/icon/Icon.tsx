@@ -1,7 +1,7 @@
 // 3rd party
 import type { FunctionComponent, SVGProps } from "react";
 // repo
-import { TESTID_ICON } from "@repo/constants/testids";
+import { TESTID_ICON } from "@repo/constants/src/testids";
 // workspace
 import MenuIcon from "./icons/MenuIcon";
 import CloseIcon from "./icons/CloseIcon";

@@ -6,7 +6,7 @@ import {
   LinkProps as ReactAriaLinkProps,
 } from "react-aria-components";
 // repo
-import { TESTID_LINK } from "@repo/constants/testids";
+import { TESTID_LINK } from "@repo/constants/src/testids";
 // workspace
 import "./Link.css";
 import Icon from "../icon/Icon";

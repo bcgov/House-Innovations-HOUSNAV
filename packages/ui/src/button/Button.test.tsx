@@ -2,7 +2,7 @@
 import { describe, it, expect } from "vitest";
 import { render } from "@testing-library/react";
 // repo
-import { TESTID_BUTTON } from "@repo/constants/testids";
+import { TESTID_BUTTON } from "@repo/constants/src/testids";
 // workspace
 import Button, { ButtonVariant, codeIconType } from "./Button";
 import { getIconTestId } from "../icon/Icon.test";
