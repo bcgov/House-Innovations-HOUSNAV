@@ -7,5 +7,8 @@ export default defineProject({
     globals: true,
     environment: "jsdom",
     setupFiles: "./tests/setup.ts",
+    coverage: {
+      include: ["src/**/*"],
+    },
   },
 });
