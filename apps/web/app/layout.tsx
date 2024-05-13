@@ -1,7 +1,6 @@
 // 3rd party
 import type { Metadata } from "next";
 import { ReactNode, JSX } from "react";
-import { LocalizedStringProvider } from "react-aria-components/i18n";
 // BC Gov
 import "@bcgov/bc-sans/css/BC_Sans.css";
 // packages
@@ -22,9 +21,8 @@ export default function RootLayout({
   children: ReactNode;
 }): JSX.Element {
   return (
-    <html lang="en">
+    <html lang="en-US">
       <body>
-        <LocalizedStringProvider locale="en" />
         <ClientProviders>
           <main>
             <div className="container">Nav bar goes here</div>
