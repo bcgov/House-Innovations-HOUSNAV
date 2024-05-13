@@ -9,6 +9,7 @@ export default function OpenInNew({ title, id, ...props }: IconProps) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-labelledby={id ? id : undefined}
+      aria-hidden="true"
       {...props}
     >
       {id === undefined || title === undefined ? null : (
