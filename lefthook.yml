@@ -40,3 +40,10 @@ pre-commit:
       run: npm run format:check
     lint:
       run: npm run lint
+    test:
+      run: npm run test
+
+post-commit:
+  commands:
+    e2e:
+      run: npm run e2e
