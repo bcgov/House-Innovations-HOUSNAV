@@ -12,7 +12,7 @@ const TEXT = "Press me";
 const getLinkTestId = (variant: LinkVariant | string) =>
   `${TESTID_LINK}-${variant}`;
 
-describe("Button", () => {
+describe("Link", () => {
   it("renders link text", () => {
     const { getByText } = render(<Link>{TEXT}</Link>);
     expect(getByText(TEXT)).toBeInTheDocument();
