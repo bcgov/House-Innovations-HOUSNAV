@@ -1,0 +1,21 @@
+{
+  "name": "@repo/data",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./useData": "./src/useData.ts",
+    "./useWalkthroughData": "./src/useWalkthroughData.ts"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "format": "prettier --write \"**/*.{ts,tsx,md,css}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,md,css}\""
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "@types/eslint": "^8.56.5",
+    "eslint": "^8.57.0",
+    "typescript": "^5.3.3"
+  }
+}

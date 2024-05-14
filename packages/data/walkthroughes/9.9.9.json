@@ -1,0 +1,441 @@
+{
+  "info": {
+    "title": "Egress from Dwelling Units",
+    "startingQuestionId": "P01"
+  },
+  "questions": {
+    "P01": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Does the Building Code apply to this <defined-term>structure</defined-term>?",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "yes"
+        },
+        {
+          "answerDisplayText": "I'm not sure",
+          "answerValue": "notSure"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "no"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equals",
+          "answerValue": "yes",
+          "nextNavigateTo": "P04"
+        },
+        {
+          "nextLogicType": "equals",
+          "answerValue": "notSure",
+          "nextNavigateTo": "P02"
+        },
+        {
+          "nextLogicType": "equals",
+          "answerValue": "no",
+          "nextNavigateTo": "R00"
+        }
+      ]
+    },
+    "P02": {
+      "walkthroughItemType": "multiChoiceMultiple",
+      "questionText": "Check all that apply to the following <defined-term>structure</defined-term> in this project?",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "This project will involve the construction or design of a new <defined-term>building</defined-term>.",
+          "answerValue": "1"
+        },
+        {
+          "answerDisplayText": "The project will be <defined-term>occupied</defined-term>.",
+          "answerValue": "2"
+        },
+        {
+          "answerDisplayText": "The project will result in a change in <defined-term>occupancy</defined-term>.",
+          "answerValue": "3"
+        },
+        {
+          "answerDisplayText": "The project will result in an <defined-term>alteration</defined-term> to an existing <defined-term>building</defined-term>.",
+          "answerValue": "4"
+        },
+        {
+          "answerDisplayText": "The project will result in an <defined-term>addition</defined-term> to an existing <defined-term>building</defined-term>.",
+          "answerValue": "5"
+        },
+        {
+          "answerDisplayText": "The project will result in the demolition of an existing <defined-term>building</defined-term>.",
+          "answerValue": "6"
+        },
+        {
+          "answerDisplayText": "The project will consist of the repair of a <defined-term>building</defined-term> that has been damaged by fire, earthquake, or other causes of damage.",
+          "answerValue": "7"
+        },
+        {
+          "answerDisplayText": "The project will correct unsafe conditions in or about a <defined-term>building</defined-term>.",
+          "answerValue": "8"
+        },
+        {
+          "answerDisplayText": "The project will involve changes that will affect the <defined-term>occupied</defined-term> parts of the <defined-term>building</defined-term>.",
+          "answerValue": "9"
+        },
+        {
+          "answerDisplayText": "The project will involve work necessary to ensure safety in the remaining parts of a <defined-term>building</defined-term> after demolition.",
+          "answerValue": "10"
+        },
+        {
+          "answerDisplayText": "The project will involve work necessary to ensure safety parts affect but not directly involved in an <defined-term>alteration</defined-term> to the <defined-term>building</defined-term>.",
+          "answerValue": "11"
+        },
+        {
+          "answerDisplayText": "The project will involve work necessary to ensure safety parts affect but not directly involved in an <defined-term>addition</defined-term> to the <defined-term>building</defined-term>.",
+          "answerValue": "12"
+        },
+        {
+          "answerDisplayText": "The project will involve the installation, replacement, or <defined-term>alteration</defined-term> of materials or equipment regulated by this Code (except as permitted by the British Columbia Fire Code).",
+          "answerValue": "13"
+        },
+        {
+          "answerDisplayText": "This project will involve the work necessary to ensure safety in a relocated <defined-term>building</defined-term> during and after the relocation.",
+          "answerValue": "14"
+        },
+        {
+          "answerDisplayText": "This project will affect safety during construction of a <defined-term>building</defined-term>, including protection of the public.",
+          "answerValue": "15"
+        },
+        {
+          "answerDisplayText": "This project will involve the design, installation, extension, <defined-term>alteration</defined-term>, renewal or repair of plumbing systems.",
+          "answerValue": "16"
+        },
+        {
+          "answerDisplayText": "This project will involve the <defined-term>alteration</defined-term>, rehabilitation and change of <defined-term>occupancy</defined-term> of <defined-term>heritage buildings</defined-term>.",
+          "answerValue": "17"
+        },
+        {
+          "answerDisplayText": "None of the above",
+          "answerValue": "18"
+        }
+      ],
+      "possibleInvalidAnswers": [
+        {
+          "invalidAnswerType": "contains",
+          "answerValue": "18",
+          "invalidAnswerLogic": [
+            {
+              "invalidAnswerLogicType": "maxNumberOfAnswers",
+              "invalidAnswerLogicValue": 1
+            }
+          ],
+          "errorMessage": "'None of the above' cannot be selected at the same time as other answers"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equals",
+          "answerValue": "18",
+          "nextNavigateTo": "R00"
+        },
+        {
+          "nextLogicType": "default",
+          "nextNavigateTo": "P03"
+        }
+      ]
+    },
+    "P03": {
+      "walkthroughItemType": "multiChoiceMultiple",
+      "questionText": "Check all that apply to the following apply to this project?",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "This project consists of sewage, water, electrical, telephone, rail or similar public infrastructure systems located in a <defined-term>street</defined-term> or a public transit right of way.",
+          "answerValue": "1"
+        },
+        {
+          "answerDisplayText": "This project consists of utility towers and poles, and television, radio and other communication aerials and towers, except for loads resulting from their being located on or attached to <defined-term>buildings</defined-term>.",
+          "answerValue": "2"
+        },
+        {
+          "answerDisplayText": "This project consists of mechanical or other equipment and appliances not specifically regulated in these regulations.",
+          "answerValue": "3"
+        },
+        {
+          "answerDisplayText": "This project consists of flood control and hydro electric dams and structures.",
+          "answerValue": "4"
+        },
+        {
+          "answerDisplayText": "This project consists of accessory buildings less than 10 m<sup>2</sup> in <defined-term>building area</defined-term> that do not create a hazard.",
+          "answerValue": "5"
+        },
+        {
+          "answerDisplayText": "This project has permission of the <defined-term>authorities having jurisdiction</defined-term> to provide construction site offices, seasonal storage buildings, special events facilities, emergency facilities, and/or similar <defined-term>structures</defined-term>.",
+          "answerValue": "6"
+        },
+        {
+          "answerDisplayText": "This project consists of Factory-built housing and components complying with CSA-Z240 MH Series standard, but this exemption does not extend to on site preparations (siting, foundations, mountings), connection to services and installation of appliances.",
+          "answerValue": "7"
+        },
+        {
+          "answerDisplayText": "This project is a <defined-term>farm building</defined-term>.",
+          "answerValue": "8"
+        },
+        {
+          "answerDisplayText": "None of the above",
+          "answerValue": "9"
+        }
+      ],
+      "possibleInvalidAnswers": [
+        {
+          "invalidAnswerType": "contains",
+          "answerValue": "9",
+          "invalidAnswerLogic": [
+            {
+              "invalidAnswerLogicType": "maxNumberOfAnswers",
+              "invalidAnswerLogicValue": 1
+            }
+          ],
+          "errorMessage": "'None of the above' cannot be selected at the same time as other answers"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equals",
+          "answerValue": "9",
+          "nextNavigateTo": "P04"
+        },
+        {
+          "nextLogicType": "default",
+          "nextNavigateTo": "R01"
+        }
+      ]
+    },
+    "P04": {
+      "walkthroughItemType": "boolean",
+      "questionText": "Is this <defined-term>structure</defined-term> a <defined-term>heritage building</defined-term>?",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": true
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": false
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equals",
+          "answerValue": true,
+          "nextNavigateTo": "R02"
+        },
+        {
+          "nextLogicType": "equals",
+          "answerValue": false,
+          "nextNavigateTo": "P05"
+        }
+      ]
+    },
+    "P05": {
+      "walkthroughItemType": "boolean",
+      "questionText": "Does this project involve the <defined-term>alteration</defined-term> of an existing <defined-term>building</defined-term>?",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": true
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": false
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equals",
+          "answerValue": true,
+          "nextNavigateTo": "R03"
+        },
+        {
+          "nextLogicType": "equals",
+          "answerValue": false,
+          "nextNavigateTo": "P06"
+        }
+      ]
+    },
+    "P06": {
+      "walkthroughItemType": "multiChoiceMultiple",
+      "questionText": "Which <defined-term>major occupancies</defined-term> will be included in this <defined-term>building</defined-term>?",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "<defined-term>Group A Division 1.</defined-term>",
+          "answerValue": "A1"
+        },
+        {
+          "answerDisplayText": "<defined-term>Group A Division 2.</defined-term>",
+          "answerValue": "A2"
+        },
+        {
+          "answerDisplayText": "<defined-term>Group A Division 3.</defined-term>",
+          "answerValue": "A3"
+        },
+        {
+          "answerDisplayText": "<defined-term>Group A Division 4.</defined-term>",
+          "answerValue": "A4"
+        },
+        {
+          "answerDisplayText": "<defined-term>Group B Division 1.</defined-term>",
+          "answerValue": "B1"
+        },
+        {
+          "answerDisplayText": "<defined-term>Group B Division 2.</defined-term>",
+          "answerValue": "B2"
+        },
+        {
+          "answerDisplayText": "<defined-term>Group B Division 3.</defined-term>",
+          "answerValue": "B3"
+        },
+        {
+          "answerDisplayText": "<defined-term>Group C.</defined-term>",
+          "answerValue": "C"
+        },
+        {
+          "answerDisplayText": "<defined-term>Group D.</defined-term>",
+          "answerValue": "D"
+        },
+        {
+          "answerDisplayText": "<defined-term>Group E.</defined-term>",
+          "answerValue": "E"
+        },
+        {
+          "answerDisplayText": "<defined-term>Group F Division 1.</defined-term>",
+          "answerValue": "F1"
+        },
+        {
+          "answerDisplayText": "<defined-term>Group F Division 2.</defined-term>",
+          "answerValue": "F2"
+        },
+        {
+          "answerDisplayText": "<defined-term>Group F Division 3.</defined-term>",
+          "answerValue": "F3"
+        },
+        {
+          "answerDisplayText": "This building has no <defined-term>major occupancy</defined-term>.",
+          "answerValue": "none"
+        }
+      ],
+      "possibleInvalidAnswers": [
+        {
+          "invalidAnswerType": "contains",
+          "answerValue": "none",
+          "invalidAnswerLogic": [
+            {
+              "invalidAnswerLogicType": "maxNumberOfAnswers",
+              "invalidAnswerLogicValue": 1
+            }
+          ],
+          "errorMessage": "'None of the above' cannot be selected at the same time as other answers"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equals",
+          "answerValue": "none",
+          "nextNavigateTo": "R00"
+        },
+        {
+          "nextLogicType": "containsAny",
+          "answerValues": [
+            "A1",
+            "A2",
+            "A3",
+            "A4",
+            "B1",
+            "B2",
+            "B3",
+            "F1"
+          ],
+          "nextNavigateTo": "R05"
+        },
+        {
+          "nextLogicType": "doesNotContain",
+          "answerValue": "C",
+          "nextNavigateTo": "R04"
+        },
+        {
+          "nextLogicType": "default",
+          "nextNavigateTo": "P07"
+        }
+      ]
+    },
+    "P07": {
+      "walkthroughItemType": "boolean",
+      "questionText": "Is the <defined-term>building area</defined-term> of this <defined-term>building</defined-term> greater than 600 m<sup>2</sup>?",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": true
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": false
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equals",
+          "answerValue": true,
+          "nextNavigateTo": "R05"
+        },
+        {
+          "nextLogicType": "equals",
+          "answerValue": false,
+          "nextNavigateTo": "P08"
+        }
+      ]
+    },
+    "P08": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "How many <defined-term>storeys</defined-term> in <defined-term>building height</defined-term> will this building be?",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "1-3 <defined-term>storeys</defined-term>",
+          "answerValue": true
+        },
+        {
+          "answerDisplayText": "Greater than 3 <defined-term>storeys</defined-term>",
+          "answerValue": false
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equals",
+          "answerValue": true,
+          "nextNavigateTo": "P1"
+        },
+        {
+          "nextLogicType": "equals",
+          "answerValue": false,
+          "nextNavigateTo": "R05"
+        }
+      ]
+    }
+  },
+  "results": {
+    "R00": {
+      "resultDisplayMessage": "You have selected an answer that indicates that the BC Building Code 2024 does not apply to this structure. This tool is used to assist building code users in determining the applicable requirements for their building, as such all structures that are not governed by the BC Building Code 2024 are beyond the scope of this tool."
+    },
+    "R01": {
+      "needsAnswerValue": true,
+      "resultDisplayMessage": "You have selected {passedAnswerValue}. This indicates that some or all of this structure may not be governed by the BC Building Code 2024. This tool has been designed to assist BC Building Code 2024 users in determining the Building Code requirements for Part 9 buildings. Based on your selection, some or all of your project is beyond the scope of this tool at this time."
+    },
+    "R02": {
+      "resultDisplayMessage": "You have selected an option that indicates that this building is a heritage building. Heritage buildings have alternative measures for Building Code compliance. These alternative measures are beyond the scope of this tool at this time. Please see in <PDFDownloadLink>Table 1.1.1.1.(5)</PDFDownloadLink> of Division A - Section 1.1 ‘General’ for more information."
+    },
+    "R03": {
+      "resultDisplayMessage": "You have selected an option that indicates that this building is an alteration to an existing building. Alteration to existing buildings have alternative measures for Building Code compliance. These alternative measures are beyond the scope of this tool at this time. Please see Sentences <PDFDownloadLink>1.1.1.1(6)</PDFDownloadLink> and <PDFDownloadLink>1.1.1.2.(1)</PDFDownloadLink>, and <PDFDownloadLink>Table 1.1.1.1.(6)</PDFDownloadLink> in Division A - Section 1.1 ‘General’ for more information."
+    },
+    "R04": {
+      "resultDisplayMessage": "Based on the options you have selected this project does not contain a Group C residential occupancy. This tool is design to assist BC Building Code 2024 users in evaluating the prescriptive requirements of the BC Building Code for Part 9 Group C residential occupancy buildings, therefore your project is beyond the scope of this tool at this time."
+    },
+    "R05": {
+      "resultDisplayMessage": "Based on the options you have selected; this project is not a Part 9 building. This tool is design to assist BC Building Code 2024 users in evaluating the Acceptable Solutions in Division B of the BC Building Code for Part 9 buildings, therefore your project is beyond the scope of this tool at this time."
+    }
+  }
+}
