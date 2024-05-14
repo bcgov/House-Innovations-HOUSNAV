@@ -1,8 +1,49 @@
 import Link from "@repo/ui/link";
 import Button from "@repo/ui/button";
 import Icon from "@repo/ui/icon";
+import useWalkthroughData, {
+  isWalkthroughItemTypeBoolean,
+  isWalkthroughItemTypeMultiChoice,
+  isWalkthroughItemTypeMultiChoiceMultiple,
+  QuestionBoolean,
+  QuestionMultipleChoice,
+  QuestionMultipleChoiceSelectMultiple,
+} from "@repo/data/useWalkthroughData";
 
 export default function Page(): JSX.Element {
+  const data = useWalkthroughData({ id: "9.9.9" });
+  const startingQuestionId = data.info.startingQuestionId;
+  const startingQuestion = data.questions[startingQuestionId];
+  if (startingQuestion) {
+    console.log("starting question", startingQuestion);
+    // figure out what type of question it is
+    if (
+      isWalkthroughItemTypeMultiChoice(startingQuestion.walkthroughItemType)
+    ) {
+      const multiChoiceQuestion = startingQuestion as QuestionMultipleChoice;
+      console.log(
+        "starting question is multiChoiceMultiple",
+        multiChoiceQuestion,
+      );
+    } else if (
+      isWalkthroughItemTypeMultiChoiceMultiple(
+        startingQuestion.walkthroughItemType,
+      )
+    ) {
+      const multiChoiceMultipleQuestion =
+        startingQuestion as QuestionMultipleChoiceSelectMultiple;
+      console.log(
+        "starting question is multiChoiceMultiple",
+        multiChoiceMultipleQuestion,
+      );
+    } else if (
+      isWalkthroughItemTypeBoolean(startingQuestion.walkthroughItemType)
+    ) {
+      const booleanQuestion = startingQuestion as QuestionBoolean;
+      console.log("starting question is boolean", booleanQuestion);
+    }
+  }
+
   return (
     <div className="container">
       <p>
