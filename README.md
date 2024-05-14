@@ -55,7 +55,11 @@ As noted above, this repository uses [Lefthook](https://github.com/evilmartians/
 
 #### Pre-Commit
 
-Pre-commit the `format` and `lint` turbo tasks will run. This will run any `scripts` called `format` or `lint` in any of the workspaces. Look at the `package.json` in each workspace for what executes in each. If there are any errors, the commit will be aborted.
+Pre-commit the `format`, `lint`, and `test` turbo tasks will run. This will run any `scripts` called `format`, `lint`, or `test` in any of the workspaces. Look at the `package.json` in each workspace for what executes in each. If there are any errors, the commit will be aborted. (Note: `test` normally includes the vitests.)
+
+#### Post-Commit
+
+Pre-commit the `e2e` turbo task will run. It will run any `scripts` called `e2e` in any of the workspaces. Look at the `package.json` in each workspace for what executes in each. This will normally include the cypress tests. Note: This is purely informational and will not block commit or push. For the web package e2e tests to pass, the web app must be running on localhost:3000.
 
 
 ## Useful Links
