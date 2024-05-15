@@ -3,9 +3,9 @@ import { IconProps } from "../Icon";
 export default function CloseIcon({ title, id, ...props }: IconProps) {
   return (
     <svg
-      width="20"
-      height="21"
-      viewBox="0 0 20 21"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-labelledby={id ? id : undefined}
@@ -16,7 +16,7 @@ export default function CloseIcon({ title, id, ...props }: IconProps) {
         <title id={id}>{title}</title>
       )}
       <path
-        d="M15.8332 5.84169L14.6582 4.66669L9.99984 9.32502L5.3415 4.66669L4.1665 5.84169L8.82484 10.5L4.1665 15.1584L5.3415 16.3334L9.99984 11.675L14.6582 16.3334L15.8332 15.1584L11.1748 10.5L15.8332 5.84169Z"
+        d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"
         fill="currentColor"
       />
     </svg>
