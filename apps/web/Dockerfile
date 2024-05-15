@@ -1,9 +1,9 @@
+# -----Base Stage------- #
 FROM node:18-alpine AS base
 
-# -----Builder Stage------- #
-FROM base AS builder
-RUN apk add --no-cache libc6-compat
-RUN apk update
+# Install common dependencies
+RUN apk add --no-cache libc6-compat && \
+    apk update
 
 # Set working directory in Docker container
 WORKDIR /app
@@ -11,28 +11,32 @@ WORKDIR /app
 # Copy files from the current directory into the /app directory in the Docker container
 COPY . .
 
+# Install turbo globally
+RUN npm install -g turbo
+# -----/Base Stage------- #
+
+# -----Builder Stage------- #
+FROM base AS builder
+
 # Generate a partial monorepo with a pruned lockfile for a target workspace.
-RUN npm install turbo && turbo prune --scope web --docker 
+RUN turbo prune --scope web --docker 
 # -----/Builder Stage------- #
 
 # -----Installer Stage------- #
 # Add lockfile and package.json's of isolated subworkspace
 FROM base AS installer
-RUN apk add --no-cache libc6-compat
-RUN apk update
-WORKDIR /app
 
 # First install the dependencies (as they change less often)
 COPY .gitignore .gitignore
 COPY --from=builder /app/out/json/ .
 COPY --from=builder /app/out/package-lock.json ./package-lock.json
-RUN npm install
+RUN npm install --verbose
 
 # Build the project
 COPY --from=builder /app/out/full/ .
 COPY turbo.json turbo.json
 
-RUN npm install turbo && turbo run build --filter=web...
+RUN turbo run build --filter=web...
 # -----/Installer Stage------- #
 
 # -----Runner Stage------- #
