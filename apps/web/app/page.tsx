@@ -1,6 +1,11 @@
+"use client";
+// 3rd party
+import { JSX, useState } from "react";
+// repo
 import Link from "@repo/ui/link";
 import Button from "@repo/ui/button";
 import Icon from "@repo/ui/icon";
+import RadioGroup, { RadioGroupOption } from "@repo/ui/radio-group";
 import useWalkthroughData, {
   isWalkthroughItemTypeBoolean,
   isWalkthroughItemTypeMultiChoice,
@@ -11,9 +16,13 @@ import useWalkthroughData, {
 } from "@repo/data/useWalkthroughData";
 
 export default function Page(): JSX.Element {
+  const [basementStoriesToTravel, setBasementStoriesToTravel] = useState<
+    string | undefined
+  >(undefined);
   const data = useWalkthroughData({ id: "9.9.9" });
   const startingQuestionId = data.info.startingQuestionId;
   const startingQuestion = data.questions[startingQuestionId];
+  let radioGroupOptions: RadioGroupOption[] = [];
   if (startingQuestion) {
     console.log("starting question", startingQuestion);
     // figure out what type of question it is
@@ -21,9 +30,12 @@ export default function Page(): JSX.Element {
       isWalkthroughItemTypeMultiChoice(startingQuestion.walkthroughItemType)
     ) {
       const multiChoiceQuestion = startingQuestion as QuestionMultipleChoice;
-      console.log(
-        "starting question is multiChoiceMultiple",
-        multiChoiceQuestion,
+      console.log("starting question is multiChoice", multiChoiceQuestion);
+      radioGroupOptions = multiChoiceQuestion.possibleAnswers.map(
+        (possibleAnswer) => ({
+          label: possibleAnswer.answerDisplayText,
+          value: possibleAnswer.answerValue,
+        }),
       );
     } else if (
       isWalkthroughItemTypeMultiChoiceMultiple(
@@ -71,6 +83,18 @@ export default function Page(): JSX.Element {
       <p>
         <Button variant="code">Vol 2, Section 9.9.9.1</Button>
       </p>
+      <form>
+        <RadioGroup
+          name={"basementStoriesToTravel"}
+          label={"Basement:"}
+          options={radioGroupOptions}
+          isRequired
+          value={basementStoriesToTravel}
+          errorMessageText={"Please select a number of storeys"}
+          onChange={(value) => setBasementStoriesToTravel(value)}
+        />
+        <Button type={"submit"}>Submit</Button>
+      </form>
       <p>
         Except as provided in <Button variant="code">Sentences (2)</Button> and{" "}
         <Button variant="code">(3)</Button>, every dwelling unit containing more

@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
+    "./input-error": "./src/input-error/InputError.tsx",
+    "./radio-group": "./src/radio-group/RadioGroup.tsx",
     "./icon": "./src/icon/Icon.tsx",
     "./button": "./src/button/Button.tsx",
     "./link": "./src/link/Link.tsx",

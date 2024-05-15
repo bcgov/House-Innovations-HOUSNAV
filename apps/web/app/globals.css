@@ -9,6 +9,7 @@ body {
   margin: 0;
   font: var(--typography-regular-body);
   -webkit-font-smoothing: antialiased;
+  color: var(--typography-color-primary);
 }
 
 h1,
@@ -44,4 +45,9 @@ h5,
 
 p {
   margin-top: var(--layout-margin-medium);
+}
+
+/* Utility spacing classes - add as needed */
+.u-hidden {
+  display: none;
 }

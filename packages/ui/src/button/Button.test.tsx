@@ -9,7 +9,7 @@ import { getIconTestId } from "../icon/Icon.test";
 
 // test constants
 const TEXT = "Press me";
-const getButtonTestId = (variant: ButtonVariant | string) =>
+export const getButtonTestId = (variant: ButtonVariant | string) =>
   `${TESTID_BUTTON}-${variant}`;
 
 describe("Button", () => {
@@ -37,6 +37,11 @@ describe("Button", () => {
     const { getByTestId } = render(<Button variant="code">{TEXT}</Button>);
     expect(getByTestId(getButtonTestId("code"))).toBeInTheDocument();
     expect(getByTestId(getIconTestId(codeIconType))).toBeInTheDocument();
+  });
+  // glossary
+  it("renders glossary button", () => {
+    const { getByTestId } = render(<Button variant="glossary">{TEXT}</Button>);
+    expect(getByTestId(getButtonTestId("glossary"))).toBeInTheDocument();
   });
   // large
   it("renders large button", () => {
