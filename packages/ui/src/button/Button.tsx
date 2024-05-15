@@ -10,7 +10,12 @@ import { TESTID_BUTTON } from "@repo/constants/src/testids";
 import "./Button.css";
 import Icon from "../icon/Icon";
 
-export type ButtonVariant = "primary" | "secondary" | "link" | "code";
+export type ButtonVariant =
+  | "primary"
+  | "secondary"
+  | "link"
+  | "code"
+  | "glossary";
 export interface ButtonProps extends ReactAriaButtonProps {
   /**
    * Defaults to `primary`.

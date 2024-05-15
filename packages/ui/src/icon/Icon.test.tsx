@@ -78,6 +78,52 @@ describe("Icon", () => {
     expect(getByTestId(getIconTestId("openInNew"))).toBeInTheDocument();
     expect(queryByTitle("open in a new tab")).not.toBeInTheDocument();
   });
+  // radioChecked
+  it("renders radioChecked icon with title", () => {
+    const { getByTestId, getByTitle } = render(
+      <Icon
+        type="radioChecked"
+        id="radioCheckedIcon"
+        title="Radio button checked"
+      />,
+    );
+    const RadioCheckedIcon = getByTestId(getIconTestId("radioChecked"));
+    expect(RadioCheckedIcon).toBeInTheDocument();
+    expect(RadioCheckedIcon).toHaveAttribute(
+      "aria-labelledby",
+      "radioCheckedIcon",
+    );
+    expect(getByTitle("Radio button checked")).toBeInTheDocument();
+  });
+  it("renders radioChecked icon without title", () => {
+    const { getByTestId, queryByTitle } = render(<Icon type="radioChecked" />);
+    expect(getByTestId(getIconTestId("radioChecked"))).toBeInTheDocument();
+    expect(queryByTitle("Radio button checked")).not.toBeInTheDocument();
+  });
+  // radioUnchecked
+  it("renders radioUnchecked icon with title", () => {
+    const { getByTestId, getByTitle } = render(
+      <Icon
+        type="radioUnchecked"
+        id="radioUncheckedIcon"
+        title="Radio button unchecked"
+      />,
+    );
+    const RadioUncheckedIcon = getByTestId(getIconTestId("radioUnchecked"));
+    expect(RadioUncheckedIcon).toBeInTheDocument();
+    expect(RadioUncheckedIcon).toHaveAttribute(
+      "aria-labelledby",
+      "radioUncheckedIcon",
+    );
+    expect(getByTitle("Radio button unchecked")).toBeInTheDocument();
+  });
+  it("renders radioUnchecked icon without title", () => {
+    const { getByTestId, queryByTitle } = render(
+      <Icon type="radioUnchecked" />,
+    );
+    expect(getByTestId(getIconTestId("radioUnchecked"))).toBeInTheDocument();
+    expect(queryByTitle("Radio button unchecked")).not.toBeInTheDocument();
+  });
   // className
   it("renders icon with className", () => {
     const { getByTestId } = render(

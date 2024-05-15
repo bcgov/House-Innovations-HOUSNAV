@@ -127,3 +127,24 @@
   width: 1em;
   transition: var(--transition-link-icon-fill-color);
 }
+
+/* Variant - Glossary */
+.ui-Button.glossary {
+  background-color: var(--surface-color-tertiary-button-default);
+  color: var(--typography-color-link);
+  text-underline-offset: var(--link-underline-offset);
+  text-decoration: dotted underline;
+  min-height: auto;
+  padding: 0;
+  border-radius: 0;
+
+  &[data-hovered] {
+    color: var(--theme-blue-80);
+    background-color: var(--theme-blue-20);
+  }
+
+  &[data-pressed] {
+    color: var(--typography-color-primary);
+    background-color: var(--theme-blue-40);
+  }
+}

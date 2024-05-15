@@ -87,6 +87,8 @@
   --layout-padding-large: 1.5rem;
   --layout-padding-xlarge: 2rem;
   --layout-padding-container: var(--layout-padding-medium);
+  --layout-padding-radio-x: var(--layout-padding-medium);
+  --layout-padding-radio-y: var(--layout-padding-medium);
   --layout-margin-none: 0rem;
   --layout-margin-hair: 0.125rem;
   --layout-margin-xsmall: 0.25rem;
@@ -101,6 +103,7 @@
   --layout-border-radius-small: 2px;
   --layout-border-radius-medium: 4px;
   --layout-border-radius-large: 6px;
+  --layout-border-radius-xlarge: 8px;
   --layout-max-width: 85.25rem; /* 1364px */
   --typography-font-families-bc-sans: "BC Sans", sans-serif;
   --typography-line-heights-xxxdense: 1.125rem;
@@ -218,6 +221,7 @@
 @media (min-width: 38rem) {
   :root {
     --layout-padding-container: var(--layout-padding-xlarge);
+    --layout-padding-radio-x: var(--layout-padding-large);
   }
 }
 

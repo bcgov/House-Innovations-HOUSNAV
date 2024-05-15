@@ -7,9 +7,17 @@ import MenuIcon from "./icons/MenuIcon";
 import CloseIcon from "./icons/CloseIcon";
 import ArrowOutwardIcon from "./icons/ArrowOutwardIcon";
 import OpenInNew from "./icons/OpenInNew";
+import RadioUnchecked from "./icons/RadioUnchecked";
+import RadioChecked from "./icons/RadioChecked";
 
 // NOTE: When adding a new icon, make sure to add the string here, and the icon component below in the ICONS object
-export type IconType = "close" | "menu" | "arrowOutward" | "openInNew";
+export type IconType =
+  | "close"
+  | "menu"
+  | "arrowOutward"
+  | "openInNew"
+  | "radioUnchecked"
+  | "radioChecked";
 
 export interface IconComponentProps extends SVGProps<SVGSVGElement> {
   /**
@@ -44,6 +52,8 @@ const ICONS: Record<IconType, FunctionComponent<IconProps>> = {
   menu: MenuIcon,
   arrowOutward: ArrowOutwardIcon,
   openInNew: OpenInNew,
+  radioUnchecked: RadioUnchecked,
+  radioChecked: RadioChecked,
 };
 
 export default function Icon({
