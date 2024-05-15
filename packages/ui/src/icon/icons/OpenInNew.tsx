@@ -3,9 +3,9 @@ import { IconProps } from "../Icon";
 export default function OpenInNew({ title, id, ...props }: IconProps) {
   return (
     <svg
-      width="12"
-      height="13"
-      viewBox="0 0 12 13"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-labelledby={id ? id : undefined}
@@ -16,7 +16,7 @@ export default function OpenInNew({ title, id, ...props }: IconProps) {
         <title id={id}>{title}</title>
       )}
       <path
-        d="M9.5 10H2.5V3H6V2H2.5C1.945 2 1.5 2.45 1.5 3V10C1.5 10.55 1.945 11 2.5 11H9.5C10.05 11 10.5 10.55 10.5 10V6.5H9.5V10ZM7 2V3H8.795L3.88 7.915L4.585 8.62L9.5 3.705V5.5H10.5V2H7Z"
+        d="M19 19H5V5H12V3H5C3.89 3 3 3.9 3 5V19C3 20.1 3.89 21 5 21H19C20.1 21 21 20.1 21 19V12H19V19ZM14 3V5H17.59L7.76 14.83L9.17 16.24L19 6.41V10H21V3H14Z"
         fill="currentColor"
       />
     </svg>
