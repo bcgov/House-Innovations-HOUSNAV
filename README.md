@@ -50,7 +50,12 @@ To build all apps and packages, run the following command:
 npm run build
 ```
 
-### Running in Docker
+### Docker
+
+This application is built with Docker to provide containerization and portability. You can install Docker on your local
+machine from this [link](https://docs.docker.com/engine/install/).
+
+We utilize [docker-compose](https://docs.docker.com/compose/) to help with the local building process
 
 To run the application locally in a Docker container, run the following commands:
 
