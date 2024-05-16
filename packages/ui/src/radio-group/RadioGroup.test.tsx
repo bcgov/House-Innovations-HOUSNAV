@@ -27,6 +27,7 @@ const getRadioGroupErrorTestId = (testId = RADIO_GROUP_NAME) =>
 const RADIO_GROUP_LABEL = "Number of storeys";
 const OPTION_1_VALUE = "1";
 const OPTION_2_VALUE = "2";
+const OPTION_3_VALUE = "3";
 const RADIO_GROUP_OPTIONS = [
   { label: "1 storey", value: OPTION_1_VALUE },
   { label: "2 storeys", value: OPTION_2_VALUE },
@@ -37,7 +38,7 @@ const RADIO_GROUP_OPTIONS = [
         <Button variant={"glossary"}>storeys</Button>
       </>
     ),
-    value: "3",
+    value: OPTION_3_VALUE,
   },
 ];
 
@@ -81,10 +82,20 @@ describe("RadioGroup", () => {
       />,
     );
 
-    // get option 2
+    // get options and inputs and check if correct one is selected
+    const option1 = getByTestId(
+      getRadioTestId(RADIO_GROUP_NAME, OPTION_1_VALUE),
+    );
     const option2 = getByTestId(getRadioTestId(RADIO_GROUP_NAME, defaultValue));
+    const option3 = getByTestId(
+      getRadioTestId(RADIO_GROUP_NAME, OPTION_3_VALUE),
+    );
+    const input1 = option1.querySelector("input[type='radio']");
     const input2 = option2.querySelector("input[type='radio']");
+    const input3 = option3.querySelector("input[type='radio']");
+    expect(input1).not.toBeChecked();
     expect(input2).toBeChecked();
+    expect(input3).not.toBeChecked();
   });
   // selected value overrides default value
   it("renders item with selected value as selected", () => {
@@ -100,11 +111,19 @@ describe("RadioGroup", () => {
       />,
     );
 
-    // get option 3
+    // get options and inputs and check if correct one is selected
+    const option1 = getByTestId(
+      getRadioTestId(RADIO_GROUP_NAME, OPTION_1_VALUE),
+    );
+    const option2 = getByTestId(getRadioTestId(RADIO_GROUP_NAME, defaultValue));
     const option3 = getByTestId(
       getRadioTestId(RADIO_GROUP_NAME, selectedValue),
     );
+    const input1 = option1.querySelector("input[type='radio']");
+    const input2 = option2.querySelector("input[type='radio']");
     const input3 = option3.querySelector("input[type='radio']");
+    expect(input1).not.toBeChecked();
+    expect(input2).not.toBeChecked();
     expect(input3).toBeChecked();
   });
   // shows error
