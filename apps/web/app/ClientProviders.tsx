@@ -5,7 +5,7 @@ import { RouterProvider as ReactAriaRouterProvider } from "react-aria-components
 import { ReactNode } from "react";
 
 export function ClientProviders({ children }: { children: ReactNode }) {
-  let router = useRouter();
+  const router = useRouter();
 
   return (
     <ReactAriaRouterProvider navigate={router.push}>
