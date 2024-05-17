@@ -3,21 +3,19 @@ import { describe, expect, it } from "vitest";
 import { act, render, waitFor } from "@testing-library/react";
 // repo
 import {
+  GET_TESTID_BUTTON,
+  GET_TESTID_RADIO_GROUP,
   TESTID_BUTTON_SUBMIT,
   TESTID_RADIO,
-  TESTID_RADIO_GROUP,
   TESTID_RADIO_GROUP_ERROR,
   TESTID_RADIO_GROUP_LABEL,
 } from "@repo/constants/src/testids";
 // workspace
 import RadioGroup from "./RadioGroup";
 import Button from "../button/Button";
-import { getButtonTestId } from "../button/Button.test";
 
 // test constants
 const RADIO_GROUP_NAME = "storeys";
-const getRadioGroupTestId = (testId = RADIO_GROUP_NAME) =>
-  `${TESTID_RADIO_GROUP}-${testId}`;
 const getRadioTestId = (testId = RADIO_GROUP_NAME, value: string) =>
   `${TESTID_RADIO}-${testId}-${value}`;
 const getRadioGroupLabelTestId = (testId = RADIO_GROUP_NAME) =>
@@ -54,7 +52,9 @@ describe("RadioGroup", () => {
     );
 
     // renders radio group
-    expect(getByTestId(getRadioGroupTestId())).toBeInTheDocument();
+    expect(
+      getByTestId(GET_TESTID_RADIO_GROUP(RADIO_GROUP_NAME)),
+    ).toBeInTheDocument();
 
     // renders label with correct text
     const label = getByTestId(getRadioGroupLabelTestId());
@@ -149,7 +149,7 @@ describe("RadioGroup", () => {
 
     // submit form
     act(() => {
-      getByTestId(getButtonTestId(TESTID_BUTTON_SUBMIT)).click();
+      getByTestId(GET_TESTID_BUTTON(TESTID_BUTTON_SUBMIT)).click();
     });
 
     // error message
@@ -184,7 +184,7 @@ describe("RadioGroup", () => {
       />,
     );
 
-    expect(getByTestId(getRadioGroupTestId(testid))).toBeInTheDocument();
+    expect(getByTestId(GET_TESTID_RADIO_GROUP(testid))).toBeInTheDocument();
   });
   // custom className
   it("renders custom className", () => {
@@ -198,7 +198,9 @@ describe("RadioGroup", () => {
       />,
     );
 
-    expect(getByTestId(getRadioGroupTestId())).toHaveClass(className);
+    expect(getByTestId(GET_TESTID_RADIO_GROUP(RADIO_GROUP_NAME))).toHaveClass(
+      className,
+    );
   });
   // passes prop
   it("passes props", () => {
@@ -216,9 +218,8 @@ describe("RadioGroup", () => {
       />,
     );
 
-    expect(getByTestId(getRadioGroupTestId())).toHaveAttribute(
-      customPropKey,
-      customPropValue,
-    );
+    expect(
+      getByTestId(GET_TESTID_RADIO_GROUP(RADIO_GROUP_NAME)),
+    ).toHaveAttribute(customPropKey, customPropValue);
   });
 });
