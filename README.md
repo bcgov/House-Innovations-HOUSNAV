@@ -9,7 +9,10 @@ This Turborepo includes the following packages/apps:
 ### Apps and Packages
 
 - `web`: a [Next.js](https://nextjs.org/) app that serves as the main application
-- `@repo/ui`: a React component library used by the `web` applications
+- `@repo/ui`: a React component library used by the `web` application
+  - Could be used by other applications in the future or replaced by the BC Gov Design System
+- `@repo/constants`: shared constants
+- `@repo/data`: data and data utilities
 - `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
