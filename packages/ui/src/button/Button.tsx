@@ -5,7 +5,7 @@ import {
   ButtonProps as ReactAriaButtonProps,
 } from "react-aria-components";
 // repo
-import { TESTID_BUTTON } from "@repo/constants/src/testids";
+import { GET_TESTID_BUTTON } from "@repo/constants/src/testids";
 // workspace
 import "./Button.css";
 import Icon from "../icon/Icon";
@@ -50,7 +50,7 @@ export default function Button({
 }: ButtonProps) {
   return (
     <ReactAriaButton
-      data-testid={`${TESTID_BUTTON}-${testid || variant}`}
+      data-testid={GET_TESTID_BUTTON(testid || variant)}
       className={`ui-Button ${variant} ${isLargeButton ? "large" : ""} ${isIconButton ? "icon" : ""} ${className}`}
       {...props}
     >

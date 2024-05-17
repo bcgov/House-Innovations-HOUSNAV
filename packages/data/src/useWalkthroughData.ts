@@ -6,7 +6,7 @@ interface UseWalkthroughDataProps {
   /*
    * ID of the data to get
    */
-  id: Walkthroughes;
+  id: string;
 }
 
 export type AnswerValueTypes = string;
@@ -35,56 +35,49 @@ interface PossibleInvalidAnswer {
   errorMessage: string;
 }
 
-const WalkthroughItemTypeMultiChoice = "multiChoice";
-export const isWalkthroughItemTypeMultiChoice = (walkthroughItemType: string) =>
-  walkthroughItemType === WalkthroughItemTypeMultiChoice;
-export interface QuestionMultipleChoice {
-  walkthroughItemType: typeof WalkthroughItemTypeMultiChoice | string;
+interface QuestionBaseData {
   questionText: string;
+  questionCodeReference?: string;
   possibleAnswers: PossibleAnswer[];
   nextNavigationLogic: NextNavigationLogic[];
 }
 
-const WalkthroughItemTypeMultiChoiceMultiple = "multiChoiceMultiple";
+export const WalkthroughItemTypeMultiChoice = "multiChoice";
+export const isWalkthroughItemTypeMultiChoice = (walkthroughItemType: string) =>
+  walkthroughItemType === WalkthroughItemTypeMultiChoice;
+export interface QuestionMultipleChoiceData extends QuestionBaseData {
+  walkthroughItemType: typeof WalkthroughItemTypeMultiChoice | string;
+}
+
+export const WalkthroughItemTypeMultiChoiceMultiple = "multiChoiceMultiple";
 export const isWalkthroughItemTypeMultiChoiceMultiple = (
   walkthroughItemType: string,
 ) => walkthroughItemType === WalkthroughItemTypeMultiChoiceMultiple;
-export interface QuestionMultipleChoiceSelectMultiple {
+export interface QuestionMultipleChoiceSelectMultipleData
+  extends QuestionBaseData {
   walkthroughItemType: typeof WalkthroughItemTypeMultiChoiceMultiple | string;
-  questionText: string;
-  possibleAnswers: PossibleAnswer[];
   possibleInvalidAnswers: PossibleInvalidAnswer[];
-  nextNavigationLogic: NextNavigationLogic[];
 }
 
-const WalkthroughItemTypeBoolean = "boolean";
-export const isWalkthroughItemTypeBoolean = (walkthroughItemType: string) =>
-  walkthroughItemType === WalkthroughItemTypeBoolean;
-export interface QuestionBoolean {
-  walkthroughItemType: typeof WalkthroughItemTypeBoolean | string;
-  questionText: string;
-  possibleAnswers: PossibleAnswer[];
-  nextNavigationLogic: NextNavigationLogic[];
-}
-
-interface Result {
+interface ResultData {
   needsAnswerValue?: boolean;
   resultDisplayMessage: string;
 }
 
-interface WalkthroughJSONType {
+export type StartingQuestionId = string;
+export type QuestionData =
+  | QuestionMultipleChoiceData
+  | QuestionMultipleChoiceSelectMultipleData;
+export interface WalkthroughJSONType {
   info: {
     title: string;
-    startingQuestionId: string;
+    startingQuestionId: StartingQuestionId;
   };
   questions: {
-    [key: string]:
-      | QuestionMultipleChoice
-      | QuestionMultipleChoiceSelectMultiple
-      | QuestionBoolean;
+    [key: string]: QuestionData;
   };
   results: {
-    [key: string]: Result;
+    [key: string]: ResultData;
   };
 }
 
@@ -93,5 +86,10 @@ const WalkthroughJSONData: Record<Walkthroughes, WalkthroughJSONType> = {
 };
 
 export default function useWalkthroughData({ id }: UseWalkthroughDataProps) {
-  return WalkthroughJSONData[id];
+  // check if passed id is a key in WalkthroughJSONData
+  if (!Object.prototype.hasOwnProperty.call(WalkthroughJSONData, id)) {
+    throw new Error(`No data found for walkthrough ${id}`);
+  } else {
+    return WalkthroughJSONData[id as Walkthroughes];
+  }
 }

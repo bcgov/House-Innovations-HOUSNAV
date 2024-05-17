@@ -4,7 +4,8 @@
   "private": true,
   "exports": {
     "./useData": "./src/useData.ts",
-    "./useWalkthroughData": "./src/useWalkthroughData.ts"
+    "./useWalkthroughData": "./src/useWalkthroughData.ts",
+    "./useWalkthroughTestData": "./src/useWalkthroughTestData.ts"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",

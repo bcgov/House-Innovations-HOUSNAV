@@ -6,7 +6,7 @@
   "questions": {
     "P01": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Does the Building Code apply to this <defined-term>structure</defined-term>?",
+      "questionText": "Does the Building Code apply to this <defined-term term='structure'>structure</defined-term>?",
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
@@ -208,7 +208,7 @@
       ]
     },
     "P04": {
-      "walkthroughItemType": "boolean",
+      "walkthroughItemType": "multiChoice",
       "questionText": "Is this <defined-term>structure</defined-term> a <defined-term>heritage building</defined-term>?",
       "possibleAnswers": [
         {
@@ -234,7 +234,7 @@
       ]
     },
     "P05": {
-      "walkthroughItemType": "boolean",
+      "walkthroughItemType": "multiChoice",
       "questionText": "Does this project involve the <defined-term>alteration</defined-term> of an existing <defined-term>building</defined-term>?",
       "possibleAnswers": [
         {
@@ -365,7 +365,7 @@
       ]
     },
     "P07": {
-      "walkthroughItemType": "boolean",
+      "walkthroughItemType": "multiChoice",
       "questionText": "Is the <defined-term>building area</defined-term> of this <defined-term>building</defined-term> greater than 600 m<sup>2</sup>?",
       "possibleAnswers": [
         {

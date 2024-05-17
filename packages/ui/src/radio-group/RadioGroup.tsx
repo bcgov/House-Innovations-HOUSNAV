@@ -9,8 +9,8 @@ import {
 import { JSX } from "react";
 // repo
 import {
+  GET_TESTID_RADIO_GROUP,
   TESTID_RADIO,
-  TESTID_RADIO_GROUP,
   TESTID_RADIO_GROUP_ERROR,
   TESTID_RADIO_GROUP_LABEL,
 } from "@repo/constants/src/testids";
@@ -33,11 +33,15 @@ export interface RadioGroupProps extends ReactAriaRadioGroupProps {
   /**
    * The label for the radio group.
    */
-  label: string;
+  label?: string;
   /**
-   * boolean to hide the label.
+   * boolean to hide the label visually.
    */
   hideLabel?: boolean;
+  /**
+   * boolean to have no label because it is outside the component.
+   */
+  noLabel?: boolean;
   /**
    * The radio options.
    */
@@ -58,6 +62,7 @@ export default function RadioGroup({
   name,
   label,
   hideLabel,
+  noLabel = false,
   errorMessageText,
   options,
   "data-testid": testid = "",
@@ -72,17 +77,20 @@ export default function RadioGroup({
   return (
     <ReactAriaRadioGroup
       className={`ui-RadioGroup ${className}`}
-      data-testid={`${TESTID_RADIO_GROUP}-${testIdNamespace}`}
+      data-testid={GET_TESTID_RADIO_GROUP(testIdNamespace)}
       value={value}
       defaultValue={defaultValue}
+      name={name}
       {...props}
     >
-      <Label
-        className={`ui-RadioGroupLabel ${hideLabel ? "u-hidden" : ""}`}
-        data-testid={`${TESTID_RADIO_GROUP_LABEL}-${testIdNamespace}`}
-      >
-        {label}
-      </Label>
+      {!noLabel && (
+        <Label
+          className={`ui-RadioGroupLabel ${hideLabel ? "u-hidden" : ""}`}
+          data-testid={`${TESTID_RADIO_GROUP_LABEL}-${testIdNamespace}`}
+        >
+          {label || name}
+        </Label>
+      )}
       {options.map((option) => (
         <ReactAriaRadio
           className={"ui-Radio"}
