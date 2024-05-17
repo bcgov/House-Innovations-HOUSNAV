@@ -1,4 +1,5 @@
 # House-Innovations-HOUSNAV
+
 Housing Innovation Branch has received funding from Strategic Investment Funding (SIF) to partner with TELUS to design and develop a code consolidation proof of concept by September, 2024. This is the repository for the proof of concept.
 
 ## What's inside?
@@ -49,6 +50,27 @@ To build all apps and packages, run the following command:
 npm run build
 ```
 
+### Docker
+
+This application is built with Docker to provide containerization and portability. You can install Docker on your local
+machine from this [link](https://docs.docker.com/engine/install/).
+
+We utilize [docker-compose](https://docs.docker.com/compose/) to help with the local building process
+
+To run the application locally in a Docker container, run the following commands:
+
+```
+docker-compose build
+```
+
+```
+docker-compose up
+```
+
+**NOTE**: Some security applications such as ZScaler may require additional configuration of the Docker install to 
+utilize a security certificate file. Please read [this documentation](https://docs.docker.com/engine/security/certificates/) 
+from the Docker website to learn more.
+
 ### Hooks
 
 As noted above, this repository uses [Lefthook](https://github.com/evilmartians/lefthook) to run git hooks.
@@ -60,7 +82,6 @@ Pre-commit the `format`, `lint`, and `test` turbo tasks will run. This will run 
 #### Post-Commit
 
 Pre-commit the `e2e` turbo task will run. It will run any `scripts` called `e2e` in any of the workspaces. Look at the `package.json` in each workspace for what executes in each. This will normally include the cypress tests. Note: This is purely informational and will not block commit or push. For the web package e2e tests to pass, the web app must be running on localhost:3000.
-
 
 ## Useful Links
 
