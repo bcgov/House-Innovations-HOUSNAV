@@ -25,7 +25,7 @@ jobs:
         run: echo "GIT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
       - name: Build Docker image with commit hash
-        run: docker build -f apps/web/DockerFile -t house-innovations-housnav-web:${{ env.GIT_SHA }} .
+        run: docker build -t house-innovations-housnav-web:${{ env.GIT_SHA }} -f apps/web/Dockerfile . --no-cache
 
       - name: Tag Docker image as latest
         run: docker tag house-innovations-housnav-web:${{ env.GIT_SHA }} house-innovations-housnav-web:latest
