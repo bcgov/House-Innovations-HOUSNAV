@@ -67,6 +67,10 @@ docker-compose build
 docker-compose up
 ```
 
+**NOTE**: Some security applications such as ZScaler may require additional configuration of the Docker install to 
+utilize a security certificate file. Please read [this documentation](https://docs.docker.com/engine/security/certificates/) 
+from the Docker website to learn more.
+
 ### Hooks
 
 As noted above, this repository uses [Lefthook](https://github.com/evilmartians/lefthook) to run git hooks.
