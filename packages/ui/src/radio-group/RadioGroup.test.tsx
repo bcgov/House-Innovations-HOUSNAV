@@ -14,7 +14,7 @@ import {
 // workspace
 import RadioGroup from "./RadioGroup";
 import Button from "../button/Button";
-import { userSetupAndRender } from "web/tests/utils";
+import { userSetupAndRender } from "../../tests/utils";
 
 // test constants
 const RADIO_GROUP_NAME = "storeys";
