@@ -1,0 +1,35 @@
+name: Docker Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch: # This allows you to manually trigger the workflow
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Extract Git commit hash
+        id: vars
+        run: echo "GIT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+
+      - name: Build Docker image with commit hash
+        run: docker build -t house-innovations-housnav-web:${{ env.GIT_SHA }} -f apps/web/Dockerfile . --no-cache
+
+      - name: Tag Docker image as latest for main branch
+        if: github.ref == 'refs/heads/main' && github.event_name == 'pull_request' && github.event.pull_request.merged == true
+        run: docker tag house-innovations-housnav-web:${{ env.GIT_SHA }} house-innovations-housnav-web:latest
+
+      - name: List Docker images
+        run: docker images
