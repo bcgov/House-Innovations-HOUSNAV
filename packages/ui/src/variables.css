@@ -223,7 +223,6 @@
   :root {
     --layout-padding-container: var(--layout-padding-xlarge);
     --layout-padding-radio-x: var(--layout-padding-large);
-    --layout-padding-question-container-y: var(--layout-padding-large);
   }
 }
 
@@ -236,6 +235,5 @@
 /* DESKTOP - LARGE - 1504px */
 @media (min-width: 94rem) {
   :root {
-    --layout-max-width-question: 53.5rem; /* 856px */
   }
 }
