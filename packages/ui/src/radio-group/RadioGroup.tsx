@@ -9,8 +9,8 @@ import {
 import { JSX } from "react";
 // repo
 import {
+  GET_TESTID_RADIO,
   GET_TESTID_RADIO_GROUP,
-  TESTID_RADIO,
   TESTID_RADIO_GROUP_ERROR,
   TESTID_RADIO_GROUP_LABEL,
 } from "@repo/constants/src/testids";
@@ -96,7 +96,7 @@ export default function RadioGroup({
           className={"ui-Radio"}
           key={`${option.value}`}
           value={`${option.value}`}
-          data-testid={`${TESTID_RADIO}-${testIdNamespace}-${option.value}`}
+          data-testid={GET_TESTID_RADIO(testIdNamespace, option.value)}
         >
           {currentValue === option.value && (
             <Icon type="radioChecked" className="ui-RadioIcon" />
@@ -107,6 +107,7 @@ export default function RadioGroup({
           {option.label}
         </ReactAriaRadio>
       ))}
+      {/* TODO - is this data-testid applied? */}
       <InputError
         data-testid={`${TESTID_RADIO_GROUP_ERROR}-${testIdNamespace}`}
         className={"ui-RadioGroupError"}

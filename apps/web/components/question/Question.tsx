@@ -1,5 +1,6 @@
 // 3rd party
-import { FormEvent, JSX, useState } from "react";
+import { FormEvent, useCallback, useState } from "react";
+import { Form } from "react-aria-components";
 // repo
 import {
   isWalkthroughItemTypeMultiChoice,
@@ -11,6 +12,8 @@ import {
 import { ID_QUESTION_TEXT } from "@repo/constants/src/ids";
 import {
   TESTID_QUESTION,
+  TESTID_QUESTION_CODE_REFERENCE,
+  TESTID_QUESTION_SUBMIT,
   TESTID_QUESTION_TITLE,
 } from "@repo/constants/src/testids";
 import Button from "@repo/ui/button";
@@ -71,21 +74,37 @@ export default function Question({
   questionData,
   questionId,
   setQuestion,
-}: QuestionProps): JSX.Element {
+}: QuestionProps) {
   // setup state data
   const [value, setValue] = useState<string>();
   const { questionText, questionCodeReference } = questionData;
 
   // TODO handle form submission, possibleInvalidAnswers, and next navigation logic
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    // log out form data
-    formData.forEach((value, key) => {
-      console.log("form data", key, value);
-    });
-    setQuestion("next-question-id");
-  };
+  const handleSubmit = useCallback(
+    (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      const formData = new FormData(event.currentTarget);
+      // log out form data
+      formData.forEach((value, key) => {
+        console.log("form data", key, value);
+      });
+      setQuestion("next-question-id");
+    },
+    [setQuestion],
+  );
+
+  // get question component
+  const component = getQuestionComponent({
+    questionData,
+    value,
+    setValue,
+    questionId,
+  });
+
+  // if no component, return null
+  if (!component) {
+    return null;
+  }
 
   return (
     <div className="web-Question container" data-testid={TESTID_QUESTION}>
@@ -97,14 +116,20 @@ export default function Question({
         {parseStringToComponents(questionText)}
       </h2>
       {questionCodeReference && (
-        <p className="web-QuestionReference">
+        <p
+          className="web-QuestionReference"
+          data-testid={TESTID_QUESTION_CODE_REFERENCE}
+        >
+          {/* TODO - setup code reference once we have a question with one */}
           Reference: <Button variant="code">Vol 2, Section 9.9.9.1</Button>
         </p>
       )}
-      <form onSubmit={handleSubmit}>
-        {getQuestionComponent({ questionData, value, setValue, questionId })}
-        <Button type={"submit"}>Submit</Button>
-      </form>
+      <Form onSubmit={handleSubmit}>
+        {component}
+        <Button type={"submit"} data-testid={TESTID_QUESTION_SUBMIT}>
+          Submit
+        </Button>
+      </Form>
     </div>
   );
 }

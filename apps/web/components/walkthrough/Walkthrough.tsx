@@ -26,7 +26,7 @@ export default function Walkthrough({
 
   if (!currentQuestion) {
     // TODO - better error handling - design?
-    return <div>Question not found</div>;
+    return <div>Question data not found</div>;
   }
 
   return (

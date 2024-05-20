@@ -68,6 +68,7 @@ export const getStringFromComponents = (node: ReactNode): string => {
     } // eslint-ignore-line no-fallthrough
 
     default:
+      // NOTE: I don't believe this is reachable, but it's here for completeness and to avoid a linter warning
       console.warn("Unresolved `node` of type:", typeof node, node);
       return "";
   }
