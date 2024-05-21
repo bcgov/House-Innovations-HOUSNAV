@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
+    "./header": "./src/header/Header.tsx",
     "./input-error": "./src/input-error/InputError.tsx",
     "./radio-group": "./src/radio-group/RadioGroup.tsx",
     "./icon": "./src/icon/Icon.tsx",
@@ -40,6 +41,7 @@
     "vitest": "^1.6.0"
   },
   "dependencies": {
+    "next": "^14.1.1",
     "react-aria-components": "^1.2.0"
   }
 }
