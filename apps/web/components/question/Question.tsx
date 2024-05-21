@@ -108,13 +108,13 @@ export default function Question({
 
   return (
     <div className="web-Question container" data-testid={TESTID_QUESTION}>
-      <h2
+      <h1
         className="web-QuestionTitle"
         id={ID_QUESTION_TEXT}
         data-testid={TESTID_QUESTION_TITLE}
       >
         {parseStringToComponents(questionText)}
-      </h2>
+      </h1>
       {questionCodeReference && (
         <p
           className="web-QuestionReference"
@@ -124,7 +124,7 @@ export default function Question({
           Reference: <Button variant="code">Vol 2, Section 9.9.9.1</Button>
         </p>
       )}
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} className="web-QuestionForm">
         {component}
         <Button type={"submit"} data-testid={TESTID_QUESTION_SUBMIT}>
           Submit
