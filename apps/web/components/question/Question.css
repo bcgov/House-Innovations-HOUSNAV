@@ -2,7 +2,7 @@
   --question-container-max-width: 46.875rem; /* 750px */
   --question-container-padding-y: var(--layout-padding-medium);
   --question-reference-margin-top: var(--layout-margin-small);
-  --question-reference-margin-bottom: var(--layout-margin-small);
+  --question-form-margin-top: var(--layout-margin-small);
 }
 
 .web-Question {
@@ -21,7 +21,10 @@
   font: var(--typography-regular-small-body);
   color: var(--typography-color-disabled);
   margin-top: var(--question-reference-margin-top);
-  margin-bottom: var(--question-reference-margin-bottom);
+}
+
+.web-QuestionForm {
+  margin-top: var(--question-form-margin-top);
 }
 
 /* TABLET - 608px */
@@ -29,7 +32,7 @@
   :root {
     --question-container-padding-y: var(--layout-padding-large);
     --question-reference-margin-top: var(--layout-margin-smedium);
-    --question-reference-margin-bottom: var(--layout-margin-large);
+    --question-form-margin-top: var(--layout-margin-large);
   }
 }
 
