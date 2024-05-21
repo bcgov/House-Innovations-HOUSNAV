@@ -124,6 +124,21 @@ describe("Icon", () => {
     expect(getByTestId(getIconTestId("radioUnchecked"))).toBeInTheDocument();
     expect(queryByTitle("Radio button unchecked")).not.toBeInTheDocument();
   });
+  // bcLogo
+  it("renders bcLogo icon with title", () => {
+    const { getByTestId, getByTitle } = render(
+      <Icon type="bcLogo" id="bcLogoIcon" title="BC logo" />,
+    );
+    const BCLogoIcon = getByTestId(getIconTestId("bcLogo"));
+    expect(BCLogoIcon).toBeInTheDocument();
+    expect(BCLogoIcon).toHaveAttribute("aria-labelledby", "bcLogoIcon");
+    expect(getByTitle("BC logo")).toBeInTheDocument();
+  });
+  it("renders bcLogo icon without title", () => {
+    const { getByTestId, queryByTitle } = render(<Icon type="bcLogo" />);
+    expect(getByTestId(getIconTestId("bcLogo"))).toBeInTheDocument();
+    expect(queryByTitle("BC logo")).not.toBeInTheDocument();
+  });
   // className
   it("renders icon with className", () => {
     const { getByTestId } = render(
