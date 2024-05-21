@@ -216,6 +216,7 @@
   --transition-link-background-color: background-color 150ms ease-in;
   --transition-link-color: color 150ms ease-in;
   --transition-link-icon-fill-color: fill 150ms ease-in;
+  --header-height: 55px;
 }
 
 /* TABLET - 608px */
@@ -229,6 +230,7 @@
 /* DESKTOP - 912px */
 @media (min-width: 57rem) {
   :root {
+    --header-height: 65px;
   }
 }
 

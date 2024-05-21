@@ -3,6 +3,6 @@
   "compilerOptions": {
     "outDir": "dist"
   },
-  "include": ["src", "turbo", "tests"],
+  "include": ["src", "turbo", "tests", "vite.config.mts"],
   "exclude": ["node_modules", "dist", "coverage"]
 }

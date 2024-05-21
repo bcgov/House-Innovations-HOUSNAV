@@ -2,7 +2,6 @@
 import { JSX } from "react";
 import { notFound } from "next/navigation";
 // repo
-import Link from "@repo/ui/link";
 import useWalkthroughData from "@repo/data/useWalkthroughData";
 // local
 import Walkthrough from "../../../components/walkthrough/Walkthrough";
@@ -22,9 +21,6 @@ export default function Page({
 
   return (
     <div>
-      <div className="container">
-        <Link href="/">Back home</Link>
-      </div>
       <Walkthrough
         walkthroughData={data}
         startingQuestionId={data.info.startingQuestionId}

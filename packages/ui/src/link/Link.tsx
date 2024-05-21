@@ -6,7 +6,7 @@ import {
   LinkProps as ReactAriaLinkProps,
 } from "react-aria-components";
 // repo
-import { TESTID_LINK } from "@repo/constants/src/testids";
+import { GET_TESTID_LINK } from "@repo/constants/src/testids";
 // workspace
 import "./Link.css";
 import Icon from "../icon/Icon";
@@ -36,7 +36,7 @@ export default function Link({
   return (
     <ReactAriaLink
       className={`ui-Link ${variant} ${className}`}
-      data-testid={`${TESTID_LINK}-${testid || variant}`}
+      data-testid={GET_TESTID_LINK(testid || variant)}
       {...props}
       target={target}
     >
