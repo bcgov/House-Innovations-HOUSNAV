@@ -9,7 +9,7 @@ interface UseWalkthroughDataProps {
   id: string;
 }
 
-export type AnswerValueTypes = string;
+export type AnswerValueTypes = string | undefined;
 
 interface PossibleAnswer {
   answerDisplayText: string;
@@ -18,9 +18,18 @@ interface PossibleAnswer {
 
 interface NextNavigationLogic {
   nextLogicType: string;
+  answerToCheck?: string;
   answerValue?: AnswerValueTypes;
   answerValues?: AnswerValueTypes[];
-  nextNavigateTo: string;
+  valuesToCheck?: NextNavigationLogic[];
+  nextNavigateTo?: string;
+}
+
+interface VariableValueLogic {
+  variableValueLogicType: string;
+  answerToCheck?: string;
+  answerValue?: AnswerValueTypes;
+  variableValueToSet: string;
 }
 
 interface InvalidAnswerLogic {
@@ -33,6 +42,13 @@ interface PossibleInvalidAnswer {
   answerValue: AnswerValueTypes;
   invalidAnswerLogic: InvalidAnswerLogic[];
   errorMessage: string;
+}
+
+interface VariableToSet {
+  variableType: string;
+  variableValue: {
+    [key: string]: VariableValueLogic[];
+  };
 }
 
 interface QuestionBaseData {
@@ -59,13 +75,22 @@ export interface QuestionMultipleChoiceSelectMultipleData
   possibleInvalidAnswers: PossibleInvalidAnswer[];
 }
 
+export const WalkthroughItemTypeVariable = "variable";
+export const isWalkthroughItemTypeVariable = (walkthroughItemType: string) =>
+  walkthroughItemType === WalkthroughItemTypeVariable;
+export interface QuestionVariableData {
+  walkthroughItemType: typeof WalkthroughItemTypeVariable | string;
+  variableToSet: VariableToSet;
+  nextNavigationLogic: NextNavigationLogic[];
+}
+
 interface ResultData {
   needsAnswerValue?: boolean;
   resultDisplayMessage: string;
 }
 
 export type StartingQuestionId = string;
-export type QuestionData =
+export type QuestionDisplayData =
   | QuestionMultipleChoiceData
   | QuestionMultipleChoiceSelectMultipleData;
 export interface WalkthroughJSONType {
@@ -74,7 +99,7 @@ export interface WalkthroughJSONType {
     startingQuestionId: StartingQuestionId;
   };
   questions: {
-    [key: string]: QuestionData;
+    [key: string]: QuestionDisplayData | QuestionVariableData;
   };
   results: {
     [key: string]: ResultData;

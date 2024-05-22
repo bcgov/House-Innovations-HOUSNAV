@@ -24,17 +24,18 @@
       "nextNavigationLogic": [
         {
           "nextLogicType": "equals",
+          "answerToCheck": "P01",
           "answerValue": "yes",
           "nextNavigateTo": "P04"
         },
         {
           "nextLogicType": "equals",
+          "answerToCheck": "P01",
           "answerValue": "notSure",
           "nextNavigateTo": "P02"
         },
         {
-          "nextLogicType": "equals",
-          "answerValue": "no",
+          "nextLogicType": "fallback",
           "nextNavigateTo": "R00"
         }
       ]
@@ -132,11 +133,12 @@
       "nextNavigationLogic": [
         {
           "nextLogicType": "equals",
+          "answerToCheck": "P02",
           "answerValue": "18",
           "nextNavigateTo": "R00"
         },
         {
-          "nextLogicType": "default",
+          "nextLogicType": "fallback",
           "nextNavigateTo": "P03"
         }
       ]
@@ -198,11 +200,12 @@
       "nextNavigationLogic": [
         {
           "nextLogicType": "equals",
+          "answerToCheck": "P03",
           "answerValue": "9",
           "nextNavigateTo": "P04"
         },
         {
-          "nextLogicType": "default",
+          "nextLogicType": "fallback",
           "nextNavigateTo": "R01"
         }
       ]
@@ -223,12 +226,12 @@
       "nextNavigationLogic": [
         {
           "nextLogicType": "equals",
+          "answerToCheck": "P04",
           "answerValue": "true",
           "nextNavigateTo": "R02"
         },
         {
-          "nextLogicType": "equals",
-          "answerValue": "false",
+          "nextLogicType": "fallback",
           "nextNavigateTo": "P05"
         }
       ]
@@ -249,12 +252,12 @@
       "nextNavigationLogic": [
         {
           "nextLogicType": "equals",
+          "answerToCheck": "P05",
           "answerValue": "true",
           "nextNavigateTo": "R03"
         },
         {
-          "nextLogicType": "equals",
-          "answerValue": "false",
+          "nextLogicType": "fallback",
           "nextNavigateTo": "P06"
         }
       ]
@@ -336,11 +339,13 @@
       "nextNavigationLogic": [
         {
           "nextLogicType": "equals",
+          "answerToCheck": "P06",
           "answerValue": "none",
           "nextNavigateTo": "R00"
         },
         {
           "nextLogicType": "containsAny",
+          "answerToCheck": "P06",
           "answerValues": [
             "A1",
             "A2",
@@ -355,11 +360,12 @@
         },
         {
           "nextLogicType": "doesNotContain",
+          "answerToCheck": "P06",
           "answerValue": "C",
           "nextNavigateTo": "R04"
         },
         {
-          "nextLogicType": "default",
+          "nextLogicType": "fallback",
           "nextNavigateTo": "P07"
         }
       ]
@@ -380,12 +386,12 @@
       "nextNavigationLogic": [
         {
           "nextLogicType": "equals",
+          "answerToCheck": "P07",
           "answerValue": "true",
           "nextNavigateTo": "R05"
         },
         {
-          "nextLogicType": "equals",
-          "answerValue": "false",
+          "nextLogicType": "fallback",
           "nextNavigateTo": "P08"
         }
       ]
@@ -406,13 +412,751 @@
       "nextNavigationLogic": [
         {
           "nextLogicType": "equals",
+          "answerToCheck": "P08",
           "answerValue": "true",
           "nextNavigateTo": "P1"
         },
         {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P05"
+        }
+      ]
+    },
+    "P1": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Is this location a <defined-term>dwelling unit</defined-term>?",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
           "nextLogicType": "equals",
-          "answerValue": "false",
-          "nextNavigateTo": "R05"
+          "answerToCheck": "P1",
+          "answerValue": "true",
+          "nextNavigateTo": "P2"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R30"
+        }
+      ]
+    },
+    "P2": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "How many <defined-term>storeys</defined-term> does this <defined-term>dwelling unit</defined-term> have?",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "1 storey",
+          "answerValue": "1"
+        },
+        {
+          "answerDisplayText": "1 storey + <defined-term>basement</defined-term>",
+          "answerValue": "1B"
+        },
+        {
+          "answerDisplayText": "2 stories",
+          "answerValue": "2"
+        },
+        {
+          "answerDisplayText": "2 stories + <defined-term>basement</defined-term>",
+          "answerValue": "2B"
+        },
+        {
+          "answerDisplayText": "3 stories",
+          "answerValue": "3"
+        },
+        {
+          "answerDisplayText": "3 stories + <defined-term>basement</defined-term>",
+          "answerValue": "3B"
+        },
+        {
+          "answerDisplayText": "More than 3 stories",
+          "answerValue": "4"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equals",
+          "answerToCheck": "P2",
+          "answerValue": "1",
+          "nextNavigateTo": "P10"
+        },
+        {
+          "nextLogicType": "equals",
+          "answerToCheck": "P2",
+          "answerValue": "4",
+          "nextNavigateTo": "R30"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P3"
+        }
+      ]
+    },
+    "P3": {
+      "walkthroughItemType": "multiChoiceMultiple",
+      "answersAreDynamic": true,
+      "questionText": "Which <defined-term>storeys</defined-term> within the <defined-term>dwelling unit</defined-term> are provided with an egress or <defined-term>exit</defined-term> doors?",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "<defined-term>Basement</defined-term>",
+          "answerValue": "B",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P2",
+              "answerValue": "1B"
+            },
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P2",
+              "answerValue": "2B"
+            },
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P2",
+              "answerValue": "3B"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 1",
+          "answerValue": "1",
+          "showAnswerIf": true
+        },
+        {
+          "answerDisplayText": "Level 2",
+          "answerValue": "2",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P2",
+              "answerValue": "2"
+            },
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P2",
+              "answerValue": "2B"
+            },
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P2",
+              "answerValue": "3"
+            },
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P2",
+              "answerValue": "3B"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 3",
+          "answerValue": "3",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P2",
+              "answerValue": "3"
+            },
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P2",
+              "answerValue": "3B"
+            }
+          ]
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P4"
+        }
+      ]
+    },
+    "P4": {
+      "walkthroughItemType": "variable",
+      "variableToSet": {
+        "variableType": "object",
+        "variableValue": {
+          "B": [
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.B",
+              "answerValue": "undefined",
+              "variableValueToSet": "undefined"
+            },
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.B",
+              "answerValue": "true",
+              "variableValueToSet": "0"
+            },
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.1",
+              "answerValue": "true",
+              "variableValueToSet": "1"
+            },
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.2",
+              "answerValue": "true",
+              "variableValueToSet": "2"
+            },
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.3",
+              "answerValue": "true",
+              "variableValueToSet": "3"
+            }
+          ],
+          "1": [
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.1",
+              "answerValue": "true",
+              "variableValueToSet": "0"
+            },
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.B",
+              "answerValue": "true",
+              "variableValueToSet": "1"
+            },
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.2",
+              "answerValue": "true",
+              "variableValueToSet": "1"
+            },
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.3",
+              "answerValue": "true",
+              "variableValueToSet": "2"
+            }
+          ],
+          "2": [
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.2",
+              "answerValue": "true",
+              "variableValueToSet": "0"
+            },
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.1",
+              "answerValue": "true",
+              "variableValueToSet": "1"
+            },
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.3",
+              "answerValue": "true",
+              "variableValueToSet": "1"
+            },
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.B",
+              "answerValue": "true",
+              "variableValueToSet": "2"
+            }
+          ],
+          "3": [
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.3",
+              "answerValue": "true",
+              "variableValueToSet": "0"
+            },
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.2",
+              "answerValue": "true",
+              "variableValueToSet": "1"
+            },
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.1",
+              "answerValue": "true",
+              "variableValueToSet": "2"
+            },
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.B",
+              "answerValue": "true",
+              "variableValueToSet": "3"
+            }
+          ]
+        }
+      },
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P5"
+        }
+      ]
+    },
+    "P5": {
+      "walkthroughItemType": "multiChoiceMultiple",
+      "answersAreDynamic": true,
+      "questionText": "Which level(s) of the <defined-term>dwelling unit</defined-term> have access to a balcony?",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "<defined-term>Basement</defined-term>",
+          "answerValue": "B",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "greaterThan",
+              "answerToCheck": "P4.B",
+              "answerValue": "1"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 1",
+          "answerValue": "1",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "greaterThan",
+              "answerToCheck": "P4.1",
+              "answerValue": "1"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 2",
+          "answerValue": "2",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "greaterThan",
+              "answerToCheck": "P4.2",
+              "answerValue": "1"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 3",
+          "answerValue": "3",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "greaterThan",
+              "answerToCheck": "P4.3",
+              "answerValue": "1"
+            }
+          ]
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P6"
+        }
+      ]
+    },
+    "P6": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Is this <defined-term>dwelling unit</defined-term> above another <defined-term>dwelling unit</defined-term>?",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equals",
+          "answerToCheck": "P6",
+          "answerValue": "true",
+          "nextNavigateTo": "P8F"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P7"
+        }
+      ]
+    },
+    "P7": {
+      "walkthroughItemType": "multiChoiceMultiple",
+      "questionText": "Which level(s) of the <defined-term>dwelling unit</defined-term> have access to an openable window that is at least 1m high and 0.55m wide?",
+      "answersAreDynamic": true,
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "<defined-term>Basement</defined-term>",
+          "answerValue": "B",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P5.B",
+              "answerValue": "false"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 1",
+          "answerValue": "1",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P5.1",
+              "answerValue": "false"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 2",
+          "answerValue": "2",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P5.2",
+              "answerValue": "false"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 3",
+          "answerValue": "3",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P5.3",
+              "answerValue": "false"
+            }
+          ]
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "TODO": "Add L4 logic as other options here",
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P6"
+        }
+      ]
+    },
+    "P8F": {
+      "walkthroughItemType": "variable",
+      "variableToSet": {
+        "variableType": "object",
+        "variableValue": {
+          "B": [
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P5.B",
+              "answerValue": "undefined",
+              "variableValueToSet": "undefined"
+            },
+            {
+              "variableValueLogicType": "fallback",
+              "variableValueToSet": "false"
+            }
+          ],
+          "1": [
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P5.1",
+              "answerValue": "undefined",
+              "variableValueToSet": "undefined"
+            },
+            {
+              "variableValueLogicType": "fallback",
+              "variableValueToSet": "false"
+            }
+          ],
+          "2": [
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P5.2",
+              "answerValue": "undefined",
+              "variableValueToSet": "undefined"
+            },
+            {
+              "variableValueLogicType": "fallback",
+              "variableValueToSet": "false"
+            }
+          ],
+          "3": [
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P5.3",
+              "answerValue": "undefined",
+              "variableValueToSet": "undefined"
+            },
+            {
+              "variableValueLogicType": "fallback",
+              "variableValueToSet": "false"
+            }
+          ]
+        }
+      },
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "or",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equals",
+                  "answerToCheck": "P5.B",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equals",
+                  "answerToCheck": "P8.B",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equals",
+                  "answerToCheck": "P5.1",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equals",
+                  "answerToCheck": "P8.1",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equals",
+                  "answerToCheck": "P5.2",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equals",
+                  "answerToCheck": "P8.2",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equals",
+                  "answerToCheck": "P5.3",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equals",
+                  "answerToCheck": "P8.3",
+                  "answerValue": "false"
+                }
+              ]
+            }
+          ],
+          "nextNavigateTo": "R20"
+        },
+        {
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "or",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P5.B",
+                      "answerValue": "true"
+                    },
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P8.B",
+                      "answerValue": "true"
+                    }
+                  ]
+                },
+                {
+                  "nextLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "and",
+                      "valuesToCheck": [
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P5.B",
+                          "answerValue": "true"
+                        },
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P8.B",
+                          "answerValue": "true"
+                        }
+                      ]
+                    },
+                    {
+                      "nextLogicType": "lessThan",
+                      "answerToCheck": "P4.B",
+                      "answerValue": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "nextLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "or",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P5.1",
+                      "answerValue": "true"
+                    },
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P8.1",
+                      "answerValue": "true"
+                    }
+                  ]
+                },
+                {
+                  "nextLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "and",
+                      "valuesToCheck": [
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P5.1",
+                          "answerValue": "true"
+                        },
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P8.1",
+                          "answerValue": "true"
+                        }
+                      ]
+                    },
+                    {
+                      "nextLogicType": "lessThan",
+                      "answerToCheck": "P4.1",
+                      "answerValue": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "nextLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "or",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P5.2",
+                      "answerValue": "true"
+                    },
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P8.2",
+                      "answerValue": "true"
+                    }
+                  ]
+                },
+                {
+                  "nextLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "and",
+                      "valuesToCheck": [
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P5.2",
+                          "answerValue": "true"
+                        },
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P8.2",
+                          "answerValue": "true"
+                        }
+                      ]
+                    },
+                    {
+                      "nextLogicType": "lessThan",
+                      "answerToCheck": "P4.2",
+                      "answerValue": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "nextLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "or",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P5.3",
+                      "answerValue": "true"
+                    },
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P8.3",
+                      "answerValue": "true"
+                    }
+                  ]
+                },
+                {
+                  "nextLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "and",
+                      "valuesToCheck": [
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P5.3",
+                          "answerValue": "true"
+                        },
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P8.3",
+                          "answerValue": "true"
+                        }
+                      ]
+                    },
+                    {
+                      "nextLogicType": "lessThan",
+                      "answerToCheck": "P4.3",
+                      "answerValue": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "nextNavigateTo": "P9"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R20"
         }
       ]
     }
@@ -426,16 +1170,28 @@
       "resultDisplayMessage": "You have selected {passedAnswerValue}. This indicates that some or all of this structure may not be governed by the BC Building Code 2024. This tool has been designed to assist BC Building Code 2024 users in determining the Building Code requirements for Part 9 buildings. Based on your selection, some or all of your project is beyond the scope of this tool at this time."
     },
     "R02": {
-      "resultDisplayMessage": "You have selected an option that indicates that this building is a heritage building. Heritage buildings have alternative measures for Building Code compliance. These alternative measures are beyond the scope of this tool at this time. Please see in <PDFDownloadLink>Table 1.1.1.1.(5)</PDFDownloadLink> of Division A - Section 1.1 ‘General’ for more information."
+      "resultDisplayMessage": "You have selected an option that indicates that this building is a heritage building. Heritage buildings have alternative measures for Building Code compliance. These alternative measures are beyond the scope of this tool at this time. Please see in <pdf-download-link>Table 1.1.1.1.(5)</pdf-download-link> of Division A - Section 1.1 ‘General’ for more information."
     },
     "R03": {
-      "resultDisplayMessage": "You have selected an option that indicates that this building is an alteration to an existing building. Alteration to existing buildings have alternative measures for Building Code compliance. These alternative measures are beyond the scope of this tool at this time. Please see Sentences <PDFDownloadLink>1.1.1.1(6)</PDFDownloadLink> and <PDFDownloadLink>1.1.1.2.(1)</PDFDownloadLink>, and <PDFDownloadLink>Table 1.1.1.1.(6)</PDFDownloadLink> in Division A - Section 1.1 ‘General’ for more information."
+      "resultDisplayMessage": "You have selected an option that indicates that this building is an alteration to an existing building. Alteration to existing buildings have alternative measures for Building Code compliance. These alternative measures are beyond the scope of this tool at this time. Please see Sentences <pdf-download-link>1.1.1.1(6)</pdf-download-link> and <pdf-download-link>1.1.1.2.(1)</pdf-download-link>, and <pdf-download-link>Table 1.1.1.1.(6)</pdf-download-link> in Division A - Section 1.1 ‘General’ for more information."
     },
     "R04": {
       "resultDisplayMessage": "Based on the options you have selected this project does not contain a Group C residential occupancy. This tool is design to assist BC Building Code 2024 users in evaluating the prescriptive requirements of the BC Building Code for Part 9 Group C residential occupancy buildings, therefore your project is beyond the scope of this tool at this time."
     },
     "R05": {
       "resultDisplayMessage": "Based on the options you have selected; this project is not a Part 9 building. This tool is design to assist BC Building Code 2024 users in evaluating the Acceptable Solutions in Division B of the BC Building Code for Part 9 buildings, therefore your project is beyond the scope of this tool at this time."
+    },
+    "R10": {
+      "resultDisplayMessage": "Based on the building characteristics provided, this dwelling unit meets the provision of Subsection <building-code-link subsection='9.9.9'>9.9.9. ‘Egress from Dwelling Units’</building-code-link>."
+    },
+    "R11": {
+      "resultDisplayMessage": "Based on the provided building characteristics the dwelling unit must be provided with:<ul><li>an exterior passageway that has a floor assembly with a <defined-term>fire-resistance rating</defined-term> less than 45 min, and</li><li>be served by a single <defined-term>exit</defined-term> stairway or <defined-term>ramp</defined-term>, and</li><li>be located more than 1.5 m above adjacent ground level, to meet the provisions of the BC Building Code 2024.</li></ul>"
+    },
+    "R20": {
+      "resultDisplayMessage": "The dwelling unit has not been provided with sufficient means of egress per the building characteristics provided and Subsection <building-code-link subsection='9.9.9'>9.9.9. ‘Egress from Dwelling Units’</building-code-link> of the BC Building Code 2024."
+    },
+    "R30": {
+      "resultDisplayMessage": "Based on the building characteristics provided this dwelling unit or building is not governed by Part 9 of the Building Code or is not a dwelling unit. This tool is only designed to address the egress from dwelling units of Part 9 buildings."
     }
   }
 }
