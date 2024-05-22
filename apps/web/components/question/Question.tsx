@@ -5,7 +5,7 @@ import { Form } from "react-aria-components";
 import {
   isWalkthroughItemTypeMultiChoice,
   isWalkthroughItemTypeMultiChoiceMultiple,
-  QuestionData,
+  QuestionDisplayData,
   QuestionMultipleChoiceData,
   QuestionMultipleChoiceSelectMultipleData,
 } from "@repo/data/useWalkthroughData";
@@ -24,7 +24,7 @@ import { parseStringToComponents } from "../../utils/string";
 import "./Question.css";
 
 interface QuestionProps {
-  questionData: QuestionData;
+  questionData: QuestionDisplayData;
   questionId: string;
   setQuestion: (question: string) => void;
 }
@@ -36,7 +36,7 @@ export interface SharedQuestionProps {
 }
 
 interface getQuestionComponentProps extends SharedQuestionProps {
-  questionData: QuestionData;
+  questionData: QuestionDisplayData;
 }
 
 // helper function to get the correct question component
@@ -79,7 +79,7 @@ export default function Question({
   const [value, setValue] = useState<string>();
   const { questionText, questionCodeReference } = questionData;
 
-  // TODO handle form submission, possibleInvalidAnswers, and next navigation logic
+  // TODO handle form submission, possibleInvalidAnswers, store answer as variable, and next navigation logic
   const handleSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();

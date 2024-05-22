@@ -1,17 +1,20 @@
 import testCase999 from "../walkthroughs/9.9.9.json";
 import {
-  QuestionData,
+  QuestionDisplayData,
   QuestionMultipleChoiceData,
   QuestionMultipleChoiceSelectMultipleData,
+  QuestionVariableData,
   WalkthroughItemTypeMultiChoice,
   WalkthroughItemTypeMultiChoiceMultiple,
 } from "./useWalkthroughData";
 
 export function getMultiChoiceQuestion() {
   // find the first question that is a multi-choice question
-  const questions: { [key: string]: QuestionData } = testCase999.questions;
+  const questions: {
+    [key: string]: QuestionDisplayData | QuestionVariableData;
+  } = testCase999.questions;
   const questionKey = Object.keys(questions).find((questionId) => {
-    const question = questions[questionId] as QuestionData;
+    const question = questions[questionId] as QuestionDisplayData;
     return question.walkthroughItemType === WalkthroughItemTypeMultiChoice;
   });
 
@@ -27,9 +30,11 @@ export function getMultiChoiceQuestion() {
 
 export function getMultiChoiceMultipleQuestion() {
   // find the first question that is a multi-choice multiple question
-  const questions: { [key: string]: QuestionData } = testCase999.questions;
+  const questions: {
+    [key: string]: QuestionDisplayData | QuestionVariableData;
+  } = testCase999.questions;
   const questionKey = Object.keys(questions).find((questionId) => {
-    const question = questions[questionId] as QuestionData;
+    const question = questions[questionId] as QuestionDisplayData;
     return (
       question.walkthroughItemType === WalkthroughItemTypeMultiChoiceMultiple
     );

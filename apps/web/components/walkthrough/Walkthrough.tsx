@@ -3,6 +3,8 @@
 import { JSX, useState } from "react";
 // repo
 import {
+  isWalkthroughItemTypeVariable,
+  QuestionDisplayData,
   StartingQuestionId,
   WalkthroughJSONType,
 } from "@repo/data/useWalkthroughData";
@@ -29,10 +31,16 @@ export default function Walkthrough({
     return <div>Question data not found</div>;
   }
 
+  // check if currentQuestion is of type QuestionVariableData
+  if (isWalkthroughItemTypeVariable(currentQuestion.walkthroughItemType)) {
+    // TODO - handle variable type questions
+    // setVariable(currentQuestion.variableToSet);
+  }
+
   return (
     <div data-testid={TESTID_WALKTHROUGH}>
       <Question
-        questionData={currentQuestion}
+        questionData={currentQuestion as QuestionDisplayData}
         questionId={currentQuestionId}
         setQuestion={setCurrentQuestionId}
       />
