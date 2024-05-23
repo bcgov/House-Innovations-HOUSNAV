@@ -840,7 +840,72 @@
       ],
       "nextNavigationLogic": [
         {
-          "TODO": "Add L4 logic as other options here",
+          "nextLogicType": "or",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.B",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P7.B",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.1",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P7.1",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.2",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P7.2",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.3",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P7.3",
+                  "answerValue": "false"
+                }
+              ]
+            }
+          ],
+          "nextNavigateTo": "R20"
+        },
+        {
           "nextLogicType": "fallback",
           "nextNavigateTo": "P8"
         }
