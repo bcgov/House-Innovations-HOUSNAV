@@ -1146,6 +1146,63 @@
           "nextNavigateTo": "R20"
         }
       ]
+    },
+    "P9": {
+      "walkthroughItemType": "multiChoiceMultiple",
+      "answersAreDynamic": true,
+      "questionText": "On which level(s) is the door an egress door to a <defined-term>public corridor</defined-term>, enclosed <defined-term>exit</defined-term> stair, or passageway?" ,
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "<defined-term>Basement</defined-term>",
+          "answerValue": "B",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P3.B",
+              "answerValue": "B"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 1",
+          "answerValue": "1",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P3.1",
+              "answerValue": "1"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 2",
+          "answerValue": "2",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P3.2",
+              "answerValue": "2"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 3",
+          "answerValue": "3",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P3.3",
+              "answerValue": "3"
+            }
+          ]
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P10"
+        }
+      ]
     }
   },
   "results": {
