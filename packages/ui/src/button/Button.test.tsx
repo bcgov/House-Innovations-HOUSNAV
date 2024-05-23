@@ -44,12 +44,12 @@ describe("Button", () => {
   // large
   it("renders large button", () => {
     const { getByTestId } = render(<Button isLargeButton>{TEXT}</Button>);
-    expect(getByTestId(GET_TESTID_BUTTON("primary"))).toHaveClass("large");
+    expect(getByTestId(GET_TESTID_BUTTON("primary"))).toHaveClass("--large");
   });
   // icon
   it("renders icon button", () => {
     const { getByTestId } = render(<Button isIconButton>{TEXT}</Button>);
-    expect(getByTestId(GET_TESTID_BUTTON("primary"))).toHaveClass("icon");
+    expect(getByTestId(GET_TESTID_BUTTON("primary"))).toHaveClass("--icon");
   });
   // custom testid
   it("renders custom testid", () => {

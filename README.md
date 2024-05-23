@@ -86,6 +86,31 @@ Pre-commit the `format`, `lint`, and `test` turbo tasks will run. This will run 
 
 Pre-commit the `e2e` turbo task will run. It will run any `scripts` called `e2e` in any of the workspaces. Look at the `package.json` in each workspace for what executes in each. This will normally include the cypress tests. Note: This is purely informational and will not block commit or push. For the web package e2e tests to pass, the web app must be running on localhost:3000.
 
+## Style Naming Conventions
+
+This project uses a modified version of [BEM](http://getbem.com/naming/) (Block Element Modifier) naming conventions for CSS classes. The naming convention is as follows:
+
+### Components
+.[workspace]-[Block]--[Element] --[modifier]
+
+```css
+/* for example */
+.web-Question--Title {}
+.ui-Button.--primary {}
+```
+
+### Utilities
+.u-[utility]
+
+```css
+/* for example */
+.u-hidden {}
+.u-mt-4 {}
+```
+
+
+
+
 ## Useful Links
 
 Learn more about the power of Turborepo:

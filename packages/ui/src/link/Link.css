@@ -26,16 +26,16 @@
 }
 
 /* glossary link */
-.ui-Link.glossary {
+.ui-Link.--glossary {
   color: var(--typography-color-link);
   text-decoration: dotted underline;
 }
 
-.ui-Link.glossary[data-hovered] {
+.ui-Link.--glossary[data-hovered] {
   background-color: var(--theme-blue-20);
 }
 
-.ui-Link.glossary[data-pressed] {
+.ui-Link.--glossary[data-pressed] {
   color: var(--typography-color-primary);
   background-color: var(--theme-blue-40);
 }

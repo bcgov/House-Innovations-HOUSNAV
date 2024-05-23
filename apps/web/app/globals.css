@@ -37,17 +37,16 @@ h5,
   font: var(--typography-regular-h5);
 }
 
-.container {
-  max-width: var(--layout-max-width);
-  margin: 0 auto;
-  padding: 0 var(--layout-padding-container);
-}
-
 p {
   margin-top: var(--layout-margin-medium);
 }
 
-/* Utility spacing classes - add as needed */
+/* Utility classes - add as needed */
+.u-container {
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
+  padding: 0 var(--layout-padding-container);
+}
 .u-hidden {
   display: none;
 }

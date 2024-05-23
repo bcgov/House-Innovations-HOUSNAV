@@ -3,11 +3,11 @@
   flex-direction: column;
 }
 
-.ui-RadioGroupLabel {
+.ui-RadioGroup--Label {
   font: var(--typography-bold-large-body);
 }
 
-.ui-RadioGroupError {
+.ui-RadioGroup--Error {
   margin-bottom: var(--layout-margin-small);
 }
 
@@ -57,6 +57,6 @@
   }
 }
 
-.ui-RadioIcon {
+.ui-Radio--Icon {
   margin-right: var(--layout-padding-medium);
 }

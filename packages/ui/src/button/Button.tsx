@@ -51,7 +51,7 @@ export default function Button({
   return (
     <ReactAriaButton
       data-testid={GET_TESTID_BUTTON(testid || variant)}
-      className={`ui-Button ${variant} ${isLargeButton ? "large" : ""} ${isIconButton ? "icon" : ""} ${className}`}
+      className={`ui-Button --${variant} ${isLargeButton ? "--large" : ""} ${isIconButton ? "--icon" : ""} ${className}`}
       {...props}
     >
       <>
