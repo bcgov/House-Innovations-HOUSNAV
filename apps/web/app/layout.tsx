@@ -38,6 +38,7 @@ export default function RootLayout({
               <a href={`#${ID_MAIN_NAVIGATION}`}>Skip to main navigation</a>,
               <a href={`#${ID_FOOTER}`}>Skip to footer</a>,
             ]}
+            logoSrc={"/assets/bc-logo.png"}
           />
           <main id={ID_MAIN_CONTENT}>{children}</main>
           <footer id={ID_FOOTER}></footer>
