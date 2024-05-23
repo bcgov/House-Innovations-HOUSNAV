@@ -7,7 +7,7 @@ import { URL_WALKTHROUGH_HREF } from "@repo/constants/src/urls";
 
 export default function Page(): JSX.Element {
   return (
-    <div className="container">
+    <div className="u-container">
       <p>
         <Link href={`${URL_WALKTHROUGH_HREF}/9.9.9/`}>Walkthrough 9.9.9</Link>
       </p>

@@ -6,28 +6,28 @@
 }
 
 .web-Question {
-  &.container {
+  &.u-container {
     padding-top: var(--question-container-padding-y);
     padding-bottom: var(--question-container-padding-y);
     max-width: var(--question-container-max-width);
   }
 }
 
-.web-QuestionTitle {
+.web-Question--Title {
   font: var(--typography-regular-large-body);
 }
 
-.web-QuestionTitle .ui-Button {
+.web-Question--Title .ui-Button {
   font: inherit;
 }
 
-.web-QuestionReference {
+.web-Question--Reference {
   font: var(--typography-regular-small-body);
   color: var(--typography-color-disabled);
   margin-top: var(--question-reference-margin-top);
 }
 
-.web-QuestionForm {
+.web-Question--Form {
   margin-top: var(--question-form-margin-top);
 }
 

@@ -35,7 +35,7 @@ export default function Link({
 }: LinkProps) {
   return (
     <ReactAriaLink
-      className={`ui-Link ${variant} ${className}`}
+      className={`ui-Link --${variant} ${className}`}
       data-testid={GET_TESTID_LINK(testid || variant)}
       {...props}
       target={target}

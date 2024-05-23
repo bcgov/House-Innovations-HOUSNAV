@@ -107,9 +107,9 @@ export default function Question({
   }
 
   return (
-    <div className="web-Question container" data-testid={TESTID_QUESTION}>
+    <div className="web-Question u-container" data-testid={TESTID_QUESTION}>
       <h1
-        className="web-QuestionTitle"
+        className="web-Question--Title"
         id={ID_QUESTION_TEXT}
         data-testid={TESTID_QUESTION_TITLE}
       >
@@ -117,14 +117,14 @@ export default function Question({
       </h1>
       {questionCodeReference && (
         <p
-          className="web-QuestionReference"
+          className="web-Question--Reference"
           data-testid={TESTID_QUESTION_CODE_REFERENCE}
         >
           {/* TODO - setup code reference once we have a question with one */}
           Reference: <Button variant="code">Vol 2, Section 9.9.9.1</Button>
         </p>
       )}
-      <Form onSubmit={handleSubmit} className="web-QuestionForm">
+      <Form onSubmit={handleSubmit} className="web-Question--Form">
         {component}
         <Button type={"submit"} data-testid={TESTID_QUESTION_SUBMIT}>
           Submit

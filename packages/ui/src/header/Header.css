@@ -11,7 +11,7 @@
   width: 100%;
 }
 
-.ui-HeaderContainer {
+.ui-Header--Container {
   flex-grow: 1;
   display: flex;
   flex-direction: row;
@@ -19,24 +19,24 @@
   gap: var(--layout-padding-medium);
 }
 
-.ui-HeaderTitleWrapper {
+.ui-Header--TitleWrapper {
   display: none;
 }
 
-.ui-HeaderTitle {
+.ui-Header--Title {
   font: var(--typography-bold-h4);
   color: var(--typography-color-primary);
 }
 
-.ui-HeaderSkipLinks {
+.ui-Header--SkipLinks {
   list-style: none;
   margin: 0;
   padding: 0;
   position: absolute;
 }
 
-.ui-HeaderSkipLinks li a,
-.ui-HeaderSkipLinks li button {
+.ui-Header--SkipLinks li a,
+.ui-Header--SkipLinks li button {
   background-color: var(--surface-color-background-white);
   box-sizing: border-box;
   color: var(--typography-color-link);
@@ -47,32 +47,32 @@
   margin-left: -100000px;
 }
 
-.ui-HeaderSkipLinks li a:focus,
-.ui-HeaderSkipLinks li button:focus {
+.ui-Header--SkipLinks li a:focus,
+.ui-Header--SkipLinks li button:focus {
   margin-left: 0; /* Line up left edge with left edge of logo image */
   text-wrap: nowrap;
 }
 
-.ui-HeaderLine {
+.ui-Header--Line {
   background-color: var(--surface-color-border-default);
   width: 1px;
   height: 32px;
 }
 
-.ui-HeaderLogoLink {
+.ui-Header--LogoLink {
   display: flex;
 }
 
-.ui-HeaderLogo {
+.ui-Header--Logo {
   min-width: 117px;
   width: 117px;
 }
 
-.ui-HeaderNavMobileToggle {
+.ui-Header--NavMobileToggle {
   margin-left: auto;
 }
 
-.ui-HeaderNavMobile {
+.ui-Header--NavMobile {
   position: fixed;
   top: var(--header-height);
   bottom: 0;
@@ -83,15 +83,15 @@
   outline: none;
 }
 
-.ui-HeaderNavMobile .ui-HeaderNavList {
+.ui-Header--NavMobile .ui-Header--NavList {
   flex-direction: column;
 }
 
-.ui-HeaderNavDesktop {
+.ui-Header--NavDesktop {
   display: none;
 }
 
-.ui-HeaderNavList {
+.ui-Header--NavList {
   display: flex;
   flex-direction: row;
   list-style: none;
@@ -99,11 +99,11 @@
   padding: 0;
 }
 
-.ui-HeaderNavListItem {
+.ui-Header--NavListItem {
   display: flex;
 }
 
-a.ui-HeaderNavLink {
+a.ui-Header--NavLink {
   display: flex;
   align-items: center;
   color: var(--theme-gray-100);
@@ -123,7 +123,7 @@ a.ui-HeaderNavLink {
 /* TABLET - 608px */
 @media (min-width: 38rem) {
   :root {
-    .ui-HeaderNavMobile {
+    .ui-Header--NavMobile {
       padding: var(--layout-padding-large);
     }
   }
@@ -134,17 +134,17 @@ a.ui-HeaderNavLink {
   :root {
   }
 
-  button.ui-HeaderNavMobileToggle {
+  button.ui-Header--NavMobileToggle {
     display: none;
   }
 
-  .ui-HeaderNavDesktop {
+  .ui-Header--NavDesktop {
     align-self: stretch;
     display: flex;
     margin-left: auto;
   }
 
-  .ui-HeaderTitleWrapper {
+  .ui-Header--TitleWrapper {
     display: flex;
     align-items: center;
     gap: var(--layout-padding-medium);

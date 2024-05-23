@@ -42,11 +42,11 @@ export interface HeaderProps {
 
 const getNavList = (onLinkClick: (href: string) => void) => {
   return (
-    <ul className="ui-HeaderNavList">
+    <ul className="ui-Header--NavList">
       {URLS_MAIN_NAVIGATION.map(({ title, ...props }) => (
-        <li key={title} className="ui-HeaderNavListItem">
+        <li key={title} className="ui-Header--NavListItem">
           <Link
-            className="ui-HeaderNavLink"
+            className="ui-Header--NavLink"
             data-testid={GET_TESTID_HEADER_NAV_ITEM(title)}
             onPress={
               props.target === "_blank"
@@ -80,36 +80,36 @@ export default function Header({
   function getTitle() {
     switch (titleElement) {
       case "h1":
-        return <h1 className="ui-HeaderTitle">{title}</h1>;
+        return <h1 className="ui-Header--Title">{title}</h1>;
       case "h2":
-        return <h2 className="ui-HeaderTitle">{title}</h2>;
+        return <h2 className="ui-Header--Title">{title}</h2>;
       case "h3":
-        return <h3 className="ui-HeaderTitle">{title}</h3>;
+        return <h3 className="ui-Header--Title">{title}</h3>;
       case "h4":
-        return <h4 className="ui-HeaderTitle">{title}</h4>;
+        return <h4 className="ui-Header--Title">{title}</h4>;
       case "h5":
-        return <h5 className="ui-HeaderTitle">{title}</h5>;
+        return <h5 className="ui-Header--Title">{title}</h5>;
       case "h6":
-        return <h6 className="ui-HeaderTitle">{title}</h6>;
+        return <h6 className="ui-Header--Title">{title}</h6>;
       case "p":
-        return <p className="ui-HeaderTitle">{title}</p>;
+        return <p className="ui-Header--Title">{title}</p>;
       default:
-        return <span className="ui-HeaderTitle">{title}</span>;
+        return <span className="ui-Header--Title">{title}</span>;
     }
   }
 
   return (
     <header className="ui-Header" data-testid={TESTID_HEADER}>
-      <div className="container ui-HeaderContainer">
+      <div className="u-container ui-Header--Container">
         {skipLinks && (
-          <ul className="ui-HeaderSkipLinks">
+          <ul className="ui-Header--SkipLinks">
             {skipLinks.map((link, index) => {
               return <li key={`skipLink-${index}`}>{link}</li>;
             })}
           </ul>
         )}
         {logoSrc && (
-          <ReactAriaLink href="/" className="ui-HeaderLogoLink">
+          <ReactAriaLink href="/" className="ui-Header--LogoLink">
             <Image
               src={logoSrc}
               alt={"Government of British Columbia Logo - Go to the homepage"}
@@ -119,12 +119,12 @@ export default function Header({
           </ReactAriaLink>
         )}
         {title && (
-          <div className="ui-HeaderTitleWrapper">
-            {logoSrc && <div className="ui-HeaderLine" />}
+          <div className="ui-Header--TitleWrapper">
+            {logoSrc && <div className="ui-Header--Line" />}
             {getTitle()}
           </div>
         )}
-        <nav className="ui-HeaderNavDesktop" id={ID_MAIN_NAVIGATION}>
+        <nav className="ui-Header--NavDesktop" id={ID_MAIN_NAVIGATION}>
           {getNavList(router.push)}
         </nav>
         <Button
@@ -134,7 +134,7 @@ export default function Header({
           }
           isIconButton
           variant="secondary"
-          className="ui-HeaderNavMobileToggle"
+          className="ui-Header--NavMobileToggle"
           onPress={() => setMobileNavIsOpen(true)}
           data-testid={TESTID_HEADER_MOBILE_NAV_BUTTON}
         >
@@ -146,7 +146,7 @@ export default function Header({
           onOpenChange={setMobileNavIsOpen}
           data-testid={TESTID_HEADER_MOBILE_NAV}
         >
-          <Dialog className="ui-HeaderNavMobile">
+          <Dialog className="ui-Header--NavMobile">
             {getNavList(onMobileNavLinkClick)}
           </Dialog>
         </Modal>

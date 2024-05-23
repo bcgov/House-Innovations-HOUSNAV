@@ -85,7 +85,7 @@ export default function RadioGroup({
     >
       {!noLabel && (
         <Label
-          className={`ui-RadioGroupLabel ${hideLabel ? "u-hidden" : ""}`}
+          className={`ui-RadioGroup--Label ${hideLabel ? "u-hidden" : ""}`}
           data-testid={`${TESTID_RADIO_GROUP_LABEL}-${testIdNamespace}`}
         >
           {label || name}
@@ -99,10 +99,10 @@ export default function RadioGroup({
           data-testid={GET_TESTID_RADIO(testIdNamespace, option.value)}
         >
           {currentValue === option.value && (
-            <Icon type="radioChecked" className="ui-RadioIcon" />
+            <Icon type="radioChecked" className="ui-Radio--Icon" />
           )}
           {currentValue !== option.value && (
-            <Icon type="radioUnchecked" className="ui-RadioIcon" />
+            <Icon type="radioUnchecked" className="ui-Radio--Icon" />
           )}
           {option.label}
         </ReactAriaRadio>
@@ -110,7 +110,7 @@ export default function RadioGroup({
       {/* TODO - is this data-testid applied? */}
       <InputError
         data-testid={`${TESTID_RADIO_GROUP_ERROR}-${testIdNamespace}`}
-        className={"ui-RadioGroupError"}
+        className={"ui-RadioGroup--Error"}
       >
         {errorMessageText}
       </InputError>
