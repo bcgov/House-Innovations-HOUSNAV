@@ -2,6 +2,7 @@
 // 3rd party
 import { PropsWithChildren, ReactElement, useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { Dialog, Link as ReactAriaLink, Modal } from "react-aria-components";
 // repo
 import { URLS_MAIN_NAVIGATION } from "@repo/constants/src/urls";
@@ -29,6 +30,10 @@ export interface HeaderProps {
    * Header title text that appears to the right of the logo.
    */
   title?: string;
+  /**
+   * URL to the logo image. Won't render if not provided.
+   */
+  logoSrc?: string;
   /**
    * Desired element that renders the `title` string. Defaults to `<span>`.
    */
@@ -62,6 +67,7 @@ export default function Header({
   skipLinks,
   title = "",
   titleElement = "span",
+  logoSrc,
 }: PropsWithChildren<HeaderProps>) {
   // setup state
   const router = useRouter();
@@ -102,17 +108,19 @@ export default function Header({
             })}
           </ul>
         )}
-        <ReactAriaLink href="/" className="ui-HeaderLogoLink">
-          <Icon
-            type="bcLogo"
-            id="bcgov-logo-header"
-            title="Government of British Columbia Logo - Go to the homepage"
-            className="ui-HeaderLogo"
-          />
-        </ReactAriaLink>
+        {logoSrc && (
+          <ReactAriaLink href="/" className="ui-HeaderLogoLink">
+            <Image
+              src={logoSrc}
+              alt={"Government of British Columbia Logo - Go to the homepage"}
+              width={"117"}
+              height={"45"}
+            />
+          </ReactAriaLink>
+        )}
         {title && (
           <div className="ui-HeaderTitleWrapper">
-            <div className="ui-HeaderLine" />
+            {logoSrc && <div className="ui-HeaderLine" />}
             {getTitle()}
           </div>
         )}
