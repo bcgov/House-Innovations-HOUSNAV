@@ -46,6 +46,7 @@ interface PossibleInvalidAnswer {
 
 interface VariableToSet {
   variableType: string;
+  variableName: string;
   variableValue: {
     [key: string]: VariableValueLogic[];
   };
