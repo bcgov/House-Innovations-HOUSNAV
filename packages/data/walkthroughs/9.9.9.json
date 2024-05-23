@@ -842,7 +842,7 @@
         {
           "TODO": "Add L4 logic as other options here",
           "nextLogicType": "fallback",
-          "nextNavigateTo": "P6"
+          "nextNavigateTo": "P8"
         }
       ]
     },
@@ -902,72 +902,6 @@
         }
       },
       "nextNavigationLogic": [
-        {
-          "nextLogicType": "or",
-          "valuesToCheck": [
-            {
-              "nextLogicType": "and",
-              "valuesToCheck": [
-                {
-                  "nextLogicType": "equals",
-                  "answerToCheck": "P5.B",
-                  "answerValue": "false"
-                },
-                {
-                  "nextLogicType": "equals",
-                  "answerToCheck": "P8.B",
-                  "answerValue": "false"
-                }
-              ]
-            },
-            {
-              "nextLogicType": "and",
-              "valuesToCheck": [
-                {
-                  "nextLogicType": "equals",
-                  "answerToCheck": "P5.1",
-                  "answerValue": "false"
-                },
-                {
-                  "nextLogicType": "equals",
-                  "answerToCheck": "P8.1",
-                  "answerValue": "false"
-                }
-              ]
-            },
-            {
-              "nextLogicType": "and",
-              "valuesToCheck": [
-                {
-                  "nextLogicType": "equals",
-                  "answerToCheck": "P5.2",
-                  "answerValue": "false"
-                },
-                {
-                  "nextLogicType": "equals",
-                  "answerToCheck": "P8.2",
-                  "answerValue": "false"
-                }
-              ]
-            },
-            {
-              "nextLogicType": "and",
-              "valuesToCheck": [
-                {
-                  "nextLogicType": "equals",
-                  "answerToCheck": "P5.3",
-                  "answerValue": "false"
-                },
-                {
-                  "nextLogicType": "equals",
-                  "answerToCheck": "P8.3",
-                  "answerValue": "false"
-                }
-              ]
-            }
-          ],
-          "nextNavigateTo": "R20"
-        },
         {
           "nextLogicType": "and",
           "valuesToCheck": [
