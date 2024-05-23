@@ -1,6 +1,6 @@
-import testCase999 from "../walkthroughes/9.9.9.json";
+import testCase999 from "../walkthroughs/9.9.9.json";
 
-type Walkthroughes = "9.9.9";
+type Walkthroughs = "9.9.9";
 
 interface UseWalkthroughDataProps {
   /*
@@ -81,7 +81,7 @@ export interface WalkthroughJSONType {
   };
 }
 
-const WalkthroughJSONData: Record<Walkthroughes, WalkthroughJSONType> = {
+const WalkthroughJSONData: Record<Walkthroughs, WalkthroughJSONType> = {
   "9.9.9": testCase999,
 };
 
@@ -90,6 +90,6 @@ export default function useWalkthroughData({ id }: UseWalkthroughDataProps) {
   if (!Object.prototype.hasOwnProperty.call(WalkthroughJSONData, id)) {
     throw new Error(`No data found for walkthrough ${id}`);
   } else {
-    return WalkthroughJSONData[id as Walkthroughes];
+    return WalkthroughJSONData[id as Walkthroughs];
   }
 }

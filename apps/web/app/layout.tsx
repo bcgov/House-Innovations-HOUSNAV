@@ -16,7 +16,7 @@ import { ClientProviders } from "./ClientProviders";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "BC Gov - 2024 Building Code - Walkthroughes",
+  title: "BC Gov - 2024 Building Code - Walkthroughs",
   description:
     "Get step-by-step guidance through specific sections of the 2024 BC Building Code.",
 };
