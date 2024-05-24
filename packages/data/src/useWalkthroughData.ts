@@ -9,7 +9,7 @@ interface UseWalkthroughDataProps {
   id: string;
 }
 
-export type AnswerValueTypes = string | undefined;
+export type AnswerValueTypes = string;
 
 interface PossibleAnswer {
   answerDisplayText: string;
