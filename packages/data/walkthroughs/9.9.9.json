@@ -1203,6 +1203,129 @@
           "nextNavigateTo": "P10"
         }
       ]
+    },
+    "P10": {
+      "walkthroughItemType": "multiChoiceMultiple",
+      "answersAreDynamic": true,
+      "questionText": "On which level(s) is the egress door an <defined-term>exit</defined-term> doorway not more than 1.5m above adjacent ground level?",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "<defined-term>Basement</defined-term>",
+          "answerValue": "B",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P9.B",
+              "answerValue": "true"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 1",
+          "answerValue": "1",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P9.1",
+              "answerValue": "true"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 2",
+          "answerValue": "2",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P9.2",
+              "answerValue": "true"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 3",
+          "answerValue": "3",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P9.3",
+              "answerValue": "true"
+            }
+          ]
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "or",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equals",
+                  "answerToCheck": "P9.B",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equals",
+                  "answerToCheck": "P10.B",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equals",
+                  "answerToCheck": "P9.1",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equals",
+                  "answerToCheck": "P10.1",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equals",
+                  "answerToCheck": "P9.2",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equals",
+                  "answerToCheck": "P10.2",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equals",
+                  "answerToCheck": "P9.3",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equals",
+                  "answerToCheck": "P10.3",
+                  "answerValue": "false"
+                }
+              ]
+            }
+          ],
+          "nextNavigateTo": "R20"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P11"
+        }
+      ]
     }
   },
   "results": {
