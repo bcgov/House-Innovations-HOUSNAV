@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
+    "./checkbox-group": "./src/checkbox-group/CheckboxGroup.tsx",
     "./header": "./src/header/Header.tsx",
     "./input-error": "./src/input-error/InputError.tsx",
     "./radio-group": "./src/radio-group/RadioGroup.tsx",

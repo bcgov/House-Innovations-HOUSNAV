@@ -49,7 +49,7 @@ export interface RadioGroupProps extends ReactAriaRadioGroupProps {
   /**
    * Optional testid string for targeting specific radio groups.
    * Will default to `radio-group-[name]`.
-   * eg. `data-testid="button-passedValue"`.
+   * eg. `data-testid="radio-group-passedValue"`.
    */
   "data-testid"?: string;
   /**
