@@ -37,6 +37,9 @@ describe("Header", () => {
     const { user, queryByTestId, getByTestId } = userSetupAndRender(<Header />);
     expect(getByTestId(TESTID_HEADER)).toBeInTheDocument();
 
+    // expect mobile nav not to be in the document
+    expect(queryByTestId(TESTID_HEADER_MOBILE_NAV)).not.toBeInTheDocument();
+
     // get mobile nav button
     const mobileNavButton = getByTestId(
       GET_TESTID_BUTTON(TESTID_HEADER_MOBILE_NAV_BUTTON),
@@ -48,7 +51,7 @@ describe("Header", () => {
       await user.click(mobileNavButton);
     });
 
-    // expect mobile nav to be visible
+    // expect mobile nav to be in the document
     const mobileNav = getByTestId(TESTID_HEADER_MOBILE_NAV);
     await waitFor(() => {
       expect(mobileNav).toBeInTheDocument();
