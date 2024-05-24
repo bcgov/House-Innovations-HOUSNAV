@@ -124,6 +124,56 @@ describe("Icon", () => {
     expect(getByTestId(getIconTestId("radioUnchecked"))).toBeInTheDocument();
     expect(queryByTitle("Radio button unchecked")).not.toBeInTheDocument();
   });
+  // checkboxChecked
+  it("renders checkboxChecked icon with title", () => {
+    const { getByTestId, getByTitle } = render(
+      <Icon
+        type="checkboxChecked"
+        id="checkboxCheckedIcon"
+        title="Checkbox checked"
+      />,
+    );
+    const CheckboxCheckedIcon = getByTestId(getIconTestId("checkboxChecked"));
+    expect(CheckboxCheckedIcon).toBeInTheDocument();
+    expect(CheckboxCheckedIcon).toHaveAttribute(
+      "aria-labelledby",
+      "checkboxCheckedIcon",
+    );
+    expect(getByTitle("Checkbox checked")).toBeInTheDocument();
+  });
+  it("renders checkboxChecked icon without title", () => {
+    const { getByTestId, queryByTitle } = render(
+      <Icon type="checkboxChecked" />,
+    );
+    expect(getByTestId(getIconTestId("checkboxChecked"))).toBeInTheDocument();
+    expect(queryByTitle("Checkbox checked")).not.toBeInTheDocument();
+  });
+  // checkboxUnchecked
+  it("renders checkboxUnchecked icon with title", () => {
+    const { getByTestId, getByTitle } = render(
+      <Icon
+        type="checkboxUnchecked"
+        id="checkboxUncheckedIcon"
+        title="Checkbox unchecked"
+      />,
+    );
+    const CheckboxUncheckedIcon = getByTestId(
+      getIconTestId("checkboxUnchecked"),
+    );
+    expect(CheckboxUncheckedIcon).toBeInTheDocument();
+    expect(CheckboxUncheckedIcon).toHaveAttribute(
+      "aria-labelledby",
+      "checkboxUncheckedIcon",
+    );
+    expect(getByTitle("Checkbox unchecked")).toBeInTheDocument();
+  });
+  it("renders checkboxUnchecked icon without title", () => {
+    const { getByTestId, queryByTitle } = render(
+      <Icon type="checkboxUnchecked" />,
+    );
+    expect(getByTestId(getIconTestId("checkboxUnchecked"))).toBeInTheDocument();
+    expect(queryByTitle("Checkbox unchecked")).not.toBeInTheDocument();
+  });
   // className
   it("renders icon with className", () => {
     const { getByTestId } = render(

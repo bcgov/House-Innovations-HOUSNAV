@@ -89,6 +89,8 @@
   --layout-padding-container: var(--layout-padding-medium);
   --layout-padding-radio-x: var(--layout-padding-medium);
   --layout-padding-radio-y: var(--layout-padding-medium);
+  --layout-padding-checkbox-x: var(--layout-padding-medium);
+  --layout-padding-checkbox-y: var(--layout-padding-medium);
   --layout-margin-none: 0rem;
   --layout-margin-hair: 0.125rem;
   --layout-margin-xsmall: 0.25rem;
@@ -224,6 +226,7 @@
   :root {
     --layout-padding-container: var(--layout-padding-xlarge);
     --layout-padding-radio-x: var(--layout-padding-large);
+    --layout-padding-checkbox-x: var(--layout-padding-large);
   }
 }
 
