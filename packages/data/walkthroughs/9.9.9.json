@@ -1147,6 +1147,235 @@
         }
       ]
     },
+    "P8": {
+      "walkthroughItemType": "multiChoiceMultiple",
+      "answersAreDynamic": true,
+      "questionText": "Which level(s) of the <defined-term>dwelling unit</defined-term> have less than 1m of the finish floor level and less than 7m above adjacent ground level?",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "<defined-term>Basement</defined-term>",
+          "answerValue": "B",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P7.B",
+              "answerValue": "true"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 1",
+          "answerValue": "1",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P7.1",
+              "answerValue": "true"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 2",
+          "answerValue": "2",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P7.2",
+              "answerValue": "true"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 3",
+          "answerValue": "3",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P7.3",
+              "answerValue": "true"
+            }
+          ]
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "or",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equals",
+                  "answerToCheck": "P5.B",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equals",
+                  "answerToCheck": "P8.B",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equals",
+                  "answerToCheck": "P5.1",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equals",
+                  "answerToCheck": "P8.1",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equals",
+                  "answerToCheck": "P5.2",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equals",
+                  "answerToCheck": "P8.2",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equals",
+                  "answerToCheck": "P5.3",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equals",
+                  "answerToCheck": "P8.3",
+                  "answerValue": "false"
+                }
+              ]
+            }
+          ],
+          "nextNavigateTo": "R20"
+        },
+        {
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "notEqual",
+                      "answerToCheck": "P5.B",
+                      "answerValue": "true"
+                    },
+                    {
+                      "nextLogicType": "notEqual",
+                      "answerToCheck": "P8.B",
+                      "answerValue": "true"
+                    }
+                  ]
+                },
+                {
+                  "nextLogicType": "lessThan",
+                  "answerToCheck": "P4.B",
+                  "answerValue": "2"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "notEqual",
+                      "answerToCheck": "P5.1",
+                      "answerValue": "true"
+                    },
+                    {
+                      "nextLogicType": "notEqual",
+                      "answerToCheck": "P8.1",
+                      "answerValue": "true"
+                    }
+                  ]
+                },
+                {
+                  "nextLogicType": "lessThan",
+                  "answerToCheck": "P4.1",
+                  "answerValue": "2"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "notEqual",
+                      "answerToCheck": "P5.2",
+                      "answerValue": "true"
+                    },
+                    {
+                      "nextLogicType": "notEqual",
+                      "answerToCheck": "P8.2",
+                      "answerValue": "true"
+                    }
+                  ]
+                },
+                {
+                  "nextLogicType": "lessThan",
+                  "answerToCheck": "P4.2",
+                  "answerValue": "2"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "notEqual",
+                      "answerToCheck": "P5.3",
+                      "answerValue": "true"
+                    },
+                    {
+                      "nextLogicType": "notEqual",
+                      "answerToCheck": "P8.3",
+                      "answerValue": "true"
+                    }
+                  ]
+                },
+                {
+                  "nextLogicType": "lessThan",
+                  "answerToCheck": "P4.3",
+                  "answerValue": "2"
+                }
+              ]
+            }
+          ],
+          "nextNavigateTo": "P9"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R20"
+        }
+      ]
+    },
     "P9": {
       "walkthroughItemType": "multiChoiceMultiple",
       "answersAreDynamic": true,
