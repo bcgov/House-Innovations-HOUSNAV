@@ -1627,6 +1627,38 @@
           "nextNavigateTo": "P14"
         }
       ]
+    },
+    "P14": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Where the egress door opens onto the corridor or exterior passageway, is it possible to go in opposite directions to 2 separate <defined-term>exits</defined-term>?",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equals",
+          "answerToCheck": "P14",
+          "answerValue": "true",
+          "nextNavigateTo": "P17"
+        },
+        {
+          "nextLogicType": "greaterThan",
+          "answerToCheck": "P11",
+          "answerValue": "2",
+          "nextNavigateTo": "R20"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P15"
+        }
+      ]
     }
   },
   "results": {
