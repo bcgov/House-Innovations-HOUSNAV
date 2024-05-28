@@ -1659,6 +1659,32 @@
           "nextNavigateTo": "P15"
         }
       ]
+    },
+    "P15": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Does the egress door of this <defined-term>dwelling unit</defined-term> open onto a corridor that meets the requirements of Sentence 9.9.7.3.(1)?",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equals",
+          "answerToCheck": "P15",
+          "answerValue": "true",
+          "nextNavigateTo": "P17"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P16"
+        }
+      ]
     }
   },
   "results": {
