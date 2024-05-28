@@ -1575,6 +1575,32 @@
           "nextNavigateTo": "P12"
         }
       ]
+    },
+    "P12": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Is this <defined-term>dwelling unit</defined-term> provided with at least two separate <defined-term>means of egress</defined-term>?",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equals",
+          "answerToCheck": "P12",
+          "answerValue": "true",
+          "nextNavigateTo": "R10"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P13"
+        }
+      ]
     }
   },
   "results": {
