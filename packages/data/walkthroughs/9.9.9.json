@@ -1555,6 +1555,26 @@
           "nextNavigateTo": "P11"
         }
       ]
+    },
+    "P11": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "How many <defined-term>dwelling units</defined-term> are in this <defined-term>building</defined-term>?",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "1-2",
+          "answerValue": "2"
+        },
+        {
+          "answerDisplayText": "Greater than 2",
+          "answerValue": "3"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P12"
+        }
+      ]
     }
   },
   "results": {
