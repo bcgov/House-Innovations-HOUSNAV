@@ -1601,6 +1601,32 @@
           "nextNavigateTo": "P13"
         }
       ]
+    },
+    "P13": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Does this <defined-term>dwelling unit</defined-term>’s egress door open onto a <defined-term>public corridor</defined-term> or an exterior passageway?",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equals",
+          "answerToCheck": "P13",
+          "answerValue": "false",
+          "nextNavigateTo": "P17"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P14"
+        }
+      ]
     }
   },
   "results": {
