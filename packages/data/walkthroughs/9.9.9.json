@@ -1685,6 +1685,32 @@
           "nextNavigateTo": "P16"
         }
       ]
+    },
+    "P16": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Is the <defined-term>building sprinklered</defined-term>?",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equals",
+          "answerToCheck": "P16",
+          "answerValue": "false",
+          "nextNavigateTo": "R20"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P17"
+        }
+      ]
     }
   },
   "results": {
