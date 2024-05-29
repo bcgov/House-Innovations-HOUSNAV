@@ -2,7 +2,7 @@ name: Push Docker Image
 
 on:
   workflow_run:
-    workflows: ["Build and Tag Docker Image"]
+    workflows: ["Docker Build and Tag"]
     types:
       - completed
   workflow_dispatch: # Manual trigger
