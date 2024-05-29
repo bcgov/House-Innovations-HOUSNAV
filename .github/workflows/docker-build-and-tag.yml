@@ -1,4 +1,4 @@
-name: Docker Build
+name: Docker Build and Tag
 
 on:
   push:
@@ -45,3 +45,7 @@ jobs:
 
       - name: List Docker images
         run: docker images
+
+      - name: Set output for Docker image tag
+        id: set-output
+        run: echo "::set-output name=image_tag::house-innovations-housnav-web:${{ env.GIT_SHA }}"
