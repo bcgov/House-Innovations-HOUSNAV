@@ -1711,6 +1711,170 @@
           "nextNavigateTo": "P17"
         }
       ]
+    },
+    "P17": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Does this <defined-term>building</defined-term> meet the definition of a <defined-term>secondary suite</defined-term>?",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "equals",
+              "answerToCheck": "P15",
+              "answerValue": "true"
+            },
+            {
+              "nextLogicType": "equals",
+              "answerToCheck": "P17",
+              "answerValue": "true"
+            }
+          ],
+          "nextNavigateTo": "P18"
+        },
+        {
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "equals",
+              "answerToCheck": "P15",
+              "answerValue": "true"
+            },
+            {
+              "nextLogicType": "equals",
+              "answerToCheck": "P17",
+              "answerValue": "false"
+            }
+          ],
+          "nextNavigateTo": "P20"
+        },
+        {
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P17",
+              "answerValue": "true"
+            },
+            {
+              "nextLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.B",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.1",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.2",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.3",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P8.B",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P8.1",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P8.2",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P8.3",
+                  "answerValue": "true"
+                }
+              ]
+            }
+          ],
+          "nextNavigateTo": "P18"
+        },
+        {
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P17",
+              "answerValue": "false"
+            },
+            {
+              "nextLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.B",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.1",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.2",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.3",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P8.B",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P8.1",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P8.2",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P8.3",
+                  "answerValue": "true"
+                }
+              ]
+            }
+          ],
+          "nextNavigateTo": "P20"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R20"
+        }
+      ]
     }
   },
   "results": {
