@@ -12,6 +12,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: dev
 
     steps:
       - name: Checkout repository
@@ -34,8 +35,8 @@ jobs:
       - name: List Docker images
         run: docker images
 
-#      - name: Login to OpenShift
-#        run: oc login ${{ secrets.OPENSHIFT_SERVER }} --token=${{ secrets.OPENSHIFT_TOKEN }} --insecure-skip-tls-verify
+      - name: Login to OpenShift
+        run: oc login --token=${{ secrets.OPENSHIFT_TOKEN }} --server=${{ secrets.OPENSHIFT_SERVER }}
 #
 #      - name: Tag Docker image for OpenShift registry
 #        run: |
