@@ -1,4 +1,4 @@
-name: Docker Build and Tag
+name: Docker Build and Deploy
 
 on:
   push:
@@ -10,7 +10,19 @@ on:
   workflow_dispatch: # This allows you to manually trigger the workflow
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: use node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - run: npm ci
+      - run: npm run test
   build:
+    needs: test
     runs-on: ubuntu-latest
     environment: dev
 
@@ -29,22 +41,19 @@ jobs:
         run: docker build -t house-innovations-housnav-web:${{ env.GIT_SHA }} -f apps/web/Dockerfile . --no-cache
 
       - name: Tag Docker image as latest for main branch
-#        if: github.ref == 'refs/heads/main' && github.event_name == 'pull_request' && github.event.pull_request.merged == true
+        if: github.ref == 'refs/heads/main' && github.event_name == 'pull_request' && github.event.pull_request.merged == true
         run: docker tag house-innovations-housnav-web:${{ env.GIT_SHA }} house-innovations-housnav-web:latest
-
-      - name: List Docker images
-        run: docker images
 
       - name: Login to OpenShift
         run: oc login --token=${{ secrets.OPENSHIFT_TOKEN }} --server=${{ secrets.OPENSHIFT_SERVER }}
 
-#      - name: Tag Docker image for OpenShift registry
-#        run: |
-#          docker tag house-innovations-housnav-web:${{ env.GIT_SHA }} ${{ secrets.OPENSHIFT_REGISTRY }}/${{ secrets.OPENSHIFT_PROJECT }}/house-innovations-housnav-web:${{ env.GIT_SHA }}
-#          docker tag house-innovations-housnav-web:latest ${{ secrets.OPENSHIFT_REGISTRY }}/${{ secrets.OPENSHIFT_PROJECT }}/house-innovations-housnav-web:latest
+      #      - name: Tag Docker image for OpenShift registry
+      #        run: |
+      #          docker tag house-innovations-housnav-web:${{ env.GIT_SHA }} ${{ secrets.OPENSHIFT_REGISTRY }}/${{ secrets.OPENSHIFT_PROJECT }}/house-innovations-housnav-web:${{ env.GIT_SHA }}
+      #          docker tag house-innovations-housnav-web:latest ${{ secrets.OPENSHIFT_REGISTRY }}/${{ secrets.OPENSHIFT_PROJECT }}/house-innovations-housnav-web:latest
 
-#      - name: Push Docker image to OpenShift registry
-#        if: github.ref == 'refs/heads/main' && github.event_name == 'pull_request' && github.event.pull_request.merged == true
-#        run: |
-#          docker push ${{ secrets.OPENSHIFT_REGISTRY }}/${{ secrets.OPENSHIFT_PROJECT }}/house-innovations-housnav-web:${{ env.GIT_SHA }}
-#          docker push ${{ secrets.OPENSHIFT_REGISTRY }}/${{ secrets.OPENSHIFT_PROJECT }}/house-innovations-housnav-web:latest
+      #      - name: Push Docker image to OpenShift registry
+      #        if: github.ref == 'refs/heads/main' && github.event_name == 'pull_request' && github.event.pull_request.merged == true
+      #        run: |
+      #          docker push ${{ secrets.OPENSHIFT_REGISTRY }}/${{ secrets.OPENSHIFT_PROJECT }}/house-innovations-housnav-web:${{ env.GIT_SHA }}
+      #          docker push ${{ secrets.OPENSHIFT_REGISTRY }}/${{ secrets.OPENSHIFT_PROJECT }}/house-innovations-housnav-web:latest
