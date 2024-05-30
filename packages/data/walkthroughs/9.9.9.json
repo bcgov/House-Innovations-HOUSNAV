@@ -1892,13 +1892,13 @@
       "nextNavigationLogic": [
         {
           "nextLogicType": "equals",
-          "answerToCheck": "P17",
+          "answerToCheck": "P18",
           "answerValue": "true",
-          "nextNavigateTo": "P18"
+          "nextNavigateTo": "R1.1"
         },
         {
           "nextLogicType": "fallback",
-          "nextNavigateTo": "P20"
+          "nextNavigateTo": "P19"
         }
       ]
     },
