@@ -1875,6 +1875,228 @@
           "nextNavigateTo": "R20"
         }
       ]
+    },
+    "P18-9.9.9.3-remove-after-review": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Is this dwelling unit located above another dwelling unit or common space?",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equals",
+          "answerToCheck": "P17",
+          "answerValue": "true",
+          "nextNavigateTo": "P18"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P20"
+        }
+      ]
+    },
+    "P19": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Does the egress door of this dwelling unit open onto a shared egress facility (corridor, passageway, stair, ramp, etc.) that is served by a single stair or ramp?",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "equals",
+              "answerToCheck": "P19",
+              "answerValue": "true"
+            },
+            {
+              "nextLogicType": "contains",
+              "answerToCheck": "P5",
+              "answerValue": "true"
+            }
+          ],
+          "nextNavigateTo": "R1.0"
+        },
+        {
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "equals",
+              "answerToCheck": "P19",
+              "answerValue": "true"
+            },
+            {
+              "nextLogicType": "contains",
+              "answerToCheck": "P8",
+              "answerValue": "true"
+            }
+          ],
+          "nextNavigateTo": "R1.0"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R2.0"
+        }
+      ]
+    },
+    "P20": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Does the egress door of this dwelling unit open onto an exit stair, public corridor, exterior passageway, or balcony, that serves more than one suite?",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equals",
+          "answerToCheck": "P20",
+          "answerValue": "false",
+          "nextNavigateTo": "R1.0"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P21"
+        }
+      ]
+    },
+    "P21": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "The egress door of the dwelling unit opens onto ...",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "An exit stairway",
+          "answerValue": "A"
+        },
+        {
+          "answerDisplayText": "A public corridor",
+          "answerValue": "B"
+        },
+        {
+          "answerDisplayText": "An exterior passageway",
+          "answerValue": "C"
+        },
+        {
+          "answerDisplayText": "A balcony",
+          "answerValue": "D"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equals",
+          "answerToCheck": "P21",
+          "answerValue": "A",
+          "nextNavigateTo": "R2.0"
+        },
+        {
+          "nextLogicType": "equals",
+          "answerToCheck": "P21",
+          "answerValue": "B",
+          "nextNavigateTo": "P22"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P23"
+        }
+      ]
+    },
+    "P22": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Is the public corridor served by a single exit?",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equals",
+          "answerToCheck": "P22",
+          "answerValue": "false",
+          "nextNavigateTo": "R1.0"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R2.0"
+        }
+      ]
+    },
+    "P23": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Is the {answer from P21} served by a single exit stairway or ramp?",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equals",
+          "answerToCheck": "P23",
+          "answerValue": "true",
+          "nextNavigateTo": "P24"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R1.0"
+        }
+      ]
+    },
+    "P24": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Is the {answer from P21} no more than 1.5m above adjacent ground level?",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equals",
+          "answerToCheck": "P24",
+          "answerValue": "true",
+          "nextNavigateTo": "R1.0"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R2.0"
+        }
+      ]
     }
   },
   "results": {
