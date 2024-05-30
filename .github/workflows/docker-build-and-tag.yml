@@ -43,12 +43,32 @@ jobs:
         if: github.ref == 'refs/heads/main' && github.event_name == 'pull_request' && github.event.pull_request.merged == true
         run: docker tag house-innovations-housnav-web:${{ env.GIT_SHA }} house-innovations-housnav-web:latest
 
-      - name: List Docker images
-        run: docker images
+      - name: Login to OpenShift image registry with Docker
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ secrets.OPENSHIFT_REGISTRY_NAME }}
+          username: ${{ secrets.OPENSHIFT_SERVICEACCOUNT_NAME }}
+          password: ${{ secrets.OPENSHIFT_SERVICEACCOUNT_TOKEN }}
 
-      - name: Set output for Docker image tag
-        id: set-output
-        run: echo "::set-output name=image_tag::house-innovations-housnav-web:${{ env.GIT_SHA }}"
+      - name: Tag Docker image for OpenShift registry
+        run: docker tag house-innovations-housnav-web:${{ env.GIT_SHA }} ${{ secrets.OPENSHIFT_REGISTRY_REPOSITORY }}:${{ env.GIT_SHA }}
+
+      - name: Push Docker image to OpenShift registry
+        if: github.ref == 'refs/heads/main' && github.event_name == 'pull_request' && github.event.pull_request.merged == true
+        run: |
+          docker push ${{ secrets.OPENSHIFT_REGISTRY_REPOSITORY }}:${{ env.GIT_SHA }}
+
+      - name: Login to OpenShift with CLI
+        run: oc login --token=${{ secrets.OPENSHIFT_SERVICEACCOUNT_TOKEN }} --server=${{ secrets.OPENSHIFT_SERVER }}
+
+      - name: Export OpenShift Registry Repository
+        run: echo "OPENSHIFT_REGISTRY_REPOSITORY=${{ secrets.OPENSHIFT_REGISTRY_REPOSITORY }}" >> $GITHUB_ENV
+
+      - name: Deploy Application in OpenShift
+        run: envsubst < k8s/deployment.yaml | oc apply -f -      
+        
+      - name: Apply Network Policy in OpenShift
+        run: oc apply -f k8s/external-network-policy.yaml
   cypress-run:
     needs: build
     runs-on: ubuntu-latest

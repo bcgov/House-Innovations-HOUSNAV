@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: house-innovations-housnav-web-deployment
+  labels:
+    app: house-innovations-housnav-web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: house-innovations-housnav-web
+  template:
+    metadata:
+      labels:
+        app: house-innovations-housnav-web
+    spec:
+      containers:
+        - name: house-innovations-housnav-web
+          image: image-registry.apps.silver.devops.gov.bc.ca/d6af69-dev/docker-imagestream
+          ports:
+            - containerPort: 3000
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  revisionHistoryLimit: 3
+  rollbackTo:
+    revision: 1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: house-innovations-housnav-web-service
+spec:
+  selector:
+    app: house-innovations-housnav-web
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
