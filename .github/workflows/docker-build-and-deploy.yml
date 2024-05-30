@@ -29,7 +29,7 @@ jobs:
         run: docker build -t house-innovations-housnav-web:${{ env.GIT_SHA }} -f apps/web/Dockerfile . --no-cache
 
       - name: Tag Docker image as latest for main branch
-        if: github.ref == 'refs/heads/main' && github.event_name == 'pull_request' && github.event.pull_request.merged == true
+#        if: github.ref == 'refs/heads/main' && github.event_name == 'pull_request' && github.event.pull_request.merged == true
         run: docker tag house-innovations-housnav-web:${{ env.GIT_SHA }} house-innovations-housnav-web:latest
 
       - name: List Docker images
