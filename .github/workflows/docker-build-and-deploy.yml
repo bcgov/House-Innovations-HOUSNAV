@@ -60,11 +60,8 @@ jobs:
           docker push ${{ secrets.OPENSHIFT_REGISTRY_REPOSITORY }}:${{ env.GIT_SHA }}
 #          docker push ${{ secrets.OPENSHIFT_REGISTRY_REPOSITORY }}:${{ env.GIT_SHA }}/house-innovations-housnav-web:latest
 
-      - name: Pull Docker image from OpenShift registry
-          #        if: github.ref == 'refs/heads/main' && github.event_name == 'pull_request' && github.event.pull_request.merged == true
-        run: |
-          docker pull ${{ secrets.OPENSHIFT_REGISTRY_REPOSITORY }}:${{ env.GIT_SHA }}
-    #          docker push ${{ secrets.OPENSHIFT_REGISTRY_REPOSITORY }}:${{ env.GIT_SHA }}/house-innovations-housnav-web:latest
+      - name: Login to OpenShift with CLI
+        run: oc login --token=${{ secrets.OPENSHIFT_SERVICEACCOUNT_TOKEN }} --server=${{ secrets.OPENSHIFT_SERVER }}
 
-      - name: Verify Docker image
-        run: docker images
+      - name: Deploy Application in OpenShift
+        run: envsubst < k8s/deployment.yaml | oc apply -f -

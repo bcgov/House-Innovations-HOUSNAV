@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: house-innovations-housnav-web
-          image: image-registry.apps.silver.devops.gov.bc.ca/d6af69-dev/docker-imagestream
+          image: ${{OPENSHIFT_REGISTRY_REPOSITORY}}:${{GIT_SHA}}
           ports:
             - containerPort: 3000
   strategy:
