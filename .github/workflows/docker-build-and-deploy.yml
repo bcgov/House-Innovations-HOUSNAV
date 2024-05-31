@@ -57,5 +57,6 @@ jobs:
       - name: Push Docker image to OpenShift registry
 #        if: github.ref == 'refs/heads/main' && github.event_name == 'pull_request' && github.event.pull_request.merged == true
         run: |
-          docker push ${{ secrets.OPENSHIFT_REGISTRY }}:${{ env.GIT_SHA }}
+           docker push image-registry.apps.silver.devops.gov.bc.ca/d6af69-dev/docker-imagestream:${{ env.GIT_SHA }}
+#          docker push ${{ secrets.OPENSHIFT_REGISTRY }}:${{ env.GIT_SHA }}
 #          docker push ${{ secrets.OPENSHIFT_REGISTRY }}/${{ secrets.OPENSHIFT_PROJECT }}/house-innovations-housnav-web:latest
