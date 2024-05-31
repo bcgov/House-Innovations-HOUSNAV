@@ -44,11 +44,6 @@ jobs:
         if: github.ref == 'refs/heads/main' && github.event_name == 'pull_request' && github.event.pull_request.merged == true
         run: docker tag house-innovations-housnav-web:${{ env.GIT_SHA }} house-innovations-housnav-web:latest
 
-#      - name: Login to OpenShift
-#        run: |
-#          oc login --token=${{ secrets.OPENSHIFT_TOKEN }} --server=${{ secrets.OPENSHIFT_SERVER }}
-#          oc registry login
-
       - name: Login to OpenShift image registry with Docker
         uses: docker/login-action@v3
         with:
@@ -57,12 +52,19 @@ jobs:
           password: ${{ secrets.OPENSHIFT_SERVICEACCOUNT_TOKEN }}
 
       - name: Tag Docker image for OpenShift registry
-        run: |
-          docker tag house-innovations-housnav-web:${{ env.GIT_SHA }} ${{ secrets.OPENSHIFT_REGISTRY }}:${{ env.GIT_SHA }}
-#          docker tag house-innovations-housnav-web:latest ${{ secrets.OPENSHIFT_REGISTRY }}/${{ secrets.OPENSHIFT_PROJECT }}/house-innovations-housnav-web:latest
+        run: docker tag house-innovations-housnav-web:${{ env.GIT_SHA }} ${{ secrets.OPENSHIFT_REGISTRY_REPOSITORY }}:${{ env.GIT_SHA }}
 
       - name: Push Docker image to OpenShift registry
 #        if: github.ref == 'refs/heads/main' && github.event_name == 'pull_request' && github.event.pull_request.merged == true
         run: |
-          docker push ${{ secrets.OPENSHIFT_REGISTRY }}:${{ env.GIT_SHA }}
-#          docker push ${{ secrets.OPENSHIFT_REGISTRY }}/${{ secrets.OPENSHIFT_PROJECT }}/house-innovations-housnav-web:latest
+          docker push ${{ secrets.OPENSHIFT_REGISTRY_REPOSITORY }}:${{ env.GIT_SHA }}
+#          docker push ${{ secrets.OPENSHIFT_REGISTRY_REPOSITORY }}:${{ env.GIT_SHA }}/house-innovations-housnav-web:latest
+
+      - name: Pull Docker image from OpenShift registry
+          #        if: github.ref == 'refs/heads/main' && github.event_name == 'pull_request' && github.event.pull_request.merged == true
+        run: |
+          docker pull ${{ secrets.OPENSHIFT_REGISTRY_REPOSITORY }}:${{ env.GIT_SHA }}
+    #          docker push ${{ secrets.OPENSHIFT_REGISTRY_REPOSITORY }}:${{ env.GIT_SHA }}/house-innovations-housnav-web:latest
+
+      - name: Verify Docker image
+        run: docker images
