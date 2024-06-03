@@ -1876,9 +1876,9 @@
         }
       ]
     },
-    "P18-9.9.9.3-remove-after-review": {
+    "P18": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Is this dwelling unit located above another dwelling unit or common space?",
+      "questionText": "Is this <defined-term>dwelling unit</defined-term> located above another <defined-term>dwelling unit</defined-term> or common space?",
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
@@ -1894,7 +1894,7 @@
           "nextLogicType": "equals",
           "answerToCheck": "P18",
           "answerValue": "true",
-          "nextNavigateTo": "R1.1"
+          "nextNavigateTo": "R11"
         },
         {
           "nextLogicType": "fallback",
@@ -1904,7 +1904,7 @@
     },
     "P19": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Does the egress door of this dwelling unit open onto a shared egress facility (corridor, passageway, stair, ramp, etc.) that is served by a single stair or ramp?",
+      "questionText": "Does the egress door of this <defined-term>dwelling unit</defined-term> open onto a shared egress facility (corridor, passageway, stair, ramp, etc.) that is served by a single stair or ramp?",
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
@@ -1930,7 +1930,7 @@
               "answerValue": "true"
             }
           ],
-          "nextNavigateTo": "R1.0"
+          "nextNavigateTo": "R10"
         },
         {
           "nextLogicType": "and",
@@ -1946,17 +1946,17 @@
               "answerValue": "true"
             }
           ],
-          "nextNavigateTo": "R1.0"
+          "nextNavigateTo": "R10"
         },
         {
           "nextLogicType": "fallback",
-          "nextNavigateTo": "R2.0"
+          "nextNavigateTo": "R20"
         }
       ]
     },
     "P20": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Does the egress door of this dwelling unit open onto an exit stair, public corridor, exterior passageway, or balcony, that serves more than one suite?",
+      "questionText": "Does the egress door of this <defined-term>dwelling unit</defined-term> open onto an exit stair, public corridor, exterior passageway, or balcony, that serves more than one suite?",
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
@@ -1972,7 +1972,7 @@
           "nextLogicType": "equals",
           "answerToCheck": "P20",
           "answerValue": "false",
-          "nextNavigateTo": "R1.0"
+          "nextNavigateTo": "R10"
         },
         {
           "nextLogicType": "fallback",
@@ -2006,7 +2006,7 @@
           "nextLogicType": "equals",
           "answerToCheck": "P21",
           "answerValue": "A",
-          "nextNavigateTo": "R2.0"
+          "nextNavigateTo": "R20"
         },
         {
           "nextLogicType": "equals",
@@ -2038,11 +2038,11 @@
           "nextLogicType": "equals",
           "answerToCheck": "P22",
           "answerValue": "false",
-          "nextNavigateTo": "R1.0"
+          "nextNavigateTo": "R10"
         },
         {
           "nextLogicType": "fallback",
-          "nextNavigateTo": "R2.0"
+          "nextNavigateTo": "R20"
         }
       ]
     },
@@ -2068,7 +2068,7 @@
         },
         {
           "nextLogicType": "fallback",
-          "nextNavigateTo": "R1.0"
+          "nextNavigateTo": "R10"
         }
       ]
     },
@@ -2090,11 +2090,11 @@
           "nextLogicType": "equals",
           "answerToCheck": "P24",
           "answerValue": "true",
-          "nextNavigateTo": "R1.0"
+          "nextNavigateTo": "R10"
         },
         {
           "nextLogicType": "fallback",
-          "nextNavigateTo": "R2.0"
+          "nextNavigateTo": "R20"
         }
       ]
     }
