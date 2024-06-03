@@ -1688,7 +1688,7 @@
     },
     "P16": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Is the <defined-term>building sprinklered</defined-term>?",
+      "questionText": "Is the <defined-term>building</defined-term> <defined-term>sprinklered</defined-term>?",
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
@@ -1726,6 +1726,12 @@
         }
       ],
       "nextNavigationLogic": [
+        {
+          "nextLogicType": "equals",
+          "answerToCheck": "P17",
+          "answerValue": "false",
+          "nextNavigateTo": "R20"
+        },
         {
           "nextLogicType": "and",
           "valuesToCheck": [
@@ -1904,7 +1910,7 @@
     },
     "P19": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Does the egress door of this <defined-term>dwelling unit</defined-term> open onto a shared egress facility (corridor, passageway, stair, ramp, etc.) that is served by a single stair or ramp?",
+      "questionText": "Does the egress door of this <defined-term>dwelling unit</defined-term> open onto a shared egress facility (corridor, passageway, stair, <defined-term>ramp</defined-term>, etc.) that is served by a single stair or <defined-term>ramp</defined-term>?",
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
@@ -1925,25 +1931,49 @@
               "answerValue": "true"
             },
             {
-              "nextLogicType": "contains",
-              "answerToCheck": "P5",
-              "answerValue": "true"
-            }
-          ],
-          "nextNavigateTo": "R10"
-        },
-        {
-          "nextLogicType": "and",
-          "valuesToCheck": [
-            {
-              "nextLogicType": "equals",
-              "answerToCheck": "P19",
-              "answerValue": "true"
-            },
-            {
-              "nextLogicType": "contains",
-              "answerToCheck": "P8",
-              "answerValue": "true"
+              "nextLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.B",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.1",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.2",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.3",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P8.B",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P8.1",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P8.2",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P8.3",
+                  "answerValue": "true"
+                }
+              ]
             }
           ],
           "nextNavigateTo": "R10"
@@ -1956,7 +1986,7 @@
     },
     "P20": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Does the egress door of this <defined-term>dwelling unit</defined-term> open onto an exit stair, public corridor, exterior passageway, or balcony, that serves more than one suite?",
+      "questionText": "Does the egress door of this <defined-term>dwelling unit</defined-term> open onto an <defined-term>exit</defined-term> stair, <defined-term>public corridor</defined-term>, exterior passageway, or balcony, that serves more than one <defined-term>suite</defined-term>?",
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
@@ -1982,22 +2012,24 @@
     },
     "P21": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "The egress door of the dwelling unit opens onto ...",
+      "questionText": "The egress door of the <defined-term>dwelling unit</defined-term> opens onto ...",
       "possibleAnswers": [
         {
-          "answerDisplayText": "An exit stairway",
+          "answerDisplayText": "An <defined-term>exit</defined-term> stairway",
           "answerValue": "A"
         },
         {
-          "answerDisplayText": "A public corridor",
+          "answerDisplayText": "A <defined-term>public corridor</defined-term>",
           "answerValue": "B"
         },
         {
           "answerDisplayText": "An exterior passageway",
+          "answerValueDisplay": "exterior passageway",
           "answerValue": "C"
         },
         {
           "answerDisplayText": "A balcony",
+          "answerValueDisplay": "balcony",
           "answerValue": "D"
         }
       ],
@@ -2022,7 +2054,7 @@
     },
     "P22": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Is the public corridor served by a single exit?",
+      "questionText": "Is the <defined-term>public corridor</defined-term> served by a single <defined-term>exit</defined-term>?",
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
@@ -2048,7 +2080,7 @@
     },
     "P23": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Is the <answer-value answer='P21'/> served by a single exit stairway or ramp?",
+      "questionText": "Is the <answer-value answer='P21'/> served by a single <defined-term>exit</defined-term> stairway or <defined-term>ramp</defined-term>?",
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",

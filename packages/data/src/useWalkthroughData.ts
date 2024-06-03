@@ -13,6 +13,7 @@ export type AnswerValueTypes = string;
 
 interface PossibleAnswer {
   answerDisplayText: string;
+  answerValueDisplay?: string;
   answerValue: AnswerValueTypes;
 }
 
