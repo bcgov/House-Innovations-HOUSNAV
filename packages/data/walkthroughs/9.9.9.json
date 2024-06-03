@@ -2048,7 +2048,7 @@
     },
     "P23": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Is the {answer from P21} served by a single exit stairway or ramp?",
+      "questionText": "Is the <answer-value answer='P21'/> served by a single exit stairway or ramp?",
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
@@ -2074,7 +2074,7 @@
     },
     "P24": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Is the {answer from P21} no more than 1.5m above adjacent ground level?",
+      "questionText": "Is the <answer-value answer='P21'/> no more than 1.5m above adjacent ground level?",
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
