@@ -117,7 +117,10 @@ describe("Question", () => {
 
     // add questionCodeReference if it does not exist in questionData
     if (!questionInfo.questionData.questionCodeReference) {
-      questionInfo.questionData.questionCodeReference = "code reference";
+      questionInfo.questionData.questionCodeReference = {
+        displayString: "code reference",
+        codeNumber: "1",
+      };
     }
 
     // mock setQuestion function and render component

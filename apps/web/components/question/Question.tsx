@@ -120,8 +120,8 @@ export default function Question({
           className="web-Question--Reference"
           data-testid={TESTID_QUESTION_CODE_REFERENCE}
         >
-          {/* TODO - setup code reference once we have a question with one */}
-          Reference: <Button variant="code">Vol 2, Section 9.9.9.1</Button>
+          Reference:{" "}
+          <Button variant="code">{questionCodeReference.displayString}</Button>
         </p>
       )}
       <Form onSubmit={handleSubmit} className="web-Question--Form">
