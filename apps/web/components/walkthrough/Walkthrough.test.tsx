@@ -16,15 +16,15 @@ describe("Walkthrough", () => {
     const { getByTestId } = render(
       <Walkthrough
         walkthroughData={walkthroughData}
-        startingQuestionId={walkthroughData.info.startingQuestionId}
+        startingSectionId={walkthroughData.info.startingSectionId}
       />,
     );
 
     // expect component to render
     expect(getByTestId(TESTID_WALKTHROUGH)).toBeInTheDocument();
   });
-  // testid not in document when startingQuestionId is not found
-  it("does not render when startingQuestionId is not found", () => {
+  // testid not in document when startingSectionId is not found
+  it("does not render when startingSectionId is not found", () => {
     // get data
     const walkthroughData = useWalkthroughTestData();
 
@@ -32,7 +32,7 @@ describe("Walkthrough", () => {
     const { queryByTestId } = render(
       <Walkthrough
         walkthroughData={walkthroughData}
-        startingQuestionId="notARealQuestionId"
+        startingSectionId="notARealQuestionId"
       />,
     );
 

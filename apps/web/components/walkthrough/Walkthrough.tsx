@@ -5,7 +5,7 @@ import { JSX, useState } from "react";
 import {
   isWalkthroughItemTypeVariable,
   QuestionDisplayData,
-  StartingQuestionId,
+  StartingSectionIdType,
   WalkthroughJSONType,
 } from "@repo/data/useWalkthroughData";
 import { TESTID_WALKTHROUGH } from "@repo/constants/src/testids";
@@ -14,16 +14,18 @@ import Question from "../question/Question";
 
 interface WalkthroughProps {
   walkthroughData: WalkthroughJSONType;
-  startingQuestionId: StartingQuestionId;
+  startingSectionId: StartingSectionIdType;
 }
 
 export default function Walkthrough({
   walkthroughData,
-  startingQuestionId,
+  startingSectionId,
 }: WalkthroughProps): JSX.Element {
   // set up current question state
-  const [currentQuestionId, setCurrentQuestionId] =
-    useState(startingQuestionId);
+  const [currentSectionId, setCurrentSectionId] = useState(startingSectionId);
+  const [currentQuestionId, setCurrentQuestionId] = useState(
+    walkthroughData.sections[currentSectionId]?.sectionQuestions[0] || "",
+  );
   const currentQuestion = walkthroughData.questions[currentQuestionId];
 
   if (!currentQuestion) {
@@ -37,12 +39,25 @@ export default function Walkthrough({
     // setVariable(currentQuestion.variableToSet);
   }
 
+  const updateQuestionAndSection = (questionId: string) => {
+    // update current question
+    setCurrentQuestionId(questionId);
+
+    // update current section
+    const currentSection = Object.entries(walkthroughData.sections).find(
+      ([, section]) => section.sectionQuestions.includes(questionId),
+    );
+    if (currentSection) {
+      setCurrentSectionId(currentSection[0]);
+    }
+  };
+
   return (
     <div data-testid={TESTID_WALKTHROUGH}>
       <Question
         questionData={currentQuestion as QuestionDisplayData}
         questionId={currentQuestionId}
-        setQuestion={setCurrentQuestionId}
+        setNextQuestion={updateQuestionAndSection}
       />
     </div>
   );

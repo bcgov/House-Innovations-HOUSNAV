@@ -39,7 +39,7 @@ describe("Question", () => {
       <Question
         questionData={questionInfo.questionData}
         questionId="questionId"
-        setQuestion={setQuestion}
+        setNextQuestion={setQuestion}
       />,
     );
 
@@ -64,7 +64,7 @@ describe("Question", () => {
       <Question
         questionData={questionInfo.questionData}
         questionId={questionInfo.questionKey}
-        setQuestion={setQuestion}
+        setNextQuestion={setQuestion}
       />,
     );
 
@@ -126,7 +126,7 @@ describe("Question", () => {
       <Question
         questionData={questionInfo.questionData}
         questionId={questionInfo.questionKey}
-        setQuestion={setQuestion}
+        setNextQuestion={setQuestion}
       />,
     );
 
@@ -146,7 +146,7 @@ describe("Question", () => {
       <Question
         questionData={questionInfo.questionData}
         questionId={questionInfo.questionKey}
-        setQuestion={setQuestion}
+        setNextQuestion={setQuestion}
       />,
     );
 

@@ -26,7 +26,7 @@ import "./Question.css";
 interface QuestionProps {
   questionData: QuestionDisplayData;
   questionId: string;
-  setQuestion: (question: string) => void;
+  setNextQuestion: (question: string) => void;
 }
 
 export interface SharedQuestionProps {
@@ -73,7 +73,7 @@ const getQuestionComponent = ({
 export default function Question({
   questionData,
   questionId,
-  setQuestion,
+  setNextQuestion,
 }: QuestionProps) {
   // setup state data
   const [value, setValue] = useState<string>();
@@ -88,9 +88,9 @@ export default function Question({
       formData.forEach((value, key) => {
         console.log("form data", key, value);
       });
-      setQuestion("next-question-id");
+      setNextQuestion("next-question-id");
     },
-    [setQuestion],
+    [setNextQuestion],
   );
 
   // get question component
