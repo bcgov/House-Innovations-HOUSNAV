@@ -23,7 +23,7 @@ export default function Page({
     <div>
       <Walkthrough
         walkthroughData={data}
-        startingQuestionId={data.info.startingQuestionId}
+        startingSectionId={data.info.startingSectionId}
       />
     </div>
   );

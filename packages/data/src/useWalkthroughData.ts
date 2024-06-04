@@ -96,14 +96,22 @@ interface ResultData {
   resultDisplayMessage: string;
 }
 
-export type StartingQuestionId = string;
+interface SectionData {
+  sectionTitle: string;
+  sectionQuestions: string[];
+}
+
+export type StartingSectionIdType = string;
 export type QuestionDisplayData =
   | QuestionMultipleChoiceData
   | QuestionMultipleChoiceSelectMultipleData;
 export interface WalkthroughJSONType {
   info: {
     title: string;
-    startingQuestionId: StartingQuestionId;
+    startingSectionId: StartingSectionIdType;
+  };
+  sections: {
+    [key: string]: SectionData;
   };
   questions: {
     [key: string]: QuestionDisplayData | QuestionVariableData;
