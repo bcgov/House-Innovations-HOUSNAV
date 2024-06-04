@@ -1727,39 +1727,17 @@
       ],
       "nextNavigationLogic": [
         {
-          "nextLogicType": "equals",
-          "answerToCheck": "P17",
-          "answerValue": "false",
-          "nextNavigateTo": "R20"
-        },
-        {
           "nextLogicType": "and",
           "valuesToCheck": [
-            {
-              "nextLogicType": "equals",
-              "answerToCheck": "P15",
-              "answerValue": "true"
-            },
-            {
-              "nextLogicType": "equals",
-              "answerToCheck": "P17",
-              "answerValue": "true"
-            }
-          ],
-          "nextNavigateTo": "P18"
-        },
-        {
-          "nextLogicType": "and",
-          "valuesToCheck": [
-            {
-              "nextLogicType": "equals",
-              "answerToCheck": "P15",
-              "answerValue": "true"
-            },
             {
               "nextLogicType": "equals",
               "answerToCheck": "P17",
               "answerValue": "false"
+            },
+            {
+              "nextLogicType": "equals",
+              "answerToCheck": "P15",
+              "answerValue": "true"
             }
           ],
           "nextNavigateTo": "P20"
@@ -1777,104 +1755,58 @@
               "valuesToCheck": [
                 {
                   "nextLogicType": "equal",
-                  "answerToCheck": "P5.B",
+                  "answerToCheck": "P15",
                   "answerValue": "true"
                 },
                 {
-                  "nextLogicType": "equal",
-                  "answerToCheck": "P5.1",
-                  "answerValue": "true"
-                },
-                {
-                  "nextLogicType": "equal",
-                  "answerToCheck": "P5.2",
-                  "answerValue": "true"
-                },
-                {
-                  "nextLogicType": "equal",
-                  "answerToCheck": "P5.3",
-                  "answerValue": "true"
-                },
-                {
-                  "nextLogicType": "equal",
-                  "answerToCheck": "P8.B",
-                  "answerValue": "true"
-                },
-                {
-                  "nextLogicType": "equal",
-                  "answerToCheck": "P8.1",
-                  "answerValue": "true"
-                },
-                {
-                  "nextLogicType": "equal",
-                  "answerToCheck": "P8.2",
-                  "answerValue": "true"
-                },
-                {
-                  "nextLogicType": "equal",
-                  "answerToCheck": "P8.3",
-                  "answerValue": "true"
+                  "nextLogicType": "or",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P5.B",
+                      "answerValue": "true"
+                    },
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P5.1",
+                      "answerValue": "true"
+                    },
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P5.2",
+                      "answerValue": "true"
+                    },
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P5.3",
+                      "answerValue": "true"
+                    },
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P8.B",
+                      "answerValue": "true"
+                    },
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P8.1",
+                      "answerValue": "true"
+                    },
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P8.2",
+                      "answerValue": "true"
+                    },
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P8.3",
+                      "answerValue": "true"
+                    }
+                  ]
                 }
               ]
             }
           ],
           "nextNavigateTo": "P18"
-        },
-        {
-          "nextLogicType": "and",
-          "valuesToCheck": [
-            {
-              "nextLogicType": "equal",
-              "answerToCheck": "P17",
-              "answerValue": "false"
-            },
-            {
-              "nextLogicType": "or",
-              "valuesToCheck": [
-                {
-                  "nextLogicType": "equal",
-                  "answerToCheck": "P5.B",
-                  "answerValue": "true"
-                },
-                {
-                  "nextLogicType": "equal",
-                  "answerToCheck": "P5.1",
-                  "answerValue": "true"
-                },
-                {
-                  "nextLogicType": "equal",
-                  "answerToCheck": "P5.2",
-                  "answerValue": "true"
-                },
-                {
-                  "nextLogicType": "equal",
-                  "answerToCheck": "P5.3",
-                  "answerValue": "true"
-                },
-                {
-                  "nextLogicType": "equal",
-                  "answerToCheck": "P8.B",
-                  "answerValue": "true"
-                },
-                {
-                  "nextLogicType": "equal",
-                  "answerToCheck": "P8.1",
-                  "answerValue": "true"
-                },
-                {
-                  "nextLogicType": "equal",
-                  "answerToCheck": "P8.2",
-                  "answerValue": "true"
-                },
-                {
-                  "nextLogicType": "equal",
-                  "answerToCheck": "P8.3",
-                  "answerValue": "true"
-                }
-              ]
-            }
-          ],
-          "nextNavigateTo": "P20"
         },
         {
           "nextLogicType": "fallback",
