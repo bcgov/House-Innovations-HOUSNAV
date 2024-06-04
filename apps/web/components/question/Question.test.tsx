@@ -133,8 +133,11 @@ describe("Question", () => {
       />,
     );
 
-    // expect code reference
+    // expect code reference and that it contains the displayString
     expect(getByTestId(TESTID_QUESTION_CODE_REFERENCE)).toBeInTheDocument();
+    expect(getByTestId(TESTID_QUESTION_CODE_REFERENCE)).toHaveTextContent(
+      questionInfo.questionData.questionCodeReference.displayString,
+    );
   });
   /*
    * QuestionMultiChoiceMultiple
