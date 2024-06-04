@@ -16,7 +16,8 @@ spec:
     spec:
       containers:
         - name: house-innovations-housnav-web
-          image: ${{OPENSHIFT_REGISTRY_REPOSITORY}}:${{GIT_SHA}}
+          image: docker-imagestream:981de74
+          # image: ${{OPENSHIFT_REGISTRY_REPOSITORY}}:${{GIT_SHA}}
           ports:
             - containerPort: 3000
   strategy:
