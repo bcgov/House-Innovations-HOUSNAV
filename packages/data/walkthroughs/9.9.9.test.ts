@@ -1,6 +1,7 @@
 // 3rd party
 import { describe, it, expect } from "vitest";
 // local
+import { isWalkthroughItemTypeVariable } from "../src/useWalkthroughData";
 import data from "../walkthroughs/9.9.9.json";
 
 describe("Data - 9.9.9", () => {
@@ -8,7 +9,7 @@ describe("Data - 9.9.9", () => {
     // iterate through each question and check if it appears in a section or is of variable type
     const possibleUnusedQuestion = Object.entries(data.questions).find(
       ([questionId, question]) => {
-        if (question.walkthroughItemType === "variable") {
+        if (isWalkthroughItemTypeVariable(question.walkthroughItemType)) {
           return false;
         }
 
@@ -20,7 +21,7 @@ describe("Data - 9.9.9", () => {
     if (possibleUnusedQuestion)
       console.log("Possible unused question ID:", possibleUnusedQuestion[0]);
 
-    // expect fail to be false
+    // expect possibleUnusedQuestion to be undefined
     expect(possibleUnusedQuestion).toBe(undefined);
   });
   it("verify all sectionQuestions are valid question ids", () => {
@@ -39,7 +40,7 @@ describe("Data - 9.9.9", () => {
       },
     );
 
-    // expect fail to be false
+    // expect sectionWithUnknownQuestion to be undefined
     expect(sectionWithUnknownQuestion).toBe(undefined);
   });
 });
