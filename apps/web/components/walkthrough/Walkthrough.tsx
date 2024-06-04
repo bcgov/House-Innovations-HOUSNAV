@@ -36,7 +36,6 @@ export default function Walkthrough({
   // check if currentQuestion is of type QuestionVariableData
   if (isWalkthroughItemTypeVariable(currentQuestion.walkthroughItemType)) {
     // TODO - handle variable type questions
-    // setVariable(currentQuestion.variableToSet);
   }
 
   const updateQuestionAndSection = (questionId: string) => {
