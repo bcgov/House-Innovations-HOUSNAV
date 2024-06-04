@@ -53,9 +53,14 @@ interface VariableToSet {
   };
 }
 
+type QuestionCodeReferenceType = {
+  displayString: string;
+  codeNumber: string;
+};
+
 interface QuestionBaseData {
   questionText: string;
-  questionCodeReference?: string;
+  questionCodeReference?: QuestionCodeReferenceType;
   possibleAnswers: PossibleAnswer[];
   nextNavigationLogic: NextNavigationLogic[];
 }
