@@ -10,13 +10,17 @@
   "scripts": {
     "lint": "eslint . --max-warnings 0",
     "format": "prettier --write \"**/*.{ts,tsx,md,css}\"",
-    "format:check": "prettier --check \"**/*.{ts,tsx,md,css}\""
+    "format:check": "prettier --check \"**/*.{ts,tsx,md,css}\"",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
     "@types/eslint": "^8.56.5",
+    "@vitest/coverage-v8": "^1.6.0",
     "eslint": "^8.57.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "vitest": "^1.6.0"
   }
 }
