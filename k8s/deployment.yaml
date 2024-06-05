@@ -14,6 +14,7 @@ spec:
       labels:
         app: house-innovations-housnav-web
     spec:
+      serviceAccountName: github-actions
       containers:
         - name: house-innovations-housnav-web
           image: docker-imagestream:981de74
