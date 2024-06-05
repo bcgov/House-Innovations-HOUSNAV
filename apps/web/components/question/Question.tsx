@@ -1,5 +1,5 @@
 // 3rd party
-import { FormEvent, useCallback, useState } from "react";
+import { FormEvent, useCallback } from "react";
 import { Form } from "react-aria-components";
 // repo
 import {
@@ -21,17 +21,25 @@ import Button from "@repo/ui/button";
 import QuestionMultiChoice from "./question-types/QuestionMultiChoice";
 import QuestionMultiChoiceMultiple from "./question-types/QuestionMultiChoiceMultiple";
 import { parseStringToComponents } from "../../utils/string";
+import {
+  NavigateToNextQuestionFunction,
+  SetAnswerValueFunction,
+  WalkthroughAnswersStateType,
+  WalkthroughAnswerType,
+} from "../walkthrough/Walkthrough";
 import "./Question.css";
 
 interface QuestionProps {
+  walkthroughAnswersState: WalkthroughAnswersStateType;
   questionData: QuestionDisplayData;
   questionId: string;
-  setNextQuestion: (question: string) => void;
+  navigateToNextQuestion: NavigateToNextQuestionFunction;
+  setAnswerValue: SetAnswerValueFunction;
 }
 
 export interface SharedQuestionProps {
-  value?: string;
-  setValue: (value: string) => void;
+  value?: WalkthroughAnswerType;
+  setValue: SetAnswerValueFunction;
   questionId: string;
 }
 
@@ -49,7 +57,7 @@ const getQuestionComponent = ({
   if (isWalkthroughItemTypeMultiChoice(questionData.walkthroughItemType)) {
     return (
       <QuestionMultiChoice
-        value={value}
+        value={value as string}
         setValue={setValue}
         questionId={questionId}
         {...(questionData as QuestionMultipleChoiceData)}
@@ -60,7 +68,7 @@ const getQuestionComponent = ({
   ) {
     return (
       <QuestionMultiChoiceMultiple
-        value={value}
+        value={value as string[]}
         setValue={setValue}
         questionId={questionId}
         {...(questionData as QuestionMultipleChoiceSelectMultipleData)}
@@ -73,10 +81,10 @@ const getQuestionComponent = ({
 export default function Question({
   questionData,
   questionId,
-  setNextQuestion,
+  navigateToNextQuestion,
+  walkthroughAnswersState,
+  setAnswerValue,
 }: QuestionProps) {
-  // setup state data
-  const [value, setValue] = useState<string>();
   const { questionText, questionCodeReference } = questionData;
 
   // TODO handle form submission, possibleInvalidAnswers, store answer as variable, and next navigation logic
@@ -88,16 +96,20 @@ export default function Question({
       formData.forEach((value, key) => {
         console.log("form data", key, value);
       });
-      setNextQuestion("next-question-id");
+      navigateToNextQuestion(
+        walkthroughAnswersState[questionId],
+        questionId,
+        questionId !== "P02" ? "P02" : "P03",
+      );
     },
-    [setNextQuestion],
+    [navigateToNextQuestion, walkthroughAnswersState, questionId],
   );
 
   // get question component
   const component = getQuestionComponent({
     questionData,
-    value,
-    setValue,
+    value: walkthroughAnswersState[questionId],
+    setValue: setAnswerValue,
     questionId,
   });
 

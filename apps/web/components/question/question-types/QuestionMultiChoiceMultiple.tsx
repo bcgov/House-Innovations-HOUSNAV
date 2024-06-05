@@ -2,20 +2,37 @@
 import { JSX } from "react";
 // repo
 import { QuestionMultipleChoiceSelectMultipleData } from "@repo/data/useWalkthroughData";
-import { TESTID_QUESTION_MULTI_CHOICE_MULTIPLE } from "@repo/constants/src/testids";
+import CheckboxGroup from "@repo/ui/checkbox-group";
+import { ID_QUESTION_TEXT } from "@repo/constants/src/ids";
 // local
 import { SharedQuestionProps } from "../Question";
 
 interface QuestionMultiChoiceMultipleProps
   extends SharedQuestionProps,
-    QuestionMultipleChoiceSelectMultipleData {}
+    QuestionMultipleChoiceSelectMultipleData {
+  value: string[];
+}
 
 export default function QuestionMultiChoiceMultiple({
-  questionText,
+  possibleAnswers,
+  value,
+  setValue,
+  questionId,
 }: QuestionMultiChoiceMultipleProps): JSX.Element {
+  // convert possible answers to checkbox group options
+  const checkboxGroupOptions = possibleAnswers.map((possibleAnswer) => ({
+    label: possibleAnswer.answerDisplayText,
+    value: possibleAnswer.answerValue,
+  }));
   return (
-    <div data-testid={TESTID_QUESTION_MULTI_CHOICE_MULTIPLE}>
-      <h2>QuestionMultiChoiceMultiple {questionText}</h2>
-    </div>
+    <CheckboxGroup
+      name={questionId}
+      value={value}
+      noLabel
+      onChange={(value) => setValue(value, questionId)}
+      isRequired
+      options={checkboxGroupOptions}
+      aria-labelledby={ID_QUESTION_TEXT}
+    />
   );
 }

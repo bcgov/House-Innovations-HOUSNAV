@@ -12,7 +12,6 @@ import {
   GET_TESTID_RADIO_GROUP,
   TESTID_QUESTION,
   TESTID_QUESTION_CODE_REFERENCE,
-  TESTID_QUESTION_MULTI_CHOICE_MULTIPLE,
   TESTID_QUESTION_SUBMIT,
   TESTID_QUESTION_TITLE,
 } from "@repo/constants/src/testids";
@@ -29,17 +28,21 @@ describe("Question", () => {
   it("Question: renders null if no question type found", () => {
     // get question info and throw error if not found
     const questionInfo = getMultiChoiceQuestion();
+    const walkthroughAnswerState = {};
 
     // update walkthroughItemType to unknown
     questionInfo.questionData.walkthroughItemType = "unknown";
 
-    // mock setQuestion function and render component
-    const setQuestion = vi.fn();
+    // mock navigateToNextQuestion function and render component
+    const navigateToNextQuestion = vi.fn();
+    const setAnswerValue = vi.fn();
     const { queryByTestId } = render(
       <Question
         questionData={questionInfo.questionData}
         questionId="questionId"
-        setNextQuestion={setQuestion}
+        navigateToNextQuestion={navigateToNextQuestion}
+        setAnswerValue={setAnswerValue}
+        walkthroughAnswersState={walkthroughAnswerState}
       />,
     );
 
@@ -52,19 +55,23 @@ describe("Question", () => {
   it("QuestionMultiChoice: renders", async () => {
     // get question info and throw error if not found
     const questionInfo = getMultiChoiceQuestion();
+    const walkthroughAnswerState = {};
 
     // remove questionCodeReference if it exists in questionData
     if (questionInfo.questionData.questionCodeReference) {
       delete questionInfo.questionData.questionCodeReference;
     }
 
-    // mock setQuestion function and render component
-    const setQuestion = vi.fn();
+    // mock navigateToNextQuestion function and render component
+    const navigateToNextQuestion = vi.fn();
+    const setAnswerValue = vi.fn();
     const { user, getByTestId, queryByTestId } = userSetupAndRender(
       <Question
         questionData={questionInfo.questionData}
         questionId={questionInfo.questionKey}
-        setNextQuestion={setQuestion}
+        setAnswerValue={setAnswerValue}
+        navigateToNextQuestion={navigateToNextQuestion}
+        walkthroughAnswersState={walkthroughAnswerState}
       />,
     );
 
@@ -88,8 +95,8 @@ describe("Question", () => {
       getByTestId(GET_TESTID_RADIO_GROUP(questionInfo.questionKey)),
     ).toBeInTheDocument();
 
-    // expect setQuestion to not have been called
-    expect(setQuestion).not.toHaveBeenCalled();
+    // expect navigateToNextQuestion to not have been called
+    expect(navigateToNextQuestion).not.toHaveBeenCalled();
 
     // select radio
     const radio1Value =
@@ -105,15 +112,16 @@ describe("Question", () => {
       await user.click(getByTestId(GET_TESTID_BUTTON(TESTID_QUESTION_SUBMIT)));
     });
 
-    // expect setQuestion to have been called
+    // expect navigateToNextQuestion to have been called
     await waitFor(() => {
-      expect(setQuestion).toHaveBeenCalled();
+      expect(navigateToNextQuestion).toHaveBeenCalled();
     });
   });
   // check question with code reference
   it("QuestionMultiChoice: renders with code reference", () => {
     // get question info and throw error if not found
     const questionInfo = getMultiChoiceQuestion();
+    const walkthroughAnswerState = {};
 
     // add questionCodeReference if it does not exist in questionData
     if (!questionInfo.questionData.questionCodeReference) {
@@ -123,13 +131,16 @@ describe("Question", () => {
       };
     }
 
-    // mock setQuestion function and render component
-    const setQuestion = vi.fn();
+    // mock navigateToNextQuestion function and render component
+    const navigateToNextQuestion = vi.fn();
+    const setAnswerValue = vi.fn();
     const { getByTestId } = render(
       <Question
         questionData={questionInfo.questionData}
         questionId={questionInfo.questionKey}
-        setNextQuestion={setQuestion}
+        setAnswerValue={setAnswerValue}
+        navigateToNextQuestion={navigateToNextQuestion}
+        walkthroughAnswersState={walkthroughAnswerState}
       />,
     );
 
@@ -145,20 +156,22 @@ describe("Question", () => {
   it("QuestionMultiChoiceMultiple: renders", () => {
     // get question info and throw error if not found
     const questionInfo = getMultiChoiceMultipleQuestion();
+    const walkthroughAnswerState = {};
 
-    // mock setQuestion function and render component
-    const setQuestion = vi.fn();
+    // mock navigateToNextQuestion function and render component
+    const navigateToNextQuestion = vi.fn();
+    const setAnswerValue = vi.fn();
     const { getByTestId } = render(
       <Question
         questionData={questionInfo.questionData}
         questionId={questionInfo.questionKey}
-        setNextQuestion={setQuestion}
+        setAnswerValue={setAnswerValue}
+        navigateToNextQuestion={navigateToNextQuestion}
+        walkthroughAnswersState={walkthroughAnswerState}
       />,
     );
 
     // expect component to render
-    expect(
-      getByTestId(TESTID_QUESTION_MULTI_CHOICE_MULTIPLE),
-    ).toBeInTheDocument();
+    expect(getByTestId(TESTID_QUESTION)).toBeInTheDocument();
   });
 });

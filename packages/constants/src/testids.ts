@@ -22,8 +22,6 @@ export const TESTID_QUESTION = "question";
 export const TESTID_QUESTION_TITLE = "question-title";
 export const TESTID_QUESTION_SUBMIT = "question-submit";
 export const TESTID_QUESTION_CODE_REFERENCE = "question-code-reference";
-export const TESTID_QUESTION_MULTI_CHOICE_MULTIPLE =
-  "question-multi-choice-multiple";
 export const TESTID_WALKTHROUGH = "walkthrough";
 export const TESTID_HEADER = "header";
 export const TESTID_HEADER_MOBILE_NAV = "header-mobile-nav";

@@ -9,7 +9,9 @@ import { SharedQuestionProps } from "../Question";
 
 interface QuestionMultipleChoiceProps
   extends SharedQuestionProps,
-    QuestionMultipleChoiceData {}
+    QuestionMultipleChoiceData {
+  value: string;
+}
 
 export default function QuestionMultiChoice({
   possibleAnswers,
@@ -22,7 +24,6 @@ export default function QuestionMultiChoice({
     label: possibleAnswer.answerDisplayText,
     value: possibleAnswer.answerValue,
   }));
-  // TODO - label!
   return (
     <>
       <RadioGroup
@@ -31,7 +32,7 @@ export default function QuestionMultiChoice({
         options={radioGroupOptions}
         isRequired
         value={value}
-        onChange={(value) => setValue(value)}
+        onChange={(value) => setValue(value, questionId)}
         aria-labelledby={ID_QUESTION_TEXT}
       />
     </>
