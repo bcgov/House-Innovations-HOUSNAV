@@ -17,7 +17,7 @@ spec:
       serviceAccountName: github-actions
       containers:
         - name: house-innovations-housnav-web
-          image: docker-imagestream:981de74
+          image: image-registry.apps.silver.devops.gov.bc.ca/d6af69-dev/docker-imagestream:981de74
           # image: ${{OPENSHIFT_REGISTRY_REPOSITORY}}:${{GIT_SHA}}
           ports:
             - containerPort: 3000
