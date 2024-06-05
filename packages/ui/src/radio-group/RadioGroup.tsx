@@ -6,7 +6,6 @@ import {
   RadioGroupProps as ReactAriaRadioGroupProps,
   Label,
 } from "react-aria-components";
-import { JSX } from "react";
 // repo
 import {
   GET_TESTID_RADIO,
@@ -19,10 +18,11 @@ import { AnswerValueTypes } from "@repo/data/useWalkthroughData";
 import "./RadioGroup.css";
 import Icon from "../icon/Icon";
 import InputError from "../input-error/InputError";
+import { parseStringToComponents } from "web/utils/string";
 
 export type RadioGroupOption = {
   value: AnswerValueTypes;
-  label: string | JSX.Element;
+  label: string;
 };
 
 export interface RadioGroupProps extends ReactAriaRadioGroupProps {
@@ -104,7 +104,7 @@ export default function RadioGroup({
           {currentValue !== option.value && (
             <Icon type="radioUnchecked" className="ui-Radio--Icon" />
           )}
-          {option.label}
+          <span>{parseStringToComponents(option.label)}</span>
         </ReactAriaRadio>
       ))}
       {/* TODO - is this data-testid applied? */}

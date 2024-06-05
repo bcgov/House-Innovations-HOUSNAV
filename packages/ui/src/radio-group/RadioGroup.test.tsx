@@ -30,12 +30,7 @@ const RADIO_GROUP_OPTIONS = [
   { label: "1 storey", value: OPTION_1_VALUE },
   { label: "2 storeys", value: OPTION_2_VALUE },
   {
-    label: (
-      <>
-        3&nbsp;
-        <Button variant={"glossary"}>storeys</Button>
-      </>
-    ),
+    label: '3 <Button variant="glossary">storeys</Button>',
     value: OPTION_3_VALUE,
   },
 ];

@@ -51,12 +51,12 @@
       var(--surface-color-border-active);
     outline-offset: var(--outline-offset);
   }
-
   .ui-Button {
     font: inherit;
   }
 }
 
 .ui-Checkbox--Icon {
+  flex-shrink: 0;
   margin-right: var(--layout-padding-medium);
 }

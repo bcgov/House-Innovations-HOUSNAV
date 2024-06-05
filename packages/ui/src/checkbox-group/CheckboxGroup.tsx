@@ -6,7 +6,6 @@ import {
   CheckboxGroupProps as ReactAriaCheckboxGroupProps,
   Label,
 } from "react-aria-components";
-import { JSX } from "react";
 // repo
 import {
   GET_TESTID_CHECKBOX,
@@ -19,10 +18,11 @@ import { AnswerValueTypes } from "@repo/data/useWalkthroughData";
 import "./CheckboxGroup.css";
 import Icon from "../icon/Icon";
 import InputError from "../input-error/InputError";
+import { parseStringToComponents } from "web/utils/string";
 
 export type CheckboxGroupOption = {
   value: AnswerValueTypes;
-  label: string | JSX.Element;
+  label: string;
 };
 
 export interface CheckboxGroupProps extends ReactAriaCheckboxGroupProps {
@@ -104,7 +104,7 @@ export default function CheckboxGroup({
           {!currentValue?.includes(option.value) && (
             <Icon type="checkboxUnchecked" className="ui-Checkbox--Icon" />
           )}
-          {option.label}
+          <span>{parseStringToComponents(option.label)}</span>
         </ReactAriaCheckbox>
       ))}
       {/* TODO - is this data-testid applied? */}
