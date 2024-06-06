@@ -1,4 +1,4 @@
-name: Docker Build and Tag
+name: Docker Build and Deploy
 
 on:
   push:
@@ -24,6 +24,7 @@ jobs:
   build:
     needs: test
     runs-on: ubuntu-latest
+    environment: dev
 
     steps:
       - name: Checkout repository
@@ -39,8 +40,12 @@ jobs:
       - name: Build Docker image with commit hash
         run: docker build -t house-innovations-housnav-web:${{ env.GIT_SHA }} -f apps/web/Dockerfile . --no-cache
 
+      - name: Tag Docker image for PR
+        if: github.event_name == 'pull_request'
+        run: docker tag house-innovations-housnav-web:${{ env.GIT_SHA }} house-innovations-housnav-web:pr-${{ github.event.number }}
+
       - name: Tag Docker image as latest for main branch
-        if: github.ref == 'refs/heads/main' && github.event_name == 'pull_request' && github.event.pull_request.merged == true
+        if: github.ref == 'refs/heads/main'
         run: docker tag house-innovations-housnav-web:${{ env.GIT_SHA }} house-innovations-housnav-web:latest
 
       - name: Login to OpenShift image registry with Docker
@@ -54,10 +59,15 @@ jobs:
         run: docker tag house-innovations-housnav-web:${{ env.GIT_SHA }} ${{ secrets.OPENSHIFT_REGISTRY_REPOSITORY }}:${{ env.GIT_SHA }}
 
       - name: Push Docker image to OpenShift registry
-        if: github.ref == 'refs/heads/main' && github.event_name == 'pull_request' && github.event.pull_request.merged == true
-        run: |
-        #  docker push ${{ secrets.OPENSHIFT_REGISTRY_REPOSITORY }}:${{ env.GIT_SHA }}/house-innovations-housnav-web:latest
-          docker push ${{ secrets.OPENSHIFT_REGISTRY_REPOSITORY }}:${{ env.GIT_SHA }}
+        run: docker push ${{ secrets.OPENSHIFT_REGISTRY_REPOSITORY }}:${{ env.GIT_SHA }}
+
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Login to OpenShift with CLI
         run: oc login --token=${{ secrets.OPENSHIFT_SERVICEACCOUNT_TOKEN }} --server=${{ secrets.OPENSHIFT_SERVER }}
@@ -66,10 +76,11 @@ jobs:
         run: echo "OPENSHIFT_REGISTRY_REPOSITORY=${{ secrets.OPENSHIFT_REGISTRY_REPOSITORY }}" >> $GITHUB_ENV
 
       - name: Deploy Application in OpenShift
-        run: envsubst < k8s/deployment.yaml | oc apply -f -      
-        
+        run: envsubst < k8s/deployment.yaml | oc apply -f -
+
       - name: Apply Network Policy in OpenShift
-        run: oc apply -f k8s/external-network-policy.yaml
+        run: oc apply -f k8s/network-policy.yaml
+
   cypress-run:
     needs: build
     runs-on: ubuntu-latest

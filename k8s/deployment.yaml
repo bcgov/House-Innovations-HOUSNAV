@@ -17,10 +17,21 @@ spec:
       serviceAccountName: github-actions
       containers:
         - name: house-innovations-housnav-web
-          image: image-registry.apps.silver.devops.gov.bc.ca/d6af69-dev/docker-imagestream:981de74
-          # image: ${{OPENSHIFT_REGISTRY_REPOSITORY}}:${{GIT_SHA}}
+          image: ${OPENSHIFT_REGISTRY_REPOSITORY}:${GIT_SHA}
           ports:
             - containerPort: 3000
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 30
+            periodSeconds: 10
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -41,3 +52,14 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 3000
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: house-innovations-housnav-web-route
+spec:
+  to:
+    kind: Service
+    name: house-innovations-housnav-web-service
+  port:
+    targetPort: 3000
