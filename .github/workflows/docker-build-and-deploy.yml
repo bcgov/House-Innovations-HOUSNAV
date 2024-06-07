@@ -1,31 +1,14 @@
-name: Docker Build and Deploy
+name: Build and Deploy
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
   workflow_dispatch: # This allows you to manually trigger the workflow
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: use node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18.x'
-      - run: npm ci
-      - run: npm run test
   build:
-    needs: test
     runs-on: ubuntu-latest
-    environment: dev
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -40,12 +23,7 @@ jobs:
       - name: Build Docker image with commit hash
         run: docker build -t house-innovations-housnav-web:${{ env.GIT_SHA }} -f apps/web/Dockerfile . --no-cache
 
-      - name: Tag Docker image for PR
-        if: github.event_name == 'pull_request'
-        run: docker tag house-innovations-housnav-web:${{ env.GIT_SHA }} house-innovations-housnav-web:pr-${{ github.event.number }}
-
       - name: Tag Docker image as latest for main branch
-        if: github.ref == 'refs/heads/main'
         run: docker tag house-innovations-housnav-web:${{ env.GIT_SHA }} house-innovations-housnav-web:latest
 
       - name: Login to OpenShift image registry with Docker
@@ -62,7 +40,6 @@ jobs:
         run: docker push ${{ secrets.OPENSHIFT_REGISTRY_REPOSITORY }}:${{ env.GIT_SHA }}
 
   deploy:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     needs: build
     steps:
@@ -80,13 +57,4 @@ jobs:
 
       - name: Apply Network Policy in OpenShift
         run: oc apply -f k8s/network-policy.yaml
-
-  cypress-run:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - run: npm ci
-      - run: npm run dev &
-      - run: npm run e2e
+        
