@@ -6,6 +6,7 @@ import {
   QuestionVariableData,
   WalkthroughItemTypeMultiChoice,
   WalkthroughItemTypeMultiChoiceMultiple,
+  WalkthroughJSONType,
 } from "./useWalkthroughData";
 
 export function getMultiChoiceQuestion() {
@@ -53,5 +54,7 @@ export function getMultiChoiceMultipleQuestion() {
 }
 
 export default function useWalkthroughTestData() {
-  return testCase999;
+  // deep clone and return test data
+  const testData = JSON.parse(JSON.stringify(testCase999));
+  return testData as WalkthroughJSONType;
 }

@@ -1,38 +1,53 @@
 // 3rd party
-import { JSX } from "react";
+import { JSX, useCallback } from "react";
+import { observer } from "mobx-react-lite";
 // repo
-import { QuestionMultipleChoiceSelectMultipleData } from "@repo/data/useWalkthroughData";
 import CheckboxGroup from "@repo/ui/checkbox-group";
 import { ID_QUESTION_TEXT } from "@repo/constants/src/ids";
 // local
-import { SharedQuestionProps } from "../Question";
+import QuestionMissing from "./QuestionMissing";
+import { useWalkthroughState } from "../../../stores/WalkthroughRootStore";
 
-interface QuestionMultiChoiceMultipleProps
-  extends SharedQuestionProps,
-    QuestionMultipleChoiceSelectMultipleData {
-  value: string[];
-}
+const QuestionMultiChoiceMultiple = observer((): JSX.Element => {
+  // get data from store
+  const {
+    currentQuestionId,
+    currentQuestionAsMultipleChoiceMultiple,
+    setAnswerValue,
+    multipleChoiceMultipleAnswerValue,
+  } = useWalkthroughState();
 
-export default function QuestionMultiChoiceMultiple({
-  possibleAnswers,
-  value,
-  setValue,
-  questionId,
-}: QuestionMultiChoiceMultipleProps): JSX.Element {
+  // handle missing question data
+  if (!currentQuestionAsMultipleChoiceMultiple) return <QuestionMissing />;
+
   // convert possible answers to checkbox group options
-  const checkboxGroupOptions = possibleAnswers.map((possibleAnswer) => ({
-    label: possibleAnswer.answerDisplayText,
-    value: possibleAnswer.answerValue,
-  }));
+  const checkboxGroupOptions =
+    currentQuestionAsMultipleChoiceMultiple.possibleAnswers.map(
+      (possibleAnswer) => ({
+        label: possibleAnswer.answerDisplayText,
+        value: possibleAnswer.answerValue,
+      }),
+    );
+
+  // setup onChange handler
+  const onChange = useCallback(
+    (value: string[]) => {
+      setAnswerValue(value, currentQuestionId);
+    },
+    [setAnswerValue, currentQuestionId],
+  );
+
   return (
     <CheckboxGroup
-      name={questionId}
-      value={value}
+      name={currentQuestionId}
+      value={multipleChoiceMultipleAnswerValue}
       noLabel
-      onChange={(value) => setValue(value, questionId)}
+      onChange={onChange}
       isRequired
       options={checkboxGroupOptions}
       aria-labelledby={ID_QUESTION_TEXT}
     />
   );
-}
+});
+
+export default QuestionMultiChoiceMultiple;

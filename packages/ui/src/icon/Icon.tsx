@@ -11,6 +11,8 @@ import RadioUnchecked from "./icons/RadioUnchecked";
 import RadioChecked from "./icons/RadioChecked";
 import CheckboxChecked from "./icons/CheckboxChecked";
 import CheckboxUnchecked from "./icons/CheckboxUnchecked";
+import ArrowBack from "./icons/ArrowBack";
+import ArrowForward from "./icons/ArrowForward";
 
 // NOTE: When adding a new icon, make sure to add the string here, and the icon component below in the ICONS object
 export type IconType =
@@ -21,7 +23,9 @@ export type IconType =
   | "radioUnchecked"
   | "radioChecked"
   | "checkboxChecked"
-  | "checkboxUnchecked";
+  | "checkboxUnchecked"
+  | "arrowBack"
+  | "arrowForward";
 
 export interface IconComponentProps extends SVGProps<SVGSVGElement> {
   /**
@@ -60,6 +64,8 @@ const ICONS: Record<IconType, FunctionComponent<IconProps>> = {
   radioChecked: RadioChecked,
   checkboxChecked: CheckboxChecked,
   checkboxUnchecked: CheckboxUnchecked,
+  arrowBack: ArrowBack,
+  arrowForward: ArrowForward,
 };
 
 export default function Icon({

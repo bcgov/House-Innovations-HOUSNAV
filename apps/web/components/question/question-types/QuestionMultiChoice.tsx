@@ -1,40 +1,54 @@
 // 3rd party
-import { JSX } from "react";
+import { JSX, useCallback } from "react";
+import { observer } from "mobx-react-lite";
 // repo
-import { QuestionMultipleChoiceData } from "@repo/data/useWalkthroughData";
 import RadioGroup from "@repo/ui/radio-group";
 import { ID_QUESTION_TEXT } from "@repo/constants/src/ids";
 // local
-import { SharedQuestionProps } from "../Question";
+import QuestionMissing from "./QuestionMissing";
+import { useWalkthroughState } from "../../../stores/WalkthroughRootStore";
 
-interface QuestionMultipleChoiceProps
-  extends SharedQuestionProps,
-    QuestionMultipleChoiceData {
-  value: string;
-}
+const QuestionMultiChoice = observer((): JSX.Element => {
+  // get data from store
+  const {
+    currentQuestionId,
+    currentQuestionAsMultipleChoice,
+    setAnswerValue,
+    multipleChoiceAnswerValue,
+  } = useWalkthroughState();
 
-export default function QuestionMultiChoice({
-  possibleAnswers,
-  value,
-  setValue,
-  questionId,
-}: QuestionMultipleChoiceProps): JSX.Element {
+  // handle missing question data
+  if (!currentQuestionAsMultipleChoice) return <QuestionMissing />;
+
   // convert possible answers to radio group options
-  const radioGroupOptions = possibleAnswers.map((possibleAnswer) => ({
-    label: possibleAnswer.answerDisplayText,
-    value: possibleAnswer.answerValue,
-  }));
+  const radioGroupOptions = currentQuestionAsMultipleChoice.possibleAnswers.map(
+    (possibleAnswer) => ({
+      label: possibleAnswer.answerDisplayText,
+      value: possibleAnswer.answerValue,
+    }),
+  );
+
+  // setup onChange handler
+  const onChange = useCallback(
+    (value: string) => {
+      setAnswerValue(value, currentQuestionId);
+    },
+    [setAnswerValue, currentQuestionId],
+  );
+
   return (
     <>
       <RadioGroup
-        name={questionId}
+        name={currentQuestionId}
         noLabel
         options={radioGroupOptions}
         isRequired
-        value={value}
-        onChange={(value) => setValue(value, questionId)}
+        value={multipleChoiceAnswerValue}
+        onChange={onChange}
         aria-labelledby={ID_QUESTION_TEXT}
       />
     </>
   );
-}
+});
+
+export default QuestionMultiChoice;

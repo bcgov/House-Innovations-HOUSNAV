@@ -21,6 +21,8 @@
     "axe-core": "^4.9.1",
     "cypress-axe": "^1.5.0",
     "html-react-parser": "^5.1.10",
+    "mobx": "^6.12.3",
+    "mobx-react-lite": "^4.0.7",
     "next": "^14.1.1",
     "react": "^18.2.0",
     "react-aria-components": "^1.2.0",

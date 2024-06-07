@@ -15,7 +15,9 @@ export type ButtonVariant =
   | "secondary"
   | "link"
   | "code"
-  | "glossary";
+  | "glossary"
+  | "tertiary";
+
 export interface ButtonProps extends ReactAriaButtonProps {
   /**
    * Defaults to `primary`.
