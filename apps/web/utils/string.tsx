@@ -10,6 +10,8 @@ import parse, {
 import DefinedTerm, {
   DefinedTermProps,
 } from "../components/defined-term/DefinedTerm";
+import Tooltip from "@repo/ui/tooltip";
+import { TooltipTrigger } from "react-aria-components";
 
 // Define custom components for html-react-parser
 const definedTermName = "defined-term";
@@ -33,12 +35,15 @@ export const parseStringToComponents = (html: string) => {
 
             if (DefinedTermComponent) {
               return (
-                <DefinedTermComponent
-                  {...(props as unknown as DefinedTermProps)}
-                  key={domNode.attribs.key}
-                >
-                  {domToReact(domNode.children as DOMNode[], options)}
-                </DefinedTermComponent>
+                <TooltipTrigger delay={0} closeDelay={0}>
+                  <DefinedTermComponent
+                    {...(props as unknown as DefinedTermProps)}
+                    key={domNode.attribs.key}
+                  >
+                    {domToReact(domNode.children as DOMNode[], options)}
+                  </DefinedTermComponent>
+                  <Tooltip placement="bottom">Default Tooltip.</Tooltip>
+                </TooltipTrigger>
               );
             }
           }
