@@ -133,10 +133,11 @@ const Question = observer(() => {
           data-testid={TESTID_QUESTION_FOOTER_BACK}
           variant="tertiary"
           onPress={handleBackClick}
+          className="web-Question--FooterBack"
           isDisabled={backButtonIsDisabled}
         >
           <Icon type="arrowBack" />
-          Back
+          <span className="web-Question--FooterBackText">Back</span>
         </Button>
       </div>
     </div>
