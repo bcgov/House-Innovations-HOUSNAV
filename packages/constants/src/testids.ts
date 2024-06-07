@@ -20,7 +20,8 @@ export const GET_TESTID_CHECKBOX = (testId: string, value: string) =>
 export const TESTID_DEFINED_TERM = "defined-term";
 export const TESTID_QUESTION = "question";
 export const TESTID_QUESTION_TITLE = "question-title";
-export const TESTID_QUESTION_SUBMIT = "question-submit";
+export const TESTID_QUESTION_FOOTER_BACK = "question-footer-back";
+export const TESTID_QUESTION_FOOTER_NEXT = "question-footer-next";
 export const TESTID_QUESTION_CODE_REFERENCE = "question-code-reference";
 export const TESTID_WALKTHROUGH = "walkthrough";
 export const TESTID_HEADER = "header";

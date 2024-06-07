@@ -1,147 +1,146 @@
 // 3rd party
 import { FormEvent, useCallback } from "react";
 import { Form } from "react-aria-components";
+import { observer } from "mobx-react-lite";
 // repo
 import {
   isWalkthroughItemTypeMultiChoice,
   isWalkthroughItemTypeMultiChoiceMultiple,
-  QuestionDisplayData,
-  QuestionMultipleChoiceData,
-  QuestionMultipleChoiceSelectMultipleData,
 } from "@repo/data/useWalkthroughData";
-import { ID_QUESTION_TEXT } from "@repo/constants/src/ids";
+import { ID_QUESTION_FORM, ID_QUESTION_TEXT } from "@repo/constants/src/ids";
 import {
   TESTID_QUESTION,
   TESTID_QUESTION_CODE_REFERENCE,
-  TESTID_QUESTION_SUBMIT,
+  TESTID_QUESTION_FOOTER_BACK,
+  TESTID_QUESTION_FOOTER_NEXT,
   TESTID_QUESTION_TITLE,
 } from "@repo/constants/src/testids";
 import Button from "@repo/ui/button";
+import Icon from "@repo/ui/icon";
 // local
 import QuestionMultiChoice from "./question-types/QuestionMultiChoice";
 import QuestionMultiChoiceMultiple from "./question-types/QuestionMultiChoiceMultiple";
+import QuestionMissing from "./question-types/QuestionMissing";
+import { useWalkthroughState } from "../../stores/WalkthroughRootStore";
 import { parseStringToComponents } from "../../utils/string";
-import {
-  NavigateToNextQuestionFunction,
-  SetAnswerValueFunction,
-  WalkthroughAnswersStateType,
-  WalkthroughAnswerType,
-} from "../walkthrough/Walkthrough";
 import "./Question.css";
 
-interface QuestionProps {
-  walkthroughAnswersState: WalkthroughAnswersStateType;
-  questionData: QuestionDisplayData;
-  questionId: string;
-  navigateToNextQuestion: NavigateToNextQuestionFunction;
-  setAnswerValue: SetAnswerValueFunction;
-}
-
-export interface SharedQuestionProps {
-  value?: WalkthroughAnswerType;
-  setValue: SetAnswerValueFunction;
-  questionId: string;
-}
-
-interface getQuestionComponentProps extends SharedQuestionProps {
-  questionData: QuestionDisplayData;
-}
-
 // helper function to get the correct question component
-const getQuestionComponent = ({
-  questionData,
-  value,
-  setValue,
-  questionId,
-}: getQuestionComponentProps) => {
-  if (isWalkthroughItemTypeMultiChoice(questionData.walkthroughItemType)) {
-    return (
-      <QuestionMultiChoice
-        value={value as string}
-        setValue={setValue}
-        questionId={questionId}
-        {...(questionData as QuestionMultipleChoiceData)}
-      />
-    );
-  } else if (
-    isWalkthroughItemTypeMultiChoiceMultiple(questionData.walkthroughItemType)
-  ) {
-    return (
-      <QuestionMultiChoiceMultiple
-        value={value as string[]}
-        setValue={setValue}
-        questionId={questionId}
-        {...(questionData as QuestionMultipleChoiceSelectMultipleData)}
-      />
-    );
+const getQuestionComponent = (walkthroughItemType: string) => {
+  if (isWalkthroughItemTypeMultiChoice(walkthroughItemType)) {
+    return <QuestionMultiChoice />;
+  } else if (isWalkthroughItemTypeMultiChoiceMultiple(walkthroughItemType)) {
+    return <QuestionMultiChoiceMultiple />;
   }
-  return null;
+  return <QuestionMissing />;
 };
 
-export default function Question({
-  questionData,
-  questionId,
-  navigateToNextQuestion,
-  walkthroughAnswersState,
-  setAnswerValue,
-}: QuestionProps) {
-  const { questionText, questionCodeReference } = questionData;
+const Question = observer(() => {
+  // get current question from store as not variable type question
+  const {
+    currentQuestionAsDisplayType: currentQuestion,
+    currentAnswerValue,
+    currentQuestionId,
+    setCurrentQuestionId,
+    navigationStore: {
+      backButtonIsDisabled,
+      nextButtonIsDisabled,
+      handleBackNavigation,
+      addCurrentQuestionToHistory,
+    },
+  } = useWalkthroughState();
 
-  // TODO handle form submission, possibleInvalidAnswers, store answer as variable, and next navigation logic
   const handleSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      const formData = new FormData(event.currentTarget);
-      // log out form data
-      formData.forEach((value, key) => {
-        console.log("form data", key, value);
-      });
-      navigateToNextQuestion(
-        walkthroughAnswersState[questionId],
-        questionId,
-        questionId !== "P02" ? "P02" : "P03",
-      );
+      // TODO handle possible invalid answers
+
+      // set current question
+      // TODO - handle next navigation logic
+      const nextQuestionId = currentQuestionId !== "P02" ? "P02" : "P03";
+      setCurrentQuestionId(nextQuestionId);
+
+      // update question history
+      addCurrentQuestionToHistory();
     },
-    [navigateToNextQuestion, walkthroughAnswersState, questionId],
+    [
+      currentAnswerValue,
+      currentQuestionId,
+      addCurrentQuestionToHistory,
+      setCurrentQuestionId,
+    ],
   );
+
+  const handleBackClick = useCallback(() => {
+    // set current question to previous question in history
+    handleBackNavigation();
+  }, [handleBackNavigation]);
+
+  // handle missing question data
+  if (!currentQuestion) return <QuestionMissing />;
 
   // get question component
-  const component = getQuestionComponent({
-    questionData,
-    value: walkthroughAnswersState[questionId],
-    setValue: setAnswerValue,
-    questionId,
-  });
-
-  // if no component, return null
-  if (!component) {
-    return null;
-  }
+  const component = getQuestionComponent(currentQuestion.walkthroughItemType);
 
   return (
-    <div className="web-Question u-container" data-testid={TESTID_QUESTION}>
-      <h1
-        className="web-Question--Title"
-        id={ID_QUESTION_TEXT}
-        data-testid={TESTID_QUESTION_TITLE}
-      >
-        {parseStringToComponents(questionText)}
-      </h1>
-      {questionCodeReference && (
-        <p
-          className="web-Question--Reference"
-          data-testid={TESTID_QUESTION_CODE_REFERENCE}
+    <div
+      className="web-Question"
+      data-testid={TESTID_QUESTION}
+      key={`question-${currentQuestionId}`}
+    >
+      <div className="web-Question--Content">
+        <div className="u-container">
+          <h1
+            className="web-Question--Title"
+            id={ID_QUESTION_TEXT}
+            data-testid={TESTID_QUESTION_TITLE}
+          >
+            {parseStringToComponents(currentQuestion.questionText)}
+          </h1>
+          {currentQuestion.questionCodeReference && (
+            <p
+              className="web-Question--Reference"
+              data-testid={TESTID_QUESTION_CODE_REFERENCE}
+            >
+              Reference:{" "}
+              <Button variant="code">
+                {currentQuestion.questionCodeReference.displayString}
+              </Button>
+            </p>
+          )}
+          <Form
+            id={ID_QUESTION_FORM}
+            onSubmit={handleSubmit}
+            className="web-Question--Form"
+          >
+            {component}
+          </Form>
+        </div>
+      </div>
+      <div className="web-Question--Footer">
+        <Button
+          data-testid={TESTID_QUESTION_FOOTER_NEXT}
+          type="submit"
+          form={ID_QUESTION_FORM}
+          className="web-Question--FooterNext"
+          isDisabled={nextButtonIsDisabled}
         >
-          Reference:{" "}
-          <Button variant="code">{questionCodeReference.displayString}</Button>
-        </p>
-      )}
-      <Form onSubmit={handleSubmit} className="web-Question--Form">
-        {component}
-        <Button type={"submit"} data-testid={TESTID_QUESTION_SUBMIT}>
-          Submit
+          Next Step
+          <Icon type="arrowForward" />
+          {/* TODO - Add logic for start over text at end */}
         </Button>
-      </Form>
+        <Button
+          data-testid={TESTID_QUESTION_FOOTER_BACK}
+          variant="tertiary"
+          onPress={handleBackClick}
+          isDisabled={backButtonIsDisabled}
+        >
+          <Icon type="arrowBack" />
+          Back
+        </Button>
+      </div>
     </div>
   );
-}
+});
+
+export default Question;

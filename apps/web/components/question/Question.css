@@ -6,11 +6,10 @@
 }
 
 .web-Question {
-  &.u-container {
-    padding-top: var(--question-container-padding-y);
-    padding-bottom: var(--question-container-padding-y);
-    max-width: var(--question-container-max-width);
-  }
+  display: grid;
+  grid-template-rows: auto 67px;
+  overflow: hidden;
+  position: relative;
 }
 
 .web-Question--Title {
@@ -29,6 +28,33 @@
 
 .web-Question--Form {
   margin-top: var(--question-form-margin-top);
+}
+
+.web-Question--Content {
+  overflow: auto;
+}
+
+.web-Question--Content .u-container {
+  padding-top: var(--question-container-padding-y);
+  padding-bottom: var(--question-container-padding-y);
+  max-width: var(--question-container-max-width);
+}
+
+.web-Question--Footer {
+  background-color: var(--surface-color-background-white);
+  display: flex;
+  justify-content: space-between;
+  padding: var(--layout-padding-smedium) var(--layout-padding-xlarge);
+  border-top: var(--layout-border-width-small) solid
+    var(--surface-color-border-default);
+}
+.web-Question--Footer .ui-Icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.web-Question--FooterNext {
+  order: 1;
 }
 
 /* TABLET - 608px */

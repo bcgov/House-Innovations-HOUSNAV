@@ -1,10 +1,15 @@
+"use client";
 // 3rd party
-import { JSX } from "react";
+import React, { JSX } from "react";
 import { notFound } from "next/navigation";
 // repo
 import useWalkthroughData from "@repo/data/useWalkthroughData";
 // local
 import Walkthrough from "../../../components/walkthrough/Walkthrough";
+import {
+  CreateWalkthroughStore,
+  WalkthroughStateContext,
+} from "../../../stores/WalkthroughRootStore";
 
 export default function Page({
   params,
@@ -19,12 +24,12 @@ export default function Page({
     notFound();
   }
 
+  // create store
+  const WalkthroughStore = CreateWalkthroughStore(data);
+
   return (
-    <div>
-      <Walkthrough
-        walkthroughData={data}
-        startingSectionId={data.info.startingSectionId}
-      />
-    </div>
+    <WalkthroughStateContext.Provider value={WalkthroughStore}>
+      <Walkthrough />
+    </WalkthroughStateContext.Provider>
   );
 }

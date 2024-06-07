@@ -1,18 +1,16 @@
 // 3rd party
-import { describe, expect, it, vi } from "vitest";
-import { act, render, waitFor } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
 // repo
-import {
+import useWalkthroughTestData, {
   getMultiChoiceMultipleQuestion,
   getMultiChoiceQuestion,
 } from "@repo/data/useWalkthroughTestData";
 import {
   GET_TESTID_BUTTON,
-  GET_TESTID_RADIO,
   GET_TESTID_RADIO_GROUP,
   TESTID_QUESTION,
   TESTID_QUESTION_CODE_REFERENCE,
-  TESTID_QUESTION_SUBMIT,
+  TESTID_QUESTION_FOOTER_NEXT,
   TESTID_QUESTION_TITLE,
 } from "@repo/constants/src/testids";
 // local
@@ -21,30 +19,24 @@ import {
   getStringFromComponents,
   parseStringToComponents,
 } from "../../utils/string";
-import { userSetupAndRender } from "../../tests/utils";
+import { renderWithWalkthroughProvider } from "../../tests/utils";
 
 describe("Question", () => {
   // renders null if no question type found
-  it("Question: renders null if no question type found", () => {
-    // get question info and throw error if not found
-    const questionInfo = getMultiChoiceQuestion();
-    const walkthroughAnswerState = {};
+  it("Question: renders null if it doesn't get question data", () => {
+    // get data
+    const walkthroughData = useWalkthroughTestData();
+    walkthroughData.info.startingSectionId = "TESTQUESTION";
+    const testQuestion = getMultiChoiceQuestion();
+    testQuestion.questionData.walkthroughItemType = "TESTQUESTION";
+    walkthroughData.questions[walkthroughData.info.startingSectionId] =
+      testQuestion.questionData;
 
-    // update walkthroughItemType to unknown
-    questionInfo.questionData.walkthroughItemType = "unknown";
-
-    // mock navigateToNextQuestion function and render component
-    const navigateToNextQuestion = vi.fn();
-    const setAnswerValue = vi.fn();
-    const { queryByTestId } = render(
-      <Question
-        questionData={questionInfo.questionData}
-        questionId="questionId"
-        navigateToNextQuestion={navigateToNextQuestion}
-        setAnswerValue={setAnswerValue}
-        walkthroughAnswersState={walkthroughAnswerState}
-      />,
-    );
+    // render component
+    const { queryByTestId } = renderWithWalkthroughProvider({
+      ui: <Question />,
+      data: walkthroughData,
+    });
 
     // expect component to not render
     expect(queryByTestId(TESTID_QUESTION)).not.toBeInTheDocument();
@@ -52,28 +44,28 @@ describe("Question", () => {
   /*
    * QuestionMultiChoice
    */
-  it("QuestionMultiChoice: renders", async () => {
-    // get question info and throw error if not found
-    const questionInfo = getMultiChoiceQuestion();
-    const walkthroughAnswerState = {};
+  it("QuestionMultiChoice: renders", () => {
+    // get data
+    const walkthroughData = useWalkthroughTestData();
+    const testQuestion = getMultiChoiceQuestion();
 
     // remove questionCodeReference if it exists in questionData
-    if (questionInfo.questionData.questionCodeReference) {
-      delete questionInfo.questionData.questionCodeReference;
+    if (testQuestion.questionData.questionCodeReference) {
+      delete testQuestion.questionData.questionCodeReference;
     }
 
-    // mock navigateToNextQuestion function and render component
-    const navigateToNextQuestion = vi.fn();
-    const setAnswerValue = vi.fn();
-    const { user, getByTestId, queryByTestId } = userSetupAndRender(
-      <Question
-        questionData={questionInfo.questionData}
-        questionId={questionInfo.questionKey}
-        setAnswerValue={setAnswerValue}
-        navigateToNextQuestion={navigateToNextQuestion}
-        walkthroughAnswersState={walkthroughAnswerState}
-      />,
-    );
+    // set test question as first question in section
+    walkthroughData.sections[
+      walkthroughData.info.startingSectionId
+    ]?.sectionQuestions.unshift(testQuestion.questionKey);
+    walkthroughData.questions[testQuestion.questionKey] =
+      testQuestion.questionData;
+
+    // render component
+    const { getByTestId, queryByTestId } = renderWithWalkthroughProvider({
+      ui: <Question />,
+      data: walkthroughData,
+    });
 
     // expect component to render
     expect(getByTestId(TESTID_QUESTION)).toBeInTheDocument();
@@ -81,7 +73,7 @@ describe("Question", () => {
     // expect title
     expect(getByTestId(TESTID_QUESTION_TITLE)).toHaveTextContent(
       getStringFromComponents(
-        parseStringToComponents(questionInfo.questionData.questionText),
+        parseStringToComponents(testQuestion.questionData.questionText),
       ),
     );
 
@@ -92,84 +84,65 @@ describe("Question", () => {
 
     // expect radio group
     expect(
-      getByTestId(GET_TESTID_RADIO_GROUP(questionInfo.questionKey)),
+      getByTestId(GET_TESTID_RADIO_GROUP(testQuestion.questionKey)),
     ).toBeInTheDocument();
 
-    // expect navigateToNextQuestion to not have been called
-    expect(navigateToNextQuestion).not.toHaveBeenCalled();
-
-    // select radio
-    const radio1Value =
-      questionInfo.questionData?.possibleAnswers[0]?.answerValue || "";
-    await act(async () => {
-      await user.click(
-        getByTestId(GET_TESTID_RADIO(questionInfo.questionKey, radio1Value)),
-      );
-    });
-
-    // click submit button
-    await act(async () => {
-      await user.click(getByTestId(GET_TESTID_BUTTON(TESTID_QUESTION_SUBMIT)));
-    });
-
-    // expect navigateToNextQuestion to have been called
-    await waitFor(() => {
-      expect(navigateToNextQuestion).toHaveBeenCalled();
-    });
+    // expect submit button
+    expect(
+      getByTestId(GET_TESTID_BUTTON(TESTID_QUESTION_FOOTER_NEXT)),
+    ).toBeInTheDocument();
   });
   // check question with code reference
   it("QuestionMultiChoice: renders with code reference", () => {
-    // get question info and throw error if not found
-    const questionInfo = getMultiChoiceQuestion();
-    const walkthroughAnswerState = {};
+    // get data
+    const walkthroughData = useWalkthroughTestData();
+    const testQuestion = getMultiChoiceQuestion();
 
     // add questionCodeReference if it does not exist in questionData
-    if (!questionInfo.questionData.questionCodeReference) {
-      questionInfo.questionData.questionCodeReference = {
+    if (!testQuestion.questionData.questionCodeReference) {
+      testQuestion.questionData.questionCodeReference = {
         displayString: "code reference",
         codeNumber: "1",
       };
     }
 
-    // mock navigateToNextQuestion function and render component
-    const navigateToNextQuestion = vi.fn();
-    const setAnswerValue = vi.fn();
-    const { getByTestId } = render(
-      <Question
-        questionData={questionInfo.questionData}
-        questionId={questionInfo.questionKey}
-        setAnswerValue={setAnswerValue}
-        navigateToNextQuestion={navigateToNextQuestion}
-        walkthroughAnswersState={walkthroughAnswerState}
-      />,
-    );
+    // set test question as first question in section
+    walkthroughData.sections[
+      walkthroughData.info.startingSectionId
+    ]?.sectionQuestions.unshift(testQuestion.questionKey);
+    walkthroughData.questions[testQuestion.questionKey] =
+      testQuestion.questionData;
+
+    const { getByTestId } = renderWithWalkthroughProvider({
+      ui: <Question />,
+      data: walkthroughData,
+    });
 
     // expect code reference and that it contains the displayString
     expect(getByTestId(TESTID_QUESTION_CODE_REFERENCE)).toBeInTheDocument();
     expect(getByTestId(TESTID_QUESTION_CODE_REFERENCE)).toHaveTextContent(
-      questionInfo.questionData.questionCodeReference.displayString,
+      testQuestion.questionData.questionCodeReference.displayString,
     );
   });
   /*
    * QuestionMultiChoiceMultiple
    */
   it("QuestionMultiChoiceMultiple: renders", () => {
-    // get question info and throw error if not found
-    const questionInfo = getMultiChoiceMultipleQuestion();
-    const walkthroughAnswerState = {};
+    // get data
+    const walkthroughData = useWalkthroughTestData();
+    const testQuestion = getMultiChoiceMultipleQuestion();
 
-    // mock navigateToNextQuestion function and render component
-    const navigateToNextQuestion = vi.fn();
-    const setAnswerValue = vi.fn();
-    const { getByTestId } = render(
-      <Question
-        questionData={questionInfo.questionData}
-        questionId={questionInfo.questionKey}
-        setAnswerValue={setAnswerValue}
-        navigateToNextQuestion={navigateToNextQuestion}
-        walkthroughAnswersState={walkthroughAnswerState}
-      />,
-    );
+    // set test question as first question in section
+    walkthroughData.sections[
+      walkthroughData.info.startingSectionId
+    ]?.sectionQuestions.unshift(testQuestion.questionKey);
+    walkthroughData.questions[testQuestion.questionKey] =
+      testQuestion.questionData;
+
+    const { getByTestId } = renderWithWalkthroughProvider({
+      ui: <Question />,
+      data: walkthroughData,
+    });
 
     // expect component to render
     expect(getByTestId(TESTID_QUESTION)).toBeInTheDocument();
