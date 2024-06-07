@@ -95,16 +95,6 @@ export class WalkthroughRootStore {
     this.currentQuestionId = questionId;
   };
 
-  // get currentSectionId() {
-  //   const currentSection = Object.entries(this.walkthroughData.sections).find(
-  //     ([, section]) =>
-  //       section.sectionQuestions.includes(this.currentQuestionId),
-  //   );
-  //   if (currentSection) {
-  //     return currentSection[0];
-  //   }
-  // }
-
   setAnswerValue = (value: WalkthroughAnswerType, questionId: string) => {
     this.answers[questionId] = value;
   };
