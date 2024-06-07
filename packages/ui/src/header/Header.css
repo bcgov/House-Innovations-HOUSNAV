@@ -79,7 +79,7 @@
   left: 0;
   right: 0;
   background-color: var(--surface-color-background-white);
-  padding: var(--layout-padding-medium);
+  padding: var(--header-nav-mobile-padding);
   outline: none;
 }
 
@@ -120,20 +120,8 @@ a.ui-Header--NavLink {
   }
 }
 
-/* TABLET - 608px */
-@media (min-width: 38rem) {
-  :root {
-    .ui-Header--NavMobile {
-      padding: var(--layout-padding-large);
-    }
-  }
-}
-
 /* DESKTOP - 912px */
 @media (min-width: 57rem) {
-  :root {
-  }
-
   button.ui-Header--NavMobileToggle {
     display: none;
   }
