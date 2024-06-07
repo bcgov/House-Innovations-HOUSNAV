@@ -2,7 +2,7 @@
 // 3rd party
 import { PropsWithChildren, ReactElement, useState } from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
+import Image from "@repo/ui/image";
 import { Dialog, Link as ReactAriaLink, Modal } from "react-aria-components";
 // repo
 import { URLS_MAIN_NAVIGATION } from "@repo/constants/src/urls";
