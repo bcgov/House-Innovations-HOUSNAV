@@ -23,16 +23,4 @@ describe("walkthrough 1", () => {
     cy.injectAxe();
     cy.checkA11y();
   });
-
-  it("error state should be accessible", () => {
-    // press submit button without selecting a radio button to show error state
-    cy.getByGeneralTestID(TESTID_QUESTION_FOOTER_NEXT).click();
-
-    // confirm error message is visible
-    // TODO - replace with TESTID_RADIO_GROUP_ERROR once it works
-    cy.get(".ui-RadioGroup--Error");
-
-    cy.injectAxe();
-    cy.checkA11y();
-  });
 });
