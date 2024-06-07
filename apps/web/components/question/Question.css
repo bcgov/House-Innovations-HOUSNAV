@@ -48,4 +48,14 @@
 
 .web-Question--FooterNext {
   order: 1;
+  width: var(--question-footer-next-width);
+}
+
+.web-Question--FooterBack {
+  padding: 0;
+  width: var(--question-footer-back-width);
+}
+
+.web-Question--FooterBackText {
+  display: var(--question-footer-back-text-display);
 }
