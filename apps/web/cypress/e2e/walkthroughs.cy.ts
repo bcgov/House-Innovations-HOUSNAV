@@ -12,7 +12,7 @@ describe("walkthrough 1", () => {
   it("can be navigated", () => {
     // select and submit an answer for the first question
     // TODO - randomize which answer is selected
-    cy.getByTestID(GET_TESTID_RADIO("P01", "yes")).click();
+    cy.getByTestID(GET_TESTID_RADIO("P01", "notSure")).click();
     cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_NEXT).click();
 
     // confirm we are showing the second question
