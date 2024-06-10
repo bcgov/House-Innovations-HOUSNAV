@@ -64,10 +64,15 @@ export const getStringFromComponents = (node: ReactNode): string => {
       return "";
 
     case "object": {
+
       if (Array.isArray(node))
         return node.map(getStringFromComponents).join("");
 
-      if ("props" in node) return getStringFromComponents(node.props.children);
+      if("type" in node && node.type === Tooltip) {
+        return getStringFromComponents(node.props.triggerContent);
+      }else if ("props" in node) {
+        return getStringFromComponents(node.props.children);
+      }
     } // eslint-ignore-line no-fallthrough
 
     default:
