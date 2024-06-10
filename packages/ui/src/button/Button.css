@@ -5,7 +5,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--layout-padding-smallium);
+  gap: var(--button-gap);
   font: var(--typography-regular-body);
   padding-left: var(--layout-padding-medium);
   padding-right: var(--layout-padding-medium);

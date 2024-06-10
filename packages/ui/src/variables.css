@@ -220,6 +220,7 @@
   --transition-link-background-color: background-color 150ms ease-in;
   --transition-link-color: color 150ms ease-in;
   --transition-link-icon-fill-color: fill 150ms ease-in;
+  --button-gap: var(--layout-padding-smallium);
   --header-height: 55px;
   --header-nav-mobile-padding: var(--layout-padding-medium);
   --walkthrough-side-nav-width: 0;
@@ -229,7 +230,6 @@
   --question-form-margin-top: var(--layout-margin-small);
   --walkthrough-footer-back-width: 44px;
   --walkthrough-footer-next-width: 228px;
-  --walkthrough-footer-back-text-display: none;
 }
 
 /* TABLET - 608px */
@@ -245,7 +245,6 @@
     --question-form-margin-top: var(--layout-margin-large);
     --walkthrough-footer-back-width: auto;
     --walkthrough-footer-next-width: auto;
-    --walkthrough-footer-back-text-display: inline;
   }
 }
 

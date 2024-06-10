@@ -19,8 +19,33 @@
 .web-WalkthroughFooter--FooterBack {
   padding: 0;
   width: var(--walkthrough-footer-back-width);
+  gap: 0;
 }
 
 .web-WalkthroughFooter--FooterBackText {
-  display: var(--walkthrough-footer-back-text-display);
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  white-space: nowrap;
+}
+
+/* TABLET - 608px */
+@media (min-width: 38rem) {
+  .web-WalkthroughFooter--FooterBack {
+    gap: var(--button-gap);
+  }
+
+  .web-WalkthroughFooter--FooterBackText {
+    clip: unset;
+    height: unset;
+    width: unset;
+    margin: unset;
+    overflow: unset;
+    padding: unset;
+    white-space: unset;
+  }
 }
