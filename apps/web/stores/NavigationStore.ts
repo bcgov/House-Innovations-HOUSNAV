@@ -1,10 +1,8 @@
 // 3rd party
 import { makeAutoObservable } from "mobx";
 // local
-import {
-  DEFAULT_ANSWER_VALUE_MULTI_CHOICE,
-  WalkthroughRootStore,
-} from "./WalkthroughRootStore";
+import { WalkthroughRootStore } from "./WalkthroughRootStore";
+import { DEFAULT_ANSWER_VALUE_MULTI_CHOICE } from "./AnswerStore";
 
 export class NavigationStore {
   rootStore: WalkthroughRootStore;
@@ -19,7 +17,7 @@ export class NavigationStore {
   get nextButtonIsDisabled() {
     // check if the current question has an answer
     const currentAnswer =
-      this.rootStore.answers[this.rootStore.currentQuestionId];
+      this.rootStore.answerStore.answers[this.rootStore.currentItemId];
     if (!currentAnswer) {
       return true;
     }
@@ -42,7 +40,7 @@ export class NavigationStore {
   get backButtonIsDisabled() {
     // check if we're not on the first question
     const currentQuestionIndex = this.questionHistory.indexOf(
-      this.rootStore.currentQuestionId,
+      this.rootStore.currentItemId,
     );
 
     return currentQuestionIndex < 1;
@@ -51,22 +49,22 @@ export class NavigationStore {
   handleBackNavigation = () => {
     // get current question index
     const currentQuestionIndex = this.questionHistory.indexOf(
-      this.rootStore.currentQuestionId,
+      this.rootStore.currentItemId,
     );
 
     // get last question id
     const lastQuestionId = this.questionHistory[currentQuestionIndex - 1];
 
     if (lastQuestionId) {
-      this.rootStore.currentQuestionId = lastQuestionId;
+      this.rootStore.currentItemId = lastQuestionId;
     }
   };
 
   addCurrentQuestionToHistory = () => {
     // check if question is already in history
-    if (!this.questionHistory.includes(this.rootStore.currentQuestionId)) {
+    if (!this.questionHistory.includes(this.rootStore.currentItemId)) {
       // since not in history, add to history
-      this.questionHistory.push(this.rootStore.currentQuestionId);
+      this.questionHistory.push(this.rootStore.currentItemId);
     }
   };
 }

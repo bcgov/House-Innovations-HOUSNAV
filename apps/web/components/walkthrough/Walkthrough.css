@@ -10,6 +10,18 @@
     var(--surface-color-border-default);
 }
 
+.web-Walkthrough--Content {
+  display: grid;
+  grid-template-rows: auto 67px;
+  overflow: hidden;
+  position: relative;
+}
+
+.web-Walkthrough--Form {
+  overflow: auto;
+  position: relative;
+}
+
 /* TABLET - 608px */
 @media (min-width: 38rem) {
   .web-Walkthrough {

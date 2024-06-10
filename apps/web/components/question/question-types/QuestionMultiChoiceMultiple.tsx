@@ -7,14 +7,14 @@ import { ID_QUESTION_TEXT } from "@repo/constants/src/ids";
 // local
 import QuestionMissing from "./QuestionMissing";
 import { useWalkthroughState } from "../../../stores/WalkthroughRootStore";
+import { isValidAnswerOrErrorMessage } from "../../../utils/logic/possibleInvalidAnswers";
 
 const QuestionMultiChoiceMultiple = observer((): JSX.Element => {
   // get data from store
   const {
-    currentQuestionId,
+    currentItemId,
     currentQuestionAsMultipleChoiceMultiple,
-    setAnswerValue,
-    multipleChoiceMultipleAnswerValue,
+    answerStore: { setAnswerValue, multipleChoiceMultipleAnswerValue },
   } = useWalkthroughState();
 
   // handle missing question data
@@ -32,18 +32,24 @@ const QuestionMultiChoiceMultiple = observer((): JSX.Element => {
   // setup onChange handler
   const onChange = useCallback(
     (value: string[]) => {
-      setAnswerValue(value, currentQuestionId);
+      setAnswerValue(value, currentItemId);
     },
-    [setAnswerValue, currentQuestionId],
+    [setAnswerValue, currentItemId],
   );
 
   return (
     <CheckboxGroup
-      name={currentQuestionId}
+      name={currentItemId}
       value={multipleChoiceMultipleAnswerValue}
       noLabel
       onChange={onChange}
       isRequired
+      validate={(value) => {
+        return isValidAnswerOrErrorMessage(
+          value,
+          currentQuestionAsMultipleChoiceMultiple.possibleInvalidAnswers,
+        );
+      }}
       options={checkboxGroupOptions}
       aria-labelledby={ID_QUESTION_TEXT}
     />

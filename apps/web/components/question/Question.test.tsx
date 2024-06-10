@@ -6,11 +6,10 @@ import useWalkthroughTestData, {
   getMultiChoiceQuestion,
 } from "@repo/data/useWalkthroughTestData";
 import {
-  GET_TESTID_BUTTON,
+  GET_TESTID_CHECKBOX_GROUP,
   GET_TESTID_RADIO_GROUP,
   TESTID_QUESTION,
   TESTID_QUESTION_CODE_REFERENCE,
-  TESTID_QUESTION_FOOTER_NEXT,
   TESTID_QUESTION_TITLE,
 } from "@repo/constants/src/testids";
 // local
@@ -86,11 +85,6 @@ describe("Question", () => {
     expect(
       getByTestId(GET_TESTID_RADIO_GROUP(testQuestion.questionKey)),
     ).toBeInTheDocument();
-
-    // expect submit button
-    expect(
-      getByTestId(GET_TESTID_BUTTON(TESTID_QUESTION_FOOTER_NEXT)),
-    ).toBeInTheDocument();
   });
   // check question with code reference
   it("QuestionMultiChoice: renders with code reference", () => {
@@ -146,5 +140,10 @@ describe("Question", () => {
 
     // expect component to render
     expect(getByTestId(TESTID_QUESTION)).toBeInTheDocument();
+
+    // expect checkbox group
+    expect(
+      getByTestId(GET_TESTID_CHECKBOX_GROUP(testQuestion.questionKey)),
+    ).toBeInTheDocument();
   });
 });

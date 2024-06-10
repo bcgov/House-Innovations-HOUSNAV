@@ -174,6 +174,39 @@ describe("Icon", () => {
     expect(getByTestId(getIconTestId("checkboxUnchecked"))).toBeInTheDocument();
     expect(queryByTitle("Checkbox unchecked")).not.toBeInTheDocument();
   });
+  // arrowBack
+  it("renders arrowBack icon with title", () => {
+    const { getByTestId, getByTitle } = render(
+      <Icon type="arrowBack" id="arrowBackIcon" title="Go back" />,
+    );
+    const ArrowBackIcon = getByTestId(getIconTestId("arrowBack"));
+    expect(ArrowBackIcon).toBeInTheDocument();
+    expect(ArrowBackIcon).toHaveAttribute("aria-labelledby", "arrowBackIcon");
+    expect(getByTitle("Go back")).toBeInTheDocument();
+  });
+  it("renders arrowBack icon without title", () => {
+    const { getByTestId, queryByTitle } = render(<Icon type="arrowBack" />);
+    expect(getByTestId(getIconTestId("arrowBack"))).toBeInTheDocument();
+    expect(queryByTitle("Go back")).not.toBeInTheDocument();
+  });
+  // arrowForward
+  it("renders arrowForward icon with title", () => {
+    const { getByTestId, getByTitle } = render(
+      <Icon type="arrowForward" id="arrowForwardIcon" title="Go forward" />,
+    );
+    const ArrowForwardIcon = getByTestId(getIconTestId("arrowForward"));
+    expect(ArrowForwardIcon).toBeInTheDocument();
+    expect(ArrowForwardIcon).toHaveAttribute(
+      "aria-labelledby",
+      "arrowForwardIcon",
+    );
+    expect(getByTitle("Go forward")).toBeInTheDocument();
+  });
+  it("renders arrowForward icon without title", () => {
+    const { getByTestId, queryByTitle } = render(<Icon type="arrowForward" />);
+    expect(getByTestId(getIconTestId("arrowForward"))).toBeInTheDocument();
+    expect(queryByTitle("Go forward")).not.toBeInTheDocument();
+  });
   // className
   it("renders icon with className", () => {
     const { getByTestId } = render(

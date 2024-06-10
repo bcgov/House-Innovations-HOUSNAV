@@ -17,7 +17,7 @@ interface PossibleAnswer {
   answerValue: AnswerValueTypes;
 }
 
-interface NextNavigationLogic {
+export interface NextNavigationLogic {
   nextLogicType: string;
   answerToCheck?: string;
   answerValue?: AnswerValueTypes;
@@ -33,12 +33,12 @@ interface VariableValueLogic {
   variableValueToSet: string;
 }
 
-interface InvalidAnswerLogic {
+export interface InvalidAnswerLogic {
   invalidAnswerLogicType: string;
   invalidAnswerLogicValue: number;
 }
 
-interface PossibleInvalidAnswer {
+export interface PossibleInvalidAnswer {
   invalidAnswerType: string;
   answerValue: AnswerValueTypes;
   invalidAnswerLogic: InvalidAnswerLogic[];
@@ -91,7 +91,7 @@ export interface QuestionVariableData {
   nextNavigationLogic: NextNavigationLogic[];
 }
 
-interface ResultData {
+export interface ResultData {
   needsAnswerValue?: boolean;
   resultDisplayMessage: string;
 }

@@ -1,4 +1,5 @@
 // 3rd party
+import React from "react";
 import { makeAutoObservable } from "mobx";
 // repo
 import {
@@ -8,22 +9,17 @@ import {
   QuestionMultipleChoiceSelectMultipleData,
   WalkthroughJSONType,
 } from "@repo/data/useWalkthroughData";
-import React from "react";
+// local
 import { NavigationStore } from "./NavigationStore";
-
-export type WalkthroughAnswerType = string | string[] | Record<string, string>;
-
-export const DEFAULT_ANSWER_VALUE_MULTI_CHOICE = "";
-export const DEFAULT_ANSWER_VALUE_MULTI_CHOICE_MULTI = [];
+import { AnswerStore } from "./AnswerStore";
 
 export class WalkthroughRootStore {
   navigationStore: NavigationStore;
+  answerStore: AnswerStore;
 
   walkthroughData: WalkthroughJSONType = {} as WalkthroughJSONType;
 
-  answers: Record<string, WalkthroughAnswerType> = {};
-
-  currentQuestionId: string = "";
+  currentItemId: string = "";
 
   constructor(walkthroughData: WalkthroughJSONType) {
     makeAutoObservable(this);
@@ -31,21 +27,21 @@ export class WalkthroughRootStore {
 
     // start other stores
     this.navigationStore = new NavigationStore(this);
+    this.answerStore = new AnswerStore(this);
 
     // get starting question if exists and set it as current question
     if (walkthroughData?.info?.startingSectionId && walkthroughData.sections) {
-      this.currentQuestionId =
+      this.currentItemId =
         walkthroughData.sections[walkthroughData.info.startingSectionId]
           ?.sectionQuestions[0] || "";
 
       // add starting question to history
-      this.navigationStore.questionHistory.push(this.currentQuestionId);
+      this.navigationStore.questionHistory.push(this.currentItemId);
     }
   }
 
   get currentQuestionAsDisplayType() {
-    const currentQuestion =
-      this.walkthroughData.questions[this.currentQuestionId];
+    const currentQuestion = this.walkthroughData.questions[this.currentItemId];
 
     // check if current question exists and has the unique key "variableToSet" (which means it's a variable type question)
     if (!currentQuestion || "variableToSet" in currentQuestion)
@@ -83,8 +79,7 @@ export class WalkthroughRootStore {
   }
 
   get currentQuestionAsVariable() {
-    const currentQuestion =
-      this.walkthroughData.questions[this.currentQuestionId];
+    const currentQuestion = this.walkthroughData.questions[this.currentItemId];
     if (!currentQuestion || !("variableToSet" in currentQuestion))
       return undefined;
 
@@ -92,34 +87,11 @@ export class WalkthroughRootStore {
   }
 
   setCurrentQuestionId = (questionId: string) => {
-    this.currentQuestionId = questionId;
+    this.currentItemId = questionId;
   };
 
-  setAnswerValue = (value: WalkthroughAnswerType, questionId: string) => {
-    this.answers[questionId] = value;
-  };
-
-  get currentAnswerValue() {
-    return this.answers[this.currentQuestionId];
-  }
-
-  get multipleChoiceAnswerValue() {
-    const answer = this.answers[this.currentQuestionId];
-
-    // verify answer is a string
-    if (typeof answer !== "string") return DEFAULT_ANSWER_VALUE_MULTI_CHOICE;
-
-    return answer;
-  }
-
-  get multipleChoiceMultipleAnswerValue() {
-    const answer = this.answers[this.currentQuestionId];
-
-    // verify answer is an array of strings
-    if (!answer || !Array.isArray(answer))
-      return DEFAULT_ANSWER_VALUE_MULTI_CHOICE_MULTI;
-
-    return answer;
+  get currentResult() {
+    return this.walkthroughData.results[this.currentItemId];
   }
 }
 
