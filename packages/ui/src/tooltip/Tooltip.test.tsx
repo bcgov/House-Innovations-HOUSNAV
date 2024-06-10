@@ -4,7 +4,7 @@ import {  act } from "@testing-library/react";
 
 // workspace
 import Tooltip from "./Tooltip";
-import { Button, TooltipTrigger } from "react-aria-components";
+import { Button } from "react-aria-components";
 import { userSetupAndRender } from "../../tests/utils";
 
 // test constants
@@ -16,12 +16,7 @@ describe("Tooltip", () => {
   // shows tooltip on hover
   it("displays tooltip content on hover", async () => {
     const { user, findByText} = userSetupAndRender(
-      <TooltipTrigger delay={0} closeDelay={0}>
-        <Button>{TRIGGER_TEXT}</Button> 
-        <Tooltip placement="bottom">
-        {TOOLTIP_CONTENT}
-        </Tooltip>
-      </TooltipTrigger>
+        <Tooltip tooltipContent={TOOLTIP_CONTENT} triggerContent={<Button>{TRIGGER_TEXT}</Button> }></Tooltip>
     );
 
     await act(async () => {
