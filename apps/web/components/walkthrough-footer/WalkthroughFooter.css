@@ -1,0 +1,26 @@
+.web-WalkthroughFooter {
+  background-color: var(--surface-color-background-white);
+  display: flex;
+  justify-content: space-between;
+  padding: var(--layout-padding-smedium) var(--layout-padding-xlarge);
+  border-top: var(--layout-border-width-small) solid
+    var(--surface-color-border-default);
+}
+.web-WalkthroughFooter .ui-Icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.web-WalkthroughFooter--FooterNext {
+  order: 1;
+  width: var(--walkthrough-footer-next-width);
+}
+
+.web-WalkthroughFooter--FooterBack {
+  padding: 0;
+  width: var(--walkthrough-footer-back-width);
+}
+
+.web-WalkthroughFooter--FooterBackText {
+  display: var(--walkthrough-footer-back-text-display);
+}

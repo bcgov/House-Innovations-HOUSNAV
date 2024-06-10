@@ -11,10 +11,9 @@ import { useWalkthroughState } from "../../../stores/WalkthroughRootStore";
 const QuestionMultiChoice = observer((): JSX.Element => {
   // get data from store
   const {
-    currentQuestionId,
+    currentItemId,
     currentQuestionAsMultipleChoice,
-    setAnswerValue,
-    multipleChoiceAnswerValue,
+    answerStore: { setAnswerValue, multipleChoiceAnswerValue },
   } = useWalkthroughState();
 
   // handle missing question data
@@ -31,23 +30,21 @@ const QuestionMultiChoice = observer((): JSX.Element => {
   // setup onChange handler
   const onChange = useCallback(
     (value: string) => {
-      setAnswerValue(value, currentQuestionId);
+      setAnswerValue(value, currentItemId);
     },
-    [setAnswerValue, currentQuestionId],
+    [setAnswerValue, currentItemId],
   );
 
   return (
-    <>
-      <RadioGroup
-        name={currentQuestionId}
-        noLabel
-        options={radioGroupOptions}
-        isRequired
-        value={multipleChoiceAnswerValue}
-        onChange={onChange}
-        aria-labelledby={ID_QUESTION_TEXT}
-      />
-    </>
+    <RadioGroup
+      name={currentItemId}
+      noLabel
+      options={radioGroupOptions}
+      isRequired
+      value={multipleChoiceAnswerValue}
+      onChange={onChange}
+      aria-labelledby={ID_QUESTION_TEXT}
+    />
   );
 });
 

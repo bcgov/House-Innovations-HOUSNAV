@@ -47,6 +47,12 @@ p {
   margin: 0 auto;
   padding: 0 var(--layout-padding-container);
 }
+.u-container-walkthrough {
+  margin: 0 auto;
+  padding: var(--question-container-padding-y) var(--layout-padding-container)
+    var(--question-container-padding-y);
+  max-width: var(--question-container-max-width);
+}
 .u-hidden {
   display: none;
 }

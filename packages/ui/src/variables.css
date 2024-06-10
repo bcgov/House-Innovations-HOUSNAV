@@ -227,9 +227,9 @@
   --question-container-padding-y: var(--layout-padding-medium);
   --question-reference-margin-top: var(--layout-margin-small);
   --question-form-margin-top: var(--layout-margin-small);
-  --question-footer-back-width: 44px;
-  --question-footer-next-width: 228px;
-  --question-footer-back-text-display: none;
+  --walkthrough-footer-back-width: 44px;
+  --walkthrough-footer-next-width: 228px;
+  --walkthrough-footer-back-text-display: none;
 }
 
 /* TABLET - 608px */
@@ -243,9 +243,9 @@
     --question-container-padding-y: var(--layout-padding-large);
     --question-reference-margin-top: var(--layout-margin-smedium);
     --question-form-margin-top: var(--layout-margin-large);
-    --question-footer-back-width: auto;
-    --question-footer-next-width: auto;
-    --question-footer-back-text-display: inline;
+    --walkthrough-footer-back-width: auto;
+    --walkthrough-footer-next-width: auto;
+    --walkthrough-footer-back-text-display: inline;
   }
 }
 
