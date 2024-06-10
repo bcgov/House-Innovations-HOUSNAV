@@ -1,23 +1,29 @@
 import {
   Tooltip as AriaTooltip,
-  TooltipProps as ReactAriaTooltipProps
+  TooltipProps as ReactAriaTooltipProps,
+  TooltipTrigger
 } from "react-aria-components";
 import Image from "@repo/ui/image";
 
 import "./Tooltip.css";
 
 export interface TooltipProps extends ReactAriaTooltipProps {
-  children: React.ReactNode;
+  tooltipContent: React.ReactNode;
+  triggerContent: React.ReactNode;
 }
 
-export default function Tooltip({ children, ...props }: TooltipProps) {
+export default function Tooltip({ tooltipContent, triggerContent, ...props }: TooltipProps) {
   return (
-    <AriaTooltip {...props} className="ui-tooltip-aria"> 
-      <Image src="tooltip-triangle.svg" className={"ui-tooltip-triangle"} />
-      <div className="ui-tooltip-content">
-        {children}
-      </div>
-    </AriaTooltip>
+    <TooltipTrigger delay={0} closeDelay={0}>
+      {triggerContent}
+      <AriaTooltip {...props} className="ui-tooltip-aria" placement="bottom"> 
+        <Image src="tooltip-triangle.svg" className={"ui-tooltip-triangle"} />
+        <div className="ui-tooltip-content">
+          {tooltipContent}
+        </div>
+      </AriaTooltip>
+    </TooltipTrigger>
+
   );
 }
 
