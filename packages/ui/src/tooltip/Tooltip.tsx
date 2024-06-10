@@ -12,11 +12,13 @@ export interface TooltipProps extends ReactAriaTooltipProps {
 
 export default function Tooltip({ children, ...props }: TooltipProps) {
   return (
-    <AriaTooltip {...props} className="aria-tooltip"> 
-      <Image src="tooltip-triangle.svg" className={"tooltip-triangle"} />
-      <div className="tooltip-content">
+    <AriaTooltip {...props} className="ui-tooltip-aria"> 
+      <Image src="tooltip-triangle.svg" className={"ui-tooltip-triangle"} />
+      <div className="ui-tooltip-content">
         {children}
       </div>
     </AriaTooltip>
   );
 }
+
+
