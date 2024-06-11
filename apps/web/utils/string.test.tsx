@@ -10,7 +10,7 @@ describe("string", () => {
   /*
    * parseStringToComponents
    */
-  it("parseStringToComponents: defined-term-tooltip", () => {
+  it("parseStringToComponents: defined-term", () => {
     // get test data
     const questionData = getMultiChoiceQuestion();
 
@@ -37,18 +37,18 @@ describe("string", () => {
       components = [components];
     }
 
-    const hasDefinedTermTooltip = components.some((component) => {
+    const hasDefinedTerm = components.some((component) => {
       // ignore if component is a string
       if (typeof component === "string") {
         return false;
       }
 
-      // check if component is Tooltip
-      return component.type.name === "Tooltip";
+      // check if component is DefinedTerm
+      return component.type.name === "DefinedTerm";
     });
 
     // expect hasDefinedTerm to be true
-    expect(hasDefinedTermTooltip).toBeTruthy();
+    expect(hasDefinedTerm).toBeTruthy();
   });
   it("parseStringToComponents: no defined-term", () => {
     // parse question string

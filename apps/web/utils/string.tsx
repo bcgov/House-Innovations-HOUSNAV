@@ -10,7 +10,6 @@ import parse, {
 import DefinedTerm, {
   DefinedTermProps,
 } from "../components/defined-term/DefinedTerm";
-import Tooltip from "@repo/ui/tooltip";
 
 // Define custom components for html-react-parser
 const definedTermName = "defined-term";
@@ -34,14 +33,12 @@ export const parseStringToComponents = (html: string) => {
 
             if (DefinedTermComponent) {
               return (
-                  <Tooltip tooltipContent="Default Tooltip" triggerContent={
-                    <DefinedTermComponent
-                        {...(props as unknown as DefinedTermProps)}
-                        key={domNode.attribs.key}
-                      >
-                      {domToReact(domNode.children as DOMNode[], options)}
-                    </DefinedTermComponent>}>
-                  </Tooltip>
+                <DefinedTermComponent
+                  {...(props as unknown as DefinedTermProps)}
+                  key={domNode.attribs.key}
+                >
+                  {domToReact(domNode.children as DOMNode[], options)}
+                </DefinedTermComponent>
               );
             }
           }
@@ -64,15 +61,10 @@ export const getStringFromComponents = (node: ReactNode): string => {
       return "";
 
     case "object": {
-
       if (Array.isArray(node))
         return node.map(getStringFromComponents).join("");
 
-      if("type" in node && node.type === Tooltip) {
-        return getStringFromComponents(node.props.triggerContent);
-      }else if ("props" in node) {
-        return getStringFromComponents(node.props.children);
-      }
+      if ("props" in node)return getStringFromComponents(node.props.children);
     } // eslint-ignore-line no-fallthrough
 
     default:
