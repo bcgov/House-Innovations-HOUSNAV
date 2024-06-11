@@ -16,7 +16,7 @@ export default function Tooltip({ tooltipContent, triggerContent, ...props }: To
   return (
     <TooltipTrigger delay={0} closeDelay={0}>
       {triggerContent}
-      <AriaTooltip {...props} className="ui-tooltip-aria" placement="bottom"> 
+      <AriaTooltip {...props} className="ui-tooltip-aria" placement="bottom" aria-live="polite"> 
         <Image src="tooltip-triangle.svg" className={"ui-tooltip-triangle"} />
         <div className="ui-tooltip-content">
           {tooltipContent}
