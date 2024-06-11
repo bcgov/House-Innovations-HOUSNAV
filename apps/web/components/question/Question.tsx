@@ -32,7 +32,7 @@ const getQuestionComponent = (walkthroughItemType: string) => {
 
 const Question = observer(() => {
   // get current question from store as not variable type question
-  const { currentQuestionAsDisplayType: currentQuestion, currentItemId } =
+  const { currentQuestionAsDisplayType: currentQuestion } =
     useWalkthroughState();
 
   // handle missing question data
@@ -42,11 +42,7 @@ const Question = observer(() => {
   const component = getQuestionComponent(currentQuestion.walkthroughItemType);
 
   return (
-    <div
-      className="u-container-walkthrough"
-      data-testid={TESTID_QUESTION}
-      key={`question-${currentItemId}`}
-    >
+    <div className="u-container-walkthrough" data-testid={TESTID_QUESTION}>
       <h1
         className="web-Question--Title"
         id={ID_QUESTION_TEXT}

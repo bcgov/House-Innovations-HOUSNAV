@@ -19,6 +19,7 @@ const Walkthrough = observer((): JSX.Element => {
   const {
     currentQuestionAsVariable,
     currentResult,
+    currentItemId,
     setCurrentQuestionId,
     currentQuestionAsDisplayType,
     navigationStore: { addCurrentQuestionToHistory },
@@ -68,6 +69,7 @@ const Walkthrough = observer((): JSX.Element => {
             className="web-Walkthrough--Form"
             id={ID_QUESTION_FORM}
             onSubmit={handleQuestionSubmit}
+            key={`question-${currentItemId}`}
           >
             <Question />
           </Form>
