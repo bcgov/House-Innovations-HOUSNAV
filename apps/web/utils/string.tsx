@@ -64,7 +64,7 @@ export const getStringFromComponents = (node: ReactNode): string => {
       if (Array.isArray(node))
         return node.map(getStringFromComponents).join("");
 
-      if ("props" in node)return getStringFromComponents(node.props.children);
+      if ("props" in node) return getStringFromComponents(node.props.children);
     } // eslint-ignore-line no-fallthrough
 
     default:
