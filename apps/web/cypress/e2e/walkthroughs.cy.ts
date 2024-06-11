@@ -1,22 +1,25 @@
-import {
-  GET_TESTID_RADIO,
-  GET_TESTID_CHECKBOX_GROUP,
-  TESTID_WALKTHROUGH_FOOTER_NEXT,
-} from "@repo/constants/src/testids";
+import { TESTID_WALKTHROUGH_FOOTER_NEXT } from "@repo/constants/src/testids";
+
+import { walkthroughs } from "../fixtures/test-data.json";
 
 describe("walkthrough 1", () => {
   beforeEach(() => {
     cy.visit("/walkthrough/9.9.9");
   });
 
-  it("can be navigated", () => {
-    // select and submit an answer for the first question
-    // TODO - randomize which answer is selected
-    cy.getByTestID(GET_TESTID_RADIO("P01", "notSure")).click();
-    cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_NEXT).click();
-
-    // confirm we are showing the second question
-    cy.getByTestID(GET_TESTID_CHECKBOX_GROUP("P02"));
+  //Test all walkthroughs defined in test data
+  walkthroughs.forEach((walkthrough) => {
+    it(walkthrough.title, () => {
+      walkthrough.steps.forEach((step) => {
+        // TODO - use test ids
+        // select and submit an answer for the given question
+        cy.getByTestID(`${step.type}-${step.question}-${step.answer}`).click();
+        cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_NEXT).click();
+      });
+      if (walkthrough.result) {
+        cy.contains(walkthrough.result);
+      }
+    });
   });
 
   it("default state should be accessible", () => {
