@@ -7,6 +7,7 @@ import {
   isWalkthroughItemTypeMultiChoiceMultiple,
   QuestionMultipleChoiceData,
   QuestionMultipleChoiceSelectMultipleData,
+  VariableToSetPropertyName,
   WalkthroughJSONType,
 } from "@repo/data/useWalkthroughData";
 // local
@@ -43,8 +44,8 @@ export class WalkthroughRootStore {
   get currentQuestionAsDisplayType() {
     const currentQuestion = this.walkthroughData.questions[this.currentItemId];
 
-    // check if current question exists and has the unique key "variableToSet" (which means it's a variable type question)
-    if (!currentQuestion || "variableToSet" in currentQuestion)
+    // check if current question exists and has the unique key VariableToSetPropertyName (which means it's a variable type question)
+    if (!currentQuestion || VariableToSetPropertyName in currentQuestion)
       return undefined;
 
     return currentQuestion;
@@ -80,7 +81,7 @@ export class WalkthroughRootStore {
 
   get currentQuestionAsVariable() {
     const currentQuestion = this.walkthroughData.questions[this.currentItemId];
-    if (!currentQuestion || !("variableToSet" in currentQuestion))
+    if (!currentQuestion || !(VariableToSetPropertyName in currentQuestion))
       return undefined;
 
     return currentQuestion;
