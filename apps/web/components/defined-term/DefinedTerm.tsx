@@ -15,19 +15,22 @@ export default function DefinedTerm({
 }: DefinedTermProps) {
   // TODO: Add glossary term functionality
   const mockGlossary = {
-    'default': {tooltipContent: "Default Tooltip"},
-  }
+    default: { tooltipContent: "Default Tooltip" },
+  };
 
   return (
-    <Tooltip tooltipContent={mockGlossary.default.tooltipContent} triggerContent={
-      <Button
-        variant="glossary"
-        data-term={term}
-        data-testid={`${testid}-${term}`}
-        {...props}
-      >
-        {children}
-      </Button>}>
-    </Tooltip>
+    <Tooltip
+      tooltipContent={mockGlossary.default.tooltipContent}
+      triggerContent={
+        <Button
+          variant="glossary"
+          data-term={term}
+          data-testid={`${testid}-${term}`}
+          {...props}
+        >
+          {children}
+        </Button>
+      }
+    ></Tooltip>
   );
 }
