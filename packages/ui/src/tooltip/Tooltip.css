@@ -1,20 +1,20 @@
-.ui-tooltip-aria {
-  background-color: #252423;
-  color: #FFFFFF;
+.ui-Tooltip--Aria {
+  background-color: var(--theme-gray-110);
+  color: var(--typography-color-primary-invert);
   padding: var(--layout-margin-small, 12px);
   margin-top: 10px;
   max-width: 400px;
-  font-size: 14px;
-  border-radius: 4px;
-  background: var(--surface-color-brand-gray-110, #252423);
-  box-shadow: 0px 0.6px 1.8px 0px rgba(0, 0, 0, 0.10), 0px 3.2px 7.2px 0px rgba(0, 0, 0, 0.13);
+  font: var(--typography-regular-small-body);
+  border-radius: var(--layout-border-radius-medium);
+  background: var(--theme-gray-110);
+  box-shadow: var(--surface-shadow-small);
 }
 
-.ui-tooltip-content {
+.ui-Tooltip--Content {
   margin: 0;
 }
 
-.ui-tooltip-triangle {
+.ui-Tooltip--Triangle {
   position: absolute;
   top: -10px;
   left: 50%;
