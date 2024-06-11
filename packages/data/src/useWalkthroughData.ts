@@ -9,6 +9,7 @@ interface UseWalkthroughDataProps {
   id: string;
 }
 
+export const VariableToSetPropertyName = "variableToSet";
 export type AnswerValueTypes = string;
 
 interface PossibleAnswer {
@@ -87,7 +88,7 @@ export const isWalkthroughItemTypeVariable = (walkthroughItemType: string) =>
   walkthroughItemType === WalkthroughItemTypeVariable;
 export interface QuestionVariableData {
   walkthroughItemType: typeof WalkthroughItemTypeVariable | string;
-  variableToSet: VariableToSet;
+  [VariableToSetPropertyName]: VariableToSet;
   nextNavigationLogic: NextNavigationLogic[];
 }
 

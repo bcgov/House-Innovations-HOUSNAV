@@ -20,23 +20,22 @@ export class AnswerStore {
   }
 
   setAnswerValue = (value: WalkthroughAnswerType, questionId: string) => {
+    // get state of other store variables
+    const {
+      navigationStore: { questionHistory },
+      currentItemId,
+    } = this.rootStore;
+
     // if current question is NOT last one in questionHistory, remove all questions after current question and their answers
-    const currentQuestionIndex =
-      this.rootStore.navigationStore.questionHistory.indexOf(
-        this.rootStore.currentItemId,
+    const currentQuestionIndex = questionHistory.indexOf(currentItemId);
+    if (currentQuestionIndex < questionHistory.length - 1) {
+      this.rootStore.navigationStore.questionHistory = questionHistory.slice(
+        0,
+        currentQuestionIndex + 1,
       );
-    if (
-      currentQuestionIndex <
-      this.rootStore.navigationStore.questionHistory.length - 1
-    ) {
-      this.rootStore.navigationStore.questionHistory =
-        this.rootStore.navigationStore.questionHistory.slice(
-          0,
-          currentQuestionIndex + 1,
-        );
       this.answers = Object.fromEntries(
         Object.entries(this.answers).filter(([key]) =>
-          this.rootStore.navigationStore.questionHistory.includes(key),
+          questionHistory.includes(key),
         ),
       );
     }
