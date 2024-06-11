@@ -1,0 +1,37 @@
+{
+    "walkthroughs": [
+        {
+            "id": 1,
+            "title": "Partial walkthrough",
+            "steps": [
+                {
+                    "question": "P01",
+                    "type": "radio",
+                    "answer": "yes"
+                },
+                {
+                    "question": "P04",
+                    "type": "radio",
+                    "answer": "false"
+                },
+                {
+                    "question": "P05",
+                    "type": "radio",
+                    "answer": "true"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Code does not apply",
+            "steps": [
+                {
+                    "question": "P01",
+                    "type": "radio",
+                    "answer": "no"
+                }
+            ],
+            "result": "You have selected an answer that indicates that the BC Building Code 2024 does not apply to this structure. This tool is used to assist building code users in determining the applicable requirements for their building, as such all structures that are not governed by the BC Building Code 2024 are beyond the scope of this tool."
+        }
+    ]
+}
