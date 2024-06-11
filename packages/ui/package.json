@@ -5,6 +5,7 @@
   "exports": {
     "./image": "./src/image/Image.tsx",
     "./tooltip": "./src/tooltip/Tooltip.tsx",
+    "./modal-side": "./src/modal-side/ModalSide.tsx",
     "./checkbox-group": "./src/checkbox-group/CheckboxGroup.tsx",
     "./header": "./src/header/Header.tsx",
     "./input-error": "./src/input-error/InputError.tsx",
