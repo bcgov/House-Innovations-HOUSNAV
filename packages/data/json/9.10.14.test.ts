@@ -18,8 +18,6 @@ describe("Data - 9.10.14", () => {
         );
       },
     );
-    if (possibleUnusedQuestion)
-      console.log("Possible unused question ID:", possibleUnusedQuestion[0]);
 
     // expect possibleUnusedQuestion to be undefined
     expect(possibleUnusedQuestion).toBe(undefined);
