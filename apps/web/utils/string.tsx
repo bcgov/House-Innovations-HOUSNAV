@@ -11,6 +11,8 @@ import DefinedTerm, {
   DefinedTermProps,
 } from "../components/defined-term/DefinedTerm";
 import Button from "@repo/ui/button";
+import Tooltip from "@repo/ui/tooltip";
+import { GLOSSARY_TERMS } from "../tests/mockData";
 
 // Define custom components for html-react-parser
 const definedTermName = "defined-term";
@@ -49,16 +51,21 @@ export const parseStringToComponents = (html: string, customHandler?: any) => {
             // TODO: Matt or Nicholas, add correct section for customHandler
             const randomSection = Math.floor(Math.random() * 10) + 1;
             return (
-              <Button
-                variant="glossary"
-                onPress={
-                  customHandler
-                    ? () => customHandler(`9.9.9.${randomSection}`)
-                    : () => {}
+              <Tooltip
+                tooltipContent={GLOSSARY_TERMS.default.tooltipContent}
+                triggerContent={
+                  <Button
+                    variant="glossary"
+                    onPress={
+                      customHandler
+                        ? () => customHandler(`9.9.9.${randomSection}`)
+                        : () => {}
+                    }
+                  >
+                    {domToReact(domNode.children as DOMNode[])}
+                  </Button>
                 }
-              >
-                {domToReact(domNode.children as DOMNode[])}
-              </Button>
+              ></Tooltip>
             );
           }
         }
