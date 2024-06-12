@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
+    "./walkthrough-card": "./src/walkthrough-card/WalkthroughCard.tsx",
     "./image": "./src/image/Image.tsx",
     "./tooltip": "./src/tooltip/Tooltip.tsx",
     "./modal-side": "./src/modal-side/ModalSide.tsx",

@@ -1,6 +1,6 @@
 import testCase999 from "../walkthroughs/9.9.9.json";
 
-type Walkthroughs = "9.9.9";
+export const Walkthroughs = ["9.9.9"];
 
 interface UseWalkthroughDataProps {
   /*
@@ -108,7 +108,7 @@ export interface QuestionMultipleChoiceData extends QuestionBaseData {
 
 export const WalkthroughItemTypeMultiChoiceMultiple = "multiChoiceMultiple";
 export const isWalkthroughItemTypeMultiChoiceMultiple = (
-  walkthroughItemType: string,
+  walkthroughItemType: string
 ) => walkthroughItemType === WalkthroughItemTypeMultiChoiceMultiple;
 export interface QuestionMultipleChoiceSelectMultipleData
   extends QuestionBaseData {
@@ -138,15 +138,19 @@ interface SectionData {
   sectionQuestions: string[];
 }
 
+export interface WalkthroughInfo {
+  title: string;
+  subtitle: string;
+  description: string;
+  startingSectionId: StartingSectionIdType;
+}
+
 export type StartingSectionIdType = string;
 export type QuestionDisplayData =
   | QuestionMultipleChoiceData
   | QuestionMultipleChoiceSelectMultipleData;
 export interface WalkthroughJSONType {
-  info: {
-    title: string;
-    startingSectionId: StartingSectionIdType;
-  };
+  info: WalkthroughInfo;
   sections: {
     [key: string]: SectionData;
   };
@@ -158,15 +162,21 @@ export interface WalkthroughJSONType {
   };
 }
 
-const WalkthroughJSONData: Record<Walkthroughs, WalkthroughJSONType> = {
+export const WalkthroughJSONData: Record<string, WalkthroughJSONType> = {
   "9.9.9": testCase999,
 };
 
-export default function useWalkthroughData({ id }: UseWalkthroughDataProps) {
-  // check if passed id is a key in WalkthroughJSONData
-  if (!Object.prototype.hasOwnProperty.call(WalkthroughJSONData, id)) {
-    throw new Error(`No data found for walkthrough ${id}`);
-  } else {
-    return WalkthroughJSONData[id as Walkthroughs];
+export default function useWalkthroughData({
+  id,
+}: UseWalkthroughDataProps): WalkthroughJSONType {
+  if (!id) {
+    throw new Error("No id provided");
   }
+
+  const data = WalkthroughJSONData[id];
+  if (!data) {
+    throw new Error(`No data found for walkthrough ${id}`);
+  }
+
+  return data;
 }
