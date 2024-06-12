@@ -263,3 +263,8 @@
     --question-container-max-width: 53.5rem; /* 856px */
   }
 }
+
+/* CUSTOM */
+:root {
+  --theme-black-opacity-40: #00000040;
+}

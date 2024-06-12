@@ -1,8 +1,8 @@
-.react-aria-Dialog {
+.ui-ModalSide--AriaDialog {
   outline: none;
 }
 
-.my-overlay {
+.ui-ModalSide--Overlay {
   position: fixed;
   top: 0;
   right: 0;
@@ -12,124 +12,130 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background: #00000030;
-  
-  &[data-entering] {
-    animation: mymodal-blur 300ms;
-  }
-
-  &[data-exiting] {
-    animation: mymodal-blur 300ms reverse ease-in;
-  }
+  background: var(--theme-black-opacity-40);
 }
 
-.my-modal {
+.ui-ModalSide--Modal {
   position: fixed;
   top: 0;
   bottom: 0;
   right: 0;
   width: 60%;
   outline: none;
-  border-left: 1px solid var(--border-color);
-  box-shadow: -8px 0 20px rgba(0 0 0 / 0.1);
-  background: #ffffff;
+  border-left: var(--layout-border-width-small) solid
+    var(--surface-color-border-default);
+  box-shadow: -8px 0 20px var(--surface-opacity-10);
+  background: var(--theme-gray-white);
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-  outline: 'none';
-  padding: 40px;
-  bor
+  padding: var(--layout-padding-large);
+
   &[data-entering] {
-    animation: mymodal-slide 300ms;
+    animation: modal-slide-in 300ms reverse ease-in;
   }
 
   &[data-exiting] {
-    animation: mymodal-slide 300ms reverse ease-in;
+    animation: modal-slide-out 300ms reverse ease-in;
   }
 }
-.my-modal:focus {
-  box-shadow: -8px 0 20px rgb(135, 13, 13);
-}
 
-.close-button {
+.ui-ModalSide--CloseButton {
   position: fixed;
-  top: 10px;
-  right: 20px;
+  color: var(--icons-color-primary) !important;
+  top: var(--layout-padding-medium);
+  right: var(--layout-padding-large);
   z-index: 1001;
 }
 
-.modal-header {
-  height: 40px; /* This provides the padding space below the fixed close button */
+.ui-ModalSide--Header {
+  position: fixed;
+  text-align: right;
+  top: 0;
+  right: var(--layout-padding-medium);
+  background-color: var(--theme-gray-white);
 }
 
-.modal-content {
+.ui-ModalSide--Content {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  margin-top: 50px; /* Adjust to ensure content starts below the fixed close button */
-  outline: none !important;
-  border: none !important;
+  gap: var(--layout-padding-medium);
+  margin-top: 50px;
+  padding: var(--layout-padding-small);
+  overflow-y: scroll;
+  height: 100vh;
 }
 
-.modal-section {
+.ui-ModalSide--Section {
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
-.section-header-line {
+.ui-ModalSide--SectionHeaderLine {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   align-items: center;
-  gap: 10px;
 }
 
-.section-content-line {
+.ui-ModalSide--SectionContentLine {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   align-items: center;
-  gap: 10px;
 }
 
-.section-number {
+.ui-ModalSide--SectionNumber {
   grid-column: span 1;
-  font-size: 1.5rem;
-  font-weight: bold;
+  text-align: center;
+  font-size: var(--typography-font-size-h5);
+  font-weight: var(--typography-font-weights-bold);
 }
 
-.section-header {
+.ui-ModalSide--SectionHeader {
   grid-column: span 4;
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-size: var(--typography-font-size-large-body);
+  font-weight: var(--typography-font-weights-bold);
 }
 
-.section-content {
-  grid-column: span 4 / 6; 
-  font-size: 1rem;
-  line-height: 1.5;
+.ui-ModalSide--SectionContent {
+  grid-column: span 4 / 6;
+  font-size: var(--typography-font-size-body);
+  line-height: var(--typography-line-heights-dense);
+  padding: var(--layout-margin-large);
+  padding-top: 0;
+  margin-top: 1px;
 }
 
-/* Remove the border around the content when the modal is focused */
-.my-modal:focus {
-  outline: none;
+.ui-ModalSide--SectionHighlighted {
+  border-radius: var(--layout-margin-small, 8px);
+  border: 1px solid var(--support-borderColor-info, #053662);
+  background: var(--support-surfaceColor-info, #f7f9fc);
 }
 
-@keyframes mymodal-blur {
-  from {
-    background: rgba(129, 129, 129, 0);
-  }
-
-  to {
-    background: rgba(129, 129, 129, 0.3);
-  }
-}
-
-@keyframes mymodal-slide {
+@keyframes modal-slide-out {
   from {
     transform: translateX(100%);
   }
 
   to {
     transform: translateX(0);
+  }
+}
+
+@keyframes modal-slide-in {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* DESKTOP - 912px */
+@media (max-width: 57rem) {
+  .ui-ModalSide--Modal {
+    width: 100%;
+  }
+  .ui-ModalSide--Header {
+    width: 100%;
   }
 }

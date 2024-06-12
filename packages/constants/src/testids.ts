@@ -30,3 +30,4 @@ export const TESTID_HEADER_MOBILE_NAV = "header-mobile-nav";
 export const TESTID_HEADER_MOBILE_NAV_BUTTON = "header-mobile-nav-button";
 export const GET_TESTID_HEADER_NAV_ITEM = (title: string) =>
   `header-nav-item-${title}`;
+export const TESTID_MODAL_SIDE = "modal-side";

@@ -10,19 +10,22 @@ import parse, {
 import DefinedTerm, {
   DefinedTermProps,
 } from "../components/defined-term/DefinedTerm";
+import Button from "@repo/ui/button";
 
 // Define custom components for html-react-parser
 const definedTermName = "defined-term";
-type CustomComponentTypes = typeof definedTermName;
+const definedTermModal = "defined-term-modal";
+type CustomComponentTypes = typeof definedTermName | typeof definedTermModal;
 type CustomComponentProps = DefinedTermProps;
 const customComponents: Record<
   CustomComponentTypes,
   FunctionComponent<CustomComponentProps>
 > = {
   [definedTermName]: DefinedTerm,
+  [definedTermModal]: Button,
 };
 
-export const parseStringToComponents = (html: string) => {
+export const parseStringToComponents = (html: string, customHandler?: any) => {
   const options = {
     replace: (domNode: DOMNode) => {
       if (domNode instanceof Element && domNode.attribs) {
@@ -41,6 +44,22 @@ export const parseStringToComponents = (html: string) => {
                 </DefinedTermComponent>
               );
             }
+          }
+          case definedTermModal: {
+            // TODO: Matt or Nicholas, add correct section for customHandler
+            const randomSection = Math.floor(Math.random() * 10) + 1;
+            return (
+              <Button
+                variant="glossary"
+                onPress={
+                  customHandler
+                    ? () => customHandler(`9.9.9.${randomSection}`)
+                    : () => {}
+                }
+              >
+                {domToReact(domNode.children as DOMNode[])}
+              </Button>
+            );
           }
         }
       }
