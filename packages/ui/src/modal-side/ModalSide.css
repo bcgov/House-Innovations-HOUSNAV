@@ -61,6 +61,7 @@
   gap: var(--layout-padding-medium);
   margin-top: 50px;
   padding: var(--layout-padding-small);
+  padding-bottom: 75px;
   overflow-y: scroll;
   height: 100vh;
 }
