@@ -1,6 +1,6 @@
 import testCase999 from "../walkthroughs/9.9.9.json";
 
-export const Walkthroughs = ["9.9.9"];
+type Walkthroughs = "9.9.9";
 
 interface UseWalkthroughDataProps {
   /*
@@ -162,7 +162,7 @@ export interface WalkthroughJSONType {
   };
 }
 
-export const WalkthroughJSONData: Record<string, WalkthroughJSONType> = {
+export const WalkthroughJSONData: Record<Walkthroughs, WalkthroughJSONType> = {
   "9.9.9": testCase999,
 };
 
@@ -173,7 +173,7 @@ export default function useWalkthroughData({
     throw new Error("No id provided");
   }
 
-  const data = WalkthroughJSONData[id];
+  const data = WalkthroughJSONData[id as Walkthroughs];
   if (!data) {
     throw new Error(`No data found for walkthrough ${id}`);
   }
