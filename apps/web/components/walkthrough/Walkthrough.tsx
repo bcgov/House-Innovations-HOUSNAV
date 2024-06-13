@@ -18,7 +18,7 @@ const Walkthrough = observer((): JSX.Element => {
   const {
     currentResult,
     currentQuestionAsDisplayType,
-    navigationStore: { updateNavigationState, currentItemId },
+    navigationStore: { handleForwardNavigation, currentItemId },
     answerStore: { currentAnswerValue },
   } = useWalkthroughState();
 
@@ -29,9 +29,9 @@ const Walkthrough = observer((): JSX.Element => {
       if (!currentQuestionAsDisplayType || !currentAnswerValue) return;
 
       // update navigation state
-      updateNavigationState(currentQuestionAsDisplayType.nextNavigationLogic);
+      handleForwardNavigation(currentQuestionAsDisplayType.nextNavigationLogic);
     },
-    [updateNavigationState, currentAnswerValue, currentQuestionAsDisplayType],
+    [handleForwardNavigation, currentAnswerValue, currentQuestionAsDisplayType],
   );
 
   return (

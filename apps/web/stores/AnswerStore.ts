@@ -37,7 +37,7 @@ export class AnswerStore {
   ) => {
     // get state references
     const {
-      navigationStore: { updateNavigationState, addItemIdToHistory },
+      navigationStore: { handleForwardNavigation, addItemIdToHistory },
     } = this.rootStore;
 
     // get new variable value
@@ -67,7 +67,7 @@ export class AnswerStore {
     addItemIdToHistory(currentId);
 
     // update navigation state again
-    updateNavigationState(currentItem.nextNavigationLogic);
+    handleForwardNavigation(currentItem.nextNavigationLogic);
   };
 
   // NOTE: This is only called onChange in Question component types
