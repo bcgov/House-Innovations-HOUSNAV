@@ -20,10 +20,6 @@ export class NavigationStore {
     this.rootStore = rootStore;
   }
 
-  addItemIdToHistory = (id: string) => {
-    this.questionHistory.push(id);
-  };
-
   set currentItemId(newId: string) {
     this._itemId = newId;
 
@@ -42,28 +38,6 @@ export class NavigationStore {
   get currentItemId() {
     return this._itemId;
   }
-
-  updateNavigationState = (nextNavigationLogic: NextNavigationLogic[]) => {
-    const {
-      answerStore: { getAnswerToCheckValue, handleVariableItem },
-      getQuestionAsVariable,
-    } = this.rootStore;
-
-    // handle navigation logic
-    const nextNavigationId = getNextNavigationId(
-      nextNavigationLogic,
-      getAnswerToCheckValue,
-    );
-
-    // check if item at new id is a variable item
-    const nextQuestionAsVariable = getQuestionAsVariable(nextNavigationId);
-    if (nextQuestionAsVariable) {
-      handleVariableItem(nextQuestionAsVariable, nextNavigationId);
-    } else {
-      // if not variable item next, move to next question
-      this.currentItemId = nextNavigationId;
-    }
-  };
 
   get nextButtonIsDisabled() {
     // check if the current question has an answer
@@ -100,12 +74,6 @@ export class NavigationStore {
     return currentQuestionIndex < 1;
   }
 
-  handleBackNavigation = () => {
-    this.currentItemId = this.getPreviousQuestionIdNotVariable(
-      this.currentItemId,
-    );
-  };
-
   getPreviousQuestionIdNotVariable = (idToCheck: string) => {
     // get question index to check
     const questionIndexToCheck = this.questionHistory.indexOf(idToCheck);
@@ -127,5 +95,38 @@ export class NavigationStore {
     }
 
     return previousQuestionId;
+  };
+
+  addItemIdToHistory = (id: string) => {
+    this.questionHistory.push(id);
+  };
+
+  // this is used on Question submit and after variable item is handled
+  handleForwardNavigation = (nextNavigationLogic: NextNavigationLogic[]) => {
+    const {
+      answerStore: { getAnswerToCheckValue, handleVariableItem },
+      getQuestionAsVariable,
+    } = this.rootStore;
+
+    // handle navigation logic
+    const nextNavigationId = getNextNavigationId(
+      nextNavigationLogic,
+      getAnswerToCheckValue,
+    );
+
+    // check if item at new id is a variable item
+    const nextQuestionAsVariable = getQuestionAsVariable(nextNavigationId);
+    if (nextQuestionAsVariable) {
+      handleVariableItem(nextQuestionAsVariable, nextNavigationId);
+    } else {
+      // if not variable item next, move to next question
+      this.currentItemId = nextNavigationId;
+    }
+  };
+
+  handleBackNavigation = () => {
+    this.currentItemId = this.getPreviousQuestionIdNotVariable(
+      this.currentItemId,
+    );
   };
 }
