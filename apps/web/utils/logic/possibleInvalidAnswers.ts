@@ -4,12 +4,13 @@ import {
   InvalidAnswerLogic,
 } from "@repo/data/useWalkthroughData";
 // local
-import { WalkthroughAnswerType } from "../../stores/AnswerStore";
+import { AnswerTypes } from "../../stores/AnswerStore";
+import { isArray } from "../typeChecking";
 // NOTE: this feels weird, but it makes sure this module is something we can spy on for tests
 import * as ThisModule from "./possibleInvalidAnswers";
 
 export const isValidAnswerOrErrorMessage = (
-  currentAnswer: WalkthroughAnswerType,
+  currentAnswer: AnswerTypes,
   possibleInvalidAnswers: PossibleInvalidAnswer[],
 ): true | string => {
   // default to valid answer
@@ -22,7 +23,7 @@ export const isValidAnswerOrErrorMessage = (
         // invalidAnswerType contains
         // check if the answer contains the invalid answer to check
         if (
-          Array.isArray(currentAnswer) &&
+          isArray(currentAnswer) &&
           currentAnswer.includes(possibleInvalidAnswer.answerValue)
         ) {
           // cycle through invalidAnswerLogic
@@ -44,7 +45,7 @@ export const isValidAnswerOrErrorMessage = (
 };
 
 export const checkInvalidAnswerLogic = (
-  currentAnswer: WalkthroughAnswerType,
+  currentAnswer: AnswerTypes,
   invalidAnswerLogic: InvalidAnswerLogic[],
 ) => {
   // default to valid answer
@@ -57,7 +58,7 @@ export const checkInvalidAnswerLogic = (
         // invalidAnswerLogicType maxNumberOfAnswers
         // check if the answer is more than the max number of answers
         if (
-          Array.isArray(currentAnswer) &&
+          isArray(currentAnswer) &&
           currentAnswer.length > invalidAnswerLogicItem.invalidAnswerLogicValue
         ) {
           validAnswer = false;

@@ -1,31 +1,69 @@
 // repo
-import { NextNavigationLogic } from "@repo/data/useWalkthroughData";
-// local
 import {
-  WalkthroughAnswerType,
-  WalkthroughStoreAnswers,
-} from "../../stores/AnswerStore";
+  NextNavigationLogic,
+  NextNavigationLogicType,
+  ValuesToCheckType,
+} from "@repo/data/useWalkthroughData";
+// local
+import { AnswerToCheckValueFn, AnswerTypes } from "../../stores/AnswerStore";
+import { isArray, isString } from "../typeChecking";
+// NOTE: this feels weird, but it makes sure this module is something we can spy on for tests
+import * as ThisModule from "./nextNavigation";
 
-type NavigationIdType = string | undefined;
+// empty string is the default value for nextNavigationId and will show the question error screen
+export const NEXT_NAVIGATION_ID_ERROR = "";
 
 export const getNextNavigationId = (
   nextNavigationLogic: NextNavigationLogic[],
-  answerState: WalkthroughStoreAnswers,
+  getAnswerToCheckValue: AnswerToCheckValueFn,
 ) => {
-  // setup nextNavigationId variable
-  let nextNavigationId: NavigationIdType;
-
   // loop through nextNavigationLogic to find the correct next question
   for (const navigationLogicItem of nextNavigationLogic) {
-    // if fallback item is found, set nextNavigationId to fallback item
-    // paradigms dictate that the fallback item should be the last item in the array
-    if (navigationLogicItem.nextLogicType === "fallback") {
-      nextNavigationId = navigationLogicItem.nextNavigateTo;
-      break;
+    if (
+      ThisModule.navigationLogicItemIsTrue(
+        navigationLogicItem,
+        getAnswerToCheckValue,
+      )
+    ) {
+      return navigationLogicItem.nextNavigateTo || NEXT_NAVIGATION_ID_ERROR;
     }
+  }
 
+  return NEXT_NAVIGATION_ID_ERROR;
+};
+
+export const navigationLogicItemIsTrue = (
+  navigationLogicItem: NextNavigationLogic,
+  getAnswerToCheckValue: AnswerToCheckValueFn,
+) => {
+  // if fallback item is found, set nextNavigationId to fallback item
+  // paradigms dictate that the fallback item should be the last item in the array
+  if (navigationLogicItem.nextLogicType === NextNavigationLogicType.Fallback) {
+    return true;
+  }
+
+  // check if answerToCheck exists
+  if (navigationLogicItem.valuesToCheck) {
+    /*
+     * NOTE: This logic is only for and/or logic
+     */
+    switch (navigationLogicItem.nextLogicType) {
+      case NextNavigationLogicType.Or:
+        return ThisModule.nextLogicTypeOr(
+          navigationLogicItem.valuesToCheck,
+          getAnswerToCheckValue,
+        );
+      case NextNavigationLogicType.And:
+        return ThisModule.nextLogicTypeAnd(
+          navigationLogicItem.valuesToCheck,
+          getAnswerToCheckValue,
+        );
+    }
+  } else if (navigationLogicItem.answerToCheck) {
     // get answer to check
-    const answerToCheck = answerState[navigationLogicItem.answerToCheck || ""];
+    const answerToCheck = getAnswerToCheckValue(
+      navigationLogicItem.answerToCheck,
+    );
 
     // check if answerToCheck exists
     if (answerToCheck) {
@@ -38,20 +76,26 @@ export const getNextNavigationId = (
 
         // check witch nextLogicType to use
         switch (navigationLogicItem.nextLogicType) {
-          case "equals":
-            nextNavigationId = nextLogicTypeEquals(
+          case NextNavigationLogicType.Equal:
+            return ThisModule.nextLogicTypeEqual(
               answerToCheck,
               navigationLogicItem.answerValue,
-              navigationLogicItem.nextNavigateTo,
             );
-            break;
-          case "doesNotContain":
-            nextNavigationId = nextLogicTypeDoesNotContain(
+          case NextNavigationLogicType.NotEqual:
+            return ThisModule.nextLogicTypeNotEqual(
               answerToCheck,
               navigationLogicItem.answerValue,
-              navigationLogicItem.nextNavigateTo,
             );
-            break;
+          case NextNavigationLogicType.LessThan:
+            return ThisModule.nextLogicTypeLessThan(
+              answerToCheck,
+              navigationLogicItem.answerValue,
+            );
+          case NextNavigationLogicType.DoesNotContain:
+            return ThisModule.nextLogicTypeDoesNotContain(
+              answerToCheck,
+              navigationLogicItem.answerValue,
+            );
         }
       } else if (navigationLogicItem.answerValues) {
         /*
@@ -60,84 +104,160 @@ export const getNextNavigationId = (
 
         // check witch nextLogicType to use
         switch (navigationLogicItem.nextLogicType) {
-          case "containsAny":
-            nextNavigationId = nextLogicTypeContainsAny(
+          case NextNavigationLogicType.ContainsAny:
+            return ThisModule.nextLogicTypeContainsAny(
               answerToCheck,
               navigationLogicItem.answerValues,
-              navigationLogicItem.nextNavigateTo,
             );
-            break;
+        }
+      }
+    } else {
+      // handle undefined answerToCheck
+      // check if answerValue exists
+      if (navigationLogicItem.answerValue) {
+        /*
+         * NOTE: This logic is only for single answer value strings when answerToCheck is undefined
+         * there is no support for multiple answers to check in this section
+         */
+
+        // check witch nextLogicType to use
+        switch (navigationLogicItem.nextLogicType) {
+          case NextNavigationLogicType.Equal:
+            return ThisModule.nextLogicTypeEqual(
+              answerToCheck,
+              navigationLogicItem.answerValue,
+            );
+          case NextNavigationLogicType.NotEqual:
+            return ThisModule.nextLogicTypeNotEqual(
+              answerToCheck,
+              navigationLogicItem.answerValue,
+            );
         }
       }
     }
-    // TODO - if no answer to check it means its either an ane|or logic type
-
-    // check if nextNavigationId is found
-    if (nextNavigationId) break;
   }
 
-  // empty string is the default value for nextNavigationId and will show the question error screen
-  return nextNavigationId || "";
+  return false;
 };
 
-export const nextLogicTypeEquals = (
-  answerToCheck: WalkthroughAnswerType,
+export const nextLogicTypeEqual = (
+  answerToCheck: AnswerTypes | undefined,
   answerValue: string,
-  nextNavigateTo: string | undefined,
 ) => {
-  // setup nextNavigationId variable
-  let nextNavigationId: NavigationIdType;
+  // setup return
+  let isEqual = false;
 
   // check answerToCheck type
-  if (Array.isArray(answerToCheck)) {
+  if (isArray(answerToCheck)) {
     // check if answerToCheck only has answerValue
     if (answerToCheck.includes(answerValue) && answerToCheck.length === 1) {
-      nextNavigationId = nextNavigateTo;
+      isEqual = true;
     }
-  } else {
+  } else if (isString(answerToCheck)) {
     // check if answerToCheck value is equal to answerValue
     if (answerToCheck === answerValue) {
-      nextNavigationId = nextNavigateTo;
+      isEqual = true;
     }
+  } else if (answerToCheck === undefined && answerValue === "undefined") {
+    isEqual = true;
   }
 
-  return nextNavigationId;
+  return isEqual;
+};
+
+export const nextLogicTypeNotEqual = (
+  answerToCheck: AnswerTypes | undefined,
+  answerValue: string,
+) => {
+  // setup return
+  let isNotEqual = false;
+
+  // check answerToCheck type
+  if (isString(answerToCheck)) {
+    // check if answerToCheck value is not equal to answerValue
+    if (answerToCheck !== answerValue) {
+      isNotEqual = true;
+    }
+  } else if (answerToCheck === undefined && answerValue !== "undefined") {
+    isNotEqual = true;
+  }
+
+  return isNotEqual;
+};
+
+export const nextLogicTypeLessThan = (
+  answerToCheck: AnswerTypes,
+  answerValue: string,
+) => {
+  // setup return
+  let isLessThan = false;
+
+  // check if answerToCheck is less than answerValue
+  if (isString(answerToCheck) && answerToCheck < answerValue) {
+    isLessThan = true;
+  }
+
+  return isLessThan;
 };
 
 export const nextLogicTypeDoesNotContain = (
-  answerToCheck: WalkthroughAnswerType,
+  answerToCheck: AnswerTypes,
   answerValue: string,
-  nextNavigateTo: string | undefined,
 ) => {
-  // setup nextNavigationId variable
-  let nextNavigationId: NavigationIdType;
+  // setup return
+  let doesNotContain = false;
 
   // check if answerToCheck is an array
-  if (Array.isArray(answerToCheck)) {
+  if (isArray(answerToCheck)) {
     // check if answerToCheck does not contain answerValue
     if (!answerToCheck.includes(answerValue)) {
-      nextNavigationId = nextNavigateTo;
+      doesNotContain = true;
     }
   }
 
-  return nextNavigationId;
+  return doesNotContain;
 };
 
 export const nextLogicTypeContainsAny = (
-  answerToCheck: WalkthroughAnswerType,
+  answerToCheck: AnswerTypes,
   answerValues: string[],
-  nextNavigateTo: string | undefined,
 ) => {
-  // setup nextNavigationId variable
-  let nextNavigationId: NavigationIdType;
+  // setup return
+  let containsAny = false;
 
   // check if answerToCheck is an array
-  if (Array.isArray(answerToCheck)) {
+  if (isArray(answerToCheck)) {
     // check if answerToCheck contains any of the answerValues
     if (answerToCheck.some((answer) => answerValues.includes(answer))) {
-      nextNavigationId = nextNavigateTo;
+      containsAny = true;
     }
   }
 
-  return nextNavigationId;
+  return containsAny;
+};
+
+export const nextLogicTypeOr = (
+  valuesToCheck: ValuesToCheckType[],
+  getAnswerToCheckValue: AnswerToCheckValueFn,
+): boolean => {
+  // loop through valuesToCheck to see if any are true
+  return valuesToCheck.some((valueToCheck) => {
+    return ThisModule.navigationLogicItemIsTrue(
+      valueToCheck,
+      getAnswerToCheckValue,
+    );
+  });
+};
+
+export const nextLogicTypeAnd = (
+  valuesToCheck: ValuesToCheckType[],
+  getAnswerToCheckValue: AnswerToCheckValueFn,
+): boolean => {
+  // loop through valuesToCheck to see if all are true
+  return valuesToCheck.every((valueToCheck) => {
+    return ThisModule.navigationLogicItemIsTrue(
+      valueToCheck,
+      getAnswerToCheckValue,
+    );
+  });
 };

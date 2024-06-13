@@ -11,25 +11,16 @@ import Question from "../question/Question";
 import WalkthroughFooter from "../walkthrough-footer/WalkthroughFooter";
 import Result from "../result/Result";
 import { useWalkthroughState } from "../../stores/WalkthroughRootStore";
-import { getNextNavigationId } from "../../utils/logic/nextNavigation";
 import "./Walkthrough.css";
 
 const Walkthrough = observer((): JSX.Element => {
   // get current question from store as variable type question
   const {
-    currentQuestionAsVariable,
     currentResult,
-    currentItemId,
-    setCurrentQuestionId,
     currentQuestionAsDisplayType,
-    navigationStore: { addCurrentQuestionToHistory },
-    answerStore: { answers, currentAnswerValue },
+    navigationStore: { updateNavigationState, currentItemId },
+    answerStore: { currentAnswerValue },
   } = useWalkthroughState();
-
-  // check if current question as variable type exists
-  if (currentQuestionAsVariable) {
-    // TODO - handle variable type questions
-  }
 
   const handleQuestionSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
@@ -37,25 +28,10 @@ const Walkthrough = observer((): JSX.Element => {
       // check if current question and answer value exist
       if (!currentQuestionAsDisplayType || !currentAnswerValue) return;
 
-      // handle navigation logic
-      const nextQuestionId = getNextNavigationId(
-        currentQuestionAsDisplayType.nextNavigationLogic,
-        answers,
-      );
-
-      // set new current question
-      setCurrentQuestionId(nextQuestionId);
-
-      // update question history
-      addCurrentQuestionToHistory();
+      // update navigation state
+      updateNavigationState(currentQuestionAsDisplayType.nextNavigationLogic);
     },
-    [
-      addCurrentQuestionToHistory,
-      setCurrentQuestionId,
-      currentAnswerValue,
-      currentQuestionAsDisplayType,
-      answers,
-    ],
+    [updateNavigationState, currentAnswerValue, currentQuestionAsDisplayType],
   );
 
   return (

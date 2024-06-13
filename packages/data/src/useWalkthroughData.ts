@@ -12,23 +12,48 @@ interface UseWalkthroughDataProps {
 export const VariableToSetPropertyName = "variableToSet";
 export type AnswerValueTypes = string;
 
-interface PossibleAnswer {
+interface ShowAnswerIf {
+  showAnswerLogicType: string;
+  answerToCheck: string;
+  answerValue: string;
+}
+
+export interface PossibleAnswer {
   answerDisplayText: string;
   answerValueDisplay?: string;
   answerValue: AnswerValueTypes;
+  showAnswerIf?: boolean | ShowAnswerIf[];
 }
 
-export interface NextNavigationLogic {
-  nextLogicType: string;
+export enum NextNavigationLogicType {
+  Equal = "equal",
+  NotEqual = "notEqual",
+  DoesNotContain = "doesNotContain",
+  ContainsAny = "containsAny",
+  And = "and",
+  Or = "or",
+  LessThan = "lessThan",
+  Fallback = "fallback",
+}
+
+export interface ValuesToCheckType {
+  nextLogicType: NextNavigationLogicType | string;
   answerToCheck?: string;
   answerValue?: AnswerValueTypes;
+  valuesToCheck?: ValuesToCheckType[];
+}
+
+export interface NextNavigationLogic extends ValuesToCheckType {
   answerValues?: AnswerValueTypes[];
-  valuesToCheck?: NextNavigationLogic[];
   nextNavigateTo?: string;
 }
 
+export enum VariableValueLogicType {
+  Equals = "equals",
+  Fallback = "fallback",
+}
 interface VariableValueLogic {
-  variableValueLogicType: string;
+  variableValueLogicType: VariableValueLogicType | string;
   answerToCheck?: string;
   answerValue?: AnswerValueTypes;
   variableValueToSet: string;
@@ -46,8 +71,11 @@ export interface PossibleInvalidAnswer {
   errorMessage: string;
 }
 
-interface VariableToSet {
-  variableType: string;
+export enum VariableToSetType {
+  Object = "object",
+}
+export interface VariableToSet {
+  variableType: VariableToSetType | string;
   variableName: string;
   variableValue: {
     [key: string]: VariableValueLogic[];
@@ -80,7 +108,10 @@ export const isWalkthroughItemTypeMultiChoiceMultiple = (
 export interface QuestionMultipleChoiceSelectMultipleData
   extends QuestionBaseData {
   walkthroughItemType: typeof WalkthroughItemTypeMultiChoiceMultiple | string;
-  possibleInvalidAnswers: PossibleInvalidAnswer[];
+  possibleInvalidAnswers?: PossibleInvalidAnswer[];
+  answersAreDynamic: boolean;
+  storeAnswerAsObject: boolean;
+  isNotRequired: boolean;
 }
 
 export const WalkthroughItemTypeVariable = "variable";

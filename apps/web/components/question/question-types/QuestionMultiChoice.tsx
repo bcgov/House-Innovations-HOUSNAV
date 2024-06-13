@@ -11,9 +11,9 @@ import { useWalkthroughState } from "../../../stores/WalkthroughRootStore";
 const QuestionMultiChoice = observer((): JSX.Element => {
   // get data from store
   const {
-    currentItemId,
     currentQuestionAsMultipleChoice,
-    answerStore: { setAnswerValue, multipleChoiceAnswerValue },
+    answerStore: { setAnswerValueOnChange, multipleChoiceAnswerValue },
+    navigationStore: { currentItemId },
   } = useWalkthroughState();
 
   // handle missing question data
@@ -30,9 +30,9 @@ const QuestionMultiChoice = observer((): JSX.Element => {
   // setup onChange handler
   const onChange = useCallback(
     (value: string) => {
-      setAnswerValue(value, currentItemId);
+      setAnswerValueOnChange(value, currentItemId);
     },
-    [setAnswerValue, currentItemId],
+    [setAnswerValueOnChange, currentItemId],
   );
 
   return (

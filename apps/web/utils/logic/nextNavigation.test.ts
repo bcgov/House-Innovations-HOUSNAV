@@ -2,78 +2,58 @@
 import { expect, describe, it } from "vitest";
 // local
 import {
-  nextLogicTypeEquals,
+  nextLogicTypeEqual,
   nextLogicTypeDoesNotContain,
   nextLogicTypeContainsAny,
 } from "./nextNavigation";
 
 describe("nextNavigation", () => {
   /*
-   * nextLogicTypeEquals
+   * nextLogicTypeEqual
    */
-  it("nextLogicTypeEquals: answerToCheck is array and answerValue is equal", () => {
+  it("nextLogicTypeEqual: answerToCheck is array and answerValue is equal", () => {
     // test data
     const answerToCheck = ["answer1"];
     const answerValue = "answer1";
-    const nextNavigateTo = "nextNavigateTo";
 
-    // call nextLogicTypeEquals
-    const result = nextLogicTypeEquals(
-      answerToCheck,
-      answerValue,
-      nextNavigateTo,
-    );
+    // call nextLogicTypeEqual
+    const result = nextLogicTypeEqual(answerToCheck, answerValue);
 
     // expect result to be nextNavigateTo
-    expect(result).toBe(nextNavigateTo);
+    expect(result).toBe(true);
   });
-  it("nextLogicTypeEquals: answerToCheck is array and answerValue is not equal", () => {
+  it("nextLogicTypeEqual: answerToCheck is array and answerValue is not equal", () => {
     // test data
     const answerToCheck = ["answer1", "answer2"];
     const answerValue = "answer1";
-    const nextNavigateTo = "nextNavigateTo";
 
-    // call nextLogicTypeEquals
-    const result = nextLogicTypeEquals(
-      answerToCheck,
-      answerValue,
-      nextNavigateTo,
-    );
+    // call nextLogicTypeEqual
+    const result = nextLogicTypeEqual(answerToCheck, answerValue);
 
     // expect result to be nextNavigateTo
-    expect(result).toBe(undefined);
+    expect(result).toBe(false);
   });
-  it("nextLogicTypeEquals: answerToCheck is string and answerValue is equal", () => {
+  it("nextLogicTypeEqual: answerToCheck is string and answerValue is equal", () => {
     // test data
     const answerToCheck = "answer1";
     const answerValue = "answer1";
-    const nextNavigateTo = "nextNavigateTo";
 
-    // call nextLogicTypeEquals
-    const result = nextLogicTypeEquals(
-      answerToCheck,
-      answerValue,
-      nextNavigateTo,
-    );
+    // call nextLogicTypeEqual
+    const result = nextLogicTypeEqual(answerToCheck, answerValue);
 
     // expect result to be nextNavigateTo
-    expect(result).toBe(nextNavigateTo);
+    expect(result).toBe(true);
   });
-  it("nextLogicTypeEquals: answerToCheck is string and answerValue is not equal", () => {
+  it("nextLogicTypeEqual: answerToCheck is string and answerValue is not equal", () => {
     // test data
     const answerToCheck = "answer1";
     const answerValue = "answer2";
-    const nextNavigateTo = "nextNavigateTo";
 
-    // call nextLogicTypeEquals
-    const result = nextLogicTypeEquals(
-      answerToCheck,
-      answerValue,
-      nextNavigateTo,
-    );
+    // call nextLogicTypeEqual
+    const result = nextLogicTypeEqual(answerToCheck, answerValue);
 
     // expect result to be nextNavigateTo
-    expect(result).toBe(undefined);
+    expect(result).toBe(false);
   });
   /*
    * nextLogicTypeDoesNotContain
@@ -82,33 +62,23 @@ describe("nextNavigation", () => {
     // test data
     const answerToCheck = ["answer1", "answer2"];
     const answerValue = "answer3";
-    const nextNavigateTo = "nextNavigateTo";
 
     // call nextLogicTypeDoesNotContain
-    const result = nextLogicTypeDoesNotContain(
-      answerToCheck,
-      answerValue,
-      nextNavigateTo,
-    );
+    const result = nextLogicTypeDoesNotContain(answerToCheck, answerValue);
 
     // expect result to be nextNavigateTo
-    expect(result).toBe(nextNavigateTo);
+    expect(result).toBe(true);
   });
   it("nextLogicTypeDoesNotContain: answerToCheck is array and it contains answerValue", () => {
     // test data
     const answerToCheck = ["answer1", "answer2"];
     const answerValue = "answer2";
-    const nextNavigateTo = "nextNavigateTo";
 
     // call nextLogicTypeDoesNotContain
-    const result = nextLogicTypeDoesNotContain(
-      answerToCheck,
-      answerValue,
-      nextNavigateTo,
-    );
+    const result = nextLogicTypeDoesNotContain(answerToCheck, answerValue);
 
     // expect result to be undefined
-    expect(result).toBe(undefined);
+    expect(result).toBe(false);
   });
   /*
    * nextLogicTypeContainsAny
@@ -117,32 +87,22 @@ describe("nextNavigation", () => {
     // test data
     const answerToCheck = ["answer1", "answer2"];
     const answerValues = ["answer1", "answer3"];
-    const nextNavigateTo = "nextNavigateTo";
 
     // call nextLogicTypeContainsAny
-    const result = nextLogicTypeContainsAny(
-      answerToCheck,
-      answerValues,
-      nextNavigateTo,
-    );
+    const result = nextLogicTypeContainsAny(answerToCheck, answerValues);
 
     // expect result to be nextNavigateTo
-    expect(result).toBe(nextNavigateTo);
+    expect(result).toBe(true);
   });
   it("nextLogicTypeContainsAny: answerToCheck is array and it does not contain any of the answerValues", () => {
     // test data
     const answerToCheck = ["answer1", "answer2"];
     const answerValues = ["answer3", "answer4"];
-    const nextNavigateTo = "nextNavigateTo";
 
     // call nextLogicTypeContainsAny
-    const result = nextLogicTypeContainsAny(
-      answerToCheck,
-      answerValues,
-      nextNavigateTo,
-    );
+    const result = nextLogicTypeContainsAny(answerToCheck, answerValues);
 
     // expect result to be nextNavigateTo
-    expect(result).toBe(undefined);
+    expect(result).toBe(false);
   });
 });
