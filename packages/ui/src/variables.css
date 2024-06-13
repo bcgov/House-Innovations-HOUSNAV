@@ -266,6 +266,10 @@
 
 /* CUSTOM */
 :root {
+  --transition-medium: 300ms;
   --theme-black-opacity-40: #00000040;
   --walkthrough-card-max-width: 27.5rem;
+  --walkthrough-card-title-text-decoration-hidden: underline 1px #00000000;
+  --walkthrough-card-title-text-decoration-color-transition: underline 1px;
+  --walkthrough-card-title-text-underline-offset: 0.2em;
 }

@@ -12,20 +12,24 @@
   gap: var(--layout-margin-medium);
   border: var(--layout-border-width-none);
   text-align: left;
+  transition: box-shadow var(--transition-medium);
 }
 
 .ui-WalkthroughCard--Title {
   color: var(--support-border-color-info);
   font: var(--typography-bold-h5);
+  text-decoration: var(--walkthrough-card-title-text-decoration-hidden);
+  transition: text-decoration-color var(--transition-medium);
+  text-underline-offset: var(--walkthrough-card-title-text-underline-offset);
 }
+
 .ui-WalkthroughCard--CardContainer:hover {
   cursor: pointer;
   box-shadow: var(--surface-shadow-medium), var(--surface-shadow-medium);
 }
 
 .ui-WalkthroughCard--CardContainer:hover .ui-WalkthroughCard--Title {
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
+  text-decoration-color: var(--support-border-color-info);
 }
 
 .ui-WalkthroughCard--Subtitle {
