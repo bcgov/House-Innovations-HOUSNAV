@@ -32,21 +32,23 @@ export const parseStringToComponents = (html: string, customHandler?: any) => {
     replace: (domNode: DOMNode) => {
       if (domNode instanceof Element && domNode.attribs) {
         switch (domNode.name) {
-          case definedTermName: {
-            const DefinedTermComponent = customComponents[definedTermName];
-            const props = attributesToProps(domNode.attribs);
+          case definedTermName:
+            {
+              const DefinedTermComponent = customComponents[definedTermName];
+              const props = attributesToProps(domNode.attribs);
 
-            if (DefinedTermComponent) {
-              return (
-                <DefinedTermComponent
-                  {...(props as unknown as DefinedTermProps)}
-                  key={domNode.attribs.key}
-                >
-                  {domToReact(domNode.children as DOMNode[], options)}
-                </DefinedTermComponent>
-              );
+              if (DefinedTermComponent) {
+                return (
+                  <DefinedTermComponent
+                    {...(props as unknown as DefinedTermProps)}
+                    key={domNode.attribs.key}
+                  >
+                    {domToReact(domNode.children as DOMNode[], options)}
+                  </DefinedTermComponent>
+                );
+              }
             }
-          }
+            break;
           case definedTermModal: {
             // TODO: Matt or Nicholas, add correct section for customHandler
             const randomSection = Math.floor(Math.random() * 10) + 1;

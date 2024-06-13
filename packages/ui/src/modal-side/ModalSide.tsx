@@ -74,7 +74,7 @@ export default function ModalSide({
                     <Icon type="close" />
                   </Button>
                 </header>
-                <main className="ui-ModalSide--Content">
+                <div className="ui-ModalSide--Content">
                   {sections.map((section, index) => (
                     <section
                       key={index}
@@ -108,7 +108,7 @@ export default function ModalSide({
                       </article>
                     </section>
                   ))}
-                </main>
+                </div>
               </>
             )}
           </Dialog>
