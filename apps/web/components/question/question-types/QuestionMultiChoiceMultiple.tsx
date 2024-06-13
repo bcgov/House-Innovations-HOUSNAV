@@ -1,5 +1,5 @@
 // 3rd party
-import { JSX, useCallback } from "react";
+import { JSX, useCallback, useMemo } from "react";
 import { observer } from "mobx-react-lite";
 // repo
 import CheckboxGroup from "@repo/ui/checkbox-group";
@@ -8,13 +8,40 @@ import { ID_QUESTION_TEXT } from "@repo/constants/src/ids";
 import QuestionMissing from "./QuestionMissing";
 import { useWalkthroughState } from "../../../stores/WalkthroughRootStore";
 import { isValidAnswerOrErrorMessage } from "../../../utils/logic/possibleInvalidAnswers";
+import { AnswerTypes } from "../../../stores/AnswerStore";
+
+export function answerArrayToObject(
+  answerArray: string[],
+  possibleAnswers: { label: string; value: string }[],
+): Record<string, string> {
+  return possibleAnswers.reduce<Record<string, string>>((acc, val) => {
+    if (answerArray.includes(val.value)) {
+      acc[val.value] = "true";
+    } else {
+      acc[val.value] = "false";
+    }
+    return acc;
+  }, {});
+}
+
+export function answerObjectToArray(
+  answerObject: Record<string, string>,
+): string[] {
+  return Object.keys(answerObject).reduce<string[]>((acc, val) => {
+    if (answerObject[val] === "true") {
+      acc.push(val);
+    }
+    return acc;
+  }, []);
+}
 
 const QuestionMultiChoiceMultiple = observer((): JSX.Element => {
   // get data from store
   const {
-    currentItemId,
     currentQuestionAsMultipleChoiceMultiple,
-    answerStore: { setAnswerValue, multipleChoiceMultipleAnswerValue },
+    currentPossibleAnswersFromMultipleChoiceMultiple,
+    answerStore: { setAnswerValueOnChange, multipleChoiceMultipleAnswerValue },
+    navigationStore: { currentItemId },
   } = useWalkthroughState();
 
   // handle missing question data
@@ -22,32 +49,48 @@ const QuestionMultiChoiceMultiple = observer((): JSX.Element => {
 
   // convert possible answers to checkbox group options
   const checkboxGroupOptions =
-    currentQuestionAsMultipleChoiceMultiple.possibleAnswers.map(
-      (possibleAnswer) => ({
-        label: possibleAnswer.answerDisplayText,
-        value: possibleAnswer.answerValue,
-      }),
-    );
+    currentPossibleAnswersFromMultipleChoiceMultiple.map((possibleAnswer) => ({
+      label: possibleAnswer.answerDisplayText,
+      value: possibleAnswer.answerValue,
+    }));
 
   // setup onChange handler
   const onChange = useCallback(
     (value: string[]) => {
-      setAnswerValue(value, currentItemId);
+      let answerToStore: AnswerTypes = value;
+
+      // check if the answer needs to be stored as an object
+      if (currentQuestionAsMultipleChoiceMultiple.storeAnswerAsObject) {
+        answerToStore = answerArrayToObject(value, checkboxGroupOptions);
+      }
+
+      setAnswerValueOnChange(answerToStore, currentItemId);
     },
-    [setAnswerValue, currentItemId],
+    [setAnswerValueOnChange, currentItemId],
   );
+
+  // get current answer value and convert to array if it's an object
+  const value = currentQuestionAsMultipleChoiceMultiple.storeAnswerAsObject
+    ? useMemo(
+        () =>
+          answerObjectToArray(
+            multipleChoiceMultipleAnswerValue as Record<string, string>,
+          ),
+        [multipleChoiceMultipleAnswerValue],
+      )
+    : (multipleChoiceMultipleAnswerValue as string[]);
 
   return (
     <CheckboxGroup
       name={currentItemId}
-      value={multipleChoiceMultipleAnswerValue}
+      value={value}
       noLabel
       onChange={onChange}
-      isRequired
+      isRequired={!currentQuestionAsMultipleChoiceMultiple.isNotRequired}
       validate={(value) => {
         return isValidAnswerOrErrorMessage(
           value,
-          currentQuestionAsMultipleChoiceMultiple.possibleInvalidAnswers,
+          currentQuestionAsMultipleChoiceMultiple.possibleInvalidAnswers || [],
         );
       }}
       options={checkboxGroupOptions}

@@ -5,22 +5,23 @@ import { makeAutoObservable } from "mobx";
 import {
   isWalkthroughItemTypeMultiChoice,
   isWalkthroughItemTypeMultiChoiceMultiple,
+  QuestionDisplayData,
   QuestionMultipleChoiceData,
   QuestionMultipleChoiceSelectMultipleData,
+  QuestionVariableData,
   VariableToSetPropertyName,
   WalkthroughJSONType,
 } from "@repo/data/useWalkthroughData";
 // local
 import { NavigationStore } from "./NavigationStore";
 import { AnswerStore } from "./AnswerStore";
+import { getPossibleAnswers } from "../utils/logic/showAnswer";
 
 export class WalkthroughRootStore {
   navigationStore: NavigationStore;
   answerStore: AnswerStore;
 
   walkthroughData: WalkthroughJSONType = {} as WalkthroughJSONType;
-
-  currentItemId: string = "";
 
   constructor(walkthroughData: WalkthroughJSONType) {
     makeAutoObservable(this);
@@ -32,19 +33,18 @@ export class WalkthroughRootStore {
 
     // get starting question if exists and set it as current question
     if (walkthroughData?.info?.startingSectionId && walkthroughData.sections) {
-      this.currentItemId =
+      this.navigationStore.currentItemId =
         walkthroughData.sections[walkthroughData.info.startingSectionId]
           ?.sectionQuestions[0] || "";
-
-      // add starting question to history
-      this.navigationStore.questionHistory.push(this.currentItemId);
     }
   }
 
-  get currentQuestionAsDisplayType() {
-    const currentQuestion = this.walkthroughData.questions[this.currentItemId];
+  get currentQuestionAsDisplayType(): QuestionDisplayData | undefined {
+    const currentQuestion =
+      this.walkthroughData.questions[this.navigationStore.currentItemId];
 
-    // check if current question exists and has the unique key VariableToSetPropertyName (which means it's a variable type question)
+    // check if current question exists
+    // or if it has the unique key VariableToSetPropertyName (which means it's a variable type question)
     if (!currentQuestion || VariableToSetPropertyName in currentQuestion)
       return undefined;
 
@@ -79,21 +79,49 @@ export class WalkthroughRootStore {
     return currentQuestion as QuestionMultipleChoiceSelectMultipleData;
   }
 
-  get currentQuestionAsVariable() {
-    const currentQuestion = this.walkthroughData.questions[this.currentItemId];
-    if (!currentQuestion || !(VariableToSetPropertyName in currentQuestion))
-      return undefined;
+  get currentPossibleAnswersFromMultipleChoiceMultiple() {
+    // get current question
+    const currentQuestion = this.currentQuestionAsMultipleChoiceMultiple;
 
-    return currentQuestion;
+    // check if current question exists and has possible answers and is dynamic
+    if (!currentQuestion || !currentQuestion.possibleAnswers) return [];
+
+    // check if answer are dynamic
+    if (!currentQuestion.answersAreDynamic) {
+      return currentQuestion.possibleAnswers;
+    }
+
+    // cycle through possibleAnswers checking showAnswerIf
+    return getPossibleAnswers(
+      currentQuestion.possibleAnswers,
+      this.answerStore.getAnswerToCheckValue,
+    );
   }
-
-  setCurrentQuestionId = (questionId: string) => {
-    this.currentItemId = questionId;
-  };
 
   get currentResult() {
-    return this.walkthroughData.results[this.currentItemId];
+    return this.walkthroughData.results[this.navigationStore.currentItemId];
   }
+
+  get currentQuestionIsNotRequired() {
+    // currently, only multiple choice multiple questions can be not required
+    const currentQuestion = this.currentQuestionAsMultipleChoiceMultiple;
+    return currentQuestion && currentQuestion.isNotRequired;
+  }
+
+  getQuestionAsVariable = (
+    questionId: string,
+  ): QuestionVariableData | undefined => {
+    const questionAsVar = this.walkthroughData.questions[questionId];
+    if (!questionAsVar || !(VariableToSetPropertyName in questionAsVar))
+      return undefined;
+
+    return questionAsVar;
+  };
+
+  questionIsVariable = (questionId: string) => {
+    const question = this.walkthroughData.questions[questionId];
+    return question && VariableToSetPropertyName in question;
+  };
 }
 
 export const CreateWalkthroughStore = (
