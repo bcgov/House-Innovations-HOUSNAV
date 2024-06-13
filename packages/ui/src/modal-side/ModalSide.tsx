@@ -37,7 +37,7 @@ export default function ModalSide({
   );
 
   const modalRef = useRef<HTMLDivElement>(null);
-  const sectionRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+  const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
 
   useEffect(() => {
     if (focusSection && sectionRefs.current[focusSection]) {
@@ -63,7 +63,7 @@ export default function ModalSide({
           <Dialog className="ui-ModalSide--AriaDialog">
             {({ close }) => (
               <>
-                <div className="ui-ModalSide--Header">
+                <header className="ui-ModalSide--Header">
                   <Button
                     isIconButton
                     variant="tertiary"
@@ -73,10 +73,10 @@ export default function ModalSide({
                   >
                     <Icon type="close" />
                   </Button>
-                </div>
-                <div className="ui-ModalSide--Content">
+                </header>
+                <main className="ui-ModalSide--Content">
                   {sections.map((section, index) => (
-                    <div
+                    <section
                       key={index}
                       ref={(el) => {
                         sectionRefs.current[section.number] = el;
@@ -87,7 +87,7 @@ export default function ModalSide({
                           : ""
                       }`}
                     >
-                      <div className="ui-ModalSide--SectionHeaderLine">
+                      <header className="ui-ModalSide--SectionHeaderLine">
                         <Heading
                           level={3}
                           className="ui-ModalSide--SectionNumber"
@@ -97,18 +97,18 @@ export default function ModalSide({
                         <Heading className="ui-ModalSide--SectionHeader">
                           {section.header}
                         </Heading>
-                      </div>
-                      <div className="ui-ModalSide--SectionContentLine">
+                      </header>
+                      <article className="ui-ModalSide--SectionContentLine">
                         <p className="ui-ModalSide--SectionContent">
                           {parseStringToComponents(
                             section.content,
                             setFocusSection
                           )}
                         </p>
-                      </div>
-                    </div>
+                      </article>
+                    </section>
                   ))}
-                </div>
+                </main>
               </>
             )}
           </Dialog>
