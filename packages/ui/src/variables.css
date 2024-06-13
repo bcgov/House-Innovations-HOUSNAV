@@ -267,4 +267,5 @@
 /* CUSTOM */
 :root {
   --theme-black-opacity-40: #00000040;
+  --walkthrough-card-max-width: 27.5rem;
 }

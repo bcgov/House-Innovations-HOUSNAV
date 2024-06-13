@@ -31,15 +31,17 @@ export default function WalkthroughCard({
 
   return (
     <Button
-      className="card-container"
+      className="ui-WalkthroughCard--CardContainer"
       onPress={handleClick}
       aria-label={`${id}-walkthrough-card`}
     >
-      <div className="title">{data.title}</div>
-      <div>
-        <div className="subtitle">{data.subtitle}</div>
-      </div>
-      <div className="description">{data.description}</div>
+      <header className="ui-WalkthroughCard--Title">{data.title}</header>
+      <article>
+        <span className="ui-WalkthroughCard--Subtitle">{data.subtitle}</span>
+      </article>
+      <section className="ui-WalkthroughCard--Description">
+        {data.description}
+      </section>
     </Button>
   );
 }

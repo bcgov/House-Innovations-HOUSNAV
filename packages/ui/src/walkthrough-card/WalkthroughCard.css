@@ -1,53 +1,42 @@
-.card-container {
-  justify-content: space-between;
-  border-radius: 8px;
-  box-shadow:
-    0px 1.2px 3.6px 0px rgba(0, 0, 0, 0.1),
-    0px 6.4px 14.4px 0px rgba(0, 0, 0, 0.13);
-  background-color: #fff;
+.ui-WalkthroughCard--CardContainer {
   display: flex;
-  max-width: 428px;
+  border-radius: var(--layout-border-radius-xlarge);
+  box-shadow: var(--surface-shadow-none), var(--surface-shadow-none);
+  background-color: var(--surface-color-background-white);
+  max-width: var(--walkthrough-card-max-width);
   flex-direction: column;
   font-size: 14px;
   color: var(--support-border-color-info);
-  font-weight: 400;
-  line-height: 150%;
-  padding: 24px;
+  padding: var(--layout-padding-large);
   margin: var(--layout-margin-medium);
   gap: var(--layout-margin-medium);
-  border: none;
+  border: var(--layout-border-width-none);
   text-align: left;
 }
 
-.title {
+.ui-WalkthroughCard--Title {
   color: var(--support-border-color-info);
   font: var(--typography-bold-h5);
 }
-.card-container:hover {
+.ui-WalkthroughCard--CardContainer:hover {
   cursor: pointer;
-  box-shadow:
-    0px 1.2px 3.6px 0px rgba(0, 0, 0, 0.2),
-    0px 6.4px 14.4px 0px rgba(0, 0, 0, 0.23);
+  box-shadow: var(--surface-shadow-medium), var(--surface-shadow-medium);
 }
 
-.card-container:hover .title {
+.ui-WalkthroughCard--CardContainer:hover .ui-WalkthroughCard--Title {
   text-decoration: underline;
   text-decoration-thickness: 1px;
-  white-space: normal;
-  height: auto;
 }
 
-.subtitle {
+.ui-WalkthroughCard--Subtitle {
   font: var(--typography-regular-label);
   color: var(--support-border-color-info);
-  border: 1px solid var(--theme-blue-90);
+  border: var(--layout-border-width-small) solid var(--theme-blue-90);
   border-radius: var(--layout-border-radius-small);
-  padding: 2px 8px;
-  display: inline;
-  margin-top: 8px;
+  padding: var(--layout-padding-xxsmall) var(--layout-padding-xsmall);
 }
 
-.description {
+.ui-WalkthroughCard--Description {
   font: var(--typography-regular-body);
   color: var(--typography-color-primary);
 }

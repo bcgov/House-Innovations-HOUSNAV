@@ -10,21 +10,24 @@ import {
 
 export default function Page(): JSX.Element {
   return (
-    <div className="u-container ">
-      {Walkthroughs.map((walkthrough: string) => {
-        const data = WalkthroughJSONData[walkthrough]?.info;
-        const canDisplayCard =
-          data && data.title && data.subtitle && data.description;
-        return (
-          canDisplayCard && (
-            <WalkthroughCard
-              id={walkthrough}
-              data={data}
-              href={`${URL_WALKTHROUGH_HREF}/${walkthrough}/`}
-            />
-          )
-        );
-      })}
+    <div className="u-container">
+      <div>
+        {Object.entries(WalkthroughJSONData).map(([id, data]) => {
+          const info = data.info;
+          const canDisplayCard =
+            info && info.title && info.subtitle && info.description;
+          return (
+            canDisplayCard && (
+              <WalkthroughCard
+                key={id}
+                id={id}
+                data={info}
+                href={`${URL_WALKTHROUGH_HREF}/${id}/`}
+              />
+            )
+          );
+        })}
+      </div>
     </div>
   );
 }
