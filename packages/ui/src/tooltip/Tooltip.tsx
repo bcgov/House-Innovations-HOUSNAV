@@ -29,7 +29,13 @@ export default function Tooltip({
         placement="bottom"
         aria-live="polite"
       >
-        <Image src="tooltip-triangle.svg" className={"ui-Tooltip--Triangle"} />
+        <Image
+          src="tooltip-triangle.svg"
+          alt="tooltip trigger pointer"
+          className={"ui-Tooltip--Triangle"}
+          width="25"
+          height="12"
+        />
         <div className="ui-Tooltip--Content">{tooltipContent}</div>
       </AriaTooltip>
     </TooltipTrigger>

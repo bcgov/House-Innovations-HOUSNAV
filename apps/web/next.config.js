@@ -11,4 +11,12 @@ module.exports = {
       },
     ];
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**.gov.bc.ca",
+      },
+    ],
+  },
 };
