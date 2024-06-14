@@ -1,5 +1,7 @@
 // 3rd party
 import { describe, it, expect, vi } from "vitest";
+// repo
+import { PossibleAnswer } from "@repo/data/useWalkthroughData";
 // local
 import {
   showAnswerTypeEquals,
@@ -128,7 +130,7 @@ describe("showAnswer", () => {
   it("getPossibleAnswers: possible answers with showAnswerIf equal to true", () => {
     // test data
     const mockGetAnswerToCheckValue = vi.fn();
-    const possibleAnswers = [
+    const possibleAnswers: PossibleAnswer[] = [
       {
         answerDisplayText: "Answer 1",
         answerValue: "answer1",
@@ -150,7 +152,7 @@ describe("showAnswer", () => {
     // test data
     const mockGetAnswerToCheckValue = vi.fn();
     mockGetAnswerToCheckValue.mockReturnValue("answer1");
-    const possibleAnswers = [
+    const possibleAnswers: PossibleAnswer[] = [
       {
         answerDisplayText: "Answer 1",
         answerValue: "answer1",
@@ -164,7 +166,7 @@ describe("showAnswer", () => {
       },
     ];
 
-    // expect result to have length of 1 and mockGetAnswerToCheckValue to have been called
+    // expect an error and mockGetAnswerToCheckValue to have been called
     expect(() =>
       getPossibleAnswers(possibleAnswers, mockGetAnswerToCheckValue),
     ).toThrowError();
@@ -174,7 +176,7 @@ describe("showAnswer", () => {
     // test data
     const mockGetAnswerToCheckValue = vi.fn();
     mockGetAnswerToCheckValue.mockReturnValue("doesn't matter");
-    const possibleAnswers = [
+    const possibleAnswers: PossibleAnswer[] = [
       {
         answerDisplayText: "Answer 1",
         answerValue: "answer1",
