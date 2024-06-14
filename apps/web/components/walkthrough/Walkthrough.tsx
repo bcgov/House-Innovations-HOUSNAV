@@ -3,6 +3,7 @@
 import { FormEvent, JSX, useCallback } from "react";
 import { Form } from "react-aria-components";
 import { observer } from "mobx-react-lite";
+import { toJS } from "mobx";
 // repo
 import { TESTID_WALKTHROUGH } from "@repo/constants/src/testids";
 import { ID_QUESTION_FORM } from "@repo/constants/src/ids";
@@ -19,7 +20,7 @@ const Walkthrough = observer((): JSX.Element => {
     currentResult,
     currentQuestionAsDisplayType,
     navigationStore: { handleForwardNavigation, currentItemId },
-    answerStore: { currentAnswerValue },
+    answerStore: { currentAnswerValue, answers },
   } = useWalkthroughState();
 
   const handleQuestionSubmit = useCallback(
@@ -29,9 +30,21 @@ const Walkthrough = observer((): JSX.Element => {
       if (!currentQuestionAsDisplayType || !currentAnswerValue) return;
 
       // update navigation state
-      handleForwardNavigation(currentQuestionAsDisplayType.nextNavigationLogic);
+      try {
+        handleForwardNavigation(
+          currentQuestionAsDisplayType.nextNavigationLogic,
+        );
+      } catch (error) {
+        console.log("Error in handleForwardNavigation", error);
+        console.log("answerStore", toJS(answers));
+      }
     },
-    [handleForwardNavigation, currentAnswerValue, currentQuestionAsDisplayType],
+    [
+      handleForwardNavigation,
+      currentAnswerValue,
+      currentQuestionAsDisplayType,
+      answers,
+    ],
   );
 
   return (
