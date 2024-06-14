@@ -6,6 +6,7 @@ import {
   NextNavigationLogicType,
   ValuesToCheckType,
 } from "@repo/data/useWalkthroughData";
+import { NEXT_NAVIGATION_ID_ERROR } from "@repo/constants/src/constants";
 // local
 import {
   nextLogicTypeEqual,
@@ -17,7 +18,6 @@ import {
   nextLogicTypeAnd,
   getNextNavigationId,
   navigationLogicItemIsTrue,
-  NEXT_NAVIGATION_ID_ERROR,
 } from "./nextNavigation";
 import * as NextNavigationModule from "./nextNavigation";
 

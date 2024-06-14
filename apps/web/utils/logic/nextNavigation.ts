@@ -4,14 +4,12 @@ import {
   NextNavigationLogicType,
   ValuesToCheckType,
 } from "@repo/data/useWalkthroughData";
+import { NEXT_NAVIGATION_ID_ERROR } from "@repo/constants/src/constants";
 // local
 import { AnswerToCheckValueFn, AnswerTypes } from "../../stores/AnswerStore";
 import { isArray, isString } from "../typeChecking";
 // NOTE: this feels weird, but it makes sure this module is something we can spy on for tests
 import * as ThisModule from "./nextNavigation";
-
-// empty string is the default value for nextNavigationId and will show the question error screen
-export const NEXT_NAVIGATION_ID_ERROR = "";
 
 export const getNextNavigationId = (
   nextNavigationLogic: NextNavigationLogic[],
