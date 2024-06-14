@@ -1133,102 +1133,182 @@
           "nextLogicType": "and",
           "valuesToCheck": [
             {
-              "nextLogicType": "and",
+              "nextLogicType": "or",
               "valuesToCheck": [
                 {
-                  "nextLogicType": "and",
+                  "nextLogicType": "or",
                   "valuesToCheck": [
                     {
-                      "nextLogicType": "notEqual",
+                      "nextLogicType": "equal",
                       "answerToCheck": "P5.B",
                       "answerValue": "true"
                     },
                     {
-                      "nextLogicType": "notEqual",
+                      "nextLogicType": "equal",
                       "answerToCheck": "P8.B",
                       "answerValue": "true"
                     }
                   ]
                 },
                 {
-                  "nextLogicType": "lessThan",
-                  "answerToCheck": "P4.B",
-                  "answerValue": "2"
+                  "nextLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "and",
+                      "valuesToCheck": [
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P5.B",
+                          "answerValue": "true"
+                        },
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P8.B",
+                          "answerValue": "true"
+                        }
+                      ]
+                    },
+                    {
+                      "nextLogicType": "lessThan",
+                      "answerToCheck": "P4.B",
+                      "answerValue": "2"
+                    }
+                  ]
                 }
               ]
             },
             {
-              "nextLogicType": "and",
+              "nextLogicType": "or",
               "valuesToCheck": [
                 {
-                  "nextLogicType": "and",
+                  "nextLogicType": "or",
                   "valuesToCheck": [
                     {
-                      "nextLogicType": "notEqual",
+                      "nextLogicType": "equal",
                       "answerToCheck": "P5.1",
                       "answerValue": "true"
                     },
                     {
-                      "nextLogicType": "notEqual",
+                      "nextLogicType": "equal",
                       "answerToCheck": "P8.1",
                       "answerValue": "true"
                     }
                   ]
                 },
                 {
-                  "nextLogicType": "lessThan",
-                  "answerToCheck": "P4.1",
-                  "answerValue": "2"
+                  "nextLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "and",
+                      "valuesToCheck": [
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P5.1",
+                          "answerValue": "true"
+                        },
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P8.1",
+                          "answerValue": "true"
+                        }
+                      ]
+                    },
+                    {
+                      "nextLogicType": "lessThan",
+                      "answerToCheck": "P4.1",
+                      "answerValue": "2"
+                    }
+                  ]
                 }
               ]
             },
             {
-              "nextLogicType": "and",
+              "nextLogicType": "or",
               "valuesToCheck": [
                 {
-                  "nextLogicType": "and",
+                  "nextLogicType": "or",
                   "valuesToCheck": [
                     {
-                      "nextLogicType": "notEqual",
+                      "nextLogicType": "equal",
                       "answerToCheck": "P5.2",
                       "answerValue": "true"
                     },
                     {
-                      "nextLogicType": "notEqual",
+                      "nextLogicType": "equal",
                       "answerToCheck": "P8.2",
                       "answerValue": "true"
                     }
                   ]
                 },
                 {
-                  "nextLogicType": "lessThan",
-                  "answerToCheck": "P4.2",
-                  "answerValue": "2"
+                  "nextLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "and",
+                      "valuesToCheck": [
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P5.2",
+                          "answerValue": "true"
+                        },
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P8.2",
+                          "answerValue": "true"
+                        }
+                      ]
+                    },
+                    {
+                      "nextLogicType": "lessThan",
+                      "answerToCheck": "P4.2",
+                      "answerValue": "2"
+                    }
+                  ]
                 }
               ]
             },
             {
-              "nextLogicType": "and",
+              "nextLogicType": "or",
               "valuesToCheck": [
                 {
-                  "nextLogicType": "and",
+                  "nextLogicType": "or",
                   "valuesToCheck": [
                     {
-                      "nextLogicType": "notEqual",
+                      "nextLogicType": "equal",
                       "answerToCheck": "P5.3",
                       "answerValue": "true"
                     },
                     {
-                      "nextLogicType": "notEqual",
+                      "nextLogicType": "equal",
                       "answerToCheck": "P8.3",
                       "answerValue": "true"
                     }
                   ]
                 },
                 {
-                  "nextLogicType": "lessThan",
-                  "answerToCheck": "P4.3",
-                  "answerValue": "2"
+                  "nextLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "and",
+                      "valuesToCheck": [
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P5.3",
+                          "answerValue": "true"
+                        },
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P8.3",
+                          "answerValue": "true"
+                        }
+                      ]
+                    },
+                    {
+                      "nextLogicType": "lessThan",
+                      "answerToCheck": "P4.3",
+                      "answerValue": "2"
+                    }
+                  ]
                 }
               ]
             }
@@ -1368,102 +1448,182 @@
           "nextLogicType": "and",
           "valuesToCheck": [
             {
-              "nextLogicType": "and",
+              "nextLogicType": "or",
               "valuesToCheck": [
                 {
-                  "nextLogicType": "and",
+                  "nextLogicType": "or",
                   "valuesToCheck": [
                     {
-                      "nextLogicType": "notEqual",
+                      "nextLogicType": "equal",
                       "answerToCheck": "P5.B",
                       "answerValue": "true"
                     },
                     {
-                      "nextLogicType": "notEqual",
+                      "nextLogicType": "equal",
                       "answerToCheck": "P8.B",
                       "answerValue": "true"
                     }
                   ]
                 },
                 {
-                  "nextLogicType": "lessThan",
-                  "answerToCheck": "P4.B",
-                  "answerValue": "2"
+                  "nextLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "and",
+                      "valuesToCheck": [
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P5.B",
+                          "answerValue": "true"
+                        },
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P8.B",
+                          "answerValue": "true"
+                        }
+                      ]
+                    },
+                    {
+                      "nextLogicType": "lessThan",
+                      "answerToCheck": "P4.B",
+                      "answerValue": "2"
+                    }
+                  ]
                 }
               ]
             },
             {
-              "nextLogicType": "and",
+              "nextLogicType": "or",
               "valuesToCheck": [
                 {
-                  "nextLogicType": "and",
+                  "nextLogicType": "or",
                   "valuesToCheck": [
                     {
-                      "nextLogicType": "notEqual",
+                      "nextLogicType": "equal",
                       "answerToCheck": "P5.1",
                       "answerValue": "true"
                     },
                     {
-                      "nextLogicType": "notEqual",
+                      "nextLogicType": "equal",
                       "answerToCheck": "P8.1",
                       "answerValue": "true"
                     }
                   ]
                 },
                 {
-                  "nextLogicType": "lessThan",
-                  "answerToCheck": "P4.1",
-                  "answerValue": "2"
+                  "nextLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "and",
+                      "valuesToCheck": [
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P5.1",
+                          "answerValue": "true"
+                        },
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P8.1",
+                          "answerValue": "true"
+                        }
+                      ]
+                    },
+                    {
+                      "nextLogicType": "lessThan",
+                      "answerToCheck": "P4.1",
+                      "answerValue": "2"
+                    }
+                  ]
                 }
               ]
             },
             {
-              "nextLogicType": "and",
+              "nextLogicType": "or",
               "valuesToCheck": [
                 {
-                  "nextLogicType": "and",
+                  "nextLogicType": "or",
                   "valuesToCheck": [
                     {
-                      "nextLogicType": "notEqual",
+                      "nextLogicType": "equal",
                       "answerToCheck": "P5.2",
                       "answerValue": "true"
                     },
                     {
-                      "nextLogicType": "notEqual",
+                      "nextLogicType": "equal",
                       "answerToCheck": "P8.2",
                       "answerValue": "true"
                     }
                   ]
                 },
                 {
-                  "nextLogicType": "lessThan",
-                  "answerToCheck": "P4.2",
-                  "answerValue": "2"
+                  "nextLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "and",
+                      "valuesToCheck": [
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P5.2",
+                          "answerValue": "true"
+                        },
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P8.2",
+                          "answerValue": "true"
+                        }
+                      ]
+                    },
+                    {
+                      "nextLogicType": "lessThan",
+                      "answerToCheck": "P4.2",
+                      "answerValue": "2"
+                    }
+                  ]
                 }
               ]
             },
             {
-              "nextLogicType": "and",
+              "nextLogicType": "or",
               "valuesToCheck": [
                 {
-                  "nextLogicType": "and",
+                  "nextLogicType": "or",
                   "valuesToCheck": [
                     {
-                      "nextLogicType": "notEqual",
+                      "nextLogicType": "equal",
                       "answerToCheck": "P5.3",
                       "answerValue": "true"
                     },
                     {
-                      "nextLogicType": "notEqual",
+                      "nextLogicType": "equal",
                       "answerToCheck": "P8.3",
                       "answerValue": "true"
                     }
                   ]
                 },
                 {
-                  "nextLogicType": "lessThan",
-                  "answerToCheck": "P4.3",
-                  "answerValue": "2"
+                  "nextLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "and",
+                      "valuesToCheck": [
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P5.3",
+                          "answerValue": "true"
+                        },
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P8.3",
+                          "answerValue": "true"
+                        }
+                      ]
+                    },
+                    {
+                      "nextLogicType": "lessThan",
+                      "answerToCheck": "P4.3",
+                      "answerValue": "2"
+                    }
+                  ]
                 }
               ]
             }
