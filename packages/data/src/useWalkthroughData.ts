@@ -12,8 +12,13 @@ interface UseWalkthroughDataProps {
 export const VariableToSetPropertyName = "variableToSet";
 export type AnswerValueTypes = string;
 
+export enum ShowAnswerIfLogicType {
+  Equals = "equals",
+  GreaterThan = "greaterThan",
+}
+
 interface ShowAnswerIf {
-  showAnswerLogicType: string;
+  showAnswerLogicType: ShowAnswerIfLogicType | string;
   answerToCheck: string;
   answerValue: string;
 }
@@ -109,9 +114,9 @@ export interface QuestionMultipleChoiceSelectMultipleData
   extends QuestionBaseData {
   walkthroughItemType: typeof WalkthroughItemTypeMultiChoiceMultiple | string;
   possibleInvalidAnswers?: PossibleInvalidAnswer[];
-  answersAreDynamic: boolean;
-  storeAnswerAsObject: boolean;
-  isNotRequired: boolean;
+  answersAreDynamic?: boolean;
+  storeAnswerAsObject?: boolean;
+  isNotRequired?: boolean;
 }
 
 export const WalkthroughItemTypeVariable = "variable";

@@ -15,12 +15,11 @@ export const getVariableItemValue = (
   getAnswerToCheckValue: AnswerToCheckValueFn,
 ): AnswerTypes => {
   // check variableType
-  switch (variableToSet.variableType) {
-    case VariableToSetType.Object:
-      return ThisModule.getVariableItemValueObject(
-        variableToSet,
-        getAnswerToCheckValue,
-      );
+  if (variableToSet.variableType === VariableToSetType.Object) {
+    return ThisModule.getVariableItemValueObject(
+      variableToSet,
+      getAnswerToCheckValue,
+    );
   }
 
   // throw error if variableType is not valid

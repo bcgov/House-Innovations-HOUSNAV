@@ -1,18 +1,22 @@
 // repo
-import { PossibleAnswer } from "@repo/data/useWalkthroughData";
+import {
+  PossibleAnswer,
+  ShowAnswerIfLogicType,
+} from "@repo/data/useWalkthroughData";
 // local
 import { AnswerTypes, AnswerToCheckValueFn } from "../../stores/AnswerStore";
-import { isArray } from "../typeChecking";
+import { isArray, isString } from "../typeChecking";
+// NOTE: this feels weird, but it makes sure this module is something we can spy on for tests
+import * as ThisModule from "./showAnswer";
 
 export const getPossibleAnswers = (
   possibleAnswers: PossibleAnswer[],
   getAnswerToCheckValue: AnswerToCheckValueFn,
 ) => {
   return possibleAnswers.filter((possibleAnswer) => {
-    if (!possibleAnswer.showAnswerIf) return true;
-
-    // if showAnswerIf is equal to true, show answer
-    if (possibleAnswer.showAnswerIf === true) return true;
+    // if no showAnswerIf property or it's equal to true, show answer
+    if (!possibleAnswer.showAnswerIf || possibleAnswer.showAnswerIf === true)
+      return true;
 
     // cycle through showAnswerIf and check by showAnswerLogicType
     return possibleAnswer.showAnswerIf.some((showAnswerIf) => {
@@ -24,16 +28,22 @@ export const getPossibleAnswers = (
 
       // check witch showAnswerLogicType to use
       switch (showAnswerIf.showAnswerLogicType) {
-        case "equals":
-          return showAnswerTypeEquals(answerToCheck, showAnswerIf.answerValue);
-        case "greaterThan":
-          return showAnswerTypeGreaterThan(
+        case ShowAnswerIfLogicType.Equals:
+          return ThisModule.showAnswerTypeEquals(
+            answerToCheck,
+            showAnswerIf.answerValue,
+          );
+        case ShowAnswerIfLogicType.GreaterThan:
+          return ThisModule.showAnswerTypeGreaterThan(
             answerToCheck,
             showAnswerIf.answerValue,
           );
       }
 
-      return false;
+      // if showAnswerLogicType is not recognized, throw an error
+      throw new Error(
+        `getPossibleAnswers: showAnswerLogicType not recognized: ${showAnswerIf.showAnswerLogicType}`,
+      );
     });
   });
 };
@@ -51,11 +61,16 @@ export const showAnswerTypeEquals = (
     if (answerToCheck.includes(answerValue) && answerToCheck.length === 1) {
       showAnswer = true;
     }
-  } else {
+  } else if (isString(answerToCheck)) {
     // check if answerToCheck value is equal to answerValue
     if (answerToCheck === answerValue) {
       showAnswer = true;
     }
+  } else {
+    // if answerToCheck is not an array or string, throw an error
+    throw new Error(
+      `showAnswerTypeEquals: answerToCheck must be a string or array, got ${typeof answerToCheck}`,
+    );
   }
 
   return showAnswer;
@@ -65,13 +80,12 @@ export const showAnswerTypeGreaterThan = (
   answerToCheck: AnswerTypes,
   answerValue: string,
 ) => {
-  // setup showAnswer variable
-  let showAnswer = false;
-
-  // check if answerToCheck is greater than answerValue
-  if (answerToCheck > answerValue) {
-    showAnswer = true;
+  // if answer to check isn't a string, throw an error
+  if (!isString(answerToCheck)) {
+    throw new Error(
+      `showAnswerTypeGreaterThan: answerToCheck must be a string, got ${typeof answerToCheck}`,
+    );
   }
-
-  return showAnswer;
+  // Return true if answerToCheck is greater than answerValue, otherwise false
+  return answerToCheck > answerValue;
 };

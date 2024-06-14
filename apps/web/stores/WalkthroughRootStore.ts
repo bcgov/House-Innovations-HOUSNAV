@@ -39,64 +39,92 @@ export class WalkthroughRootStore {
     }
   }
 
-  get currentQuestionAsDisplayType(): QuestionDisplayData | undefined {
-    const currentQuestion =
-      this.walkthroughData.questions[this.navigationStore.currentItemId];
+  getQuestionAsDisplayType = (
+    questionId: string,
+  ): QuestionDisplayData | undefined => {
+    const displayTypeQuestion = this.walkthroughData.questions[questionId];
 
     // check if current question exists
     // or if it has the unique key VariableToSetPropertyName (which means it's a variable type question)
-    if (!currentQuestion || VariableToSetPropertyName in currentQuestion)
-      return undefined;
-
-    return currentQuestion;
-  }
-
-  get currentQuestionAsMultipleChoice() {
-    const currentQuestion = this.currentQuestionAsDisplayType;
-
-    // check if current question exists and is a multiple choice type
     if (
-      !currentQuestion ||
-      !isWalkthroughItemTypeMultiChoice(currentQuestion.walkthroughItemType)
+      !displayTypeQuestion ||
+      VariableToSetPropertyName in displayTypeQuestion
     )
       return undefined;
 
-    return currentQuestion as QuestionMultipleChoiceData;
+    return displayTypeQuestion;
+  };
+
+  get currentQuestionAsDisplayType(): QuestionDisplayData | undefined {
+    return this.getQuestionAsDisplayType(this.navigationStore.currentItemId);
   }
 
-  get currentQuestionAsMultipleChoiceMultiple() {
-    const currentQuestion = this.currentQuestionAsDisplayType;
+  getQuestionAsMultipleChoice = (
+    questionId: string,
+  ): QuestionMultipleChoiceData | undefined => {
+    const multiChoiceQuestion = this.getQuestionAsDisplayType(questionId);
+
+    // check if current question exists and is a multiple choice type
+    if (
+      !multiChoiceQuestion ||
+      !isWalkthroughItemTypeMultiChoice(multiChoiceQuestion.walkthroughItemType)
+    )
+      return undefined;
+
+    return multiChoiceQuestion as QuestionMultipleChoiceData;
+  };
+
+  get currentQuestionAsMultipleChoice() {
+    return this.getQuestionAsMultipleChoice(this.navigationStore.currentItemId);
+  }
+
+  getQuestionAsMultipleChoiceMultiple = (
+    questionId: string,
+  ): QuestionMultipleChoiceSelectMultipleData | undefined => {
+    const multiChoiceMultipleQuestion =
+      this.getQuestionAsDisplayType(questionId);
 
     // check if current question exists and is a multiple choice multiple type
     if (
-      !currentQuestion ||
+      !multiChoiceMultipleQuestion ||
       !isWalkthroughItemTypeMultiChoiceMultiple(
-        currentQuestion.walkthroughItemType,
+        multiChoiceMultipleQuestion.walkthroughItemType,
       )
     )
       return undefined;
 
-    return currentQuestion as QuestionMultipleChoiceSelectMultipleData;
+    return multiChoiceMultipleQuestion as QuestionMultipleChoiceSelectMultipleData;
+  };
+
+  get currentQuestionAsMultipleChoiceMultiple() {
+    return this.getQuestionAsMultipleChoiceMultiple(
+      this.navigationStore.currentItemId,
+    );
   }
 
-  get currentPossibleAnswersFromMultipleChoiceMultiple() {
-    // get current question
-    const currentQuestion = this.currentQuestionAsMultipleChoiceMultiple;
+  getPossibleAnswersFromMultipleChoiceMultiple = (questionId: string) => {
+    // get multiChoiceMultipleQuestion
+    const multiChoiceMultipleQuestion =
+      this.getQuestionAsMultipleChoiceMultiple(questionId);
 
     // check if current question exists and has possible answers and is dynamic
-    if (!currentQuestion || !currentQuestion.possibleAnswers) return [];
+    if (
+      !multiChoiceMultipleQuestion ||
+      !multiChoiceMultipleQuestion.possibleAnswers
+    )
+      return [];
 
     // check if answer are dynamic
-    if (!currentQuestion.answersAreDynamic) {
-      return currentQuestion.possibleAnswers;
+    if (!multiChoiceMultipleQuestion.answersAreDynamic) {
+      return multiChoiceMultipleQuestion.possibleAnswers;
     }
 
     // cycle through possibleAnswers checking showAnswerIf
     return getPossibleAnswers(
-      currentQuestion.possibleAnswers,
+      multiChoiceMultipleQuestion.possibleAnswers,
       this.answerStore.getAnswerToCheckValue,
     );
-  }
+  };
 
   get currentResult() {
     return this.walkthroughData.results[this.navigationStore.currentItemId];

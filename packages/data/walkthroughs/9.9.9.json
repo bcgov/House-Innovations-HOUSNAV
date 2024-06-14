@@ -1557,7 +1557,7 @@
             {
               "showAnswerLogicType": "equals",
               "answerToCheck": "P9.B",
-              "answerValue": "true"
+              "answerValue": "false"
             }
           ]
         },
@@ -1568,7 +1568,7 @@
             {
               "showAnswerLogicType": "equals",
               "answerToCheck": "P9.1",
-              "answerValue": "true"
+              "answerValue": "false"
             }
           ]
         },
@@ -1579,7 +1579,7 @@
             {
               "showAnswerLogicType": "equals",
               "answerToCheck": "P9.2",
-              "answerValue": "true"
+              "answerValue": "false"
             }
           ]
         },
@@ -1590,7 +1590,7 @@
             {
               "showAnswerLogicType": "equals",
               "answerToCheck": "P9.3",
-              "answerValue": "true"
+              "answerValue": "false"
             }
           ]
         }
