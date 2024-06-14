@@ -7,6 +7,7 @@ import { toJS } from "mobx";
 // repo
 import { TESTID_WALKTHROUGH } from "@repo/constants/src/testids";
 import { ID_QUESTION_FORM } from "@repo/constants/src/ids";
+import { NEXT_NAVIGATION_ID_ERROR } from "@repo/constants/src/constants";
 // local
 import Question from "../question/Question";
 import WalkthroughFooter from "../walkthrough-footer/WalkthroughFooter";
@@ -19,7 +20,7 @@ const Walkthrough = observer((): JSX.Element => {
   const {
     currentResult,
     currentQuestionAsDisplayType,
-    navigationStore: { handleForwardNavigation, currentItemId },
+    navigationStore,
     answerStore: { currentAnswerValue, answers },
   } = useWalkthroughState();
 
@@ -31,16 +32,17 @@ const Walkthrough = observer((): JSX.Element => {
 
       // update navigation state
       try {
-        handleForwardNavigation(
+        navigationStore.handleForwardNavigation(
           currentQuestionAsDisplayType.nextNavigationLogic,
         );
       } catch (error) {
+        navigationStore.currentItemId = NEXT_NAVIGATION_ID_ERROR;
         console.log("Error in handleForwardNavigation", error);
         console.log("answerStore", toJS(answers));
       }
     },
     [
-      handleForwardNavigation,
+      navigationStore,
       currentAnswerValue,
       currentQuestionAsDisplayType,
       answers,
@@ -58,7 +60,7 @@ const Walkthrough = observer((): JSX.Element => {
             className="web-Walkthrough--Form"
             id={ID_QUESTION_FORM}
             onSubmit={handleQuestionSubmit}
-            key={`question-${currentItemId}`}
+            key={`question-${navigationStore.currentItemId}`}
           >
             <Question />
           </Form>
