@@ -105,5 +105,6 @@ export const answerValuesAreNotEqual = (
     );
   }
 
-  return false;
+  // throw error if types are not valid
+  throw new Error("Invalid types");
 };
