@@ -1,6 +1,6 @@
 import { TESTID_WALKTHROUGH_FOOTER_NEXT } from "@repo/constants/src/testids";
 
-import { walkthroughs } from "../fixtures/test-data.json";
+import { walkthroughs, results } from "../fixtures/test-data.json";
 
 describe("walkthrough 1", () => {
   beforeEach(() => {
@@ -17,7 +17,7 @@ describe("walkthrough 1", () => {
         cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_NEXT).click();
       });
       if (walkthrough.result) {
-        cy.contains(walkthrough.result);
+        cy.contains(results[walkthrough.result]);
       }
     });
   });
