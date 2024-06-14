@@ -84,7 +84,7 @@ export class AnswerStore {
     const {
       navigationStore: { currentItemId },
       currentQuestionAsMultipleChoiceMultiple,
-      currentPossibleAnswersFromMultipleChoiceMultiple,
+      getPossibleAnswersFromMultipleChoiceMultiple,
     } = this.rootStore;
 
     // set default value for new item if it's a multiple choice multiple question and isNotRequired
@@ -95,7 +95,7 @@ export class AnswerStore {
       if (currentQuestionAsMultipleChoiceMultiple.storeAnswerAsObject) {
         // store answer as object
         this.answers[currentItemId] =
-          currentPossibleAnswersFromMultipleChoiceMultiple.reduce<
+          getPossibleAnswersFromMultipleChoiceMultiple(currentItemId).reduce<
             Record<string, string>
           >((acc, curr) => {
             acc[curr.answerValue] = "false";

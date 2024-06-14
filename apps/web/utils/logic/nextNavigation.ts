@@ -132,6 +132,11 @@ export const navigationLogicItemIsTrue = (
               answerToCheck,
               navigationLogicItem.answerValue,
             );
+          case NextNavigationLogicType.LessThan:
+            return ThisModule.nextLogicTypeLessThan(
+              answerToCheck,
+              navigationLogicItem.answerValue,
+            );
         }
       }
     }
@@ -186,7 +191,7 @@ export const nextLogicTypeNotEqual = (
 };
 
 export const nextLogicTypeLessThan = (
-  answerToCheck: AnswerTypes,
+  answerToCheck: AnswerTypes | undefined,
   answerValue: string,
 ) => {
   // setup return
@@ -194,6 +199,8 @@ export const nextLogicTypeLessThan = (
 
   // check if answerToCheck is less than answerValue
   if (isString(answerToCheck) && answerToCheck < answerValue) {
+    isLessThan = true;
+  } else if (answerToCheck === undefined) {
     isLessThan = true;
   }
 

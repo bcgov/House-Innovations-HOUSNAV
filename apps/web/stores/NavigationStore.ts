@@ -119,8 +119,26 @@ export class NavigationStore {
     if (nextQuestionAsVariable) {
       handleVariableItem(nextQuestionAsVariable, nextNavigationId);
     } else {
-      // if not variable item next, move to next question
-      this.currentItemId = nextNavigationId;
+      // check if the next question has any possible answers
+      const possibleAnswers =
+        this.rootStore.getPossibleAnswersFromMultipleChoiceMultiple(
+          nextNavigationId,
+        );
+      const nextQuestionAsMultipleChoiceMultiple =
+        this.rootStore.getQuestionAsMultipleChoiceMultiple(nextNavigationId);
+
+      // if the next question is not a multiple choice multiple question or has possible answers
+      if (!nextQuestionAsMultipleChoiceMultiple || possibleAnswers.length > 0) {
+        this.currentItemId = nextNavigationId;
+      } else {
+        const nextQuestion =
+          this.rootStore.getQuestionAsDisplayType(nextNavigationId);
+
+        // check if the next question exists
+        if (nextQuestion) {
+          this.handleForwardNavigation(nextQuestion.nextNavigationLogic);
+        }
+      }
     }
   };
 
