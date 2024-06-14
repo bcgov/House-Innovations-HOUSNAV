@@ -42,7 +42,7 @@ export const navigationLogicItemIsTrue = (
     return true;
   }
 
-  // check if answerToCheck exists
+  // check if valuesToCheck exists
   if (navigationLogicItem.valuesToCheck) {
     /*
      * NOTE: This logic is only for and/or logic
@@ -59,6 +59,11 @@ export const navigationLogicItemIsTrue = (
           getAnswerToCheckValue,
         );
     }
+
+    // if no nextLogicType is found, throw an error
+    throw new Error(
+      `nextLogicType ${navigationLogicItem.nextLogicType} is not supported for valuesToCheck property.`,
+    );
   } else if (navigationLogicItem.answerToCheck) {
     // get answer to check
     const answerToCheck = getAnswerToCheckValue(
@@ -97,6 +102,11 @@ export const navigationLogicItemIsTrue = (
               navigationLogicItem.answerValue,
             );
         }
+
+        // if no nextLogicType is found, throw an error
+        throw new Error(
+          `nextLogicType ${navigationLogicItem.nextLogicType} is not supported when answerToCheck exists and property answerValue exists.`,
+        );
       } else if (navigationLogicItem.answerValues) {
         /*
          * NOTE: This logic is only for answerValues arrays only
@@ -110,6 +120,11 @@ export const navigationLogicItemIsTrue = (
               navigationLogicItem.answerValues,
             );
         }
+
+        // if no nextLogicType is found, throw an error
+        throw new Error(
+          `nextLogicType ${navigationLogicItem.nextLogicType} is not supported when answerToCheck exists and property answerValues exists.`,
+        );
       }
     } else {
       // handle undefined answerToCheck
@@ -138,11 +153,24 @@ export const navigationLogicItemIsTrue = (
               navigationLogicItem.answerValue,
             );
         }
+
+        // if no nextLogicType is found, throw an error
+        throw new Error(
+          `nextLogicType ${navigationLogicItem.nextLogicType} is not supported when answerToCheck is undefined and property answerValue exists.`,
+        );
       }
+
+      // throw an error if answerToCheck is undefined and answerValue is not
+      throw new Error(
+        "when answerToCheck is undefined, answerValue must exist, there is no case for answerValues.",
+      );
     }
   }
 
-  return false;
+  // throw an error if valuesToCheck or answerToCheck does not exist
+  throw new Error(
+    "navigationLogicItem must contain either valuesToCheck or answerToCheck",
+  );
 };
 
 export const nextLogicTypeEqual = (
@@ -163,8 +191,15 @@ export const nextLogicTypeEqual = (
     if (answerToCheck === answerValue) {
       isEqual = true;
     }
-  } else if (answerToCheck === undefined && answerValue === "undefined") {
-    isEqual = true;
+  } else if (answerToCheck === undefined) {
+    if (answerValue === "undefined") {
+      isEqual = true;
+    }
+  } else {
+    // if answerToCheck is not an array, string, or undefined, throw an error
+    throw new Error(
+      `nextLogicTypeEqual: answerToCheck must be a string, array, or undefined, got ${typeof answerToCheck}`,
+    );
   }
 
   return isEqual;
@@ -183,8 +218,15 @@ export const nextLogicTypeNotEqual = (
     if (answerToCheck !== answerValue) {
       isNotEqual = true;
     }
-  } else if (answerToCheck === undefined && answerValue !== "undefined") {
-    isNotEqual = true;
+  } else if (answerToCheck === undefined) {
+    if (answerValue !== "undefined") {
+      isNotEqual = true;
+    }
+  } else {
+    // if answerToCheck is not a string or undefined, throw an error
+    throw new Error(
+      `nextLogicTypeNotEqual: answerToCheck must be a string or undefined, got ${typeof answerToCheck}`,
+    );
   }
 
   return isNotEqual;
@@ -198,10 +240,17 @@ export const nextLogicTypeLessThan = (
   let isLessThan = false;
 
   // check if answerToCheck is less than answerValue
-  if (isString(answerToCheck) && answerToCheck < answerValue) {
-    isLessThan = true;
+  if (isString(answerToCheck)) {
+    if (answerToCheck < answerValue) {
+      isLessThan = true;
+    }
   } else if (answerToCheck === undefined) {
     isLessThan = true;
+  } else {
+    // if answerToCheck is not a string or undefined, throw an error
+    throw new Error(
+      `nextLogicTypeLessThan: answerToCheck must be a string or undefined, got ${typeof answerToCheck}`,
+    );
   }
 
   return isLessThan;
@@ -220,6 +269,11 @@ export const nextLogicTypeDoesNotContain = (
     if (!answerToCheck.includes(answerValue)) {
       doesNotContain = true;
     }
+  } else {
+    // if answerToCheck is not an array, throw an error
+    throw new Error(
+      `nextLogicTypeDoesNotContain: answerToCheck must be an array, got ${typeof answerToCheck}`,
+    );
   }
 
   return doesNotContain;
@@ -238,6 +292,11 @@ export const nextLogicTypeContainsAny = (
     if (answerToCheck.some((answer) => answerValues.includes(answer))) {
       containsAny = true;
     }
+  } else {
+    // if answerToCheck is not an array, throw an error
+    throw new Error(
+      `nextLogicTypeContainsAny: answerToCheck must be an array, got ${typeof answerToCheck}`,
+    );
   }
 
   return containsAny;

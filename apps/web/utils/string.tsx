@@ -27,7 +27,10 @@ const customComponents: Record<
   [definedTermModal]: Button,
 };
 
-export const parseStringToComponents = (html: string, customHandler?: any) => {
+export const parseStringToComponents = (
+  html: string,
+  customHandler?: (location: string) => void,
+) => {
   const options = {
     replace: (domNode: DOMNode) => {
       if (domNode instanceof Element && domNode.attribs) {

@@ -33,7 +33,7 @@ export default function ModalSide({
   const [isOpen, setIsOpen] = useState(false);
   const [focusSection, setFocusSection] = useState(scrollToSection);
   const [highlightedSection, setHighlightedSection] = useState<string | null>(
-    null
+    null,
   );
 
   const modalRef = useRef<HTMLDivElement>(null);
@@ -51,7 +51,7 @@ export default function ModalSide({
   }, [isOpen, focusSection]);
 
   return (
-    <DialogTrigger onOpenChange={setIsOpen}>
+    <DialogTrigger onOpenChange={setIsOpen} {...props}>
       {triggerContent}
 
       <ModalOverlay className="ui-ModalSide--Overlay">
@@ -102,7 +102,7 @@ export default function ModalSide({
                         <p className="ui-ModalSide--SectionContent">
                           {parseStringToComponents(
                             section.content,
-                            setFocusSection
+                            setFocusSection,
                           )}
                         </p>
                       </article>

@@ -15,10 +15,10 @@ describe("DefinedTerm", () => {
   it("renders with data-term attribute", () => {
     const testTerm = "test-term";
     const { getByTestId } = render(
-      <DefinedTerm term={testTerm}>Test Term</DefinedTerm>
+      <DefinedTerm term={testTerm}>Test Term</DefinedTerm>,
     );
     const button = getByTestId(
-      GET_TESTID_BUTTON(`${TESTID_DEFINED_TERM}-${testTerm}`)
+      GET_TESTID_BUTTON(`${TESTID_DEFINED_TERM}-${testTerm}`),
     );
     expect(button).toHaveAttribute("data-term", "test-term");
   });
@@ -28,10 +28,10 @@ describe("DefinedTerm", () => {
 
     const testTerm = "test-term";
     const { getByTestId } = render(
-      <DefinedTerm term={testTerm}>Test Term</DefinedTerm>
+      <DefinedTerm term={testTerm}>Test Term</DefinedTerm>,
     );
     const button = getByTestId(
-      GET_TESTID_BUTTON(`${TESTID_DEFINED_TERM}-${testTerm}`)
+      GET_TESTID_BUTTON(`${TESTID_DEFINED_TERM}-${testTerm}`),
     );
 
     await userEvent.click(button);
@@ -39,7 +39,7 @@ describe("DefinedTerm", () => {
     expect(modal).toBeInTheDocument();
 
     const closeButton = getByTestId(
-      GET_TESTID_BUTTON(`${TESTID_MODAL_SIDE}-close-button`)
+      GET_TESTID_BUTTON(`${TESTID_MODAL_SIDE}-close-button`),
     );
 
     await userEvent.click(closeButton);
