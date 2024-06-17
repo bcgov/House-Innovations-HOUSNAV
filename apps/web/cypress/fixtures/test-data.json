@@ -267,7 +267,7 @@
                 {
                     "question": "P03",
                     "type": "checkbox",
-                    "answer": "3"
+                    "answer": "3,6"
                 }
             ],
             "result": "R01"
