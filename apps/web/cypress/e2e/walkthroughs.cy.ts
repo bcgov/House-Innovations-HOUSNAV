@@ -34,6 +34,26 @@ describe("walkthrough 1", () => {
     });
   });
 
+  it("error state should be accessible", () => {
+    cy.getByTestID(GET_TESTID_RADIO("P01", "notSure")).click();
+    cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_NEXT).click();
+
+    // Select both "none" and another option
+    cy.getByTestID(GET_TESTID_CHECKBOX("P02", "17"))
+      .last()
+      .click({ force: true });
+    cy.getByTestID(GET_TESTID_CHECKBOX("P02", "18"))
+      .last()
+      .click({ force: true });
+
+    // Show error message
+    cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_NEXT).click();
+
+    // Test accessibility
+    cy.injectAxe();
+    cy.checkA11y();
+  });
+
   it("default state should be accessible", () => {
     cy.injectAxe();
     cy.checkA11y();

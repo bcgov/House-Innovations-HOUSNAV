@@ -1,7 +1,7 @@
 {
     "walkthroughs": [
         {
-            "title": "Code does not apply",
+            "title": "code does not apply",
             "steps": [
                 {
                     "question": "P01",
@@ -12,7 +12,7 @@
             "result": "R00"
         },
         {
-            "title": "Heritage building",
+            "title": "heritage building",
             "steps": [
                 {
                     "question": "P01",
@@ -28,7 +28,7 @@
             "result": "R02"
         },
         {
-            "title": "Existing building",
+            "title": "existing building",
             "steps": [
                 {
                     "question": "P01",
@@ -49,7 +49,7 @@
             "result": "R03"
         },
         {
-            "title": "Building has no occupancy",
+            "title": "building has no occupancy",
             "steps": [
                 {
                     "question": "P01",
@@ -75,7 +75,7 @@
             "result": "R00"
         },
         {
-            "title": "Building includes Group D occupancy",
+            "title": "building includes Group D occupancy",
             "steps": [
                 {
                     "question": "P01",
@@ -101,7 +101,7 @@
             "result": "R04"
         },
         {
-            "title": "Building includes Group A1 occupancy",
+            "title": "building includes Group A1 occupancy",
             "steps": [
                 {
                     "question": "P01",
@@ -127,7 +127,7 @@
             "result": "R05"
         },
         {
-            "title": "Building is larger than 600m^2",
+            "title": "building is larger than 600m^2",
             "steps": [
                 {
                     "question": "P01",
@@ -158,7 +158,7 @@
             "result": "R05"
         },
         {
-            "title": "Building has 4+ storeys",
+            "title": "building has 4+ storeys",
             "steps": [
                 {
                     "question": "P01",
@@ -195,7 +195,7 @@
             "result": "R05"
         },
         {
-            "title": "Building is not a dwelling unit",
+            "title": "building is not a dwelling unit",
             "steps": [
                 {
                     "question": "P01",
@@ -236,7 +236,7 @@
             "result": "R30"
         },
         {
-            "title": "Not sure if code applies, after one question does not",
+            "title": "not sure if code applies, after one question does not",
             "steps": [
                 {
                     "question": "P01",
@@ -252,7 +252,7 @@
             "result": "R00"
         },
         {
-            "title": "Not sure if code applies, but is outside scope of this tool",
+            "title": "not sure if code applies, but is outside scope of this tool",
             "steps": [
                 {
                     "question": "P01",
@@ -273,7 +273,7 @@
             "result": "R01"
         },
         {
-            "title": "Not sure if code applies, is heratage building",
+            "title": "not sure if code applies, is heratage building",
             "steps": [
                 {
                     "question": "P01",
@@ -299,7 +299,7 @@
             "result": "R02"
         },
         {
-            "title": "Existing building",
+            "title": "existing building",
             "steps": [
                 {
                     "question": "P01",
