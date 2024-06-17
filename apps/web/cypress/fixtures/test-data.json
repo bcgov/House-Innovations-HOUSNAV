@@ -236,7 +236,7 @@
             "result": "R30"
         },
         {
-            "title": "Not sure if code applies, ultimately does not",
+            "title": "Not sure if code applies, after one question does not",
             "steps": [
                 {
                     "question": "P01",
@@ -250,6 +250,53 @@
                 }
             ],
             "result": "R00"
+        },
+        {
+            "title": "Not sure if code applies, but is outside scope of this tool",
+            "steps": [
+                {
+                    "question": "P01",
+                    "type": "radio",
+                    "answer": "notSure"
+                },
+                {
+                    "question": "P02",
+                    "type": "checkbox",
+                    "answer": "13"
+                },
+                {
+                    "question": "P03",
+                    "type": "checkbox",
+                    "answer": "3"
+                }
+            ],
+            "result": "R01"
+        },
+        {
+            "title": "Not sure if code applies, is heratage building",
+            "steps": [
+                {
+                    "question": "P01",
+                    "type": "radio",
+                    "answer": "notSure"
+                },
+                {
+                    "question": "P02",
+                    "type": "checkbox",
+                    "answer": "10"
+                },
+                {
+                    "question": "P03",
+                    "type": "checkbox",
+                    "answer": "9"
+                },
+                {
+                    "question": "P04",
+                    "type": "radio",
+                    "answer": "true"
+                }
+            ],
+            "result": "R02"
         },
         {
             "title": "Existing building",
@@ -275,7 +322,7 @@
     ],
     "results": {
             "R00": "You have selected an answer that indicates that the BC Building Code 2024 does not apply to this structure. This tool is used to assist building code users in determining the applicable requirements for their building, as such all structures that are not governed by the BC Building Code 2024 are beyond the scope of this tool.",
-            "R01": "You have selected {values from previous answer}. This indicates that some or all of this structure may not be governed by the BC Building Code 2024. This tool has been designed to assist BC Building Code 2024 users in determining the Building Code requirements for Part 9 buildings. Based on your selection, some or all of your project is beyond the scope of this tool at this time.",
+            "R01": "This indicates that some or all of this structure may not be governed by the BC Building Code 2024. This tool has been designed to assist BC Building Code 2024 users in determining the Building Code requirements for Part 9 buildings. Based on your selection, some or all of your project is beyond the scope of this tool at this time.",
             "R02": "You have selected an option that indicates that this building is a heritage building. Heritage buildings have alternative measures for Building Code compliance. These alternative measures are beyond the scope of this tool at this time.",
             "R03": "You have selected an option that indicates that this building is an alteration to an existing building. Alteration to existing buildings have alternative measures for Building Code compliance. These alternative measures are beyond the scope of this tool at this time.",
             "R04": "Based on the options you have selected this project does not contain a Group C residential occupancy. This tool is design to assist BC Building Code 2024 users in evaluating the prescriptive requirements of the BC Building Code for Part 9 Group C residential occupancy buildings, therefore your project is beyond the scope of this tool at this time.",
