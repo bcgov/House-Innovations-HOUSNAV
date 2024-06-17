@@ -26,10 +26,11 @@ const customComponents: Record<
   [definedTermName]: DefinedTerm,
   [definedTermModal]: Button,
 };
+type CustomHandler = (section: string) => void;
 
 export const parseStringToComponents = (
   html: string,
-  customHandler?: (location: string) => void,
+  customHandler?: CustomHandler
 ) => {
   const options = {
     replace: (domNode: DOMNode) => {

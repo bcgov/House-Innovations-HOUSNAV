@@ -9,13 +9,19 @@ afterEach(() => {
   cleanup();
 });
 
+// Mock next/navigation
+const pushMock = vi.fn();
+const replaceMock = vi.fn();
+
 vi.mock("next/navigation", async () => {
   const actual = await vi.importActual("next/navigation");
   return {
     ...actual,
     useRouter: vi.fn(() => ({
-      push: vi.fn(),
-      replace: vi.fn(),
+      push: pushMock,
+      replace: replaceMock,
     })),
   };
 });
+
+export { pushMock, replaceMock };
