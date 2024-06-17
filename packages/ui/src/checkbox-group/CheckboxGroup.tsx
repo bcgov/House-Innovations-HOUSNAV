@@ -96,7 +96,6 @@ export default function CheckboxGroup({
           className={"ui-Checkbox"}
           key={`${option.value}`}
           value={`${option.value}`}
-          // TODO - apply different test id to the input and the label
           data-testid={GET_TESTID_CHECKBOX(testIdNamespace, option.value)}
         >
           {currentValue?.includes(option.value) && (

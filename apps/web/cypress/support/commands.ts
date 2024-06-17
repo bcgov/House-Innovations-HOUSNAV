@@ -43,3 +43,7 @@ Cypress.Commands.add("getByTestID", (id, options) => {
 Cypress.Commands.add("getByGeneralTestID", (id, options) => {
   return cy.get(`[data-testid*=${id}]`, options);
 });
+
+Cypress.Commands.add("getInputByTestID", (id, options) => {
+  return cy.get(`input[data-testid=${id}]`, options);
+});

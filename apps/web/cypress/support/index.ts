@@ -23,6 +23,17 @@ declare global {
         id: string,
         options?: Partial<Loggable & Timeoutable & Withinable & Shadow>,
       ): Chainable<JQuery<HTMLElement>>;
+
+      /**
+       * Get an input element by the data-testid attribute.
+       * This is often used to find checkboxes as they have duplicate IDs for the label and input.
+       * @example cy.getInputByTestID('question-title')
+       */
+      getInputByTestID(id: string): Chainable<JQuery<HTMLElement>>;
+      getInputByTestID(
+        id: string,
+        options?: Partial<Loggable & Timeoutable & Withinable & Shadow>,
+      ): Chainable<JQuery<HTMLElement>>;
     }
   }
 }
