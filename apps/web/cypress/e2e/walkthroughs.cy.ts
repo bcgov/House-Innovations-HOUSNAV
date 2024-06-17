@@ -19,10 +19,12 @@ describe("walkthrough 1", () => {
         if (step.type === "radio") {
           cy.getByTestID(GET_TESTID_RADIO(step.question, step.answer)).click();
         } else if (step.type === "checkbox") {
-          // TODO - update the application to not have duplicate test ids on checkboxes
-          cy.getByTestID(GET_TESTID_CHECKBOX(step.question, step.answer))
-            .last()
-            .click({ force: true });
+          step.answer.split(",").forEach((answer) => {
+            // TODO - update the application to not have duplicate test ids on checkboxes
+            cy.getByTestID(GET_TESTID_CHECKBOX(step.question, answer))
+              .last()
+              .click({ force: true });
+          });
         }
         cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_NEXT).click();
       });
