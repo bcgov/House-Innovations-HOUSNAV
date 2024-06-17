@@ -1,8 +1,34 @@
 {
     "walkthroughs": [
         {
-            "id": 1,
-            "title": "Partial walkthrough",
+            "title": "Code does not apply",
+            "steps": [
+                {
+                    "question": "P01",
+                    "type": "radio",
+                    "answer": "no"
+                }
+            ],
+            "result": "R00"
+        },
+        {
+            "title": "Heritage building",
+            "steps": [
+                {
+                    "question": "P01",
+                    "type": "radio",
+                    "answer": "yes"
+                },
+                {
+                    "question": "P04",
+                    "type": "radio",
+                    "answer": "true"
+                }
+            ],
+            "result": "R02"
+        },
+        {
+            "title": "Existing building",
             "steps": [
                 {
                     "question": "P01",
@@ -19,26 +45,239 @@
                     "type": "radio",
                     "answer": "true"
                 }
-            ]
+            ],
+            "result": "R03"
         },
         {
-            "id": 2,
-            "title": "Code does not apply",
+            "title": "Building has no occupancy",
             "steps": [
                 {
                     "question": "P01",
                     "type": "radio",
-                    "answer": "no"
+                    "answer": "yes"
+                },
+                {
+                    "question": "P04",
+                    "type": "radio",
+                    "answer": "false"
+                },
+                {
+                    "question": "P05",
+                    "type": "radio",
+                    "answer": "false"
+                },
+                {
+                    "question": "P06",
+                    "type": "checkbox",
+                    "answer": "none"
                 }
             ],
             "result": "R00"
+        },
+        {
+            "title": "Building includes Group D occupancy",
+            "steps": [
+                {
+                    "question": "P01",
+                    "type": "radio",
+                    "answer": "yes"
+                },
+                {
+                    "question": "P04",
+                    "type": "radio",
+                    "answer": "false"
+                },
+                {
+                    "question": "P05",
+                    "type": "radio",
+                    "answer": "false"
+                },
+                {
+                    "question": "P06",
+                    "type": "checkbox",
+                    "answer": "D"
+                }
+            ],
+            "result": "R04"
+        },
+        {
+            "title": "Building includes Group A1 occupancy",
+            "steps": [
+                {
+                    "question": "P01",
+                    "type": "radio",
+                    "answer": "yes"
+                },
+                {
+                    "question": "P04",
+                    "type": "radio",
+                    "answer": "false"
+                },
+                {
+                    "question": "P05",
+                    "type": "radio",
+                    "answer": "false"
+                },
+                {
+                    "question": "P06",
+                    "type": "checkbox",
+                    "answer": "A1"
+                }
+            ],
+            "result": "R05"
+        },
+        {
+            "title": "Building is larger than 600m^2",
+            "steps": [
+                {
+                    "question": "P01",
+                    "type": "radio",
+                    "answer": "yes"
+                },
+                {
+                    "question": "P04",
+                    "type": "radio",
+                    "answer": "false"
+                },
+                {
+                    "question": "P05",
+                    "type": "radio",
+                    "answer": "false"
+                },
+                {
+                    "question": "P06",
+                    "type": "checkbox",
+                    "answer": "C"
+                },
+                {
+                    "question": "P07",
+                    "type": "radio",
+                    "answer": "true"
+                }
+            ],
+            "result": "R05"
+        },
+        {
+            "title": "Building has 4+ storeys",
+            "steps": [
+                {
+                    "question": "P01",
+                    "type": "radio",
+                    "answer": "yes"
+                },
+                {
+                    "question": "P04",
+                    "type": "radio",
+                    "answer": "false"
+                },
+                {
+                    "question": "P05",
+                    "type": "radio",
+                    "answer": "false"
+                },
+                {
+                    "question": "P06",
+                    "type": "checkbox",
+                    "answer": "C"
+                },
+                {
+                    "question": "P07",
+                    "type": "radio",
+                    "answer": "false"
+                },
+                {
+                    "question": "P08",
+                    "type": "radio",
+                    "answer": "false"
+                }
+
+            ],
+            "result": "R05"
+        },
+        {
+            "title": "Building is not a dwelling unit",
+            "steps": [
+                {
+                    "question": "P01",
+                    "type": "radio",
+                    "answer": "yes"
+                },
+                {
+                    "question": "P04",
+                    "type": "radio",
+                    "answer": "false"
+                },
+                {
+                    "question": "P05",
+                    "type": "radio",
+                    "answer": "false"
+                },
+                {
+                    "question": "P06",
+                    "type": "checkbox",
+                    "answer": "C"
+                },
+                {
+                    "question": "P07",
+                    "type": "radio",
+                    "answer": "false"
+                },
+                {
+                    "question": "P08",
+                    "type": "radio",
+                    "answer": "true"
+                },
+                {
+                    "question": "P1",
+                    "type": "radio",
+                    "answer": "false"
+                }
+            ],
+            "result": "R30"
+        },
+        {
+            "title": "Not sure if code applies, ultimately does not",
+            "steps": [
+                {
+                    "question": "P01",
+                    "type": "radio",
+                    "answer": "notSure"
+                },
+                {
+                    "question": "P02",
+                    "type": "checkbox",
+                    "answer": "18"
+                }
+            ],
+            "result": "R00"
+        },
+        {
+            "title": "Existing building",
+            "steps": [
+                {
+                    "question": "P01",
+                    "type": "radio",
+                    "answer": "yes"
+                },
+                {
+                    "question": "P04",
+                    "type": "radio",
+                    "answer": "false"
+                },
+                {
+                    "question": "P05",
+                    "type": "radio",
+                    "answer": "true"
+                }
+            ],
+            "result": "R03"
         }
     ],
     "results": {
             "R00": "You have selected an answer that indicates that the BC Building Code 2024 does not apply to this structure. This tool is used to assist building code users in determining the applicable requirements for their building, as such all structures that are not governed by the BC Building Code 2024 are beyond the scope of this tool.",
             "R01": "You have selected {values from previous answer}. This indicates that some or all of this structure may not be governed by the BC Building Code 2024. This tool has been designed to assist BC Building Code 2024 users in determining the Building Code requirements for Part 9 buildings. Based on your selection, some or all of your project is beyond the scope of this tool at this time.",
-            "R02": "You have selected an option that indicates that this building is a heritage building. Heritage buildings have alternative measures for Building Code compliance. These alternative measures are beyond the scope of this tool at this time. Please see in Table 1.1.1.1.(5) of Division A - Section 1.1 ‘General’ for more information.",
-            "R03": "You have selected an option that indicates that this building is an alteration to an existing building. Alteration to existing buildings have alternative measures for Building Code compliance. These alternative measures are beyond the scope of this tool at this time. Please see Sentences 1.1.1.1(6) and 1.1.1.2.(1), and Table 1.1.1.1.(6) in Division A - Section 1.1 ‘General’ for more information.",
+            "R02": "You have selected an option that indicates that this building is a heritage building. Heritage buildings have alternative measures for Building Code compliance. These alternative measures are beyond the scope of this tool at this time.",
+            "R03": "You have selected an option that indicates that this building is an alteration to an existing building. Alteration to existing buildings have alternative measures for Building Code compliance. These alternative measures are beyond the scope of this tool at this time.",
             "R04": "Based on the options you have selected this project does not contain a Group C residential occupancy. This tool is design to assist BC Building Code 2024 users in evaluating the prescriptive requirements of the BC Building Code for Part 9 Group C residential occupancy buildings, therefore your project is beyond the scope of this tool at this time.",
             "R05": "Based on the options you have selected; this project is not a Part 9 building. This tool is design to assist BC Building Code 2024 users in evaluating the Acceptable Solutions in Division B of the BC Building Code for Part 9 buildings, therefore your project is beyond the scope of this tool at this time.",
             "R10": "Based on the building characteristics provided, this dwelling unit meets the provision of Subsection 9.9.9. ‘Egress from Dwelling Units’.",
