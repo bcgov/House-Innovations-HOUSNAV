@@ -3,11 +3,9 @@
 import { FormEvent, JSX, useCallback } from "react";
 import { Form } from "react-aria-components";
 import { observer } from "mobx-react-lite";
-import { toJS } from "mobx";
 // repo
 import { TESTID_WALKTHROUGH } from "@repo/constants/src/testids";
 import { ID_QUESTION_FORM } from "@repo/constants/src/ids";
-import { NEXT_NAVIGATION_ID_ERROR } from "@repo/constants/src/constants";
 // local
 import Question from "../question/Question";
 import WalkthroughFooter from "../walkthrough-footer/WalkthroughFooter";
@@ -20,8 +18,9 @@ const Walkthrough = observer((): JSX.Element => {
   const {
     currentResult,
     currentQuestionAsDisplayType,
-    navigationStore,
-    answerStore: { currentAnswerValue, answers },
+    navigationStore: { handleForwardNavigation, currentItemId },
+    handleStateError,
+    answerStore: { currentAnswerValue },
   } = useWalkthroughState();
 
   const handleQuestionSubmit = useCallback(
@@ -32,20 +31,18 @@ const Walkthrough = observer((): JSX.Element => {
 
       // update navigation state
       try {
-        navigationStore.handleForwardNavigation(
+        handleForwardNavigation(
           currentQuestionAsDisplayType.nextNavigationLogic,
         );
       } catch (error) {
-        navigationStore.currentItemId = NEXT_NAVIGATION_ID_ERROR;
-        console.log("Error in handleForwardNavigation", error);
-        console.log("answerStore", toJS(answers));
+        handleStateError("handleForwardNavigation", error);
       }
     },
     [
-      navigationStore,
+      handleForwardNavigation,
       currentAnswerValue,
       currentQuestionAsDisplayType,
-      answers,
+      handleStateError,
     ],
   );
 
@@ -60,7 +57,7 @@ const Walkthrough = observer((): JSX.Element => {
             className="web-Walkthrough--Form"
             id={ID_QUESTION_FORM}
             onSubmit={handleQuestionSubmit}
-            key={`question-${navigationStore.currentItemId}`}
+            key={`question-${currentItemId}`}
           >
             <Question />
           </Form>

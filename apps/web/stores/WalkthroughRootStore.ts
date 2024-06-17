@@ -1,6 +1,6 @@
 // 3rd party
 import React from "react";
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, toJS } from "mobx";
 // repo
 import {
   isWalkthroughItemTypeMultiChoice,
@@ -12,6 +12,7 @@ import {
   VariableToSetPropertyName,
   WalkthroughJSONType,
 } from "@repo/data/useWalkthroughData";
+import { NEXT_NAVIGATION_ID_ERROR } from "@repo/constants/src/constants";
 // local
 import { NavigationStore } from "./NavigationStore";
 import { AnswerStore } from "./AnswerStore";
@@ -117,10 +118,18 @@ export class WalkthroughRootStore {
       return multiChoiceMultipleQuestion.possibleAnswers;
     }
 
-    return getPossibleAnswers(
-      multiChoiceMultipleQuestion.possibleAnswers,
-      this.answerStore.getAnswerToCheckValue,
-    );
+    try {
+      return getPossibleAnswers(
+        multiChoiceMultipleQuestion.possibleAnswers,
+        this.answerStore.getAnswerToCheckValue,
+      );
+    } catch (error) {
+      this.handleStateError(
+        "getPossibleAnswersFromMultipleChoiceMultiple",
+        error,
+      );
+      return [];
+    }
   };
 
   get currentResult() {
@@ -148,6 +157,12 @@ export class WalkthroughRootStore {
   questionIsVariable = (questionId: string) => {
     const question = this.walkthroughData.questions[questionId];
     return question && VariableToSetPropertyName in question;
+  };
+
+  handleStateError = (where: string, error: unknown) => {
+    this.navigationStore.currentItemId = NEXT_NAVIGATION_ID_ERROR;
+    console.log(`Error in ${where}`, error);
+    console.log("current answer state", toJS(this.answerStore.answers));
   };
 }
 
