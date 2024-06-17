@@ -20,10 +20,9 @@ describe("walkthrough 1", () => {
           cy.getByTestID(GET_TESTID_RADIO(step.question, step.answer)).click();
         } else if (step.type === "checkbox") {
           step.answer.split(",").forEach((answer) => {
-            // TODO - update the application to not have duplicate test ids on checkboxes
-            cy.getByTestID(GET_TESTID_CHECKBOX(step.question, answer))
-              .last()
-              .click({ force: true });
+            cy.getInputByTestID(
+              GET_TESTID_CHECKBOX(step.question, answer),
+            ).click({ force: true });
           });
         }
         cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_NEXT).click();
@@ -39,12 +38,12 @@ describe("walkthrough 1", () => {
     cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_NEXT).click();
 
     // Select both "none" and another option
-    cy.getByTestID(GET_TESTID_CHECKBOX("P02", "17"))
-      .last()
-      .click({ force: true });
-    cy.getByTestID(GET_TESTID_CHECKBOX("P02", "18"))
-      .last()
-      .click({ force: true });
+    cy.getInputByTestID(GET_TESTID_CHECKBOX("P02", "17")).click({
+      force: true,
+    });
+    cy.getInputByTestID(GET_TESTID_CHECKBOX("P02", "18")).click({
+      force: true,
+    });
 
     // Show error message
     cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_NEXT).click();
