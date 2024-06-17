@@ -27,11 +27,10 @@ export class WalkthroughRootStore {
     makeAutoObservable(this);
     this.walkthroughData = walkthroughData;
 
-    // start other stores
     this.navigationStore = new NavigationStore(this);
     this.answerStore = new AnswerStore(this);
 
-    // get starting question if exists and set it as current question
+    // set first question as the first question of the starting section
     if (walkthroughData?.info?.startingSectionId && walkthroughData.sections) {
       this.navigationStore.currentItemId =
         walkthroughData.sections[walkthroughData.info.startingSectionId]
@@ -103,23 +102,21 @@ export class WalkthroughRootStore {
   }
 
   getPossibleAnswersFromMultipleChoiceMultiple = (questionId: string) => {
-    // get multiChoiceMultipleQuestion
     const multiChoiceMultipleQuestion =
       this.getQuestionAsMultipleChoiceMultiple(questionId);
 
-    // check if current question exists and has possible answers and is dynamic
+    // check if current question is a multiple choice multiple type and has possible answers
     if (
       !multiChoiceMultipleQuestion ||
       !multiChoiceMultipleQuestion.possibleAnswers
     )
       return [];
 
-    // check if answer are dynamic
+    // Non-dynamic Multiple Choice Multiple Questions just show all possible answers
     if (!multiChoiceMultipleQuestion.answersAreDynamic) {
       return multiChoiceMultipleQuestion.possibleAnswers;
     }
 
-    // cycle through possibleAnswers checking showAnswerIf
     return getPossibleAnswers(
       multiChoiceMultipleQuestion.possibleAnswers,
       this.answerStore.getAnswerToCheckValue,
@@ -132,8 +129,10 @@ export class WalkthroughRootStore {
 
   get currentQuestionIsNotRequired() {
     // currently, only multiple choice multiple questions can be not required
-    const currentQuestion = this.currentQuestionAsMultipleChoiceMultiple;
-    return currentQuestion && currentQuestion.isNotRequired;
+    return (
+      this.currentQuestionAsMultipleChoiceMultiple &&
+      this.currentQuestionAsMultipleChoiceMultiple.isNotRequired
+    );
   }
 
   getQuestionAsVariable = (
