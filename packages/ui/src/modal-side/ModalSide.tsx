@@ -28,7 +28,6 @@ export default function ModalSide({
   sections,
   scrollToSection,
   "data-testid": testid = TESTID_MODAL_SIDE,
-  ...props
 }: ModalSideProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [focusSection, setFocusSection] = useState(scrollToSection);
@@ -51,7 +50,7 @@ export default function ModalSide({
   }, [isOpen, focusSection]);
 
   return (
-    <DialogTrigger onOpenChange={setIsOpen} {...props}>
+    <DialogTrigger onOpenChange={setIsOpen}>
       {triggerContent}
 
       <ModalOverlay className="ui-ModalSide--Overlay">
