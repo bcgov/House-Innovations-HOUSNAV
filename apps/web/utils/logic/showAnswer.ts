@@ -21,18 +21,20 @@ export const getPossibleAnswers = (
       return true;
 
     return possibleAnswer.showAnswerIf.some((showAnswerIf) => {
-      const answerToCheck = getAnswerToCheckValue(showAnswerIf.answerToCheck);
-      if (!answerToCheck) return false;
+      const answerToCheckValue = getAnswerToCheckValue(
+        showAnswerIf.answerToCheck,
+      );
+      if (!answerToCheckValue) return false;
 
       switch (showAnswerIf.showAnswerLogicType) {
         case ShowAnswerIfLogicType.Equals:
           return ThisModule.showAnswerTypeEquals(
-            answerToCheck,
+            answerToCheckValue,
             showAnswerIf.answerValue,
           );
         case ShowAnswerIfLogicType.GreaterThan:
           return ThisModule.showAnswerTypeGreaterThan(
-            answerToCheck,
+            answerToCheckValue,
             showAnswerIf.answerValue,
           );
       }
@@ -45,28 +47,31 @@ export const getPossibleAnswers = (
 };
 
 export const showAnswerTypeEquals = (
-  answerToCheck: AnswerTypes,
+  answerToCheckValue: AnswerTypes,
   answerValue: string,
 ) => {
-  if (isArray(answerToCheck)) {
-    return answerToCheck.includes(answerValue) && answerToCheck.length === 1;
+  if (isArray(answerToCheckValue)) {
+    return (
+      answerToCheckValue.includes(answerValue) &&
+      answerToCheckValue.length === 1
+    );
   }
-  if (isString(answerToCheck)) {
-    return answerToCheck === answerValue;
+  if (isString(answerToCheckValue)) {
+    return answerToCheckValue === answerValue;
   }
   throw new Error(
-    `showAnswerTypeEquals: answerToCheck must be a string or array, got ${typeof answerToCheck}`,
+    `showAnswerTypeEquals: answerToCheckValue must be a string or array, got ${typeof answerToCheckValue}`,
   );
 };
 
 export const showAnswerTypeGreaterThan = (
-  answerToCheck: AnswerTypes,
+  answerToCheckValue: AnswerTypes,
   answerValue: string,
 ) => {
-  if (!isString(answerToCheck)) {
+  if (!isString(answerToCheckValue)) {
     throw new Error(
-      `showAnswerTypeGreaterThan: answerToCheck must be a string, got ${typeof answerToCheck}`,
+      `showAnswerTypeGreaterThan: answerToCheckValue must be a string, got ${typeof answerToCheckValue}`,
     );
   }
-  return answerToCheck > answerValue;
+  return answerToCheckValue > answerValue;
 };

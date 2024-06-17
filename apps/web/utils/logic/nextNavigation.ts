@@ -61,11 +61,11 @@ export const navigationLogicItemIsTrue = (
       `nextLogicType ${navigationLogicItem.nextLogicType} is not supported for valuesToCheck property.`,
     );
   } else if (navigationLogicItem.answerToCheck) {
-    const answerToCheck = getAnswerToCheckValue(
+    const answerToCheckValue = getAnswerToCheckValue(
       navigationLogicItem.answerToCheck,
     );
 
-    if (answerToCheck) {
+    if (answerToCheckValue) {
       if (navigationLogicItem.answerValue) {
         /*
          * NOTE: This logic is only for single answerValue strings
@@ -74,28 +74,28 @@ export const navigationLogicItemIsTrue = (
         switch (navigationLogicItem.nextLogicType) {
           case NextNavigationLogicType.Equal:
             return ThisModule.nextLogicTypeEqual(
-              answerToCheck,
+              answerToCheckValue,
               navigationLogicItem.answerValue,
             );
           case NextNavigationLogicType.NotEqual:
             return ThisModule.nextLogicTypeNotEqual(
-              answerToCheck,
+              answerToCheckValue,
               navigationLogicItem.answerValue,
             );
           case NextNavigationLogicType.LessThan:
             return ThisModule.nextLogicTypeLessThan(
-              answerToCheck,
+              answerToCheckValue,
               navigationLogicItem.answerValue,
             );
           case NextNavigationLogicType.DoesNotContain:
             return ThisModule.nextLogicTypeDoesNotContain(
-              answerToCheck,
+              answerToCheckValue,
               navigationLogicItem.answerValue,
             );
         }
 
         throw new Error(
-          `nextLogicType ${navigationLogicItem.nextLogicType} is not supported when answerToCheck exists and property answerValue exists.`,
+          `nextLogicType ${navigationLogicItem.nextLogicType} is not supported when answerToCheckValue exists and property answerValue exists.`,
         );
       } else if (navigationLogicItem.answerValues) {
         /*
@@ -104,46 +104,46 @@ export const navigationLogicItemIsTrue = (
         switch (navigationLogicItem.nextLogicType) {
           case NextNavigationLogicType.ContainsAny:
             return ThisModule.nextLogicTypeContainsAny(
-              answerToCheck,
+              answerToCheckValue,
               navigationLogicItem.answerValues,
             );
         }
 
         throw new Error(
-          `nextLogicType ${navigationLogicItem.nextLogicType} is not supported when answerToCheck exists and property answerValues exists.`,
+          `nextLogicType ${navigationLogicItem.nextLogicType} is not supported when answerToCheckValue exists and property answerValues exists.`,
         );
       }
     } else {
       /*
-       * NOTE: This logic is only for single answerValue strings when answerToCheck is undefined
+       * NOTE: This logic is only for single answerValue strings when answerToCheckValue is undefined
        * there is no support for multiple answers to check in this section
        */
       if (navigationLogicItem.answerValue) {
         switch (navigationLogicItem.nextLogicType) {
           case NextNavigationLogicType.Equal:
             return ThisModule.nextLogicTypeEqual(
-              answerToCheck,
+              answerToCheckValue,
               navigationLogicItem.answerValue,
             );
           case NextNavigationLogicType.NotEqual:
             return ThisModule.nextLogicTypeNotEqual(
-              answerToCheck,
+              answerToCheckValue,
               navigationLogicItem.answerValue,
             );
           case NextNavigationLogicType.LessThan:
             return ThisModule.nextLogicTypeLessThan(
-              answerToCheck,
+              answerToCheckValue,
               navigationLogicItem.answerValue,
             );
         }
 
         throw new Error(
-          `nextLogicType ${navigationLogicItem.nextLogicType} is not supported when answerToCheck is undefined and property answerValue exists.`,
+          `nextLogicType ${navigationLogicItem.nextLogicType} is not supported when answerToCheckValue is undefined and property answerValue exists.`,
         );
       }
 
       throw new Error(
-        "when answerToCheck is undefined, answerValue must exist, there is no case for answerValues.",
+        "when answerToCheckValue is undefined, answerValue must exist, there is no case for answerValues.",
       );
     }
   }
@@ -154,74 +154,77 @@ export const navigationLogicItemIsTrue = (
 };
 
 export const nextLogicTypeEqual = (
-  answerToCheck: AnswerTypes | undefined,
+  answerToCheckValue: AnswerTypes | undefined,
   answerValue: string,
 ) => {
-  if (isArray(answerToCheck)) {
-    return answerToCheck.includes(answerValue) && answerToCheck.length === 1;
+  if (isArray(answerToCheckValue)) {
+    return (
+      answerToCheckValue.includes(answerValue) &&
+      answerToCheckValue.length === 1
+    );
   }
-  if (isString(answerToCheck)) {
-    return answerToCheck === answerValue;
+  if (isString(answerToCheckValue)) {
+    return answerToCheckValue === answerValue;
   }
-  if (answerToCheck === undefined) {
+  if (answerToCheckValue === undefined) {
     return answerValue === "undefined";
   }
   throw new Error(
-    `nextLogicTypeEqual: answerToCheck must be a string, array, or undefined, got ${typeof answerToCheck}`,
+    `nextLogicTypeEqual: answerToCheckValue must be a string, array, or undefined, got ${typeof answerToCheckValue}`,
   );
 };
 
 export const nextLogicTypeNotEqual = (
-  answerToCheck: AnswerTypes | undefined,
+  answerToCheckValue: AnswerTypes | undefined,
   answerValue: string,
 ) => {
-  if (isString(answerToCheck)) {
-    return answerToCheck !== answerValue;
+  if (isString(answerToCheckValue)) {
+    return answerToCheckValue !== answerValue;
   }
-  if (answerToCheck === undefined) {
+  if (answerToCheckValue === undefined) {
     return answerValue !== "undefined";
   }
   throw new Error(
-    `nextLogicTypeNotEqual: answerToCheck must be a string or undefined, got ${typeof answerToCheck}`,
+    `nextLogicTypeNotEqual: answerToCheckValue must be a string or undefined, got ${typeof answerToCheckValue}`,
   );
 };
 
 export const nextLogicTypeLessThan = (
-  answerToCheck: AnswerTypes | undefined,
+  answerToCheckValue: AnswerTypes | undefined,
   answerValue: string,
 ) => {
-  if (isString(answerToCheck)) {
-    return answerToCheck < answerValue;
+  if (isString(answerToCheckValue)) {
+    return answerToCheckValue < answerValue;
   }
-  if (answerToCheck === undefined) {
+  if (answerToCheckValue === undefined) {
     return true;
   }
   throw new Error(
-    `nextLogicTypeLessThan: answerToCheck must be a string or undefined, got ${typeof answerToCheck}`,
+    `nextLogicTypeLessThan: answerToCheckValue must be a string or undefined, got ${typeof answerToCheckValue}`,
   );
 };
 
 export const nextLogicTypeDoesNotContain = (
-  answerToCheck: AnswerTypes,
+  answerToCheckValue: AnswerTypes,
   answerValue: string,
 ) => {
-  if (isArray(answerToCheck)) {
-    return !answerToCheck.includes(answerValue);
+  if (isArray(answerToCheckValue)) {
+    return !answerToCheckValue.includes(answerValue);
   }
   throw new Error(
-    `nextLogicTypeDoesNotContain: answerToCheck must be an array, got ${typeof answerToCheck}`,
+    `nextLogicTypeDoesNotContain: answerToCheckValue must be an array, got ${typeof answerToCheckValue}`,
   );
 };
 
 export const nextLogicTypeContainsAny = (
-  answerToCheck: AnswerTypes,
+  answerToCheckValue: AnswerTypes,
   answerValues: string[],
 ) => {
-  if (isArray(answerToCheck)) {
-    return answerToCheck.some((answer) => answerValues.includes(answer));
+  if (isArray(answerToCheckValue)) {
+    return answerToCheckValue.some((answer) => answerValues.includes(answer));
   }
   throw new Error(
-    `nextLogicTypeContainsAny: answerToCheck must be an array, got ${typeof answerToCheck}`,
+    `nextLogicTypeContainsAny: answerToCheckValue must be an array, got ${typeof answerToCheckValue}`,
   );
 };
 
