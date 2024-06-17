@@ -23,13 +23,12 @@ export class NavigationStore {
   set currentItemId(newId: string) {
     this._itemId = newId;
 
-    // check if question is already in history
+    // only add to history if not already in history
+    // because this is called on every navigation
     if (!this.questionHistory.includes(newId)) {
-      // since not in history, add to history
       this.addItemIdToHistory(newId);
     }
 
-    // check if new item has saved state
     if (!this.rootStore.answerStore.answers[newId]) {
       this.rootStore.answerStore.setDefaultAnswerValue();
     }
@@ -39,51 +38,49 @@ export class NavigationStore {
     return this._itemId;
   }
 
+  /*
+   * Next button is disabled if:
+   * - current question has not been answered
+   * - current question is required and has not been answered
+   */
   get nextButtonIsDisabled() {
-    // check if the current question has an answer
     const currentAnswer =
       this.rootStore.answerStore.answers[this.currentItemId];
     if (!currentAnswer) {
       return true;
     }
 
-    // check if current answer isNotRequired
     if (this.rootStore.currentQuestionIsNotRequired) return false;
 
-    // check if the current question has an answer based
-    let isAnswered = false;
+    let currentQuestionHasBeenAnswered = false;
     if (isString(currentAnswer)) {
-      isAnswered = currentAnswer !== DEFAULT_ANSWER_VALUE_MULTI_CHOICE;
+      currentQuestionHasBeenAnswered =
+        currentAnswer !== DEFAULT_ANSWER_VALUE_MULTI_CHOICE;
     } else if (isArray(currentAnswer)) {
-      isAnswered = currentAnswer.length > 0;
+      currentQuestionHasBeenAnswered = currentAnswer.length > 0;
     } else if (isObject(currentAnswer)) {
-      isAnswered = Object.values(currentAnswer).some(
+      currentQuestionHasBeenAnswered = Object.values(currentAnswer).some(
         (value) => value === "true",
       );
     }
 
-    return !isAnswered;
+    return !currentQuestionHasBeenAnswered;
   }
 
+  /*
+   * Back button is disabled if:
+   * - current question is the first question
+   */
   get backButtonIsDisabled() {
-    // check if we're not on the first question
-    const currentQuestionIndex = this.questionHistory.indexOf(
-      this.currentItemId,
-    );
-
-    return currentQuestionIndex < 1;
+    return this.questionHistory.indexOf(this.currentItemId) < 1;
   }
 
   getPreviousQuestionIdNotVariable = (idToCheck: string) => {
-    // get question index to check
     const questionIndexToCheck = this.questionHistory.indexOf(idToCheck);
-
-    // get previous question id
     let previousQuestionId = "";
     const previousQuestionIdToCheck =
       this.questionHistory[questionIndexToCheck - 1];
 
-    // check if previous question is a variable item
     if (previousQuestionIdToCheck) {
       if (this.rootStore.questionIsVariable(previousQuestionIdToCheck)) {
         previousQuestionId = this.getPreviousQuestionIdNotVariable(
@@ -101,25 +98,22 @@ export class NavigationStore {
     this.questionHistory.push(id);
   };
 
-  // this is used on Question submit and after variable item is handled
+  // NOTE: this is only call onSubmit in the Walkthrough and handleVariableItem in the AnswerStore
   handleForwardNavigation = (nextNavigationLogic: NextNavigationLogic[]) => {
     const {
       answerStore: { getAnswerToCheckValue, handleVariableItem },
       getQuestionAsVariable,
     } = this.rootStore;
 
-    // handle navigation logic
     const nextNavigationId = getNextNavigationId(
       nextNavigationLogic,
       getAnswerToCheckValue,
     );
 
-    // check if item at new id is a variable item
     const nextQuestionAsVariable = getQuestionAsVariable(nextNavigationId);
     if (nextQuestionAsVariable) {
       handleVariableItem(nextQuestionAsVariable, nextNavigationId);
     } else {
-      // check if the next question has any possible answers
       const possibleAnswers =
         this.rootStore.getPossibleAnswersFromMultipleChoiceMultiple(
           nextNavigationId,
@@ -127,14 +121,16 @@ export class NavigationStore {
       const nextQuestionAsMultipleChoiceMultiple =
         this.rootStore.getQuestionAsMultipleChoiceMultiple(nextNavigationId);
 
-      // if the next question is not a multiple choice multiple question or has possible answers
       if (!nextQuestionAsMultipleChoiceMultiple || possibleAnswers.length > 0) {
         this.currentItemId = nextNavigationId;
       } else {
+        /*
+         * If the next question is a multiple choice multiple question with no possible answers
+         * then we need to skip it and follow it's nextNavigationLogic
+         */
         const nextQuestion =
           this.rootStore.getQuestionAsDisplayType(nextNavigationId);
 
-        // check if the next question exists
         if (nextQuestion) {
           this.handleForwardNavigation(nextQuestion.nextNavigationLogic);
         }

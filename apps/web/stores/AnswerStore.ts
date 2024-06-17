@@ -35,52 +35,40 @@ export class AnswerStore {
     currentItem: QuestionVariableData,
     currentId: string,
   ) => {
-    // get state references
     const {
       navigationStore: { handleForwardNavigation, addItemIdToHistory },
     } = this.rootStore;
 
-    // get new variable value
     const newItemValue = getVariableItemValue(
       currentItem[VariableToSetPropertyName],
       this.getAnswerToCheckValue,
     );
 
-    // get current variable value
     const currentItemValue = this.answers[currentId];
 
-    // compare with current variable value to see if it's changed
-    // if changed, update variable value and erase future state
+    // This handles the case when a user has gone back and changed an answer
+    // We need to erase all future answers because the flow could be different now
     if (
       !currentItemValue ||
       (currentItemValue &&
         answerValuesAreNotEqual(currentItemValue, newItemValue))
     ) {
-      // erase future state
-      this.eraseAnswersAfterCurrentItem();
-
-      // set answer value
-      this.answers[currentId] = newItemValue;
+      this.setAnswerValueOnChange(newItemValue, currentId);
     }
 
-    // add variable item to history
     addItemIdToHistory(currentId);
 
-    // update navigation state again
     handleForwardNavigation(currentItem.nextNavigationLogic);
   };
 
-  // NOTE: This is only called onChange in Question component types
+  // NOTE: This is only called onChange in Question component types and above in handleVariableItem
   setAnswerValueOnChange = (value: AnswerTypes, questionId: string) => {
-    // erase future state
     this.eraseAnswersAfterCurrentItem();
 
-    // set answer value
     this.answers[questionId] = value;
   };
 
   setDefaultAnswerValue = () => {
-    // get references
     const {
       navigationStore: { currentItemId },
       currentQuestionAsMultipleChoiceMultiple,
@@ -88,12 +76,12 @@ export class AnswerStore {
     } = this.rootStore;
 
     // set default value for new item if it's a multiple choice multiple question and isNotRequired
+    // we want to be able to reference the answer object in the future even if the user doesn't answer it
     if (
       currentQuestionAsMultipleChoiceMultiple &&
       currentQuestionAsMultipleChoiceMultiple.isNotRequired
     ) {
       if (currentQuestionAsMultipleChoiceMultiple.storeAnswerAsObject) {
-        // store answer as object
         this.answers[currentItemId] =
           getPossibleAnswersFromMultipleChoiceMultiple(currentItemId).reduce<
             Record<string, string>
@@ -102,7 +90,6 @@ export class AnswerStore {
             return acc;
           }, {});
       } else {
-        // store answer as array
         this.answers[currentItemId] = DEFAULT_ANSWER_VALUE_MULTI_CHOICE_MULTI;
       }
     }
@@ -136,7 +123,7 @@ export class AnswerStore {
   get multipleChoiceAnswerValue() {
     const answer = this.answers[this.rootStore.navigationStore.currentItemId];
 
-    // verify answer is a string
+    // multipleChoice answers can only be strings
     if (!isString(answer)) return DEFAULT_ANSWER_VALUE_MULTI_CHOICE;
 
     return answer;
@@ -145,27 +132,22 @@ export class AnswerStore {
   get multipleChoiceMultipleAnswerValue() {
     const answer = this.answers[this.rootStore.navigationStore.currentItemId];
 
-    // verify answer is of correct type
+    // multipleChoiceMultiple answers cannot be strings, they are either arrays or objects
     if (!answer || isString(answer))
       return DEFAULT_ANSWER_VALUE_MULTI_CHOICE_MULTI;
 
     return answer;
   }
 
-  // helper function to get answer value to check based on answerToCheck string
   getAnswerToCheckValue: AnswerToCheckValueFn = (answerToCheck: string) => {
-    // check if answerToCheck has a . in it
+    // answerToCheck can be in the format of "questionId.property" or just "questionId"
     const answerToCheckSplit = answerToCheck.split(".");
     const answerToCheckId = answerToCheckSplit[0] || answerToCheck;
     const answerToCheckProperty = answerToCheckSplit[1];
-
-    // get answerToCheck value
     const answerToCheckValue = this.answers[answerToCheckId];
 
-    // check if answerToCheckValue exists and return for undefined case
     if (answerToCheckValue === undefined) return answerToCheckValue;
 
-    // check if answerToCheckValue is an object and answerToCheckProperty exists
     if (answerToCheckProperty && isObject(answerToCheckValue)) {
       return answerToCheckValue[answerToCheckProperty];
     }
