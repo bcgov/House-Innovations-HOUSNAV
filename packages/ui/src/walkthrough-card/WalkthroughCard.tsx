@@ -9,30 +9,32 @@ import {
 import { WalkthroughInfo } from "@repo/data/useWalkthroughData";
 import { URL_WALKTHROUGH_HREF } from "@repo/constants/src/urls";
 import "./WalkthroughCard.css";
+import { TESTID_WALTHROUGH_CARD } from "@repo/constants/src/testids";
 
 export interface WalkthroughCardProps extends ReactAriaLinkProps {
-  id: string;
   data: WalkthroughInfo;
   walkthroughId: string;
+  "data-testid"?: string;
 }
 
 export default function WalkthroughCard({
-  id,
   data,
   walkthroughId,
+  "data-testid": testid = TESTID_WALTHROUGH_CARD,
+  ...props
 }: WalkthroughCardProps) {
   return (
     <ReactAriaLink
       className="ui-WalkthroughCard--CardContainer"
       href={`${URL_WALKTHROUGH_HREF}/${walkthroughId}`}
-      aria-label={`${id}-walkthrough-card`}
+      aria-label={`walkthrough ${walkthroughId} - ${data.title}`}
+      data-testid={testid}
+      {...props}
     >
       <article>
         <header className="ui-WalkthroughCard--Title">{data.title}</header>
-        <span className="ui-WalkthroughCard--Subtitle">{data.subtitle}</span>
-        <section className="ui-WalkthroughCard--Description">
-          {data.description}
-        </section>
+        <p className="ui-WalkthroughCard--Subtitle">{data.subtitle}</p>
+        <p className="ui-WalkthroughCard--Description">{data.description}</p>
       </article>
     </ReactAriaLink>
   );

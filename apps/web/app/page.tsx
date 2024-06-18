@@ -9,9 +9,7 @@ export default function Page(): JSX.Element {
     <div className="u-container">
       <div>
         {Object.entries(WalkthroughJSONData).map(([id, { info }]) => {
-          return (
-            <WalkthroughCard key={id} id={id} data={info} walkthroughId={id} />
-          );
+          return <WalkthroughCard key={id} data={info} walkthroughId={id} />;
         })}
       </div>
     </div>
