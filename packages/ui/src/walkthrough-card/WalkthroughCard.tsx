@@ -9,7 +9,7 @@ import {
 import { WalkthroughInfo } from "@repo/data/useWalkthroughData";
 import { URL_WALKTHROUGH_HREF } from "@repo/constants/src/urls";
 import "./WalkthroughCard.css";
-import { TESTID_WALTHROUGH_CARD } from "@repo/constants/src/testids";
+import { GET_TESTID_WALKTHROUGH_CARD } from "@repo/constants/src/testids";
 
 export interface WalkthroughCardProps extends ReactAriaLinkProps {
   data: WalkthroughInfo;
@@ -20,7 +20,7 @@ export interface WalkthroughCardProps extends ReactAriaLinkProps {
 export default function WalkthroughCard({
   data,
   walkthroughId,
-  "data-testid": testid = TESTID_WALTHROUGH_CARD,
+  "data-testid": testid = GET_TESTID_WALKTHROUGH_CARD(walkthroughId),
   ...props
 }: WalkthroughCardProps) {
   return (
