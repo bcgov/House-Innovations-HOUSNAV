@@ -1,47 +1,39 @@
 "use client";
-import { useRouter } from "next/navigation";
 
-import { Button } from "react-aria-components";
+// 3rd party
+import {
+  Link as ReactAriaLink,
+  LinkProps as ReactAriaLinkProps,
+} from "react-aria-components";
 
-import { WalkthroughInfo } from "../../../data/src/useWalkthroughData";
-
+import { WalkthroughInfo } from "@repo/data/useWalkthroughData";
+import { URL_WALKTHROUGH_HREF } from "@repo/constants/src/urls";
 import "./WalkthroughCard.css";
 
-export interface WalkthroughCardProps {
+export interface WalkthroughCardProps extends ReactAriaLinkProps {
   id: string;
   data: WalkthroughInfo;
-  href?: string;
+  walkthroughId: string;
 }
 
 export default function WalkthroughCard({
   id,
   data,
-  href,
+  walkthroughId,
 }: WalkthroughCardProps) {
-  const router = useRouter();
-
-  const handleClick = () => {
-    if (href) router.push(href);
-  };
-
-  const canDisplayCard =
-    data && data.title && data.subtitle && data.description;
-
-  if (!canDisplayCard) return null;
-
   return (
-    <Button
+    <ReactAriaLink
       className="ui-WalkthroughCard--CardContainer"
-      onPress={handleClick}
+      href={`${URL_WALKTHROUGH_HREF}/${walkthroughId}`}
       aria-label={`${id}-walkthrough-card`}
     >
-      <header className="ui-WalkthroughCard--Title">{data.title}</header>
       <article>
+        <header className="ui-WalkthroughCard--Title">{data.title}</header>
         <span className="ui-WalkthroughCard--Subtitle">{data.subtitle}</span>
+        <section className="ui-WalkthroughCard--Description">
+          {data.description}
+        </section>
       </article>
-      <section className="ui-WalkthroughCard--Description">
-        {data.description}
-      </section>
-    </Button>
+    </ReactAriaLink>
   );
 }

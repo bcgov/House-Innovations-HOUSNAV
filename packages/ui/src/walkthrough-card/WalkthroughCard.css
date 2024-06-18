@@ -1,34 +1,38 @@
 .ui-WalkthroughCard--CardContainer {
   display: flex;
   border-radius: var(--layout-border-radius-xlarge);
-  box-shadow: var(--surface-shadow-none), var(--surface-shadow-none);
+  box-shadow: var(--surface-shadow-medium), var(--surface-shadow-medium);
   background-color: var(--surface-color-background-white);
   max-width: var(--walkthrough-card-max-width);
   flex-direction: column;
-  font-size: 14px;
   color: var(--support-border-color-info);
   padding: var(--layout-padding-large);
-  margin: var(--layout-margin-medium);
-  gap: var(--layout-margin-medium);
   border: var(--layout-border-width-none);
   text-align: left;
   transition: box-shadow var(--transition-medium);
+  text-decoration: none;
 }
 
 .ui-WalkthroughCard--Title {
   color: var(--support-border-color-info);
-  font: var(--typography-bold-h5);
+  font: var(--typography-bold-h4);
   text-decoration: var(--walkthrough-card-title-text-decoration-hidden);
   transition: text-decoration-color var(--transition-medium);
   text-underline-offset: var(--walkthrough-card-title-text-underline-offset);
 }
 
-.ui-WalkthroughCard--CardContainer:hover {
+.ui-WalkthroughCard--CardContainer[data-hovered] {
   cursor: pointer;
-  box-shadow: var(--surface-shadow-medium), var(--surface-shadow-medium);
+  box-shadow: var(--surface-shadow-large), var(--surface-shadow-large);
+  border: 1px solid var(--surface-color-border-default);
 }
 
-.ui-WalkthroughCard--CardContainer:hover .ui-WalkthroughCard--Title {
+/* Remove border when card is clicked */
+.ui-WalkthroughCard--CardContainer[data-focused] {
+  outline: none;
+}
+
+.ui-WalkthroughCard--CardContainer[data-hovered] .ui-WalkthroughCard--Title {
   text-decoration-color: var(--support-border-color-info);
 }
 

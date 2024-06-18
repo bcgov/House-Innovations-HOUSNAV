@@ -1,9 +1,8 @@
 // 3rd party
 import { JSX } from "react";
 // repo
-import { URL_WALKTHROUGH_HREF } from "@repo/constants/src/urls";
 import WalkthroughCard from "@repo/ui/walkthrough-card";
-import { WalkthroughJSONData } from "../../../packages/data/src/useWalkthroughData";
+import { WalkthroughJSONData } from "@repo/data/useWalkthroughData";
 
 export default function Page(): JSX.Element {
   return (
@@ -11,11 +10,7 @@ export default function Page(): JSX.Element {
       <div>
         {Object.entries(WalkthroughJSONData).map(([id, { info }]) => {
           return (
-            <WalkthroughCard
-              id={id}
-              data={info}
-              href={`${URL_WALKTHROUGH_HREF}/${id}/`}
-            />
+            <WalkthroughCard key={id} id={id} data={info} walkthroughId={id} />
           );
         })}
       </div>
