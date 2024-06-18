@@ -108,7 +108,7 @@ export interface QuestionMultipleChoiceData extends QuestionBaseData {
 
 export const WalkthroughItemTypeMultiChoiceMultiple = "multiChoiceMultiple";
 export const isWalkthroughItemTypeMultiChoiceMultiple = (
-  walkthroughItemType: string
+  walkthroughItemType: string,
 ) => walkthroughItemType === WalkthroughItemTypeMultiChoiceMultiple;
 export interface QuestionMultipleChoiceSelectMultipleData
   extends QuestionBaseData {
@@ -169,10 +169,6 @@ export const WalkthroughJSONData: Record<Walkthroughs, WalkthroughJSONType> = {
 export default function useWalkthroughData({
   id,
 }: UseWalkthroughDataProps): WalkthroughJSONType {
-  if (!id) {
-    throw new Error("No id provided");
-  }
-
   const data = WalkthroughJSONData[id as Walkthroughs];
   if (!data) {
     throw new Error(`No data found for walkthrough ${id}`);

@@ -30,7 +30,7 @@ type CustomHandler = (section: string) => void;
 
 export const parseStringToComponents = (
   html: string,
-  customHandler?: CustomHandler
+  customHandler?: CustomHandler,
 ) => {
   const options = {
     replace: (domNode: DOMNode) => {
