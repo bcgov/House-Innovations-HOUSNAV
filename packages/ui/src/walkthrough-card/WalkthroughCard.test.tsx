@@ -6,7 +6,7 @@ import { renderWithWalkthroughProvider } from "../../../../apps/web/tests/utils"
 import WalkthroughCard from "./WalkthroughCard";
 import { WalkthroughJSONData } from "@repo/data/useWalkthroughData";
 import { URL_WALKTHROUGH_HREF } from "@repo/constants/src/urls";
-import { TESTID_WALTHROUGH_CARD } from "@repo/constants/src/testids";
+import { GET_TESTID_WALKTHROUGH_CARD } from "@repo/constants/src/testids";
 
 describe("WalkthroughCard", () => {
   const testWalkthroughId = "9.9.9";
@@ -17,12 +17,14 @@ describe("WalkthroughCard", () => {
         <WalkthroughCard
           key={testWalkthroughId}
           data={WalkthroughJSONData[testWalkthroughId].info}
-          walkthroughId={`${testWalkthroughId}/`}
+          walkthroughId={testWalkthroughId}
         />
       ),
     });
 
-    const linkElement = getByTestId(TESTID_WALTHROUGH_CARD);
+    const linkElement = getByTestId(
+      GET_TESTID_WALKTHROUGH_CARD(testWalkthroughId),
+    );
     expect(linkElement).toBeInTheDocument();
   });
 
@@ -37,7 +39,9 @@ describe("WalkthroughCard", () => {
       ),
     });
 
-    const linkElement = getByTestId(TESTID_WALTHROUGH_CARD);
+    const linkElement = getByTestId(
+      GET_TESTID_WALKTHROUGH_CARD(testWalkthroughId),
+    );
     expect(linkElement).toBeInTheDocument();
     expect(linkElement).toHaveAttribute(
       "href",
