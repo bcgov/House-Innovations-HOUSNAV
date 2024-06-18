@@ -1,5 +1,6 @@
 .ui-WalkthroughCard--CardContainer {
   display: flex;
+  border: var(--walkthrough-card-border-transparent);
   border-radius: var(--layout-border-radius-xlarge);
   box-shadow: var(--surface-shadow-medium), var(--surface-shadow-medium);
   background-color: var(--surface-color-background-white);
@@ -7,9 +8,10 @@
   flex-direction: column;
   color: var(--support-border-color-info);
   padding: var(--layout-padding-large);
-  border: var(--layout-border-width-none);
   text-align: left;
-  transition: box-shadow var(--transition-medium);
+  transition:
+    box-shadow var(--transition-medium),
+    border-color var(--transition-medium);
   text-decoration: none;
 }
 
@@ -24,12 +26,11 @@
 .ui-WalkthroughCard--CardContainer[data-hovered] {
   cursor: pointer;
   box-shadow: var(--surface-shadow-large), var(--surface-shadow-large);
-  border: 1px solid var(--surface-color-border-default);
+  border: var(--walkthrough-card-border-default);
 }
-
-/* Remove border when card is clicked */
-.ui-WalkthroughCard--CardContainer[data-focused] {
-  outline: none;
+.ui-WalkthroughCard--CardContainer[data-focus-visible] {
+  outline: var(--layout-border-width-medium) solid
+    var(--surface-color-border-active);
 }
 
 .ui-WalkthroughCard--CardContainer[data-hovered] .ui-WalkthroughCard--Title {
@@ -42,6 +43,7 @@
   border: var(--layout-border-width-small) solid var(--theme-blue-90);
   border-radius: var(--layout-border-radius-small);
   padding: var(--layout-padding-xxsmall) var(--layout-padding-xsmall);
+  width: fit-content;
 }
 
 .ui-WalkthroughCard--Description {
