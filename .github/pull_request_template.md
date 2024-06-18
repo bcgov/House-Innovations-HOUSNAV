@@ -16,3 +16,9 @@
 
 ## Notes & Resources
 <!-- Please include any additional notes necessary to review PR and/or relevant links (documentation, stack overflow, etc.) that helped you arrive at your solution. -->
+
+## Checklist
+- [ ] I have written or updated vitests for this work
+- [ ] I have reviewed the [accessibility guidelines](https://digital.gov.bc.ca/wcag/home/) relevant to this work
+- [ ] I have reviewed this work with at least one screen reader (when applicable)
+- [ ] I have added/updated any related documentation
