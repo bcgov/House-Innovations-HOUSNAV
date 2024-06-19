@@ -28,7 +28,9 @@ describe("walkthrough 1", () => {
         cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_NEXT).click();
       });
       if (walkthrough.result) {
-        cy.contains(results[walkthrough.result]);
+        // Cypress will throw an error if the result is undefined
+        const result = results[walkthrough.result as keyof typeof results];
+        cy.contains(result);
       }
     });
   });
