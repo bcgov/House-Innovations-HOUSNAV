@@ -2,7 +2,7 @@
 import { describe, it, expect } from "vitest";
 // local
 import { isWalkthroughItemTypeVariable } from "../src/useWalkthroughData";
-import data from "../walkthroughs/9.9.9.json";
+import data from "./9.9.9.json";
 
 describe("Data - 9.9.9", () => {
   it("verify all questions either appear in a section or are of variable type", () => {
@@ -14,9 +14,9 @@ describe("Data - 9.9.9", () => {
         }
 
         return !Object.values(data.sections).some((section) =>
-          section.sectionQuestions.includes(questionId),
+          section.sectionQuestions.includes(questionId)
         );
-      },
+      }
     );
     if (possibleUnusedQuestion)
       console.log("Possible unused question ID:", possibleUnusedQuestion[0]);
@@ -29,7 +29,7 @@ describe("Data - 9.9.9", () => {
     const sectionWithUnknownQuestion = Object.values(data.sections).find(
       (section) => {
         const unknownQuestion = section.sectionQuestions.find(
-          (questionId) => !Object.keys(data.questions).includes(questionId),
+          (questionId) => !Object.keys(data.questions).includes(questionId)
         );
         if (unknownQuestion) {
           console.log("Section:", section.sectionTitle);
@@ -37,7 +37,7 @@ describe("Data - 9.9.9", () => {
         }
 
         return !!unknownQuestion;
-      },
+      }
     );
 
     // expect sectionWithUnknownQuestion to be undefined

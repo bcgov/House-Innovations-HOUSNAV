@@ -45,7 +45,7 @@
   "questions": {
     "P01": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Does the Building Code apply to this <defined-term term='structure'>structure</defined-term>?",
+      "questionText": "Does the Building Code apply to this structure?",
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
@@ -81,7 +81,7 @@
     },
     "P02": {
       "walkthroughItemType": "multiChoiceMultiple",
-      "questionText": "Check all that apply to the following <defined-term>structure</defined-term> in this project?",
+      "questionText": "Check all that apply to the following structure in this project?",
       "possibleAnswers": [
         {
           "answerDisplayText": "This project will involve the construction or design of a new <defined-term>building</defined-term>.",
@@ -207,7 +207,7 @@
           "answerValue": "5"
         },
         {
-          "answerDisplayText": "This project has permission of the <defined-term>authorities having jurisdiction</defined-term> to provide construction site offices, seasonal storage buildings, special events facilities, emergency facilities, and/or similar <defined-term>structures</defined-term>.",
+          "answerDisplayText": "This project has permission of the <defined-term>authorities having jurisdiction</defined-term> to provide construction site offices, seasonal storage buildings, special events facilities, emergency facilities, and/or similar structure.",
           "answerValue": "6"
         },
         {
@@ -251,7 +251,7 @@
     },
     "P04": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Is this <defined-term>structure</defined-term> a <defined-term>heritage building</defined-term>?",
+      "questionText": "Is this structure a <defined-term>heritage building</defined-term>?",
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
@@ -303,7 +303,7 @@
     },
     "P06": {
       "walkthroughItemType": "multiChoiceMultiple",
-      "questionText": "Which <defined-term>major occupancies</defined-term> will be included in this <defined-term>building</defined-term>?",
+      "questionText": "Which <defined-term override-term='major occupancy'>major occupancies</defined-term> will be included in this <defined-term>building</defined-term>?",
       "possibleAnswers": [
         {
           "answerDisplayText": "<defined-term>Group A Division 1.</defined-term>",
@@ -338,7 +338,7 @@
           "answerValue": "C"
         },
         {
-          "answerDisplayText": "<defined-term>Group D.</defined-term>",
+          "answerDisplayText": "<defined-term override-term='major occupancy'>Group D.</defined-term>",
           "answerValue": "D"
         },
         {
@@ -428,14 +428,14 @@
     },
     "P08": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "How many <defined-term>storeys</defined-term> in <defined-term>building height</defined-term> will this building be?",
+      "questionText": "How many <defined-term override-term='storey'>storeys</defined-term> in <defined-term>building</defined-term> height will this building be?",
       "possibleAnswers": [
         {
-          "answerDisplayText": "1-3 <defined-term>storeys</defined-term>",
+          "answerDisplayText": "1-3 <defined-term override-term='storey'>storeys</defined-term>",
           "answerValue": "true"
         },
         {
-          "answerDisplayText": "Greater than 3 <defined-term>storeys</defined-term>",
+          "answerDisplayText": "Greater than 3 <defined-term override-term='storey'>storeys</defined-term>",
           "answerValue": "false"
         }
       ],
@@ -484,7 +484,7 @@
     },
     "P2": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "How many <defined-term>storeys</defined-term> does this <defined-term>dwelling unit</defined-term> have?",
+      "questionText": "How many <defined-term override-term='storey'>storeys</defined-term> does this <defined-term>dwelling unit</defined-term> have?",
       "questionCodeReference": {
         "displayString": "Vol 2, Section 9.9.9.1",
         "codeNumber": "V2-9.9.9.1"
@@ -542,7 +542,7 @@
       "walkthroughItemType": "multiChoiceMultiple",
       "answersAreDynamic": true,
       "storeAnswerAsObject": true,
-      "questionText": "Which <defined-term>storeys</defined-term> within the <defined-term>dwelling unit</defined-term> are provided with an egress or <defined-term>exit</defined-term> doors?",
+      "questionText": "Which <defined-term override-term='storey'>storeys</defined-term> within the <defined-term>dwelling unit</defined-term> are provided with an egress or <defined-term>exit</defined-term> doors?",
       "questionCodeReference": {
         "displayString": "Vol 2, Section 9.9.9.1",
         "codeNumber": "V2-9.9.9.1"
@@ -1807,7 +1807,7 @@
     },
     "P11": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "How many <defined-term>dwelling units</defined-term> are in this <defined-term>building</defined-term>?",
+      "questionText": "How many <defined-term override-term='dwelling unit'>dwelling units</defined-term> are in this <defined-term>building</defined-term>?",
       "questionCodeReference": {
         "displayString": "Vol 2, Section 9.9.9.2",
         "codeNumber": "V2-9.9.9.2"
@@ -1891,7 +1891,7 @@
     },
     "P14": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Where the egress door opens onto the corridor or exterior passageway, is it possible to go in opposite directions to 2 separate <defined-term>exits</defined-term>?",
+      "questionText": "Where the egress door opens onto the corridor or exterior passageway, is it possible to go in opposite directions to 2 separate <defined-term override-term='exit'>exits</defined-term>?",
       "questionCodeReference": {
         "displayString": "Vol 2, Section 9.9.9.2",
         "codeNumber": "V2-9.9.9.2"

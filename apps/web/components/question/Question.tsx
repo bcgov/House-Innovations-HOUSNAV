@@ -19,6 +19,11 @@ import QuestionMissing from "./question-types/QuestionMissing";
 import { useWalkthroughState } from "../../stores/WalkthroughRootStore";
 import { parseStringToComponents } from "../../utils/string";
 import "./Question.css";
+import ModalSide from "@repo/ui/modal-side";
+import {
+  ModalSideDataEnum,
+  BuildingCodeJSONData,
+} from "@repo/data/useGlossaryData";
 
 // helper function to get the correct question component
 const getQuestionComponent = (walkthroughItemType: string) => {
@@ -56,9 +61,16 @@ const Question = observer(() => {
           data-testid={TESTID_QUESTION_CODE_REFERENCE}
         >
           Reference:{" "}
-          <Button variant="code">
-            {currentQuestion.questionCodeReference.displayString}
-          </Button>
+          <ModalSide
+            type={ModalSideDataEnum.BUILDING_CODE}
+            triggerContent={
+              <Button variant="code">
+                {currentQuestion.questionCodeReference.displayString}
+              </Button>
+            }
+            modalData={BuildingCodeJSONData}
+            scrollTo={"9.9.9.1"}
+          />
         </p>
       )}
       <div className="web-Question--Content">{component}</div>

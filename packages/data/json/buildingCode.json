@@ -1,0 +1,150 @@
+[
+  {
+    "section": "9.9.9.1",
+    "header": "Egress from Dwelling Units",
+    "content": {
+      "clauses": [
+        {
+          "description": "Except as provided in <tag>Sentences (2) and (3), every dwelling unit containing more than 1 storey shall have exits or egress doors located so that it shall not be necessary to travel up or down more than 1 storey to reach a level served by...",
+          "subsections": [
+            {
+              "description": "an egress door to a public corridor, enclosed exit stair or exterior passageway, or"
+            },
+            {
+              "description": "an exit doorway not more than 1.5 m above adjacent ground level. "
+            }
+          ]
+        },
+        {
+          "description": "Where a dwelling unit is not located above or below another suite, the travel limit from a floor level in the dwelling unit to an exit or egress door may exceed 1 storey where that floor level is served by an openable window ",
+          "subsections": [
+            {
+              "description": "providing an unobstructed opening of not less than 1 m in height and 0.55 m in width, and ",
+              "subSectionFields": []
+            },
+            {
+              "description": "located so that the sill is not more than ",
+              "subClauses": [
+                "1 m above the floor, and ",
+                "7 m above adjacent ground level."
+              ],
+              "imagePath": "",
+              "imageDescription": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "section": "9.9.9.2",
+    "header": "Egress from Dwelling Units",
+    "content": {
+      "clauses": [
+        {
+          "description": "Except as provided in <tag>Sentences (2) and (3), every dwelling unit containing more than 1 storey shall have exits or egress doors located so that it shall not be necessary to travel up or down more than 1 storey to reach a level served by...",
+          "subsections": [
+            {
+              "description": "an egress door to a public corridor, enclosed exit stair or exterior passageway, or"
+            },
+            {
+              "description": "an exit doorway not more than 1.5 m above adjacent ground level. "
+            }
+          ]
+        },
+        {
+          "description": "Where a dwelling unit is not located above or below another suite, the travel limit from a floor level in the dwelling unit to an exit or egress door may exceed 1 storey where that floor level is served by an openable window ",
+          "subsections": [
+            {
+              "description": "providing an unobstructed opening of not less than 1 m in height and 0.55 m in width, and ",
+              "subSectionFields": []
+            },
+            {
+              "description": "located so that the sill is not more than ",
+              "subClauses": [
+                "1 m above the floor, and ",
+                "7 m above adjacent ground level."
+              ],
+              "imagePath": "",
+              "imageDescription": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "section": "9.9.9.3",
+    "header": "Egress from Dwelling Units",
+    "content": {
+      "clauses": [
+        {
+          "description": "Except as provided in <tag>Sentences (2) and (3), every dwelling unit containing more than 1 storey shall have exits or egress doors located so that it shall not be necessary to travel up or down more than 1 storey to reach a level served by...",
+          "subsections": [
+            {
+              "description": "an egress door to a public corridor, enclosed exit stair or exterior passageway, or"
+            },
+            {
+              "description": "an exit doorway not more than 1.5 m above adjacent ground level. "
+            }
+          ]
+        },
+        {
+          "description": "Where a dwelling unit is not located above or below another suite, the travel limit from a floor level in the dwelling unit to an exit or egress door may exceed 1 storey where that floor level is served by an openable window ",
+          "subsections": [
+            {
+              "description": "providing an unobstructed opening of not less than 1 m in height and 0.55 m in width, and ",
+              "subSectionFields": []
+            },
+            {
+              "description": "located so that the sill is not more than ",
+              "subClauses": [
+                "1 m above the floor, and ",
+                "7 m above adjacent ground level."
+              ],
+              "imagePath": "",
+              "imageDescription": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "section": "9.9.9.4",
+    "header": "Egress from Dwelling Units",
+    "content": {
+      "clauses": [
+        {
+          "description": "Except as provided in <tag>Sentences (2) and (3), every dwelling unit containing more than 1 storey shall have exits or egress doors located so that it shall not be necessary to travel up or down more than 1 storey to reach a level served by...",
+          "subsections": [
+            {
+              "description": "an egress door to a public corridor, enclosed exit stair or exterior passageway, or"
+            },
+            {
+              "description": "an exit doorway not more than 1.5 m above adjacent ground level. "
+            }
+          ]
+        },
+        {
+          "description": "Where a dwelling unit is not located above or below another suite, the travel limit from a floor level in the dwelling unit to an exit or egress door may exceed 1 storey where that floor level is served by an openable window ",
+          "subsections": [
+            {
+              "description": "providing an unobstructed opening of not less than 1 m in height and 0.55 m in width, and ",
+              "subSectionFields": []
+            },
+            {
+              "description": "located so that the sill is not more than ",
+              "subClauses": [
+                "1 m above the floor, and ",
+                "7 m above adjacent ground level."
+              ],
+              "imagePath": "",
+              "imageDescription": ""
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

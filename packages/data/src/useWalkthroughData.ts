@@ -1,4 +1,4 @@
-import testCase999 from "../walkthroughs/9.9.9.json";
+import testCase999 from "../json/9.9.9.json";
 
 type Walkthroughs = "9.9.9";
 
@@ -109,7 +109,7 @@ export interface QuestionMultipleChoiceData extends QuestionBaseData {
 
 export const WalkthroughItemTypeMultiChoiceMultiple = "multiChoiceMultiple";
 export const isWalkthroughItemTypeMultiChoiceMultiple = (
-  walkthroughItemType: string,
+  walkthroughItemType: string
 ) => walkthroughItemType === WalkthroughItemTypeMultiChoiceMultiple;
 export interface QuestionMultipleChoiceSelectMultipleData
   extends QuestionBaseData {

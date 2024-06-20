@@ -55,6 +55,13 @@
   background-color: var(--theme-gray-white);
 }
 
+.ui-ModalSide--ModalContentHeader {
+  grid-column: span 3;
+  font-size: var(--typography-font-size-h5);
+  font-weight: var(--typography-font-weights-bold);
+  padding-left: var(--layout-margin-large);
+}
+
 .ui-ModalSide--Content {
   display: flex;
   flex-direction: column;
@@ -68,6 +75,8 @@
 
 .ui-ModalSide--Section {
   display: flex;
+  grid-column: span 4 / 6;
+
   flex-direction: column;
 }
 
@@ -77,10 +86,20 @@
   align-items: center;
 }
 
-.ui-ModalSide--SectionContentLine {
+.ui-ModalSide--SectionGlossaryContentLine {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   align-items: center;
+}
+
+.ui-ModalSide--SectionBuildingCodeContentLine {
+  display: grid;
+  padding: var(--layout-padding-medium);
+  align-items: center;
+}
+
+.ui-ModalSide--BuildingCodeList {
+  padding: revert;
 }
 
 .ui-ModalSide--SectionNumber {
@@ -109,6 +128,12 @@
   border-radius: var(--layout-margin-small, 8px);
   border: 1px solid var(--support-borderColor-info, #053662);
   background: var(--support-surfaceColor-info, #f7f9fc);
+}
+
+.ui-ModalSide-Term {
+  color: var(--typography-color-link);
+  font-weight: var(--typography-font-weights-bold);
+  text-decoration-line: underline;
 }
 
 @keyframes modal-slide-out {

@@ -1,16 +1,22 @@
 // repo
 import Button, { ButtonProps } from "@repo/ui/button";
 import { TESTID_DEFINED_TERM } from "@repo/constants/src/testids";
-import { GLOSSARY_SECTIONS, GLOSSARY_TERMS } from "../../../web/tests/mockData";
 import Tooltip from "@repo/ui/tooltip";
 import ModalSide from "@repo/ui/modal-side";
+import {
+  ModalGlossaryData,
+  ModalSideDataEnum,
+  TooltipGlossaryData,
+} from "@repo/data/useGlossaryData";
 
 export interface DefinedTermProps extends Omit<ButtonProps, "variant"> {
   term: string;
+  overrideTerm?: string;
 }
 
 export default function DefinedTerm({
   term,
+  overrideTerm,
   children,
   "data-testid": testid = TESTID_DEFINED_TERM,
   ...props
@@ -30,18 +36,17 @@ export default function DefinedTerm({
 
   const tooltipButton = (
     <Tooltip
-      tooltipContent={GLOSSARY_TERMS.default.tooltipContent}
+      tooltipContent={TooltipGlossaryData.get(term.toLocaleLowerCase())}
       triggerContent={button}
     ></Tooltip>
   );
 
-  // TODO: Matt or Nicholas, add correct section for customHandler
-  const randomSection = Math.floor(Math.random() * 10) + 1;
   return (
     <ModalSide
+      type={ModalSideDataEnum.GLOSSARY}
       triggerContent={tooltipButton}
-      sections={GLOSSARY_SECTIONS}
-      scrollToSection={`9.9.9.${randomSection}`}
+      modalData={ModalGlossaryData}
+      scrollTo={overrideTerm}
     />
   );
 }
