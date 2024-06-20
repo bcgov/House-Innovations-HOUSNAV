@@ -1,7 +1,9 @@
 {
   "info": {
-    "title": "Test Case 2 - Spatial Separation Between Buildings",
-    "startingQuestionId": "intro"
+    "title": "Spatial Separation Between Buildings",
+    "subtitle": "Volume II - 9.10.14.1-4",
+    "description": "Ensure a building’s separation passes code.",
+    "startingSectionId": "intro"
   },
   "sections": {
     "intro": {
@@ -18,7 +20,7 @@
       ]
     },
     "91014": {
-      "sectionTitle": "9.10.14 Division B",
+      "sectionTitle": "9.10.14. Spatial Separation Between Buildings",
       "sectionQuestions": [
         "P1",
         "P2",
@@ -37,110 +39,110 @@
   "questions": {
     "P01": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Does the Building Code apply to this structure?",
+      "questionText": "Does the Building Code apply to this <defined-term term='structure'>structure</defined-term>?",
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
-          "answerValue": "A"
+          "answerValue": "yes"
         },
         {
           "answerDisplayText": "I'm not sure",
-          "answerValue": "B"
+          "answerValue": "notSure"
         },
         {
           "answerDisplayText": "No",
-          "answerValue": "C"
+          "answerValue": "no"
         }
       ],
       "nextNavigationLogic": [
         {
-          "nextLogicType": "equals",
+          "nextLogicType": "equal",
           "answerToCheck": "P01",
-          "answerValue": "A",
+          "answerValue": "yes",
           "nextNavigateTo": "P04"
         },
         {
-          "nextLogicType": "equals",
+          "nextLogicType": "equal",
           "answerToCheck": "P01",
-          "answerValue": "B",
+          "answerValue": "notSure",
           "nextNavigateTo": "P02"
         },
         {
           "nextLogicType": "fallback",
-          "nextNavigateTo": "R0"
+          "nextNavigateTo": "R00"
         }
       ]
     },
     "P02": {
       "walkthroughItemType": "multiChoiceMultiple",
-      "questionText": "Check all that apply to the following structure in this project.",
+      "questionText": "Check all that apply to the following <defined-term>structure</defined-term> in this project.",
       "possibleAnswers": [
         {
-          "answerDisplayText": "This project will involve the construction or design of a new building.",
+          "answerDisplayText": "This project will involve the construction or design of a new <defined-term>building</defined-term>.",
           "answerValue": "1"
         },
         {
-          "answerDisplayText": "The project will be occupied.",
+          "answerDisplayText": "The project will be <defined-term>occupied</defined-term>.",
           "answerValue": "2"
         },
         {
-          "answerDisplayText": "The project will result in a change in occupancy.",
+          "answerDisplayText": "The project will result in a change in <defined-term>occupancy</defined-term>.",
           "answerValue": "3"
         },
         {
-          "answerDisplayText": "The project will result in an alteration to an existing building.",
+          "answerDisplayText": "The project will result in an <defined-term>alteration</defined-term> to an existing <defined-term>building</defined-term>.",
           "answerValue": "4"
         },
         {
-          "answerDisplayText": "The project will result in an addition to an existing building.",
+          "answerDisplayText": "The project will result in an <defined-term>addition</defined-term> to an existing <defined-term>building</defined-term>.",
           "answerValue": "5"
         },
         {
-          "answerDisplayText": "The project will result in the demolition of an existing building.",
+          "answerDisplayText": "The project will result in the demolition of an existing <defined-term>building</defined-term>.",
           "answerValue": "6"
         },
         {
-          "answerDisplayText": "The project will consist of the repair of a building that has been damaged by fire, earthquake, or other causes of damage.",
+          "answerDisplayText": "The project will consist of the repair of a <defined-term>building</defined-term> that has been damaged by fire, earthquake, or other causes of damage.",
           "answerValue": "7"
         },
         {
-          "answerDisplayText": "The project will correct unsafe conditions in or about a building.",
+          "answerDisplayText": "The project will correct unsafe conditions in or about a <defined-term>building</defined-term>.",
           "answerValue": "8"
         },
         {
-          "answerDisplayText": "The project will involve changes that will affect the occupied parts of the building.",
+          "answerDisplayText": "The project will involve changes that will affect the <defined-term>occupied</defined-term> parts of the <defined-term>building</defined-term>.",
           "answerValue": "9"
         },
         {
-          "answerDisplayText": "The project will involve work necessary to ensure safety in the remaining parts of a building after demolition.",
+          "answerDisplayText": "The project will involve work necessary to ensure safety in the remaining parts of a <defined-term>building</defined-term> after demolition.",
           "answerValue": "10"
         },
         {
-          "answerDisplayText": "The project will involve work necessary to ensure safety parts affect but not directly involved in an alteration to the building.",
+          "answerDisplayText": "The project will involve work necessary to ensure safety in parts affected but not directly involved in an <defined-term>alteration</defined-term> to the <defined-term>building</defined-term>.",
           "answerValue": "11"
         },
         {
-          "answerDisplayText": "The project will involve work necessary to ensure safety parts affect but not directly involved in an addition to the building.",
+          "answerDisplayText": "The project will involve work necessary to ensure safety in parts affected but not directly involved in an <defined-term>addition</defined-term> to the <defined-term>building</defined-term>.",
           "answerValue": "12"
         },
         {
-          "answerDisplayText": "The project will involve the installation, replacement, or alteration of materials or equipment regulated by this Code (except as permitted by the British Columbia Fire Code).",
+          "answerDisplayText": "The project will involve the installation, replacement, or <defined-term>alteration</defined-term> of materials or equipment regulated by this Code (except as permitted by the British Columbia Fire Code).",
           "answerValue": "13"
         },
         {
-          "answerDisplayText": "This project will involve the work necessary to ensure safety in a relocated building during and after the relocation.",
+          "answerDisplayText": "This project will involve the work necessary to ensure safety in a relocated <defined-term>building</defined-term> during and after the relocation.",
           "answerValue": "14"
         },
         {
-          "answerDisplayText": "This project will affect safety during construction of a building, including protection of the public.",
+          "answerDisplayText": "This project will affect safety during construction of a <defined-term>building</defined-term>, including protection of the public.",
           "answerValue": "15"
         },
         {
-          "answerDisplayText": "This project will involve the design, installation, extension, alteration, renewal or repair of plumbing systems.",
+          "answerDisplayText": "This project will involve the design, installation, extension, <defined-term>alteration</defined-term>, renewal or repair of plumbing systems.",
           "answerValue": "16"
         },
         {
-          "answerDisplayText": "This project will involve the alteration, rehabilitation and change of occupancy of heritage buildings.",
+          "answerDisplayText": "This project will involve the <defined-term>alteration</defined-term>, rehabilitation and change of <defined-term>occupancy</defined-term> of <defined-term>heritage buildings</defined-term>.",
           "answerValue": "17"
         },
         {
@@ -148,10 +150,9 @@
           "answerValue": "18"
         }
       ],
-      "nextNavigationLogic": [
+      "possibleInvalidAnswers": [
         {
-          "nextLogicType": "contains",
-          "answerToCheck": "P02",
+          "invalidAnswerType": "contains",
           "answerValue": "18",
           "invalidAnswerLogic": [
             {
@@ -160,12 +161,14 @@
             }
           ],
           "errorMessage": "'None of the above' cannot be selected at the same time as other answers"
-        },
+        }
+      ],
+      "nextNavigationLogic": [
         {
-          "nextLogicType": "equals",
+          "nextLogicType": "equal",
           "answerToCheck": "P02",
           "answerValue": "18",
-          "nextNavigateTo": "R0"
+          "nextNavigateTo": "R00"
         },
         {
           "nextLogicType": "fallback",
@@ -178,11 +181,11 @@
       "questionText": "Check all that apply to the following apply to this project?",
       "possibleAnswers": [
         {
-          "answerDisplayText": "This project consists of sewage, water, electrical, telephone, rail or similar public infrastructure systems located in a street or a public transit right of way.",
+          "answerDisplayText": "This project consists of sewage, water, electrical, telephone, rail or similar public infrastructure systems located in a <defined-term>street</defined-term> or a public transit right of way.",
           "answerValue": "1"
         },
         {
-          "answerDisplayText": "This project consists of utility towers and poles, and television, radio and other communication aerials and towers, except for loads resulting from their being located on or attached to buildings.",
+          "answerDisplayText": "This project consists of utility towers and poles, and television, radio and other communication aerials and towers, except for loads resulting from their being located on or attached to <defined-term>buildings</defined-term>.",
           "answerValue": "2"
         },
         {
@@ -194,11 +197,11 @@
           "answerValue": "4"
         },
         {
-          "answerDisplayText": "This project consists of accessory buildings less than 10 m2 in building area that do not create a hazard.",
+          "answerDisplayText": "This project consists of accessory buildings less than 10 m<sup>2</sup> in <defined-term>building area</defined-term> that do not create a hazard.",
           "answerValue": "5"
         },
         {
-          "answerDisplayText": "This project has permission of the authorities having jurisdiction to provide construction site offices, seasonal storage buildings, special events facilities, emergency facilities, and/or similar structures.",
+          "answerDisplayText": "This project has permission of the <defined-term>authorities having jurisdiction</defined-term> to provide construction site offices, seasonal storage buildings, special events facilities, emergency facilities, and/or similar <defined-term>structures</defined-term>.",
           "answerValue": "6"
         },
         {
@@ -206,7 +209,7 @@
           "answerValue": "7"
         },
         {
-          "answerDisplayText": "This project is a farm building.",
+          "answerDisplayText": "This project is a <defined-term>farm building</defined-term>.",
           "answerValue": "8"
         },
         {
@@ -214,22 +217,35 @@
           "answerValue": "9"
         }
       ],
+      "possibleInvalidAnswers": [
+        {
+          "invalidAnswerType": "contains",
+          "answerValue": "9",
+          "invalidAnswerLogic": [
+            {
+              "invalidAnswerLogicType": "maxNumberOfAnswers",
+              "invalidAnswerLogicValue": 1
+            }
+          ],
+          "errorMessage": "'None of the above' cannot be selected at the same time as other answers"
+        }
+      ],
       "nextNavigationLogic": [
         {
-          "nextLogicType": "equals",
+          "nextLogicType": "equal",
           "answerToCheck": "P03",
           "answerValue": "9",
           "nextNavigateTo": "P04"
         },
         {
           "nextLogicType": "fallback",
-          "nextNavigateTo": "R1"
+          "nextNavigateTo": "R01"
         }
       ]
     },
     "P04": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Is this structure a heritage building?",
+      "questionText": "Is this <defined-term>structure</defined-term> a <defined-term>heritage building</defined-term>?",
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
@@ -242,10 +258,10 @@
       ],
       "nextNavigationLogic": [
         {
-          "nextLogicType": "equals",
+          "nextLogicType": "equal",
           "answerToCheck": "P04",
           "answerValue": "true",
-          "nextNavigateTo": "R2"
+          "nextNavigateTo": "R02"
         },
         {
           "nextLogicType": "fallback",
@@ -255,7 +271,7 @@
     },
     "P05": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Does this project involve the alteration of an existing building?",
+      "questionText": "Does this project involve the <defined-term>alteration</defined-term> of an existing <defined-term>building</defined-term>?",
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
@@ -268,10 +284,10 @@
       ],
       "nextNavigationLogic": [
         {
-          "nextLogicType": "equals",
+          "nextLogicType": "equal",
           "answerToCheck": "P05",
           "answerValue": "true",
-          "nextNavigateTo": "R3"
+          "nextNavigateTo": "R03"
         },
         {
           "nextLogicType": "fallback",
@@ -281,75 +297,68 @@
     },
     "P06": {
       "walkthroughItemType": "multiChoiceMultiple",
-      "questionText": "Which major occupancies will be included in this building?",
+      "questionText": "Which <defined-term>major occupancies</defined-term> will be included in this <defined-term>building</defined-term>?",
       "possibleAnswers": [
         {
-          "answerDisplayText": "Group A Division 1.",
+          "answerDisplayText": "<defined-term>Group A Division 1.</defined-term>",
           "answerValue": "A1"
         },
         {
-          "answerDisplayText": "Group A Division 2.",
+          "answerDisplayText": "<defined-term>Group A Division 2.</defined-term>",
           "answerValue": "A2"
         },
         {
-          "answerDisplayText": "Group A Division 3.",
+          "answerDisplayText": "<defined-term>Group A Division 3.</defined-term>",
           "answerValue": "A3"
         },
         {
-          "answerDisplayText": "Group A Division 4.",
+          "answerDisplayText": "<defined-term>Group A Division 4.</defined-term>",
           "answerValue": "A4"
         },
         {
-          "answerDisplayText": "Group B Division 1.",
+          "answerDisplayText": "<defined-term>Group B Division 1.</defined-term>",
           "answerValue": "B1"
         },
         {
-          "answerDisplayText": "Group B Division 2.",
+          "answerDisplayText": "<defined-term>Group B Division 2.</defined-term>",
           "answerValue": "B2"
         },
         {
-          "answerDisplayText": "Group B Division 3.",
+          "answerDisplayText": "<defined-term>Group B Division 3.</defined-term>",
           "answerValue": "B3"
         },
         {
-          "answerDisplayText": "Group C.",
+          "answerDisplayText": "<defined-term>Group C.</defined-term>",
           "answerValue": "C"
         },
         {
-          "answerDisplayText": "Group D.",
+          "answerDisplayText": "<defined-term>Group D.</defined-term>",
           "answerValue": "D"
         },
         {
-          "answerDisplayText": "Group E.",
+          "answerDisplayText": "<defined-term>Group E.</defined-term>",
           "answerValue": "E"
         },
         {
-          "answerDisplayText": "Group F Division 1.",
+          "answerDisplayText": "<defined-term>Group F Division 1.</defined-term>",
           "answerValue": "F1"
         },
         {
-          "answerDisplayText": "Group F Division 2.",
+          "answerDisplayText": "<defined-term>Group F Division 2.</defined-term>",
           "answerValue": "F2"
         },
         {
-          "answerDisplayText": "Group F Division 3.",
+          "answerDisplayText": "<defined-term>Group F Division 3.</defined-term>",
           "answerValue": "F3"
         },
         {
-          "answerDisplayText": "This building has no occupancy.",
+          "answerDisplayText": "This building has no <defined-term>occupancy</defined-term>.",
           "answerValue": "none"
         }
       ],
-      "nextNavigationLogic": [
+      "possibleInvalidAnswers": [
         {
-          "nextLogicType": "equals",
-          "answerToCheck": "P06",
-          "answerValue": "none",
-          "nextNavigateTo": "R0"
-        },
-        {
-          "nextLogicType": "contains",
-          "answerToCheck": "P06",
+          "invalidAnswerType": "contains",
           "answerValue": "none",
           "invalidAnswerLogic": [
             {
@@ -358,12 +367,20 @@
             }
           ],
           "errorMessage": "'None of the above' cannot be selected at the same time as other answers"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P06",
+          "answerValue": "none",
+          "nextNavigateTo": "R00"
         },
         {
           "nextLogicType": "containsAny",
           "answerToCheck": "P06",
           "answerValues": ["A1", "A2", "A3", "A4", "B1", "B2", "B3", "F1"],
-          "nextNavigateTo": "R4"
+          "nextNavigateTo": "R05"
         },
         {
           "nextLogicType": "fallback",
@@ -373,7 +390,7 @@
     },
     "P07": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Is the building area of this building greater than 600 m2?",
+      "questionText": "Is the <defined-term>building area</defined-term> of this <defined-term>building</defined-term> greater than 600 m<sup>2</sup>?",
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
@@ -386,10 +403,10 @@
       ],
       "nextNavigationLogic": [
         {
-          "nextLogicType": "equals",
+          "nextLogicType": "equal",
           "answerToCheck": "P07",
           "answerValue": "true",
-          "nextNavigateTo": "R4"
+          "nextNavigateTo": "R05"
         },
         {
           "nextLogicType": "fallback",
@@ -399,70 +416,74 @@
     },
     "P08": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "How many storeys in building height will this building be?",
+      "questionText": "How many <defined-term>storeys</defined-term> in <defined-term>building height</defined-term> will this building be?",
       "possibleAnswers": [
         {
-          "answerDisplayText": "1-3 storeys",
+          "answerDisplayText": "1-3 <defined-term>storeys</defined-term>",
           "answerValue": "true"
         },
         {
-          "answerDisplayText": "Greater than 3 storeys",
+          "answerDisplayText": "Greater than 3 <defined-term>storeys</defined-term>",
           "answerValue": "false"
         }
       ],
       "nextNavigationLogic": [
         {
-          "nextLogicType": "equals",
+          "nextLogicType": "equal",
           "answerToCheck": "P08",
           "answerValue": "true",
           "nextNavigateTo": "P1"
         },
         {
           "nextLogicType": "fallback",
-          "nextNavigateTo": "R4"
+          "nextNavigateTo": "R05"
         }
       ]
     },
     "P1": {
-      "walkthroughItemType": "multiChoice",
-      "questionText": "What are the major occupancies of this building?",
+      "walkthroughItemType": "multiChoiceMultiple",
+      "questionText": "What are the <defined-term>major occupancies</defined-term> of this building?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Subsection 9.10.14.",
+        "codeNumber": "V2-DB-9.10.14"
+      },
       "possibleAnswers": [
         {
-          "answerDisplayText": "Residential",
-          "answerValue": "Residential"
+          "answerDisplayText": "<defined-term>Residential</defined-term>",
+          "answerValue": "C"
         },
         {
-          "answerDisplayText": "Office",
-          "answerValue": "Office"
+          "answerDisplayText": "<defined-term>Office</defined-term>",
+          "answerValue": "D"
         },
         {
-          "answerDisplayText": "Mercantile",
-          "answerValue": "Mercantile"
+          "answerDisplayText": "<defined-term>Mercantile</defined-term>",
+          "answerValue": "E"
         },
         {
-          "answerDisplayText": "Low Hazard Industrial",
-          "answerValue": "LowHazardIndustrial"
+          "answerDisplayText": "<defined-term>Low Hazard Industrial</defined-term>",
+          "answerValue": "F3"
         },
         {
-          "answerDisplayText": "Medium Hazard Industrial",
-          "answerValue": "MediumHazardIndustrial"
+          "answerDisplayText": "<defined-term>Medium Hazard Industrial</defined-term>",
+          "answerValue": "F2"
         },
         {
-          "answerDisplayText": "No occupancy or accessory building",
-          "answerValue": "NoOccupancy"
+          "answerDisplayText": "No <defined-term>occupancy</defined-term> or accessory building",
+          "answerValue": "none"
         }
       ],
       "nextNavigationLogic": [
         {
-          "nextLogicType": "equals",
+          "nextLogicType": "equal",
           "answerToCheck": "P1",
-          "answerValue": "Residential",
+          "answerValue": "C",
           "nextNavigateTo": "P2"
         },
         {
-          "nextLogicType": "equals",
+          "nextLogicType": "equal",
           "answerToCheck": "P1",
-          "answerValue": "LowHazardIndustrial",
+          "answerValue": "F3",
           "nextNavigateTo": "P3"
         },
         {
@@ -473,7 +494,11 @@
     },
     "P2": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Would this building be required to meet Subsection 9.10.15. per Article 9.10.15 1?",
+      "questionText": "Would this building be required to meet Subsection 9.10.15. per Article 9.10.15.1.?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Sentence 9.10.14.1.(1)",
+        "codeNumber": "V2-DB-9.10.14.1.1"
+      },
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
@@ -486,14 +511,24 @@
       ],
       "nextNavigationLogic": [
         {
+          "nextLogicType": "equal",
+          "answerToCheck": "P2",
+          "answerValue": "true",
+          "nextNavigateTo": "R51"
+        },
+        {
           "nextLogicType": "fallback",
-          "nextNavigateTo": "L2"
+          "nextNavigateTo": "P5"
         }
       ]
     },
     "P3": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Does this building conform to Article 9.35.1.1?",
+      "questionText": "Does this building conform to <pdf-download-link>Article 9.35.1.1.</pdf-download-link>?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Sentence 9.10.14.1.(2)",
+        "codeNumber": "V2-DB-9.10.14.1.2"
+      },
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
@@ -506,14 +541,25 @@
       ],
       "nextNavigationLogic": [
         {
+          "nextLogicType": "equal",
+          "answerToCheck": "P3",
+          "answerValue": "true",
+          "nextNavigateTo": "R50"
+        },
+        {
           "nextLogicType": "fallback",
-          "nextNavigateTo": "L2"
+          "nextNavigateTo": "P4"
         }
       ]
     },
     "P4": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Is this building a detached garage or accessory building that meets all of the following requirements: -Faces a dwelling unit. -Serves only one dwelling unit. -Is located on the same property as that dwelling unit. -The dwelling unit is the only major occupancy on the property.",
+      "questionText": "Is this building a detached garage or accessory building that meets all of the following requirements:",
+      "questionSubtext": "<ul><li>Faces a dwelling unit.</li><li>Serves only one dwelling unit.</li><li>Is located on the same property as that dwelling unit.</li><li>The dwelling unit is the only major occupancy on the property.</li></ul>",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Subsection 9.10.14.",
+        "codeNumber": "V2-DB-9.10.14"
+      },
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
@@ -526,10 +572,10 @@
       ],
       "nextNavigationLogic": [
         {
-          "nextLogicType": "equals",
+          "nextLogicType": "equal",
           "answerToCheck": "P4",
           "answerValue": "true",
-          "nextNavigateTo": "R8"
+          "nextNavigateTo": "R40"
         },
         {
           "nextLogicType": "fallback",
@@ -538,14 +584,9 @@
       ]
     },
     "P5": {
-      "walkthroughItemType": "multiChoice",
-      "questionText": "The area of an exposing building face is calculated by taking the exterior wall area facing in one direction on any side of a building, calculate the total area measured from the finished ground level to the uppermost ceiling, or the area for each fire compartment, where a building is divided into fire compartments by fire separations with fire-resistance ratings not less than 45 min. -Sentence 9.10.14.2.(1) If a building is divided by fire separations into fire compartments, the area of the exposing building face is permitted to be calculated for each fire compartment, provided the fire separations have a fire-resistance rating not less than 45 min. - Sentence 9.10.14.2.(4) What is the area of the exposing building face of this fire compartment (m2)?",
-      "possibleAnswers": [
-        {
-          "answerDisplayText": "Enter float",
-          "answerValue": "float"
-        }
-      ],
+      "walkthroughItemType": "numberFloat",
+      "questionText": "What is the area of the <defined-term>exposing building face</defined-term> of this <defined-term>fire compartment</defined-term> (m<sup>2</sup>)?",
+      "questionSubtext": "<p>The area of an <defined-term>exposing building face</defined-term> is calculated by taking the exterior wall area facing in one direction on any side of a <defined-term>building</defined-term>, calculate the total area measured from the finished ground level to the uppermost ceiling, or the area for each <defined-term>fire compartment</defined-term>, where a building is divided into <defined-term>fire compartments</defined-term> by <defined-term>fire separations</defined-term> with <defined-term>fire-resistance ratings</defined-term> not less than 45 min. <building-code-link>Sentence 9.10.14.2.(1)</building-code-link></p><p>If a <defined-term>building</defined-term> is divided by <defined-term>fire separations</defined-term> into <defined-term>fire compartments</defined-term>, the area of the <defined-term>exposing building face</defined-term> is permitted to be calculated for each <defined-term>fire compartment</defined-term>, provided the <defined-term>fire separations</defined-term> have a <defined-term>fire-resistance rating</defined-term> not less than 45 min. <building-code-link>Sentence 9.10.14.2.(4)</building-code-link></p>",
       "nextNavigationLogic": [
         {
           "nextLogicType": "fallback",
@@ -554,14 +595,13 @@
       ]
     },
     "P6": {
-      "walkthroughItemType": "multiChoice",
-      "questionText": "The location of the exposing building face shall be taken as a vertical plane located so that there are no unprotected openings between the vertical plane and the line to which the limiting distance is measured. {Diagram from Note A-3.2.3.1.(4)} What is the Limiting Distance for the exterior wall for this fire compartment (m)?",
-      "possibleAnswers": [
-        {
-          "answerDisplayText": "Enter float",
-          "answerValue": "float"
-        }
-      ],
+      "walkthroughItemType": "numberFloat",
+      "questionText": "What is the <defined-term>limiting distance</defined-term> for the exterior wall for this <defined-term>fire compartment</defined-term> (m)?",
+      "questionSubtext": "<p>The location of the <defined-term>exposing building face</defined-term> shall be taken as a vertical plane located so that there are no <defined-term>unprotected openings</defined-term> between the vertical plane and the line to which the <defined-term>limiting distance</defined-term> is measured. <pdf-download-link>Note A-3.2.3.1.(4)</pdf-download-link></p>",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Sentence 9.10.14.2.(2)",
+        "codeNumber": "V2-DB-9.10.14.2.2"
+      },
       "NavigationLogic": [
         {
           "nextLogicType": "fallback",
@@ -571,7 +611,11 @@
     },
     "P7": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Is this compartment sprinklered per Article 3.2.5.12?",
+      "questionText": "Is this compartment <defined-term>sprinklered<defined-term> per <pdf-download-link>Article 3.2.5.12.</pdf-download-link>?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Subsection 9.10.14.",
+        "codeNumber": "V2-DB-9.10.14"
+      },
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
@@ -584,7 +628,7 @@
       ],
       "nextNavigationLogic": [
         {
-          "nextLogicType": "equals",
+          "nextLogicType": "TODO - L6 logic",
           "answerToCheck": "P7",
           "answerValue": "true",
           "nextNavigateTo": "L6"
@@ -610,7 +654,7 @@
       ],
       "nextNavigationLogic": [
         {
-          "nextLogicType": "equals",
+          "nextLogicType": "equal",
           "answerToCheck": "P8",
           "answerValue": "true",
           "nextNavigateTo": "P6"
@@ -636,10 +680,10 @@
       ],
       "nextNavigationLogic": [
         {
-          "nextLogicType": "equals",
+          "nextLogicType": "equal",
           "answerToCheck": "P11",
           "answerValue": "true",
-          "nextNavigateTo": "R8"
+          "nextNavigateTo": "R40"
         },
         {
           "nextLogicType": "fallback",
@@ -662,10 +706,10 @@
       ],
       "nextNavigationLogic": [
         {
-          "nextLogicType": "equals",
+          "nextLogicType": "equal",
           "answerToCheck": "P12",
           "answerValue": "true",
-          "nextNavigateTo": "R8"
+          "nextNavigateTo": "R40"
         },
         {
           "nextLogicType": "fallback",
@@ -688,7 +732,7 @@
       ],
       "nextNavigationLogic": [
         {
-          "nextLogicType": "equals",
+          "nextLogicType": "equal",
           "answerToCheck": "P13",
           "answerValue": "true",
           "nextNavigateTo": "L12"
@@ -701,19 +745,20 @@
     }
   },
   "results": {
-    "R0": {
+    "R00": {
       "resultDisplayMessage": "You have selected an answer that indicates that the BC Building Code 2024 does not apply to this structure. This tool is used to assist building code users in determining the applicable requirements for their building, as such all structures that are not governed by the BC Building Code 2024 are beyond the scope of this tool."
     },
-    "R1": {
-      "resultDisplayMessage": "You have selected {values from previous answer}. This indicates that some or all of this structure may not be governed by the BC Building Code 2024. This tool has been designed to assist BC Building Code 2024 users in determining the Building Code requirements for Part 9 buildings. Based on your selection, some or all of your project is beyond the scope of this tool at this time."
+    "R01": {
+      "needsAnswerValue": true,
+      "resultDisplayMessage": "You have selected {passedAnswerValue}. This indicates that some or all of this structure may not be governed by the BC Building Code 2024. This tool has been designed to assist BC Building Code 2024 users in determining the Building Code requirements for Part 9 buildings. Based on your selection, some or all of your project is beyond the scope of this tool at this time."
     },
-    "R2": {
-      "resultDisplayMessage": "You have selected an option that indicates that this building is a heritage building. Heritage buildings have alternative measures for Building Code compliance. These alternative measures are beyond the scope of this tool at this time. Please see in Table 1.1.1.1.(5) of Division A - Section 1.1 ‘General’ for more information."
+    "R02": {
+      "resultDisplayMessage": "You have selected an option that indicates that this building is a heritage building. Heritage buildings have alternative measures for Building Code compliance. These alternative measures are beyond the scope of this tool at this time. Please see in <pdf-download-link>Table 1.1.1.1.(5)</pdf-download-link> of Division A - Section 1.1 ‘General’ for more information."
     },
-    "R3": {
-      "resultDisplayMessage": "You have selected an option that indicates that this building is an alteration to an existing building. Alteration to existing buildings have alternative measures for Building Code compliance. These alternative measures are beyond the scope of this tool at this time. Please see Sentences 1.1.1.1(6) and 1.1.1.2.(1), and Table 1.1.1.1.(6) in Division A - Section 1.1 ‘General’ for more information."
+    "R03": {
+      "resultDisplayMessage": "You have selected an option that indicates that this building is an alteration to an existing building. Alteration to existing buildings have alternative measures for Building Code compliance. These alternative measures are beyond the scope of this tool at this time. Please see Sentences <pdf-download-link>1.1.1.1(6)</pdf-download-link> and <pdf-download-link>1.1.1.2.(1)</pdf-download-link>, and <pdf-download-link>Table 1.1.1.1.(6)</pdf-download-link> in Division A - Section 1.1 ‘General’ for more information."
     },
-    "R4": {
+    "R05": {
       "resultDisplayMessage": "Based on the options you have selected; this project is not a Part 9 building. This tool is designed to assist BC Building Code 2024 users in evaluating Part 9 buildings for conformance with Division B Acceptable Solutions of the BC Building Code, therefore your project is beyond the scope of this tool at this time."
     },
     "R5": {
@@ -725,14 +770,14 @@
     "R7": {
       "resultDisplayMessage": "The maximum percentage of unprotected openings in this exterior wall is {Max(P(9), P(10)/P(5))}%, based on an exposing building face of {P(5)}m2, the maximum area would be: {Max(P(9)xP(5), P(10))}."
     },
-    "R8": {
-      "resultDisplayMessage": "Based on your selections and Article 9.10.14.4, this fire compartment is permitted to have unlimited unprotected openings."
+    "R40": {
+      "resultDisplayMessage": "Based on your selections and <building-code-link>Article 9.10.14.4.</building-code-link>, this fire compartment is permitted to have unlimited unprotected openings."
     },
-    "R9": {
-      "resultDisplayMessage": "Subsection 9.10.14 does not apply to detached carports conforming to Section 9.35. that serve not more than one dwelling unit or a house with a secondary suite."
+    "R50": {
+      "resultDisplayMessage": "<building-code-link>Subsection 9.10.14</building-code-link> does not apply to detached carports conforming to <pdf-download-link>Section 9.35.</pdf-download-link> that serve not more than one dwelling unit or a house with a secondary suite."
     },
-    "R10": {
-      "resultDisplayMessage": "Based on your selection the percentage and area of unprotected openings should be calculated based on Subsection 9.10.15. At this time this tool does not calculate the percentage and area of unprotected openings of houses that meet the requirements of Subsection 9.10.15."
+    "R51": {
+      "resultDisplayMessage": "Based on your selection the percentage and area of unprotected openings should be calculated based on <pdf-download-link>Subsection 9.10.15.</pdf-download-link> At this time this tool does not calculate the percentage and area of unprotected openings of houses that meet the requirements of Subsection 9.10.15."
     }
   }
 }

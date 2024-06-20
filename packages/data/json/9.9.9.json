@@ -7,7 +7,7 @@
   },
   "sections": {
     "intro": {
-      "sectionTitle": "TODO - Introduction",
+      "sectionTitle": "Introduction",
       "sectionQuestions": [
         "P01",
         "P02",
@@ -20,7 +20,7 @@
       ]
     },
     "9991": {
-      "sectionTitle": "9.9.9.1 Travel limit to Exits or Egress Doors",
+      "sectionTitle": "9.9.9.1. Travel limit to Exits or Egress Doors",
       "sectionQuestions": [
         "P1",
         "P2",
@@ -34,11 +34,11 @@
       ]
     },
     "9992": {
-      "sectionTitle": "9.9.9.2 Two Separate Exits",
+      "sectionTitle": "9.9.9.2. Two Separate Exits",
       "sectionQuestions": ["P11", "P12", "P13", "P14", "P15", "P16", "P17"]
     },
     "9993": {
-      "sectionTitle": "9.9.9.3 Shared Egress Facilities",
+      "sectionTitle": "9.9.9.3. Shared Egress Facilities",
       "sectionQuestions": ["P18", "P19", "P20", "P21", "P22", "P23", "P24"]
     }
   },
@@ -81,7 +81,7 @@
     },
     "P02": {
       "walkthroughItemType": "multiChoiceMultiple",
-      "questionText": "Check all that apply to the following structure in this project?",
+      "questionText": "Check all that apply to the following structure in this project.",
       "possibleAnswers": [
         {
           "answerDisplayText": "This project will involve the construction or design of a new <defined-term>building</defined-term>.",
@@ -358,7 +358,7 @@
           "answerValue": "F3"
         },
         {
-          "answerDisplayText": "This building has no <defined-term>major occupancy</defined-term>.",
+          "answerDisplayText": "This building has no <defined-term>occupancy</defined-term>.",
           "answerValue": "none"
         }
       ],
@@ -456,8 +456,8 @@
       "walkthroughItemType": "multiChoice",
       "questionText": "Is this location a <defined-term>dwelling unit</defined-term>?",
       "questionCodeReference": {
-        "displayString": "Vol 2, Section 9.9.9.1",
-        "codeNumber": "V2-9.9.9.1"
+        "displayString": "Vol 2, Div B, Article 9.9.9.1.",
+        "codeNumber": "V2-DB-9.9.9.1"
       },
       "possibleAnswers": [
         {
@@ -486,8 +486,8 @@
       "walkthroughItemType": "multiChoice",
       "questionText": "How many <defined-term override-term='storey'>storeys</defined-term> does this <defined-term>dwelling unit</defined-term> have?",
       "questionCodeReference": {
-        "displayString": "Vol 2, Section 9.9.9.1",
-        "codeNumber": "V2-9.9.9.1"
+        "displayString": "Vol 2, Div B, Article 9.9.9.1.",
+        "codeNumber": "V2-DB-9.9.9.1"
       },
       "possibleAnswers": [
         {
@@ -544,8 +544,8 @@
       "storeAnswerAsObject": true,
       "questionText": "Which <defined-term override-term='storey'>storeys</defined-term> within the <defined-term>dwelling unit</defined-term> are provided with an egress or <defined-term>exit</defined-term> doors?",
       "questionCodeReference": {
-        "displayString": "Vol 2, Section 9.9.9.1",
-        "codeNumber": "V2-9.9.9.1"
+        "displayString": "Vol 2, Div B, Article 9.9.9.1.",
+        "codeNumber": "V2-DB-9.9.9.1"
       },
       "possibleAnswers": [
         {
@@ -768,8 +768,8 @@
       "isNotRequired": true,
       "questionText": "Which level(s) with greater than 1 storey of travel to an <defined-term>exit</defined-term> of the <defined-term>dwelling unit</defined-term> have access to a balcony?",
       "questionCodeReference": {
-        "displayString": "Vol 2, Section 9.9.9.1",
-        "codeNumber": "V2-9.9.9.1"
+        "displayString": "Vol 2, Div B, Article 9.9.9.1.",
+        "codeNumber": "V2-DB-9.9.9.1"
       },
       "possibleAnswers": [
         {
@@ -828,8 +828,8 @@
       "walkthroughItemType": "multiChoice",
       "questionText": "Is this <defined-term>dwelling unit</defined-term> above another <defined-term>dwelling unit</defined-term>?",
       "questionCodeReference": {
-        "displayString": "Vol 2, Section 9.9.9.1",
-        "codeNumber": "V2-9.9.9.1"
+        "displayString": "Vol 2, Div B, Article 9.9.9.1.",
+        "codeNumber": "V2-DB-9.9.9.1"
       },
       "possibleAnswers": [
         {
@@ -861,8 +861,8 @@
       "isNotRequired": true,
       "questionText": "Which level(s) of the <defined-term>dwelling unit</defined-term> have access to an openable window that is at least 1m high and 0.55m wide?",
       "questionCodeReference": {
-        "displayString": "Vol 2, Section 9.9.9.1",
-        "codeNumber": "V2-9.9.9.1"
+        "displayString": "Vol 2, Div B, Article 9.9.9.1.",
+        "codeNumber": "V2-DB-9.9.9.1"
       },
       "possibleAnswers": [
         {
@@ -1305,8 +1305,8 @@
       "isNotRequired": true,
       "questionText": "Which level(s) of the <defined-term>dwelling unit</defined-term> have less than 1m of the finish floor level and less than 7m above adjacent ground level?",
       "questionCodeReference": {
-        "displayString": "Vol 2, Section 9.9.9.1",
-        "codeNumber": "V2-9.9.9.1"
+        "displayString": "Vol 2, Div B, Article 9.9.9.1.",
+        "codeNumber": "V2-DB-9.9.9.1"
       },
       "possibleAnswers": [
         {
@@ -1620,8 +1620,8 @@
       "isNotRequired": true,
       "questionText": "On which level(s) is the door an egress door to a <defined-term>public corridor</defined-term>, enclosed <defined-term>exit</defined-term> stair, or passageway?",
       "questionCodeReference": {
-        "displayString": "Vol 2, Section 9.9.9.1",
-        "codeNumber": "V2-9.9.9.1"
+        "displayString": "Vol 2, Div B, Article 9.9.9.1.",
+        "codeNumber": "V2-DB-9.9.9.1"
       },
       "possibleAnswers": [
         {
@@ -1683,8 +1683,8 @@
       "isNotRequired": true,
       "questionText": "On which level(s) is the egress door an <defined-term>exit</defined-term> doorway not more than 1.5m above adjacent ground level?",
       "questionCodeReference": {
-        "displayString": "Vol 2, Section 9.9.9.1",
-        "codeNumber": "V2-9.9.9.1"
+        "displayString": "Vol 2, Div B, Article 9.9.9.1.",
+        "codeNumber": "V2-DB-9.9.9.1"
       },
       "possibleAnswers": [
         {
@@ -1809,8 +1809,8 @@
       "walkthroughItemType": "multiChoice",
       "questionText": "How many <defined-term override-term='dwelling unit'>dwelling units</defined-term> are in this <defined-term>building</defined-term>?",
       "questionCodeReference": {
-        "displayString": "Vol 2, Section 9.9.9.2",
-        "codeNumber": "V2-9.9.9.2"
+        "displayString": "Vol 2, Div B, Article 9.9.9.2.",
+        "codeNumber": "V2-DB-9.9.9.2"
       },
       "possibleAnswers": [
         {
@@ -1833,8 +1833,8 @@
       "walkthroughItemType": "multiChoice",
       "questionText": "Is this <defined-term>dwelling unit</defined-term> provided with at least two separate <defined-term>means of egress</defined-term>?",
       "questionCodeReference": {
-        "displayString": "Vol 2, Section 9.9.9.2",
-        "codeNumber": "V2-9.9.9.2"
+        "displayString": "Vol 2, Div B, Article 9.9.9.2.",
+        "codeNumber": "V2-DB-9.9.9.2"
       },
       "possibleAnswers": [
         {
@@ -1863,8 +1863,8 @@
       "walkthroughItemType": "multiChoice",
       "questionText": "Does this <defined-term>dwelling unit</defined-term>’s egress door open onto a <defined-term>public corridor</defined-term> or an exterior passageway?",
       "questionCodeReference": {
-        "displayString": "Vol 2, Section 9.9.9.2",
-        "codeNumber": "V2-9.9.9.2"
+        "displayString": "Vol 2, Div B, Article 9.9.9.2.",
+        "codeNumber": "V2-DB-9.9.9.2"
       },
       "possibleAnswers": [
         {
@@ -1893,8 +1893,8 @@
       "walkthroughItemType": "multiChoice",
       "questionText": "Where the egress door opens onto the corridor or exterior passageway, is it possible to go in opposite directions to 2 separate <defined-term override-term='exit'>exits</defined-term>?",
       "questionCodeReference": {
-        "displayString": "Vol 2, Section 9.9.9.2",
-        "codeNumber": "V2-9.9.9.2"
+        "displayString": "Vol 2, Div B, Article 9.9.9.2.",
+        "codeNumber": "V2-DB-9.9.9.2"
       },
       "possibleAnswers": [
         {
@@ -1929,8 +1929,8 @@
       "walkthroughItemType": "multiChoice",
       "questionText": "Does the egress door of this <defined-term>dwelling unit</defined-term> open onto a corridor that meets the requirements of <pdf-download-link number='99731' named-dest='9.9.7.3. Dead-End Corridors'>Sentence 9.9.7.3.(1)</pdf-download-link>?",
       "questionCodeReference": {
-        "displayString": "Vol 2, Section 9.9.9.2",
-        "codeNumber": "V2-9.9.9.2"
+        "displayString": "Vol 2, Div B, Article 9.9.9.2.",
+        "codeNumber": "V2-DB-9.9.9.2"
       },
       "possibleAnswers": [
         {
@@ -1959,8 +1959,8 @@
       "walkthroughItemType": "multiChoice",
       "questionText": "Is the <defined-term>building</defined-term> <defined-term>sprinklered</defined-term>?",
       "questionCodeReference": {
-        "displayString": "Vol 2, Section 9.9.9.2",
-        "codeNumber": "V2-9.9.9.2"
+        "displayString": "Vol 2, Div B, Article 9.9.9.2.",
+        "codeNumber": "V2-DB-9.9.9.2"
       },
       "possibleAnswers": [
         {
@@ -1989,8 +1989,8 @@
       "walkthroughItemType": "multiChoice",
       "questionText": "Does this <defined-term>building</defined-term> meet the definition of a <defined-term>secondary suite</defined-term>?",
       "questionCodeReference": {
-        "displayString": "Vol 2, Section 9.9.9.2",
-        "codeNumber": "V2-9.9.9.2"
+        "displayString": "Vol 2, Div B, Article 9.9.9.2.",
+        "codeNumber": "V2-DB-9.9.9.2"
       },
       "possibleAnswers": [
         {
@@ -2095,8 +2095,8 @@
       "walkthroughItemType": "multiChoice",
       "questionText": "Is this <defined-term>dwelling unit</defined-term> located above another <defined-term>dwelling unit</defined-term> or common space?",
       "questionCodeReference": {
-        "displayString": "Vol 2, Section 9.9.9.3",
-        "codeNumber": "V2-9.9.9.3"
+        "displayString": "Vol 2, Div B, Article 9.9.9.3.",
+        "codeNumber": "V2-DB-9.9.9.3"
       },
       "possibleAnswers": [
         {
@@ -2125,8 +2125,8 @@
       "walkthroughItemType": "multiChoice",
       "questionText": "Does the egress door of this <defined-term>dwelling unit</defined-term> open onto a shared egress facility (corridor, passageway, stair, <defined-term>ramp</defined-term>, etc.) that is served by a single stair or <defined-term>ramp</defined-term>?",
       "questionCodeReference": {
-        "displayString": "Vol 2, Section 9.9.9.3",
-        "codeNumber": "V2-9.9.9.3"
+        "displayString": "Vol 2, Div B, Article 9.9.9.3.",
+        "codeNumber": "V2-DB-9.9.9.3"
       },
       "possibleAnswers": [
         {
@@ -2205,8 +2205,8 @@
       "walkthroughItemType": "multiChoice",
       "questionText": "Does the egress door of this <defined-term>dwelling unit</defined-term> open onto an <defined-term>exit</defined-term> stair, <defined-term>public corridor</defined-term>, exterior passageway, or balcony, that serves more than one <defined-term>suite</defined-term>?",
       "questionCodeReference": {
-        "displayString": "Vol 2, Section 9.9.9.3",
-        "codeNumber": "V2-9.9.9.3"
+        "displayString": "Vol 2, Div B, Article 9.9.9.3.",
+        "codeNumber": "V2-DB-9.9.9.3"
       },
       "possibleAnswers": [
         {
@@ -2235,8 +2235,8 @@
       "walkthroughItemType": "multiChoice",
       "questionText": "The egress door of the <defined-term>dwelling unit</defined-term> opens onto ...",
       "questionCodeReference": {
-        "displayString": "Vol 2, Section 9.9.9.3",
-        "codeNumber": "V2-9.9.9.3"
+        "displayString": "Vol 2, Div B, Article 9.9.9.3.",
+        "codeNumber": "V2-DB-9.9.9.3"
       },
       "possibleAnswers": [
         {
@@ -2281,8 +2281,8 @@
       "walkthroughItemType": "multiChoice",
       "questionText": "Is the <defined-term>public corridor</defined-term> served by a single <defined-term>exit</defined-term>?",
       "questionCodeReference": {
-        "displayString": "Vol 2, Section 9.9.9.3",
-        "codeNumber": "V2-9.9.9.3"
+        "displayString": "Vol 2, Div B, Article 9.9.9.3.",
+        "codeNumber": "V2-DB-9.9.9.3"
       },
       "possibleAnswers": [
         {
@@ -2311,8 +2311,8 @@
       "walkthroughItemType": "multiChoice",
       "questionText": "Is the <answer-value answer='P21'/> served by a single <defined-term>exit</defined-term> stairway or <defined-term>ramp</defined-term>?",
       "questionCodeReference": {
-        "displayString": "Vol 2, Section 9.9.9.3",
-        "codeNumber": "V2-9.9.9.3"
+        "displayString": "Vol 2, Div B, Article 9.9.9.3.",
+        "codeNumber": "V2-DB-9.9.9.3"
       },
       "possibleAnswers": [
         {
@@ -2341,8 +2341,8 @@
       "walkthroughItemType": "multiChoice",
       "questionText": "Is the <answer-value answer='P21'/> no more than 1.5m above adjacent ground level?",
       "questionCodeReference": {
-        "displayString": "Vol 2, Section 9.9.9.3",
-        "codeNumber": "V2-9.9.9.3"
+        "displayString": "Vol 2, Div B, Article 9.9.9.3.",
+        "codeNumber": "V2-DB-9.9.9.3"
       },
       "possibleAnswers": [
         {
@@ -2386,7 +2386,7 @@
       "resultDisplayMessage": "Based on the options you have selected this project does not contain a Group C residential occupancy. This tool is design to assist BC Building Code 2024 users in evaluating the prescriptive requirements of the BC Building Code for Part 9 Group C residential occupancy buildings, therefore your project is beyond the scope of this tool at this time."
     },
     "R05": {
-      "resultDisplayMessage": "Based on the options you have selected; this project is not a Part 9 building. This tool is design to assist BC Building Code 2024 users in evaluating the Acceptable Solutions in Division B of the BC Building Code for Part 9 buildings, therefore your project is beyond the scope of this tool at this time."
+      "resultDisplayMessage": "Based on the options you have selected; this project is not a Part 9 building. This tool is designed to assist BC Building Code 2024 users in evaluating the Acceptable Solutions in Division B of the BC Building Code for Part 9 buildings, therefore your project is beyond the scope of this tool at this time."
     },
     "R10": {
       "resultDisplayMessage": "Based on the building characteristics provided, this dwelling unit meets the provision of Subsection <building-code-link subsection='9.9.9'>9.9.9. ‘Egress from Dwelling Units’</building-code-link>."
