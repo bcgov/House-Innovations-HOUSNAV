@@ -1927,7 +1927,7 @@
     },
     "P15": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Does the egress door of this <defined-term>dwelling unit</defined-term> open onto a corridor that meets the requirements of Sentence 9.9.7.3.(1)?",
+      "questionText": "Does the egress door of this <defined-term>dwelling unit</defined-term> open onto a corridor that meets the requirements of <pdf-download-link number='99731' named-dest='9.9.7.3. Dead-End Corridors'>Sentence 9.9.7.3.(1)</pdf-download-link>?",
       "questionCodeReference": {
         "displayString": "Vol 2, Section 9.9.9.2",
         "codeNumber": "V2-9.9.9.2"

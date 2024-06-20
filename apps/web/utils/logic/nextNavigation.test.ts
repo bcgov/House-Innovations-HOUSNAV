@@ -12,6 +12,7 @@ import {
   nextLogicTypeEqual,
   nextLogicTypeNotEqual,
   nextLogicTypeLessThan,
+  nextLogicTypeGreaterThan,
   nextLogicTypeDoesNotContain,
   nextLogicTypeContainsAny,
   nextLogicTypeOr,
@@ -211,6 +212,41 @@ describe("nextNavigation", () => {
     // expect result to throw an error
     expect(() =>
       nextLogicTypeLessThan(answerToCheck, answerValue),
+    ).toThrowError();
+  });
+  /*
+   * nextLogicTypeGreaterThan
+   */
+  it("nextLogicTypeGreaterThan: answerToCheck is string and it is greater than answerValue", () => {
+    const answerToCheck = "2";
+    const answerValue = "1";
+    const result = nextLogicTypeGreaterThan(answerToCheck, answerValue);
+    expect(result).toBe(true);
+  });
+  it("nextLogicTypeGreaterThan: answerToCheck is string and it is equal to answerValue", () => {
+    const answerToCheck = "2";
+    const answerValue = "2";
+    const result = nextLogicTypeGreaterThan(answerToCheck, answerValue);
+    expect(result).toBe(false);
+  });
+  it("nextLogicTypeGreaterThan: answerToCheck is string and it is less than answerValue", () => {
+    const answerToCheck = "1";
+    const answerValue = "2";
+    const result = nextLogicTypeGreaterThan(answerToCheck, answerValue);
+    expect(result).toBe(false);
+  });
+  it("nextLogicTypeGreaterThan: answerToCheck is undefined", () => {
+    const answerToCheck = undefined;
+    const answerValue = "1";
+    expect(() =>
+      nextLogicTypeGreaterThan(answerToCheck, answerValue),
+    ).toThrowError();
+  });
+  it("nextLogicTypeGreaterThan: answerToCheck is not a string", () => {
+    const answerToCheck = { answer: "2" };
+    const answerValue = "1";
+    expect(() =>
+      nextLogicTypeGreaterThan(answerToCheck, answerValue),
     ).toThrowError();
   });
   /*
@@ -670,6 +706,30 @@ describe("nextNavigation", () => {
     expect(result).toBe(true);
     expect(mockGetAnswerToCheckValue).toHaveBeenCalledTimes(1);
     expect(nextLogicTypeLessThanSpy).toHaveBeenCalledTimes(1);
+  });
+  it(`navigationLogicItemIsTrue: answerToCheck property with returned value, answerValue property, and nextLogicType as ${NextNavigationLogicType.GreaterThan}`, () => {
+    const mockGetAnswerToCheckValue = vi.fn();
+    // doesn't matter because of spy return below but does need to return something
+    mockGetAnswerToCheckValue.mockReturnValueOnce("doesn't matter");
+    const nextNavigationLogicItem: NextNavigationLogic = {
+      nextLogicType: NextNavigationLogicType.GreaterThan,
+      answerToCheck: "answerToCheck",
+      answerValue: "answerValue",
+    };
+    const nextLogicTypeGreaterThanSpy = vi.spyOn(
+      NextNavigationModule,
+      "nextLogicTypeGreaterThan",
+    );
+    nextLogicTypeGreaterThanSpy.mockReturnValueOnce(true);
+
+    const result = navigationLogicItemIsTrue(
+      nextNavigationLogicItem,
+      mockGetAnswerToCheckValue,
+    );
+
+    expect(result).toBe(true);
+    expect(mockGetAnswerToCheckValue).toHaveBeenCalledTimes(1);
+    expect(nextLogicTypeGreaterThanSpy).toHaveBeenCalledTimes(1);
   });
   it("navigationLogicItemIsTrue: answerToCheck property with returned value, answerValue property, and nextLogicType as unknown", () => {
     // test data

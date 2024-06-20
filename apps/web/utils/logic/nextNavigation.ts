@@ -87,6 +87,11 @@ export const navigationLogicItemIsTrue = (
               answerToCheckValue,
               navigationLogicItem.answerValue,
             );
+          case NextNavigationLogicType.GreaterThan:
+            return ThisModule.nextLogicTypeGreaterThan(
+              answerToCheckValue,
+              navigationLogicItem.answerValue,
+            );
           case NextNavigationLogicType.DoesNotContain:
             return ThisModule.nextLogicTypeDoesNotContain(
               answerToCheckValue,
@@ -201,6 +206,18 @@ export const nextLogicTypeLessThan = (
   }
   throw new Error(
     `nextLogicTypeLessThan: answerToCheckValue must be a string or undefined, got ${typeof answerToCheckValue}`,
+  );
+};
+
+export const nextLogicTypeGreaterThan = (
+  answerToCheckValue: AnswerTypes | undefined,
+  answerValue: string,
+) => {
+  if (isString(answerToCheckValue)) {
+    return answerToCheckValue > answerValue;
+  }
+  throw new Error(
+    `nextLogicTypeLessThan: answerToCheckValue must be a string, got ${typeof answerToCheckValue}`,
   );
 };
 
