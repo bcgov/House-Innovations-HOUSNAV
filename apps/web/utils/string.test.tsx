@@ -5,6 +5,7 @@ import { JSX } from "react";
 import { getMultiChoiceQuestion } from "@repo/data/useWalkthroughTestData";
 // local
 import { getStringFromComponents, parseStringToComponents } from "./string";
+import { isArray } from "./typeChecking";
 
 describe("string", () => {
   /*
@@ -76,6 +77,50 @@ describe("string", () => {
     // expect hasDefinedTerm to be false
     expect(hasDefinedTerm).toBeFalsy();
   });
+  it("parseStringToComponents: pdf-download-link", () => {
+    let components = parseStringToComponents(
+      "<pdf-download-link>Download PDF</pdf-download-link>",
+    );
+
+    if (typeof components === "string") {
+      assert.fail(
+        "question text is missing pdf download link - need to fix test data",
+      );
+    }
+
+    if (!isArray(components)) {
+      components = [components];
+    }
+
+    const hasPDFDownloadLink = components.some((component) => {
+      if (typeof component === "string") {
+        return false;
+      }
+      return component.type.name === "PDFDownloadLink";
+    });
+
+    expect(hasPDFDownloadLink).toBeTruthy();
+  });
+  it("parseStringToComponents: no pdf-download-link", () => {
+    const components = parseStringToComponents(
+      "Question text without a pdf download link in it.",
+    );
+
+    let componentsArray: JSX.Element[] | string[] | (string | JSX.Element)[] =
+      [];
+    if (!isArray(components)) {
+      componentsArray = [components];
+    }
+
+    const hasPDFDownloadLink = componentsArray.some((component) => {
+      if (typeof component === "string") {
+        return false;
+      }
+      return component.type.name === "PDFDownloadLink";
+    });
+
+    expect(hasPDFDownloadLink).toBeFalsy();
+  });
   /*
    * getStringFromComponents
    */
@@ -84,7 +129,6 @@ describe("string", () => {
     const result = getStringFromComponents(string);
     expect(result).toBe(string);
   });
-  // check with parseStringToComponents
   it("getStringFromComponents: string with component", () => {
     const string = "test string";
     const stringWithComponent = "test <potato>string</potato>";
@@ -92,18 +136,15 @@ describe("string", () => {
     const result = getStringFromComponents(components);
     expect(result).toBe(string);
   });
-  // null case
   it("getStringFromComponents: null", () => {
     const result = getStringFromComponents(null);
     expect(result).toBe("");
   });
-  // number case
   it("getStringFromComponents: number", () => {
     const number = 123;
     const result = getStringFromComponents(number);
     expect(result).toBe(number.toString());
   });
-  // boolean case
   it("getStringFromComponents: boolean", () => {
     const boolean = true;
     const result = getStringFromComponents(boolean);

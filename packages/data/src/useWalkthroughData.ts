@@ -38,6 +38,7 @@ export enum NextNavigationLogicType {
   And = "and",
   Or = "or",
   LessThan = "lessThan",
+  GreaterThan = "greaterThan",
   Fallback = "fallback",
 }
 

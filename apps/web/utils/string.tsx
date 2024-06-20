@@ -6,25 +6,44 @@ import parse, {
   domToReact,
   attributesToProps,
 } from "html-react-parser";
+// repo
+import Button, { ButtonProps } from "@repo/ui/button";
+import Tooltip from "@repo/ui/tooltip";
 // local
 import DefinedTerm, {
   DefinedTermProps,
 } from "../components/defined-term/DefinedTerm";
-import Button from "@repo/ui/button";
-import Tooltip from "@repo/ui/tooltip";
+import PDFDownloadLink, {
+  PDFDownloadLinkProps,
+} from "../components/pdf-download-link/PDFDownloadLink";
 import { GLOSSARY_TERMS } from "../tests/mockData";
 
 // Define custom components for html-react-parser
 const definedTermName = "defined-term";
 const definedTermModal = "defined-term-modal";
-type CustomComponentTypes = typeof definedTermName | typeof definedTermModal;
-type CustomComponentProps = DefinedTermProps;
-const customComponents: Record<
-  CustomComponentTypes,
-  FunctionComponent<CustomComponentProps>
-> = {
+const pdfDownloadLinkName = "pdf-download-link";
+type CustomComponentTypes =
+  | typeof definedTermName
+  | typeof definedTermModal
+  | typeof pdfDownloadLinkName;
+
+type CustomComponentProps<T extends CustomComponentTypes> =
+  T extends typeof definedTermName
+    ? DefinedTermProps
+    : T extends typeof definedTermModal
+      ? ButtonProps
+      : T extends typeof pdfDownloadLinkName
+        ? PDFDownloadLinkProps
+        : never;
+
+type CustomComponentRecord<T extends CustomComponentTypes> = {
+  [K in T]: FunctionComponent<CustomComponentProps<K>>;
+};
+
+const customComponents: CustomComponentRecord<CustomComponentTypes> = {
   [definedTermName]: DefinedTerm,
   [definedTermModal]: Button,
+  [pdfDownloadLinkName]: PDFDownloadLink,
 };
 type CustomHandler = (section: string) => void;
 
@@ -49,6 +68,24 @@ export const parseStringToComponents = (
                   >
                     {domToReact(domNode.children as DOMNode[], options)}
                   </DefinedTermComponent>
+                );
+              }
+            }
+            break;
+          case pdfDownloadLinkName:
+            {
+              const PDFDownloadLinkComponent =
+                customComponents[pdfDownloadLinkName];
+              const props = attributesToProps(domNode.attribs);
+
+              if (PDFDownloadLinkComponent) {
+                return (
+                  <PDFDownloadLinkComponent
+                    {...(props as unknown as PDFDownloadLinkProps)}
+                    key={domNode.attribs.key}
+                  >
+                    {domToReact(domNode.children as DOMNode[], options)}
+                  </PDFDownloadLinkComponent>
                 );
               }
             }

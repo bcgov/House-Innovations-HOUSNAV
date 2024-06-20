@@ -18,6 +18,8 @@ export const TESTID_CHECKBOX_GROUP_ERROR = "checkbox-group-error";
 export const GET_TESTID_CHECKBOX = (testId: string, value: string) =>
   `checkbox-${testId}-${value}`;
 export const TESTID_DEFINED_TERM = "defined-term";
+export const GET_TESTID_PDF_DOWNLOAD_LINK = (title: string) =>
+  `pdf-download-${title}`;
 export const TESTID_QUESTION = "question";
 export const TESTID_QUESTION_TITLE = "question-title";
 export const TESTID_QUESTION_CODE_REFERENCE = "question-code-reference";
