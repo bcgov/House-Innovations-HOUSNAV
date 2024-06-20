@@ -17,10 +17,13 @@ import PDFDownloadLink, {
   PDFDownloadLinkProps,
 } from "../components/pdf-download-link/PDFDownloadLink";
 import { GLOSSARY_TERMS } from "../tests/mockData";
+import { TooltipGlossaryData } from "@repo/data/useGlossaryData";
 
 // Define custom components for html-react-parser
 const definedTermName = "defined-term";
-const definedTermModal = "defined-term-modal";
+const definedTermModal = "defined-term-glossary";
+const glossaryTerm = "glossary-term";
+const buildingCode = "building-code";
 const pdfDownloadLinkName = "pdf-download-link";
 type CustomComponentTypes =
   | typeof definedTermName
@@ -54,20 +57,26 @@ export const parseStringToComponents = (
   const options = {
     replace: (domNode: DOMNode) => {
       if (domNode instanceof Element && domNode.attribs) {
+        const overrideTerm = domNode.attribs["override-term"];
+        const term =
+          domNode.attribs["override-term"] ??
+          (domToReact(domNode.children as DOMNode[]) as string);
         switch (domNode.name) {
           case definedTermName: {
             const DefinedTermComponent = customComponents[definedTermName];
             const props = attributesToProps(domNode.attribs);
 
-            return (
-              <DefinedTermComponent
-                {...(props as unknown as DefinedTermProps)}
-                key={domNode.attribs.key}
-              >
-                {domToReact(domNode.children as DOMNode[], options)}
-              </DefinedTermComponent>
-            );
-          }
+                return (
+                  <DefinedTermComponent
+                    {...(props as unknown as DefinedTermProps)}
+                    key={domNode.attribs.key}
+                    overrideTerm={overrideTerm}
+                    term={domToReact(domNode.children as DOMNode[]) as string}
+                  >
+                    {domToReact(domNode.children as DOMNode[], options)}
+                  </DefinedTermComponent>
+                );
+              }
           case pdfDownloadLinkName: {
             const PDFDownloadLinkComponent =
               customComponents[pdfDownloadLinkName];
@@ -83,24 +92,34 @@ export const parseStringToComponents = (
             );
           }
           case definedTermModal: {
-            // TODO: Matt or Nicholas, add correct section for customHandler
-            const randomSection = Math.floor(Math.random() * 10) + 1;
             return (
               <Tooltip
-                tooltipContent={GLOSSARY_TERMS.default.tooltipContent}
+                tooltipContent={TooltipGlossaryData.get(term)}
                 triggerContent={
                   <Button
                     variant="glossary"
                     onPress={
-                      customHandler
-                        ? () => customHandler(`9.9.9.${randomSection}`)
-                        : () => {}
+                      customHandler ? () => customHandler(term) : () => {}
                     }
                   >
                     {domToReact(domNode.children as DOMNode[])}
                   </Button>
                 }
               ></Tooltip>
+            );
+          }
+          case glossaryTerm: {
+            return <span className="ui-ModalSide-Term">{term}</span>;
+          }
+
+          case buildingCode: {
+            return (
+              <Button
+                variant="code"
+                onPress={customHandler ? () => customHandler(term) : () => {}}
+              >
+                {domToReact(domNode.children as DOMNode[])}
+              </Button>
             );
           }
         }

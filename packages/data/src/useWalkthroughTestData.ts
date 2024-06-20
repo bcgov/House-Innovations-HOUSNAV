@@ -1,4 +1,4 @@
-import testCase999 from "../walkthroughs/9.9.9.json";
+import testCase999 from "../json/9.9.9.json";
 import {
   QuestionDisplayData,
   QuestionMultipleChoiceData,

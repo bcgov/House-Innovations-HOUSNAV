@@ -5,7 +5,8 @@
   "exports": {
     "./useData": "./src/useData.ts",
     "./useWalkthroughData": "./src/useWalkthroughData.ts",
-    "./useWalkthroughTestData": "./src/useWalkthroughTestData.ts"
+    "./useWalkthroughTestData": "./src/useWalkthroughTestData.ts",
+    "./useGlossaryData": "./src/useGlossaryData.ts"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
