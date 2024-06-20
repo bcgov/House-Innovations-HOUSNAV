@@ -55,41 +55,33 @@ export const parseStringToComponents = (
     replace: (domNode: DOMNode) => {
       if (domNode instanceof Element && domNode.attribs) {
         switch (domNode.name) {
-          case definedTermName:
-            {
-              const DefinedTermComponent = customComponents[definedTermName];
-              const props = attributesToProps(domNode.attribs);
+          case definedTermName: {
+            const DefinedTermComponent = customComponents[definedTermName];
+            const props = attributesToProps(domNode.attribs);
 
-              if (DefinedTermComponent) {
-                return (
-                  <DefinedTermComponent
-                    {...(props as unknown as DefinedTermProps)}
-                    key={domNode.attribs.key}
-                  >
-                    {domToReact(domNode.children as DOMNode[], options)}
-                  </DefinedTermComponent>
-                );
-              }
-            }
-            break;
-          case pdfDownloadLinkName:
-            {
-              const PDFDownloadLinkComponent =
-                customComponents[pdfDownloadLinkName];
-              const props = attributesToProps(domNode.attribs);
+            return (
+              <DefinedTermComponent
+                {...(props as unknown as DefinedTermProps)}
+                key={domNode.attribs.key}
+              >
+                {domToReact(domNode.children as DOMNode[], options)}
+              </DefinedTermComponent>
+            );
+          }
+          case pdfDownloadLinkName: {
+            const PDFDownloadLinkComponent =
+              customComponents[pdfDownloadLinkName];
+            const props = attributesToProps(domNode.attribs);
 
-              if (PDFDownloadLinkComponent) {
-                return (
-                  <PDFDownloadLinkComponent
-                    {...(props as unknown as PDFDownloadLinkProps)}
-                    key={domNode.attribs.key}
-                  >
-                    {domToReact(domNode.children as DOMNode[], options)}
-                  </PDFDownloadLinkComponent>
-                );
-              }
-            }
-            break;
+            return (
+              <PDFDownloadLinkComponent
+                {...(props as unknown as PDFDownloadLinkProps)}
+                key={domNode.attribs.key}
+              >
+                {domToReact(domNode.children as DOMNode[], options)}
+              </PDFDownloadLinkComponent>
+            );
+          }
           case definedTermModal: {
             // TODO: Matt or Nicholas, add correct section for customHandler
             const randomSection = Math.floor(Math.random() * 10) + 1;
