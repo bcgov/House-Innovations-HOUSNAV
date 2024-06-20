@@ -69,6 +69,7 @@ export default function ModalSide({
                     className="ui-ModalSide--CloseButton"
                     onPress={close}
                     data-testid={`${testid}-close-button`}
+                    aria-label="Close modal"
                   >
                     <Icon type="close" />
                   </Button>
