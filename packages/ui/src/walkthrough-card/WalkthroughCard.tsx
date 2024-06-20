@@ -20,7 +20,7 @@ export interface WalkthroughCardProps extends ReactAriaLinkProps {
 export default function WalkthroughCard({
   data,
   walkthroughId,
-  "data-testid": testid = GET_TESTID_WALKTHROUGH_CARD(walkthroughId),
+  "data-testid": testid = "",
   ...props
 }: WalkthroughCardProps) {
   return (
@@ -28,7 +28,7 @@ export default function WalkthroughCard({
       className="ui-WalkthroughCard--CardContainer"
       href={`${URL_WALKTHROUGH_HREF}/${walkthroughId}`}
       aria-label={`walkthrough ${walkthroughId} - ${data.title}`}
-      data-testid={testid}
+      data-testid={GET_TESTID_WALKTHROUGH_CARD(testid || walkthroughId)}
       {...props}
     >
       <article>
