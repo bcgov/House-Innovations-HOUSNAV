@@ -4,7 +4,7 @@ import { expect, describe, it, vi } from "vitest";
 import {
   NextNavigationLogic,
   NextNavigationLogicType,
-  ValuesToCheckType,
+  NextValuesToCheckType,
 } from "@repo/data/useWalkthroughData";
 import { NEXT_NAVIGATION_ID_ERROR } from "@repo/constants/src/constants";
 // local
@@ -325,7 +325,7 @@ describe("nextNavigation", () => {
   it(`nextLogicTypeOr: one answerToCheck is true and nextLogicType as ${NextNavigationLogicType.Equal}`, () => {
     // get valuesToCheck type data and getAnswerToCheckValue mock
     const mockGetAnswerToCheckValue = vi.fn();
-    const valuesToCheck: ValuesToCheckType[] = [
+    const valuesToCheck: NextValuesToCheckType[] = [
       {
         nextLogicType: NextNavigationLogicType.Equal,
         answerToCheck: "answer1",
@@ -356,7 +356,7 @@ describe("nextNavigation", () => {
   it(`nextLogicTypeOr: all answerToCheck are false and nextLogicType as ${NextNavigationLogicType.NotEqual}`, () => {
     // get valuesToCheck type data and getAnswerToCheckValue mock
     const mockGetAnswerToCheckValue = vi.fn();
-    const valuesToCheck: ValuesToCheckType[] = [
+    const valuesToCheck: NextValuesToCheckType[] = [
       {
         nextLogicType: NextNavigationLogicType.NotEqual,
         answerToCheck: "answer1",
@@ -390,7 +390,7 @@ describe("nextNavigation", () => {
   it(`nextLogicTypeAnd: all answerToCheck are true and nextLogicType as ${NextNavigationLogicType.LessThan}`, () => {
     // get valuesToCheck type data and getAnswerToCheckValue mock
     const mockGetAnswerToCheckValue = vi.fn();
-    const valuesToCheck: ValuesToCheckType[] = [
+    const valuesToCheck: NextValuesToCheckType[] = [
       {
         nextLogicType: NextNavigationLogicType.LessThan,
         answerToCheck: "answer1",
@@ -423,7 +423,7 @@ describe("nextNavigation", () => {
     const mockGetAnswerToCheckValue = vi.fn();
     // doesn't matter because of spy return below but does need to return something
     mockGetAnswerToCheckValue.mockReturnValueOnce("doesn't matter");
-    const valuesToCheck: ValuesToCheckType[] = [
+    const valuesToCheck: NextValuesToCheckType[] = [
       {
         nextLogicType: NextNavigationLogicType.DoesNotContain,
         answerToCheck: "answer1",

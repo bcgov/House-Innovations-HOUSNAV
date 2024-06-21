@@ -35,6 +35,7 @@ export enum NextNavigationLogicType {
   NotEqual = "notEqual",
   DoesNotContain = "doesNotContain",
   ContainsAny = "containsAny",
+  ContainsOnly = "containsOnly",
   And = "and",
   Or = "or",
   LessThan = "lessThan",
@@ -42,27 +43,50 @@ export enum NextNavigationLogicType {
   Fallback = "fallback",
 }
 
-export interface ValuesToCheckType {
+export interface NextValuesToCheckType {
   nextLogicType: NextNavigationLogicType | string;
   answerToCheck?: string;
   answerValue?: AnswerValueTypes;
-  valuesToCheck?: ValuesToCheckType[];
+  valuesToCheck?: NextValuesToCheckType[];
 }
 
-export interface NextNavigationLogic extends ValuesToCheckType {
+export interface NextNavigationLogic extends NextValuesToCheckType {
   answerValues?: AnswerValueTypes[];
   nextNavigateTo?: string;
 }
 
+export enum VariableValueCalculationType {
+  Square = "square",
+  Divide = "divide",
+  Multiply = "multiply",
+  MaxValue = "maxValue",
+  Then = "then",
+}
+
+interface VariableValueCalculation {
+  variableValueCalculationType: VariableValueCalculationType | string;
+  variableValueToSetCalculations?: VariableValueCalculation[];
+  answerToUse?: string;
+  valueToUse?: string;
+}
+
 export enum VariableValueLogicType {
   Equals = "equals",
+  ContainsOnly = "containsOnly",
   Fallback = "fallback",
 }
-interface VariableValueLogic {
+
+export interface VariableValuesToCheckType {
   variableValueLogicType: VariableValueLogicType | string;
   answerToCheck?: string;
   answerValue?: AnswerValueTypes;
-  variableValueToSet: string;
+  valuesToCheck?: VariableValuesToCheckType[];
+}
+
+interface VariableValueLogic extends VariableValuesToCheckType {
+  answerValues?: AnswerValueTypes[];
+  variableValueToSet?: string;
+  variableValueToSetCalculations?: VariableValueCalculation;
 }
 
 export interface InvalidAnswerLogic {
@@ -79,6 +103,7 @@ export interface PossibleInvalidAnswer {
 
 export enum VariableToSetType {
   Object = "object",
+  String = "string",
 }
 export interface VariableToSet {
   variableType: VariableToSetType | string;

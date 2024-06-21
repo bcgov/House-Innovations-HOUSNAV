@@ -2,7 +2,7 @@
 import {
   NextNavigationLogic,
   NextNavigationLogicType,
-  ValuesToCheckType,
+  NextValuesToCheckType,
 } from "@repo/data/useWalkthroughData";
 import { NEXT_NAVIGATION_ID_ERROR } from "@repo/constants/src/constants";
 // local
@@ -246,7 +246,7 @@ export const nextLogicTypeContainsAny = (
 };
 
 export const nextLogicTypeOr = (
-  valuesToCheck: ValuesToCheckType[],
+  valuesToCheck: NextValuesToCheckType[],
   getAnswerToCheckValue: AnswerToCheckValueFn,
 ): boolean => {
   // loop through valuesToCheck to see if any are true
@@ -259,7 +259,7 @@ export const nextLogicTypeOr = (
 };
 
 export const nextLogicTypeAnd = (
-  valuesToCheck: ValuesToCheckType[],
+  valuesToCheck: NextValuesToCheckType[],
   getAnswerToCheckValue: AnswerToCheckValueFn,
 ): boolean => {
   // loop through valuesToCheck to see if all are true
