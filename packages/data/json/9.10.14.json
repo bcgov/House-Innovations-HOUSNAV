@@ -628,10 +628,115 @@
       ],
       "nextNavigationLogic": [
         {
-          "nextLogicType": "TODO - L6 logic",
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P7",
+              "answerValue": "true"
+            },
+            {
+              "nextLogicType": "lessThan",
+              "answerToCheck": "P6",
+              "answerValue": "1.2"
+            }
+          ],
+          "nextNavigateTo": "R10"
+        },
+        {
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P7",
+              "answerValue": "true"
+            },
+            {
+              "nextLogicType": "lessThan",
+              "answerToCheck": "P6",
+              "answerValue": "2"
+            },
+            {
+              "nextLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "containsOnly",
+                  "answerToCheck": "P1",
+                  "answerValues": ["C", "D", "F3"]
+                },
+                {
+                  "nextLogicType": "containsOnly",
+                  "answerToCheck": "P1",
+                  "answerValues": ["E", "F2"]
+                }
+              ]
+            }
+          ],
+          "nextNavigateTo": "P10"
+        },
+        {
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P7",
+              "answerValue": "true"
+            },
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P1",
+              "answerValue": "F3"
+            },
+            {
+              "nextLogicType": "greaterThan",
+              "answerToCheck": "P6",
+              "answerValue": "3"
+            }
+          ],
+          "nextNavigateTo": "P11"
+        },
+        {
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P7",
+              "answerValue": "true"
+            },
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P6",
+              "answerValue": "9"
+            },
+            {
+              "nextLogicType": "greaterThan",
+              "answerToCheck": "P6",
+              "answerValue": "9"
+            }
+          ],
+          "nextNavigateTo": "P12"
+        },
+        {
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P7",
+              "answerValue": "true"
+            },
+            {
+              "nextLogicType": "containsOnly",
+              "answerToCheck": "P1",
+              "answerValues": ["C", "D", "F3"]
+            }
+          ],
+          "nextNavigateTo": "P9T1"
+        },
+        {
+          "nextLogicType": "equal",
           "answerToCheck": "P7",
           "answerValue": "true",
-          "nextNavigateTo": "L6"
+          "nextNavigateTo": "P9T2"
         },
         {
           "nextLogicType": "fallback",
@@ -641,7 +746,7 @@
     },
     "P8": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Does the time from receipt of notification of a fire by the fire department until the first fire department vehicle arrives at the building exceed 10 min in 10% or more of all calls to this building?",
+      "questionText": "Does the time from receipt of notification of a fire by the fire department until the first fire department vehicle arrives at the <defined-term>building</defined-term> exceed 10 min in 10% or more of all calls to this <defined-term>building</defined-term>?",
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
@@ -654,20 +759,1063 @@
       ],
       "nextNavigationLogic": [
         {
-          "nextLogicType": "equal",
-          "answerToCheck": "P8",
-          "answerValue": "true",
-          "nextNavigateTo": "P6"
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P8P6"
+        }
+      ]
+    },
+    "P8P6": {
+      "walkthroughItemType": "variable",
+      "variableToSet": {
+        "variableType": "string",
+        "variableName": "P6",
+        "variableValue": {
+          "P6": [
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P8",
+              "answerValue": "true",
+              "variableValueToSetCalculations": {
+                "answerToUse": "P6",
+                "variableValueCalculationType": "divide",
+                "valueToUse": "2"
+              }
+            }
+          ]
+        }
+      },
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "lessThan",
+          "answerToCheck": "P6",
+          "answerValue": "1.2",
+          "nextNavigateTo": "R10"
+        },
+        {
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "lessThan",
+              "answerToCheck": "P6",
+              "answerValue": "2"
+            },
+            {
+              "nextLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "containsOnly",
+                  "answerToCheck": "P1",
+                  "answerValues": ["C", "D", "F3"]
+                },
+                {
+                  "nextLogicType": "containsOnly",
+                  "answerToCheck": "P1",
+                  "answerValues": ["E", "F2"]
+                }
+              ]
+            }
+          ],
+          "nextNavigateTo": "P10"
+        },
+        {
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P1",
+              "answerValue": "F3"
+            },
+            {
+              "nextLogicType": "greaterThan",
+              "answerToCheck": "P6",
+              "answerValue": "3"
+            }
+          ],
+          "nextNavigateTo": "P11"
+        },
+        {
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P6",
+              "answerValue": "9"
+            },
+            {
+              "nextLogicType": "greaterThan",
+              "answerToCheck": "P6",
+              "answerValue": "9"
+            }
+          ],
+          "nextNavigateTo": "P12"
+        },
+        {
+          "nextLogicType": "containsOnly",
+          "answerToCheck": "P1",
+          "answerValues": ["C", "D", "F3"],
+          "nextNavigateTo": "P9T1"
         },
         {
           "nextLogicType": "fallback",
-          "nextNavigateTo": "L6"
+          "nextNavigateTo": "P9T2"
+        }
+      ]
+    },
+    "P9T1": {
+      "walkthroughItemType": "variable",
+      "variableToSet": {
+        "variableType": "string",
+        "variableName": "P9",
+        "variableValue": {
+          "P9": [
+            {
+              "variableValueLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "1.5"
+                },
+                {
+                  "variableValueLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "variableValueLogicType": "lessThan",
+                      "answerToCheck": "P6",
+                      "answerValue": "2"
+                    },
+                    {
+                      "variableValueLogicType": "greaterThan",
+                      "answerToCheck": "P5",
+                      "answerValue": "100"
+                    }
+                  ]
+                }
+              ],
+              "variableValueToSet": "7"
+            },
+            {
+              "variableValueLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "variableValueLogicType": "lessThan",
+                      "answerToCheck": "P6",
+                      "answerValue": "2"
+                    },
+                    {
+                      "variableValueLogicType": "greaterThan",
+                      "answerToCheck": "P5",
+                      "answerValue": "30"
+                    }
+                  ]
+                },
+                {
+                  "variableValueLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "variableValueLogicType": "lessThan",
+                      "answerToCheck": "P6",
+                      "answerValue": "4"
+                    },
+                    {
+                      "variableValueLogicType": "greaterThan",
+                      "answerToCheck": "P5",
+                      "answerValue": "100"
+                    }
+                  ]
+                }
+              ],
+              "variableValueToSet": "8"
+            },
+            {
+              "variableValueLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "2"
+                },
+                {
+                  "variableValueLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "variableValueLogicType": "lessThan",
+                      "answerToCheck": "P6",
+                      "answerValue": "4"
+                    },
+                    {
+                      "variableValueLogicType": "greaterThan",
+                      "answerToCheck": "P5",
+                      "answerValue": "50"
+                    }
+                  ]
+                }
+              ],
+              "variableValueToSet": "9"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "4"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "40"
+                }
+              ],
+              "variableValueToSet": "10"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "4"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "30"
+                }
+              ],
+              "variableValueToSet": "11"
+            },
+            {
+              "variableValueLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "4"
+                },
+                {
+                  "variableValueLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "variableValueLogicType": "lessThan",
+                      "answerToCheck": "P6",
+                      "answerValue": "6"
+                    },
+                    {
+                      "variableValueLogicType": "greaterThan",
+                      "answerToCheck": "P5",
+                      "answerValue": "100"
+                    }
+                  ]
+                }
+              ],
+              "variableValueToSet": "12"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "6"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "50"
+                }
+              ],
+              "variableValueToSet": "18"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "8"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "100"
+                }
+              ],
+              "variableValueToSet": "19"
+            },
+            {
+              "variableValueLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "variableValueLogicType": "lessThan",
+                      "answerToCheck": "P6",
+                      "answerValue": "6"
+                    },
+                    {
+                      "variableValueLogicType": "greaterThan",
+                      "answerToCheck": "P5",
+                      "answerValue": "40"
+                    }
+                  ]
+                },
+                {
+                  "variableValueLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "variableValueLogicType": "lessThan",
+                      "answerToCheck": "P6",
+                      "answerValue": "10"
+                    },
+                    {
+                      "variableValueLogicType": "greaterThan",
+                      "answerToCheck": "P5",
+                      "answerValue": "100"
+                    }
+                  ]
+                }
+              ],
+              "variableValueToSet": "28"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "6"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "30"
+                }
+              ],
+              "variableValueToSet": "32"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "8"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "50"
+                }
+              ],
+              "variableValueToSet": "34"
+            },
+            {
+              "variableValueLogicType": "lessThan",
+              "answerToCheck": "P6",
+              "answerValue": "6",
+              "variableValueToSet": "39"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "12"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "100"
+                }
+              ],
+              "variableValueToSet": "40"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "16"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "100"
+                }
+              ],
+              "variableValueToSet": "55"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "10"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "50"
+                }
+              ],
+              "variableValueToSet": "56"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "8"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "40"
+                }
+              ],
+              "variableValueToSet": "57"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "8"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "30"
+                }
+              ],
+              "variableValueToSet": "69"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "12"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "50"
+                }
+              ],
+              "variableValueToSet": "84"
+            },
+            {
+              "variableValueLogicType": "lessThan",
+              "answerToCheck": "P6",
+              "answerValue": "8",
+              "variableValueToSet": "88"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "20"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "100"
+                }
+              ],
+              "variableValueToSet": "92"
+            },
+            {
+              "variableValueLogicType": "fallback",
+              "variableValueToSet": "100"
+            }
+          ]
+        }
+      },
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P9P7"
+        }
+      ]
+    },
+    "P9T2": {
+      "walkthroughItemType": "variable",
+      "variableToSet": {
+        "variableType": "string",
+        "variableName": "P9",
+        "variableValue": {
+          "P9": [
+            {
+              "variableValueLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "2"
+                },
+                {
+                  "variableValueLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "variableValueLogicType": "lessThan",
+                      "answerToCheck": "P6",
+                      "answerValue": "4"
+                    },
+                    {
+                      "variableValueLogicType": "greaterThan",
+                      "answerToCheck": "P5",
+                      "answerValue": "50"
+                    }
+                  ]
+                }
+              ],
+              "variableValueToSet": "4"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "4"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "40"
+                }
+              ],
+              "variableValueToSet": "5"
+            },
+            {
+              "variableValueLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "4"
+                },
+                {
+                  "variableValueLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "variableValueLogicType": "lessThan",
+                      "answerToCheck": "P6",
+                      "answerValue": "6"
+                    },
+                    {
+                      "variableValueLogicType": "greaterThan",
+                      "answerToCheck": "P5",
+                      "answerValue": "100"
+                    }
+                  ]
+                }
+              ],
+              "variableValueToSet": "6"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "6"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "50"
+                }
+              ],
+              "variableValueToSet": "9"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "8"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "100"
+                }
+              ],
+              "variableValueToSet": "10"
+            },
+            {
+              "variableValueLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "variableValueLogicType": "lessThan",
+                      "answerToCheck": "P6",
+                      "answerValue": "6"
+                    },
+                    {
+                      "variableValueLogicType": "greaterThan",
+                      "answerToCheck": "P5",
+                      "answerValue": "40"
+                    }
+                  ]
+                },
+                {
+                  "variableValueLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "variableValueLogicType": "lessThan",
+                      "answerToCheck": "P6",
+                      "answerValue": "10"
+                    },
+                    {
+                      "variableValueLogicType": "greaterThan",
+                      "answerToCheck": "P5",
+                      "answerValue": "100"
+                    }
+                  ]
+                }
+              ],
+              "variableValueToSet": "14"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "6"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "30"
+                }
+              ],
+              "variableValueToSet": "16"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "8"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "50"
+                }
+              ],
+              "variableValueToSet": "17"
+            },
+            {
+              "variableValueLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "6"
+                },
+                {
+                  "variableValueLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "variableValueLogicType": "lessThan",
+                      "answerToCheck": "P6",
+                      "answerValue": "12"
+                    },
+                    {
+                      "variableValueLogicType": "greaterThan",
+                      "answerToCheck": "P5",
+                      "answerValue": "100"
+                    }
+                  ]
+                }
+              ],
+              "variableValueToSet": "20"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "16"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "100"
+                }
+              ],
+              "variableValueToSet": "27"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "10"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "50"
+                }
+              ],
+              "variableValueToSet": "28"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "8"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "40"
+                }
+              ],
+              "variableValueToSet": "29"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "8"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "30"
+                }
+              ],
+              "variableValueToSet": "34"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "12"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "50"
+                }
+              ],
+              "variableValueToSet": "42"
+            },
+            {
+              "variableValueLogicType": "lessThan",
+              "answerToCheck": "P6",
+              "answerValue": "8",
+              "variableValueToSet": "44"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "20"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "100"
+                }
+              ],
+              "variableValueToSet": "46"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "10"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "40"
+                }
+              ],
+              "variableValueToSet": "50"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "16"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "50"
+                }
+              ],
+              "variableValueToSet": "60"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "10"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "30"
+                }
+              ],
+              "variableValueToSet": "61"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "25"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "100"
+                }
+              ],
+              "variableValueToSet": "70"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "12"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "40"
+                }
+              ],
+              "variableValueToSet": "79"
+            },
+            {
+              "variableValueLogicType": "lessThan",
+              "answerToCheck": "P6",
+              "answerValue": "10",
+              "variableValueToSet": "80"
+            },
+            {
+              "variableValueLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "variableValueLogicType": "lessThan",
+                  "answerToCheck": "P6",
+                  "answerValue": "12"
+                },
+                {
+                  "variableValueLogicType": "greaterThan",
+                  "answerToCheck": "P5",
+                  "answerValue": "30"
+                }
+              ],
+              "variableValueToSet": "97"
+            },
+            {
+              "variableValueLogicType": "fallback",
+              "variableValueToSet": "100"
+            }
+          ]
+        }
+      },
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P9P7"
+        }
+      ]
+    },
+    "P9P7": {
+      "walkthroughItemType": "variable",
+      "variableToSet": {
+        "variableType": "string",
+        "variableName": "P9",
+        "variableValue": {
+          "P9": [
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P7",
+              "answerValue": "true",
+              "variableValueToSetCalculations": {
+                "answerToUse": "P9",
+                "variableValueCalculationType": "then",
+                "variableValueToSetCalculations": [
+                  {
+                    "variableValueCalculationType": "multiply",
+                    "valueToUse": "2"
+                  },
+                  {
+                    "variableValueCalculationType": "maxValue",
+                    "valueToUse": "100"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P13"
+        }
+      ]
+    },
+    "P9P13": {
+      "walkthroughItemType": "variable",
+      "variableToSet": {
+        "variableType": "string",
+        "variableName": "P9",
+        "variableValue": {
+          "P9": [
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P7",
+              "answerValue": "true",
+              "variableValueToSetCalculations": {
+                "answerToUse": "P9",
+                "variableValueCalculationType": "then",
+                "variableValueToSetCalculations": [
+                  {
+                    "variableValueCalculationType": "multiply",
+                    "valueToUse": "2"
+                  },
+                  {
+                    "variableValueCalculationType": "maxValue",
+                    "valueToUse": "100"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P7",
+          "answerValue": "false",
+          "nextNavigateTo": "R20"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R30"
+        }
+      ]
+    },
+    "P9100": {
+      "walkthroughItemType": "variable",
+      "variableToSet": {
+        "variableType": "string",
+        "variableName": "P9",
+        "variableValue": "100"
+      },
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R40"
+        }
+      ]
+    },
+    "P10": {
+      "walkthroughItemType": "variable",
+      "variableToSet": {
+        "variableType": "string",
+        "variableName": "P10",
+        "variableValue": {
+          "P10": [
+            {
+              "variableValueLogicType": "containsOnly",
+              "answerToCheck": "P1",
+              "answerValues": ["C", "D", "F3"],
+              "variableValueToSetCalculations": {
+                "answerToUse": "P6",
+                "variableValueCalculationType": "square"
+              }
+            },
+            {
+              "variableValueLogicType": "containsOnly",
+              "answerToCheck": "P1",
+              "answerValues": ["E", "F2"],
+              "variableValueToSetCalculations": {
+                "answerToUse": "P6",
+                "variableValueCalculationType": "then",
+                "variableValueToSetCalculations": [
+                  {
+                    "variableValueCalculationType": "square"
+                  },
+                  {
+                    "variableValueCalculationType": "divide",
+                    "valueToUse": "2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "containsOnly",
+          "answerToCheck": "P1",
+          "answerValues": ["C", "D", "F3"],
+          "nextNavigateTo": "P9T1"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P9T2"
         }
       ]
     },
     "P11": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Is this building a storage garage with all storeys constructed as open-air storeys?",
+      "questionText": "Is this building a <defined-term>storage garage</defined-term> with all <defined-term>storeys</defined-term> constructed as <defined-term>open-air storeys</defined-term>?",
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
@@ -683,7 +1831,7 @@
           "nextLogicType": "equal",
           "answerToCheck": "P11",
           "answerValue": "true",
-          "nextNavigateTo": "R40"
+          "nextNavigateTo": "P9100"
         },
         {
           "nextLogicType": "fallback",
@@ -693,7 +1841,7 @@
     },
     "P12": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Does this fire compartment face a street and is at street level?",
+      "questionText": "Does this <defined-term>fire compartment</defined-term> face a <defined-term>street</defined-term> and is at <defined-term>street</defined-term> level?",
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
@@ -709,17 +1857,24 @@
           "nextLogicType": "equal",
           "answerToCheck": "P12",
           "answerValue": "true",
-          "nextNavigateTo": "R40"
+          "nextNavigateTo": "P9100"
+        },
+        {
+          "nextLogicType": "containsOnly",
+          "answerToCheck": "P1",
+          "answerValues": ["C", "D", "F3"],
+          "nextNavigateTo": "P9T1"
         },
         {
           "nextLogicType": "fallback",
-          "nextNavigateTo": "L9"
+          "nextNavigateTo": "P9T2"
         }
       ]
     },
     "P13": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Will all the unprotected openings be glazed with one of the following? -wired glass in steel frames, as described in Article 9.10.13.5. -glass blocks, as described in Article 9.10.13.7.",
+      "questionText": "Will all the unprotected openings be glazed with one of the following?",
+      "questionSubtext": "<ul><li>wired glass in steel frames, as described in <pdf-download-link>Article 9.10.13.5.</pdf-download-link></li><li>glass blocks, as described in <pdf-download-link>Article 9.10.13.7.</pdf-download-link></li></ul>",
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
@@ -735,11 +1890,17 @@
           "nextLogicType": "equal",
           "answerToCheck": "P13",
           "answerValue": "true",
-          "nextNavigateTo": "L12"
+          "nextNavigateTo": "P9P13"
+        },
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P7",
+          "answerValue": "false",
+          "nextNavigateTo": "R20"
         },
         {
           "nextLogicType": "fallback",
-          "nextNavigateTo": "L12"
+          "nextNavigateTo": "R30"
         }
       ]
     }
@@ -761,14 +1922,116 @@
     "R05": {
       "resultDisplayMessage": "Based on the options you have selected; this project is not a Part 9 building. This tool is designed to assist BC Building Code 2024 users in evaluating Part 9 buildings for conformance with Division B Acceptable Solutions of the BC Building Code, therefore your project is beyond the scope of this tool at this time."
     },
-    "R5": {
-      "resultDisplayMessage": "Openings in a wall having a limiting distance of less than 1.2m are required to be protected by closures, other than wired glass or glass block, whose fire-protection rating is in conformance with the fire-resistance rating required for the wall. (See Table 9.10.13.1.)"
+    "R10": {
+      "resultDisplayMessage": "Openings in a wall having a <defined-term>limiting distance</defined-term> of less than 1.2m are required to be protected by <defined-term>closures</defined-term>, other than wired glass or glass block, whose <defined-term>fire-protection rating</defined-term> is in conformance with the <defined-term>fire-resistance rating</defined-term> required for the wall. (See <pdf-download-link>Table 9.10.13.1.</pdf-download-link>)"
     },
-    "R6": {
-      "resultDisplayMessage": "Based on Table 9.10.14.4.-A and Sentence 9.10.14.4.(1) the maximum percentage of unprotected openings in this exterior wall is {Max(P(9), P(10)/P(5))}%, based on an exposing building face of {P(5)}m2, the maximum area would be {Max(P(9)xP(5), P(10))}m2."
+    "R20": {
+      "resultDisplayMessage": "Based on <building-code-link>Table 9.10.14.4.-A</building-code-link> and <building-code-link>Sentence 9.10.14.4.(1)</building-code-link> the maximum percentage of unprotected openings in this exterior wall is <result-calculation id='1'/>%, based on an exposing building face of <answer-value answer='P5'/>m<sup>2</sup>, the maximum area would be <result-calculation id='2'/>m<sup>2</sup>.<br/>The maximum size of openable windows having an unobstructed opening equal to or greater than 0.35m<sup>2</sup> installed in accordance with <pdf-download-link>Sentences 9.9.10.1.(1)</pdf-download-link> and <pdf-download-link>(2)</pdf-download-link> is: <result-calculation id='3'/>m<sup>2</sup><br/>A ‘single room or space’ shall mean:<ul><li>two or more adjacent spaces having a full-height separating wall extending less than 1.5 m from the interior face of the exterior wall, or<li></li>two or more stacked spaces that are on the same storey.</li></ul><br/>The spacing between individual unprotected openings described that serve a single room or space shall be not less than:<ul><li>2 m horizontally of another unprotected opening that is on the same exposing building face and serves the single room or space, or<li></li>2 m vertically of another unprotected opening that serves the single room or space, or another room or space on the same storey.</li></ul><br/>*Note: Per <building-code-link>Clause 9.10.14.4.(1)(b)</building-code-link> the percentage of unprotected openings is permitted to be calculated in conformance with <pdf-download-link>Subsection 3.2.3.</pdf-download-link> At this time Subsection 3.2.3 is beyond the scope of this tool",
+      "resultCalculations": [
+        {
+          "id": "1",
+          "resultCalculationType": "maxBetween",
+          "valuesToUse": [
+            "P9", {
+              "resultCalculationType": "divide",
+              "valuesToUse": ["P10", "P5"]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "resultCalculationType": "maxBetween",
+          "valuesToUse": [
+            "P10", {
+              "resultCalculationType": "multiply",
+              "valuesToUse": ["P9", "P5"]
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "resultCalculationType": "minBetween",
+          "valuesToUse": [
+            {
+              "resultCalculationType": "maxBetween",
+              "valuesToUse": [
+                {
+                  "resultCalculationType": "logicCheck",
+                  "valuesToUse": [
+                    {
+                      "resultLogicType": "greaterThan",
+                      "answerToCheck": "P6",
+                      "answerValue": "2",
+                      "valueToUse": "1.88"
+                    },
+                    {
+                      "resultLogicType": "greaterThan",
+                      "answerToCheck": "P6",
+                      "answerValue": "1.5",
+                      "valueToUse": "0.78"
+                    },
+                    {
+                      "resultLogicType": "fallback",
+                      "valueToUse": "0.35"
+                    }
+                  ]
+                },
+                {
+                  "resultCalculationType": "multiply",
+                  "valuesToUse": [
+                    "0.24", {
+                      "resultCalculationType": "square",
+                      "valueToUse": {
+                        "resultCalculationType": "minus",
+                        "valuesToUse": [
+                          {
+                            "resultCalculationType": "multiply",
+                            "valuesToUse": ["2", "P6"]
+                          }, "1.2"
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "resultCalculationType": "maxBetween",
+              "valuesToUse": [
+                "P10", {
+                  "resultCalculationType": "multiply",
+                  "valuesToUse": ["P9", "P5"]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
-    "R7": {
-      "resultDisplayMessage": "The maximum percentage of unprotected openings in this exterior wall is {Max(P(9), P(10)/P(5))}%, based on an exposing building face of {P(5)}m2, the maximum area would be: {Max(P(9)xP(5), P(10))}."
+    "R30": {
+      "resultDisplayMessage": "The maximum percentage of unprotected openings in this exterior wall is <result-calculation id='1'/>%, based on an exposing building face of <answer-value answer='P5'/>m<sup>2</sup>, the maximum area would be: <result-calculation id='2'/>m<sup>2</sup>.<br/>*Note: Per <building-code-link>Clause 9.10.14.4.(1)(b)</building-code-link> the percentage of unprotected openings is permitted to be calculated in conformance with <pdf-download-link>Subsection 3.2.3.</pdf-download-link> At this time Subsection 3.2.3 is beyond the scope of this tool",
+      "resultCalculations": [
+        {
+          "id": "1",
+          "resultCalculationType": "maxBetween",
+          "valuesToUse": [
+            "P9", {
+              "resultCalculationType": "divide",
+              "valuesToUse": ["P10", "P5"]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "resultCalculationType": "maxBetween",
+          "valuesToUse": [
+            "P10", {
+              "resultCalculationType": "multiply",
+              "valuesToUse": ["P9", "P5"]
+            }
+          ]
+        }
+      ]
     },
     "R40": {
       "resultDisplayMessage": "Based on your selections and <building-code-link>Article 9.10.14.4.</building-code-link>, this fire compartment is permitted to have unlimited unprotected openings."
