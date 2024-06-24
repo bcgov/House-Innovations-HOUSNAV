@@ -4,7 +4,8 @@ import {
   GET_TESTID_RADIO,
 } from "@repo/constants/src/testids";
 
-import { walkthroughs, results } from "../fixtures/test-data.json";
+import { walkthroughs } from "../fixtures/test-data.json";
+import { results } from "../fixtures/results-data.json";
 
 describe("walkthrough 1", () => {
   beforeEach(() => {
