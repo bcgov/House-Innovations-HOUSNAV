@@ -1,13 +1,38 @@
 import { TESTID_WALKTHROUGH_FOOTER_NEXT } from "@repo/constants/src/testids";
 
+import { walkthroughs } from "../fixtures/extra-test-data.json";
+import { results } from "../fixtures/results-data.json";
+
 describe("Experimental tests", () => {
   beforeEach(() => {
     cy.visit("/walkthrough/9.9.9");
   });
 
+  // Test all walkthroughs defined in extra test data
+  // Does not worry if checkboxes or radio buttons are used
+  walkthroughs.forEach((walkthrough) => {
+    it("Add random name", () => {
+      walkthrough.steps.forEach((step) => {
+        // select and submit an answer for the given question
+        step.answer.split(",").forEach((answer) => {
+          cy.get(`[data-testid*='${step.question}-${answer}']`).last().click({
+            force: true,
+          });
+        });
+        cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_NEXT).click();
+      });
+
+      if (walkthrough.result) {
+        // Cypress will throw an error if the result is undefined
+        const result = results[walkthrough.result as keyof typeof results];
+        cy.contains(result);
+      }
+    });
+  });
+
   // Randomly go through the walkthough until you find a result (try to confirm there are no dead ends)
   for (let i = 0; i < 200; i++) {
-    it.only(`Random walkthrough produces retult: run ${i}`, () => {
+    it(`Random walkthrough produces result: run ${i}`, () => {
       for (let i = 0; i < 25; i++) {
         cy.get("body").then(($body) => {
           if ($body.find('[data-testid*="checkbox-"]').length > 0) {
