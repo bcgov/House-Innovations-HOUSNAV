@@ -109,7 +109,7 @@ export interface QuestionMultipleChoiceData extends QuestionBaseData {
 
 export const WalkthroughItemTypeMultiChoiceMultiple = "multiChoiceMultiple";
 export const isWalkthroughItemTypeMultiChoiceMultiple = (
-  walkthroughItemType: string
+  walkthroughItemType: string,
 ) => walkthroughItemType === WalkthroughItemTypeMultiChoiceMultiple;
 export interface QuestionMultipleChoiceSelectMultipleData
   extends QuestionBaseData {

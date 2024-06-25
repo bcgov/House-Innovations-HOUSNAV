@@ -13,11 +13,14 @@ import Tooltip from "@repo/ui/tooltip";
 import DefinedTerm, {
   DefinedTermProps,
 } from "../components/defined-term/DefinedTerm";
-import PDFDownloadLink, {
-  PDFDownloadLinkProps,
-} from "../components/pdf-download-link/PDFDownloadLink";
-import { GLOSSARY_TERMS } from "../tests/mockData";
-import { TooltipGlossaryData } from "@repo/data/useGlossaryData";
+import Button from "@repo/ui/button";
+import Tooltip from "@repo/ui/tooltip";
+import {
+  BuildingCodeJSONData,
+  ModalSideDataEnum,
+  TooltipGlossaryData,
+} from "@repo/data/useGlossaryData";
+import ModalSide from "@repo/ui/modal-side";
 
 // Define custom components for html-react-parser
 const definedTermName = "defined-term";
@@ -57,10 +60,13 @@ export const parseStringToComponents = (
   const options = {
     replace: (domNode: DOMNode) => {
       if (domNode instanceof Element && domNode.attribs) {
-        const overrideTerm = domNode.attribs["override-term"];
-        const term =
+        const term = (
           domNode.attribs["override-term"] ??
-          (domToReact(domNode.children as DOMNode[]) as string);
+          (domToReact(domNode.children as DOMNode[]) as string)
+        ).toLocaleLowerCase();
+        const tooltipTerm = (
+          domNode.attribs["override-tooltip"] ?? term
+        ).toLocaleLowerCase();
         switch (domNode.name) {
           case definedTermName: {
             const DefinedTermComponent = customComponents[definedTermName];
@@ -70,8 +76,8 @@ export const parseStringToComponents = (
                   <DefinedTermComponent
                     {...(props as unknown as DefinedTermProps)}
                     key={domNode.attribs.key}
-                    overrideTerm={overrideTerm}
-                    term={domToReact(domNode.children as DOMNode[]) as string}
+                    term={term}
+                    overrideTooltip={tooltipTerm}
                   >
                     {domToReact(domNode.children as DOMNode[], options)}
                   </DefinedTermComponent>
@@ -94,7 +100,7 @@ export const parseStringToComponents = (
           case definedTermModal: {
             return (
               <Tooltip
-                tooltipContent={TooltipGlossaryData.get(term)}
+                tooltipContent={TooltipGlossaryData.get(tooltipTerm)}
                 triggerContent={
                   <Button
                     variant="glossary"
@@ -107,21 +113,23 @@ export const parseStringToComponents = (
                 }
               ></Tooltip>
             );
-          }
-          case glossaryTerm: {
-            return <span className="ui-ModalSide-Term">{term}</span>;
-          }
 
-          case buildingCode: {
+          case glossaryTerm:
             return (
-              <Button
-                variant="code"
-                onPress={customHandler ? () => customHandler(term) : () => {}}
-              >
-                {domToReact(domNode.children as DOMNode[])}
-              </Button>
+              <span className="ui-ModalSide-Term">
+                {domToReact(domNode.children as DOMNode[]) as string}
+              </span>
             );
-          }
+
+          case buildingCode:
+            return (
+              <ModalSide
+                type={ModalSideDataEnum.BUILDING_CODE}
+                triggerContent={<Button variant="code">{term}</Button>}
+                modalData={BuildingCodeJSONData}
+                scrollTo={"9.9.9.1"}
+              />
+            );
         }
       }
     },

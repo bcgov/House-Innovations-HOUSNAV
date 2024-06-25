@@ -2,7 +2,7 @@
 import { describe, it, expect } from "vitest";
 import { JSX } from "react";
 // repo
-import { getMultiChoiceQuestion } from "@repo/data/useWalkthroughTestData";
+import { getQuestion } from "@repo/data/useWalkthroughTestData";
 // local
 import { getStringFromComponents, parseStringToComponents } from "./string";
 import { isArray } from "./typeChecking";
@@ -13,7 +13,7 @@ describe("string", () => {
    */
   it("parseStringToComponents: defined-term", () => {
     // get test data
-    const questionData = getMultiChoiceQuestion();
+    const questionData = getQuestion("P04");
 
     // check if we have questionText and throw error if we don't
     if (!questionData?.questionData.questionText) {

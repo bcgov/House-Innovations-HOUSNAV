@@ -11,18 +11,18 @@ import {
 
 export interface DefinedTermProps extends Omit<ButtonProps, "variant"> {
   term: string;
-  overrideTerm?: string;
+  overrideTooltip?: string;
 }
 
 export default function DefinedTerm({
   term,
-  overrideTerm,
+  overrideTooltip,
   children,
   "data-testid": testid = TESTID_DEFINED_TERM,
   ...props
 }: DefinedTermProps) {
   // TODO: Add glossary term functionality
-
+  const tooltipTerm = overrideTooltip ?? term;
   const button = (
     <Button
       variant="glossary"
@@ -36,7 +36,7 @@ export default function DefinedTerm({
 
   const tooltipButton = (
     <Tooltip
-      tooltipContent={TooltipGlossaryData.get(term.toLocaleLowerCase())}
+      tooltipContent={TooltipGlossaryData.get(tooltipTerm.toLocaleLowerCase())}
       triggerContent={button}
     ></Tooltip>
   );
@@ -46,7 +46,7 @@ export default function DefinedTerm({
       type={ModalSideDataEnum.GLOSSARY}
       triggerContent={tooltipButton}
       modalData={ModalGlossaryData}
-      scrollTo={overrideTerm}
+      scrollTo={term}
     />
   );
 }

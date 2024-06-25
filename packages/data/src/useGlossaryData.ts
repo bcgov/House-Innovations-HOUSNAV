@@ -23,13 +23,14 @@ export type ArticleContentType = {
 };
 
 export type GlossaryContentType = {
-  definition: string;
-  cleanDefinition: string;
-  hideTerm: boolean;
+  definition: string; // The definition of the term in HTML format
+  cleanDefinition: string; // The definition of the term in plain text format
+  definitionList?: string[]; // A list of definitions for the term to be in a bulleted list
+  hideTerm?: boolean; // A boolean to hide the term from the glossary (Used for major occupancy groups currently)
 };
 
 export type ArticleType = {
-  section: string;
+  section: string; // The section of the glossary (Used for the anchor link)
   header?: string;
   content: ArticleContentType | GlossaryContentType;
 };
@@ -39,10 +40,12 @@ export type BuildingGlossaryJSONType = {
 };
 
 const GlossaryJSONData = glossary as unknown as BuildingGlossaryJSONType;
+
+// TODO: (ANY) Move to useBuildingCodeData
 export const BuildingCodeJSONData = buildingCode as unknown as ArticleType[];
 
 export default function transformGlossaryData(
-  data: BuildingGlossaryJSONType
+  data: BuildingGlossaryJSONType,
 ): ArticleType[] {
   return Object.entries(data).map(([term, content]) => ({
     section: term.toLocaleLowerCase(),
@@ -52,13 +55,13 @@ export default function transformGlossaryData(
 }
 
 function setMappedGlossaryData(
-  data: BuildingGlossaryJSONType
+  data: BuildingGlossaryJSONType,
 ): Map<string, string> {
   return new Map(
     Object.entries(data).map(([term, content]) => [
       term.toLowerCase(),
       content.cleanDefinition,
-    ])
+    ]),
   );
 }
 
