@@ -12,19 +12,22 @@ describe("walkthrough 1", () => {
     cy.visit("/walkthrough/9.9.9");
   });
 
-  //Test all walkthroughs defined in test data
+  // Test all walkthroughs defined in test data
   walkthroughs.forEach((walkthrough) => {
     it(walkthrough.title, () => {
       walkthrough.steps.forEach((step) => {
-        // select and submit an answer for the given question
+        // Select and submit an answer for the given question
         if (step.type === "radio") {
           cy.getByTestID(GET_TESTID_RADIO(step.question, step.answer)).click();
         } else if (step.type === "checkbox") {
-          step.answer.split(",").forEach((answer) => {
-            cy.getInputByTestID(
-              GET_TESTID_CHECKBOX(step.question, answer),
-            ).click({ force: true });
-          });
+          // Skip tapping the checkbox if the answer is empty
+          if (step.answer != "") {
+            step.answer.split(",").forEach((answer) => {
+              cy.getInputByTestID(
+                GET_TESTID_CHECKBOX(step.question, answer),
+              ).click({ force: true });
+            });
+          }
         }
         cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_NEXT).click();
       });
