@@ -29,6 +29,23 @@ export function getMultiChoiceQuestion() {
   };
 }
 
+export function getQuestion(questionId: string) {
+  // find the question for the given questionId
+  const questions: {
+    [key: string]: QuestionDisplayData | QuestionVariableData;
+  } = testCase999.questions;
+  const question = questions[questionId] as QuestionDisplayData;
+
+  if (!question) {
+    throw new Error("No question info");
+  }
+
+  return {
+    questionKey: questionId,
+    questionData: question,
+  };
+}
+
 export function getMultiChoiceMultipleQuestion() {
   // find the first question that is a multi-choice multiple question
   const questions: {

@@ -306,55 +306,55 @@
       "questionText": "Which <defined-term override-term='major occupancy'>major occupancies</defined-term> will be included in this <defined-term>building</defined-term>?",
       "possibleAnswers": [
         {
-          "answerDisplayText": "<defined-term>Group A Division 1.</defined-term>",
+          "answerDisplayText": "<defined-term override-term='major occupancy' override-tooltip='group a division 1'>Group A Division 1.</defined-term>",
           "answerValue": "A1"
         },
         {
-          "answerDisplayText": "<defined-term>Group A Division 2.</defined-term>",
+          "answerDisplayText": "<defined-term override-term='major occupancy'override-tooltip='group a division 2'>Group A Division 2.</defined-term>",
           "answerValue": "A2"
         },
         {
-          "answerDisplayText": "<defined-term>Group A Division 3.</defined-term>",
+          "answerDisplayText": "<defined-term override-term='major occupancy' override-tooltip='group a division 3'>Group A Division 3.</defined-term>",
           "answerValue": "A3"
         },
         {
-          "answerDisplayText": "<defined-term>Group A Division 4.</defined-term>",
+          "answerDisplayText": "<defined-term override-term='major occupancy' override-tooltip='group a division 4'>Group A Division 4.</defined-term>",
           "answerValue": "A4"
         },
         {
-          "answerDisplayText": "<defined-term>Group B Division 1.</defined-term>",
+          "answerDisplayText": "<defined-term override-term='major occupancy' override-tooltip='group b division 1'>Group B Division 1.</defined-term>",
           "answerValue": "B1"
         },
         {
-          "answerDisplayText": "<defined-term>Group B Division 2.</defined-term>",
+          "answerDisplayText": "<defined-term override-term='major occupancy' override-tooltip='group b division 2'>Group B Division 2.</defined-term>",
           "answerValue": "B2"
         },
         {
-          "answerDisplayText": "<defined-term>Group B Division 3.</defined-term>",
+          "answerDisplayText": "<defined-term override-term='major occupancy' override-tooltip='group b division 3'>Group B Division 3.</defined-term>",
           "answerValue": "B3"
         },
         {
-          "answerDisplayText": "<defined-term>Group C.</defined-term>",
+          "answerDisplayText": "<defined-term override-term='major occupancy' override-tooltip='group c'>Group C.</defined-term>",
           "answerValue": "C"
         },
         {
-          "answerDisplayText": "<defined-term override-term='major occupancy'>Group D.</defined-term>",
+          "answerDisplayText": "<defined-term override-term='major occupancy' override-tooltip='group d'>Group D.</defined-term>",
           "answerValue": "D"
         },
         {
-          "answerDisplayText": "<defined-term>Group E.</defined-term>",
+          "answerDisplayText": "<defined-term override-term='major occupancy' override-tooltip='group e'>Group E.</defined-term>",
           "answerValue": "E"
         },
         {
-          "answerDisplayText": "<defined-term>Group F Division 1.</defined-term>",
+          "answerDisplayText": "<defined-term override-term='major occupancy' override-tooltip='group f division 1'>Group F Division 1.</defined-term>",
           "answerValue": "F1"
         },
         {
-          "answerDisplayText": "<defined-term>Group F Division 2.</defined-term>",
+          "answerDisplayText": "<defined-term override-term='major occupancy' override-tooltip='group f division 2'>Group F Division 2.</defined-term>",
           "answerValue": "F2"
         },
         {
-          "answerDisplayText": "<defined-term>Group F Division 3.</defined-term>",
+          "answerDisplayText": "<defined-term override-term='major occupancy' override-tooltip='group f division 3'>Group F Division 3.</defined-term>",
           "answerValue": "F3"
         },
         {

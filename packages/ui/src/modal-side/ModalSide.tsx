@@ -33,6 +33,42 @@ export interface ModalSideProps {
   "data-testid"?: string;
 }
 
+function renderDefinitionList(
+  definitionList: string[],
+  customHandler?: (location: string) => void,
+) {
+  return (
+    <ul className="ui-ModalSide--BuildingCodeList">
+      {definitionList.map((item, index) => (
+        <li key={index}>{parseStringToComponents(item, customHandler)}</li>
+      ))}
+    </ul>
+  );
+}
+
+function renderSubClauses(subClauses: string[]) {
+  return (
+    <ol type="i" className="ui-ModalSide--BuildingCodeList">
+      {subClauses.map((subClause, index) => (
+        <li key={index}>{subClause}</li>
+      ))}
+    </ol>
+  );
+}
+
+function renderSubsections(subsections: SubClauseType[]) {
+  return (
+    <ol type="a" className="ui-ModalSide--BuildingCodeList">
+      {subsections.map((subsection, index) => (
+        <li key={index}>
+          {subsection.description}
+          {subsection.subClauses && renderSubClauses(subsection.subClauses)}
+        </li>
+      ))}
+    </ol>
+  );
+}
+
 // TODO: (ANY) Move to GlossaryContent component
 function GlossaryContent({
   modalData,
@@ -73,37 +109,21 @@ function GlossaryContent({
                 <p className="ui-ModalSide--SectionContent">
                   {parseStringToComponents(
                     (data.content as GlossaryContentType).definition,
-                    setFocusSection
+                    setFocusSection,
                   )}
                 </p>
+                <div className="ui-ModalSide--SectionContent">
+                  {(data.content as GlossaryContentType).definitionList &&
+                    renderDefinitionList(
+                      data.content?.definitionList,
+                      setFocusSection,
+                    )}
+                </div>
               </article>
             </section>
-          )
+          ),
       )}
     </>
-  );
-}
-
-function renderSubClauses(subClauses: string[]) {
-  return (
-    <ol type="i" className="ui-ModalSide--BuildingCodeList">
-      {subClauses.map((subClause, index) => (
-        <li key={index}>{subClause}</li>
-      ))}
-    </ol>
-  );
-}
-
-function renderSubsections(subsections: SubClauseType[]) {
-  return (
-    <ol type="a" className="ui-ModalSide--BuildingCodeList">
-      {subsections.map((subsection, index) => (
-        <li key={index}>
-          {subsection.description}
-          {subsection.subClauses && renderSubClauses(subsection.subClauses)}
-        </li>
-      ))}
-    </ol>
   );
 }
 
@@ -149,12 +169,12 @@ function BuildingCodeContent({
                     {clauseIndex + 1}.{" "}
                     {parseStringToComponents(
                       clause.description,
-                      setFocusSection
+                      setFocusSection,
                     )}
                   </p>
                   {clause.subsections && renderSubsections(clause.subsections)}
                 </div>
-              )
+              ),
             )}
           </article>
         </section>
@@ -173,7 +193,7 @@ export default function ModalSide({
   const [isOpen, setIsOpen] = useState(false);
   const [focusSection, setFocusSection] = useState(scrollTo);
   const [highlightedSection, setHighlightedSection] = useState<string | null>(
-    null
+    null,
   );
   const modalRef = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
