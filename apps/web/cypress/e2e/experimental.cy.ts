@@ -13,12 +13,15 @@ describe("Experimental tests", () => {
   walkthroughs.forEach((walkthrough) => {
     it("Add random name", () => {
       walkthrough.steps.forEach((step) => {
-        // select and submit an answer for the given question
-        step.answer.split(",").forEach((answer) => {
-          cy.get(`[data-testid*='${step.question}-${answer}']`).last().click({
-            force: true,
+        // Skip tapping the button if the answer is empty
+        if (step.answer != "") {
+          // Select and submit an answer for the given question
+          step.answer.split(",").forEach((answer) => {
+            cy.get(`[data-testid*='${step.question}-${answer}']`).last().click({
+              force: true,
+            });
           });
-        });
+        }
         cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_NEXT).click();
       });
 
