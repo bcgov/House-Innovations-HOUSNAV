@@ -13,14 +13,15 @@ import Tooltip from "@repo/ui/tooltip";
 import DefinedTerm, {
   DefinedTermProps,
 } from "../components/defined-term/DefinedTerm";
-import Button from "@repo/ui/button";
-import Tooltip from "@repo/ui/tooltip";
 import {
   BuildingCodeJSONData,
   ModalSideDataEnum,
   TooltipGlossaryData,
 } from "@repo/data/useGlossaryData";
 import ModalSide from "@repo/ui/modal-side";
+import PDFDownloadLink, {
+  PDFDownloadLinkProps,
+} from "../components/pdf-download-link/PDFDownloadLink";
 
 // Define custom components for html-react-parser
 const definedTermName = "defined-term";
@@ -60,6 +61,8 @@ export const parseStringToComponents = (
   const options = {
     replace: (domNode: DOMNode) => {
       if (domNode instanceof Element && domNode.attribs) {
+        const props = attributesToProps(domNode.attribs);
+
         const term = (
           domNode.attribs["override-term"] ??
           (domToReact(domNode.children as DOMNode[]) as string)
@@ -70,23 +73,21 @@ export const parseStringToComponents = (
         switch (domNode.name) {
           case definedTermName: {
             const DefinedTermComponent = customComponents[definedTermName];
-            const props = attributesToProps(domNode.attribs);
 
-                return (
-                  <DefinedTermComponent
-                    {...(props as unknown as DefinedTermProps)}
-                    key={domNode.attribs.key}
-                    term={term}
-                    overrideTooltip={tooltipTerm}
-                  >
-                    {domToReact(domNode.children as DOMNode[], options)}
-                  </DefinedTermComponent>
-                );
-              }
+            return (
+              <DefinedTermComponent
+                {...(props as unknown as DefinedTermProps)}
+                key={domNode.attribs.key}
+                term={term}
+                overrideTooltip={tooltipTerm}
+              >
+                {domToReact(domNode.children as DOMNode[], options)}
+              </DefinedTermComponent>
+            );
+          }
           case pdfDownloadLinkName: {
             const PDFDownloadLinkComponent =
               customComponents[pdfDownloadLinkName];
-            const props = attributesToProps(domNode.attribs);
 
             return (
               <PDFDownloadLinkComponent
@@ -97,7 +98,8 @@ export const parseStringToComponents = (
               </PDFDownloadLinkComponent>
             );
           }
-          case definedTermModal: {
+
+          case definedTermModal:
             return (
               <Tooltip
                 tooltipContent={TooltipGlossaryData.get(tooltipTerm)}
