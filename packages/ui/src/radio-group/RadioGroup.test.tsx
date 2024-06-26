@@ -38,7 +38,7 @@ const RADIO_GROUP_OPTIONS = [
 describe("RadioGroup", () => {
   // renders
   it("renders appropriate items with required data and nothing selected", async () => {
-    const { user, getByTestId } = userSetupAndRender(
+    const { getByTestId } = userSetupAndRender(
       <RadioGroup
         options={RADIO_GROUP_OPTIONS}
         label={RADIO_GROUP_LABEL}
@@ -65,19 +65,8 @@ describe("RadioGroup", () => {
       expect(input).toHaveAttribute("name", RADIO_GROUP_NAME);
       expect(input).not.toBeChecked();
     });
-
-    // click on radio
-    const option1 = getByTestId(
-      GET_TESTID_RADIO(RADIO_GROUP_NAME, OPTION_1_VALUE),
-    );
-    await act(async () => {
-      await user.click(option1);
-    });
-
-    // check if correct radio is selected
-    const input1 = option1.querySelector("input[type='radio']");
-    expect(input1).toBeChecked();
   });
+
   // default value
   it("renders item with default value as selected", () => {
     const defaultValue = OPTION_2_VALUE;
@@ -86,7 +75,7 @@ describe("RadioGroup", () => {
         options={RADIO_GROUP_OPTIONS}
         label={RADIO_GROUP_LABEL}
         name={RADIO_GROUP_NAME}
-        defaultValue={defaultValue}
+        value={defaultValue}
       />,
     );
 
@@ -109,14 +98,12 @@ describe("RadioGroup", () => {
   });
   // selected value overrides default value
   it("renders item with selected value as selected", () => {
-    const defaultValue = OPTION_1_VALUE;
     const selectedValue = OPTION_2_VALUE;
     const { getByTestId } = render(
       <RadioGroup
         options={RADIO_GROUP_OPTIONS}
         label={RADIO_GROUP_LABEL}
         name={RADIO_GROUP_NAME}
-        defaultValue={defaultValue}
         value={selectedValue}
       />,
     );
@@ -126,17 +113,17 @@ describe("RadioGroup", () => {
       GET_TESTID_RADIO(RADIO_GROUP_NAME, OPTION_1_VALUE),
     );
     const option2 = getByTestId(
-      GET_TESTID_RADIO(RADIO_GROUP_NAME, defaultValue),
+      GET_TESTID_RADIO(RADIO_GROUP_NAME, OPTION_2_VALUE),
     );
     const option3 = getByTestId(
-      GET_TESTID_RADIO(RADIO_GROUP_NAME, selectedValue),
+      GET_TESTID_RADIO(RADIO_GROUP_NAME, OPTION_3_VALUE),
     );
     const input1 = option1.querySelector("input[type='radio']");
     const input2 = option2.querySelector("input[type='radio']");
     const input3 = option3.querySelector("input[type='radio']");
     expect(input1).not.toBeChecked();
-    expect(input2).not.toBeChecked();
-    expect(input3).toBeChecked();
+    expect(input2).toBeChecked();
+    expect(input3).not.toBeChecked();
   });
   // shows error
   it("renders error message when provided, is required, and not selected on submit", async () => {

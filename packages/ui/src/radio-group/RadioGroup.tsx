@@ -66,12 +66,11 @@ export default function RadioGroup({
   errorMessageText,
   options,
   "data-testid": testid = "",
-  defaultValue = "",
   value,
   className,
   ...props
 }: RadioGroupProps) {
-  const currentValue = value || defaultValue;
+  const currentValue = value || "";
   const testIdNamespace = testid || name;
 
   return (
@@ -79,7 +78,6 @@ export default function RadioGroup({
       className={`ui-RadioGroup ${className}`}
       data-testid={GET_TESTID_RADIO_GROUP(testIdNamespace)}
       value={currentValue}
-      defaultValue={defaultValue}
       name={name}
       {...props}
     >
