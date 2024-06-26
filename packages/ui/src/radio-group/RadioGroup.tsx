@@ -66,7 +66,7 @@ export default function RadioGroup({
   errorMessageText,
   options,
   "data-testid": testid = "",
-  defaultValue,
+  defaultValue = "",
   value,
   className,
   ...props
@@ -78,7 +78,7 @@ export default function RadioGroup({
     <ReactAriaRadioGroup
       className={`ui-RadioGroup ${className}`}
       data-testid={GET_TESTID_RADIO_GROUP(testIdNamespace)}
-      value={value}
+      value={currentValue}
       defaultValue={defaultValue}
       name={name}
       {...props}
