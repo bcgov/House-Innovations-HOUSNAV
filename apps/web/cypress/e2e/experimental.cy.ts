@@ -8,10 +8,12 @@ describe("Experimental tests", () => {
     cy.visit("/walkthrough/9.9.9");
   });
 
+  let walkthroughNumber = 1;
+
   // Test all walkthroughs defined in extra test data
   // Does not worry if checkboxes or radio buttons are used
   walkthroughs.forEach((walkthrough) => {
-    it("Add random name", () => {
+    it(`Walkthrough #${walkthroughNumber}`, () => {
       walkthrough.steps.forEach((step) => {
         // Skip tapping the button if the answer is empty
         if (step.answer != "") {
@@ -31,6 +33,7 @@ describe("Experimental tests", () => {
         cy.contains(result);
       }
     });
+    walkthroughNumber++;
   });
 
   // Randomly go through the walkthough until you find a result (try to confirm there are no dead ends)
