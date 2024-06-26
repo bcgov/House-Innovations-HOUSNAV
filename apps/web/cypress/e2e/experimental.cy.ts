@@ -59,13 +59,11 @@ describe("Experimental tests", () => {
 
             // Click next
             cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_NEXT).click();
-          } else {
-            // If there are no questions, confirm we are on a result page
-            cy.getByTestID("result").should("exist");
-            return;
           }
         });
       }
+      // At the end, confirm we are on a result page
+      cy.getByTestID("result").should("exist");
     });
   }
 });
