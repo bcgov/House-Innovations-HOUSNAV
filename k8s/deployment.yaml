@@ -14,7 +14,7 @@ spec:
       labels:
         app: house-innovations-housnav-web
     spec:
-      imagePullSecrets: ${IMAGE_PULL_SECRET_NAME}
+      serviceAccountName: ${IMAGE_PULL_SECRET_NAME}
       containers:
         - name: house-innovations-housnav-web
           image: ${ARTIFACTORY_IMAGE_PATH}:${GIT_SHA}
