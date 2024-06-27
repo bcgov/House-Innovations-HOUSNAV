@@ -23,6 +23,7 @@ import PDFDownloadLink, {
   PDFDownloadLinkProps,
 } from "../components/pdf-download-link/PDFDownloadLink";
 import { useWalkthroughState } from "../stores/WalkthroughRootStore";
+import { GLOSSARY_TERMS } from "../tests/mockData";
 
 // Define custom components for html-react-parser
 const definedTermName = "defined-term";
@@ -31,6 +32,11 @@ const glossaryTerm = "glossary-term";
 const buildingCode = "building-code";
 const pdfDownloadLinkName = "pdf-download-link";
 const answerValue = "answer-value";
+
+type CustomComponentTypes =
+  | typeof definedTermName
+  | typeof definedTermModal
+  | typeof pdfDownloadLinkName;
 
 type CustomComponentTypes = typeof definedTermName | typeof pdfDownloadLinkName;
 
@@ -53,7 +59,7 @@ type CustomHandler = (section: string) => void;
 
 export const parseStringToComponents = (
   html: string,
-  customHandler?: CustomHandler,
+  customHandler?: CustomHandler
 ) => {
   const options = {
     replace: (domNode: DOMNode) => {
@@ -142,6 +148,18 @@ export const parseStringToComponents = (
 
             return <span>{displayValue}</span>;
           }
+
+          case answerValue:
+            const { getQuestionAnswerValueDisplay } = useWalkthroughState();
+            const questionId = domNode.attribs["answer"];
+
+            if (!questionId) {
+              console.warn("Missing question ID - incorrect json data.");
+              return "";
+            }
+            const displayValue = getQuestionAnswerValueDisplay(questionId);
+
+            return <span className="">{displayValue}</span>;
         }
       }
     },
