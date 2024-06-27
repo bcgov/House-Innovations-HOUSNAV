@@ -15,7 +15,7 @@ spec:
         app: house-innovations-housnav-web
     spec:
       imagePullSecrets: 
-        - name: artifacts-pull-github-nbhcig
+        - name: ${IMAGE_PULL_SECRET_NAME}
       containers:
         - name: house-innovations-housnav-web
           image: ${ARTIFACTORY_IMAGE_PATH}:${GIT_SHA}
