@@ -28,24 +28,24 @@ jobs:
       - name: Tag Docker image as latest for main branch
         run: docker tag house-innovations-housnav-web:${{ env.GIT_SHA }} house-innovations-housnav-web:latest
 
-      - name: Login to OpenShift image registry with Docker
+      - name: Login to Artifactory image registry with Docker
         uses: docker/login-action@v3
         with:
-          registry: ${{ secrets.OPENSHIFT_REGISTRY_NAME }}
-          username: ${{ secrets.OPENSHIFT_SERVICEACCOUNT_NAME }}
-          password: ${{ secrets.OPENSHIFT_SERVICEACCOUNT_TOKEN }}
+          registry: ${{ secrets.ARTIFACTORY_URL }}
+          password: ${{ secrets.ARTIFACTORY_SERVICEACCOUNT_USERNAME }}
+          username: ${{ secrets.ARTIFACTORY_SERVICEACCOUNT_PASSWORD }}
 
-      - name: Tag Docker image for OpenShift registry
-        run: docker tag house-innovations-housnav-web:${{ env.GIT_SHA }} ${{ secrets.OPENSHIFT_REGISTRY_REPOSITORY }}:${{ env.GIT_SHA }}
+      - name: Tag Docker image for Artifactory
+        run: docker tag house-innovations-housnav-web:${{ env.GIT_SHA }} ${{ secrets.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web:${{ env.GIT_SHA }}
 
-      - name: Push Docker image to OpenShift registry
-        run: docker push ${{ secrets.OPENSHIFT_REGISTRY_REPOSITORY }}:${{ env.GIT_SHA }}
+      - name: Push Docker image to Artifactory
+        run: docker push ${{ secrets.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web:${{ env.GIT_SHA }}
 
       - name: Login to OpenShift with CLI
         run: oc login --token=${{ secrets.OPENSHIFT_SERVICEACCOUNT_TOKEN }} --server=${{ secrets.OPENSHIFT_SERVER }}
 
-      - name: Export OpenShift Registry Repository
-        run: echo "OPENSHIFT_REGISTRY_REPOSITORY=${{ secrets.OPENSHIFT_REGISTRY_REPOSITORY }}" >> $GITHUB_ENV
+      - name: Export Artifactory Image Path
+        run: echo "ARTIFACTORY_IMAGE_PATH=${{ secrets.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web" >> $GITHUB_ENV
 
       - name: Deploy Application in OpenShift
         run: envsubst < k8s/deployment.yaml | oc apply -f -
