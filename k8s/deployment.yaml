@@ -14,10 +14,11 @@ spec:
       labels:
         app: house-innovations-housnav-web
     spec:
-      serviceAccountName: github-actions
+      imagePullSecrets: 
+        - name: ${IMAGE_PULL_SECRET_NAME}
       containers:
         - name: house-innovations-housnav-web
-          image: ${OPENSHIFT_REGISTRY_REPOSITORY}:${GIT_SHA}
+          image: ${ARTIFACTORY_IMAGE_PATH}:${GIT_SHA}
           ports:
             - containerPort: 3000
           livenessProbe:
