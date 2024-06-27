@@ -5,6 +5,7 @@ import { makeAutoObservable, toJS } from "mobx";
 import {
   isWalkthroughItemTypeMultiChoice,
   isWalkthroughItemTypeMultiChoiceMultiple,
+  QuestionBaseData,
   QuestionDisplayData,
   QuestionMultipleChoiceData,
   QuestionMultipleChoiceSelectMultipleData,
@@ -17,6 +18,7 @@ import { NEXT_NAVIGATION_ID_ERROR } from "@repo/constants/src/constants";
 import { NavigationStore } from "./NavigationStore";
 import { AnswerStore } from "./AnswerStore";
 import { getPossibleAnswers } from "../utils/logic/showAnswer";
+import { isString } from "../utils/typeChecking";
 
 export class WalkthroughRootStore {
   navigationStore: NavigationStore;
@@ -40,7 +42,7 @@ export class WalkthroughRootStore {
   }
 
   getQuestionAsDisplayType = (
-    questionId: string,
+    questionId: string
   ): QuestionDisplayData | undefined => {
     const displayTypeQuestion = this.walkthroughData.questions[questionId];
 
@@ -60,7 +62,7 @@ export class WalkthroughRootStore {
   }
 
   getQuestionAsMultipleChoice = (
-    questionId: string,
+    questionId: string
   ): QuestionMultipleChoiceData | undefined => {
     const multiChoiceQuestion = this.getQuestionAsDisplayType(questionId);
 
@@ -79,7 +81,7 @@ export class WalkthroughRootStore {
   }
 
   getQuestionAsMultipleChoiceMultiple = (
-    questionId: string,
+    questionId: string
   ): QuestionMultipleChoiceSelectMultipleData | undefined => {
     const multiChoiceMultipleQuestion =
       this.getQuestionAsDisplayType(questionId);
@@ -88,7 +90,7 @@ export class WalkthroughRootStore {
     if (
       !multiChoiceMultipleQuestion ||
       !isWalkthroughItemTypeMultiChoiceMultiple(
-        multiChoiceMultipleQuestion.walkthroughItemType,
+        multiChoiceMultipleQuestion.walkthroughItemType
       )
     )
       return undefined;
@@ -98,7 +100,7 @@ export class WalkthroughRootStore {
 
   get currentQuestionAsMultipleChoiceMultiple() {
     return this.getQuestionAsMultipleChoiceMultiple(
-      this.navigationStore.currentItemId,
+      this.navigationStore.currentItemId
     );
   }
 
@@ -121,12 +123,12 @@ export class WalkthroughRootStore {
     try {
       return getPossibleAnswers(
         multiChoiceMultipleQuestion.possibleAnswers,
-        this.answerStore.getAnswerToCheckValue,
+        this.answerStore.getAnswerToCheckValue
       );
     } catch (error) {
       this.handleStateError(
         "getPossibleAnswersFromMultipleChoiceMultiple",
-        error,
+        error
       );
       return [];
     }
@@ -145,13 +147,32 @@ export class WalkthroughRootStore {
   }
 
   getQuestionAsVariable = (
-    questionId: string,
+    questionId: string
   ): QuestionVariableData | undefined => {
     const questionAsVar = this.walkthroughData.questions[questionId];
     if (!questionAsVar || !(VariableToSetPropertyName in questionAsVar))
       return undefined;
 
     return questionAsVar;
+  };
+
+  getQuestionAnswerValueDisplay = (questionId: string): string => {
+    const answer = this.answerStore.answers[questionId];
+    const { possibleAnswers } = this.walkthroughData.questions[
+      questionId
+    ] as QuestionBaseData;
+    if (!possibleAnswers) return "";
+
+    if (isString(answer)) {
+      const answerValue = possibleAnswers.find(
+        (possibleAnswer) => possibleAnswer.answerValue === answer
+      );
+      const displayValue =
+        answerValue?.answerValueDisplay ?? answerValue?.answerDisplayText;
+      return displayValue ?? "";
+    }
+    console.warn(`Unsupported "answer-value" type for question ${questionId}.`);
+    return "";
   };
 
   questionIsVariable = (questionId: string) => {
@@ -167,7 +188,7 @@ export class WalkthroughRootStore {
 }
 
 export const CreateWalkthroughStore = (
-  walkthroughData: WalkthroughJSONType,
+  walkthroughData: WalkthroughJSONType
 ) => {
   return new WalkthroughRootStore(walkthroughData);
 };
@@ -175,7 +196,7 @@ export const CreateWalkthroughStore = (
 // create context
 export const WalkthroughStateContext =
   React.createContext<WalkthroughRootStore>(
-    CreateWalkthroughStore({} as WalkthroughJSONType),
+    CreateWalkthroughStore({} as WalkthroughJSONType)
   );
 
 /* Hook to use store in any functional component */

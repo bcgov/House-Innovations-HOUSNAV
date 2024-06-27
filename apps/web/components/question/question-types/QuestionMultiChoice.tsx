@@ -7,6 +7,7 @@ import { ID_QUESTION_TEXT } from "@repo/constants/src/ids";
 // local
 import QuestionMissing from "./QuestionMissing";
 import { useWalkthroughState } from "../../../stores/WalkthroughRootStore";
+import { SHOW_QUESTION_LABELS } from "@repo/constants/src/constants";
 
 const QuestionMultiChoice = observer((): JSX.Element => {
   // get data from store
@@ -24,7 +25,7 @@ const QuestionMultiChoice = observer((): JSX.Element => {
     (possibleAnswer) => ({
       label: possibleAnswer.answerDisplayText,
       value: possibleAnswer.answerValue,
-    }),
+    })
   );
 
   // setup onChange handler
@@ -32,13 +33,13 @@ const QuestionMultiChoice = observer((): JSX.Element => {
     (value: string) => {
       setAnswerValueOnChange(value, currentItemId);
     },
-    [setAnswerValueOnChange, currentItemId],
+    [setAnswerValueOnChange, currentItemId]
   );
 
   return (
     <RadioGroup
       name={currentItemId}
-      noLabel
+      noLabel={!SHOW_QUESTION_LABELS}
       options={radioGroupOptions}
       isRequired
       value={multipleChoiceAnswerValue}

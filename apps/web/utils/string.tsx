@@ -22,6 +22,8 @@ import ModalSide from "@repo/ui/modal-side";
 import PDFDownloadLink, {
   PDFDownloadLinkProps,
 } from "../components/pdf-download-link/PDFDownloadLink";
+import { useWalkthroughState } from "../stores/WalkthroughRootStore";
+import { GLOSSARY_TERMS } from "../tests/mockData";
 
 // Define custom components for html-react-parser
 const definedTermName = "defined-term";
@@ -29,6 +31,8 @@ const definedTermModal = "defined-term-glossary";
 const glossaryTerm = "glossary-term";
 const buildingCode = "building-code";
 const pdfDownloadLinkName = "pdf-download-link";
+const answerValue = "answer-value";
+
 type CustomComponentTypes =
   | typeof definedTermName
   | typeof definedTermModal
@@ -56,20 +60,20 @@ type CustomHandler = (section: string) => void;
 
 export const parseStringToComponents = (
   html: string,
-  customHandler?: CustomHandler,
+  customHandler?: CustomHandler
 ) => {
   const options = {
     replace: (domNode: DOMNode) => {
       if (domNode instanceof Element && domNode.attribs) {
         const props = attributesToProps(domNode.attribs);
+        let term = domToReact(domNode.children as DOMNode[]) as string;
+        try {
+          term = (domNode.attribs["override-term"] ?? term).toLocaleLowerCase();
+        } catch (error) {
+          // console.warn("Error parsing string", error, domNode.children);
+        }
+        const tooltipTerm = domNode.attribs["override-tooltip"] ?? term;
 
-        const term = (
-          domNode.attribs["override-term"] ??
-          (domToReact(domNode.children as DOMNode[]) as string)
-        ).toLocaleLowerCase();
-        const tooltipTerm = (
-          domNode.attribs["override-tooltip"] ?? term
-        ).toLocaleLowerCase();
         switch (domNode.name) {
           case definedTermName: {
             const DefinedTermComponent = customComponents[definedTermName];
@@ -132,6 +136,18 @@ export const parseStringToComponents = (
                 scrollTo={"9.9.9.1"}
               />
             );
+
+          case answerValue:
+            const { getQuestionAnswerValueDisplay } = useWalkthroughState();
+            const questionId = domNode.attribs["answer"];
+
+            if (!questionId) {
+              console.warn("Missing question ID - incorrect json data.");
+              return "";
+            }
+            const displayValue = getQuestionAnswerValueDisplay(questionId);
+
+            return <span className="">{displayValue}</span>;
         }
       }
     },

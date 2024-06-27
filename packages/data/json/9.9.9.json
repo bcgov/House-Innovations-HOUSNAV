@@ -2241,10 +2241,12 @@
       "possibleAnswers": [
         {
           "answerDisplayText": "An <defined-term>exit</defined-term> stairway",
+          "answerValueDisplay": "exit stairway",
           "answerValue": "A"
         },
         {
           "answerDisplayText": "A <defined-term>public corridor</defined-term>",
+          "answerValueDisplay": "public corridor",
           "answerValue": "B"
         },
         {
@@ -2309,7 +2311,7 @@
     },
     "P23": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Is the <answer-value answer='P21'/> served by a single <defined-term>exit</defined-term> stairway or <defined-term>ramp</defined-term>?",
+      "questionText": "Is the <answer-value answer='P21'></answer-value> served by a single <defined-term>exit</defined-term> stairway or <defined-term>ramp</defined-term>?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Article 9.9.9.3.",
         "codeNumber": "V2-DB-9.9.9.3"
@@ -2339,7 +2341,7 @@
     },
     "P24": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Is the <answer-value answer='P21'/> no more than 1.5m above adjacent ground level?",
+      "questionText": "Is the <answer-value answer='P21'></answer-value> no more than 1.5m above adjacent ground level?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Article 9.9.9.3.",
         "codeNumber": "V2-DB-9.9.9.3"
