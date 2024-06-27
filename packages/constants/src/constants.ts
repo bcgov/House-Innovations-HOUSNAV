@@ -6,3 +6,6 @@ export const DEFINED_TERMS_SECTION_NUMBER = "1.4.1.2";
 
 export const SHOW_QUESTION_LABELS =
   process.env.NEXT_PUBLIC_SHOW_QUESTION_LABELS === "yes";
+
+export const SHOW_LOG_STATE_BUTTON =
+  process.env.NEXT_PUBLIC_SHOW_LOG_STATE_BUTTON === "yes";

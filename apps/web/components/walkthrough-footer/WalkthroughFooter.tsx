@@ -13,6 +13,7 @@ import Icon from "@repo/ui/icon";
 // local
 import { useWalkthroughState } from "../../stores/WalkthroughRootStore";
 import "./WalkthroughFooter.css";
+import { SHOW_LOG_STATE_BUTTON } from "@repo/constants/src/constants";
 
 const WalkthroughFooter = observer((): JSX.Element => {
   // get information from store
@@ -22,7 +23,17 @@ const WalkthroughFooter = observer((): JSX.Element => {
       backButtonIsDisabled,
       handleBackNavigation,
     },
+    logCurrentState,
   } = useWalkthroughState();
+
+  const localPrintStateButton = SHOW_LOG_STATE_BUTTON && (
+    <Button
+      onPress={logCurrentState}
+      className="web-WalkthroughFooter--FooterPrintState"
+    >
+      Log Current State
+    </Button>
+  );
 
   return (
     <div className="web-WalkthroughFooter">
@@ -47,6 +58,7 @@ const WalkthroughFooter = observer((): JSX.Element => {
         <Icon type="arrowBack" />
         <span className="web-WalkthroughFooter--FooterBackText">Back</span>
       </Button>
+      {localPrintStateButton}
     </div>
   );
 });

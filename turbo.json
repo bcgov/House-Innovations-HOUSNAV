@@ -4,10 +4,20 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
+      "env": [
+        "NEXT_PUBLIC_ENVIRONMENT",
+        "NEXT_PUBLIC_SHOW_LOG_STATE_BUTTON",
+        "NEXT_PUBLIC_SHOW_QUESTION_LABELS"
+      ],
       "outputs": [".next/**", "!.next/cache/**"]
     },
     "lint": {
-      "dependsOn": ["^lint"]
+      "dependsOn": ["^lint"],
+      "env": [
+        "NEXT_PUBLIC_ENVIRONMENT",
+        "NEXT_PUBLIC_SHOW_LOG_STATE_BUTTON",
+        "NEXT_PUBLIC_SHOW_QUESTION_LABELS"
+      ]
     },
     "format": {
       "cache": false,

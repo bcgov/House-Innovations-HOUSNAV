@@ -13,7 +13,7 @@ import { SHOW_QUESTION_LABELS } from "@repo/constants/src/constants";
 
 export function answerArrayToObject(
   answerArray: string[],
-  possibleAnswers: { label: string; value: string }[]
+  possibleAnswers: { label: string; value: string }[],
 ): Record<string, string> {
   return possibleAnswers.reduce<Record<string, string>>((acc, val) => {
     if (answerArray.includes(val.value)) {
@@ -26,7 +26,7 @@ export function answerArrayToObject(
 }
 
 export function answerObjectToArray(
-  answerObject: Record<string, string>
+  answerObject: Record<string, string>,
 ): string[] {
   return Object.keys(answerObject).reduce<string[]>((acc, val) => {
     if (answerObject[val] === "true") {
@@ -50,7 +50,7 @@ const QuestionMultiChoiceMultiple = observer((): JSX.Element => {
 
   // convert possible answers to checkbox group options
   const checkboxGroupOptions = getPossibleAnswersFromMultipleChoiceMultiple(
-    currentItemId
+    currentItemId,
   ).map((possibleAnswer) => ({
     label: possibleAnswer.answerDisplayText,
     value: possibleAnswer.answerValue,
@@ -68,7 +68,7 @@ const QuestionMultiChoiceMultiple = observer((): JSX.Element => {
 
       setAnswerValueOnChange(answerToStore, currentItemId);
     },
-    [setAnswerValueOnChange, currentItemId]
+    [setAnswerValueOnChange, currentItemId],
   );
 
   // get current answer value and convert to array if it's an object
@@ -76,9 +76,9 @@ const QuestionMultiChoiceMultiple = observer((): JSX.Element => {
     ? useMemo(
         () =>
           answerObjectToArray(
-            multipleChoiceMultipleAnswerValue as Record<string, string>
+            multipleChoiceMultipleAnswerValue as Record<string, string>,
           ),
-        [multipleChoiceMultipleAnswerValue]
+        [multipleChoiceMultipleAnswerValue],
       )
     : (multipleChoiceMultipleAnswerValue as string[]);
 
@@ -92,7 +92,7 @@ const QuestionMultiChoiceMultiple = observer((): JSX.Element => {
       validate={(value) => {
         return isValidAnswerOrErrorMessage(
           value,
-          currentQuestionAsMultipleChoiceMultiple.possibleInvalidAnswers || []
+          currentQuestionAsMultipleChoiceMultiple.possibleInvalidAnswers || [],
         );
       }}
       options={checkboxGroupOptions}

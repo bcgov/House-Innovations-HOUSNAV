@@ -25,7 +25,7 @@ const QuestionMultiChoice = observer((): JSX.Element => {
     (possibleAnswer) => ({
       label: possibleAnswer.answerDisplayText,
       value: possibleAnswer.answerValue,
-    })
+    }),
   );
 
   // setup onChange handler
@@ -33,7 +33,7 @@ const QuestionMultiChoice = observer((): JSX.Element => {
     (value: string) => {
       setAnswerValueOnChange(value, currentItemId);
     },
-    [setAnswerValueOnChange, currentItemId]
+    [setAnswerValueOnChange, currentItemId],
   );
 
   return (
