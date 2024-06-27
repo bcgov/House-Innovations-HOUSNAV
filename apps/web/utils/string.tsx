@@ -59,19 +59,12 @@ type CustomHandler = (section: string) => void;
 
 export const parseStringToComponents = (
   html: string,
-  customHandler?: CustomHandler
+  customHandler?: CustomHandler,
 ) => {
   const options = {
     replace: (domNode: DOMNode) => {
       if (domNode instanceof Element && domNode.attribs) {
         const props = attributesToProps(domNode.attribs);
-        let term = domToReact(domNode.children as DOMNode[]) as string;
-        try {
-          term = (domNode.attribs["override-term"] ?? term).toLocaleLowerCase();
-        } catch (error) {
-          // console.warn("Error parsing string", error, domNode.children);
-        }
-        const tooltipTerm = domNode.attribs["override-tooltip"] ?? term;
 
         switch (domNode.name) {
           case definedTermName: {
@@ -149,7 +142,7 @@ export const parseStringToComponents = (
             return <span>{displayValue}</span>;
           }
 
-          case answerValue:
+          case answerValue: {
             const { getQuestionAnswerValueDisplay } = useWalkthroughState();
             const questionId = domNode.attribs["answer"];
 
@@ -160,6 +153,7 @@ export const parseStringToComponents = (
             const displayValue = getQuestionAnswerValueDisplay(questionId);
 
             return <span className="">{displayValue}</span>;
+          }
         }
       }
     },
