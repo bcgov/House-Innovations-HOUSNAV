@@ -47,6 +47,9 @@ jobs:
       - name: Export Artifactory Image Path
         run: echo "ARTIFACTORY_IMAGE_PATH=${{ secrets.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web" >> $GITHUB_ENV
 
+      - name: Export imagePullSecretsName
+        run: echo "IMAGE_PULL_SECRET_NAME=${{ secrets.IMAGE_PULL_SECRET_NAME }}" >> $GITHUB_ENV
+
       - name: Deploy Application in OpenShift
         run: envsubst < k8s/deployment.yaml | oc apply -f -
 
