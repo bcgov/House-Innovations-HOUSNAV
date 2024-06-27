@@ -45,7 +45,6 @@ const Question = observer(() => {
 
   // get question component
   const component = getQuestionComponent(currentQuestion.walkthroughItemType);
-
   return (
     <div className="u-container-walkthrough" data-testid={TESTID_QUESTION}>
       <h1
