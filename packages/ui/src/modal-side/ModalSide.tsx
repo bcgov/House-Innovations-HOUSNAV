@@ -81,6 +81,11 @@ function GlossaryContent({
   sectionRefs: React.MutableRefObject<{ [key: string]: HTMLElement | null }>;
   setFocusSection: (section: string) => void;
 }) {
+  function isGlossaryContentType(
+    content: ArticleContentType | GlossaryContentType,
+  ): content is GlossaryContentType {
+    return (content as GlossaryContentType).definition !== undefined;
+  } 
   return (
     <>
       <header className="ui-ModalSide--SectionHeaderLine">
@@ -93,6 +98,7 @@ function GlossaryContent({
       </header>
       {modalData.map(
         (data, index) =>
+          isGlossaryContentType(data.content) &&
           !data.content?.hideTerm && (
             <section
               key={index}
@@ -113,7 +119,7 @@ function GlossaryContent({
                   )}
                 </p>
                 <div className="ui-ModalSide--SectionContent">
-                  {(data.content as GlossaryContentType).definitionList &&
+                  {data.content.definitionList &&
                     renderDefinitionList(
                       data.content?.definitionList,
                       setFocusSection,
