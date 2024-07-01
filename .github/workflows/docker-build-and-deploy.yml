@@ -53,7 +53,10 @@ jobs:
           echo "ARTIFACTORY_REPOSITORY"=${{ secrets.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}
 
       - name: Deploy Application in OpenShift
-        run: envsubst < k8s/deployment.yaml | oc apply -f -
+        run: |
+          helm upgrade --install housnav-web charts/housnav \
+            --set image.repository=${{ secrets.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }} \
+            --set imagePullSecrets[0].name=${{ secrets.IMAGE_PULL_SECRET_NAME }} \
 
       - name: Apply Network Policy in OpenShift
         run: oc apply -f k8s/network-policy.yaml
