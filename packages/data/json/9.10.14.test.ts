@@ -2,7 +2,7 @@
 import { describe, it, expect } from "vitest";
 // local
 import { isWalkthroughItemTypeVariable } from "../src/useWalkthroughData";
-import data from "../walkthroughs/9.10.14.json";
+import data from "./9.10.14.json";
 
 describe("Data - 9.10.14", () => {
   it("verify all questions either appear in a section or are of variable type", () => {
