@@ -1,0 +1,10 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: house-innovations-housnav-helm-route
+spec:
+  to:
+    kind: Service
+    name: house-innovations-housnav-helm-service
+  port:
+    targetPort: 3000

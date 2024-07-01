@@ -1,0 +1,6 @@
+apiVersion: v2
+name: house-innovations-housnav-web
+description: Helm chart to deploy House-Innovations-HOUSNAV, compatible with OpenShift 4.
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
