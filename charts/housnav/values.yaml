@@ -2,12 +2,12 @@ replicaCount: 1
 
 image:
   name: house-innovations-housnav-web
-  repository: ${ARTIFACTORY_REPOSITORY}
+  repository: ""
   tag: "fa62c85"
   pullPolicy: IfNotPresent
 
 imagePullSecrets:
-  - name: ${IMAGE_PULL_SECRET_NAME}
+  - name: ""
 
 service:
   type: ClusterIP
