@@ -23,7 +23,6 @@ import PDFDownloadLink, {
   PDFDownloadLinkProps,
 } from "../components/pdf-download-link/PDFDownloadLink";
 import { useWalkthroughState } from "../stores/WalkthroughRootStore";
-import { GLOSSARY_TERMS } from "../tests/mockData";
 
 // Define custom components for html-react-parser
 const definedTermName = "defined-term";
@@ -66,6 +65,13 @@ export const parseStringToComponents = (
     replace: (domNode: DOMNode) => {
       if (domNode instanceof Element && domNode.attribs) {
         const props = attributesToProps(domNode.attribs);
+        let term = domToReact(domNode.children as DOMNode[]) as string;
+        try {
+          term = (domNode.attribs["override-term"] ?? term).toLocaleLowerCase();
+        } catch (error) {
+          // console.warn("Error parsing string", error, domNode.children);
+        }
+        const tooltipTerm = domNode.attribs["override-tooltip"] ?? term;
 
         switch (domNode.name) {
           case definedTermName: {
