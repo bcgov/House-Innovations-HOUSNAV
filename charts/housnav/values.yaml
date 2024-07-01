@@ -22,6 +22,9 @@ readinessProbe:
   initialDelaySeconds: 30
   periodSeconds: 10
 
+networkPolicy:
+  enabled: true
+
 resources: {}
 
 # nodeSelector: {}
