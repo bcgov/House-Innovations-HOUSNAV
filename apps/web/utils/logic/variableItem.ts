@@ -37,7 +37,8 @@ export const getVariableItemValueObject = (
         // paradigms dictate that the fallback item should be the last item in the array
         if (
           variableValueLogicItem.variableValueLogicType ===
-          VariableValueLogicType.Fallback
+            VariableValueLogicType.Fallback &&
+          variableValueLogicItem.variableValueToSet
         ) {
           newObjectVariable[key] = variableValueLogicItem.variableValueToSet;
           break;
@@ -51,7 +52,8 @@ export const getVariableItemValueObject = (
 
         if (
           variableValueLogicItem.variableValueLogicType ===
-          VariableValueLogicType.Equals
+            VariableValueLogicType.Equals &&
+          variableValueLogicItem.variableValueToSet
         ) {
           if (
             answerToCheckValue &&
