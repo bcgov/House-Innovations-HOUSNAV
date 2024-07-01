@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - '.github/**'
   workflow_dispatch: # This allows you to manually trigger the workflow
 
 jobs:
@@ -48,6 +50,7 @@ jobs:
         run: |
           echo "ARTIFACTORY_IMAGE_PATH=${{ secrets.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web" >> $GITHUB_ENV
           echo "IMAGE_PULL_SECRET_NAME=${{ secrets.IMAGE_PULL_SECRET_NAME }}" >> $GITHUB_ENV
+          echo "ARTIFACTORY_REPOSITORY"=${{ secrets.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}
 
       - name: Deploy Application in OpenShift
         run: envsubst < k8s/deployment.yaml | oc apply -f -
