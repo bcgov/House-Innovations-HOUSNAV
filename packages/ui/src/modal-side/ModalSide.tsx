@@ -85,7 +85,7 @@ function GlossaryContent({
     content: ArticleContentType | GlossaryContentType,
   ): content is GlossaryContentType {
     return (content as GlossaryContentType).definition !== undefined;
-  } 
+  }
   return (
     <>
       <header className="ui-ModalSide--SectionHeaderLine">
