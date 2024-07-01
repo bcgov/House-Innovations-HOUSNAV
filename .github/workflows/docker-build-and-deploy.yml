@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - '.github/**'
   workflow_dispatch: # This allows you to manually trigger the workflow
 
 jobs:
@@ -44,13 +46,10 @@ jobs:
       - name: Login to OpenShift with CLI
         run: oc login --token=${{ secrets.OPENSHIFT_SERVICEACCOUNT_TOKEN }} --server=${{ secrets.OPENSHIFT_SERVER }}
 
-      - name: Export environment variables for OpenShift
-        run: |
-          echo "ARTIFACTORY_IMAGE_PATH=${{ secrets.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web" >> $GITHUB_ENV
-          echo "IMAGE_PULL_SECRET_NAME=${{ secrets.IMAGE_PULL_SECRET_NAME }}" >> $GITHUB_ENV
-
       - name: Deploy Application in OpenShift
-        run: envsubst < k8s/deployment.yaml | oc apply -f -
+        run: |
+          helm upgrade --install housnav-web charts/housnav \
+            --set image.repository=${{ secrets.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }} \
+            --set image.tag=${{ env.GIT_SHA }} \
+            --set imagePullSecrets[0].name=${{ secrets.IMAGE_PULL_SECRET_NAME }}
 
-      - name: Apply Network Policy in OpenShift
-        run: oc apply -f k8s/network-policy.yaml
