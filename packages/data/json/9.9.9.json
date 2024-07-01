@@ -2383,7 +2383,7 @@
       "resultDisplayMessage": "You have selected an option that indicates that this building is an alteration to an existing building. Alteration to existing buildings have alternative measures for Building Code compliance. These alternative measures are beyond the scope of this tool at this time. Please see Sentences <pdf-download-link>1.1.1.1(6)</pdf-download-link> and <pdf-download-link>1.1.1.2.(1)</pdf-download-link>, and <pdf-download-link>Table 1.1.1.1.(6)</pdf-download-link> in Division A - Section 1.1 ‘General’ for more information."
     },
     "R04": {
-      "resultDisplayMessage": "Based on the options you have selected this project does not contain a Group C residential occupancy. This tool is design to assist BC Building Code 2024 users in evaluating the prescriptive requirements of the BC Building Code for Part 9 Group C residential occupancy buildings, therefore your project is beyond the scope of this tool at this time."
+      "resultDisplayMessage": "Based on the options you have selected this project does not contain a Group C residential occupancy. This tool is designed to assist BC Building Code 2024 users in evaluating the prescriptive requirements of the BC Building Code for Part 9 Group C residential occupancy buildings, therefore your project is beyond the scope of this tool at this time."
     },
     "R05": {
       "resultDisplayMessage": "Based on the options you have selected; this project is not a Part 9 building. This tool is designed to assist BC Building Code 2024 users in evaluating the Acceptable Solutions in Division B of the BC Building Code for Part 9 buildings, therefore your project is beyond the scope of this tool at this time."
