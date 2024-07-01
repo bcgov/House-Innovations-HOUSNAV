@@ -50,7 +50,7 @@ jobs:
         run: |
           helm upgrade --install housnav-web charts/housnav \
             --set image.repository=${{ secrets.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }} \
-            --set image.tag=${{ env.GIT_SHA }}
+            --set image.tag=${{ env.GIT_SHA }} \
             --set imagePullSecrets[0].name=${{ secrets.IMAGE_PULL_SECRET_NAME }}
 
       - name: Apply Network Policy in OpenShift
