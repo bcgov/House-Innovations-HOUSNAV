@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: house-innovations-housnav-helm-service
+  name: house-innovations-housnav-web-service
 spec:
   selector:
-    app: house-innovations-housnav-helm
+    app: house-innovations-housnav-web
   ports:
     - protocol: TCP
       port: {{ .Values.service.port }}
