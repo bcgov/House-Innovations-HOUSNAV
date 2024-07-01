@@ -7,7 +7,7 @@ import parse, {
   attributesToProps,
 } from "html-react-parser";
 // repo
-import Button, { ButtonProps } from "@repo/ui/button";
+import Button from "@repo/ui/button";
 import Tooltip from "@repo/ui/tooltip";
 // local
 import DefinedTerm, {
@@ -32,19 +32,14 @@ const buildingCode = "building-code";
 const pdfDownloadLinkName = "pdf-download-link";
 const answerValue = "answer-value";
 
-type CustomComponentTypes =
-  | typeof definedTermName
-  | typeof definedTermModal
-  | typeof pdfDownloadLinkName;
+type CustomComponentTypes = typeof definedTermName | typeof pdfDownloadLinkName;
 
 type CustomComponentProps<T extends CustomComponentTypes> =
   T extends typeof definedTermName
     ? DefinedTermProps
-    : T extends typeof definedTermModal
-      ? ButtonProps
-      : T extends typeof pdfDownloadLinkName
-        ? PDFDownloadLinkProps
-        : never;
+    : T extends typeof pdfDownloadLinkName
+      ? PDFDownloadLinkProps
+      : never;
 
 type CustomComponentRecord<T extends CustomComponentTypes> = {
   [K in T]: FunctionComponent<CustomComponentProps<K>>;
@@ -52,7 +47,6 @@ type CustomComponentRecord<T extends CustomComponentTypes> = {
 
 const customComponents: CustomComponentRecord<CustomComponentTypes> = {
   [definedTermName]: DefinedTerm,
-  [definedTermModal]: Button,
   [pdfDownloadLinkName]: PDFDownloadLink,
 };
 type CustomHandler = (section: string) => void;
@@ -146,7 +140,7 @@ export const parseStringToComponents = (
             }
             const displayValue = getQuestionAnswerValueDisplay(questionId);
 
-            return <span className="">{displayValue}</span>;
+            return <span>{displayValue}</span>;
           }
         }
       }
