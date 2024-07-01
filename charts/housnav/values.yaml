@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   name: house-innovations-housnav-web
   repository: ""
-  tag: "fa62c85"
+  tag: ""
   pullPolicy: IfNotPresent
 
 imagePullSecrets:
