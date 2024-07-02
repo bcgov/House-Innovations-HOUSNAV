@@ -70,7 +70,7 @@ export default function RadioGroup({
   className,
   ...props
 }: RadioGroupProps) {
-  const currentValue = value || undefined;
+  const currentValue = value || null;
   const testIdNamespace = testid || name;
 
   return (
