@@ -68,33 +68,30 @@ describe("RadioGroup", () => {
   });
 
   // default value
-  it("renders item with default value as selected", () => {
-    const defaultValue = OPTION_2_VALUE;
+  it("if no value, then tabindex is still 0", () => {
     const { getByTestId } = render(
       <RadioGroup
         options={RADIO_GROUP_OPTIONS}
         label={RADIO_GROUP_LABEL}
         name={RADIO_GROUP_NAME}
-        value={defaultValue}
       />,
     );
 
-    // get options and inputs and check if correct one is selected
-    const option1 = getByTestId(
+    // get inputs
+    const input1 = getByTestId(
       GET_TESTID_RADIO(RADIO_GROUP_NAME, OPTION_1_VALUE),
-    );
-    const option2 = getByTestId(
-      GET_TESTID_RADIO(RADIO_GROUP_NAME, defaultValue),
-    );
-    const option3 = getByTestId(
+    ).querySelector("input[type='radio']");
+    const input2 = getByTestId(
+      GET_TESTID_RADIO(RADIO_GROUP_NAME, OPTION_2_VALUE),
+    ).querySelector("input[type='radio']");
+    const input3 = getByTestId(
       GET_TESTID_RADIO(RADIO_GROUP_NAME, OPTION_3_VALUE),
-    );
-    const input1 = option1.querySelector("input[type='radio']");
-    const input2 = option2.querySelector("input[type='radio']");
-    const input3 = option3.querySelector("input[type='radio']");
-    expect(input1).not.toBeChecked();
-    expect(input2).toBeChecked();
-    expect(input3).not.toBeChecked();
+    ).querySelector("input[type='radio']");
+
+    // expect inputs to have a tabindex of 0
+    expect(input1).toHaveAttribute("tabindex", "0");
+    expect(input2).toHaveAttribute("tabindex", "0");
+    expect(input3).toHaveAttribute("tabindex", "0");
   });
   // selected value overrides default value
   it("renders item with selected value as selected", () => {
@@ -113,7 +110,7 @@ describe("RadioGroup", () => {
       GET_TESTID_RADIO(RADIO_GROUP_NAME, OPTION_1_VALUE),
     );
     const option2 = getByTestId(
-      GET_TESTID_RADIO(RADIO_GROUP_NAME, OPTION_2_VALUE),
+      GET_TESTID_RADIO(RADIO_GROUP_NAME, selectedValue),
     );
     const option3 = getByTestId(
       GET_TESTID_RADIO(RADIO_GROUP_NAME, OPTION_3_VALUE),
