@@ -88,7 +88,7 @@
           "answerValue": "1"
         },
         {
-          "answerDisplayText": "The project will be <defined-term>occupied</defined-term>.",
+          "answerDisplayText": "The project will be <defined-term override-term='occupancy'>occupied</defined-term>.",
           "answerValue": "2"
         },
         {
@@ -100,7 +100,7 @@
           "answerValue": "4"
         },
         {
-          "answerDisplayText": "The project will result in an <defined-term>addition</defined-term> to an existing <defined-term>building</defined-term>.",
+          "answerDisplayText": "The project will result in an addition to an existing <defined-term>building</defined-term>.",
           "answerValue": "5"
         },
         {
@@ -116,7 +116,7 @@
           "answerValue": "8"
         },
         {
-          "answerDisplayText": "The project will involve changes that will affect the <defined-term>occupied</defined-term> parts of the <defined-term>building</defined-term>.",
+          "answerDisplayText": "The project will involve changes that will affect the <defined-term override-term='occupancy'>occupied</defined-term> parts of the <defined-term>building</defined-term>.",
           "answerValue": "9"
         },
         {
@@ -128,7 +128,7 @@
           "answerValue": "11"
         },
         {
-          "answerDisplayText": "The project will involve work necessary to ensure safety in parts affected but not directly involved in an <defined-term>addition</defined-term> to the <defined-term>building</defined-term>.",
+          "answerDisplayText": "The project will involve work necessary to ensure safety in parts affected but not directly involved in an addition to the <defined-term>building</defined-term>.",
           "answerValue": "12"
         },
         {
@@ -148,7 +148,7 @@
           "answerValue": "16"
         },
         {
-          "answerDisplayText": "This project will involve the <defined-term>alteration</defined-term>, rehabilitation and change of <defined-term>occupancy</defined-term> of <defined-term>heritage buildings</defined-term>.",
+          "answerDisplayText": "This project will involve the <defined-term>alteration</defined-term>, rehabilitation and change of <defined-term>occupancy</defined-term> of <defined-term override-term='heritage building'>heritage buildings</defined-term>.",
           "answerValue": "17"
         },
         {
@@ -191,7 +191,7 @@
           "answerValue": "1"
         },
         {
-          "answerDisplayText": "This project consists of utility towers and poles, and television, radio and other communication aerials and towers, except for loads resulting from their being located on or attached to <defined-term>buildings</defined-term>.",
+          "answerDisplayText": "This project consists of utility towers and poles, and television, radio and other communication aerials and towers, except for loads resulting from their being located on or attached to <defined-term override-term='building'>buildings</defined-term>.",
           "answerValue": "2"
         },
         {
@@ -207,7 +207,7 @@
           "answerValue": "5"
         },
         {
-          "answerDisplayText": "This project has permission of the <defined-term>authorities having jurisdiction</defined-term> to provide construction site offices, seasonal storage buildings, special events facilities, emergency facilities, and/or similar structure.",
+          "answerDisplayText": "This project has permission of the <defined-term  override-term='authority having jurisdiction'>authorities having jurisdiction</defined-term> to provide construction site offices, seasonal storage buildings, special events facilities, emergency facilities, and/or similar structure.",
           "answerValue": "6"
         },
         {
