@@ -59,7 +59,7 @@
                 "sentences": [
                   {
                     "numberReference": "9.9.9.2.(1)",
-                    "description": "Except as provided in <building-code-modal reference='9.9.9.2.(2)'>Sentence (2)</building-code-modal> and <pdf-download-link number='99731' named-dest='9.9.7.3. Dead-End <defined-term>Corridors</defined-term>'>Sentence 9.9.7.3.(1)</pdf-download-link>, where an egress door from a <defined-term>dwelling unit</defined-term> opens onto a <defined-term>public corridor</defined-term> or exterior passageway it shall be possible from the location where the egress door opens onto the corridor or exterior passageway to go in opposite directions to 2 separate <defined-term override-term='exit'>exits</defined-term> unless the <defined-term>dwelling unit</defined-term> has a second and separate <defined-term>means of egress</defined-term>."
+                    "description": "Except as provided in <building-code-modal reference='9.9.9.2.(2)'>Sentence (2)</building-code-modal> and <pdf-download-link number='99731' named-dest='9.9.7.3. Dead-End Corridors'>Sentence 9.9.7.3.(1)</pdf-download-link>, where an egress door from a <defined-term>dwelling unit</defined-term> opens onto a <defined-term>public corridor</defined-term> or exterior passageway it shall be possible from the location where the egress door opens onto the corridor or exterior passageway to go in opposite directions to 2 separate <defined-term override-term='exit'>exits</defined-term> unless the <defined-term>dwelling unit</defined-term> has a second and separate <defined-term>means of egress</defined-term>."
                   },
                   {
                     "numberReference": "9.9.9.2.(2)",

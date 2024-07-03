@@ -129,7 +129,7 @@ export const parseStringToComponents = (
 
           case glossaryTerm:
             return (
-              <span className="ui-ModalSide-Term">
+              <span className="ui-ModalGlossaryContent-Term">
                 {domToReact(domNode.children as DOMNode[]) as string}
               </span>
             );

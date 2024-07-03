@@ -1,3 +1,10 @@
+.ui-ModalSide--ModalContentHeader {
+  grid-column: span 3;
+  font-size: var(--typography-font-size-h4);
+  font-weight: var(--typography-font-weights-bold);
+  padding-left: var(--layout-margin-large);
+}
+
 .ui-ModalGlossaryContent-Term {
   color: var(--typography-color-link);
   font-weight: var(--typography-font-weights-bold);
