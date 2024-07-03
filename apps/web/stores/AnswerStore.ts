@@ -65,6 +65,8 @@ export class AnswerStore {
   setAnswerValueOnChange = (value: AnswerTypes, questionId: string) => {
     this.eraseAnswersAfterCurrentItem();
 
+    this.rootStore.navigationStore.farthestItemId = questionId;
+
     this.answers[questionId] = value;
   };
 
@@ -74,6 +76,8 @@ export class AnswerStore {
       currentQuestionAsMultipleChoiceMultiple,
       getPossibleAnswersFromMultipleChoiceMultiple,
     } = this.rootStore;
+
+    this.rootStore.navigationStore.farthestItemId = currentItemId;
 
     // set default value for new item if it's a multiple choice multiple question and isNotRequired
     // we want to be able to reference the answer object in the future even if the user doesn't answer it

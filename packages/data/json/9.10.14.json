@@ -3,10 +3,10 @@
     "title": "Spatial Separation Between Buildings",
     "subtitle": "Volume II - 9.10.14.1-4",
     "description": "Ensure a building’s separation passes code.",
-    "startingSectionId": "intro"
+    "startingSectionId": "1_intro"
   },
   "sections": {
-    "intro": {
+    "1_intro": {
       "sectionTitle": "Introduction",
       "sectionQuestions": [
         "P01",
@@ -19,7 +19,7 @@
         "P08"
       ]
     },
-    "91014": {
+    "2_91014": {
       "sectionTitle": "9.10.14. Spatial Separation Between Buildings",
       "sectionQuestions": [
         "P1",

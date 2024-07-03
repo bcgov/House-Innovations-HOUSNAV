@@ -1,0 +1,102 @@
+.web-StepTrackerItems--Header {
+  font: var(--typography-bold-large-body);
+  padding-right: var(--layout-padding-10);
+  padding-bottom: var(--layout-padding-10);
+}
+
+.web-StepTrackerItems--Section {
+  list-style-type: none;
+}
+
+.web-StepTrackerItems--SectionTitle {
+  padding: var(--layout-padding-small);
+  display: flex;
+  align-items: center;
+  gap: var(--layout-padding-12);
+  font: var(--typography-regular-body);
+  border-left: var(--layout-border-width-large) solid transparent;
+}
+
+.-currentSection .web-StepTrackerItems--SectionTitle {
+  color: var(--typography-color-primary);
+  font: var(--typography-bold-body);
+  background-color: var(--theme-blue-10);
+  border-left-color: var(--surface-color-background-dark-blue);
+}
+
+.-skippedSection .web-StepTrackerItems--SectionTitle {
+  color: var(--typography-color-disabled);
+  text-decoration: line-through;
+}
+
+.web-StepTrackerItems--SectionTitleToggleIcon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  transform: rotate(-90deg);
+  transition: transform var(--transition-medium);
+  color: var(--icons-color-disabled);
+}
+
+.-currentSection .web-StepTrackerItems--SectionTitleToggleIcon {
+  color: var(--typography-color-primary);
+  transform: rotate(0);
+}
+
+.web-StepTrackerItems--SectionTitleCompleteIcon {
+  margin-left: auto;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--icons-color-success);
+}
+
+.web-StepTrackerItems--SectionBody {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: 250ms grid-template-rows ease;
+}
+
+.-currentSection .web-StepTrackerItems--SectionBody {
+  grid-template-rows: 1fr;
+}
+
+.web-StepTrackerItems--SectionBody > ol {
+  overflow: hidden;
+}
+
+.web-StepTrackerItems--SectionItem {
+  list-style-type: none;
+  color: var(--typography-color-secondary);
+  padding: var(--layout-padding-small);
+  margin-left: var(--layout-margin-xxlarge);
+  border-left: var(--layout-border-width-small) solid
+    var(--surface-color-border-medium);
+  display: flex;
+  align-items: center;
+  gap: var(--layout-padding-small);
+}
+
+.web-StepTrackerItems--SectionItem.-currentItem {
+  background-color: var(--theme-gray-10);
+}
+
+.web-StepTrackerItems--SectionItem h4 {
+  font: var(--typography-regular-small-body);
+}
+
+.web-StepTrackerItems--SectionItem.-currentItem h4 {
+  font: var(--typography-bold-small-body);
+}
+
+.web-StepTrackerItems--SectionItem.-skippedItem h4 {
+  color: var(--typography-color-disabled);
+  text-decoration: line-through;
+}
+
+.web-StepTrackerItems--SectionItem .ui-Icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--icons-color-success);
+}

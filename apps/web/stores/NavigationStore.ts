@@ -13,7 +13,9 @@ export class NavigationStore {
 
   questionHistory: string[] = [];
 
-  private _itemId: string = "";
+  private _currentItemId: string = "";
+
+  farthestItemId: string = "";
 
   constructor(rootStore: WalkthroughRootStore) {
     makeAutoObservable(this);
@@ -21,7 +23,7 @@ export class NavigationStore {
   }
 
   set currentItemId(newId: string) {
-    this._itemId = newId;
+    this._currentItemId = newId;
 
     // only add to history if not already in history
     // because this is called on every navigation
@@ -35,7 +37,19 @@ export class NavigationStore {
   }
 
   get currentItemId() {
-    return this._itemId;
+    return this._currentItemId;
+  }
+
+  get currentSectionId() {
+    for (const [sectionId, section] of Object.entries(
+      this.rootStore.walkthroughData.sections,
+    )) {
+      if (section.sectionQuestions.includes(this.currentItemId)) {
+        return sectionId;
+      }
+    }
+
+    return "";
   }
 
   /*
@@ -142,5 +156,59 @@ export class NavigationStore {
     this.currentItemId = this.getPreviousQuestionIdNotVariable(
       this.currentItemId,
     );
+  };
+
+  itemIsComplete = (itemId: string) => {
+    return (
+      this.rootStore.answerStore.answers[itemId] !== undefined &&
+      (this.currentItemId !== itemId ||
+        (this.currentItemId === itemId && !this.nextButtonIsDisabled))
+    );
+  };
+
+  itemWasSkipped = (
+    itemId: string,
+    sectionId: string,
+    sectionIsComplete: boolean,
+  ) => {
+    const sectionToCheck = this.rootStore.walkthroughData.sections[sectionId];
+    if (this.farthestItemId === itemId || !sectionToCheck) return false;
+
+    const itemIndex = sectionToCheck.sectionQuestions.indexOf(itemId);
+    const farthestItemIndex = sectionToCheck.sectionQuestions.indexOf(
+      this.farthestItemId,
+    );
+
+    const pastItem = farthestItemIndex >= 0 && farthestItemIndex > itemIndex;
+
+    return (
+      this.rootStore.answerStore.answers[itemId] === undefined &&
+      (sectionIsComplete || pastItem)
+    );
+  };
+
+  pastSection = (sectionId: string) => {
+    if (!this.farthestItemId) return false;
+    const sections = Object.entries(this.rootStore.walkthroughData.sections);
+    const sectionIndex = sections.findIndex(([id]) => id === sectionId);
+    const farthestSectionIndex = sections.findIndex(([, section]) =>
+      section.sectionQuestions.includes(this.farthestItemId),
+    );
+
+    return farthestSectionIndex === -1 || farthestSectionIndex > sectionIndex;
+  };
+
+  sectionIsComplete = (sectionId: string): boolean => {
+    const section = this.rootStore.walkthroughData.sections[sectionId];
+    return section && this.farthestItemId && this.pastSection(sectionId)
+      ? section.sectionQuestions.some(
+          (questionId) =>
+            this.rootStore.answerStore.answers[questionId] !== undefined,
+        )
+      : false;
+  };
+
+  sectionWasSkipped = (sectionId: string): boolean => {
+    return this.pastSection(sectionId) && !this.sectionIsComplete(sectionId);
   };
 }

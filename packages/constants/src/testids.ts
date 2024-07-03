@@ -26,6 +26,12 @@ export const TESTID_QUESTION_CODE_REFERENCE = "question-code-reference";
 export const TESTID_WALKTHROUGH = "walkthrough";
 export const TESTID_WALKTHROUGH_FOOTER_BACK = "walkthrough-footer-back";
 export const TESTID_WALKTHROUGH_FOOTER_NEXT = "walkthrough-footer-next";
+export const TESTID_STEP_TRACKER = "step-tracker";
+export const TESTID_STEP_TRACKER_MOBILE = "step-tracker-mobile";
+export const TESTID_STEP_TRACKER_MOBILE_BUTTON_OPEN =
+  "step-tracker-mobile-button-open";
+export const TESTID_STEP_TRACKER_MOBILE_BUTTON_CLOSE =
+  "step-tracker-mobile-button-close";
 export const TESTID_RESULT = "result";
 export const TESTID_HEADER = "header";
 export const TESTID_HEADER_MOBILE_NAV = "header-mobile-nav";

@@ -2,7 +2,7 @@
   background-color: var(--surface-color-background-white);
   display: flex;
   justify-content: space-between;
-  padding: var(--layout-padding-smedium) var(--layout-padding-xlarge);
+  padding: var(--layout-padding-14) var(--layout-padding-xlarge);
   border-top: var(--layout-border-width-small) solid
     var(--surface-color-border-default);
 }

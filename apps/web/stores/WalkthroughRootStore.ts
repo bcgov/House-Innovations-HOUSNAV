@@ -175,6 +175,19 @@ export class WalkthroughRootStore {
     return "";
   };
 
+  getQuestionTextByQuestionId = (questionId: string) => {
+    const question = this.walkthroughData.questions[questionId];
+
+    if (!question || !("questionText" in question)) {
+      console.warn(
+        `Question with id ${questionId} not found or has no questionText.`,
+      );
+      return "";
+    }
+
+    return question.questionText;
+  };
+
   questionIsVariable = (questionId: string) => {
     const question = this.walkthroughData.questions[questionId];
     return question && VariableToSetPropertyName in question;
