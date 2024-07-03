@@ -207,6 +207,54 @@ describe("Icon", () => {
     expect(getByTestId(getIconTestId("arrowForward"))).toBeInTheDocument();
     expect(queryByTitle("Go forward")).not.toBeInTheDocument();
   });
+  // expandMore
+  it("renders expandMore icon with title", () => {
+    const { getByTestId, getByTitle } = render(
+      <Icon type="expandMore" id="expandMoreIcon" title="Expand more" />,
+    );
+    const ExpandMoreIcon = getByTestId(getIconTestId("expandMore"));
+    expect(ExpandMoreIcon).toBeInTheDocument();
+    expect(ExpandMoreIcon).toHaveAttribute("aria-labelledby", "expandMoreIcon");
+    expect(getByTitle("Expand more")).toBeInTheDocument();
+  });
+  it("renders expandMore icon without title", () => {
+    const { getByTestId, queryByTitle } = render(<Icon type="expandMore" />);
+    expect(getByTestId(getIconTestId("expandMore"))).toBeInTheDocument();
+    expect(queryByTitle("Expand more")).not.toBeInTheDocument();
+  });
+  // check
+  it("renders check icon with title", () => {
+    const { getByTestId, getByTitle } = render(
+      <Icon type="check" id="checkIcon" title="Check" />,
+    );
+    const CheckIcon = getByTestId(getIconTestId("check"));
+    expect(CheckIcon).toBeInTheDocument();
+    expect(CheckIcon).toHaveAttribute("aria-labelledby", "checkIcon");
+    expect(getByTitle("Check")).toBeInTheDocument();
+  });
+  it("renders check icon without title", () => {
+    const { getByTestId, queryByTitle } = render(<Icon type="check" />);
+    expect(getByTestId(getIconTestId("check"))).toBeInTheDocument();
+    expect(queryByTitle("Check")).not.toBeInTheDocument();
+  });
+  // accountTree
+  it("renders accountTree icon with title", () => {
+    const { getByTestId, getByTitle } = render(
+      <Icon type="accountTree" id="accountTreeIcon" title="Account tree" />,
+    );
+    const AccountTreeIcon = getByTestId(getIconTestId("accountTree"));
+    expect(AccountTreeIcon).toBeInTheDocument();
+    expect(AccountTreeIcon).toHaveAttribute(
+      "aria-labelledby",
+      "accountTreeIcon",
+    );
+    expect(getByTitle("Account tree")).toBeInTheDocument();
+  });
+  it("renders accountTree icon without title", () => {
+    const { getByTestId, queryByTitle } = render(<Icon type="accountTree" />);
+    expect(getByTestId(getIconTestId("accountTree"))).toBeInTheDocument();
+    expect(queryByTitle("Account tree")).not.toBeInTheDocument();
+  });
   // className
   it("renders icon with className", () => {
     const { getByTestId } = render(

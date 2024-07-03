@@ -10,6 +10,7 @@ import { ID_QUESTION_FORM } from "@repo/constants/src/ids";
 import Question from "../question/Question";
 import WalkthroughFooter from "../walkthrough-footer/WalkthroughFooter";
 import Result from "../result/Result";
+import StepTracker from "../step-tracker/StepTracker";
 import { useWalkthroughState } from "../../stores/WalkthroughRootStore";
 import "./Walkthrough.css";
 
@@ -48,7 +49,6 @@ const Walkthrough = observer((): JSX.Element => {
 
   return (
     <div className="web-Walkthrough" data-testid={TESTID_WALKTHROUGH}>
-      <div className="web-Walkthrough--SideNav"></div>
       <div className="web-Walkthrough--Content">
         {currentResult ? (
           <Result displayMessage={currentResult.resultDisplayMessage} />
@@ -63,6 +63,9 @@ const Walkthrough = observer((): JSX.Element => {
           </Form>
         )}
         <WalkthroughFooter />
+      </div>
+      <div className="web-Walkthrough--StepTracker">
+        <StepTracker />
       </div>
     </div>
   );

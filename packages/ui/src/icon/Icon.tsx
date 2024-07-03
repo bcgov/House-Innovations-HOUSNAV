@@ -13,6 +13,9 @@ import CheckboxChecked from "./icons/CheckboxChecked";
 import CheckboxUnchecked from "./icons/CheckboxUnchecked";
 import ArrowBack from "./icons/ArrowBack";
 import ArrowForward from "./icons/ArrowForward";
+import ExpandMore from "./icons/ExpandMore";
+import Check from "./icons/Check";
+import AccountTree from "./icons/AccountTree";
 
 // NOTE: When adding a new icon, make sure to add the string here, and the icon component below in the ICONS object
 export type IconType =
@@ -25,7 +28,10 @@ export type IconType =
   | "checkboxChecked"
   | "checkboxUnchecked"
   | "arrowBack"
-  | "arrowForward";
+  | "arrowForward"
+  | "expandMore"
+  | "check"
+  | "accountTree"; // NOTE: account tree is the name in Material Icons, this is used for the mobile step tracker toggle
 
 export interface IconComponentProps extends SVGProps<SVGSVGElement> {
   /**
@@ -66,6 +72,9 @@ const ICONS: Record<IconType, FunctionComponent<IconProps>> = {
   checkboxUnchecked: CheckboxUnchecked,
   arrowBack: ArrowBack,
   arrowForward: ArrowForward,
+  expandMore: ExpandMore,
+  check: Check,
+  accountTree: AccountTree,
 };
 
 export default function Icon({

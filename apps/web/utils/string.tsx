@@ -54,10 +54,15 @@ type CustomHandler = (section: string) => void;
 export const parseStringToComponents = (
   html: string,
   customHandler?: CustomHandler,
+  ignoreComponentMarkup?: boolean,
 ) => {
   const options = {
     replace: (domNode: DOMNode) => {
-      if (domNode instanceof Element && domNode.attribs) {
+      if (
+        domNode instanceof Element &&
+        domNode.attribs &&
+        !ignoreComponentMarkup
+      ) {
         const props = attributesToProps(domNode.attribs);
         let term = domToReact(domNode.children as DOMNode[]) as string;
         try {
@@ -156,6 +161,12 @@ export const parseStringToComponents = (
             return <span>{displayValue}</span>;
           }
         }
+      } else if (
+        domNode instanceof Element &&
+        domNode.attribs &&
+        ignoreComponentMarkup
+      ) {
+        return <>{domToReact(domNode.children as DOMNode[], options)}</>;
       }
     },
   };

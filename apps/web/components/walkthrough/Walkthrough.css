@@ -2,15 +2,16 @@
   height: calc(100dvh - var(--header-height));
   overflow: hidden;
   display: grid;
+  grid-template-rows: 48px 1fr;
 }
 
-.web-Walkthrough--SideNav {
-  display: none;
-  border-right: var(--layout-border-width-small) solid
+.web-Walkthrough--StepTracker {
+  border-bottom: var(--layout-border-width-small) solid
     var(--surface-color-border-default);
 }
 
 .web-Walkthrough--Content {
+  order: 1;
   display: grid;
   grid-template-rows: auto 67px;
   overflow: hidden;
@@ -25,10 +26,13 @@
 /* TABLET - 608px */
 @media (min-width: 38rem) {
   .web-Walkthrough {
+    grid-template-rows: auto;
     grid-template-columns: var(--walkthrough-side-nav-width) 1fr;
   }
 
-  .web-Walkthrough--SideNav {
-    display: block;
+  .web-Walkthrough--StepTracker {
+    border-bottom: none;
+    border-right: var(--layout-border-width-small) solid
+      var(--surface-color-border-default);
   }
 }
