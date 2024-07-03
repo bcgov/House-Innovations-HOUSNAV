@@ -103,11 +103,19 @@
   font-weight: var(--typography-font-weights-bold);
 }
 
-.ui-ModalSide--SectionNumberLarge {
-  grid-column: span 1;
-  text-align: left;
-  padding: var(--layout-padding-medium);
+.ui-ModalSide--SectionNumber {
   font-size: var(--typography-font-size-h4);
+}
+
+.ui-ModalSide--SectionNumberLarge {
+  font-size: var(--typography-font-size-h3);
+}
+
+.ui-ModalSide--SectionHeader,
+.ui-ModalSide--SectionHeaderLarge {
+  grid-column: span 5;
+  padding-top: var(--layout-padding-medium);
+  padding-left: var(--layout-padding-medium);
   font-weight: var(--typography-font-weights-bold);
 }
 
