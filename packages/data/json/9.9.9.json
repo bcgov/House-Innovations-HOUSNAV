@@ -428,7 +428,7 @@
     },
     "P08": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "How many <defined-term override-term='storey'>storeys</defined-term> in <defined-term>building</defined-term> height will this building be?",
+      "questionText": "How many <defined-term override-term='storey'>storeys</defined-term> in <defined-term>building height</defined-term> will this building be?",
       "possibleAnswers": [
         {
           "answerDisplayText": "1-3 <defined-term override-term='storey'>storeys</defined-term>",

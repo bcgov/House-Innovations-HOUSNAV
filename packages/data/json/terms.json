@@ -27,6 +27,10 @@
     "definition": "<glossary-term>Building Area</glossary-term> means the greatest horizontal area of a <defined-term-glossary>building</defined-term-glossary> above <defined-term-glossary>grade</defined-term-glossary> within the outside surface of exterior walls or within the outside surface of exterior walls and the centre line of <defined-term-glossary override-term='firewall'>firewalls</defined-term-glossary>.",
     "cleanDefinition": "Building Area means the greatest horizontal area of a building above grade within the outside surface of exterior walls or within the outside surface of exterior walls and the centre line of firewalls."
   },
+  "building height": {
+    "definition": "<glossary-term>Building Height</glossary-term> (in storeys) means the number of <defined-term-glossary override-term='storey'>storeys</defined-term-glossary> contained between the roof and the floor of the <defined-term-glossary>first storey</defined-term-glossary>.",
+    "cleanDefinition": "Building Height (in storeys) means the number of storeys contained between the roof and the floor of the first storey. "
+  },
   "business and personal services occupancy": {
     "definition": "<glossary-term>Business and personal services occupancy</glossary-term> <defined-term-glossary override-term='major occupancy' override-tooltip='group d'>(Group D)</defined-term-glossary> means the <defined-term-glossary>occupancy</defined-term-glossary> or use of a <defined-term-glossary>building</defined-term-glossary> or part thereof for the transaction of business or the rendering or receiving of professional or personal services.",
     "cleanDefinition": "Business and personal services occupancy means the occupancy or use of a building or part thereof for the transaction of business or the rendering or receiving of professional or personal services."
@@ -87,7 +91,10 @@
     "definition": "<glossary-term>Firewall</glossary-term> means a type of <defined-term-glossary>fire separation</defined-term-glossary> of noncombustible construction that subdivides a <defined-term-glossary>building</defined-term-glossary> or separates adjoining <defined-term-glossary override-term='building'>buildings</defined-term-glossary> to resist the spread of fire and that has a fire-resistance rating as prescribed in this Code and has structural stability to remain intact under fire conditions for the required fire-rated time.",
     "cleanDefinition": "Firewall means a type of fire separation of noncombustible construction that subdivides a building or separates adjoining buildings to resist the spread of fire and that has a fire-resistance rating as prescribed in this Code and has structural stability to remain intact under fire conditions for the required fire-rated time."
   },
-
+  "first storey": {
+    "definition": "<glossary-term>First Story</glossary-term> means the uppermost <defined-term-glossary>storey</defined-term-glossary> having its floor level not more than 2m above <defined-term-glossary>grade</defined-term-glossary>.",
+    "cleanDefinition": "First Story means the uppermost storey having its floor level not more than 2m above grade."
+  },
   "floor area": {
     "definition": "<glossary-term>Floor area</glossary-term> means the space on any <defined-term-glossary>storey</defined-term-glossary> of a <defined-term-glossary>building</defined-term-glossary> between exterior walls and required <defined-term-glossary override-term='firewall'>firewalls</defined-term-glossary>, including the space occupied by interior walls and <defined-term-glossary>partitions</defined-term-glossary>, but not including <defined-term-glossary override-term='exit'>exits</defined-term-glossary>, <defined-term-glossary override-term='vertical service space'>vertical service spaces</defined-term-glossary>, and their enclosing assemblies.",
     "cleanDefinition": "Floor area means the space on any storey of a building between exterior walls and required firewalls, including the space occupied by interior walls and partitions, but not including <defined-term-glossary override-term='exit'>exits, vertical service spaces, and their enclosing assemblies."
