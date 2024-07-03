@@ -6,20 +6,47 @@ export enum ModalSideDataEnum {
   BUILDING_CODE = "buildingCode",
 }
 
-export type SubClauseType = {
+export type PartType = {
+  numberReference: string;
+  title: string;
+  sections: SectionType[];
+};
+
+export type SectionType = {
+  numberReference: string;
+  title: string;
+  subsections: SubsectionType[];
+};
+
+export type SubsectionType = {
+  numberReference: string;
+  title: string;
+  articles: ArticleType[];
+};
+
+export type ArticleType = {
+  numberReference: string;
+  title?: string;
+  sentences: SentenceType[];
+};
+
+export type SentenceType = {
+  numberReference: string;
   description: string;
-  subClauses?: string[];
-  imagePath?: string;
+  clauses?: SubClauseType[];
+  imageFileName?: string;
   imageDescription?: string;
 };
 
-export type ClauseType = {
+export type SubClauseType = {
+  numberReference: string;
   description: string;
-  subsections?: SubClauseType[];
+  subClauses?: string[];
 };
 
-export type ArticleContentType = {
-  clauses: ClauseType[];
+export type GlossaryType = {
+  reference: string; // The reference of the glossary (Used for the anchor link)
+  content: GlossaryContentType;
 };
 
 export type GlossaryContentType = {
@@ -29,41 +56,46 @@ export type GlossaryContentType = {
   hideTerm?: boolean; // A boolean to hide the term from the glossary (Used for major occupancy groups currently)
 };
 
-export type ArticleType = {
-  section: string; // The section of the glossary (Used for the anchor link)
-  header?: string;
-  content: ArticleContentType | GlossaryContentType;
-};
-
 export type BuildingGlossaryJSONType = {
   [term: string]: GlossaryContentType;
 };
 
+export type ModalSideDataType = {
+  [ModalSideDataEnum.GLOSSARY]: GlossaryType[];
+  [ModalSideDataEnum.BUILDING_CODE]: PartType[];
+};
+
 const GlossaryJSONData = glossary as unknown as BuildingGlossaryJSONType;
 
-// TODO: (ANY) Move to useBuildingCodeData
-export const BuildingCodeJSONData = buildingCode as unknown as ArticleType[];
+export const BuildingCodeJSONData = buildingCode as unknown as PartType[];
 
 export default function transformGlossaryData(
-  data: BuildingGlossaryJSONType,
-): ArticleType[] {
+  data: BuildingGlossaryJSONType
+): GlossaryType[] {
   return Object.entries(data).map(([term, content]) => ({
-    section: term.toLocaleLowerCase(),
-    header: undefined,
+    reference: term.toLocaleLowerCase(),
     content,
   }));
 }
 
 function setMappedGlossaryData(
-  data: BuildingGlossaryJSONType,
+  data: BuildingGlossaryJSONType
 ): Map<string, string> {
   return new Map(
     Object.entries(data).map(([term, content]) => [
       term.toLowerCase(),
       content.cleanDefinition,
-    ]),
+    ])
   );
+}
+
+function setStaticData(): ModalSideDataType {
+  return {
+    [ModalSideDataEnum.GLOSSARY]: transformGlossaryData(GlossaryJSONData),
+    [ModalSideDataEnum.BUILDING_CODE]: BuildingCodeJSONData,
+  };
 }
 
 export const ModalGlossaryData = transformGlossaryData(GlossaryJSONData);
 export const TooltipGlossaryData = setMappedGlossaryData(GlossaryJSONData);
+export const StaticData = setStaticData();

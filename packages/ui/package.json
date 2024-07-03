@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
+    "./modal-building-code-content": "./src/modal-building-code-content/ModalBuildingCodeContent.tsx",
+    "./modal-glossary-content": "./src/modal-glossary-content/ModalGlossaryContent.tsx",
     "./walkthrough-card": "./src/walkthrough-card/WalkthroughCard.tsx",
     "./image": "./src/image/Image.tsx",
     "./tooltip": "./src/tooltip/Tooltip.tsx",

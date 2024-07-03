@@ -94,6 +94,7 @@
 
 .ui-ModalSide--SectionBuildingCodeContentLine {
   display: grid;
+  grid-template-columns: repeat(5, 1fr);
   padding: var(--layout-padding-medium);
   align-items: center;
 }
@@ -104,14 +105,29 @@
 
 .ui-ModalSide--SectionNumber {
   grid-column: span 1;
-  text-align: center;
+  text-align: left;
+  padding: var(--layout-padding-medium);
   font-size: var(--typography-font-size-h5);
+  font-weight: var(--typography-font-weights-bold);
+}
+
+.ui-ModalSide--SectionNumberLarge {
+  grid-column: span 1;
+  text-align: left;
+  padding: var(--layout-padding-medium);
+  font-size: var(--typography-font-size-h4);
   font-weight: var(--typography-font-weights-bold);
 }
 
 .ui-ModalSide--SectionHeader {
   grid-column: span 4;
   font-size: var(--typography-font-size-large-body);
+  font-weight: var(--typography-font-weights-bold);
+}
+
+.ui-ModalSide--SectionHeaderLarge {
+  grid-column: span 4;
+  font-size: var(--typography-font-size-h4);
   font-weight: var(--typography-font-weights-bold);
 }
 
@@ -128,6 +144,10 @@
   border-radius: var(--layout-margin-small, 8px);
   border: 1px solid var(--support-borderColor-info, #053662);
   background: var(--support-surfaceColor-info, #f7f9fc);
+}
+
+.ui-ModalSide--SectionHighlightedPadding {
+  padding: var(--layout-padding-large);
 }
 
 .ui-ModalSide-Term {
@@ -164,4 +184,11 @@
   .ui-ModalSide--Header {
     width: 100%;
   }
+}
+
+.article-image-responsive {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }

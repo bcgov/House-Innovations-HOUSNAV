@@ -45,7 +45,6 @@ export default function DefinedTerm({
     <ModalSide
       type={ModalSideDataEnum.GLOSSARY}
       triggerContent={tooltipButton}
-      modalData={ModalGlossaryData}
       scrollTo={term}
     />
   );

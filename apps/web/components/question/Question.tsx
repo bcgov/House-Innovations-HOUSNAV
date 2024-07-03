@@ -67,8 +67,7 @@ const Question = observer(() => {
                 {currentQuestion.questionCodeReference.displayString}
               </Button>
             }
-            modalData={BuildingCodeJSONData}
-            scrollTo={"9.9.9.1"}
+            scrollTo={currentQuestion.questionCodeReference.codeNumber}
           />
         </p>
       )}

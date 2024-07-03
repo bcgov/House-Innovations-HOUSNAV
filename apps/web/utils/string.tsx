@@ -14,7 +14,6 @@ import DefinedTerm, {
   DefinedTermProps,
 } from "../components/defined-term/DefinedTerm";
 import {
-  BuildingCodeJSONData,
   ModalSideDataEnum,
   TooltipGlossaryData,
 } from "@repo/data/useGlossaryData";
@@ -23,20 +22,15 @@ import PDFDownloadLink, {
   PDFDownloadLinkProps,
 } from "../components/pdf-download-link/PDFDownloadLink";
 import { useWalkthroughState } from "../stores/WalkthroughRootStore";
-import { GLOSSARY_TERMS } from "../tests/mockData";
 
 // Define custom components for html-react-parser
 const definedTermName = "defined-term";
 const definedTermModal = "defined-term-glossary";
 const glossaryTerm = "glossary-term";
 const buildingCode = "building-code";
+const buildingCodeModal = "building-code-modal";
 const pdfDownloadLinkName = "pdf-download-link";
 const answerValue = "answer-value";
-
-type CustomComponentTypes =
-  | typeof definedTermName
-  | typeof definedTermModal
-  | typeof pdfDownloadLinkName;
 
 type CustomComponentTypes = typeof definedTermName | typeof pdfDownloadLinkName;
 
@@ -59,12 +53,19 @@ type CustomHandler = (section: string) => void;
 
 export const parseStringToComponents = (
   html: string,
-  customHandler?: CustomHandler,
+  customHandler?: CustomHandler
 ) => {
   const options = {
     replace: (domNode: DOMNode) => {
       if (domNode instanceof Element && domNode.attribs) {
         const props = attributesToProps(domNode.attribs);
+        let term = domToReact(domNode.children as DOMNode[]) as string;
+        try {
+          term = (domNode.attribs["override-term"] ?? term).toLocaleLowerCase();
+        } catch (error) {
+          // console.warn("Error parsing string", error, domNode.children);
+        }
+        const tooltipTerm = domNode.attribs["override-tooltip"] ?? term;
 
         switch (domNode.name) {
           case definedTermName: {
@@ -112,6 +113,20 @@ export const parseStringToComponents = (
               ></Tooltip>
             );
 
+          case buildingCodeModal:
+            return (
+              <Button
+                variant="glossary"
+                onPress={
+                  customHandler
+                    ? () => customHandler(domNode.attribs["reference"] ?? "")
+                    : () => {}
+                }
+              >
+                {domToReact(domNode.children as DOMNode[])}
+              </Button>
+            );
+
           case glossaryTerm:
             return (
               <span className="ui-ModalSide-Term">
@@ -124,8 +139,7 @@ export const parseStringToComponents = (
               <ModalSide
                 type={ModalSideDataEnum.BUILDING_CODE}
                 triggerContent={<Button variant="code">{term}</Button>}
-                modalData={BuildingCodeJSONData}
-                scrollTo={"9.9.9.1"}
+                scrollTo={domNode.attribs["reference"] ?? ""}
               />
             );
 
@@ -140,19 +154,6 @@ export const parseStringToComponents = (
             const displayValue = getQuestionAnswerValueDisplay(questionId);
 
             return <span>{displayValue}</span>;
-          }
-
-          case answerValue: {
-            const { getQuestionAnswerValueDisplay } = useWalkthroughState();
-            const questionId = domNode.attribs["answer"];
-
-            if (!questionId) {
-              console.warn("Missing question ID - incorrect json data.");
-              return "";
-            }
-            const displayValue = getQuestionAnswerValueDisplay(questionId);
-
-            return <span className="">{displayValue}</span>;
           }
         }
       }
