@@ -103,6 +103,14 @@
   font-weight: var(--typography-font-weights-bold);
 }
 
+.ui-ModalSide--SectionNumberLarge {
+  grid-column: span 1;
+  text-align: left;
+  padding: var(--layout-padding-medium);
+  font-size: var(--typography-font-size-h4);
+  font-weight: var(--typography-font-weights-bold);
+}
+
 .ui-ModalSide--SectionHeader {
   font-size: var(--typography-font-size-h5);
 }
@@ -179,4 +187,11 @@
   .ui-ModalSide--SectionHeaderLarge {
     grid-column: span 4;
   }
+}
+
+.article-image-responsive {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }

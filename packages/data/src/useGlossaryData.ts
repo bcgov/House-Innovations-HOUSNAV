@@ -79,13 +79,13 @@ export default function transformGlossaryData(
 }
 
 function setMappedGlossaryData(
-  data: BuildingGlossaryJSONType,
+  data: BuildingGlossaryJSONType
 ): Map<string, string> {
   return new Map(
     Object.entries(data).map(([term, content]) => [
       term.toLowerCase(),
       content.cleanDefinition,
-    ]),
+    ])
   );
 }
 
