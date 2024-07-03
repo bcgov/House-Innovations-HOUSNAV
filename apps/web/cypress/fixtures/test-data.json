@@ -1,6 +1,329 @@
 {
   "walkthroughs": [
     {
+      "title": "all questions through P19",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "notSure"
+        },
+        {
+          "question": "P02",
+          "type": "checkbox",
+          "answer": "1"
+        },
+        {
+          "question": "P03",
+          "type": "checkbox",
+          "answer": "9"
+        },
+        {
+          "question": "P04",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P05",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P06",
+          "type": "checkbox",
+          "answer": "C"
+        },
+        {
+          "question": "P07",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P08",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P1",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P2",
+          "type": "radio",
+          "answer": "3"
+        },
+        {
+          "question": "P3",
+          "type": "checkbox",
+          "answer": "1"
+        },
+        {
+          "question": "P5",
+          "type": "checkbox",
+          "answer": ""
+        },
+        {
+          "question": "P6",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P7",
+          "type": "checkbox",
+          "answer": "3"
+        },
+        {
+          "question": "P8",
+          "type": "checkbox",
+          "answer": "3"
+        },
+        {
+          "question": "P9",
+          "type": "checkbox",
+          "answer": ""
+        },
+        {
+          "question": "P10",
+          "type": "checkbox",
+          "answer": "1"
+        },
+        {
+          "question": "P11",
+          "type": "radio",
+          "answer": "2"
+        },
+        {
+          "question": "P12",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P13",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P14",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P15",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P16",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P17",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P18",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P19",
+          "type": "radio",
+          "answer": "true"
+        }
+      ],
+      "result": "R10"
+    },
+    {
+      "title": "covers P20-22",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "yes"
+        },
+        {
+          "question": "P04",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P05",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P06",
+          "type": "checkbox",
+          "answer": "C"
+        },
+        {
+          "question": "P07",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P08",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P1",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P2",
+          "type": "radio",
+          "answer": "1"
+        },
+        {
+          "question": "P11",
+          "type": "radio",
+          "answer": "2"
+        },
+        {
+          "question": "P12",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P13",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P14",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P15",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P17",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P20",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P21",
+          "type": "radio",
+          "answer": "B"
+        },
+        {
+          "question": "P22",
+          "type": "radio",
+          "answer": "false"
+        }
+      ],
+      "result": "R10"
+    },
+    {
+      "title": "covers P23-24",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "yes"
+        },
+        {
+          "question": "P04",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P05",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P06",
+          "type": "checkbox",
+          "answer": "C"
+        },
+        {
+          "question": "P07",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P08",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P1",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P2",
+          "type": "radio",
+          "answer": "1"
+        },
+        {
+          "question": "P11",
+          "type": "radio",
+          "answer": "2"
+        },
+        {
+          "question": "P12",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P13",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P14",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P15",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P17",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P20",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P21",
+          "type": "radio",
+          "answer": "C"
+        },
+        {
+          "question": "P23",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P24",
+          "type": "radio",
+          "answer": "true"
+        }
+      ],
+      "result": "R10"
+    },
+    {
       "title": "code does not apply",
       "steps": [
         {
