@@ -586,7 +586,7 @@
     "P5": {
       "walkthroughItemType": "numberFloat",
       "questionText": "What is the area of the <defined-term>exposing building face</defined-term> of this <defined-term>fire compartment</defined-term> (m<sup>2</sup>)?",
-      "questionSubtext": "<p>The area of an <defined-term>exposing building face</defined-term> is calculated by taking the exterior wall area facing in one direction on any side of a <defined-term>building</defined-term>, calculate the total area measured from the finished ground level to the uppermost ceiling, or the area for each <defined-term>fire compartment</defined-term>, where a building is divided into <defined-term>fire compartments</defined-term> by <defined-term>fire separations</defined-term> with <defined-term>fire-resistance ratings</defined-term> not less than 45 min. <building-code-link>Sentence 9.10.14.2.(1)</building-code-link></p><p>If a <defined-term>building</defined-term> is divided by <defined-term>fire separations</defined-term> into <defined-term>fire compartments</defined-term>, the area of the <defined-term>exposing building face</defined-term> is permitted to be calculated for each <defined-term>fire compartment</defined-term>, provided the <defined-term>fire separations</defined-term> have a <defined-term>fire-resistance rating</defined-term> not less than 45 min. <building-code-link>Sentence 9.10.14.2.(4)</building-code-link></p>",
+      "questionSubtext": "<p>The area of an <defined-term>exposing building face</defined-term> is calculated by taking the exterior wall area facing in one direction on any side of a <defined-term>building</defined-term>, calculate the total area measured from the finished ground level to the uppermost ceiling, or the area for each <defined-term>fire compartment</defined-term>, where a building is divided into <defined-term>fire compartments</defined-term> by <defined-term>fire separations</defined-term> with <defined-term>fire-resistance ratings</defined-term> not less than 45 min. <building-code reference='9.10.14.2.(1)'>Sentence 9.10.14.2.(1)</building-code-link></p><p>If a <defined-term>building</defined-term> is divided by <defined-term>fire separations</defined-term> into <defined-term>fire compartments</defined-term>, the area of the <defined-term>exposing building face</defined-term> is permitted to be calculated for each <defined-term>fire compartment</defined-term>, provided the <defined-term>fire separations</defined-term> have a <defined-term>fire-resistance rating</defined-term> not less than 45 min. <building-code reference='9.10.14.2.(4)'>Sentence 9.10.14.2.(4)</building-code-link></p>",
       "nextNavigationLogic": [
         {
           "nextLogicType": "fallback",
@@ -1926,13 +1926,14 @@
       "resultDisplayMessage": "Openings in a wall having a <defined-term>limiting distance</defined-term> of less than 1.2m are required to be protected by <defined-term>closures</defined-term>, other than wired glass or glass block, whose <defined-term>fire-protection rating</defined-term> is in conformance with the <defined-term>fire-resistance rating</defined-term> required for the wall. (See <pdf-download-link>Table 9.10.13.1.</pdf-download-link>)"
     },
     "R20": {
-      "resultDisplayMessage": "Based on <building-code-link>Table 9.10.14.4.-A</building-code-link> and <building-code-link>Sentence 9.10.14.4.(1)</building-code-link> the maximum percentage of unprotected openings in this exterior wall is <result-calculation id='1'/>%, based on an exposing building face of <answer-value answer='P5'/>m<sup>2</sup>, the maximum area would be <result-calculation id='2'/>m<sup>2</sup>.<br/>The maximum size of openable windows having an unobstructed opening equal to or greater than 0.35m<sup>2</sup> installed in accordance with <pdf-download-link>Sentences 9.9.10.1.(1)</pdf-download-link> and <pdf-download-link>(2)</pdf-download-link> is: <result-calculation id='3'/>m<sup>2</sup><br/>A ‘single room or space’ shall mean:<ul><li>two or more adjacent spaces having a full-height separating wall extending less than 1.5 m from the interior face of the exterior wall, or<li></li>two or more stacked spaces that are on the same storey.</li></ul><br/>The spacing between individual unprotected openings described that serve a single room or space shall be not less than:<ul><li>2 m horizontally of another unprotected opening that is on the same exposing building face and serves the single room or space, or<li></li>2 m vertically of another unprotected opening that serves the single room or space, or another room or space on the same storey.</li></ul><br/>*Note: Per <building-code-link>Clause 9.10.14.4.(1)(b)</building-code-link> the percentage of unprotected openings is permitted to be calculated in conformance with <pdf-download-link>Subsection 3.2.3.</pdf-download-link> At this time Subsection 3.2.3 is beyond the scope of this tool",
+      "resultDisplayMessage": "Based on <building-code reference='9.10.14.4.(1)'>Table 9.10.14.4.-A</building-code-link> and <building-code reference='9.10.14.4.(1)'>Sentence 9.10.14.4.(1)</building-code-link> the maximum percentage of unprotected openings in this exterior wall is <result-calculation id='1'/>%, based on an exposing building face of <answer-value answer='P5'/>m<sup>2</sup>, the maximum area would be <result-calculation id='2'/>m<sup>2</sup>.<br/>The maximum size of openable windows having an unobstructed opening equal to or greater than 0.35m<sup>2</sup> installed in accordance with <pdf-download-link>Sentences 9.9.10.1.(1)</pdf-download-link> and <pdf-download-link>(2)</pdf-download-link> is: <result-calculation id='3'/>m<sup>2</sup><br/>A ‘single room or space’ shall mean:<ul><li>two or more adjacent spaces having a full-height separating wall extending less than 1.5 m from the interior face of the exterior wall, or<li></li>two or more stacked spaces that are on the same storey.</li></ul><br/>The spacing between individual unprotected openings described that serve a single room or space shall be not less than:<ul><li>2 m horizontally of another unprotected opening that is on the same exposing building face and serves the single room or space, or<li></li>2 m vertically of another unprotected opening that serves the single room or space, or another room or space on the same storey.</li></ul><br/>*Note: Per <building-code reference='9.10.14.4.(1)(b)'>Clause 9.10.14.4.(1)(b)</building-code-link> the percentage of unprotected openings is permitted to be calculated in conformance with <pdf-download-link>Subsection 3.2.3.</pdf-download-link> At this time Subsection 3.2.3 is beyond the scope of this tool",
       "resultCalculations": [
         {
           "id": "1",
           "resultCalculationType": "maxBetween",
           "valuesToUse": [
-            "P9", {
+            "P9",
+            {
               "resultCalculationType": "divide",
               "valuesToUse": ["P10", "P5"]
             }
@@ -1942,7 +1943,8 @@
           "id": "2",
           "resultCalculationType": "maxBetween",
           "valuesToUse": [
-            "P10", {
+            "P10",
+            {
               "resultCalculationType": "multiply",
               "valuesToUse": ["P9", "P5"]
             }
@@ -1979,7 +1981,8 @@
                 {
                   "resultCalculationType": "multiply",
                   "valuesToUse": [
-                    "0.24", {
+                    "0.24",
+                    {
                       "resultCalculationType": "square",
                       "valueToUse": {
                         "resultCalculationType": "minus",
@@ -1987,7 +1990,8 @@
                           {
                             "resultCalculationType": "multiply",
                             "valuesToUse": ["2", "P6"]
-                          }, "1.2"
+                          },
+                          "1.2"
                         ]
                       }
                     }
@@ -1998,7 +2002,8 @@
             {
               "resultCalculationType": "maxBetween",
               "valuesToUse": [
-                "P10", {
+                "P10",
+                {
                   "resultCalculationType": "multiply",
                   "valuesToUse": ["P9", "P5"]
                 }
@@ -2009,13 +2014,14 @@
       ]
     },
     "R30": {
-      "resultDisplayMessage": "The maximum percentage of unprotected openings in this exterior wall is <result-calculation id='1'/>%, based on an exposing building face of <answer-value answer='P5'/>m<sup>2</sup>, the maximum area would be: <result-calculation id='2'/>m<sup>2</sup>.<br/>*Note: Per <building-code-link>Clause 9.10.14.4.(1)(b)</building-code-link> the percentage of unprotected openings is permitted to be calculated in conformance with <pdf-download-link>Subsection 3.2.3.</pdf-download-link> At this time Subsection 3.2.3 is beyond the scope of this tool",
+      "resultDisplayMessage": "The maximum percentage of unprotected openings in this exterior wall is <result-calculation id='1'/>%, based on an exposing building face of <answer-value answer='P5'/>m<sup>2</sup>, the maximum area would be: <result-calculation id='2'/>m<sup>2</sup>.<br/>*Note: Per <building-code reference='9.10.14.4.(1)(b)'>Clause 9.10.14.4.(1)(b)</building-code-link> the percentage of unprotected openings is permitted to be calculated in conformance with <pdf-download-link>Subsection 3.2.3.</pdf-download-link> At this time Subsection 3.2.3 is beyond the scope of this tool",
       "resultCalculations": [
         {
           "id": "1",
           "resultCalculationType": "maxBetween",
           "valuesToUse": [
-            "P9", {
+            "P9",
+            {
               "resultCalculationType": "divide",
               "valuesToUse": ["P10", "P5"]
             }
@@ -2025,7 +2031,8 @@
           "id": "2",
           "resultCalculationType": "maxBetween",
           "valuesToUse": [
-            "P10", {
+            "P10",
+            {
               "resultCalculationType": "multiply",
               "valuesToUse": ["P9", "P5"]
             }
@@ -2034,10 +2041,10 @@
       ]
     },
     "R40": {
-      "resultDisplayMessage": "Based on your selections and <building-code-link>Article 9.10.14.4.</building-code-link>, this fire compartment is permitted to have unlimited unprotected openings."
+      "resultDisplayMessage": "Based on your selections and <building-code reference='9.10.14.4'>Article 9.10.14.4.</building-code-link>, this fire compartment is permitted to have unlimited unprotected openings."
     },
     "R50": {
-      "resultDisplayMessage": "<building-code-link>Subsection 9.10.14</building-code-link> does not apply to detached carports conforming to <pdf-download-link>Section 9.35.</pdf-download-link> that serve not more than one dwelling unit or a house with a secondary suite."
+      "resultDisplayMessage": "<building-code reference='9.10.14.'>Subsection 9.10.14</building-code-link> does not apply to detached carports conforming to <pdf-download-link>Section 9.35.</pdf-download-link> that serve not more than one dwelling unit or a house with a secondary suite."
     },
     "R51": {
       "resultDisplayMessage": "Based on your selection the percentage and area of unprotected openings should be calculated based on <pdf-download-link>Subsection 9.10.15.</pdf-download-link> At this time this tool does not calculate the percentage and area of unprotected openings of houses that meet the requirements of Subsection 9.10.15."
