@@ -1,0 +1,10 @@
+.ui-ModalBuildingCodeContent--List {
+  padding: revert;
+}
+
+.ui-ModalBuildingCodeContent--SectionLine {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: var(--layout-padding-medium);
+  align-items: center;
+}

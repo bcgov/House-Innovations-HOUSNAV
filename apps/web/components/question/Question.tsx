@@ -20,10 +20,7 @@ import { useWalkthroughState } from "../../stores/WalkthroughRootStore";
 import { parseStringToComponents } from "../../utils/string";
 import "./Question.css";
 import ModalSide from "@repo/ui/modal-side";
-import {
-  ModalSideDataEnum,
-  BuildingCodeJSONData,
-} from "@repo/data/useGlossaryData";
+import { ModalSideDataEnum } from "@repo/data/useGlossaryData";
 
 // helper function to get the correct question component
 const getQuestionComponent = (walkthroughItemType: string) => {

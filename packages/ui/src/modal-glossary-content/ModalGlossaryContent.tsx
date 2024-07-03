@@ -5,6 +5,7 @@ import { GlossaryType, GlossaryContentType } from "@repo/data/useGlossaryData";
 import { parseStringToComponents } from "web/utils/string";
 import { DEFINED_TERMS_SECTION_NUMBER } from "@repo/constants/src/constants";
 import { Heading } from "react-aria-components";
+import "./ModalGlossaryContent.css";
 
 interface GlossaryContentProps {
   modalData: GlossaryType[];
@@ -15,10 +16,10 @@ interface GlossaryContentProps {
 
 function renderDefinitionList(
   definitionList: string[],
-  customHandler?: (location: string) => void
+  customHandler?: (location: string) => void,
 ) {
   return (
-    <ul className="ui-ModalSide--BuildingCodeList">
+    <ul className="ui-ModalBuildingCodeContent--List">
       {definitionList.map((item, index) => (
         <li key={index}>{parseStringToComponents(item, customHandler)}</li>
       ))}
@@ -55,23 +56,23 @@ const GlossaryContent: React.FC<GlossaryContentProps> = ({
                 : ""
             }`}
           >
-            <article className="ui-ModalSide--SectionGlossaryContentLine">
+            <article className="ui-ModalGlossaryContent--SectionLine">
               <p className="ui-ModalSide--SectionContent">
                 {parseStringToComponents(
                   (data.content as GlossaryContentType).definition,
-                  setFocusSection
+                  setFocusSection,
                 )}
               </p>
               <div className="ui-ModalSide--SectionContent">
                 {data.content.definitionList &&
                   renderDefinitionList(
                     data.content.definitionList,
-                    setFocusSection
+                    setFocusSection,
                   )}
               </div>
             </article>
           </section>
-        )
+        ),
     )}
   </>
 );

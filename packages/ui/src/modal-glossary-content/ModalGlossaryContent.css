@@ -1,0 +1,11 @@
+.ui-ModalGlossaryContent-Term {
+  color: var(--typography-color-link);
+  font-weight: var(--typography-font-weights-bold);
+  text-decoration-line: underline;
+}
+
+.ui-ModalGlossaryContent--SectionLine {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+}

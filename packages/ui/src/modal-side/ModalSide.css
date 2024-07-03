@@ -76,7 +76,6 @@
 .ui-ModalSide--Section {
   display: flex;
   grid-column: span 4 / 6;
-
   flex-direction: column;
 }
 
@@ -84,23 +83,6 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   align-items: center;
-}
-
-.ui-ModalSide--SectionGlossaryContentLine {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  align-items: center;
-}
-
-.ui-ModalSide--SectionBuildingCodeContentLine {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  padding: var(--layout-padding-medium);
-  align-items: center;
-}
-
-.ui-ModalSide--BuildingCodeList {
-  padding: revert;
 }
 
 .ui-ModalSide--SectionNumber {
@@ -150,10 +132,11 @@
   padding: var(--layout-padding-large);
 }
 
-.ui-ModalSide-Term {
-  color: var(--typography-color-link);
-  font-weight: var(--typography-font-weights-bold);
-  text-decoration-line: underline;
+.ui-ModalSide-ImageResponsive {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 @keyframes modal-slide-out {
@@ -184,11 +167,4 @@
   .ui-ModalSide--Header {
     width: 100%;
   }
-}
-
-.article-image-responsive {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
 }

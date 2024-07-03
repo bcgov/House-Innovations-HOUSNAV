@@ -4,7 +4,6 @@ import { TESTID_DEFINED_TERM } from "@repo/constants/src/testids";
 import Tooltip from "@repo/ui/tooltip";
 import ModalSide from "@repo/ui/modal-side";
 import {
-  ModalGlossaryData,
   ModalSideDataEnum,
   TooltipGlossaryData,
 } from "@repo/data/useGlossaryData";
