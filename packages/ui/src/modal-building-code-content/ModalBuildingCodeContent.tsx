@@ -10,15 +10,15 @@ import {
 } from "@repo/data/useGlossaryData";
 import { Heading } from "react-aria-components";
 import { parseStringToComponents } from "web/utils/string";
-
 import Image from "../image/Image";
+import "./ModalBuildingCodeContent.css";
 
 function renderSubClauses(
   subClauses: string[],
-  customHandler?: (location: string) => void
+  customHandler?: (location: string) => void,
 ) {
   return (
-    <ol type="i" className="ui-ModalSide--BuildingCodeList">
+    <ol type="i" className="ui-ModalBuildingCodeContent--List">
       {subClauses.map((subClause, index) => (
         <li key={index}>
           <p>{parseStringToComponents(subClause, customHandler)}</p>
@@ -32,10 +32,10 @@ function renderClauses(
   clauses: SubClauseType[],
   sectionRefs: React.MutableRefObject<{ [key: string]: HTMLElement | null }>,
   highlightedSection: string | null,
-  customHandler?: (location: string) => void
+  customHandler?: (location: string) => void,
 ) {
   return (
-    <ol type="a" className="ui-ModalSide--BuildingCodeList">
+    <ol type="a" className="ui-ModalBuildingCodeContent--List">
       {clauses.map((data, index) => (
         <section
           key={index}
@@ -63,7 +63,7 @@ function renderParts(
   parts: PartType[],
   sectionRefs: React.MutableRefObject<{ [key: string]: HTMLElement | null }>,
   highlightedSection: string | null,
-  customHandler?: (location: string) => void
+  customHandler?: (location: string) => void,
 ) {
   return (
     (!!parts &&
@@ -85,7 +85,7 @@ function renderParts(
               data.sections,
               sectionRefs,
               highlightedSection,
-              customHandler
+              customHandler,
             )}
         </section>
       ))) ??
@@ -97,7 +97,7 @@ function renderSections(
   sections: SectionType[],
   sectionRefs: React.MutableRefObject<{ [key: string]: HTMLElement | null }>,
   highlightedSection: string | null,
-  customHandler?: (location: string) => void
+  customHandler?: (location: string) => void,
 ) {
   return (
     (!!sections &&
@@ -119,7 +119,7 @@ function renderSections(
               data.subsections,
               sectionRefs,
               highlightedSection,
-              customHandler
+              customHandler,
             )}
         </section>
       ))) ??
@@ -131,7 +131,7 @@ function renderSubSections(
   subSections: SubsectionType[],
   sectionRefs: React.MutableRefObject<{ [key: string]: HTMLElement | null }>,
   highlightedSection: string | null,
-  customHandler?: (location: string) => void
+  customHandler?: (location: string) => void,
 ) {
   return (
     (!!subSections &&
@@ -160,7 +160,7 @@ function renderSubSections(
               data.articles,
               sectionRefs,
               highlightedSection,
-              customHandler
+              customHandler,
             )}
         </section>
       ))) ??
@@ -172,7 +172,7 @@ function renderArticles(
   articles: ArticleType[],
   sectionRefs: React.MutableRefObject<{ [key: string]: HTMLElement | null }>,
   highlightedSection: string | null,
-  customHandler?: (location: string) => void
+  customHandler?: (location: string) => void,
 ) {
   return (
     (!!articles &&
@@ -201,7 +201,7 @@ function renderArticles(
               data.sentences,
               sectionRefs,
               highlightedSection,
-              customHandler
+              customHandler,
             )}
         </section>
       ))) ??
@@ -213,10 +213,10 @@ function renderSentences(
   sentences: SentenceType[],
   sectionRefs: React.MutableRefObject<{ [key: string]: HTMLElement | null }>,
   highlightedSection: string | null,
-  customHandler?: (location: string) => void
+  customHandler?: (location: string) => void,
 ) {
   return (
-    <article className="ui-ModalSide--SectionBuildingCodeContentLine">
+    <article className="ui-ModalBuildingCodeContent--SectionLine">
       <p className="ui-ModalSide--SectionContent">
         <ol type="1">
           {sentences.map((sentence, index) => (
@@ -236,7 +236,7 @@ function renderSentences(
                   <p>
                     {parseStringToComponents(
                       sentence.description,
-                      customHandler
+                      customHandler,
                     )}
                   </p>
                 )}
@@ -245,7 +245,7 @@ function renderSentences(
                     sentence.clauses,
                     sectionRefs,
                     highlightedSection,
-                    customHandler
+                    customHandler,
                   )}
                 <span>
                   {sentence.imageFileName && (
@@ -254,7 +254,7 @@ function renderSentences(
                       alt={sentence.imageFileName ?? ""}
                       width={800}
                       height={600}
-                      className={"article-image-responsive"}
+                      className={".ui-ModalSide-ImageResponsive"}
                     ></Image>
                   )}
                 </span>
