@@ -29,14 +29,14 @@
   display: flex;
   flex-direction: column;
   padding: var(--layout-padding-large);
+}
 
-  &[data-entering] {
-    animation: modal-slide-in 300ms reverse ease-in;
-  }
+.ui-ModalSide--Modal[data-entering] {
+  animation: modal-slide-in 300ms reverse ease-in;
+}
 
-  &[data-exiting] {
-    animation: modal-slide-out 300ms reverse ease-in;
-  }
+.ui-ModalSide--Modal[data-exiting] {
+  animation: modal-slide-out 300ms reverse ease-in;
 }
 
 .ui-ModalSide--CloseButton {
@@ -53,13 +53,6 @@
   top: 0;
   right: var(--layout-padding-medium);
   background-color: var(--theme-gray-white);
-}
-
-.ui-ModalSide--ModalContentHeader {
-  grid-column: span 3;
-  font-size: var(--typography-font-size-h5);
-  font-weight: var(--typography-font-weights-bold);
-  padding-left: var(--layout-margin-large);
 }
 
 .ui-ModalSide--Content {
@@ -85,32 +78,38 @@
   align-items: center;
 }
 
-.ui-ModalSide--SectionNumber {
-  grid-column: span 1;
-  text-align: left;
-  padding: var(--layout-padding-medium);
-  font-size: var(--typography-font-size-h5);
-  font-weight: var(--typography-font-weights-bold);
-}
-
+.ui-ModalSide--SectionNumber,
 .ui-ModalSide--SectionNumberLarge {
   grid-column: span 1;
   text-align: left;
   padding: var(--layout-padding-medium);
+  padding-right: var(--modal-side-number-padding);
+  font-weight: var(--typography-font-weights-bold);
+}
+
+.ui-ModalSide--SectionNumber {
   font-size: var(--typography-font-size-h4);
+}
+
+.ui-ModalSide--SectionNumberLarge {
+  font-size: var(--typography-font-size-h3);
+}
+
+.ui-ModalSide--SectionHeader,
+.ui-ModalSide--SectionHeaderLarge {
+  grid-column: span 5;
+  padding-top: var(--layout-padding-medium);
+  padding-left: var(--layout-padding-medium);
   font-weight: var(--typography-font-weights-bold);
 }
 
 .ui-ModalSide--SectionHeader {
-  grid-column: span 4;
-  font-size: var(--typography-font-size-large-body);
-  font-weight: var(--typography-font-weights-bold);
+  font-size: var(--typography-font-size-h4);
 }
 
 .ui-ModalSide--SectionHeaderLarge {
-  grid-column: span 4;
-  font-size: var(--typography-font-size-h4);
-  font-weight: var(--typography-font-weights-bold);
+  padding-bottom: var(--layout-padding-medium);
+  font-size: var(--typography-font-size-h3);
 }
 
 .ui-ModalSide--SectionContent {
@@ -143,7 +142,6 @@
   from {
     transform: translateX(100%);
   }
-
   to {
     transform: translateX(0);
   }
@@ -153,7 +151,6 @@
   from {
     transform: translateX(0);
   }
-
   to {
     transform: translateX(100%);
   }
@@ -166,5 +163,20 @@
   }
   .ui-ModalSide--Header {
     width: 100%;
+  }
+  .ui-ModalSide--SectionContent {
+    grid-column: span 6;
+  }
+  .ui-ModalSide--SectionHeaderLine {
+    display: inline;
+  }
+  .ui-ModalSide--SectionNumber,
+  .ui-ModalSide--SectionNumberLarge {
+    padding: 0;
+    padding-right: var(--layout-padding-medium);
+  }
+  .ui-ModalSide--SectionHeader,
+  .ui-ModalSide--SectionHeaderLarge {
+    grid-column: span 4;
   }
 }
