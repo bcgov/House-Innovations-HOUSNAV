@@ -5,7 +5,6 @@ on:
     workflows: ["Deployment-Dev"]
     types:
       - completed
-  workflow_dispatch:
 
 jobs:
   deploy:
