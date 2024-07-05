@@ -1,0 +1,28 @@
+replicaCount: 2
+
+image:
+  name: house-innovations-housnav-web
+  repository: ""
+  tag: ""
+  pullPolicy: IfNotPresent
+
+imagePullSecrets:
+  - name: ""
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 3000
+
+livenessProbe:
+  initialDelaySeconds: 30
+  periodSeconds: 10
+
+readinessProbe:
+  initialDelaySeconds: 30
+  periodSeconds: 10
+
+networkPolicy:
+  enabled: true
+
+resources: {}

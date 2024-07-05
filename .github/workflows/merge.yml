@@ -1,0 +1,74 @@
+name: Dev Deployment
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '.github/**'
+  workflow_dispatch: # This allows you to manually trigger the workflow
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: dev
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Extract Git commit hash
+        run: echo "GIT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+
+      - name: Download outputs from Artifactory
+        run: |
+          curl -v -O \
+            --user ${{ secrets.ARTIFACTORY_SERVICEACCOUNT_USERNAME }}:${{ secrets.ARTIFACTORY_SERVICEACCOUNT_PASSWORD }} \
+            https://${{ secrets.ARTIFACTORY_URL }}/artifactory/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/outputs.txt
+
+      - name: Read and use outputs
+        run: |
+          if [ -f "./outputs.txt" ]; then
+            OUTPUT_SHA=$(cat outputs.txt)
+            echo "OUTPUT_SHA=$OUTPUT_SHA" >> $GITHUB_ENV
+          else
+            echo "No outputs found."
+            exit 1
+          fi
+
+      - name: Login to Artifactory image registry with Docker
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ secrets.ARTIFACTORY_URL }}
+          username: ${{ secrets.ARTIFACTORY_SERVICEACCOUNT_USERNAME }}
+          password: ${{ secrets.ARTIFACTORY_SERVICEACCOUNT_PASSWORD }}
+    
+      - name: Pull Docker image from Artifactory
+        run: docker pull ${{ secrets.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web:${{ env.OUTPUT_SHA }}
+
+      - name: Compare Git SHAs and retag Docker image if different
+        run: |
+          if [ "${{ env.GIT_SHA }}" != "${{ env.OUTPUT_SHA }}" ]; then
+            echo "SHA mismatch: Retagging Docker image."
+            docker tag ${{ secrets.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web:${{ env.OUTPUT_SHA }} ${{ secrets.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web:${{ env.GIT_SHA }}
+          else
+            echo "SHAs match: No action needed."
+          fi
+
+      - name: Push Docker image to Artifactory
+        run: docker push ${{ secrets.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web:${{ env.GIT_SHA }}
+
+      - name: Login to OpenShift with CLI
+        run: |
+          oc login --token=${{ secrets.OPENSHIFT_SERVICEACCOUNT_TOKEN }} --server=${{ secrets.OPENSHIFT_SERVER }}
+          oc project ${{ secrets.OPENSHIFT_PROJECT_NAME }}
+
+      - name: Deploy Application in OpenShift
+        run: |
+          helm upgrade --install . \
+            -f values-dev.yaml \
+            --set image.repository=${{ secrets.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }} \
+            --set image.tag=${{ env.GIT_SHA }} \
+            --set imagePullSecrets[0].name=${{ secrets.IMAGE_PULL_SECRET_NAME }}
+        working-directory: ./charts/housnav
+
