@@ -1,4 +1,8 @@
 {
+  "access to exit": {
+    "definition": "<glossary-term>Access to exit</glossary-term> means that part of a <defined-term-glossary>means of egress</defined-term-glossary> within a <defined-term-glossary>floor area</defined-term-glossary> that provides access to an <defined-term-glossary>exit</defined-term-glossary> serving the <defined-term-glossary>floor area</defined-term-glossary>.",
+    "cleanDefinition": "Access to exit means that part of a means of egress within a floor area that provides access to an exit serving the floor area."
+  },
   "alteration": {
     "definition": "<glossary-term>Alteration</glossary-term> means a change or extension to any matter or thing or to any <defined-term-glossary>occupancy</defined-term-glossary> regulated by this Code.",
     "cleanDefinition": "Alteration means a change or extension to any matter or thing or to any occupancy regulated by this Code."
@@ -88,7 +92,7 @@
     "cleanDefinition": "Fire separation means a construction assembly that acts as a barrier against the spread of fire."
   },
   "firewall": {
-    "definition": "<glossary-term>Firewall</glossary-term> means a type of <defined-term-glossary>fire separation</defined-term-glossary> of noncombustible construction that subdivides a <defined-term-glossary>building</defined-term-glossary> or separates adjoining <defined-term-glossary override-term='building'>buildings</defined-term-glossary> to resist the spread of fire and that has a fire-resistance rating as prescribed in this Code and has structural stability to remain intact under fire conditions for the required fire-rated time.",
+    "definition": "<glossary-term>Firewall</glossary-term> means a type of <defined-term-glossary>fire separation</defined-term-glossary> of noncombustible construction that subdivides a <defined-term-glossary>building</defined-term-glossary> or separates adjoining <defined-term-glossary override-term='building'>buildings</defined-term-glossary> to resist the spread of fire and that has a <defined-term-glossary>fire-resistance rating</defined-term-glossary> as prescribed in this Code and has structural stability to remain intact under fire conditions for the required fire-rated time.",
     "cleanDefinition": "Firewall means a type of fire separation of noncombustible construction that subdivides a building or separates adjoining buildings to resist the spread of fire and that has a fire-resistance rating as prescribed in this Code and has structural stability to remain intact under fire conditions for the required fire-rated time."
   },
   "first storey": {
@@ -97,7 +101,7 @@
   },
   "floor area": {
     "definition": "<glossary-term>Floor area</glossary-term> means the space on any <defined-term-glossary>storey</defined-term-glossary> of a <defined-term-glossary>building</defined-term-glossary> between exterior walls and required <defined-term-glossary override-term='firewall'>firewalls</defined-term-glossary>, including the space occupied by interior walls and <defined-term-glossary>partitions</defined-term-glossary>, but not including <defined-term-glossary override-term='exit'>exits</defined-term-glossary>, <defined-term-glossary override-term='vertical service space'>vertical service spaces</defined-term-glossary>, and their enclosing assemblies.",
-    "cleanDefinition": "Floor area means the space on any storey of a building between exterior walls and required firewalls, including the space occupied by interior walls and partitions, but not including <defined-term-glossary override-term='exit'>exits, vertical service spaces, and their enclosing assemblies."
+    "cleanDefinition": "Floor area means the space on any storey of a building between exterior walls and required firewalls, including the space occupied by interior walls and partitions, but not including exits, vertical service spaces, and their enclosing assemblies."
   },
   "grade": {
     "definition": "<glossary-term>Grade</glossary-term> means the lowest of the average levels of finished ground adjoining each exterior wall of a <defined-term-glossary>building</defined-term-glossary>, except that localized depressions need not be considered in the determination of average levels of finished ground. (See First <defined-term-glossary>storey</defined-term-glossary> and <building-code>Note A-1.4.1.2.(1).</building-code>",
@@ -112,7 +116,7 @@
     "cleanDefinition": "High-hazard industrial occupancy means an industrial occupancy containing sufficient quantities of highly combustible and flammable or explosive materials which, because of their inherent characteristics, constitute a special firehazard."
   },
   "industrial occupancy": {
-    "definition": "<glossary-term>Industrial occupancy</glossary-term> Industrial occupancy <defined-term-glossary override-term='major occupancy' override-tooltip='group f'>(Group F) </defined-term-glossary>means the <defined-term-glossary>occupancy</defined-term-glossary> or use of a <defined-term-glossary>building</defined-term-glossary> or part thereof for the assembling, fabricating, manufacturing, processing, repairing or storing of goods and materials.",
+    "definition": "<glossary-term>Industrial occupancy</glossary-term> <defined-term-glossary override-term='major occupancy' override-tooltip='group f'>(Group F)</defined-term-glossary> means the <defined-term-glossary>occupancy</defined-term-glossary> or use of a <defined-term-glossary>building</defined-term-glossary> or part thereof for the assembling, fabricating, manufacturing, processing, repairing or storing of goods and materials.",
     "cleanDefinition": "Industrial occupancy means the occupancy or use of a building or part thereof for the assembling, fabricating, manufacturing, processing, repairing or storing of goods and materials. "
   },
   "limiting distance": {
@@ -147,7 +151,7 @@
     ]
   },
   "means of egress": {
-    "definition": "<glossary-term>Means of egress</glossary-term> means a continuous path of travel provided for the escape of persons from any point in a <defined-term-glossary>building</defined-term-glossary> or contained open space to a separate <defined-term-glossary>building</defined-term-glossary>, an open public thoroughfare, or an exterior open space protected from fire exposure from the <defined-term-glossary>building</defined-term-glossary> and having access to an open public thoroughfare. Means of egress includes <defined-term-glossary override-term='exit'>exits</defined-term-glossary> and access to <defined-term-glossary override-term='exit'>exits</defined-term-glossary>.",
+    "definition": "<glossary-term>Means of egress</glossary-term> means a continuous path of travel provided for the escape of persons from any point in a <defined-term-glossary>building</defined-term-glossary> or contained open space to a separate <defined-term-glossary>building</defined-term-glossary>, an open public thoroughfare, or an exterior open space protected from fire exposure from the <defined-term-glossary>building</defined-term-glossary> and having access to an open public thoroughfare. Means of egress includes <defined-term-glossary override-term='exit'>exits</defined-term-glossary> and <defined-term-glossary override-term='access to exit'>access to exits</defined-term-glossary>.",
     "cleanDefinition": "Means of egress means a continuous path of travel provided for the escape of persons from any point in a building or contained open space to a separate building, an open public thoroughfare, or an exterior open space protected from fire exposure from the building and having access to an open public thoroughfare. Means of egress includes exits and access to exits."
   },
   "medium-hazard industrial occupancy": {
@@ -159,7 +163,7 @@
     "cleanDefinition": "Mercantile occupancies means the occupancy or use of a building or part thereof for the displaying or selling of retail goods, wares or merchandise."
   },
   "noncombustible": {
-    "definition": "<glossary-term>Noncombustible</glossary-term> means that a material meets the acceptance criteria of CAN/ULC-S114, Standard Method of Test for Determination of Non-Combustibility in <defined-term-glossary>building</defined-term-glossary> materials.",
+    "definition": "<glossary-term>Noncombustible</glossary-term> means that a material meets the acceptance criteria of CAN/ULC-S114, \"Standard Method of Test for Determination of Non-Combustibility in Building Materials.\"",
     "cleanDefinition": "Noncombustible means that a material meets the acceptance criteria of CAN/ULC-S114, Standard Method of Test for Determination of Non-Combustibility in building materials."
   },
   "noncombustible construction": {
@@ -200,7 +204,7 @@
     ]
   },
   "public corridor": {
-    "definition": "<glossary-term>Public corridor</glossary-term> means a corridor that provides access to <defined-term-glossary>exit</defined-term-glossary> from more than one <defined-term-glossary>suite</defined-term-glossary>. <building-code>See Note A-1.4.1.2.(1).</building-code>",
+    "definition": "<glossary-term>Public corridor</glossary-term> means a corridor that provides <defined-term-glossary>access to exit</defined-term-glossary> from more than one <defined-term-glossary>suite</defined-term-glossary>. <building-code>See Note A-1.4.1.2.(1).</building-code>",
     "cleanDefinition": "Public corridor means a corridor that provides access to exit from more than one suite."
   },
   "ramp": {
@@ -248,8 +252,8 @@
     "cleanDefinition": "Unsafe condition means any condition that could cause undue hazard to the life, limb or health of any person authorized or expected to be on or about the premises."
   },
   "unprotected openings": {
-    "definition": "<glossary-term>Unprotected opening</glossary-term> (as applying to <defined-term-glossary>exposing building face</defined-term-glossary>) means a doorway, window or opening other than one equipped with a closure having the required fire-protection rating.",
-    "cleanDefinition": "Unprotected opening means a doorway, window or opening other than one equipped with a closure having the required fire-protection rating."
+    "definition": "<glossary-term>Unprotected opening</glossary-term> (as applying to <defined-term-glossary>exposing building face</defined-term-glossary>) means a doorway, window or opening other than one equipped with a <defined-term-glossary>closure</defined-term-glossary> having the required <defined-term-glossary>fire-protection rating</defined-term-glossary>,  or any part of a wall forming part of the <defined-term-glossary>exposing building face</defined-term-glossary> that has a <defined-term-glossary>fire-resistance rating</defined-term-glossary> less than that required for the <defined-term-glossary>exposing building face</defined-term-glossary>.",
+    "cleanDefinition": "Unprotected opening means a doorway, window or opening other than one equipped with a closure having the required fire-protection rating,  or any part of a wall forming part of the exposing building face that has a fire-resistance rating less than that required for the exposing building face."
   },
   "vertical service space": {
     "definition": "<glossary-term>Vertical service space</glossary-term> means a shaft oriented essentially vertically that is provided in a <defined-term-glossary>building</defined-term-glossary> to facilitate the installation of building services including mechanical, electrical and plumbing installations and facilities such as elevators, refuse chutes and linen chutes.",
@@ -303,6 +307,11 @@
   "group e": {
     "definition": "<defined-term-glossary override-term='major occupancy'>(Group E) Mercantile occupancies</defined-term-glossary>",
     "cleanDefinition": "Mercantile occupancies",
+    "hideTerm": true
+  },
+  "group f": {
+    "definition": "<defined-term-glossary override-term='major occupancy'>(Group F) (Low/Medium/High)-hazard industrial occupancies</defined-term-glossary>",
+    "cleanDefinition": "Industrial occupancies",
     "hideTerm": true
   },
   "group f division 1": {
