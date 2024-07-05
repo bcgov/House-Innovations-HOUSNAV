@@ -29,7 +29,7 @@ export interface ModalSideProps {
     | typeof ModalSideDataEnum.BUILDING_CODE;
   triggerContent: ReactNode;
   modalData: ArticleType[];
-  scrollTo?: string;
+  scrollTo?: string | null;
   "data-testid"?: string;
 }
 
@@ -215,6 +215,22 @@ export default function ModalSide({
     }
   }, [isOpen, focusSection]);
 
+  // Reset focusSection when the modal is closed so that when modal is re-opened, it will scroll to the correct section and not the most recent one
+  useEffect(() => {
+    if (!isOpen) {
+      setFocusSection(scrollTo);
+    }
+  }, [isOpen, scrollTo]);
+
+  // Ensure that if the user clicks the same focusSection twice in a row, the focusSection is still set and re-centered
+  const handleSetFocusSection = (section: string) => {
+    // Reset focusSection before setting it to the new section
+    setFocusSection(null);
+    setTimeout(() => {
+      setFocusSection(section);
+    }, 0);
+  };
+
   return (
     <DialogTrigger onOpenChange={setIsOpen}>
       {triggerContent}
@@ -246,7 +262,7 @@ export default function ModalSide({
                       modalData={modalData}
                       highlightedSection={highlightedSection}
                       sectionRefs={sectionRefs}
-                      setFocusSection={setFocusSection}
+                      setFocusSection={handleSetFocusSection}
                     />
                   )}
                   {type === ModalSideDataEnum.BUILDING_CODE && (
@@ -254,7 +270,7 @@ export default function ModalSide({
                       modalData={modalData}
                       highlightedSection={highlightedSection}
                       sectionRefs={sectionRefs}
-                      setFocusSection={setFocusSection}
+                      setFocusSection={handleSetFocusSection}
                     />
                   )}
                 </div>
