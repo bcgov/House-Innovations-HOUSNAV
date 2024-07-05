@@ -1,8 +1,8 @@
-name: Stage Deployment
+name: Deployment-UAT
 
 on:
   workflow_run:
-    workflows: ["Dev Deployment"]
+    workflows: ["Deployment-Dev"]
     types:
       - completed
   workflow_dispatch:
@@ -11,7 +11,7 @@ jobs:
   deploy:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
-    environment: stage
+    environment: uat
 
     steps:
       - name: Checkout repository
