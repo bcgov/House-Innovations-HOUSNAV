@@ -1,7 +1,7 @@
 <!-- PROJECT SHIELDS -->
 [![Build-and-Test](https://github.com/bcgov/House-Innovations-HOUSNAV/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/bcgov/House-Innovations-HOUSNAV/actions/workflows/build-and-test.yml/)
-[![Deploy-Dev](https://github.com/bcgov/House-Innovations-HOUSNAV/actions/workflows/deploy-dev.yml/badge.svg)](https://github.com/bcgov/House-Innovations-HOUSNAV/actions/workflows/deploy-dev.yml/)
-[![Deploy-UAT](https://github.com/bcgov/House-Innovations-HOUSNAV/actions/workflows/deploy-uat.yml/badge.svg)](https://github.com/bcgov/House-Innovations-HOUSNAV/actions/workflows/deploy-uat.yml/)
+[![Deployment-Dev](https://github.com/bcgov/House-Innovations-HOUSNAV/actions/workflows/deploy-dev.yml/badge.svg)](https://github.com/bcgov/House-Innovations-HOUSNAV/actions/workflows/deploy-dev.yml/)
+[![Deployment-UAT](https://github.com/bcgov/House-Innovations-HOUSNAV/actions/workflows/deploy-uat.yml/badge.svg)](https://github.com/bcgov/House-Innovations-HOUSNAV/actions/workflows/deploy-uat.yml/)
 
 # House-Innovations-HOUSNAV
 
