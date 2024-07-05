@@ -37,7 +37,7 @@ jobs:
 
       - name: Deploy Application in OpenShift
         run: |
-          helm upgrade --install . \
+          helm upgrade --install hausnav . \
             -f values-staging.yaml \
             --set image.repository=${{ secrets.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }} \
             --set image.tag=${{ env.GIT_SHA }} \
