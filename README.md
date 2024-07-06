@@ -87,6 +87,29 @@ As noted above, this repository uses [Lefthook](https://github.com/evilmartians/
 
 Pre-commit the `format`, `lint`, and `test` turbo tasks will run. This will run any `scripts` called `format`, `lint`, or `test` in any of the workspaces. Look at the `package.json` in each workspace for what executes in each. If there are any errors, the commit will be aborted. (Note: `test` normally includes the vitests.)
 
+## Infrastructure & Deployment
+The infrastructure uses a combination of GitHub Actions, JFrog Artifactory, OpenShift, and Helm to manage the continuous integration and deployment (CI/CD) of the application.
+- **GitHub Actions:** Automates the build, test, and deployment workflows
+- **JFrog Artifactory:** Serves as the Docker image repository
+- **OpenShift:** Manages the deployment of applications in different environments (Dev and UAT)
+- **Helm:** Simplifies deploying and managing Kubernetes applications, making deployments easy and consistent
+### Workflows
+#### Build and Test
+This workflow runs on pull requests to the **main** branch and can also be manually triggered. It performs the following actions:
+- Runs unit tests
+- Builds the project and pushes the Docker image to JFrog Artifactory
+- Uploads the short Git SHA to JFrog Artifactory for use in the Deployment-Dev workflow
+- Executes end-to-end tests with Cypress
+#### Deploy to dev
+This workflow runs on pushes to the **main** branch and can also be manually triggered. It performs the following actions:
+- Downloads the short Git SHA from JFrog Artifactory
+- Compares the Git SHAs. If different, retags the Docker image and pushes it to JFrog Artifactory
+- Deploys the application to the dev environment in OpenShift using Helm
+#### Deploy to UAT
+This workflow runs when the **Deployment-Dev** workflow completes successfully. The workflow pauses until one of the team members approves it (the list of team members is assigned in the repository settings). It performs the following actions:
+- Pulls the Docker image from Artifactory
+- Deploys the application to the UAT environment in OpenShift using Helm
+
 ## Style Naming Conventions
 
 This project uses a modified version of [BEM](http://getbem.com/naming/) (Block Element Modifier) naming conventions for CSS classes. The naming convention is as follows:
