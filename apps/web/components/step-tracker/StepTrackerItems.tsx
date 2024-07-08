@@ -8,8 +8,9 @@ import Icon from "@repo/ui/icon";
 import { parseStringToComponents } from "../../utils/string";
 import { useWalkthroughState } from "../../stores/WalkthroughRootStore";
 import "./StepTrackerItems.css";
+import { TESTID_STEP_TRACKER_ITEMS } from "@repo/constants/src/testids";
 
-const StepTrackerItems = observer((): JSX.Element => {
+const StepTrackerItems = observer(({ id }: { id?: string }): JSX.Element => {
   const {
     navigationStore: {
       currentSectionId,
@@ -26,7 +27,13 @@ const StepTrackerItems = observer((): JSX.Element => {
 
   return (
     <>
-      <h2 className="web-StepTrackerItems--Header">Steps</h2>
+      <h2
+        className="web-StepTrackerItems--Header"
+        id={id}
+        data-testid={TESTID_STEP_TRACKER_ITEMS}
+      >
+        Steps
+      </h2>
       <ol>
         {Object.keys(sections).map((sectionId) => {
           const section = sections[sectionId];
