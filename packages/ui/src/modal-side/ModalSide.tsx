@@ -22,7 +22,7 @@ export interface ModalSideProps {
     | typeof ModalSideDataEnum.GLOSSARY
     | typeof ModalSideDataEnum.BUILDING_CODE;
   triggerContent: ReactNode;
-  scrollTo?: string;
+  scrollTo?: string | null;
   "data-testid"?: string;
 }
 

@@ -445,7 +445,7 @@
       "questionText": "What are the <defined-term>major occupancies</defined-term> of this building?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Subsection 9.10.14.",
-        "codeNumber": "V2-DB-9.10.14"
+        "codeNumber": "v2-db-9.10.14"
       },
       "possibleAnswers": [
         {
@@ -497,7 +497,7 @@
       "questionText": "Would this building be required to meet Subsection 9.10.15. per Article 9.10.15.1.?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Sentence 9.10.14.1.(1)",
-        "codeNumber": "V2-DB-9.10.14.1.1"
+        "codeNumber": "v2-db-9.10.14.1.1"
       },
       "possibleAnswers": [
         {
@@ -527,7 +527,7 @@
       "questionText": "Does this building conform to <pdf-download-link>Article 9.35.1.1.</pdf-download-link>?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Sentence 9.10.14.1.(2)",
-        "codeNumber": "V2-DB-9.10.14.1.2"
+        "codeNumber": "v2-db-9.10.14.1.2"
       },
       "possibleAnswers": [
         {
@@ -558,7 +558,7 @@
       "questionSubtext": "<ul><li>Faces a dwelling unit.</li><li>Serves only one dwelling unit.</li><li>Is located on the same property as that dwelling unit.</li><li>The dwelling unit is the only major occupancy on the property.</li></ul>",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Subsection 9.10.14.",
-        "codeNumber": "V2-DB-9.10.14"
+        "codeNumber": "v2-db-9.10.14"
       },
       "possibleAnswers": [
         {
@@ -600,7 +600,7 @@
       "questionSubtext": "<p>The location of the <defined-term>exposing building face</defined-term> shall be taken as a vertical plane located so that there are no <defined-term>unprotected openings</defined-term> between the vertical plane and the line to which the <defined-term>limiting distance</defined-term> is measured. <pdf-download-link>Note A-3.2.3.1.(4)</pdf-download-link></p>",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Sentence 9.10.14.2.(2)",
-        "codeNumber": "V2-DB-9.10.14.2.2"
+        "codeNumber": "v2-db-9.10.14.2.2"
       },
       "NavigationLogic": [
         {
@@ -614,7 +614,7 @@
       "questionText": "Is this compartment <defined-term>sprinklered<defined-term> per <pdf-download-link>Article 3.2.5.12.</pdf-download-link>?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Subsection 9.10.14.",
-        "codeNumber": "V2-DB-9.10.14"
+        "codeNumber": "v2-db-9.10.14"
       },
       "possibleAnswers": [
         {

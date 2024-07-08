@@ -9,7 +9,10 @@ import {
   SubsectionType,
 } from "@repo/data/useGlossaryData";
 import { Heading } from "react-aria-components";
-import { parseStringToComponents } from "web/utils/string";
+import {
+  parseStringToComponents,
+  stripReferencePrefix,
+} from "web/utils/string";
 import Image from "../image/Image";
 import "./ModalBuildingCodeContent.css";
 
@@ -42,12 +45,12 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
     return (
       <ol type="a" className="ui-ModalBuildingCodeContent--List">
         {clauses.map((data, index) => (
-          <section
+          <div
             key={index}
             ref={(el) => {
               sectionRefs.current[data.numberReference] = el;
             }}
-            className={`ui-ModalSide--Section ${
+            className={`${
               highlightedSection === data.numberReference
                 ? "ui-ModalSide--SectionHighlighted ui-ModalSide--SectionHighlightedPadding"
                 : ""
@@ -59,7 +62,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
               </span>
               {data.subClauses && renderSubClauses(data.subClauses)}
             </li>
-          </section>
+          </div>
         ))}
       </ol>
     );
@@ -69,12 +72,12 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
     return (
       (!!parts &&
         parts.map((data, index) => (
-          <section
+          <div
             key={index}
             ref={(el) => {
               sectionRefs.current[data.numberReference] = el;
             }}
-            className={`ui-ModalSide--Section ${
+            className={`${
               highlightedSection === data.numberReference
                 ? "ui-ModalSide--SectionHighlighted"
                 : ""
@@ -82,7 +85,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
           >
             {/* Designs do not show this high level of headings. */}
             {data.sections && renderSections(data.sections)}
-          </section>
+          </div>
         ))) ??
       null
     );
@@ -92,12 +95,12 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
     return (
       (!!sections &&
         sections.map((data, index) => (
-          <section
+          <div
             key={index}
             ref={(el) => {
               sectionRefs.current[data.numberReference] = el;
             }}
-            className={`ui-ModalSide--Section ${
+            className={`${
               highlightedSection === data.numberReference
                 ? "ui-ModalSide--SectionHighlighted"
                 : ""
@@ -105,7 +108,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
           >
             {/* Designs do not show this high level of headings. */}
             {data.subsections && renderSubSections(data.subsections)}
-          </section>
+          </div>
         ))) ??
       null
     );
@@ -115,12 +118,12 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
     return (
       (!!subSections &&
         subSections.map((data, index) => (
-          <section
+          <article
             key={index}
             ref={(el) => {
               sectionRefs.current[data.numberReference] = el;
             }}
-            className={`ui-ModalSide--Section ${
+            className={`${
               highlightedSection === data.numberReference
                 ? "ui-ModalSide--SectionHighlighted"
                 : ""
@@ -129,13 +132,13 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
             <header className="ui-ModalSide--SectionHeaderLine">
               <Heading className="ui-ModalSide--SectionHeaderLarge">
                 <span className="ui-ModalSide--SectionNumberLarge">
-                  {data.numberReference}
+                  {stripReferencePrefix(data.numberReference)}
                 </span>
                 {data.title}
               </Heading>
             </header>
             {data.articles && renderArticles(data.articles)}
-          </section>
+          </article>
         ))) ??
       null
     );
@@ -145,12 +148,12 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
     return (
       (!!articles &&
         articles.map((data, index) => (
-          <section
+          <article
             key={index}
             ref={(el) => {
               sectionRefs.current[data.numberReference] = el;
             }}
-            className={`ui-ModalSide--Section ${
+            className={`${
               highlightedSection === data.numberReference
                 ? "ui-ModalSide--SectionHighlighted"
                 : ""
@@ -159,13 +162,13 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
             <header className="ui-ModalSide--SectionHeaderLine">
               <Heading className="ui-ModalSide--SectionHeader">
                 <span className="ui-ModalSide--SectionNumber">
-                  {data.numberReference}
+                  {stripReferencePrefix(data.numberReference)}
                 </span>
                 {data.title}
               </Heading>
             </header>
             {data.sentences && renderSentences(data.sentences)}
-          </section>
+          </article>
         ))) ??
       null
     );
@@ -173,7 +176,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
 
   const renderSentences = (sentences: SentenceType[]) => {
     return (
-      <article className="ui-ModalBuildingCodeContent--SectionLine">
+      <div className="ui-ModalBuildingCodeContent--SectionLine">
         <div className="ui-ModalSide--SectionContent">
           <ol type="1">
             {sentences.map((sentence, index) => (
@@ -214,7 +217,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
             ))}
           </ol>
         </div>
-      </article>
+      </div>
     );
   };
 
