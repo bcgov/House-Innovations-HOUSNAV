@@ -1,44 +1,44 @@
 [
   {
-    "numberReference": "9",
+    "numberReference": "v2-db-9",
     "title": "Housing and Small Buildings",
     "sections": [
       {
-        "numberReference": "9.9.",
+        "numberReference": "v2-db-9.9.",
         "title": ">Means of Egress",
         "subsections": [
           {
-            "numberReference": "9.9.9.",
+            "numberReference": "v2-db-9.9.9.",
             "title": "Egress from Dwelling Units",
             "articles": [
               {
-                "numberReference": "9.9.9.1",
+                "numberReference": "v2-db-9.9.9.1",
                 "title": "Travel Limit to Exits or Egress Doors",
                 "sentences": [
                   {
-                    "numberReference": "9.9.9.1.(1)",
-                    "description": "Except as provided in <building-code-modal reference='9.9.9.1.(2)'>Sentences (2)</building-code-modal> and <building-code-modal reference='9.9.9.1.(3)'>(3)</building-code-modal>, every <defined-term>dwelling unit</defined-term> containing more than 1 <defined-term>storey</defined-term> shall have <defined-term override-term='exit'>exits</defined-term> or egress doors located so that it shall not be necessary to travel up or down more than 1 <defined-term>storey</defined-term> to reach a level served by:",
+                    "numberReference": "v2-db-9.9.9.1.(1)",
+                    "description": "Except as provided in <building-code-modal reference='v2-db-9.9.9.1.(2)'>Sentences (2)</building-code-modal> and <building-code-modal reference='v2-db-9.9.9.1.(3)'>(3)</building-code-modal>, every <defined-term>dwelling unit</defined-term> containing more than 1 <defined-term>storey</defined-term> shall have <defined-term override-term='exit'>exits</defined-term> or egress doors located so that it shall not be necessary to travel up or down more than 1 <defined-term>storey</defined-term> to reach a level served by:",
                     "clauses": [
                       {
-                        "numberReference": "9.9.9.1.(1)(a)",
+                        "numberReference": "v2-db-9.9.9.1.(1)(a)",
                         "description": "an egress door to a <defined-term>public corridor</defined-term>, enclosed <defined-term>exit</defined-term> stair or exterior passageway, or"
                       },
                       {
-                        "numberReference": "9.9.9.1.(1)(b)",
+                        "numberReference": "v2-db-9.9.9.1.(1)(b)",
                         "description": "an <defined-term>exit</defined-term> doorway not more than 1.5 m above adjacent ground level."
                       }
                     ]
                   },
                   {
-                    "numberReference": "9.9.9.1.(2)",
+                    "numberReference": "v2-db-9.9.9.1.(2)",
                     "description": "Where a <defined-term>dwelling unit</defined-term> is not located above or below another <defined-term>suite</defined-term>, the travel limit from a floor level in the <defined-term>dwelling unit</defined-term> to an <defined-term>exit</defined-term> or egress door may exceed 1 <defined-term>storey</defined-term> where that floor level is served by an openable window",
                     "clauses": [
                       {
-                        "numberReference": "9.9.9.1.(2)(a)",
+                        "numberReference": "v2-db-9.9.9.1.(2)(a)",
                         "description": "providing an unobstructed opening of not less than 1 m in height and 0.55 m in width, and"
                       },
                       {
-                        "numberReference": "9.9.9.1.(2)(b)",
+                        "numberReference": "v2-db-9.9.9.1.(2)(b)",
                         "description": "located so that the sill is not more than",
                         "subClauses": [
                           "1 m above the floor, and",
@@ -48,49 +48,49 @@
                     ]
                   },
                   {
-                    "numberReference": "9.9.9.1.(3)",
+                    "numberReference": "v2-db-9.9.9.1.(3)",
                     "description": "The travel limit from a floor level in a <defined-term>dwelling unit</defined-term> to an <defined-term>exit</defined-term> or egress door may exceed 1 <defined-term>storey</defined-term> where that floor level has direct access to a balcony."
                   }
                 ]
               },
               {
-                "numberReference": "9.9.9.2",
+                "numberReference": "v2-db-9.9.9.2",
                 "title": "Two Separate exits",
                 "sentences": [
                   {
-                    "numberReference": "9.9.9.2.(1)",
-                    "description": "Except as provided in <building-code-modal reference='9.9.9.2.(2)'>Sentence (2)</building-code-modal> and <pdf-download-link number='99731' named-dest='9.9.7.3. Dead-End Corridors'>Sentence 9.9.7.3.(1)</pdf-download-link>, where an egress door from a <defined-term>dwelling unit</defined-term> opens onto a <defined-term>public corridor</defined-term> or exterior passageway it shall be possible from the location where the egress door opens onto the corridor or exterior passageway to go in opposite directions to 2 separate <defined-term override-term='exit'>exits</defined-term> unless the <defined-term>dwelling unit</defined-term> has a second and separate <defined-term>means of egress</defined-term>."
+                    "numberReference": "v2-db-9.9.9.2.(1)",
+                    "description": "Except as provided in <building-code-modal reference='v2-db-9.9.9.2.(2)'>Sentence (2)</building-code-modal> and <pdf-download-link number='99731' named-dest='9.9.7.3. Dead-End Corridors'>Sentence 9.9.7.3.(1)</pdf-download-link>, where an egress door from a <defined-term>dwelling unit</defined-term> opens onto a <defined-term>public corridor</defined-term> or exterior passageway it shall be possible from the location where the egress door opens onto the corridor or exterior passageway to go in opposite directions to 2 separate <defined-term override-term='exit'>exits</defined-term> unless the <defined-term>dwelling unit</defined-term> has a second and separate <defined-term>means of egress</defined-term>."
                   },
                   {
-                    "numberReference": "9.9.9.2.(2)",
+                    "numberReference": "v2-db-9.9.9.2.(2)",
                     "description": "For <defined-term override-term='dwelling unit'>dwelling units</defined-term> in a house with a <defined-term>secondary suite</defined-term>, it need not be possible to go in more than one direction to an <defined-term>exit</defined-term> from the location where the egress door opens into a <defined-term>public corridor</defined-term> or exterior passageway if the <defined-term>building</defined-term> is <defined-term>sprinklered</defined-term> or if each <defined-term>dwelling unit</defined-term> has separate and direct access from each <defined-term>storey</defined-term> to",
                     "clauses": [
                       {
-                        "numberReference": "9.9.9.2.(2)(a)",
+                        "numberReference": "v2-db-9.9.9.2.(2)(a)",
                         "description": "a balcony, or"
                       },
                       {
-                        "numberReference": "9.9.9.2.(2)(b)",
-                        "description": "an openable window conforming to sentences <building-code-modal reference='9.9.9.1.(2)(a)'>9.9.9.1.(2)(a)</building-code-modal> and <building-code-modal reference='9.9.9.1.(2)(b)'>(b)</building-code-modal>."
+                        "numberReference": "v2-db-9.9.9.2.(2)(b)",
+                        "description": "an openable window conforming to sentences <building-code-modal reference='v2-db-9.9.9.1.(2)(a)'>9.9.9.1.(2)(a)</building-code-modal> and <building-code-modal reference='v2-db-9.9.9.1.(2)(b)'>(b)</building-code-modal>."
                       }
                     ]
                   }
                 ]
               },
               {
-                "numberReference": "9.9.9.3",
+                "numberReference": "v2-db-9.9.9.3",
                 "title": "Shared Egress Facilities",
                 "sentences": [
                   {
-                    "numberReference": "9.9.9.3.(1)",
-                    "description": "Except for as provided in <building-code-modal reference='9.9.9.3.(2)'>Sentences (2)</building-code-modal>  and <building-code-modal reference='9.9.9.3.(3)'>(3)</building-code-modal>, a <defined-term>dwelling unit</defined-term> shall be provided with a second and separate <defined-term>means of egress</defined-term> where an egress door from the <defined-term>dwelling unit</defined-term> opens onto",
+                    "numberReference": "v2-db-9.9.9.3.(1)",
+                    "description": "Except for as provided in <building-code-modal reference='v2-db-9.9.9.3.(2)'>Sentences (2)</building-code-modal>  and <building-code-modal reference='v2-db-9.9.9.3.(3)'>(3)</building-code-modal>, a <defined-term>dwelling unit</defined-term> shall be provided with a second and separate <defined-term>means of egress</defined-term> where an egress door from the <defined-term>dwelling unit</defined-term> opens onto",
                     "clauses": [
                       {
-                        "numberReference": "9.9.9.3.(1)(a)",
+                        "numberReference": "v2-db-9.9.9.3.(1)(a)",
                         "description": "an <defined-term>exit</defined-term> stairway serving more than one <defined-term>suite</defined-term>,"
                       },
                       {
-                        "numberReference": "9.9.9.3.(1)(b)",
+                        "numberReference": "v2-db-9.9.9.3.(1)(b)",
                         "description": "a <defined-term>public corridor</defined-term>",
                         "subClauses": [
                           "serving more than one <defined-term>suite</defined-term>, and",
@@ -98,7 +98,7 @@
                         ]
                       },
                       {
-                        "numberReference": "9.9.9.3.(1)(c)",
+                        "numberReference": "v2-db-9.9.9.3.(1)(c)",
                         "description": "an exterior passageway",
                         "subClauses": [
                           "serving more than one <defined-term>suite</defined-term>,",
@@ -107,7 +107,7 @@
                         ]
                       },
                       {
-                        "numberReference": "9.9.9.3.(1)(d)",
+                        "numberReference": "v2-db-9.9.9.3.(1)(d)",
                         "description": "a balcony",
                         "subClauses": [
                           "serving more than one <defined-term>suite</defined-term>,",
@@ -118,34 +118,34 @@
                     ]
                   },
                   {
-                    "numberReference": "9.9.9.3.(2)",
+                    "numberReference": "v2-db-9.9.9.3.(2)",
                     "description": "Where a <defined-term>dwelling unit</defined-term> is located above another <defined-term>dwelling unit</defined-term> or common space in a house with a <defined-term>secondary suite</defined-term>, the upper <defined-term>dwelling unit</defined-term> shall be provided with a second  and separate <defined-term>means of egress</defined-term> where an egress door from that <defined-term>dwelling unit</defined-term> opens onto an exterior passageway that",
                     "clauses": [
                       {
-                        "numberReference": "9.9.9.3.(2)(a)",
+                        "numberReference": "v2-db-9.9.9.3.(2)(a)",
                         "description": "has a floor assembly with a <defined-term>fire-resistance rating</defined-term> less than 45 min,"
                       },
                       {
-                        "numberReference": "9.9.9.3.(2)(b)",
+                        "numberReference": "v2-db-9.9.9.3.(2)(b)",
                         "description": "is served by a single <defined-term>exit</defined-term> stairway or <defined-term>ramp</defined-term>, and"
                       },
                       {
-                        "numberReference": "9.9.9.3.(2)(c)",
+                        "numberReference": "v2-db-9.9.9.3.(2)(c)",
                         "description": "is located more than 1.5 m above adjacent ground level."
                       }
                     ]
                   },
                   {
-                    "numberReference": "9.9.9.3.(3)",
-                    "description": "For <defined-term override-term='dwelling unit'>dwelling units</defined-term> in a house with a <defined-term>secondary suite</defined-term> where an egress door from either <defined-term>dwelling unit</defined-term> opens onto a shared egress facility served by a single <defined-term>exit</defined-term> stairway or <defined-term>ramp</defined-term>, other than as described in <building-code-modal reference='9.9.9.3.(2)'>Sentence (2)</building-code-modal>, a second and separate <defined-term>means of egress</defined-term> need not be provided if the <defined-term>building</defined-term> is <defined-term>sprinklered</defined-term> or if the <defined-term override-term='dwelling unit'>dwelling units</defined-term> have separate and direct access from each <defined-term>storey</defined-term> to",
+                    "numberReference": "v2-db-9.9.9.3.(3)",
+                    "description": "For <defined-term override-term='dwelling unit'>dwelling units</defined-term> in a house with a <defined-term>secondary suite</defined-term> where an egress door from either <defined-term>dwelling unit</defined-term> opens onto a shared egress facility served by a single <defined-term>exit</defined-term> stairway or <defined-term>ramp</defined-term>, other than as described in <building-code-modal reference='v2-db-9.9.9.3.(2)'>Sentence (2)</building-code-modal>, a second and separate <defined-term>means of egress</defined-term> need not be provided if the <defined-term>building</defined-term> is <defined-term>sprinklered</defined-term> or if the <defined-term override-term='dwelling unit'>dwelling units</defined-term> have separate and direct access from each <defined-term>storey</defined-term> to",
                     "clauses": [
                       {
-                        "numberReference": "9.9.9.3.(3)(a)",
+                        "numberReference": "v2-db-9.9.9.3.(3)(a)",
                         "description": "a balcony, or"
                       },
                       {
-                        "numberReference": "9.9.9.3.(3)(b)",
-                        "description": " an openable window conforming to sentences <building-code-modal reference='9.9.9.1.(2)(a)'>9.9.9.1.(2)(a)</building-code-modal> and <building-code-modal reference='9.9.9.1.(2)(b)'>(b)</building-code-modal>."
+                        "numberReference": "v2-db-9.9.9.3.(3)(b)",
+                        "description": " an openable window conforming to sentences <building-code-modal reference='v2-db-9.9.9.1.(2)(a)'>9.9.9.1.(2)(a)</building-code-modal> and <building-code-modal reference='v2-db-9.9.9.1.(2)(b)'>(b)</building-code-modal>."
                       }
                     ]
                   }

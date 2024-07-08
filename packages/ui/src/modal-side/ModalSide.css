@@ -88,11 +88,11 @@
 }
 
 .ui-ModalSide--SectionNumber {
-  font-size: var(--typography-font-size-h4);
+  font-size: var(--typography-font-size-h5);
 }
 
 .ui-ModalSide--SectionNumberLarge {
-  font-size: var(--typography-font-size-h3);
+  font-size: var(--typography-font-size-h4);
 }
 
 .ui-ModalSide--SectionHeader,
@@ -104,12 +104,12 @@
 }
 
 .ui-ModalSide--SectionHeader {
-  font-size: var(--typography-font-size-h4);
+  font-size: var(--typography-font-size-h5);
 }
 
 .ui-ModalSide--SectionHeaderLarge {
   padding-bottom: var(--layout-padding-medium);
-  font-size: var(--typography-font-size-h3);
+  font-size: var(--typography-font-size-h4);
 }
 
 .ui-ModalSide--SectionContent {
