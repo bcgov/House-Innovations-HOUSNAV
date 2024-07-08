@@ -8,23 +8,26 @@ import {
   WalkthroughStateContext,
 } from "../stores/WalkthroughRootStore";
 import { WalkthroughJSONType } from "@repo/data/useWalkthroughData";
+import { AnswerState } from "../stores/AnswerStore";
 
 interface RenderWithWalkthroughProviderOptions extends RenderOptions {
   ui: ReactElement;
   data?: WalkthroughJSONType;
   options?: Omit<RenderOptions, "wrapper">;
+  initialAnswers?: AnswerState;
 }
 
 export const renderWithWalkthroughProvider = ({
   ui,
   data,
   options,
+  initialAnswers,
 }: RenderWithWalkthroughProviderOptions) => {
-  // get data
-  const walkthroughData = useWalkthroughTestData();
-
   // create store
-  const WalkthroughStore = CreateWalkthroughStore(data || walkthroughData);
+  const WalkthroughStore = CreateWalkthroughStore(
+    data || useWalkthroughTestData(),
+    initialAnswers,
+  );
 
   return {
     user: userEvent.setup(),

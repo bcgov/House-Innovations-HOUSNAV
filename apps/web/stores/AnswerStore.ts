@@ -26,9 +26,10 @@ export class AnswerStore {
 
   answers: AnswerState = {};
 
-  constructor(rootStore: WalkthroughRootStore) {
+  constructor(rootStore: WalkthroughRootStore, initialAnswers?: AnswerState) {
     makeAutoObservable(this);
     this.rootStore = rootStore;
+    if (initialAnswers) this.answers = initialAnswers;
   }
 
   handleVariableItem = (
