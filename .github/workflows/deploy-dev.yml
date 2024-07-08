@@ -51,12 +51,11 @@ jobs:
           if [ "${{ env.GIT_SHA }}" != "${{ env.OUTPUT_SHA }}" ]; then
             echo "SHA mismatch: Retagging Docker image."
             docker tag ${{ secrets.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web:${{ env.OUTPUT_SHA }} ${{ secrets.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web:${{ env.GIT_SHA }}
+            echo "Push Docker image to Artifactory"
+            docker push ${{ secrets.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web:${{ env.GIT_SHA }}
           else
             echo "SHAs match: No action needed."
           fi
-
-      - name: Push Docker image to Artifactory
-        run: docker push ${{ secrets.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web:${{ env.GIT_SHA }}
 
       - name: Login to OpenShift with CLI
         run: |
