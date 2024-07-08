@@ -14,7 +14,10 @@ import {
   TooltipGlossaryData,
 } from "@repo/data/useGlossaryData";
 import ModalSide from "@repo/ui/modal-side";
-import { ANSWER_DISPLAY_VALUE_PLACEHOLDER } from "@repo/constants/src/constants";
+import {
+  ANSWER_DISPLAY_VALUE_PLACEHOLDER,
+  ANSWER_DISPLAY_VALUE_PLACEHOLDER_A11Y,
+} from "@repo/constants/src/constants";
 // local
 import DefinedTerm, {
   DefinedTermProps,
@@ -177,13 +180,25 @@ export const parseStringToComponents = (
 const getAnswerValueDisplay = (questionId?: string) => {
   if (!questionId) {
     console.warn("Missing question ID - incorrect json data.");
-    return ANSWER_DISPLAY_VALUE_PLACEHOLDER;
+    return (
+      <span aria-label={ANSWER_DISPLAY_VALUE_PLACEHOLDER_A11Y}>
+        ANSWER_DISPLAY_VALUE_PLACEHOLDER
+      </span>
+    );
   }
 
   const { getQuestionAnswerValueDisplay } = useWalkthroughState();
   const displayValue = getQuestionAnswerValueDisplay(questionId);
 
-  return <>{displayValue || ANSWER_DISPLAY_VALUE_PLACEHOLDER}</>;
+  if (!displayValue) {
+    return (
+      <span aria-label={ANSWER_DISPLAY_VALUE_PLACEHOLDER_A11Y}>
+        {ANSWER_DISPLAY_VALUE_PLACEHOLDER}
+      </span>
+    );
+  }
+
+  return <>{displayValue}</>;
 };
 
 export const getStringFromComponents = (node: ReactNode): string => {
