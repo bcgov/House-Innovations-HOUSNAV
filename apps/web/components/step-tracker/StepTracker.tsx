@@ -14,6 +14,7 @@ import Icon from "@repo/ui/icon";
 // local
 import StepTrackerItems from "./StepTrackerItems";
 import "./StepTracker.css";
+import { ID_STEP_TRACKER_TITLE } from "@repo/constants/src/ids";
 
 const StepTracker = (): JSX.Element => {
   const [stepTrackerIsOpen, setStepTrackerIsOpen] = useState(false);
@@ -34,7 +35,10 @@ const StepTracker = (): JSX.Element => {
         onOpenChange={setStepTrackerIsOpen}
         data-testid={TESTID_STEP_TRACKER_MOBILE}
       >
-        <Dialog className="web-StepTracker--Mobile">
+        <Dialog
+          className="web-StepTracker--Mobile"
+          aria-labelledby={ID_STEP_TRACKER_TITLE}
+        >
           <Button
             aria-label="Close the step tracker"
             isIconButton
@@ -45,7 +49,7 @@ const StepTracker = (): JSX.Element => {
           >
             <Icon type="close" />
           </Button>
-          <StepTrackerItems />
+          <StepTrackerItems id={ID_STEP_TRACKER_TITLE} />
         </Dialog>
       </Modal>
       <div className="web-StepTracker--TabletUp">

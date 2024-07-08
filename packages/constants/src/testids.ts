@@ -32,6 +32,7 @@ export const TESTID_STEP_TRACKER_MOBILE_BUTTON_OPEN =
   "step-tracker-mobile-button-open";
 export const TESTID_STEP_TRACKER_MOBILE_BUTTON_CLOSE =
   "step-tracker-mobile-button-close";
+export const TESTID_STEP_TRACKER_ITEMS = "step-tracker-items";
 export const TESTID_RESULT = "result";
 export const TESTID_HEADER = "header";
 export const TESTID_HEADER_MOBILE_NAV = "header-mobile-nav";
