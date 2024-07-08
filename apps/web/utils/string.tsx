@@ -9,15 +9,16 @@ import parse, {
 // repo
 import Button from "@repo/ui/button";
 import Tooltip from "@repo/ui/tooltip";
-// local
-import DefinedTerm, {
-  DefinedTermProps,
-} from "../components/defined-term/DefinedTerm";
 import {
   ModalSideDataEnum,
   TooltipGlossaryData,
 } from "@repo/data/useGlossaryData";
 import ModalSide from "@repo/ui/modal-side";
+import { ANSWER_DISPLAY_VALUE_PLACEHOLDER } from "@repo/constants/src/constants";
+// local
+import DefinedTerm, {
+  DefinedTermProps,
+} from "../components/defined-term/DefinedTerm";
 import PDFDownloadLink, {
   PDFDownloadLinkProps,
 } from "../components/pdf-download-link/PDFDownloadLink";
@@ -149,16 +150,7 @@ export const parseStringToComponents = (
             );
 
           case answerValue: {
-            const { getQuestionAnswerValueDisplay } = useWalkthroughState();
-            const questionId = domNode.attribs["answer"];
-
-            if (!questionId) {
-              console.warn("Missing question ID - incorrect json data.");
-              return "";
-            }
-            const displayValue = getQuestionAnswerValueDisplay(questionId);
-
-            return <span>{displayValue}</span>;
+            return getAnswerValueDisplay(domNode.attribs["answer"]);
           }
         }
       } else if (
@@ -166,11 +158,32 @@ export const parseStringToComponents = (
         domNode.attribs &&
         ignoreComponentMarkup
       ) {
-        return <>{domToReact(domNode.children as DOMNode[], options)}</>;
+        const isComponent =
+          !!customComponents[domNode.name as CustomComponentTypes];
+
+        if (isComponent) {
+          return <>{domToReact(domNode.children as DOMNode[], options)}</>;
+        } else if (domNode.name === answerValue) {
+          return getAnswerValueDisplay(domNode.attribs["answer"]);
+        }
+
+        return domToReact(domNode.children as DOMNode[], options);
       }
     },
   };
   return parse(html, options);
+};
+
+const getAnswerValueDisplay = (questionId?: string) => {
+  if (!questionId) {
+    console.warn("Missing question ID - incorrect json data.");
+    return ANSWER_DISPLAY_VALUE_PLACEHOLDER;
+  }
+
+  const { getQuestionAnswerValueDisplay } = useWalkthroughState();
+  const displayValue = getQuestionAnswerValueDisplay(questionId);
+
+  return <>{displayValue || ANSWER_DISPLAY_VALUE_PLACEHOLDER}</>;
 };
 
 export const getStringFromComponents = (node: ReactNode): string => {
