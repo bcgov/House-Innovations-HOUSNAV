@@ -147,13 +147,6 @@
   padding: var(--layout-padding-large);
 }
 
-.ui-ModalSide-ImageResponsive {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
 @keyframes modal-slide-out {
   from {
     transform: translateX(100%);

@@ -7,6 +7,7 @@ import {
   SentenceType,
   SectionType,
   SubsectionType,
+  ImageModalType,
 } from "@repo/data/useGlossaryData";
 import { Heading } from "react-aria-components";
 import {
@@ -196,28 +197,66 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
                     <span>
                       {parseStringToComponents(
                         sentence.description,
-                        setFocusSection,
+                        setFocusSection
                       )}
                     </span>
                   )}
                   {sentence.clauses && renderClauses(sentence.clauses)}
-                  <span>
-                    {sentence.imageFileName && (
-                      <Image
-                        src={sentence.imageFileName}
-                        alt={sentence.imageFileName ?? ""}
-                        width={800}
-                        height={600}
-                        className={"ui-ModalSide-ImageResponsive"}
-                      ></Image>
-                    )}
-                  </span>
+                  {sentence.image && renderTableImage(sentence.image)}
                 </li>
               </section>
             ))}
           </ol>
         </div>
       </div>
+    );
+  };
+
+  const renderTableImage = (image: ImageModalType) => {
+    return (
+      image && (
+        <section
+          key={image.numberReference}
+          ref={(el) => {
+            sectionRefs.current[image.numberReference] = el;
+          }}
+          className={`ui-ModalSide--Section ${
+            highlightedSection === image.numberReference
+              ? "ui-ModalSide--SectionHighlighted ui-ModalSide--SectionHighlightedPadding"
+              : ""
+          }`}
+        >
+          <figure className="ui-ModalBuildingCodeContent--Figure">
+            <figcaption>
+              <div className="ui-ModalBuildingCodeContent--FigureCaptionBold">
+                {image.tableName}
+              </div>
+              <div className="ui-ModalBuildingCodeContent--FigureCaptionBold">
+                {image.title}
+              </div>
+              <div className="ui-ModalBuildingCodeContent--FigureCaption">
+                {parseStringToComponents(image.imageReference, setFocusSection)}
+              </div>
+            </figcaption>
+            <Image
+              src={image.fileName}
+              alt={image.title}
+              aria-label={image.imageLabel}
+              width={800}
+              height={600}
+              className="ui-ModalBuildingCodeContent-ImageResponsive"
+            />
+            {image.imageNotes && (
+              <section className="ui-ModalBuildingCodeContent--TableImageNotes">
+                <header className="ui-ModalBuildingCodeContent--FigureCaptionBold">
+                  Notes to {image.tableName}:
+                </header>
+                {parseStringToComponents(image.imageNotes, setFocusSection)}
+              </section>
+            )}
+          </figure>
+        </section>
+      )
     );
   };
 

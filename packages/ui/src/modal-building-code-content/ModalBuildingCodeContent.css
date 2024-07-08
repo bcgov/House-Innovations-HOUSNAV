@@ -8,3 +8,28 @@
   padding: var(--layout-padding-medium);
   align-items: center;
 }
+
+.ui-ModalBuildingCodeContent-ImageResponsive {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.ui-ModalBuildingCodeContent--Figure {
+  text-align: center;
+}
+
+.ui-ModalBuildingCodeContent--FigureCaption,
+.ui-ModalBuildingCodeContent--FigureCaptionBold {
+  font-size: var(--typography-font-size-label);
+  margin: var(--modal-table-image-caption-margin-negative);
+}
+
+.ui-ModalBuildingCodeContent--FigureCaptionBold {
+  font-weight: var(--typography-font-weights-bold);
+}
+.ui-ModalBuildingCodeContent--TableImageNotes {
+  text-align: left;
+  font-size: var(--typography-font-size-label);
+}

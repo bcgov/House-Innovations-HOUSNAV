@@ -6,6 +6,16 @@ export enum ModalSideDataEnum {
   BUILDING_CODE = "buildingCode",
 }
 
+export type ImageModalType = {
+  numberReference: string;
+  fileName: string;
+  tableName: string;
+  title: string;
+  imageReference: string;
+  imageLabel: string;
+  imageNotes?: string;
+};
+
 export type PartType = {
   numberReference: string;
   title: string;
@@ -34,8 +44,7 @@ export type SentenceType = {
   numberReference: string;
   description: string;
   clauses?: SubClauseType[];
-  imageFileName?: string;
-  imageDescription?: string;
+  image?: ImageModalType;
 };
 
 export type SubClauseType = {
@@ -70,7 +79,7 @@ const GlossaryJSONData = glossary as unknown as BuildingGlossaryJSONType;
 export const BuildingCodeJSONData = buildingCode as unknown as PartType[];
 
 export default function transformGlossaryData(
-  data: BuildingGlossaryJSONType,
+  data: BuildingGlossaryJSONType
 ): GlossaryType[] {
   return Object.entries(data).map(([term, content]) => ({
     reference: term.toLocaleLowerCase(),
