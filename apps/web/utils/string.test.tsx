@@ -4,8 +4,17 @@ import { JSX } from "react";
 // repo
 import { getQuestion } from "@repo/data/useWalkthroughTestData";
 // local
-import { getStringFromComponents, parseStringToComponents } from "./string";
+import {
+  getStringFromComponents,
+  parseStringToComponents,
+  getAnswerValueDisplay,
+} from "./string";
 import { isArray } from "./typeChecking";
+import { renderWithWalkthroughProvider } from "../tests/utils";
+
+const AnswerValueTestComponent = ({ questionId }: { questionId?: string }) => {
+  return <>{getAnswerValueDisplay(questionId)}</>;
+};
 
 describe("string", () => {
   /*
@@ -149,5 +158,27 @@ describe("string", () => {
     const boolean = true;
     const result = getStringFromComponents(boolean);
     expect(result).toBe("");
+  });
+  /*
+   * getAnswerValueDisplay
+   */
+  it("getAnswerValueDisplay: no questionId", () => {
+    const result = getAnswerValueDisplay();
+    expect(result).toMatchSnapshot();
+  });
+  it("getAnswerValueDisplay: no displayValue", () => {
+    const { container } = renderWithWalkthroughProvider({
+      ui: <AnswerValueTestComponent questionId={"test"} />,
+    });
+    expect(container).toMatchSnapshot();
+  });
+  it("getAnswerValueDisplay: with displayValue", () => {
+    const { container } = renderWithWalkthroughProvider({
+      ui: <AnswerValueTestComponent questionId={"P01"} />,
+      initialAnswers: {
+        P01: "yes",
+      },
+    });
+    expect(container).toMatchSnapshot();
   });
 });

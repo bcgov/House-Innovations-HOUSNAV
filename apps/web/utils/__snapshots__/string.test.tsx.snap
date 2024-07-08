@@ -1,0 +1,19 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`string > getAnswerValueDisplay: no displayValue 1`] = `
+<div>
+  <span
+    aria-label="blank"
+  >
+    _____
+  </span>
+</div>
+`;
+
+exports[`string > getAnswerValueDisplay: no questionId 1`] = `<AnswerDisplayValuePlaceholder />`;
+
+exports[`string > getAnswerValueDisplay: with displayValue 1`] = `
+<div>
+  Yes
+</div>
+`;

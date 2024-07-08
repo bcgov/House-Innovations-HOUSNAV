@@ -16,7 +16,7 @@ import {
 import { NEXT_NAVIGATION_ID_ERROR } from "@repo/constants/src/constants";
 // local
 import { NavigationStore } from "./NavigationStore";
-import { AnswerStore } from "./AnswerStore";
+import { AnswerState, AnswerStore } from "./AnswerStore";
 import { getPossibleAnswers } from "../utils/logic/showAnswer";
 import { isString } from "../utils/typeChecking";
 
@@ -26,12 +26,15 @@ export class WalkthroughRootStore {
 
   walkthroughData: WalkthroughJSONType = {} as WalkthroughJSONType;
 
-  constructor(walkthroughData: WalkthroughJSONType) {
+  constructor(
+    walkthroughData: WalkthroughJSONType,
+    initialAnswers?: AnswerState,
+  ) {
     makeAutoObservable(this);
     this.walkthroughData = walkthroughData;
 
     this.navigationStore = new NavigationStore(this);
-    this.answerStore = new AnswerStore(this);
+    this.answerStore = new AnswerStore(this, initialAnswers);
 
     // set first question as the first question of the starting section
     if (walkthroughData?.info?.startingSectionId && walkthroughData.sections) {
@@ -207,8 +210,9 @@ export class WalkthroughRootStore {
 
 export const CreateWalkthroughStore = (
   walkthroughData: WalkthroughJSONType,
+  initialAnswers?: AnswerState,
 ) => {
-  return new WalkthroughRootStore(walkthroughData);
+  return new WalkthroughRootStore(walkthroughData, initialAnswers);
 };
 
 // create context

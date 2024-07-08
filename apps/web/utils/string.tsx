@@ -177,28 +177,25 @@ export const parseStringToComponents = (
   return parse(html, options);
 };
 
-const getAnswerValueDisplay = (questionId?: string) => {
+const AnswerDisplayValuePlaceholder = () => (
+  <span aria-label={ANSWER_DISPLAY_VALUE_PLACEHOLDER_A11Y}>
+    {ANSWER_DISPLAY_VALUE_PLACEHOLDER}
+  </span>
+);
+export const getAnswerValueDisplay = (questionId?: string) => {
   if (!questionId) {
     console.warn("Missing question ID - incorrect json data.");
-    return (
-      <span aria-label={ANSWER_DISPLAY_VALUE_PLACEHOLDER_A11Y}>
-        ANSWER_DISPLAY_VALUE_PLACEHOLDER
-      </span>
-    );
+    return <AnswerDisplayValuePlaceholder />;
   }
 
   const { getQuestionAnswerValueDisplay } = useWalkthroughState();
-  const displayValue = getQuestionAnswerValueDisplay(questionId);
-
-  if (!displayValue) {
-    return (
-      <span aria-label={ANSWER_DISPLAY_VALUE_PLACEHOLDER_A11Y}>
-        {ANSWER_DISPLAY_VALUE_PLACEHOLDER}
-      </span>
-    );
+  try {
+    const displayValue = getQuestionAnswerValueDisplay(questionId);
+    return <>{displayValue}</>;
+  } catch {
+    console.warn("Error getting answer value display for question", questionId);
+    return <AnswerDisplayValuePlaceholder />;
   }
-
-  return <>{displayValue}</>;
 };
 
 export const getStringFromComponents = (node: ReactNode): string => {
