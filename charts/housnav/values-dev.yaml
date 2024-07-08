@@ -26,9 +26,3 @@ networkPolicy:
   enabled: true
 
 resources: {}
-
-# nodeSelector: {}
-
-# tolerations: []
-
-# affinity: {}
