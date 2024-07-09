@@ -4,6 +4,8 @@
   "private": true,
   "exports": {
     "./button-modal-close": "./src/button-modal-close/ButtonModalClose.tsx",
+    "./modal-building-code-content": "./src/modal-building-code-content/ModalBuildingCodeContent.tsx",
+    "./modal-glossary-content": "./src/modal-glossary-content/ModalGlossaryContent.tsx",
     "./walkthrough-card": "./src/walkthrough-card/WalkthroughCard.tsx",
     "./image": "./src/image/Image.tsx",
     "./tooltip": "./src/tooltip/Tooltip.tsx",
