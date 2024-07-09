@@ -19,7 +19,7 @@ import { ID_STEP_TRACKER_TITLE } from "@repo/constants/src/ids";
 const StepTracker = (): JSX.Element => {
   const [stepTrackerIsOpen, setStepTrackerIsOpen] = useState(false);
   return (
-    <section className="web-StepTracker" data-testid={TESTID_STEP_TRACKER}>
+    <div className="web-StepTracker" data-testid={TESTID_STEP_TRACKER}>
       <Button
         aria-label="Open the step tracker"
         variant="tertiary"
@@ -49,7 +49,7 @@ const StepTracker = (): JSX.Element => {
       <div className="web-StepTracker--TabletUp">
         <StepTrackerItems />
       </div>
-    </section>
+    </div>
   );
 };
 

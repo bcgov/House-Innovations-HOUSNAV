@@ -49,7 +49,7 @@ const Walkthrough = observer((): JSX.Element => {
 
   return (
     <div className="web-Walkthrough" data-testid={TESTID_WALKTHROUGH}>
-      <div className="web-Walkthrough--Content">
+      <section className="web-Walkthrough--Content">
         {currentResult ? (
           <Result displayMessage={currentResult.resultDisplayMessage} />
         ) : (
@@ -63,10 +63,10 @@ const Walkthrough = observer((): JSX.Element => {
           </Form>
         )}
         <WalkthroughFooter />
-      </div>
-      <div className="web-Walkthrough--StepTracker">
+      </section>
+      <section className="web-Walkthrough--StepTracker">
         <StepTracker />
-      </div>
+      </section>
     </div>
   );
 });
