@@ -189,11 +189,11 @@ export const getAnswerValueDisplay = (questionId?: string) => {
   }
 
   const { getQuestionAnswerValueDisplay } = useWalkthroughState();
-  try {
-    const displayValue = getQuestionAnswerValueDisplay(questionId);
+  const displayValue = getQuestionAnswerValueDisplay(questionId);
+
+  if (displayValue) {
     return <>{displayValue}</>;
-  } catch {
-    console.warn("Error getting answer value display for question", questionId);
+  } else {
     return <AnswerDisplayValuePlaceholder />;
   }
 };
