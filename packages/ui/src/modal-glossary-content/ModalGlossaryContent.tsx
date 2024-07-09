@@ -50,7 +50,7 @@ const GlossaryContent: React.FC<GlossaryContentProps> = ({
             ref={(el) => {
               sectionRefs.current[data.reference] = el;
             }}
-            className={`ui-ModalSide--Section ${
+            className={`${
               highlightedSection === data.reference
                 ? "ui-ModalSide--SectionHighlighted"
                 : ""

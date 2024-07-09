@@ -66,12 +66,6 @@
   height: 100vh;
 }
 
-.ui-ModalSide--Section {
-  display: flex;
-  grid-column: span 4 / 6;
-  flex-direction: column;
-}
-
 .ui-ModalSide--SectionHeaderLine {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -104,11 +98,11 @@
 }
 
 .ui-ModalSide--SectionNumber {
-  font-size: var(--typography-font-size-h4);
+  font-size: var(--typography-font-size-h5);
 }
 
 .ui-ModalSide--SectionNumberLarge {
-  font-size: var(--typography-font-size-h3);
+  font-size: var(--typography-font-size-h4);
 }
 
 .ui-ModalSide--SectionHeader,
@@ -146,7 +140,6 @@
 
 .ui-ModalSide--SectionHighlightedPadding {
   padding: var(--layout-padding-large);
-  padding-left: var(--layout-padding-xlarge);
 }
 
 @keyframes modal-slide-out {
@@ -190,11 +183,4 @@
   .ui-ModalSide--SectionHeaderLarge {
     grid-column: span 4;
   }
-}
-
-.article-image-responsive {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
 }

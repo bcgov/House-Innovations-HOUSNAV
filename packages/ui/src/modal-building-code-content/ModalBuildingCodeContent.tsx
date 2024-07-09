@@ -46,24 +46,22 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
     return (
       <ol type="a" className="ui-ModalBuildingCodeContent--OrderedList">
         {clauses.map((data, index) => (
-          <div
+          <li
             key={index}
             ref={(el) => {
               sectionRefs.current[data.numberReference] = el;
             }}
-            className={`${
+            className={`ui-ModalBuildingCodeContent--ListItems ${
               highlightedSection === data.numberReference
                 ? "ui-ModalSide--SectionHighlighted ui-ModalSide--SectionHighlightedPadding"
                 : ""
             }`}
           >
-            <li key={index} className="ui-ModalBuildingCodeContent--ListItems">
-              <span>
-                {parseStringToComponents(data.description, setFocusSection)}
-              </span>
-              {data.subClauses && renderSubClauses(data.subClauses)}
-            </li>
-          </div>
+            <span>
+              {parseStringToComponents(data.description, setFocusSection)}
+            </span>
+            {data.subClauses && renderSubClauses(data.subClauses)}
+          </li>
         ))}
       </ol>
     );
@@ -181,30 +179,28 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
         <div className="ui-ModalSide--SectionContent">
           <ol type="1">
             {sentences.map((sentence, index) => (
-              <section
+              <li
                 key={index}
                 ref={(el) => {
                   sectionRefs.current[sentence.numberReference] = el;
                 }}
-                className={`ui-ModalSide--Section ${
+                className={`${
                   highlightedSection === sentence.numberReference
                     ? "ui-ModalSide--SectionHighlighted ui-ModalSide--SectionHighlightedPadding"
                     : ""
                 }`}
               >
-                <li key={index}>
-                  {sentence.description && (
-                    <span>
-                      {parseStringToComponents(
-                        sentence.description,
-                        setFocusSection,
-                      )}
-                    </span>
-                  )}
-                  {sentence.clauses && renderClauses(sentence.clauses)}
-                  {sentence.image && renderTableImage(sentence.image)}
-                </li>
-              </section>
+                {sentence.description && (
+                  <span>
+                    {parseStringToComponents(
+                      sentence.description,
+                      setFocusSection,
+                    )}
+                  </span>
+                )}
+                {sentence.clauses && renderClauses(sentence.clauses)}
+                {sentence.image && renderTableImage(sentence.image)}
+              </li>
             ))}
           </ol>
         </div>
@@ -220,7 +216,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
           ref={(el) => {
             sectionRefs.current[image.numberReference] = el;
           }}
-          className={`ui-ModalSide--Section ${
+          className={`${
             highlightedSection === image.numberReference
               ? "ui-ModalSide--SectionHighlighted ui-ModalSide--SectionHighlightedPadding"
               : ""
