@@ -90,6 +90,7 @@
   --layout-padding-large: 1.5rem;
   --layout-padding-26: 1.625rem;
   --layout-padding-xlarge: 2rem;
+  --layout-padding-64: 4rem;
   --layout-padding-container: var(--layout-padding-medium);
   --layout-padding-radio-x: var(--layout-padding-medium);
   --layout-padding-radio-y: var(--layout-padding-medium);
@@ -245,6 +246,7 @@
   --walkthrough-card-title-text-decoration-hidden: underline 1px #00000000;
   --walkthrough-card-title-text-decoration-color-transition: underline 1px;
   --walkthrough-card-title-text-underline-offset: 0.2em;
+  --step-tracker-heading-padding-left: var(--layout-padding-xlarge);
   --step-tracker-padding-top: var(--layout-padding-xsmall);
   --step-tracker-padding-left: var(--layout-padding-medium);
   --step-tracker-padding: var(--step-tracker-padding-top)
@@ -270,6 +272,7 @@
     --walkthrough-footer-next-width: auto;
     --step-tracker-mobile-toggle-display: none;
     --step-tracker-tablet-up-display: block;
+    --step-tracker-heading-padding-left: 0;
     --step-tracker-padding-top: var(--layout-padding-medium);
     --step-tracker-padding: var(--step-tracker-padding-top) 0
       var(--step-tracker-padding-top) var(--step-tracker-padding-left);

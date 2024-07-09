@@ -18,15 +18,11 @@
   left: 0;
   right: 0;
   background-color: var(--surface-color-background-white);
-  padding: var(--layout-padding-medium);
   outline: none;
   display: flex;
   flex-direction: column;
   overflow: auto;
-}
-
-.web-StepTracker--MobileClose {
-  align-self: flex-end;
+  padding-top: var(--layout-padding-64);
 }
 
 .web-StepTracker--TabletUp {

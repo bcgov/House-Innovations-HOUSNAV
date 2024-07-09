@@ -6,10 +6,10 @@ import { Dialog, Modal } from "react-aria-components";
 import {
   TESTID_STEP_TRACKER,
   TESTID_STEP_TRACKER_MOBILE,
-  TESTID_STEP_TRACKER_MOBILE_BUTTON_CLOSE,
   TESTID_STEP_TRACKER_MOBILE_BUTTON_OPEN,
 } from "@repo/constants/src/testids";
 import Button from "@repo/ui/button";
+import ButtonModalClose from "@repo/ui/button-modal-close";
 import Icon from "@repo/ui/icon";
 // local
 import StepTrackerItems from "./StepTrackerItems";
@@ -39,16 +39,10 @@ const StepTracker = (): JSX.Element => {
           className="web-StepTracker--Mobile"
           aria-labelledby={ID_STEP_TRACKER_TITLE}
         >
-          <Button
-            aria-label="Close the step tracker"
-            isIconButton
-            variant="secondary"
-            className="web-StepTracker--MobileClose"
+          <ButtonModalClose
+            label="Close the step tracker"
             onPress={() => setStepTrackerIsOpen(false)}
-            data-testid={TESTID_STEP_TRACKER_MOBILE_BUTTON_CLOSE}
-          >
-            <Icon type="close" />
-          </Button>
+          />
           <StepTrackerItems id={ID_STEP_TRACKER_TITLE} />
         </Dialog>
       </Modal>

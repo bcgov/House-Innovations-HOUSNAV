@@ -1,5 +1,6 @@
 .web-StepTrackerItems--Header {
   font: var(--typography-bold-large-body);
+  padding-left: var(--step-tracker-heading-padding-left);
   padding-right: var(--layout-padding-10);
   padding-bottom: var(--layout-padding-10);
 }

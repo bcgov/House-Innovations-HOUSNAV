@@ -5,7 +5,7 @@ import {
   GET_TESTID_BUTTON,
   TESTID_STEP_TRACKER,
   TESTID_STEP_TRACKER_MOBILE,
-  TESTID_STEP_TRACKER_MOBILE_BUTTON_CLOSE,
+  TESTID_BUTTON_MODAL_CLOSE,
   TESTID_STEP_TRACKER_MOBILE_BUTTON_OPEN,
 } from "@repo/constants/src/testids";
 // local
@@ -40,7 +40,7 @@ describe("StepTracker", () => {
     });
 
     expect(
-      getByTestId(GET_TESTID_BUTTON(TESTID_STEP_TRACKER_MOBILE_BUTTON_CLOSE)),
+      getByTestId(GET_TESTID_BUTTON(TESTID_BUTTON_MODAL_CLOSE)),
     ).toBeInTheDocument();
   });
 });
