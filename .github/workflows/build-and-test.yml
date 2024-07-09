@@ -7,6 +7,10 @@ on:
     paths-ignore:
       - '.github/**'
   workflow_dispatch:
+    inputs:
+      pr-number:
+        description: 'PR Number'
+        required: true
 
 jobs:
   test:
@@ -37,14 +41,17 @@ jobs:
       - name: Set PR number
         id: set-pr-number
         run: |
-          if [ -z "${{ github.event.number }}" ]; then
-            echo "PR number is empty. Failing workflow."
-            exit 1
+          if [ -z "${{ github.event.inputs.pr-number }}" ]; then
+            if [ -z "${{ github.event.number }}" ]; then
+              echo "PR number is empty. Failing workflow."
+              exit 1
+            else
+              echo "pr-number=${{ github.event.number }}" >> $GITHUB_OUTPUT
+            fi
           else
-            echo "pr-number=${{ github.event.number }}" >> $GITHUB_OUTPUT
+            echo "pr-number=${{ github.event.inputs.pr-number }}" >> $GITHUB_OUTPUT
           fi
   
-        
       - name: Build Docker image
         run: docker build -t ${{ vars.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web:${{ steps.set-pr-number.outputs.pr-number }} -f apps/web/Dockerfile . --no-cache
 
