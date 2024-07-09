@@ -5,7 +5,6 @@ import { makeAutoObservable, toJS } from "mobx";
 import {
   isWalkthroughItemTypeMultiChoice,
   isWalkthroughItemTypeMultiChoiceMultiple,
-  QuestionBaseData,
   QuestionDisplayData,
   QuestionMultipleChoiceData,
   QuestionMultipleChoiceSelectMultipleData,
@@ -160,21 +159,18 @@ export class WalkthroughRootStore {
   };
 
   getQuestionAnswerValueDisplay = (questionId: string): string => {
-    const answer = this.answerStore.answers[questionId];
-    const { possibleAnswers } = this.walkthroughData.questions[
-      questionId
-    ] as QuestionBaseData;
-    if (!possibleAnswers) return "";
+    const question = this.getQuestionAsDisplayType(questionId);
+    if (!question) return "";
 
+    const answer = this.answerStore.answers[questionId];
     if (isString(answer)) {
-      const answerValue = possibleAnswers.find(
+      const answerValue = question.possibleAnswers.find(
         (possibleAnswer) => possibleAnswer.answerValue === answer,
       );
       const displayValue =
         answerValue?.answerValueDisplay ?? answerValue?.answerDisplayText;
       return displayValue ?? "";
     }
-    console.warn(`Unsupported "answer-value" type for question ${questionId}.`);
     return "";
   };
 
