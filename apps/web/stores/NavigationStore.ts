@@ -166,6 +166,7 @@ export class NavigationStore {
     );
   };
 
+  // an item (aka question) is skipped if it was not answered, and the section is complete, OR we are past the item in the section
   itemWasSkipped = (
     itemId: string,
     sectionId: string,
@@ -187,6 +188,7 @@ export class NavigationStore {
     );
   };
 
+  // helper function used in sectionIsComplete and sectionWasSkipped for determining if we are past the section
   pastSection = (sectionId: string) => {
     if (!this.farthestItemId) return false;
     const sections = Object.entries(this.rootStore.walkthroughData.sections);
@@ -195,9 +197,11 @@ export class NavigationStore {
       section.sectionQuestions.includes(this.farthestItemId),
     );
 
+    // -1 case covers the case when the user is on the results page because the farthestItemId is set to a result, which don't appear in the sections
     return farthestSectionIndex === -1 || farthestSectionIndex > sectionIndex;
   };
 
+  // a section is complete if the user is past the section and the section has at least one question answered
   sectionIsComplete = (sectionId: string): boolean => {
     const section = this.rootStore.walkthroughData.sections[sectionId];
     return section && this.farthestItemId && this.pastSection(sectionId)
@@ -208,6 +212,7 @@ export class NavigationStore {
       : false;
   };
 
+  // a section is skipped if the user is past the section and the section is not complete
   sectionWasSkipped = (sectionId: string): boolean => {
     return this.pastSection(sectionId) && !this.sectionIsComplete(sectionId);
   };
