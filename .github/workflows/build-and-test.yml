@@ -36,7 +36,14 @@ jobs:
 
       - name: Set PR number
         id: set-pr-number
-        run: echo "pr-number=${{ github.event.number }}" >> $GITHUB_OUTPUT
+        run: |
+          if [ -z "${{ github.event.number }}" ]; then
+            echo "PR number is empty. Failing workflow."
+            exit 1
+          else
+            echo "pr-number=${{ github.event.number }}" >> $GITHUB_OUTPUT
+          fi
+  
         
       - name: Build Docker image
         run: docker build -t ${{ vars.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web:${{ steps.set-pr-number.outputs.pr-number }} -f apps/web/Dockerfile . --no-cache
