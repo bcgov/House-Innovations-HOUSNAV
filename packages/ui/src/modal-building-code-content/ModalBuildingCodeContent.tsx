@@ -228,7 +228,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
                 {image.tableName}
               </div>
               <div className="ui-ModalBuildingCodeContent--FigureCaptionBold">
-                {image.title}
+                {parseStringToComponents(image.title)}
               </div>
               <div className="ui-ModalBuildingCodeContent--FigureCaption">
                 {parseStringToComponents(image.imageReference, setFocusSection)}
