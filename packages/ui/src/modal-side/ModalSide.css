@@ -134,6 +134,7 @@
   line-height: var(--typography-line-heights-dense);
   padding: var(--layout-margin-large);
   padding-top: 0;
+  padding-bottom: 0;
   margin-top: 1px;
 }
 
@@ -145,6 +146,7 @@
 
 .ui-ModalSide--SectionHighlightedPadding {
   padding: var(--layout-padding-large);
+  padding-left: var(--layout-padding-xlarge);
 }
 
 @keyframes modal-slide-out {

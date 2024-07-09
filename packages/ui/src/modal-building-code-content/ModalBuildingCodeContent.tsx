@@ -32,9 +32,9 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
 }) => {
   const renderSubClauses = (subClauses: string[]) => {
     return (
-      <ol type="i" className="ui-ModalBuildingCodeContent--List">
+      <ol type="i" className="ui-ModalBuildingCodeContent--OrderedList">
         {subClauses.map((subClause, index) => (
-          <li key={index}>
+          <li key={index} className="ui-ModalBuildingCodeContent--ListItems">
             <span>{parseStringToComponents(subClause, setFocusSection)}</span>
           </li>
         ))}
@@ -44,7 +44,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
 
   const renderClauses = (clauses: SubClauseType[]) => {
     return (
-      <ol type="a" className="ui-ModalBuildingCodeContent--List">
+      <ol type="a" className="ui-ModalBuildingCodeContent--OrderedList">
         {clauses.map((data, index) => (
           <div
             key={index}
@@ -57,7 +57,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
                 : ""
             }`}
           >
-            <li key={index}>
+            <li key={index} className="ui-ModalBuildingCodeContent--ListItems">
               <span>
                 {parseStringToComponents(data.description, setFocusSection)}
               </span>
@@ -197,7 +197,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
                     <span>
                       {parseStringToComponents(
                         sentence.description,
-                        setFocusSection
+                        setFocusSection,
                       )}
                     </span>
                   )}
