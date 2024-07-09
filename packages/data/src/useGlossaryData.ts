@@ -79,7 +79,7 @@ const GlossaryJSONData = glossary as unknown as BuildingGlossaryJSONType;
 export const BuildingCodeJSONData = buildingCode as unknown as PartType[];
 
 export default function transformGlossaryData(
-  data: BuildingGlossaryJSONType
+  data: BuildingGlossaryJSONType,
 ): GlossaryType[] {
   return Object.entries(data).map(([term, content]) => ({
     reference: term.toLocaleLowerCase(),
@@ -88,13 +88,13 @@ export default function transformGlossaryData(
 }
 
 function setMappedGlossaryData(
-  data: BuildingGlossaryJSONType
+  data: BuildingGlossaryJSONType,
 ): Map<string, string> {
   return new Map(
     Object.entries(data).map(([term, content]) => [
       term.toLowerCase(),
       content.cleanDefinition,
-    ])
+    ]),
   );
 }
 

@@ -35,7 +35,7 @@ export default function ModalSide({
   const [isOpen, setIsOpen] = useState(false);
   const [focusSection, setFocusSection] = useState(scrollTo);
   const [highlightedSection, setHighlightedSection] = useState<string | null>(
-    null
+    null,
   );
   const modalRef = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});

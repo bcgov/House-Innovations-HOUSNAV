@@ -1,5 +1,9 @@
-.ui-ModalBuildingCodeContent--List {
-  padding: revert;
+.ui-ModalBuildingCodeContent--OrderedList {
+  padding-left: revert;
+}
+.ui-ModalBuildingCodeContent--ListItems {
+  padding-bottom: var(--layout-padding-xsmall);
+  padding-top: var(--layout-padding-xsmall);
 }
 
 .ui-ModalBuildingCodeContent--SectionLine {
@@ -22,7 +26,7 @@
 
 .ui-ModalBuildingCodeContent--FigureCaption,
 .ui-ModalBuildingCodeContent--FigureCaptionBold {
-  font-size: var(--typography-font-size-label);
+  font-size: var(--typography-font-size-small-body);
   margin: var(--modal-table-image-caption-margin-negative);
 }
 
@@ -31,5 +35,5 @@
 }
 .ui-ModalBuildingCodeContent--TableImageNotes {
   text-align: left;
-  font-size: var(--typography-font-size-label);
+  font-size: var(--typography-font-size-small-body);
 }
