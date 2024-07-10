@@ -5,6 +5,7 @@
   "exports": {
     "./number-field": "./src/number-field/NumberField.tsx",
     "./button-modal-close": "./src/button-modal-close/ButtonModalClose.tsx",
+    "./pdf-download": "./src/pdf-download/PdfDownload.tsx",
     "./modal-building-code-content": "./src/modal-building-code-content/ModalBuildingCodeContent.tsx",
     "./modal-glossary-content": "./src/modal-glossary-content/ModalGlossaryContent.tsx",
     "./walkthrough-card": "./src/walkthrough-card/WalkthroughCard.tsx",
