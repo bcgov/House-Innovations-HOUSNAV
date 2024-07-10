@@ -62,7 +62,6 @@ jobs:
           format: "sarif"
           output: "trivy-results.sarif"
           ignore-unfixed: true
-          scan-type: "fs"
           scanners: "vuln,secret,config"
           severity: "CRITICAL,HIGH"
 
