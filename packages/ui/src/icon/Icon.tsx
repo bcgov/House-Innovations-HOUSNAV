@@ -16,6 +16,7 @@ import ArrowForward from "./icons/ArrowForward";
 import ExpandMore from "./icons/ExpandMore";
 import Check from "./icons/Check";
 import AccountTree from "./icons/AccountTree";
+import DownloadIcon from "./icons/DownloadIcon";
 
 // NOTE: When adding a new icon, make sure to add the string here, and the icon component below in the ICONS object
 export type IconType =
@@ -31,7 +32,8 @@ export type IconType =
   | "arrowForward"
   | "expandMore"
   | "check"
-  | "accountTree"; // NOTE: account tree is the name in Material Icons, this is used for the mobile step tracker toggle
+  | "accountTree" // NOTE: account tree is the name in Material Icons, this is used for the mobile step tracker toggle
+  | "download";
 
 export interface IconComponentProps extends SVGProps<SVGSVGElement> {
   /**
@@ -75,6 +77,7 @@ const ICONS: Record<IconType, FunctionComponent<IconProps>> = {
   expandMore: ExpandMore,
   check: Check,
   accountTree: AccountTree,
+  download: DownloadIcon,
 };
 
 export default function Icon({
