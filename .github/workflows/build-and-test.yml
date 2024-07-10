@@ -4,8 +4,6 @@ on:
   pull_request:
     branches:
       - main
-    paths-ignore:
-      - '.github/**'
   workflow_dispatch:
     inputs:
       pr-number:
