@@ -5,6 +5,8 @@ on:
       branches: [main]
     workflow_run:
       workflows: ["Build-and-Test"]
+      types:
+        - completed
 
 jobs:
   # https://github.com/github/codeql-action
