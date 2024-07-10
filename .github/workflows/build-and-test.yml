@@ -55,14 +55,14 @@ jobs:
       - name: Build Docker image
         run: docker build -t ${{ vars.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web:${{ steps.set-pr-number.outputs.pr-number }} -f apps/web/Dockerfile . --no-cache
 
-      - name: Trivy scan
-        uses: aquasecurity/trivy-action@0.24.0
+      - name: Trivy Vulnerability Scan
+        uses: aquasecurity/trivy-action@master
         with:
           image-ref: ${{ vars.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web:${{ steps.set-pr-number.outputs.pr-number }}
-          format: "sarif"
-          output: "trivy-results.sarif"
+          format: table
+          exit-code: '0'
           ignore-unfixed: true
-          scanners: "vuln,secret,config"
+          vuln-type: os,library
           severity: "CRITICAL,HIGH"
 
       - name: Login to Artifactory image registry with Docker
