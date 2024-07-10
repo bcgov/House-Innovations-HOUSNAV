@@ -55,6 +55,13 @@ jobs:
       - name: Build Docker image
         run: docker build -t ${{ vars.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web:${{ steps.set-pr-number.outputs.pr-number }} -f apps/web/Dockerfile . --no-cache
 
+      - name: Trivy scan
+        uses: aquasecurity/trivy-action@v0.24.0
+        with:
+          image-ref: ${{ vars.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web:${{ steps.set-pr-number.outputs.pr-number }}
+          severity: HIGH,CRITICAL
+          ignore-unfixed: true
+
       - name: Login to Artifactory image registry with Docker
         uses: docker/login-action@v3
         with:
