@@ -4,10 +4,10 @@ import { observer } from "mobx-react-lite";
 // repo
 import RadioGroup from "@repo/ui/radio-group";
 import { ID_QUESTION_TEXT } from "@repo/constants/src/ids";
+import { SHOW_QUESTION_LABELS } from "@repo/constants/src/constants";
 // local
 import QuestionMissing from "./QuestionMissing";
 import { useWalkthroughState } from "../../../stores/WalkthroughRootStore";
-import { SHOW_QUESTION_LABELS } from "@repo/constants/src/constants";
 
 const QuestionMultiChoice = observer((): JSX.Element => {
   // get data from store

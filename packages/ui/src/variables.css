@@ -231,6 +231,9 @@
   --header-height: 55px;
   --header-nav-mobile-padding: var(--layout-padding-medium);
   --walkthrough-side-nav-width: 0;
+  --question-subtext-padding: var(--layout-padding-medium)
+    var(--layout-padding-medium) var(--layout-padding-medium)
+    var(--layout-padding-xlarge);
   --question-container-max-width: 46.875rem; /* 750px */
   --question-container-padding-y: var(--layout-padding-medium);
   --question-reference-margin-top: var(--layout-margin-small);

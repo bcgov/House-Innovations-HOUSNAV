@@ -5,9 +5,11 @@ import { makeAutoObservable, toJS } from "mobx";
 import {
   isWalkthroughItemTypeMultiChoice,
   isWalkthroughItemTypeMultiChoiceMultiple,
+  isWalkthroughItemTypeNumberFloat,
   QuestionDisplayData,
   QuestionMultipleChoiceData,
   QuestionMultipleChoiceSelectMultipleData,
+  QuestionNumberFloatData,
   QuestionVariableData,
   VariableToSetPropertyName,
   WalkthroughJSONType,
@@ -17,7 +19,7 @@ import { NEXT_NAVIGATION_ID_ERROR } from "@repo/constants/src/constants";
 import { NavigationStore } from "./NavigationStore";
 import { AnswerState, AnswerStore } from "./AnswerStore";
 import { getPossibleAnswers } from "../utils/logic/showAnswer";
-import { isString } from "../utils/typeChecking";
+import { isNumber, isString } from "../utils/typeChecking";
 
 export class WalkthroughRootStore {
   navigationStore: NavigationStore;
@@ -106,6 +108,25 @@ export class WalkthroughRootStore {
     );
   }
 
+  getQuestionAsNumberFloat = (
+    questionId: string,
+  ): QuestionNumberFloatData | undefined => {
+    const numberFloatQuestion = this.getQuestionAsDisplayType(questionId);
+
+    // check if current question exists and is a multiple choice type
+    if (
+      !numberFloatQuestion ||
+      !isWalkthroughItemTypeNumberFloat(numberFloatQuestion.walkthroughItemType)
+    )
+      return undefined;
+
+    return numberFloatQuestion as QuestionNumberFloatData;
+  };
+
+  get currentQuestionAsNumberFloat() {
+    return this.getQuestionAsNumberFloat(this.navigationStore.currentItemId);
+  }
+
   getPossibleAnswersFromMultipleChoiceMultiple = (questionId: string) => {
     const multiChoiceMultipleQuestion =
       this.getQuestionAsMultipleChoiceMultiple(questionId);
@@ -163,13 +184,15 @@ export class WalkthroughRootStore {
     if (!question) return "";
 
     const answer = this.answerStore.answers[questionId];
-    if (isString(answer)) {
+    if (isString(answer) && "possibleAnswers" in question) {
       const answerValue = question.possibleAnswers.find(
         (possibleAnswer) => possibleAnswer.answerValue === answer,
       );
       const displayValue =
         answerValue?.answerValueDisplay ?? answerValue?.answerDisplayText;
       return displayValue ?? "";
+    } else if (isNumber(answer)) {
+      return answer.toString();
     }
     return "";
   };

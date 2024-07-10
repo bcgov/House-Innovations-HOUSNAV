@@ -6,6 +6,10 @@
   font: inherit;
 }
 
+.web-Question--Subtext {
+  padding: var(--question-subtext-padding);
+}
+
 .web-Question--Reference {
   font: var(--typography-regular-small-body);
   color: var(--typography-color-disabled);

@@ -4,9 +4,11 @@ import { describe, expect, it } from "vitest";
 import useWalkthroughTestData, {
   getMultiChoiceMultipleQuestion,
   getMultiChoiceQuestion,
+  getNumberFloatQuestion,
 } from "@repo/data/useWalkthroughTestData";
 import {
   GET_TESTID_CHECKBOX_GROUP,
+  GET_TESTID_NUMBER_FIELD,
   GET_TESTID_RADIO_GROUP,
   TESTID_QUESTION,
   TESTID_QUESTION_CODE_REFERENCE,
@@ -144,6 +146,34 @@ describe("Question", () => {
     // expect checkbox group
     expect(
       getByTestId(GET_TESTID_CHECKBOX_GROUP(testQuestion.questionKey)),
+    ).toBeInTheDocument();
+  });
+  /*
+   * QuestionNumberFloat
+   */
+  it("QuestionNumberFloat: renders", () => {
+    // get data
+    const walkthroughData = useWalkthroughTestData();
+    const testQuestion = getNumberFloatQuestion();
+
+    // set test question as first question in section
+    walkthroughData.sections[
+      walkthroughData.info.startingSectionId
+    ]?.sectionQuestions.unshift(testQuestion.questionKey);
+    walkthroughData.questions[testQuestion.questionKey] =
+      testQuestion.questionData;
+
+    const { getByTestId } = renderWithWalkthroughProvider({
+      ui: <Question />,
+      data: walkthroughData,
+    });
+
+    // expect component to render
+    expect(getByTestId(TESTID_QUESTION)).toBeInTheDocument();
+
+    // expect number field
+    expect(
+      getByTestId(GET_TESTID_NUMBER_FIELD(testQuestion.questionKey)),
     ).toBeInTheDocument();
   });
 });

@@ -4,7 +4,7 @@ export const GET_TESTID_BUTTON = (variant: ButtonVariant | string) =>
   `button-${variant}`;
 export const TESTID_BUTTON_SUBMIT = "button-submit";
 export const GET_TESTID_LINK = (testId: string) => `link-${testId}`;
-export const TESTID_ICON = "icon";
+export const GET_TESTID_ICON = (icon: string) => `icon-${icon}`;
 export const GET_TESTID_RADIO_GROUP = (testId: string) =>
   `radio-group-${testId}`;
 export const TESTID_RADIO_GROUP_LABEL = "radio-group-label";
@@ -17,6 +17,10 @@ export const TESTID_CHECKBOX_GROUP_LABEL = "checkbox-group-label";
 export const TESTID_CHECKBOX_GROUP_ERROR = "checkbox-group-error";
 export const GET_TESTID_CHECKBOX = (testId: string, value: string) =>
   `checkbox-${testId}-${value}`;
+export const GET_TESTID_NUMBER_FIELD = (testId: string) =>
+  `number-field-${testId}`;
+export const TESTID_NUMBER_FIELD_LABEL = "number-field-label";
+export const TESTID_NUMBER_FIELD_CHECK = "number-field-check";
 export const TESTID_DEFINED_TERM = "defined-term";
 export const GET_TESTID_PDF_DOWNLOAD_LINK = (title: string) =>
   `pdf-download-${title}`;

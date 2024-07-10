@@ -2,13 +2,12 @@
 import { describe, expect, it } from "vitest";
 import { render } from "@testing-library/react";
 // repo
-import { TESTID_ICON } from "@repo/constants/src/testids";
+import { GET_TESTID_ICON } from "@repo/constants/src/testids";
 // workspace
 import Icon, { IconType } from "./Icon";
 
 // test constants
-export const getIconTestId = (type: IconType | string) =>
-  `${TESTID_ICON}-${type}`;
+export const getIconTestId = (type: IconType | string) => GET_TESTID_ICON(type);
 
 describe("Icon", () => {
   // close

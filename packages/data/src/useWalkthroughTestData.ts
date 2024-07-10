@@ -1,11 +1,14 @@
 import testCase999 from "../json/9.9.9.json";
+import testCase91014 from "../json/9.10.14.json";
 import {
   QuestionDisplayData,
   QuestionMultipleChoiceData,
   QuestionMultipleChoiceSelectMultipleData,
+  QuestionNumberFloatData,
   QuestionVariableData,
   WalkthroughItemTypeMultiChoice,
   WalkthroughItemTypeMultiChoiceMultiple,
+  WalkthroughItemTypeNumberFloat,
   WalkthroughJSONType,
 } from "./useWalkthroughData";
 
@@ -67,6 +70,26 @@ export function getMultiChoiceMultipleQuestion() {
     questionData: questions[
       questionKey
     ] as QuestionMultipleChoiceSelectMultipleData,
+  };
+}
+
+export function getNumberFloatQuestion() {
+  // find the first question that is a number float question
+  const questions: {
+    [key: string]: QuestionDisplayData | QuestionVariableData;
+  } = testCase91014.questions;
+  const questionKey = Object.keys(questions).find((questionId) => {
+    const question = questions[questionId] as QuestionDisplayData;
+    return question.walkthroughItemType === WalkthroughItemTypeNumberFloat;
+  });
+
+  if (!questionKey || !questions[questionKey]) {
+    throw new Error("No numberFloat question info");
+  }
+
+  return {
+    questionKey,
+    questionData: questions[questionKey] as QuestionNumberFloatData,
   };
 }
 

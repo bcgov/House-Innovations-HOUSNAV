@@ -81,7 +81,7 @@
     },
     "P02": {
       "walkthroughItemType": "multiChoiceMultiple",
-      "questionText": "Check all that apply to the following structure in this project.",
+      "questionText": "Check all the following that apply to this project.",
       "possibleAnswers": [
         {
           "answerDisplayText": "This project will involve the construction or design of a new <defined-term>building</defined-term>.",
@@ -184,7 +184,7 @@
     },
     "P03": {
       "walkthroughItemType": "multiChoiceMultiple",
-      "questionText": "Check all that apply to the following apply to this project?",
+      "questionText": "Check all the following that apply to this project.",
       "possibleAnswers": [
         {
           "answerDisplayText": "This project consists of sewage, water, electrical, telephone, rail or similar public infrastructure systems located in a <defined-term>street</defined-term> or a public transit right of way.",
@@ -207,7 +207,7 @@
           "answerValue": "5"
         },
         {
-          "answerDisplayText": "This project has permission of the <defined-term  override-term='authority having jurisdiction'>authorities having jurisdiction</defined-term> to provide construction site offices, seasonal storage buildings, special events facilities, emergency facilities, and/or similar structure.",
+          "answerDisplayText": "This project has permission of the <defined-term  override-term='authority having jurisdiction'>authorities having jurisdiction</defined-term> to provide construction site offices, seasonal storage buildings, special events facilities, emergency facilities, and/or similar structures.",
           "answerValue": "6"
         },
         {
@@ -310,7 +310,7 @@
           "answerValue": "A1"
         },
         {
-          "answerDisplayText": "<defined-term override-term='major occupancy'override-tooltip='group a division 2'>Group A Division 2.</defined-term>",
+          "answerDisplayText": "<defined-term override-term='major occupancy' override-tooltip='group a division 2'>Group A Division 2.</defined-term>",
           "answerValue": "A2"
         },
         {

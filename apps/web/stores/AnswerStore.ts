@@ -10,15 +10,16 @@ import {
   answerValuesAreNotEqual,
   getVariableItemValue,
 } from "../utils/logic/variableItem";
-import { isObject, isString } from "../utils/typeChecking";
+import { isNumber, isObject, isString } from "../utils/typeChecking";
 
-export type AnswerTypes = string | string[] | Record<string, string>;
+export type AnswerTypes = string | string[] | Record<string, string> | number;
 export type AnswerState = Record<string, AnswerTypes>;
 export type AnswerToCheckValueFn = (
   answerToCheck: string,
 ) => AnswerTypes | undefined;
 
-export const DEFAULT_ANSWER_VALUE_MULTI_CHOICE = undefined;
+export const DEFAULT_ANSWER_VALUE_MULTI_CHOICE = null;
+export const DEFAULT_ANSWER_VALUE_NUMBER_FLOAT = NaN;
 export const DEFAULT_ANSWER_VALUE_MULTI_CHOICE_MULTI: string[] = [];
 
 export class AnswerStore {
@@ -140,6 +141,15 @@ export class AnswerStore {
     // multipleChoiceMultiple answers cannot be strings, they are either arrays or objects
     if (!answer || isString(answer))
       return DEFAULT_ANSWER_VALUE_MULTI_CHOICE_MULTI;
+
+    return answer;
+  }
+
+  get numberFloatAnswerValue() {
+    const answer = this.answers[this.rootStore.navigationStore.currentItemId];
+
+    // numberFloat answers can only be numbers
+    if (!isNumber(answer)) return DEFAULT_ANSWER_VALUE_NUMBER_FLOAT;
 
     return answer;
   }
