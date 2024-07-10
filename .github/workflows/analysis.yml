@@ -2,11 +2,11 @@ name: Analysis
 
 on:
     push:
-      branches: [HOUSNAV-83-setup-scanning]
+      branches: [main]
+    pull_request:
     workflow_dispatch:
 
 jobs:
-  # https://github.com/github/codeql-action
   codeql:
     name: CodeQL
     runs-on: ubuntu-22.04
@@ -25,9 +25,8 @@ jobs:
         with:
           category: "/language:javascript-typescript"
 
-  # https://github.com/marketplace/actions/aqua-security-trivy
   trivy:
-    name: Run Trivy vulnerability scanner in repo mode
+    name: Trivy vulnerability scanner in repo mode
     runs-on: ubuntu-22.04
     timeout-minutes: 2
     steps:
