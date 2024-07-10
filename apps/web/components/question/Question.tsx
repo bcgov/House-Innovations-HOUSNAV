@@ -4,6 +4,7 @@ import { observer } from "mobx-react-lite";
 import {
   isWalkthroughItemTypeMultiChoice,
   isWalkthroughItemTypeMultiChoiceMultiple,
+  isWalkthroughItemTypeNumberFloat,
 } from "@repo/data/useWalkthroughData";
 import { ID_QUESTION_TEXT } from "@repo/constants/src/ids";
 import {
@@ -12,15 +13,16 @@ import {
   TESTID_QUESTION_TITLE,
 } from "@repo/constants/src/testids";
 import Button from "@repo/ui/button";
+import ModalSide from "@repo/ui/modal-side";
+import { ModalSideDataEnum } from "@repo/data/useGlossaryData";
 // local
 import QuestionMultiChoice from "./question-types/QuestionMultiChoice";
 import QuestionMultiChoiceMultiple from "./question-types/QuestionMultiChoiceMultiple";
 import QuestionMissing from "./question-types/QuestionMissing";
+import QuestionNumberFloat from "./question-types/QuestionNumberFloat";
 import { useWalkthroughState } from "../../stores/WalkthroughRootStore";
 import { parseStringToComponents } from "../../utils/string";
 import "./Question.css";
-import ModalSide from "@repo/ui/modal-side";
-import { ModalSideDataEnum } from "@repo/data/useGlossaryData";
 
 // helper function to get the correct question component
 const getQuestionComponent = (walkthroughItemType: string) => {
@@ -28,6 +30,8 @@ const getQuestionComponent = (walkthroughItemType: string) => {
     return <QuestionMultiChoice />;
   } else if (isWalkthroughItemTypeMultiChoiceMultiple(walkthroughItemType)) {
     return <QuestionMultiChoiceMultiple />;
+  } else if (isWalkthroughItemTypeNumberFloat(walkthroughItemType)) {
+    return <QuestionNumberFloat />;
   }
   return <QuestionMissing />;
 };
@@ -51,6 +55,11 @@ const Question = observer(() => {
       >
         {parseStringToComponents(currentQuestion.questionText)}
       </h1>
+      {currentQuestion.questionSubtext && (
+        <div className="web-Question--Subtext">
+          {parseStringToComponents(currentQuestion.questionSubtext)}
+        </div>
+      )}
       {currentQuestion.questionCodeReference && (
         <p
           className="web-Question--Reference"

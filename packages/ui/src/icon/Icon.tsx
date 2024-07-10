@@ -1,7 +1,7 @@
 // 3rd party
 import type { FunctionComponent, SVGProps } from "react";
 // repo
-import { TESTID_ICON } from "@repo/constants/src/testids";
+import { GET_TESTID_ICON } from "@repo/constants/src/testids";
 // workspace
 import MenuIcon from "./icons/MenuIcon";
 import CloseIcon from "./icons/CloseIcon";
@@ -88,7 +88,7 @@ export default function Icon({
   return (
     <IconComponent
       className={`ui-Icon ${className}`}
-      data-testid={`${TESTID_ICON}-${testid || type}`}
+      data-testid={GET_TESTID_ICON(testid || type)}
       {...props}
     />
   );

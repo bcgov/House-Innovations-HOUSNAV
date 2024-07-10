@@ -56,6 +56,9 @@ p {
 .u-hidden {
   display: none;
 }
+.u-relative {
+  position: relative;
+}
 .u-ellipsis {
   white-space: nowrap;
   overflow: hidden;

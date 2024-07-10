@@ -39,7 +39,7 @@
   "questions": {
     "P01": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Does the Building Code apply to this <defined-term term='structure'>structure</defined-term>?",
+      "questionText": "Does the Building Code apply to this structure?",
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
@@ -75,14 +75,14 @@
     },
     "P02": {
       "walkthroughItemType": "multiChoiceMultiple",
-      "questionText": "Check all that apply to the following <defined-term>structure</defined-term> in this project.",
+      "questionText": "Check all the following that apply to this project.",
       "possibleAnswers": [
         {
           "answerDisplayText": "This project will involve the construction or design of a new <defined-term>building</defined-term>.",
           "answerValue": "1"
         },
         {
-          "answerDisplayText": "The project will be <defined-term>occupied</defined-term>.",
+          "answerDisplayText": "The project will be <defined-term override-term='occupancy'>occupied</defined-term>.",
           "answerValue": "2"
         },
         {
@@ -94,7 +94,7 @@
           "answerValue": "4"
         },
         {
-          "answerDisplayText": "The project will result in an <defined-term>addition</defined-term> to an existing <defined-term>building</defined-term>.",
+          "answerDisplayText": "The project will result in an addition to an existing <defined-term>building</defined-term>.",
           "answerValue": "5"
         },
         {
@@ -110,7 +110,7 @@
           "answerValue": "8"
         },
         {
-          "answerDisplayText": "The project will involve changes that will affect the <defined-term>occupied</defined-term> parts of the <defined-term>building</defined-term>.",
+          "answerDisplayText": "The project will involve changes that will affect the <defined-term override-term='occupancy'>occupied</defined-term> parts of the <defined-term>building</defined-term>.",
           "answerValue": "9"
         },
         {
@@ -122,7 +122,7 @@
           "answerValue": "11"
         },
         {
-          "answerDisplayText": "The project will involve work necessary to ensure safety in parts affected but not directly involved in an <defined-term>addition</defined-term> to the <defined-term>building</defined-term>.",
+          "answerDisplayText": "The project will involve work necessary to ensure safety in parts affected but not directly involved in an addition to the <defined-term>building</defined-term>.",
           "answerValue": "12"
         },
         {
@@ -142,7 +142,7 @@
           "answerValue": "16"
         },
         {
-          "answerDisplayText": "This project will involve the <defined-term>alteration</defined-term>, rehabilitation and change of <defined-term>occupancy</defined-term> of <defined-term>heritage buildings</defined-term>.",
+          "answerDisplayText": "This project will involve the <defined-term>alteration</defined-term>, rehabilitation and change of <defined-term>occupancy</defined-term> of <defined-term override-term='heritage building'>heritage buildings</defined-term>.",
           "answerValue": "17"
         },
         {
@@ -178,14 +178,14 @@
     },
     "P03": {
       "walkthroughItemType": "multiChoiceMultiple",
-      "questionText": "Check all that apply to the following apply to this project?",
+      "questionText": "Check all the following that apply to this project.",
       "possibleAnswers": [
         {
           "answerDisplayText": "This project consists of sewage, water, electrical, telephone, rail or similar public infrastructure systems located in a <defined-term>street</defined-term> or a public transit right of way.",
           "answerValue": "1"
         },
         {
-          "answerDisplayText": "This project consists of utility towers and poles, and television, radio and other communication aerials and towers, except for loads resulting from their being located on or attached to <defined-term>buildings</defined-term>.",
+          "answerDisplayText": "This project consists of utility towers and poles, and television, radio and other communication aerials and towers, except for loads resulting from their being located on or attached to <defined-term override-term='building'>buildings</defined-term>.",
           "answerValue": "2"
         },
         {
@@ -201,7 +201,7 @@
           "answerValue": "5"
         },
         {
-          "answerDisplayText": "This project has permission of the <defined-term>authorities having jurisdiction</defined-term> to provide construction site offices, seasonal storage buildings, special events facilities, emergency facilities, and/or similar <defined-term>structures</defined-term>.",
+          "answerDisplayText": "This project has permission of the <defined-term  override-term='authority having jurisdiction'>authorities having jurisdiction</defined-term> to provide construction site offices, seasonal storage buildings, special events facilities, emergency facilities, and/or similar structures.",
           "answerValue": "6"
         },
         {
@@ -245,7 +245,7 @@
     },
     "P04": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Is this <defined-term>structure</defined-term> a <defined-term>heritage building</defined-term>?",
+      "questionText": "Is this structure a <defined-term>heritage building</defined-term>?",
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
@@ -297,58 +297,58 @@
     },
     "P06": {
       "walkthroughItemType": "multiChoiceMultiple",
-      "questionText": "Which <defined-term>major occupancies</defined-term> will be included in this <defined-term>building</defined-term>?",
+      "questionText": "Which <defined-term override-term='major occupancy'>major occupancies</defined-term> will be included in this <defined-term>building</defined-term>?",
       "possibleAnswers": [
         {
-          "answerDisplayText": "<defined-term>Group A Division 1.</defined-term>",
+          "answerDisplayText": "<defined-term override-term='major occupancy' override-tooltip='group a division 1'>Group A Division 1.</defined-term>",
           "answerValue": "A1"
         },
         {
-          "answerDisplayText": "<defined-term>Group A Division 2.</defined-term>",
+          "answerDisplayText": "<defined-term override-term='major occupancy' override-tooltip='group a division 2'>Group A Division 2.</defined-term>",
           "answerValue": "A2"
         },
         {
-          "answerDisplayText": "<defined-term>Group A Division 3.</defined-term>",
+          "answerDisplayText": "<defined-term override-term='major occupancy' override-tooltip='group a division 3'>Group A Division 3.</defined-term>",
           "answerValue": "A3"
         },
         {
-          "answerDisplayText": "<defined-term>Group A Division 4.</defined-term>",
+          "answerDisplayText": "<defined-term override-term='major occupancy' override-tooltip='group a division 4'>Group A Division 4.</defined-term>",
           "answerValue": "A4"
         },
         {
-          "answerDisplayText": "<defined-term>Group B Division 1.</defined-term>",
+          "answerDisplayText": "<defined-term override-term='major occupancy' override-tooltip='group b division 1'>Group B Division 1.</defined-term>",
           "answerValue": "B1"
         },
         {
-          "answerDisplayText": "<defined-term>Group B Division 2.</defined-term>",
+          "answerDisplayText": "<defined-term override-term='major occupancy' override-tooltip='group b division 2'>Group B Division 2.</defined-term>",
           "answerValue": "B2"
         },
         {
-          "answerDisplayText": "<defined-term>Group B Division 3.</defined-term>",
+          "answerDisplayText": "<defined-term override-term='major occupancy' override-tooltip='group b division 3'>Group B Division 3.</defined-term>",
           "answerValue": "B3"
         },
         {
-          "answerDisplayText": "<defined-term>Group C.</defined-term>",
+          "answerDisplayText": "<defined-term override-term='major occupancy' override-tooltip='group c'>Group C.</defined-term>",
           "answerValue": "C"
         },
         {
-          "answerDisplayText": "<defined-term>Group D.</defined-term>",
+          "answerDisplayText": "<defined-term override-term='major occupancy' override-tooltip='group d'>Group D.</defined-term>",
           "answerValue": "D"
         },
         {
-          "answerDisplayText": "<defined-term>Group E.</defined-term>",
+          "answerDisplayText": "<defined-term override-term='major occupancy' override-tooltip='group e'>Group E.</defined-term>",
           "answerValue": "E"
         },
         {
-          "answerDisplayText": "<defined-term>Group F Division 1.</defined-term>",
+          "answerDisplayText": "<defined-term override-term='major occupancy' override-tooltip='group f division 1'>Group F Division 1.</defined-term>",
           "answerValue": "F1"
         },
         {
-          "answerDisplayText": "<defined-term>Group F Division 2.</defined-term>",
+          "answerDisplayText": "<defined-term override-term='major occupancy' override-tooltip='group f division 2'>Group F Division 2.</defined-term>",
           "answerValue": "F2"
         },
         {
-          "answerDisplayText": "<defined-term>Group F Division 3.</defined-term>",
+          "answerDisplayText": "<defined-term override-term='major occupancy' override-tooltip='group f division 3'>Group F Division 3.</defined-term>",
           "answerValue": "F3"
         },
         {
@@ -416,14 +416,14 @@
     },
     "P08": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "How many <defined-term>storeys</defined-term> in <defined-term>building height</defined-term> will this building be?",
+      "questionText": "How many <defined-term override-term='storey'>storeys</defined-term> in <defined-term>building height</defined-term> will this building be?",
       "possibleAnswers": [
         {
-          "answerDisplayText": "1-3 <defined-term>storeys</defined-term>",
+          "answerDisplayText": "1-3 <defined-term override-term='storey'>storeys</defined-term>",
           "answerValue": "true"
         },
         {
-          "answerDisplayText": "Greater than 3 <defined-term>storeys</defined-term>",
+          "answerDisplayText": "Greater than 3 <defined-term override-term='storey'>storeys</defined-term>",
           "answerValue": "false"
         }
       ],
@@ -442,30 +442,30 @@
     },
     "P1": {
       "walkthroughItemType": "multiChoiceMultiple",
-      "questionText": "What are the <defined-term>major occupancies</defined-term> of this building?",
+      "questionText": "What are the <defined-term override-term='major occupancy'>major occupancies</defined-term> of this building?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Subsection 9.10.14.",
-        "codeNumber": "v2-db-9.10.14"
+        "codeNumber": "v2-db-9.10.14."
       },
       "possibleAnswers": [
         {
-          "answerDisplayText": "<defined-term>Residential</defined-term>",
+          "answerDisplayText": "<defined-term override-term='residential occupancy'>Residential</defined-term>",
           "answerValue": "C"
         },
         {
-          "answerDisplayText": "<defined-term>Office</defined-term>",
+          "answerDisplayText": "<defined-term override-term='business and personal services occupancy'>Office</defined-term>",
           "answerValue": "D"
         },
         {
-          "answerDisplayText": "<defined-term>Mercantile</defined-term>",
+          "answerDisplayText": "<defined-term override-term='mercantile occupancies'>Mercantile</defined-term>",
           "answerValue": "E"
         },
         {
-          "answerDisplayText": "<defined-term>Low Hazard Industrial</defined-term>",
+          "answerDisplayText": "<defined-term override-term='low-hazard industrial occupancy'>Low Hazard Industrial</defined-term>",
           "answerValue": "F3"
         },
         {
-          "answerDisplayText": "<defined-term>Medium Hazard Industrial</defined-term>",
+          "answerDisplayText": "<defined-term override-term='medium-hazard industrial occupancy'>Medium Hazard Industrial</defined-term>",
           "answerValue": "F2"
         },
         {
@@ -494,10 +494,10 @@
     },
     "P2": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Would this building be required to meet Subsection 9.10.15. per Article 9.10.15.1.?",
+      "questionText": "Would this building be required to meet Subsection 9.10.15. per <pdf-download-link number='910151' named-dest='9.10.15.1. Application'>Article 9.10.15.1.</pdf-download-link>?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Sentence 9.10.14.1.(1)",
-        "codeNumber": "v2-db-9.10.14.1.1"
+        "codeNumber": "v2-db-9.10.14.1.(1)"
       },
       "possibleAnswers": [
         {
@@ -524,10 +524,10 @@
     },
     "P3": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Does this building conform to <pdf-download-link>Article 9.35.1.1.</pdf-download-link>?",
+      "questionText": "Does this building conform to <pdf-download-link number='93511' named-dest='9.35.1.1. Application'>Article 9.35.1.1.</pdf-download-link>?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Sentence 9.10.14.1.(2)",
-        "codeNumber": "v2-db-9.10.14.1.2"
+        "codeNumber": "v2-db-9.10.14.1.(2)"
       },
       "possibleAnswers": [
         {
@@ -558,7 +558,7 @@
       "questionSubtext": "<ul><li>Faces a dwelling unit.</li><li>Serves only one dwelling unit.</li><li>Is located on the same property as that dwelling unit.</li><li>The dwelling unit is the only major occupancy on the property.</li></ul>",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Subsection 9.10.14.",
-        "codeNumber": "v2-db-9.10.14"
+        "codeNumber": "v2-db-9.10.14."
       },
       "possibleAnswers": [
         {
@@ -585,8 +585,9 @@
     },
     "P5": {
       "walkthroughItemType": "numberFloat",
-      "questionText": "What is the area of the <defined-term>exposing building face</defined-term> of this <defined-term>fire compartment</defined-term> (m<sup>2</sup>)?",
-      "questionSubtext": "<p>The area of an <defined-term>exposing building face</defined-term> is calculated by taking the exterior wall area facing in one direction on any side of a <defined-term>building</defined-term>, calculate the total area measured from the finished ground level to the uppermost ceiling, or the area for each <defined-term>fire compartment</defined-term>, where a building is divided into <defined-term>fire compartments</defined-term> by <defined-term>fire separations</defined-term> with <defined-term>fire-resistance ratings</defined-term> not less than 45 min. <building-code reference='v2-db-9.10.14.2.(1)'>Sentence 9.10.14.2.(1)</building-code-link></p><p>If a <defined-term>building</defined-term> is divided by <defined-term>fire separations</defined-term> into <defined-term>fire compartments</defined-term>, the area of the <defined-term>exposing building face</defined-term> is permitted to be calculated for each <defined-term>fire compartment</defined-term>, provided the <defined-term>fire separations</defined-term> have a <defined-term>fire-resistance rating</defined-term> not less than 45 min. <building-code reference='v2-db-9.10.14.2.(4)'>Sentence 9.10.14.2.(4)</building-code-link></p>",
+      "questionText": "What is the area of the <defined-term>exposing building face</defined-term> of this <defined-term>fire compartment</defined-term> <span aria-label='in meters squared'>(m<sup>2</sup>)</span>?",
+      "questionSubtext": "<p>The area of an <defined-term>exposing building face</defined-term> is calculated by taking the exterior wall area facing in one direction on any side of a <defined-term>building</defined-term>, calculate the total area measured from the finished ground level to the uppermost ceiling, or the area for each <defined-term>fire compartment</defined-term>, where a building is divided into <defined-term override-term='fire compartment'>fire compartments</defined-term> by <defined-term override-term='fire separation'>fire separations</defined-term> with <defined-term override-term='fire-resistance rating'>fire-resistance ratings</defined-term> not less than 45 min. <building-code reference='v2-db-9.10.14.2.(1)'>Sentence 9.10.14.2.(1)</building-code-link></p><p>If a <defined-term>building</defined-term> is divided by <defined-term override-term='fire separation'>fire separations</defined-term> into <defined-term override-term='fire compartment'>fire compartments</defined-term>, the area of the <defined-term>exposing building face</defined-term> is permitted to be calculated for each <defined-term>fire compartment</defined-term>, provided the <defined-term override-term='fire separation'>fire separations</defined-term> have a <defined-term>fire-resistance rating</defined-term> not less than 45 min. <building-code reference='v2-db-9.10.14.2.(4)'>Sentence 9.10.14.2.(4)</building-code-link></p>",
+      "placeholder": "Enter area",
       "nextNavigationLogic": [
         {
           "nextLogicType": "fallback",
@@ -596,13 +597,14 @@
     },
     "P6": {
       "walkthroughItemType": "numberFloat",
-      "questionText": "What is the <defined-term>limiting distance</defined-term> for the exterior wall for this <defined-term>fire compartment</defined-term> (m)?",
-      "questionSubtext": "<p>The location of the <defined-term>exposing building face</defined-term> shall be taken as a vertical plane located so that there are no <defined-term>unprotected openings</defined-term> between the vertical plane and the line to which the <defined-term>limiting distance</defined-term> is measured. <pdf-download-link>Note A-3.2.3.1.(4)</pdf-download-link></p>",
+      "questionText": "What is the <defined-term>limiting distance</defined-term> for the exterior wall for this <defined-term>fire compartment</defined-term> <span aria-label='in meters'>(m)</span>?",
+      "questionSubtext": "<p>The location of the <defined-term>exposing building face</defined-term> shall be taken as a vertical plane located so that there are no <defined-term>unprotected openings</defined-term> between the vertical plane and the line to which the <defined-term>limiting distance</defined-term> is measured. <pdf-download-link named-dest='A-3.2.3.1.(4) Spatial Separation Design.'>See Note A-3.2.3.1.(4).</pdf-download-link>",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Sentence 9.10.14.2.(2)",
-        "codeNumber": "v2-db-9.10.14.2.2"
+        "codeNumber": "v2-db-9.10.14.2.(2)"
       },
-      "NavigationLogic": [
+      "placeholder": "Enter limiting distance",
+      "nextNavigationLogic": [
         {
           "nextLogicType": "fallback",
           "nextNavigateTo": "P7"
@@ -614,7 +616,7 @@
       "questionText": "Is this compartment <defined-term>sprinklered<defined-term> per <pdf-download-link>Article 3.2.5.12.</pdf-download-link>?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Subsection 9.10.14.",
-        "codeNumber": "v2-db-9.10.14"
+        "codeNumber": "v2-db-9.10.14."
       },
       "possibleAnswers": [
         {
@@ -747,6 +749,10 @@
     "P8": {
       "walkthroughItemType": "multiChoice",
       "questionText": "Does the time from receipt of notification of a fire by the fire department until the first fire department vehicle arrives at the <defined-term>building</defined-term> exceed 10 min in 10% or more of all calls to this <defined-term>building</defined-term>?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Subsection 9.10.14.3.(1)",
+        "codeNumber": "v2-db-9.10.14.3.(1)"
+      },
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
@@ -1815,7 +1821,11 @@
     },
     "P11": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Is this building a <defined-term>storage garage</defined-term> with all <defined-term>storeys</defined-term> constructed as <defined-term>open-air storeys</defined-term>?",
+      "questionText": "Is this building a <defined-term>storage garage</defined-term> with all <defined-term override-term='storey'>storeys</defined-term> constructed as <defined-term>open-air storeys</defined-term>?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Subsection 9.10.14.4.(8)",
+        "codeNumber": "v2-db-9.10.14.4.(8)"
+      },
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
@@ -1842,6 +1852,10 @@
     "P12": {
       "walkthroughItemType": "multiChoice",
       "questionText": "Does this <defined-term>fire compartment</defined-term> face a <defined-term>street</defined-term> and is at <defined-term>street</defined-term> level?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Subsection 9.10.14.4.(9)",
+        "codeNumber": "v2-db-9.10.14.4.(9)"
+      },
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
@@ -1875,6 +1889,10 @@
       "walkthroughItemType": "multiChoice",
       "questionText": "Will all the unprotected openings be glazed with one of the following?",
       "questionSubtext": "<ul><li>wired glass in steel frames, as described in <pdf-download-link>Article 9.10.13.5.</pdf-download-link></li><li>glass blocks, as described in <pdf-download-link>Article 9.10.13.7.</pdf-download-link></li></ul>",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Subsection 9.10.14.4.(6)",
+        "codeNumber": "v2-db-9.10.14.4.(6)"
+      },
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",

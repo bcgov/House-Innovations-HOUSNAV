@@ -3,9 +3,12 @@ import { makeAutoObservable } from "mobx";
 // repo
 import { NextNavigationLogic } from "@repo/data/useWalkthroughData";
 // local
-import { isArray, isObject, isString } from "../utils/typeChecking";
+import { isArray, isNumber, isObject, isString } from "../utils/typeChecking";
 import { WalkthroughRootStore } from "./WalkthroughRootStore";
-import { DEFAULT_ANSWER_VALUE_MULTI_CHOICE } from "./AnswerStore";
+import {
+  DEFAULT_ANSWER_VALUE_MULTI_CHOICE,
+  DEFAULT_ANSWER_VALUE_NUMBER_FLOAT,
+} from "./AnswerStore";
 import { getNextNavigationId } from "../utils/logic/nextNavigation";
 
 export class NavigationStore {
@@ -76,6 +79,9 @@ export class NavigationStore {
       currentQuestionHasBeenAnswered = Object.values(currentAnswer).some(
         (value) => value === "true",
       );
+    } else if (isNumber(currentAnswer)) {
+      currentQuestionHasBeenAnswered =
+        currentAnswer !== DEFAULT_ANSWER_VALUE_NUMBER_FLOAT;
     }
 
     return !currentQuestionHasBeenAnswered;

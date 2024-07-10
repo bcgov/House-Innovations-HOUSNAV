@@ -20,7 +20,6 @@ export default function DefinedTerm({
   "data-testid": testid = TESTID_DEFINED_TERM,
   ...props
 }: DefinedTermProps) {
-  // TODO: Add glossary term functionality
   const tooltipTerm = overrideTooltip ?? term;
   const button = (
     <Button

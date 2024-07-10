@@ -1,6 +1,7 @@
 import testCase999 from "../json/9.9.9.json";
+import testCase91014 from "../json/9.10.14.json";
 
-type Walkthroughs = "9.9.9";
+type Walkthroughs = "9.9.9" | "9.10.14";
 
 interface UseWalkthroughDataProps {
   /*
@@ -108,9 +109,11 @@ export enum VariableToSetType {
 export interface VariableToSet {
   variableType: VariableToSetType | string;
   variableName: string;
-  variableValue: {
-    [key: string]: VariableValueLogic[];
-  };
+  variableValue:
+    | {
+        [key: string]: VariableValueLogic[];
+      }
+    | string;
 }
 
 type QuestionCodeReferenceType = {
@@ -120,6 +123,7 @@ type QuestionCodeReferenceType = {
 
 export interface QuestionBaseData {
   questionText: string;
+  questionSubtext?: string;
   questionCodeReference?: QuestionCodeReferenceType;
   possibleAnswers: PossibleAnswer[];
   nextNavigationLogic: NextNavigationLogic[];
@@ -154,6 +158,15 @@ export interface QuestionVariableData {
   nextNavigationLogic: NextNavigationLogic[];
 }
 
+export const WalkthroughItemTypeNumberFloat = "numberFloat";
+export const isWalkthroughItemTypeNumberFloat = (walkthroughItemType: string) =>
+  walkthroughItemType === WalkthroughItemTypeNumberFloat;
+export interface QuestionNumberFloatData
+  extends Omit<QuestionBaseData, "possibleAnswers"> {
+  walkthroughItemType: typeof WalkthroughItemTypeNumberFloat | string;
+  placeholder: string;
+}
+
 export interface ResultData {
   needsAnswerValue?: boolean;
   resultDisplayMessage: string;
@@ -174,7 +187,8 @@ export interface WalkthroughInfo {
 export type StartingSectionIdType = string;
 export type QuestionDisplayData =
   | QuestionMultipleChoiceData
-  | QuestionMultipleChoiceSelectMultipleData;
+  | QuestionMultipleChoiceSelectMultipleData
+  | QuestionNumberFloatData;
 export interface WalkthroughJSONType {
   info: WalkthroughInfo;
   sections: {
@@ -190,6 +204,7 @@ export interface WalkthroughJSONType {
 
 export const WalkthroughJSONData: Record<Walkthroughs, WalkthroughJSONType> = {
   "9.9.9": testCase999,
+  "9.10.14": testCase91014,
 };
 
 export default function useWalkthroughData({

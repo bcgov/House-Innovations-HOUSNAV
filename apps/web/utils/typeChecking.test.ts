@@ -1,7 +1,7 @@
 // 3rd party
 import { describe, it, expect } from "vitest";
 // local
-import { isString, isArray, isObject } from "./typeChecking";
+import { isString, isArray, isObject, isNumber } from "./typeChecking";
 
 describe("typeChecking", () => {
   /*
@@ -69,6 +69,29 @@ describe("typeChecking", () => {
 
     // call isObject
     const result = isObject(value);
+
+    // expect result to be false
+    expect(result).toBe(false);
+  });
+  /*
+   * isNumber
+   */
+  it("isNumber: value is a number", () => {
+    // test data
+    const value = 1;
+
+    // call isNumber
+    const result = isNumber(value);
+
+    // expect result to be true
+    expect(result).toBe(true);
+  });
+  it("isNumber: value is not a number", () => {
+    // test data
+    const value = "string";
+
+    // call isNumber
+    const result = isNumber(value);
 
     // expect result to be false
     expect(result).toBe(false);
