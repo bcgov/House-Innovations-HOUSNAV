@@ -32,9 +32,9 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
 }) => {
   const renderSubClauses = (subClauses: string[]) => {
     return (
-      <ol type="i" className="ui-ModalBuildingCodeContent--OrderedList">
+      <ol type="i" className="ui-ModalSide--List">
         {subClauses.map((subClause, index) => (
-          <li key={index} className="ui-ModalBuildingCodeContent--ListItems">
+          <li key={index} className="ui-ModalSide--ListItems">
             <span>{parseStringToComponents(subClause, setFocusSection)}</span>
           </li>
         ))}
@@ -44,14 +44,14 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
 
   const renderClauses = (clauses: SubClauseType[]) => {
     return (
-      <ol type="a" className="ui-ModalBuildingCodeContent--OrderedList">
+      <ol type="a" className="ui-ModalSide--List">
         {clauses.map((data, index) => (
           <li
             key={index}
             ref={(el) => {
               sectionRefs.current[data.numberReference] = el;
             }}
-            className={`ui-ModalBuildingCodeContent--ListItems ${
+            className={`ui-ModalSide--ListItems ${
               highlightedSection === data.numberReference
                 ? "ui-ModalSide--SectionHighlighted ui-ModalSide--SectionHighlightedPadding"
                 : ""

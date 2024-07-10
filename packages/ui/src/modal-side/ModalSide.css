@@ -126,9 +126,7 @@
   grid-column: span 4 / 6;
   font-size: var(--typography-font-size-body);
   line-height: var(--typography-line-heights-dense);
-  padding: var(--layout-margin-large);
-  padding-top: 0;
-  padding-bottom: 0;
+  padding: var(--layout-margin-small);
   margin-top: 1px;
 }
 
@@ -140,6 +138,10 @@
 
 .ui-ModalSide--SectionHighlightedPadding {
   padding: var(--layout-padding-large);
+}
+
+.ui-ModalSide--List {
+  padding-left: revert;
 }
 
 @keyframes modal-slide-out {

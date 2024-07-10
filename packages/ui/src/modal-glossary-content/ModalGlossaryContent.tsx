@@ -19,7 +19,7 @@ function renderDefinitionList(
   customHandler?: (location: string) => void,
 ) {
   return (
-    <ul className="ui-ModalBuildingCodeContent--List">
+    <ul className="ui-ModalSide--List">
       {definitionList.map((item, index) => (
         <li key={index}>{parseStringToComponents(item, customHandler)}</li>
       ))}
