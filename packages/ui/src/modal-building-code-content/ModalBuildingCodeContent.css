@@ -1,7 +1,4 @@
-.ui-ModalBuildingCodeContent--OrderedList {
-  padding-left: revert;
-}
-.ui-ModalBuildingCodeContent--ListItems {
+.ui-ModalSide--ListItems {
   padding-bottom: var(--layout-padding-xsmall);
   padding-top: var(--layout-padding-xsmall);
 }
