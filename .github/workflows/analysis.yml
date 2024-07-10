@@ -1,0 +1,26 @@
+name: Analysis
+
+on:
+    push:
+      branches: [main]
+    workflow_dispatch:
+
+jobs:
+  # https://github.com/github/codeql-action
+  codeql:
+    name: CodeQL
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: github/codeql-action/init@v3
+        with:
+          languages: javascript-typescript
+    
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:javascript-typescript"
