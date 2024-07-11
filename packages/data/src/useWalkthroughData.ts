@@ -10,7 +10,9 @@ interface UseWalkthroughDataProps {
   id: string;
 }
 
-export const VariableToSetPropertyName = "variableToSet";
+export const PropertyNameVariableToSet = "variableToSet";
+export const PropertyNameQuestionText = "questionText";
+export const PropertyNamePossibleAnswers = "possibleAnswers";
 export type AnswerValueTypes = string;
 
 export enum ShowAnswerIfLogicType {
@@ -122,10 +124,10 @@ type QuestionCodeReferenceType = {
 };
 
 export interface QuestionBaseData {
-  questionText: string;
+  [PropertyNameQuestionText]: string;
   questionSubtext?: string;
   questionCodeReference?: QuestionCodeReferenceType;
-  possibleAnswers: PossibleAnswer[];
+  [PropertyNamePossibleAnswers]: PossibleAnswer[];
   nextNavigationLogic: NextNavigationLogic[];
 }
 
@@ -154,7 +156,7 @@ export const isWalkthroughItemTypeVariable = (walkthroughItemType: string) =>
   walkthroughItemType === WalkthroughItemTypeVariable;
 export interface QuestionVariableData {
   walkthroughItemType: typeof WalkthroughItemTypeVariable | string;
-  [VariableToSetPropertyName]: VariableToSet;
+  [PropertyNameVariableToSet]: VariableToSet;
   nextNavigationLogic: NextNavigationLogic[];
 }
 
@@ -162,7 +164,7 @@ export const WalkthroughItemTypeNumberFloat = "numberFloat";
 export const isWalkthroughItemTypeNumberFloat = (walkthroughItemType: string) =>
   walkthroughItemType === WalkthroughItemTypeNumberFloat;
 export interface QuestionNumberFloatData
-  extends Omit<QuestionBaseData, "possibleAnswers"> {
+  extends Omit<QuestionBaseData, typeof PropertyNamePossibleAnswers> {
   walkthroughItemType: typeof WalkthroughItemTypeNumberFloat | string;
   placeholder: string;
 }

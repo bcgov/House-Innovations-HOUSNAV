@@ -5,6 +5,7 @@ import {
   isWalkthroughItemTypeMultiChoice,
   isWalkthroughItemTypeMultiChoiceMultiple,
   isWalkthroughItemTypeNumberFloat,
+  PropertyNameQuestionText,
 } from "@repo/data/useWalkthroughData";
 import { ID_QUESTION_TEXT } from "@repo/constants/src/ids";
 import {
@@ -53,7 +54,7 @@ const Question = observer(() => {
         id={ID_QUESTION_TEXT}
         data-testid={TESTID_QUESTION_TITLE}
       >
-        {parseStringToComponents(currentQuestion.questionText)}
+        {parseStringToComponents(currentQuestion[PropertyNameQuestionText])}
       </h1>
       {currentQuestion.questionSubtext && (
         <div className="web-Question--Subtext">

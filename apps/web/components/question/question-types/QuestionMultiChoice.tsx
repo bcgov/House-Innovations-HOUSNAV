@@ -5,6 +5,7 @@ import { observer } from "mobx-react-lite";
 import RadioGroup from "@repo/ui/radio-group";
 import { ID_QUESTION_TEXT } from "@repo/constants/src/ids";
 import { SHOW_QUESTION_LABELS } from "@repo/constants/src/constants";
+import { PropertyNamePossibleAnswers } from "@repo/data/useWalkthroughData";
 // local
 import QuestionMissing from "./QuestionMissing";
 import { useWalkthroughState } from "../../../stores/WalkthroughRootStore";
@@ -21,12 +22,12 @@ const QuestionMultiChoice = observer((): JSX.Element => {
   if (!currentQuestionAsMultipleChoice) return <QuestionMissing />;
 
   // convert possible answers to radio group options
-  const radioGroupOptions = currentQuestionAsMultipleChoice.possibleAnswers.map(
-    (possibleAnswer) => ({
-      label: possibleAnswer.answerDisplayText,
-      value: possibleAnswer.answerValue,
-    }),
-  );
+  const radioGroupOptions = currentQuestionAsMultipleChoice[
+    PropertyNamePossibleAnswers
+  ].map((possibleAnswer) => ({
+    label: possibleAnswer.answerDisplayText,
+    value: possibleAnswer.answerValue,
+  }));
 
   // setup onChange handler
   const onChange = useCallback(
