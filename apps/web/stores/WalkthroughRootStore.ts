@@ -6,12 +6,14 @@ import {
   isWalkthroughItemTypeMultiChoice,
   isWalkthroughItemTypeMultiChoiceMultiple,
   isWalkthroughItemTypeNumberFloat,
+  PropertyNamePossibleAnswers,
   QuestionDisplayData,
   QuestionMultipleChoiceData,
   QuestionMultipleChoiceSelectMultipleData,
   QuestionNumberFloatData,
+  PropertyNameQuestionText,
   QuestionVariableData,
-  VariableToSetPropertyName,
+  PropertyNameVariableToSet,
   WalkthroughJSONType,
 } from "@repo/data/useWalkthroughData";
 import { NEXT_NAVIGATION_ID_ERROR } from "@repo/constants/src/constants";
@@ -54,7 +56,7 @@ export class WalkthroughRootStore {
     // or if it has the unique key VariableToSetPropertyName (which means it's a variable type question)
     if (
       !displayTypeQuestion ||
-      VariableToSetPropertyName in displayTypeQuestion
+      PropertyNameVariableToSet in displayTypeQuestion
     )
       return undefined;
 
@@ -134,18 +136,18 @@ export class WalkthroughRootStore {
     // check if current question is a multiple choice multiple type and has possible answers
     if (
       !multiChoiceMultipleQuestion ||
-      !multiChoiceMultipleQuestion.possibleAnswers
+      !multiChoiceMultipleQuestion[PropertyNamePossibleAnswers]
     )
       return [];
 
     // Non-dynamic Multiple Choice Multiple Questions just show all possible answers
     if (!multiChoiceMultipleQuestion.answersAreDynamic) {
-      return multiChoiceMultipleQuestion.possibleAnswers;
+      return multiChoiceMultipleQuestion[PropertyNamePossibleAnswers];
     }
 
     try {
       return getPossibleAnswers(
-        multiChoiceMultipleQuestion.possibleAnswers,
+        multiChoiceMultipleQuestion[PropertyNamePossibleAnswers],
         this.answerStore.getAnswerToCheckValue,
       );
     } catch (error) {
@@ -173,7 +175,7 @@ export class WalkthroughRootStore {
     questionId: string,
   ): QuestionVariableData | undefined => {
     const questionAsVar = this.walkthroughData.questions[questionId];
-    if (!questionAsVar || !(VariableToSetPropertyName in questionAsVar))
+    if (!questionAsVar || !(PropertyNameVariableToSet in questionAsVar))
       return undefined;
 
     return questionAsVar;
@@ -184,8 +186,8 @@ export class WalkthroughRootStore {
     if (!question) return "";
 
     const answer = this.answerStore.answers[questionId];
-    if (isString(answer) && "possibleAnswers" in question) {
-      const answerValue = question.possibleAnswers.find(
+    if (isString(answer) && PropertyNamePossibleAnswers in question) {
+      const answerValue = question[PropertyNamePossibleAnswers].find(
         (possibleAnswer) => possibleAnswer.answerValue === answer,
       );
       const displayValue =
@@ -200,19 +202,19 @@ export class WalkthroughRootStore {
   getQuestionTextByQuestionId = (questionId: string) => {
     const question = this.walkthroughData.questions[questionId];
 
-    if (!question || !("questionText" in question)) {
+    if (!question || !(PropertyNameQuestionText in question)) {
       console.warn(
-        `Question with id ${questionId} not found or has no questionText.`,
+        `Question with id ${questionId} not found or has no ${PropertyNameQuestionText}.`,
       );
       return "";
     }
 
-    return question.questionText;
+    return question[PropertyNameQuestionText];
   };
 
   questionIsVariable = (questionId: string) => {
     const question = this.walkthroughData.questions[questionId];
-    return question && VariableToSetPropertyName in question;
+    return question && PropertyNameVariableToSet in question;
   };
 
   handleStateError = (where: string, error: unknown) => {

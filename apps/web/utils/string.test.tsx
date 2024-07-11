@@ -3,6 +3,7 @@ import { describe, it, expect } from "vitest";
 import { JSX } from "react";
 // repo
 import { getQuestion } from "@repo/data/useWalkthroughTestData";
+import { PropertyNameQuestionText } from "@repo/data/useWalkthroughData";
 // local
 import {
   getStringFromComponents,
@@ -24,16 +25,16 @@ describe("string", () => {
     // get test data
     const questionData = getQuestion("P04");
 
-    // check if we have questionText and throw error if we don't
-    if (!questionData?.questionData.questionText) {
+    // check if we have QuestionTextPropertyName property and throw error if we don't
+    if (!questionData?.questionData[PropertyNameQuestionText]) {
       assert.fail(
-        "question data is missing question text - need to fix test data",
+        `question data is missing ${PropertyNameQuestionText} - need to fix test data`,
       );
     }
 
     // parse question string
     let components = parseStringToComponents(
-      questionData?.questionData.questionText,
+      questionData?.questionData[PropertyNameQuestionText],
     );
 
     if (typeof components === "string") {

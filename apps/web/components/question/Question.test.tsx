@@ -14,6 +14,7 @@ import {
   TESTID_QUESTION_CODE_REFERENCE,
   TESTID_QUESTION_TITLE,
 } from "@repo/constants/src/testids";
+import { PropertyNameQuestionText } from "@repo/data/useWalkthroughData";
 // local
 import Question from "./Question";
 import {
@@ -74,7 +75,9 @@ describe("Question", () => {
     // expect title
     expect(getByTestId(TESTID_QUESTION_TITLE)).toHaveTextContent(
       getStringFromComponents(
-        parseStringToComponents(testQuestion.questionData.questionText),
+        parseStringToComponents(
+          testQuestion.questionData[PropertyNameQuestionText],
+        ),
       ),
     );
 

@@ -4,7 +4,7 @@ import { makeAutoObservable } from "mobx";
 import { WalkthroughRootStore } from "./WalkthroughRootStore";
 import {
   QuestionVariableData,
-  VariableToSetPropertyName,
+  PropertyNameVariableToSet,
 } from "@repo/data/useWalkthroughData";
 import {
   answerValuesAreNotEqual,
@@ -41,8 +41,9 @@ export class AnswerStore {
       navigationStore: { handleForwardNavigation, addItemIdToHistory },
     } = this.rootStore;
 
+    const variableToSet = currentItem[PropertyNameVariableToSet];
     const newItemValue = getVariableItemValue(
-      currentItem[VariableToSetPropertyName],
+      variableToSet,
       this.getAnswerToCheckValue,
     );
 
