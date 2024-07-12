@@ -32,3 +32,10 @@ resources:
   limits:
     memory: "100Mi"
     cpu: "50m"
+
+vault:
+  secretPath: d6af69-nonprod/housnav-secret-uat
+  authPath: auth/k8s-silver
+  namespace: platform-services
+  role: d6af69-nonprod
+  serviceAccountName: d6af69-vault
