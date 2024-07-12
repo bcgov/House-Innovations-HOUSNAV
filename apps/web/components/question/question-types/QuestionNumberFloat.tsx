@@ -7,6 +7,7 @@ import NumberField from "@repo/ui/number-field";
 import { SHOW_QUESTION_LABELS } from "@repo/constants/src/constants";
 // local
 import { useWalkthroughState } from "../../../stores/WalkthroughRootStore";
+import { parseStringToComponents } from "../../../utils/string";
 import QuestionMissing from "./QuestionMissing";
 
 const QuestionNumberFloat = observer((): JSX.Element => {
@@ -36,6 +37,7 @@ const QuestionNumberFloat = observer((): JSX.Element => {
       name={currentItemId}
       noLabel={!SHOW_QUESTION_LABELS}
       placeholder={currentQuestionAsNumberFloat.placeholder}
+      unit={parseStringToComponents(currentQuestionAsNumberFloat.unit || "")}
       isRequired
       isValid={!nextButtonIsDisabled}
       value={numberFloatAnswerValue}

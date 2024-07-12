@@ -100,7 +100,7 @@
   --layout-margin-hair: 0.125rem;
   --layout-margin-xsmall: 0.25rem;
   --layout-margin-small: 0.5rem;
-  --layout-margin-smedium: 0.75rem;
+  --layout-margin-12: 0.75rem;
   --layout-margin-medium: 1rem;
   --layout-margin-large: 1.5rem;
   --layout-margin-xlarge: 2rem;
@@ -266,7 +266,7 @@
     --header-nav-mobile-padding: var(--layout-padding-large);
     --walkthrough-side-nav-width: 15.625rem; /* 250px */
     --question-container-padding-y: var(--layout-padding-large);
-    --question-reference-margin-top: var(--layout-margin-smedium);
+    --question-reference-margin-top: var(--layout-margin-12);
     --question-form-margin-top: var(--layout-margin-large);
     --walkthrough-footer-back-width: auto;
     --walkthrough-footer-next-width: auto;

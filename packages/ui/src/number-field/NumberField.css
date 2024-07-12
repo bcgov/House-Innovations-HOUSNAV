@@ -5,7 +5,7 @@
   padding: var(--layout-padding-12);
   font: var(--typography-regular-large-body);
   width: 100%;
-  max-width: 446px;
+  max-width: 234px;
 }
 
 .ui-NumberField.--isValid input {
@@ -20,6 +20,10 @@
 .ui-NumberField--Label {
   display: block;
   font: var(--typography-bold-large-body);
+}
+
+.ui-NumberField--Unit {
+  margin-left: var(--layout-margin-12);
 }
 
 .ui-NumberField--Check {

@@ -1,4 +1,5 @@
 // 3rd party
+import { ReactNode } from "react";
 import {
   NumberField as ReactAriaNumberField,
   NumberFieldProps as ReactAriaNumberFieldProps,
@@ -25,7 +26,7 @@ interface NumberFieldProps extends ReactAriaNumberFieldProps {
    */
   placeholder: string;
   /**
-   * The label for the radio group.
+   * The label for the number field.
    */
   label?: string;
   /**
@@ -36,6 +37,10 @@ interface NumberFieldProps extends ReactAriaNumberFieldProps {
    * boolean to have no label because it is outside the component.
    */
   noLabel?: boolean;
+  /**
+   * The unit for the number field.
+   */
+  unit?: ReactNode;
   /**
    * Optional testid string for targeting specific number fields.
    * Will default to `number-field-[name]`.
@@ -54,6 +59,7 @@ function NumberField({
   hideLabel,
   noLabel = false,
   placeholder,
+  unit,
   "data-testid": testid = "",
   className = "",
   isValid = false,
@@ -85,6 +91,11 @@ function NumberField({
           />
         )}
       </span>
+      {unit && (
+        <span className="ui-NumberField--Unit" aria-hidden>
+          {unit}
+        </span>
+      )}
     </ReactAriaNumberField>
   );
 }
