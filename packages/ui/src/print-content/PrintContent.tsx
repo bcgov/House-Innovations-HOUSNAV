@@ -48,9 +48,12 @@ export default function PrintContent({ contentType }: PrintContentProps) {
 
   const questionHistory = toJS(navigationStore.questionHistory);
 
-  // Combine questions with the same reference into a single group
+  /*
+    Combine questions with the same reference into a single group
+    This is basically used to ensure the reference is only displayed once
+  */
   const groupQuestionsWithReferences = (
-    questions: QuestionData[],
+    questions: QuestionData[]
   ): GroupedQuestion[] => {
     const grouped: GroupedQuestion[] = [];
     let currentGroup: QuestionData[] = [];
@@ -73,7 +76,7 @@ export default function PrintContent({ contentType }: PrintContentProps) {
             buildingCodeSection: buildingCodeSection,
             sectionTitle: findSectionTitleByQuestionId(
               currentGroup[0]?.questionId,
-              walkthroughSections,
+              walkthroughSections
             ),
           });
         }
@@ -94,7 +97,7 @@ export default function PrintContent({ contentType }: PrintContentProps) {
         buildingCodeSection: buildingCodeSection,
         sectionTitle: findSectionTitleByQuestionId(
           currentGroup[0]?.questionId,
-          walkthroughSections,
+          walkthroughSections
         ),
       });
     }
@@ -146,12 +149,12 @@ export default function PrintContent({ contentType }: PrintContentProps) {
                     <tr key={`${groupIndex}-${index}`}>
                       <td className="ui-printContent--questionColumn">
                         {parseComponentToPlainText(
-                          parseStringToComponents(item.question),
+                          parseStringToComponents(item.question)
                         )}
                         <br />
                         <strong>Answer:</strong>{" "}
                         {parseComponentToPlainText(
-                          parseStringToComponents(item.answer),
+                          parseStringToComponents(item.answer)
                         )}
                       </td>
                       {index === 0 && groupIndex != 0 && (

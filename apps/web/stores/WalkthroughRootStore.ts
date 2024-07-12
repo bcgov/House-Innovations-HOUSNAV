@@ -31,7 +31,7 @@ export class WalkthroughRootStore {
 
   constructor(
     walkthroughData: WalkthroughJSONType,
-    initialAnswers?: AnswerState,
+    initialAnswers?: AnswerState
   ) {
     makeAutoObservable(this);
     this.walkthroughData = walkthroughData;
@@ -55,7 +55,7 @@ export class WalkthroughRootStore {
   }
 
   getQuestionAsDisplayType = (
-    questionId: string,
+    questionId: string
   ): QuestionDisplayData | undefined => {
     const displayTypeQuestion = this.walkthroughData.questions[questionId];
 
@@ -75,7 +75,7 @@ export class WalkthroughRootStore {
   }
 
   getQuestionAsMultipleChoice = (
-    questionId: string,
+    questionId: string
   ): QuestionMultipleChoiceData | undefined => {
     const multiChoiceQuestion = this.getQuestionAsDisplayType(questionId);
 
@@ -94,7 +94,7 @@ export class WalkthroughRootStore {
   }
 
   getQuestionAsMultipleChoiceMultiple = (
-    questionId: string,
+    questionId: string
   ): QuestionMultipleChoiceSelectMultipleData | undefined => {
     const multiChoiceMultipleQuestion =
       this.getQuestionAsDisplayType(questionId);
@@ -103,7 +103,7 @@ export class WalkthroughRootStore {
     if (
       !multiChoiceMultipleQuestion ||
       !isWalkthroughItemTypeMultiChoiceMultiple(
-        multiChoiceMultipleQuestion.walkthroughItemType,
+        multiChoiceMultipleQuestion.walkthroughItemType
       )
     )
       return undefined;
@@ -113,12 +113,12 @@ export class WalkthroughRootStore {
 
   get currentQuestionAsMultipleChoiceMultiple() {
     return this.getQuestionAsMultipleChoiceMultiple(
-      this.navigationStore.currentItemId,
+      this.navigationStore.currentItemId
     );
   }
 
   getQuestionAsNumberFloat = (
-    questionId: string,
+    questionId: string
   ): QuestionNumberFloatData | undefined => {
     const numberFloatQuestion = this.getQuestionAsDisplayType(questionId);
 
@@ -155,12 +155,12 @@ export class WalkthroughRootStore {
     try {
       return getPossibleAnswers(
         multiChoiceMultipleQuestion[PropertyNamePossibleAnswers],
-        this.answerStore.getAnswerToCheckValue,
+        this.answerStore.getAnswerToCheckValue
       );
     } catch (error) {
       this.handleStateError(
         "getPossibleAnswersFromMultipleChoiceMultiple",
-        error,
+        error
       );
       return [];
     }
@@ -179,7 +179,7 @@ export class WalkthroughRootStore {
   }
 
   getQuestionAsVariable = (
-    questionId: string,
+    questionId: string
   ): QuestionVariableData | undefined => {
     const questionAsVar = this.walkthroughData.questions[questionId];
     if (!questionAsVar || !(PropertyNameVariableToSet in questionAsVar))
@@ -196,7 +196,7 @@ export class WalkthroughRootStore {
     const answer = this.answerStore.answers[questionId];
     if (isString(answer) && PropertyNamePossibleAnswers in question) {
       const answerValue = question[PropertyNamePossibleAnswers].find(
-        (possibleAnswer) => possibleAnswer.answerValue === answer,
+        (possibleAnswer) => possibleAnswer.answerValue === answer
       );
 
       const displayValue =
@@ -207,21 +207,25 @@ export class WalkthroughRootStore {
     } else {
       const cleanAnswer = toJS(answer);
 
-      if (isArray(cleanAnswer)) {
+      if (isArray(cleanAnswer) && "possibleAnswers" in question) {
         const answerValue = question.possibleAnswers.find(
           (possibleAnswer) =>
-            possibleAnswer.answerValue === (cleanAnswer[0] ?? ""),
+            possibleAnswer.answerValue === (cleanAnswer[0] ?? "")
         );
 
         const displayValue =
           answerValue?.answerValueDisplay ?? answerValue?.answerDisplayText;
         return displayValue ?? "";
-      } else if (isObject(cleanAnswer) && cleanAnswer !== null) {
+      } else if (
+        isObject(cleanAnswer) &&
+        cleanAnswer !== null &&
+        "possibleAnswers" in question
+      ) {
         const displayValues = Object.entries(cleanAnswer)
           .filter(([, value]) => value === "true") // Only include entries where the value is "true"
           .map(([key]) => {
             const answerValue = question.possibleAnswers.find(
-              (possibleAnswer) => possibleAnswer.answerValue === key,
+              (possibleAnswer) => possibleAnswer.answerValue === key
             );
             return (
               answerValue?.answerValueDisplay ?? answerValue?.answerDisplayText
@@ -240,7 +244,7 @@ export class WalkthroughRootStore {
 
     if (!question || !(PropertyNameQuestionText in question)) {
       console.warn(
-        `Question with id ${questionId} not found or has no ${PropertyNameQuestionText}.`,
+        `Question with id ${questionId} not found or has no ${PropertyNameQuestionText}.`
       );
       return "";
     }
@@ -271,7 +275,7 @@ export class WalkthroughRootStore {
 
 export const CreateWalkthroughStore = (
   walkthroughData: WalkthroughJSONType,
-  initialAnswers?: AnswerState,
+  initialAnswers?: AnswerState
 ) => {
   return new WalkthroughRootStore(walkthroughData, initialAnswers);
 };
@@ -279,7 +283,7 @@ export const CreateWalkthroughStore = (
 // create context
 export const WalkthroughStateContext =
   React.createContext<WalkthroughRootStore>(
-    CreateWalkthroughStore({} as WalkthroughJSONType),
+    CreateWalkthroughStore({} as WalkthroughJSONType)
   );
 
 /* Hook to use store in any functional component */
