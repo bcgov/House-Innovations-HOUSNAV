@@ -13,14 +13,32 @@ spec:
     metadata:
       labels:
         app: house-innovations-housnav-web
+      annotations:
+        redeploy-timestamp: {{ now | quote }}
+        vault.hashicorp.com/agent-inject: 'true'
+        vault.hashicorp.com/agent-inject-secret-secrets.env: {{ .Values.vault.secretPath }}
+        vault.hashicorp.com/agent-inject-template-secrets.env: |
+          {{`{{- with secret "`}}{{ .Values.vault.secretPath }}{{`" -}}
+          {{- range $key, $val := .Data.data }}
+          export {{ $key }}={{ $val }}{{ end -}}
+          {{- end -}}`}}
+        vault.hashicorp.com/agent-pre-populate-only: 'true'
+        vault.hashicorp.com/agent-inject-token: 'false'
+        vault.hashicorp.com/auth-path: {{ .Values.vault.authPath }}
+        vault.hashicorp.com/namespace: {{ .Values.vault.namespace }}
+        vault.hashicorp.com/role: {{ .Values.vault.role }}
     spec:
       imagePullSecrets:
         {{- toYaml .Values.imagePullSecrets | nindent 8 }}
+      serviceAccountName: {{ .Values.vault.serviceAccountName }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: 3000
+          resources:
+          {{- toYaml .Values.resources | nindent 12 }}
           livenessProbe:
             httpGet:
               path: /
@@ -33,6 +51,8 @@ spec:
               port: 3000
             initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
             periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
+          command: ['sh', '-c']
+          args: ['set -a; . /vault/secrets/secrets.env; set +a; exec node apps/web/server.js']
   strategy:
     type: RollingUpdate
     rollingUpdate:
