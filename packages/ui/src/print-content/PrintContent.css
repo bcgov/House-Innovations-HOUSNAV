@@ -1,0 +1,91 @@
+/* Hide the print container by default */
+.ui-printContent--printContainer {
+  display: none;
+}
+
+.ui-printContent--questionTable th,
+.ui-printContent--questionTable td {
+  border: var(--print-content-table-th-td-border);
+  padding: var(--layout-padding-xsmall);
+  text-align: left;
+  word-wrap: break-word;
+  font: var(--typography-regular-small-body);
+}
+
+.ui-printContent--questionTable tr {
+  break-inside: auto;
+  break-after: auto;
+  page-break-inside: auto;
+}
+
+.ui-printContent--questionTable td,
+.ui-printContent--questionTable th {
+  break-inside: avoid;
+}
+
+.ui-printContent--questionTable {
+  display: block;
+  width: 99%; /* Ensure table width doesn't cut off border */
+  border-collapse: collapse;
+  break-inside: auto;
+  page-break-inside: auto;
+}
+
+.ui-printContent--walkthroughTitle {
+  padding: var(--layout-padding-small);
+  font: var(--typography-bold-h3);
+}
+
+.ui-printContent--sectionTitle {
+  font: var(--typography-bold-h5);
+}
+
+/* Set fixed widths for table columns */
+.ui-printContent--questionColumn {
+  width: 60%;
+}
+
+.ui-printContent--referenceColumn {
+  width: 40%;
+}
+
+/* Print styles that only need to apply when print window is open */
+@media print {
+  /* Hide everything on the page besides what we need to print */
+  .ui-Header,
+  .web-Walkthrough--StepTracker,
+  .web-WalkthroughFooter,
+  .u-container-walkthrough,
+  .ui-PdfResultDownload-container,
+  .ui-PdfResultDownload-button,
+  .ui-PdfResultDownload-imageContainer,
+  .ui-PdfResultDownload-aside {
+    display: none;
+  }
+
+  /* Override these class displays to enable page breaks */
+  .web-Walkthrough,
+  .web-Walkthrough--Content {
+    display: block !important;
+  }
+
+  /* Ensure the walkthrough takes up the full height so the printer can detect multiple pages*/
+  .web-Walkthrough {
+    height: 100% !important;
+  }
+
+  .ui-printContent--printContainer {
+    width: 100%;
+    display: block;
+  }
+
+  /* Ensure no overflow and hide any scrollbars */
+  html,
+  body {
+    height: initial !important;
+    overflow: initial !important;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+}

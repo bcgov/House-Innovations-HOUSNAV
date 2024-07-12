@@ -255,6 +255,7 @@
   --step-tracker-tablet-up-display: none;
   --modal-side-number-padding: 8%;
   --modal-table-image-caption-margin-negative: -0.5rem;
+  --print-content-table-th-td-border: 1px solid #000;
 }
 
 /* TABLET - 608px */
