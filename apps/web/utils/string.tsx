@@ -1,5 +1,5 @@
 // 3rd party
-import { FunctionComponent, ReactNode } from "react";
+import React, { FunctionComponent, ReactNode } from "react";
 import parse, {
   DOMNode,
   Element,
@@ -175,6 +175,26 @@ export const parseStringToComponents = (
     },
   };
   return parse(html, options);
+};
+
+export const parseComponentToPlainText = (component: ReactNode): string => {
+  const getTextContent = (element: ReactNode): string => {
+    if (typeof element === "string") {
+      return element;
+    }
+    if (React.isValidElement<{ children?: ReactNode }>(element)) {
+      const { children } = element.props;
+      if (children) {
+        return React.Children.toArray(children).map(getTextContent).join("");
+      }
+    }
+    if (Array.isArray(element)) {
+      return element.map(getTextContent).join("");
+    }
+    return "";
+  };
+
+  return getTextContent(component);
 };
 
 const AnswerDisplayValuePlaceholder = () => (

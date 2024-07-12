@@ -21,7 +21,7 @@ import { NEXT_NAVIGATION_ID_ERROR } from "@repo/constants/src/constants";
 import { NavigationStore } from "./NavigationStore";
 import { AnswerState, AnswerStore } from "./AnswerStore";
 import { getPossibleAnswers } from "../utils/logic/showAnswer";
-import { isNumber, isString } from "../utils/typeChecking";
+import { isArray, isNumber, isString } from "../utils/typeChecking";
 
 export class WalkthroughRootStore {
   navigationStore: NavigationStore;
@@ -197,11 +197,38 @@ export class WalkthroughRootStore {
       const answerValue = question[PropertyNamePossibleAnswers].find(
         (possibleAnswer) => possibleAnswer.answerValue === answer,
       );
+
       const displayValue =
         answerValue?.answerValueDisplay ?? answerValue?.answerDisplayText;
       return displayValue ?? "";
     } else if (isNumber(answer)) {
       return answer.toString();
+    } else {
+      const cleanAnswer = toJS(answer);
+      if (isArray(cleanAnswer)) {
+        const answerValue = question.possibleAnswers.find(
+          (possibleAnswer) =>
+            possibleAnswer.answerValue ===
+            (!!cleanAnswer && cleanAnswer[0] ? cleanAnswer[0] : ""),
+        );
+        const displayValue =
+          answerValue?.answerValueDisplay ?? answerValue?.answerDisplayText;
+        return displayValue ?? "";
+      } else if (typeof cleanAnswer === "object" && cleanAnswer !== null) {
+        const displayValues = Object.entries(cleanAnswer)
+          .filter(([, value]) => value === "true")
+          .map(([key]) => {
+            const answerValue = question.possibleAnswers.find(
+              (possibleAnswer) => possibleAnswer.answerValue === key,
+            );
+            return (
+              answerValue?.answerValueDisplay ?? answerValue?.answerDisplayText
+            );
+          })
+          .filter(Boolean); // Filter out undefined values
+
+        return displayValues.join(", ");
+      }
     }
     return "";
   };
