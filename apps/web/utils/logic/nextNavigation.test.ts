@@ -9,10 +9,7 @@ import {
 import { NEXT_NAVIGATION_ID_ERROR } from "@repo/constants/src/constants";
 // local
 import {
-  nextLogicTypeEqual,
   nextLogicTypeNotEqual,
-  nextLogicTypeLessThan,
-  nextLogicTypeGreaterThan,
   nextLogicTypeDoesNotContain,
   nextLogicTypeContainsAny,
   nextLogicTypeOr,
@@ -21,85 +18,9 @@ import {
   navigationLogicItemIsTrue,
 } from "./nextNavigation";
 import * as NextNavigationModule from "./nextNavigation";
+import * as SharedLogicModule from "./sharedLogic";
 
 describe("nextNavigation", () => {
-  /*
-   * nextLogicTypeEqual
-   */
-  it("nextLogicTypeEqual: answerToCheck is array and answerValue is equal", () => {
-    // test data
-    const answerToCheck = ["answer1"];
-    const answerValue = "answer1";
-
-    // call nextLogicTypeEqual
-    const result = nextLogicTypeEqual(answerToCheck, answerValue);
-
-    // expect result to be nextNavigateTo
-    expect(result).toBe(true);
-  });
-  it("nextLogicTypeEqual: answerToCheck is array and answerValue is not equal", () => {
-    // test data
-    const answerToCheck = ["answer1", "answer2"];
-    const answerValue = "answer1";
-
-    // call nextLogicTypeEqual
-    const result = nextLogicTypeEqual(answerToCheck, answerValue);
-
-    // expect result to be nextNavigateTo
-    expect(result).toBe(false);
-  });
-  it("nextLogicTypeEqual: answerToCheck is string and answerValue is equal", () => {
-    // test data
-    const answerToCheck = "answer1";
-    const answerValue = "answer1";
-
-    // call nextLogicTypeEqual
-    const result = nextLogicTypeEqual(answerToCheck, answerValue);
-
-    // expect result to be nextNavigateTo
-    expect(result).toBe(true);
-  });
-  it("nextLogicTypeEqual: answerToCheck is string and answerValue is not equal", () => {
-    // test data
-    const answerToCheck = "answer1";
-    const answerValue = "answer2";
-
-    // call nextLogicTypeEqual
-    const result = nextLogicTypeEqual(answerToCheck, answerValue);
-
-    // expect result to be nextNavigateTo
-    expect(result).toBe(false);
-  });
-  it("nextLogicTypeEqual: answerToCheck is undefined and answerValue is undefined", () => {
-    // test data
-    const answerToCheck = undefined;
-    const answerValue = "undefined";
-
-    // call nextLogicTypeEqual
-    const result = nextLogicTypeEqual(answerToCheck, answerValue);
-
-    // expect result to be nextNavigateTo
-    expect(result).toBe(true);
-  });
-  it("nextLogicTypeEqual: answerToCheck is undefined and answerValue is not undefined", () => {
-    // test data
-    const answerToCheck = undefined;
-    const answerValue = "answer1";
-
-    // call nextLogicTypeEqual
-    const result = nextLogicTypeEqual(answerToCheck, answerValue);
-
-    // expect result to be nextNavigateTo
-    expect(result).toBe(false);
-  });
-  it("nextLogicTypeEqual: answerToCheck is an object", () => {
-    // test data
-    const answerToCheck = { answer: "answer1" };
-    const answerValue = "answer1";
-
-    // expect result throw an error
-    expect(() => nextLogicTypeEqual(answerToCheck, answerValue)).toThrowError();
-  });
   /*
    * nextLogicTypeNotEqual
    */
@@ -155,98 +76,6 @@ describe("nextNavigation", () => {
     // expect result to throw an error
     expect(() =>
       nextLogicTypeNotEqual(answerToCheck, answerValue),
-    ).toThrowError();
-  });
-  /*
-   * nextLogicTypeLessThan
-   */
-  it("nextLogicTypeLessThan: answerToCheck is string and it is less than answerValue", () => {
-    // test data
-    const answerToCheck = "1";
-    const answerValue = "2";
-
-    // call nextLogicTypeLessThan
-    const result = nextLogicTypeLessThan(answerToCheck, answerValue);
-
-    // expect result to be nextNavigateTo
-    expect(result).toBe(true);
-  });
-  it("nextLogicTypeLessThan: answerToCheck is string and it is equal to answerValue", () => {
-    // test data
-    const answerToCheck = "2";
-    const answerValue = "2";
-
-    // call nextLogicTypeLessThan
-    const result = nextLogicTypeLessThan(answerToCheck, answerValue);
-
-    // expect result to be nextNavigateTo
-    expect(result).toBe(false);
-  });
-  it("nextLogicTypeLessThan: answerToCheck is string and it is greater than answerValue", () => {
-    // test data
-    const answerToCheck = "2";
-    const answerValue = "1";
-
-    // call nextLogicTypeLessThan
-    const result = nextLogicTypeLessThan(answerToCheck, answerValue);
-
-    // expect result to be nextNavigateTo
-    expect(result).toBe(false);
-  });
-  it("nextLogicTypeLessThan: answerToCheck is undefined", () => {
-    // test data
-    const answerToCheck = undefined;
-    const answerValue = "1";
-
-    // call nextLogicTypeLessThan
-    const result = nextLogicTypeLessThan(answerToCheck, answerValue);
-
-    // expect result to be nextNavigateTo
-    expect(result).toBe(true);
-  });
-  it("nextLogicTypeLessThan: answerToCheck is not a string or undefined", () => {
-    // test data
-    const answerToCheck = { answer: "1" };
-    const answerValue = "2";
-
-    // expect result to throw an error
-    expect(() =>
-      nextLogicTypeLessThan(answerToCheck, answerValue),
-    ).toThrowError();
-  });
-  /*
-   * nextLogicTypeGreaterThan
-   */
-  it("nextLogicTypeGreaterThan: answerToCheck is string and it is greater than answerValue", () => {
-    const answerToCheck = "2";
-    const answerValue = "1";
-    const result = nextLogicTypeGreaterThan(answerToCheck, answerValue);
-    expect(result).toBe(true);
-  });
-  it("nextLogicTypeGreaterThan: answerToCheck is string and it is equal to answerValue", () => {
-    const answerToCheck = "2";
-    const answerValue = "2";
-    const result = nextLogicTypeGreaterThan(answerToCheck, answerValue);
-    expect(result).toBe(false);
-  });
-  it("nextLogicTypeGreaterThan: answerToCheck is string and it is less than answerValue", () => {
-    const answerToCheck = "1";
-    const answerValue = "2";
-    const result = nextLogicTypeGreaterThan(answerToCheck, answerValue);
-    expect(result).toBe(false);
-  });
-  it("nextLogicTypeGreaterThan: answerToCheck is undefined", () => {
-    const answerToCheck = undefined;
-    const answerValue = "1";
-    expect(() =>
-      nextLogicTypeGreaterThan(answerToCheck, answerValue),
-    ).toThrowError();
-  });
-  it("nextLogicTypeGreaterThan: answerToCheck is not a string", () => {
-    const answerToCheck = { answer: "2" };
-    const answerValue = "1";
-    expect(() =>
-      nextLogicTypeGreaterThan(answerToCheck, answerValue),
     ).toThrowError();
   });
   /*
@@ -337,13 +166,10 @@ describe("nextNavigation", () => {
         answerValue: "answer2",
       },
     ];
-    // spy on nextLogicTypeEqual
-    const nextLogicTypeEqualSpy = vi.spyOn(
-      NextNavigationModule,
-      "nextLogicTypeEqual",
-    );
+    // spy on logicTypeEqual
+    const logicTypeEqualSpy = vi.spyOn(SharedLogicModule, "logicTypeEqual");
     // setup spy return value
-    nextLogicTypeEqualSpy.mockReturnValueOnce(true);
+    logicTypeEqualSpy.mockReturnValueOnce(true);
 
     // call nextLogicTypeOr
     const result = nextLogicTypeOr(valuesToCheck, mockGetAnswerToCheckValue);
@@ -351,7 +177,7 @@ describe("nextNavigation", () => {
     // expect result to be true
     expect(result).toBe(true);
     expect(mockGetAnswerToCheckValue).toHaveBeenCalledTimes(1);
-    expect(nextLogicTypeEqualSpy).toHaveBeenCalledTimes(1);
+    expect(logicTypeEqualSpy).toHaveBeenCalledTimes(1);
   });
   it(`nextLogicTypeOr: all answerToCheck are false and nextLogicType as ${NextNavigationLogicType.NotEqual}`, () => {
     // get valuesToCheck type data and getAnswerToCheckValue mock
@@ -402,13 +228,13 @@ describe("nextNavigation", () => {
         answerValue: "answer2",
       },
     ];
-    // spy on nextLogicTypeLessThan
-    const nextLogicTypeLessThanSpy = vi.spyOn(
-      NextNavigationModule,
-      "nextLogicTypeLessThan",
+    // spy on logicTypeLessThan
+    const logicTypeLessThanSpy = vi.spyOn(
+      SharedLogicModule,
+      "logicTypeLessThan",
     );
     // setup spy return value
-    nextLogicTypeLessThanSpy.mockReturnValue(true);
+    logicTypeLessThanSpy.mockReturnValue(true);
 
     // call nextLogicTypeAnd
     const result = nextLogicTypeAnd(valuesToCheck, mockGetAnswerToCheckValue);
@@ -416,7 +242,7 @@ describe("nextNavigation", () => {
     // expect result to be true
     expect(result).toBe(true);
     expect(mockGetAnswerToCheckValue).toHaveBeenCalledTimes(2);
-    expect(nextLogicTypeLessThanSpy).toHaveBeenCalledTimes(2);
+    expect(logicTypeLessThanSpy).toHaveBeenCalledTimes(2);
   });
   it(`nextLogicTypeAnd: one answerToCheck is false and nextLogicType as ${NextNavigationLogicType.DoesNotContain}`, () => {
     // get valuesToCheck type data and getAnswerToCheckValue mock
@@ -630,13 +456,10 @@ describe("nextNavigation", () => {
       answerToCheck: "answerToCheck",
       answerValue: "answerValue",
     };
-    // spy on nextLogicTypeEqual
-    const nextLogicTypeEqualSpy = vi.spyOn(
-      NextNavigationModule,
-      "nextLogicTypeEqual",
-    );
+    // spy on logicTypeEqual
+    const logicTypeEqualSpy = vi.spyOn(SharedLogicModule, "logicTypeEqual");
     // setup spy return value
-    nextLogicTypeEqualSpy.mockReturnValueOnce(true);
+    logicTypeEqualSpy.mockReturnValueOnce(true);
 
     // call navigationLogicItemIsTrue
     const result = navigationLogicItemIsTrue(
@@ -647,7 +470,7 @@ describe("nextNavigation", () => {
     // expect result to be true
     expect(result).toBe(true);
     expect(mockGetAnswerToCheckValue).toHaveBeenCalledTimes(1);
-    expect(nextLogicTypeEqualSpy).toHaveBeenCalledTimes(1);
+    expect(logicTypeEqualSpy).toHaveBeenCalledTimes(1);
   });
   it(`navigationLogicItemIsTrue: answerToCheck property with returned value, answerValue property, and nextLogicType as ${NextNavigationLogicType.NotEqual}`, () => {
     // test data
@@ -688,13 +511,13 @@ describe("nextNavigation", () => {
       answerToCheck: "answerToCheck",
       answerValue: "answerValue",
     };
-    // spy on nextLogicTypeLessThan
-    const nextLogicTypeLessThanSpy = vi.spyOn(
-      NextNavigationModule,
-      "nextLogicTypeLessThan",
+    // spy on logicTypeLessThan
+    const logicTypeLessThanSpy = vi.spyOn(
+      SharedLogicModule,
+      "logicTypeLessThan",
     );
     // setup spy return value
-    nextLogicTypeLessThanSpy.mockReturnValueOnce(true);
+    logicTypeLessThanSpy.mockReturnValueOnce(true);
 
     // call navigationLogicItemIsTrue
     const result = navigationLogicItemIsTrue(
@@ -705,7 +528,7 @@ describe("nextNavigation", () => {
     // expect result to be true
     expect(result).toBe(true);
     expect(mockGetAnswerToCheckValue).toHaveBeenCalledTimes(1);
-    expect(nextLogicTypeLessThanSpy).toHaveBeenCalledTimes(1);
+    expect(logicTypeLessThanSpy).toHaveBeenCalledTimes(1);
   });
   it(`navigationLogicItemIsTrue: answerToCheck property with returned value, answerValue property, and nextLogicType as ${NextNavigationLogicType.GreaterThan}`, () => {
     const mockGetAnswerToCheckValue = vi.fn();
@@ -716,11 +539,11 @@ describe("nextNavigation", () => {
       answerToCheck: "answerToCheck",
       answerValue: "answerValue",
     };
-    const nextLogicTypeGreaterThanSpy = vi.spyOn(
-      NextNavigationModule,
-      "nextLogicTypeGreaterThan",
+    const logicTypeGreaterThanSpy = vi.spyOn(
+      SharedLogicModule,
+      "logicTypeGreaterThan",
     );
-    nextLogicTypeGreaterThanSpy.mockReturnValueOnce(true);
+    logicTypeGreaterThanSpy.mockReturnValueOnce(true);
 
     const result = navigationLogicItemIsTrue(
       nextNavigationLogicItem,
@@ -729,7 +552,7 @@ describe("nextNavigation", () => {
 
     expect(result).toBe(true);
     expect(mockGetAnswerToCheckValue).toHaveBeenCalledTimes(1);
-    expect(nextLogicTypeGreaterThanSpy).toHaveBeenCalledTimes(1);
+    expect(logicTypeGreaterThanSpy).toHaveBeenCalledTimes(1);
   });
   it("navigationLogicItemIsTrue: answerToCheck property with returned value, answerValue property, and nextLogicType as unknown", () => {
     // test data
@@ -810,13 +633,10 @@ describe("nextNavigation", () => {
       answerToCheck: "answerToCheck",
       answerValue: "answerValue",
     };
-    // spy on nextLogicTypeEqual
-    const nextLogicTypeEqualSpy = vi.spyOn(
-      NextNavigationModule,
-      "nextLogicTypeEqual",
-    );
+    // spy on logicTypeEqual
+    const logicTypeEqualSpy = vi.spyOn(SharedLogicModule, "logicTypeEqual");
     // setup spy return value
-    nextLogicTypeEqualSpy.mockReturnValueOnce(true);
+    logicTypeEqualSpy.mockReturnValueOnce(true);
 
     // expect result to be true
     expect(
@@ -826,7 +646,7 @@ describe("nextNavigation", () => {
       ),
     ).toBe(true);
     expect(mockGetAnswerToCheckValue).toHaveBeenCalledTimes(1);
-    expect(nextLogicTypeEqualSpy).toHaveBeenCalledTimes(1);
+    expect(logicTypeEqualSpy).toHaveBeenCalledTimes(1);
   });
   it(`navigationLogicItemIsTrue: answerToCheck property with undefined returned, answerValue property, and nextLogicType as unknown`, () => {
     // test data
