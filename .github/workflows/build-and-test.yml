@@ -11,20 +11,20 @@ on:
         required: true
 
 jobs:
-  # test:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout repository
-  #       uses: actions/checkout@v3
-  #     - name: use node.js
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: "18.x"
-  #     - run: npm ci
-  #     - run: npm run test
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: use node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+      - run: npm ci
+      - run: npm run test
 
   build:
-    # needs: test
+    needs: test
     runs-on: ubuntu-latest
     environment: dev
     outputs:
@@ -75,12 +75,12 @@ jobs:
       - name: Push Docker image to Artifactory
         run: docker push ${{ vars.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web:${{ steps.set-pr-number.outputs.pr-number }}
 
-  # cypress-run:
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout repository
-  #       uses: actions/checkout@v3
-  #     - run: npm ci
-  #     - run: npm run dev &
-  #     - run: npm run e2e
+  cypress-run:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - run: npm ci
+      - run: npm run dev &
+      - run: npm run e2e
