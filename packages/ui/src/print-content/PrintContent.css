@@ -1,6 +1,7 @@
 /* Hide the print container by default */
 .ui-printContent--printContainer {
   display: none;
+  visibility: hidden;
 }
 
 .ui-printContent--questionTable th,
@@ -77,6 +78,7 @@
   .ui-printContent--printContainer {
     width: 100%;
     display: block;
+    visibility: visible;
   }
 
   /* Ensure no overflow and hide any scrollbars */

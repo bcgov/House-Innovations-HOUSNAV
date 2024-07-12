@@ -21,7 +21,7 @@ import { NEXT_NAVIGATION_ID_ERROR } from "@repo/constants/src/constants";
 import { NavigationStore } from "./NavigationStore";
 import { AnswerState, AnswerStore } from "./AnswerStore";
 import { getPossibleAnswers } from "../utils/logic/showAnswer";
-import { isArray, isNumber, isString } from "../utils/typeChecking";
+import { isArray, isNumber, isObject, isString } from "../utils/typeChecking";
 
 export class WalkthroughRootStore {
   navigationStore: NavigationStore;
@@ -182,6 +182,7 @@ export class WalkthroughRootStore {
   };
 
   getQuestionAnswerValueDisplay = (questionId: string): string => {
+    // Get the question object in display type format
     const question = this.getQuestionAsDisplayType(questionId);
     if (!question) return "";
 
@@ -198,18 +199,19 @@ export class WalkthroughRootStore {
       return answer.toString();
     } else {
       const cleanAnswer = toJS(answer);
+
       if (isArray(cleanAnswer)) {
         const answerValue = question.possibleAnswers.find(
           (possibleAnswer) =>
-            possibleAnswer.answerValue ===
-            (!!cleanAnswer && cleanAnswer[0] ? cleanAnswer[0] : ""),
+            possibleAnswer.answerValue === (cleanAnswer[0] ?? ""),
         );
+
         const displayValue =
           answerValue?.answerValueDisplay ?? answerValue?.answerDisplayText;
         return displayValue ?? "";
-      } else if (typeof cleanAnswer === "object" && cleanAnswer !== null) {
+      } else if (isObject(cleanAnswer) && cleanAnswer !== null) {
         const displayValues = Object.entries(cleanAnswer)
-          .filter(([, value]) => value === "true")
+          .filter(([, value]) => value === "true") // Only include entries where the value is "true"
           .map(([key]) => {
             const answerValue = question.possibleAnswers.find(
               (possibleAnswer) => possibleAnswer.answerValue === key,
