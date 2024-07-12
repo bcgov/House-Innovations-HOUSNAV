@@ -21,6 +21,8 @@ spec:
           image: "{{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag }}"
           ports:
             - containerPort: 3000
+          resources:
+          {{- toYaml .Values.resources | nindent 12 }}
           livenessProbe:
             httpGet:
               path: /
