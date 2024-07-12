@@ -2,7 +2,7 @@
 // repo
 import { TESTID_RESULT } from "@repo/constants/src/testids";
 // local
-import PdfDownload from "@repo/ui/pdf-download";
+import PdfResultDownload from "@repo/ui/pdf-result-download";
 import "./Result.css";
 
 export default function Result({ displayMessage }: { displayMessage: string }) {
@@ -12,7 +12,7 @@ export default function Result({ displayMessage }: { displayMessage: string }) {
         <div className="u-container-walkthrough">
           <p>{displayMessage}</p>
         </div>
-        <PdfDownload />
+        <PdfResultDownload />
       </div>
     </>
   );
