@@ -167,6 +167,7 @@ export interface QuestionNumberFloatData
   extends Omit<QuestionBaseData, typeof PropertyNamePossibleAnswers> {
   walkthroughItemType: typeof WalkthroughItemTypeNumberFloat | string;
   placeholder: string;
+  unit?: string;
 }
 
 export interface ResultData {

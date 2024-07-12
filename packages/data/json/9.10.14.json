@@ -588,6 +588,7 @@
       "questionText": "What is the area of the <defined-term>exposing building face</defined-term> of this <defined-term>fire compartment</defined-term> <span aria-label='in meters squared'>(m<sup>2</sup>)</span>?",
       "questionSubtext": "<p>The area of an <defined-term>exposing building face</defined-term> is calculated by taking the exterior wall area facing in one direction on any side of a <defined-term>building</defined-term>, calculate the total area measured from the finished ground level to the uppermost ceiling, or the area for each <defined-term>fire compartment</defined-term>, where a building is divided into <defined-term override-term='fire compartment'>fire compartments</defined-term> by <defined-term override-term='fire separation'>fire separations</defined-term> with <defined-term override-term='fire-resistance rating'>fire-resistance ratings</defined-term> not less than 45 min. <building-code reference='v2-db-9.10.14.2.(1)'>Sentence 9.10.14.2.(1)</building-code-link></p><p>If a <defined-term>building</defined-term> is divided by <defined-term override-term='fire separation'>fire separations</defined-term> into <defined-term override-term='fire compartment'>fire compartments</defined-term>, the area of the <defined-term>exposing building face</defined-term> is permitted to be calculated for each <defined-term>fire compartment</defined-term>, provided the <defined-term override-term='fire separation'>fire separations</defined-term> have a <defined-term>fire-resistance rating</defined-term> not less than 45 min. <building-code reference='v2-db-9.10.14.2.(4)'>Sentence 9.10.14.2.(4)</building-code-link></p>",
       "placeholder": "Enter area",
+      "unit": "m<sup>2</sup>",
       "nextNavigationLogic": [
         {
           "nextLogicType": "fallback",
@@ -604,6 +605,7 @@
         "codeNumber": "v2-db-9.10.14.2.(2)"
       },
       "placeholder": "Enter limiting distance",
+      "unit": "m",
       "nextNavigationLogic": [
         {
           "nextLogicType": "fallback",
