@@ -71,6 +71,7 @@ function NumberField({
       name={name}
       className={`ui-NumberField ${className} ${isValid ? "--isValid" : ""}`}
       data-testid={GET_TESTID_NUMBER_FIELD(testIdNamespace)}
+      minValue={0}
       {...props}
     >
       {!noLabel && (
