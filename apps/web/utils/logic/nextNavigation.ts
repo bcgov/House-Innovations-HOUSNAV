@@ -8,6 +8,12 @@ import { NEXT_NAVIGATION_ID_ERROR } from "@repo/constants/src/constants";
 // local
 import { AnswerToCheckValueFn, AnswerTypes } from "../../stores/AnswerStore";
 import { isArray, isString } from "../typeChecking";
+import {
+  logicTypeContainsOnly,
+  logicTypeEqual,
+  logicTypeGreaterThan,
+  logicTypeLessThan,
+} from "./sharedLogic";
 // NOTE: this feels weird, but it makes sure this module is something we can spy on for tests
 import * as ThisModule from "./nextNavigation";
 
@@ -73,7 +79,7 @@ export const navigationLogicItemIsTrue = (
          */
         switch (navigationLogicItem.nextLogicType) {
           case NextNavigationLogicType.Equal:
-            return ThisModule.nextLogicTypeEqual(
+            return logicTypeEqual(
               answerToCheckValue,
               navigationLogicItem.answerValue,
             );
@@ -83,12 +89,12 @@ export const navigationLogicItemIsTrue = (
               navigationLogicItem.answerValue,
             );
           case NextNavigationLogicType.LessThan:
-            return ThisModule.nextLogicTypeLessThan(
+            return logicTypeLessThan(
               answerToCheckValue,
               navigationLogicItem.answerValue,
             );
           case NextNavigationLogicType.GreaterThan:
-            return ThisModule.nextLogicTypeGreaterThan(
+            return logicTypeGreaterThan(
               answerToCheckValue,
               navigationLogicItem.answerValue,
             );
@@ -112,6 +118,11 @@ export const navigationLogicItemIsTrue = (
               answerToCheckValue,
               navigationLogicItem.answerValues,
             );
+          case NextNavigationLogicType.ContainsOnly:
+            return logicTypeContainsOnly(
+              answerToCheckValue,
+              navigationLogicItem.answerValues,
+            );
         }
 
         throw new Error(
@@ -126,7 +137,7 @@ export const navigationLogicItemIsTrue = (
       if (navigationLogicItem.answerValue) {
         switch (navigationLogicItem.nextLogicType) {
           case NextNavigationLogicType.Equal:
-            return ThisModule.nextLogicTypeEqual(
+            return logicTypeEqual(
               answerToCheckValue,
               navigationLogicItem.answerValue,
             );
@@ -136,7 +147,7 @@ export const navigationLogicItemIsTrue = (
               navigationLogicItem.answerValue,
             );
           case NextNavigationLogicType.LessThan:
-            return ThisModule.nextLogicTypeLessThan(
+            return logicTypeLessThan(
               answerToCheckValue,
               navigationLogicItem.answerValue,
             );
@@ -158,27 +169,6 @@ export const navigationLogicItemIsTrue = (
   );
 };
 
-export const nextLogicTypeEqual = (
-  answerToCheckValue: AnswerTypes | undefined,
-  answerValue: string,
-) => {
-  if (isArray(answerToCheckValue)) {
-    return (
-      answerToCheckValue.includes(answerValue) &&
-      answerToCheckValue.length === 1
-    );
-  }
-  if (isString(answerToCheckValue)) {
-    return answerToCheckValue === answerValue;
-  }
-  if (answerToCheckValue === undefined) {
-    return answerValue === "undefined";
-  }
-  throw new Error(
-    `nextLogicTypeEqual: answerToCheckValue must be a string, array, or undefined, got ${typeof answerToCheckValue}`,
-  );
-};
-
 export const nextLogicTypeNotEqual = (
   answerToCheckValue: AnswerTypes | undefined,
   answerValue: string,
@@ -191,33 +181,6 @@ export const nextLogicTypeNotEqual = (
   }
   throw new Error(
     `nextLogicTypeNotEqual: answerToCheckValue must be a string or undefined, got ${typeof answerToCheckValue}`,
-  );
-};
-
-export const nextLogicTypeLessThan = (
-  answerToCheckValue: AnswerTypes | undefined,
-  answerValue: string,
-) => {
-  if (isString(answerToCheckValue)) {
-    return answerToCheckValue < answerValue;
-  }
-  if (answerToCheckValue === undefined) {
-    return true;
-  }
-  throw new Error(
-    `nextLogicTypeLessThan: answerToCheckValue must be a string or undefined, got ${typeof answerToCheckValue}`,
-  );
-};
-
-export const nextLogicTypeGreaterThan = (
-  answerToCheckValue: AnswerTypes | undefined,
-  answerValue: string,
-) => {
-  if (isString(answerToCheckValue)) {
-    return answerToCheckValue > answerValue;
-  }
-  throw new Error(
-    `nextLogicTypeLessThan: answerToCheckValue must be a string, got ${typeof answerToCheckValue}`,
   );
 };
 

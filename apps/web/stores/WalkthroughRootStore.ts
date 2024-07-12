@@ -41,9 +41,16 @@ export class WalkthroughRootStore {
 
     // set first question as the first question of the starting section
     if (walkthroughData?.info?.startingSectionId && walkthroughData.sections) {
-      this.navigationStore.currentItemId =
+      const firstQuestionId =
         walkthroughData.sections[walkthroughData.info.startingSectionId]
           ?.sectionQuestions[0] || "";
+
+      this.navigationStore.currentItemId = firstQuestionId;
+      this.navigationStore.addItemIdToHistory({
+        questionId: firstQuestionId,
+        answerVariableId: firstQuestionId,
+      });
+      this.answerStore.setDefaultAnswerValue();
     }
   }
 
@@ -219,6 +226,10 @@ export class WalkthroughRootStore {
 
   handleStateError = (where: string, error: unknown) => {
     this.navigationStore.currentItemId = NEXT_NAVIGATION_ID_ERROR;
+    this.navigationStore.addItemIdToHistory({
+      questionId: NEXT_NAVIGATION_ID_ERROR,
+      answerVariableId: NEXT_NAVIGATION_ID_ERROR,
+    });
     console.log(`Error in ${where}`, error);
     console.log("current answer state", toJS(this.answerStore.answers));
   };

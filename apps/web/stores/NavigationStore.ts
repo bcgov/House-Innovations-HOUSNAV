@@ -11,10 +11,15 @@ import {
 } from "./AnswerStore";
 import { getNextNavigationId } from "../utils/logic/nextNavigation";
 
+type QuestionHistoryItem = {
+  questionId: string;
+  answerVariableId: string;
+};
+
 export class NavigationStore {
   rootStore: WalkthroughRootStore;
 
-  questionHistory: string[] = [];
+  questionHistory: QuestionHistoryItem[] = [];
 
   private _currentItemId: string = "";
 
@@ -27,16 +32,6 @@ export class NavigationStore {
 
   set currentItemId(newId: string) {
     this._currentItemId = newId;
-
-    // only add to history if not already in history
-    // because this is called on every navigation
-    if (!this.questionHistory.includes(newId)) {
-      this.addItemIdToHistory(newId);
-    }
-
-    if (!this.rootStore.answerStore.answers[newId]) {
-      this.rootStore.answerStore.setDefaultAnswerValue();
-    }
   }
 
   get currentItemId() {
@@ -92,30 +87,38 @@ export class NavigationStore {
    * - current question is the first question
    */
   get backButtonIsDisabled() {
-    return this.questionHistory.indexOf(this.currentItemId) < 1;
+    return (
+      this.questionHistory.findIndex(
+        ({ questionId }) => questionId === this.currentItemId,
+      ) < 1
+    );
   }
 
   getPreviousQuestionIdNotVariable = (idToCheck: string) => {
-    const questionIndexToCheck = this.questionHistory.indexOf(idToCheck);
+    const questionIndexToCheck = this.questionHistory.findIndex(
+      ({ questionId }) => questionId === idToCheck,
+    );
     let previousQuestionId = "";
-    const previousQuestionIdToCheck =
+    const previousHistoryItemToCheck =
       this.questionHistory[questionIndexToCheck - 1];
 
-    if (previousQuestionIdToCheck) {
-      if (this.rootStore.questionIsVariable(previousQuestionIdToCheck)) {
+    if (previousHistoryItemToCheck) {
+      if (
+        this.rootStore.questionIsVariable(previousHistoryItemToCheck.questionId)
+      ) {
         previousQuestionId = this.getPreviousQuestionIdNotVariable(
-          previousQuestionIdToCheck,
+          previousHistoryItemToCheck.questionId,
         );
       } else {
-        previousQuestionId = previousQuestionIdToCheck;
+        previousQuestionId = previousHistoryItemToCheck.questionId;
       }
     }
 
     return previousQuestionId;
   };
 
-  addItemIdToHistory = (id: string) => {
-    this.questionHistory.push(id);
+  addItemIdToHistory = (historyItem: QuestionHistoryItem) => {
+    this.questionHistory.push(historyItem);
   };
 
   // NOTE: this is only call onSubmit in the Walkthrough and handleVariableItem in the AnswerStore
@@ -143,6 +146,23 @@ export class NavigationStore {
 
       if (!nextQuestionAsMultipleChoiceMultiple || possibleAnswers.length > 0) {
         this.currentItemId = nextNavigationId;
+
+        // only add to history if not already in history
+        // because this is called on every navigation
+        if (
+          this.questionHistory.findIndex(
+            ({ questionId }) => questionId === nextNavigationId,
+          ) === -1
+        ) {
+          this.addItemIdToHistory({
+            questionId: nextNavigationId,
+            answerVariableId: nextNavigationId,
+          });
+        }
+
+        if (!this.rootStore.answerStore.answers[nextNavigationId]) {
+          this.rootStore.answerStore.setDefaultAnswerValue();
+        }
       } else {
         /*
          * If the next question is a multiple choice multiple question with no possible answers
