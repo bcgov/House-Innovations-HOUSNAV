@@ -52,7 +52,7 @@ spec:
             initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
             periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
           command: ['sh', '-c']
-          args: ['. /vault/secrets/secrets.env && exec node apps/web/server.js']
+          args: ['set -a; . /vault/secrets/secrets.env; set +a; exec node apps/web/server.js']
   strategy:
     type: RollingUpdate
     rollingUpdate:
