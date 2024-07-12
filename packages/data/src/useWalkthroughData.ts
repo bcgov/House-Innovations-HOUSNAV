@@ -175,13 +175,14 @@ export interface ResultData {
   resultDisplayMessage: string;
 }
 
-interface SectionData {
+export interface SectionData {
   sectionTitle: string;
   sectionQuestions: string[];
 }
 
 export interface WalkthroughInfo {
   title: string;
+  walkthroughTitle: string;
   subtitle: string;
   description: string;
   startingSectionId: StartingSectionIdType;
@@ -220,3 +221,19 @@ export default function useWalkthroughData({
 
   return data;
 }
+
+export const findSectionTitleByQuestionId = (
+  questionId: string,
+  sections: { [key: string]: SectionData },
+) => {
+  if (!sections) {
+    return null;
+  }
+
+  for (const sectionKey in sections) {
+    if (sections[sectionKey]?.sectionQuestions.includes(questionId)) {
+      return sections[sectionKey]?.sectionTitle || null;
+    }
+  }
+  return null;
+};

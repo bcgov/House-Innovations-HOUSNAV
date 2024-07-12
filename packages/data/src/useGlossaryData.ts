@@ -108,3 +108,78 @@ function setStaticData(): ModalSideDataType {
 export const ModalGlossaryData = transformGlossaryData(GlossaryJSONData);
 export const TooltipGlossaryData = setMappedGlossaryData(GlossaryJSONData);
 export const StaticData = setStaticData();
+
+export type AllBuildingCodeTypes =
+  | PartType
+  | SectionType
+  | SubsectionType
+  | ArticleType
+  | SentenceType;
+
+export const findBuildingCodeByNumberReference = (
+  numberReference: string,
+): AllBuildingCodeTypes | null => {
+  const traverseSentences = (
+    sentences: SentenceType[],
+  ): SentenceType | null => {
+    for (const sentence of sentences) {
+      if (sentence.numberReference === numberReference) {
+        return sentence;
+      }
+    }
+    return null;
+  };
+
+  const traverseArticles = (
+    articles: ArticleType[],
+  ): SentenceType | ArticleType | null => {
+    for (const article of articles) {
+      if (article.numberReference === numberReference) {
+        return article;
+      } else {
+        const sentence = traverseSentences(article.sentences);
+        if (sentence) return sentence;
+      }
+    }
+    return null;
+  };
+
+  const traverseSubsections = (
+    subsections: SubsectionType[],
+  ): SubsectionType | SentenceType | ArticleType | null => {
+    for (const subsection of subsections) {
+      if (subsection.numberReference === numberReference) {
+        return subsection;
+      } else {
+        const article = traverseArticles(subsection.articles);
+        if (article) return article;
+      }
+    }
+    return null;
+  };
+
+  const traverseSections = (
+    sections: SectionType[],
+  ): SectionType | SubsectionType | SentenceType | ArticleType | null => {
+    for (const section of sections) {
+      if (section.numberReference === numberReference) {
+        return section;
+      } else {
+        const subsection = traverseSubsections(section.subsections);
+        if (subsection) return subsection;
+      }
+    }
+    return null;
+  };
+
+  for (const part of BuildingCodeJSONData) {
+    if (part.numberReference === numberReference) {
+      return part;
+    } else {
+      const section = traverseSections(part.sections);
+      if (section) return section;
+    }
+  }
+
+  return null;
+};

@@ -9,6 +9,7 @@ import {
   getStringFromComponents,
   parseStringToComponents,
   getAnswerValueDisplay,
+  parseComponentToPlainText,
 } from "./string";
 import { isArray } from "./typeChecking";
 import { renderWithWalkthroughProvider } from "../tests/utils";
@@ -181,5 +182,40 @@ describe("string", () => {
       },
     });
     expect(container).toMatchSnapshot();
+  });
+});
+
+describe("parseComponentToPlainText", () => {
+  it("should return plain text from a string element", () => {
+    const component = "Test string";
+    const plainText = parseComponentToPlainText(component);
+    expect(plainText).toBe("Test string");
+  });
+
+  it("should return plain text from a React element", () => {
+    const component = parseStringToComponents(
+      "<pdf-download-link>Download PDF</pdf-download-link>",
+    );
+    const plainText = parseComponentToPlainText(component);
+    expect(plainText).toBe("Download PDF");
+  });
+
+  it("should return plain text from an array of elements", () => {
+    const component = parseStringToComponents(
+      "<pdf-download-link>Test</pdf-download-link>",
+    );
+    const components = [component, component, "!"];
+    const plainText = parseComponentToPlainText(components);
+    expect(plainText).toBe("TestTest!");
+  });
+
+  it("should return an empty string for null or undefined", () => {
+    const component = null;
+    const plainText = parseComponentToPlainText(component);
+    expect(plainText).toBe("");
+
+    const componentUndefined = undefined;
+    const plainTextUndefined = parseComponentToPlainText(componentUndefined);
+    expect(plainTextUndefined).toBe("");
   });
 });
