@@ -27,41 +27,39 @@ export default function PdfResultDownload({
   return (
     <>
       <ReactAriaLink
-        aria-label={`Download walkthrough questions, answers, and references as PDF`}
+        aria-label="Download walkthrough questions, answers, and references as PDF"
         onPress={handleDownload}
         data-testid={testid}
+        className="ui-PdfResultDownload-container"
         {...props}
       >
-        <article className="ui-PdfResultDownload-container">
-          <div className="ui-PdfResultDownload-imageContainer">
-            <Image
-              src="result-preview.png"
-              alt="Walkthrough Result Preview"
-              aria-label="PDF download preview image"
-              width={230}
-              height={198}
-              className="ui-PdfResultDownload-image"
-            />
-            <div className="ui-PdfResultDownload-imageMiddle">
-              <Icon type="openInNew" />
-            </div>
+        <div className="ui-PdfResultDownload-imageContainer">
+          <Image
+            src="result-preview.png"
+            alt="Walkthrough Result Preview"
+            aria-label="PDF download preview image"
+            width={230}
+            height={198}
+            className="ui-PdfResultDownload-image"
+          />
+          <div className="ui-PdfResultDownload-imageMiddle">
+            <Icon type="openInNew" />
           </div>
-          <section className="ui-PdfResultDownload-aside">
-            <h3 className="ui-PdfResultDownload-title">
-              Download results & references as PDF
-            </h3>
-            <Button
-              variant="primary"
-              onPress={handleDownload}
-              className="ui-PdfResultDownload-button"
-            >
-              <Icon type="download" />
-              <span className="ui-PdfResultDownload--DownloadText">
-                Download
-              </span>
-            </Button>
-          </section>
-        </article>
+        </div>
+        <div className="ui-PdfResultDownload-aside">
+          <h3 className="ui-PdfResultDownload-title">
+            Download results & references as PDF
+          </h3>
+          <Button
+            variant="primary"
+            onPress={handleDownload}
+            aria-label="Download walkthrough questions, answers, and references as PDF"
+            className="ui-PdfResultDownload-button"
+          >
+            <Icon type="download" />
+            <span>Download</span>
+          </Button>
+        </div>
       </ReactAriaLink>
       <PrintContent contentType={PrintContentType.RESULTS} />
     </>
