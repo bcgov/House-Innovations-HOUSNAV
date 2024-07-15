@@ -14,26 +14,26 @@
 }
 
 .ui-PdfResultDownload-image {
-  border-radius: var(--pdf-result-download-image-border-radius);
   margin: 0 auto;
   transition: 0.5s ease;
   backface-visibility: hidden;
   opacity: 1;
   width: auto;
-  height: 100%;
-  border: 1px solid var(#00000000);
+  height: auto;
+  max-width: 230px;
+  max-height: 198px;
   border-right: 1px solid var(--surface-color-border-default);
 }
 
 .ui-PdfResultDownload-imageContainer {
   position: relative;
   transition: 0.5s ease;
-  background-color: #000000;
-  border-radius: var(--layout-border-radius-xlarge);
-  width: 233px;
-  height: 198px;
+  background-color: var(--pdf-result-download-container-image-container);
+  width: 229px;
+  height: 190px;
   margin: 1px; /* prevents 1px of the 2px "focus" border from being covered */
   border-radius: var(--pdf-result-download-image-border-radius);
+  border-color: 1px solid white;
 }
 
 .ui-PdfResultDownload-imageMiddle {
@@ -96,10 +96,11 @@
     text-align: center;
     margin: 0 auto;
   }
+
   .ui-PdfResultDownload-image,
   .ui-PdfResultDownload-imageContainer {
     margin: 0 auto;
-    border-radius: var(--layout-border-radius-xlarge);
+    border-radius: 0px;
     border: none;
   }
 }

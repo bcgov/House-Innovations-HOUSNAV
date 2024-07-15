@@ -32,6 +32,15 @@
   page-break-inside: auto;
 }
 
+.ui-printContent--questionColumn ul {
+  list-style-type: disc;
+  margin-left: 20px; /* Indent list items */
+}
+
+.ui-printContent--questionColumn li {
+  display: list-item;
+}
+
 .ui-printContent--walkthroughTitle {
   padding: var(--layout-padding-small);
   font: var(--typography-bold-h3);
