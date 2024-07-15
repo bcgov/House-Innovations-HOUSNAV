@@ -53,7 +53,7 @@ export default function PrintContent({ contentType }: PrintContentProps) {
     This is basically used to ensure the reference is only displayed once
   */
   const groupQuestionsWithReferences = (
-    questions: QuestionData[]
+    questions: QuestionData[],
   ): GroupedQuestion[] => {
     const grouped: GroupedQuestion[] = [];
     let currentGroup: QuestionData[] = [];
@@ -76,7 +76,7 @@ export default function PrintContent({ contentType }: PrintContentProps) {
             buildingCodeSection: buildingCodeSection,
             sectionTitle: findSectionTitleByQuestionId(
               currentGroup[0]?.questionId,
-              walkthroughSections
+              walkthroughSections,
             ),
           });
         }
@@ -97,7 +97,7 @@ export default function PrintContent({ contentType }: PrintContentProps) {
         buildingCodeSection: buildingCodeSection,
         sectionTitle: findSectionTitleByQuestionId(
           currentGroup[0]?.questionId,
-          walkthroughSections
+          walkthroughSections,
         ),
       });
     }
@@ -115,7 +115,7 @@ export default function PrintContent({ contentType }: PrintContentProps) {
         return {
           questionId,
           question: question.questionText,
-          answer: getQuestionAnswerValueDisplay(questionId),
+          answer: getQuestionAnswerValueDisplay(questionId, true),
           reference: toJS(question.questionCodeReference?.codeNumber),
           referenceDisplay: toJS(question.questionCodeReference?.displayString),
         };
@@ -124,6 +124,50 @@ export default function PrintContent({ contentType }: PrintContentProps) {
     .filter((item): item is QuestionData => item !== undefined);
 
   const groupedQuestions = groupQuestionsWithReferences(questionPdf);
+
+  const renderGroupQuestionsAndAnswers = (
+    group: GroupedQuestion,
+    groupIndex: number,
+  ) => {
+    return group.questions.map((item, index) => {
+      const parsedQuestion = parseComponentToPlainText(
+        parseStringToComponents(item.question),
+      );
+      const parsedAnswer = parseComponentToPlainText(
+        parseStringToComponents(item.answer),
+      );
+
+      // If the answer is multiline, split it into an array so we can render it as a list
+      const answerLines = parsedAnswer.split("\n");
+
+      return (
+        <tr key={`${groupIndex}-${index}`}>
+          <td className="ui-printContent--questionColumn">
+            {parsedQuestion}
+            <br />
+            <strong>Answer:</strong>{" "}
+            {answerLines.length > 1 ? (
+              <ul>
+                {answerLines.map((line, i) => (
+                  <li key={i}>{line}</li>
+                ))}
+              </ul>
+            ) : (
+              <span>{parsedAnswer}</span>
+            )}
+          </td>
+          {index === 0 && groupIndex !== 0 && (
+            <td
+              className="ui-printContent--referenceColumn"
+              rowSpan={group.questions.length}
+            >
+              {group.referenceDisplay}
+            </td>
+          )}
+        </tr>
+      );
+    });
+  };
 
   return (
     <>
@@ -145,28 +189,7 @@ export default function PrintContent({ contentType }: PrintContentProps) {
                   </tr>
                 </thead>
                 <tbody>
-                  {group.questions.map((item, index) => (
-                    <tr key={`${groupIndex}-${index}`}>
-                      <td className="ui-printContent--questionColumn">
-                        {parseComponentToPlainText(
-                          parseStringToComponents(item.question)
-                        )}
-                        <br />
-                        <strong>Answer:</strong>{" "}
-                        {parseComponentToPlainText(
-                          parseStringToComponents(item.answer)
-                        )}
-                      </td>
-                      {index === 0 && groupIndex != 0 && (
-                        <td
-                          className="ui-printContent--referenceColumn"
-                          rowSpan={group.questions.length}
-                        >
-                          {group.referenceDisplay}
-                        </td>
-                      )}
-                    </tr>
-                  ))}
+                  {renderGroupQuestionsAndAnswers(group, groupIndex)}
                 </tbody>
               </table>
             </div>
