@@ -200,23 +200,19 @@ describe("variableItem", () => {
   it(`getVariableItemValueObject: variableValueLogicType is ${VariableValueLogicType.Fallback}`, () => {
     // test data
     const returnValue = { key: "value" };
-    const variableToSet: VariableToSet = {
-      variableType: VariableToSetType.Object,
-      variableName: "variableName",
-      variableValue: {
-        key: [
-          {
-            variableValueLogicType: VariableValueLogicType.Fallback,
-            variableValueToSet: "value",
-          },
-        ],
-      },
+    const variableValue = {
+      key: [
+        {
+          variableValueLogicType: VariableValueLogicType.Fallback,
+          variableValueToSet: "value",
+        },
+      ],
     };
     const getAnswerToCheckValueMock = vi.fn();
 
     // call getVariableItemValueObject
     const result = getVariableItemValueObject(
-      variableToSet,
+      variableValue,
       getAnswerToCheckValueMock,
     );
 
@@ -227,27 +223,23 @@ describe("variableItem", () => {
   it(`getVariableItemValueObject: variableValueLogicType is ${VariableValueLogicType.Equals}`, () => {
     // test data
     const returnValue = { key: "value" };
-    const variableToSet: VariableToSet = {
-      variableType: VariableToSetType.Object,
-      variableName: "variableName",
-      variableValue: {
-        key: [
-          {
-            variableValueLogicType: VariableValueLogicType.Equals,
-            answerToCheck: "answerToCheck",
-            answerValue: "answerValue",
-            variableValueToSet: "value",
-          },
-        ],
-        key2: [
-          {
-            variableValueLogicType: VariableValueLogicType.Equals,
-            answerToCheck: "answerToCheck",
-            answerValue: "undefined",
-            variableValueToSet: "value",
-          },
-        ],
-      },
+    const variableValue = {
+      key: [
+        {
+          variableValueLogicType: VariableValueLogicType.Equals,
+          answerToCheck: "answerToCheck",
+          answerValue: "answerValue",
+          variableValueToSet: "value",
+        },
+      ],
+      key2: [
+        {
+          variableValueLogicType: VariableValueLogicType.Equals,
+          answerToCheck: "answerToCheck",
+          answerValue: "undefined",
+          variableValueToSet: "value",
+        },
+      ],
     };
     const getAnswerToCheckValueMock = vi.fn();
     // setup mock return value
@@ -256,7 +248,7 @@ describe("variableItem", () => {
 
     // call getVariableItemValueObject
     const result = getVariableItemValueObject(
-      variableToSet,
+      variableValue,
       getAnswerToCheckValueMock,
     );
 
