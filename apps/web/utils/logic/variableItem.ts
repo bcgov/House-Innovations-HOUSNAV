@@ -26,7 +26,10 @@ export const getVariableItemValue = (
 ): AnswerTypes => {
   switch (variableToSet.variableType) {
     case VariableToSetType.Copy:
-      return ThisModule.getVariableCopy(variableToSet, getAnswerToCheckValue);
+      return ThisModule.getVariableCopy(
+        variableToSet.variableValue,
+        getAnswerToCheckValue,
+      );
     case VariableToSetType.Object:
       return ThisModule.getVariableItemValueObject(
         variableToSet.variableValue,
@@ -43,13 +46,11 @@ export const getVariableItemValue = (
 };
 
 export const getVariableCopy = (
-  variableToSet: VariableToSet,
+  variableValue: VariableValueType,
   getAnswerToCheckValue: AnswerToCheckValueFn,
 ): AnswerTypes => {
-  if (isString(variableToSet.variableValue)) {
-    const answerToCheckValue = getAnswerToCheckValue(
-      variableToSet.variableValue,
-    );
+  if (isString(variableValue)) {
+    const answerToCheckValue = getAnswerToCheckValue(variableValue);
 
     if (answerToCheckValue) {
       return answerToCheckValue;
@@ -69,40 +70,40 @@ export const getVariableItemValueObject = (
 
   Object.entries(variableValue).forEach(([key, variableValueLogic]) => {
     for (const variableValueLogicItem of variableValueLogic) {
+      const {
+        variableValueLogicType,
+        variableValueToSet,
+        answerToCheck,
+        answerValue,
+      } = variableValueLogicItem;
+
       // if fallback item is found, set value to fallback item
       // paradigms dictate that the fallback item should be the last item in the array
       if (
-        variableValueLogicItem.variableValueLogicType ===
-          VariableValueLogicType.Fallback &&
-        variableValueLogicItem.variableValueToSet
+        variableValueLogicType === VariableValueLogicType.Fallback &&
+        variableValueToSet
       ) {
-        newObjectVariable[key] = variableValueLogicItem.variableValueToSet;
+        newObjectVariable[key] = variableValueToSet;
         break;
       }
 
-      if (variableValueLogicItem.answerToCheck === undefined) continue;
+      if (answerToCheck === undefined) continue;
 
-      const answerToCheckValue = getAnswerToCheckValue(
-        variableValueLogicItem.answerToCheck,
-      );
+      const answerToCheckValue = getAnswerToCheckValue(answerToCheck);
 
       if (
-        variableValueLogicItem.variableValueLogicType ===
-          VariableValueLogicType.Equals &&
-        variableValueLogicItem.variableValueToSet
+        variableValueLogicType === VariableValueLogicType.Equals &&
+        variableValueToSet
       ) {
         if (
           answerToCheckValue &&
           isString(answerToCheckValue) &&
-          answerToCheckValue === variableValueLogicItem.answerValue
+          answerToCheckValue === answerValue
         ) {
-          newObjectVariable[key] = variableValueLogicItem.variableValueToSet;
+          newObjectVariable[key] = variableValueToSet;
           break;
         }
-        if (
-          answerToCheckValue === undefined &&
-          variableValueLogicItem.answerValue === "undefined"
-        ) {
+        if (answerToCheckValue === undefined && answerValue === "undefined") {
           break;
         }
       }
@@ -126,15 +127,18 @@ export const getVariableItemValueNumber = (
           getAnswerToCheckValue,
         )
       ) {
-        if (variableValueLogicItem.variableValueToSetCalculation) {
+        const { variableValueToSetCalculation, variableValueToSet } =
+          variableValueLogicItem;
+
+        if (variableValueToSetCalculation) {
           const answerToUseValue = getAnswerToCheckValue(
-            variableValueLogicItem.variableValueToSetCalculation.answerToUse,
+            variableValueToSetCalculation.answerToUse,
           );
 
           if (answerToUseValue && isNumber(answerToUseValue)) {
             return calculateVariableValueToSet(
               answerToUseValue,
-              variableValueLogicItem.variableValueToSetCalculation,
+              variableValueToSetCalculation,
             );
           }
 
@@ -142,8 +146,8 @@ export const getVariableItemValueNumber = (
             "variableValueToSetCalculation: No answerToUseValue found, or it was not a number.",
           );
         }
-        if (isNumber(variableValueLogicItem.variableValueToSet)) {
-          return variableValueLogicItem.variableValueToSet;
+        if (isNumber(variableValueToSet)) {
+          return variableValueToSet;
         }
 
         throw new Error(
@@ -162,82 +166,69 @@ export const variableValueLogicItemIsTrue = (
   variableValueLogicItem: VariableValueLogic,
   getAnswerToCheckValue: AnswerToCheckValueFn,
 ) => {
+  const { variableValueLogicType, valuesToCheck, answerToCheck } =
+    variableValueLogicItem;
+
   // if fallback item is found, set variableValue to fallback item
   // paradigms dictate that the fallback item should be the last item in the array
-  if (
-    variableValueLogicItem.variableValueLogicType ===
-    VariableValueLogicType.Fallback
-  ) {
+  if (variableValueLogicType === VariableValueLogicType.Fallback) {
     return true;
   }
 
-  if (variableValueLogicItem.valuesToCheck) {
+  if (valuesToCheck) {
     /*
      * NOTE: This logic is only for and/or logic
      * there is no support for other types of logic in this section currently
      */
-    switch (variableValueLogicItem.variableValueLogicType) {
+    switch (variableValueLogicType) {
       case VariableValueLogicType.Or:
         return ThisModule.variableLogicTypeOr(
-          variableValueLogicItem.valuesToCheck,
+          valuesToCheck,
           getAnswerToCheckValue,
         );
       case VariableValueLogicType.And:
         return ThisModule.variableLogicTypeAnd(
-          variableValueLogicItem.valuesToCheck,
+          valuesToCheck,
           getAnswerToCheckValue,
         );
     }
 
     throw new Error(
-      `variableLogicType ${variableValueLogicItem.variableValueLogicType} is not supported for valuesToCheck property.`,
+      `variableLogicType ${variableValueLogicType} is not supported for valuesToCheck property.`,
     );
-  } else if (variableValueLogicItem.answerToCheck) {
-    const answerToCheckValue = getAnswerToCheckValue(
-      variableValueLogicItem.answerToCheck,
-    );
+  } else if (answerToCheck) {
+    const { answerValue, answerValues } = variableValueLogicItem;
+    const answerToCheckValue = getAnswerToCheckValue(answerToCheck);
 
     if (answerToCheckValue) {
-      if (variableValueLogicItem.answerValue) {
+      if (answerValue) {
         /*
          * NOTE: This logic is only for single answerValue strings
          * there is no support for multiple answers to check in this section
          */
-        switch (variableValueLogicItem.variableValueLogicType) {
+        switch (variableValueLogicType) {
           case VariableValueLogicType.Equals:
-            return logicTypeEqual(
-              answerToCheckValue,
-              variableValueLogicItem.answerValue,
-            );
+            return logicTypeEqual(answerToCheckValue, answerValue);
           case VariableValueLogicType.LessThan:
-            return logicTypeLessThan(
-              answerToCheckValue,
-              variableValueLogicItem.answerValue,
-            );
+            return logicTypeLessThan(answerToCheckValue, answerValue);
           case VariableValueLogicType.GreaterThan:
-            return logicTypeGreaterThan(
-              answerToCheckValue,
-              variableValueLogicItem.answerValue,
-            );
+            return logicTypeGreaterThan(answerToCheckValue, answerValue);
         }
 
         throw new Error(
-          `variableLogicType ${variableValueLogicItem.variableValueLogicType} is not supported when answerToCheckValue exists and property answerValue exists.`,
+          `variableLogicType ${variableValueLogicType} is not supported when answerToCheckValue exists and property answerValue exists.`,
         );
-      } else if (variableValueLogicItem.answerValues) {
+      } else if (answerValues) {
         /*
          * NOTE: This logic is only for answerValues arrays only
          */
-        switch (variableValueLogicItem.variableValueLogicType) {
+        switch (variableValueLogicType) {
           case VariableValueLogicType.ContainsOnly:
-            return logicTypeContainsOnly(
-              answerToCheckValue,
-              variableValueLogicItem.answerValues,
-            );
+            return logicTypeContainsOnly(answerToCheckValue, answerValues);
         }
 
         throw new Error(
-          `variableLogicType ${variableValueLogicItem.variableValueLogicType} is not supported when answerToCheckValue exists and property answerValues exists.`,
+          `variableLogicType ${variableValueLogicType} is not supported when answerToCheckValue exists and property answerValues exists.`,
         );
       }
     } else {
@@ -245,22 +236,16 @@ export const variableValueLogicItemIsTrue = (
        * NOTE: This logic is only for single answerValue strings when answerToCheckValue is undefined
        * there is no support for multiple answers to check in this section
        */
-      if (variableValueLogicItem.answerValue) {
-        switch (variableValueLogicItem.variableValueLogicType) {
+      if (answerValue) {
+        switch (variableValueLogicType) {
           case VariableValueLogicType.Equals:
-            return logicTypeEqual(
-              answerToCheckValue,
-              variableValueLogicItem.answerValue,
-            );
+            return logicTypeEqual(answerToCheckValue, answerValue);
           case VariableValueLogicType.LessThan:
-            return logicTypeLessThan(
-              answerToCheckValue,
-              variableValueLogicItem.answerValue,
-            );
+            return logicTypeLessThan(answerToCheckValue, answerValue);
         }
 
         throw new Error(
-          `variableLogicType ${variableValueLogicItem.variableValueLogicType} is not supported when answerToCheckValue is undefined and property answerValue exists.`,
+          `variableLogicType ${variableValueLogicType} is not supported when answerToCheckValue is undefined and property answerValue exists.`,
         );
       }
 
