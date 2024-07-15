@@ -5,6 +5,7 @@ import {
   VariableValueLogic,
   VariableValueLogicType,
   VariableValuesToCheckType,
+  VariableValueType,
 } from "@repo/data/useWalkthroughData";
 // local
 import { AnswerToCheckValueFn, AnswerTypes } from "../../stores/AnswerStore";
@@ -28,12 +29,12 @@ export const getVariableItemValue = (
       return ThisModule.getVariableCopy(variableToSet, getAnswerToCheckValue);
     case VariableToSetType.Object:
       return ThisModule.getVariableItemValueObject(
-        variableToSet,
+        variableToSet.variableValue,
         getAnswerToCheckValue,
       );
     case VariableToSetType.Number:
       return ThisModule.getVariableItemValueNumber(
-        variableToSet,
+        variableToSet.variableValue,
         getAnswerToCheckValue,
       );
   }
@@ -61,66 +62,64 @@ export const getVariableCopy = (
 };
 
 export const getVariableItemValueObject = (
-  variableToSet: VariableToSet,
+  variableValue: VariableValueType,
   getAnswerToCheckValue: AnswerToCheckValueFn,
 ): Record<string, string> => {
   const newObjectVariable: Record<string, string> = {};
 
-  Object.entries(variableToSet.variableValue).forEach(
-    ([key, variableValueLogic]) => {
-      for (const variableValueLogicItem of variableValueLogic) {
-        // if fallback item is found, set value to fallback item
-        // paradigms dictate that the fallback item should be the last item in the array
+  Object.entries(variableValue).forEach(([key, variableValueLogic]) => {
+    for (const variableValueLogicItem of variableValueLogic) {
+      // if fallback item is found, set value to fallback item
+      // paradigms dictate that the fallback item should be the last item in the array
+      if (
+        variableValueLogicItem.variableValueLogicType ===
+          VariableValueLogicType.Fallback &&
+        variableValueLogicItem.variableValueToSet
+      ) {
+        newObjectVariable[key] = variableValueLogicItem.variableValueToSet;
+        break;
+      }
+
+      if (variableValueLogicItem.answerToCheck === undefined) continue;
+
+      const answerToCheckValue = getAnswerToCheckValue(
+        variableValueLogicItem.answerToCheck,
+      );
+
+      if (
+        variableValueLogicItem.variableValueLogicType ===
+          VariableValueLogicType.Equals &&
+        variableValueLogicItem.variableValueToSet
+      ) {
         if (
-          variableValueLogicItem.variableValueLogicType ===
-            VariableValueLogicType.Fallback &&
-          variableValueLogicItem.variableValueToSet
+          answerToCheckValue &&
+          isString(answerToCheckValue) &&
+          answerToCheckValue === variableValueLogicItem.answerValue
         ) {
           newObjectVariable[key] = variableValueLogicItem.variableValueToSet;
           break;
         }
-
-        if (variableValueLogicItem.answerToCheck === undefined) continue;
-
-        const answerToCheckValue = getAnswerToCheckValue(
-          variableValueLogicItem.answerToCheck,
-        );
-
         if (
-          variableValueLogicItem.variableValueLogicType ===
-            VariableValueLogicType.Equals &&
-          variableValueLogicItem.variableValueToSet
+          answerToCheckValue === undefined &&
+          variableValueLogicItem.answerValue === "undefined"
         ) {
-          if (
-            answerToCheckValue &&
-            isString(answerToCheckValue) &&
-            answerToCheckValue === variableValueLogicItem.answerValue
-          ) {
-            newObjectVariable[key] = variableValueLogicItem.variableValueToSet;
-            break;
-          }
-          if (
-            answerToCheckValue === undefined &&
-            variableValueLogicItem.answerValue === "undefined"
-          ) {
-            break;
-          }
+          break;
         }
       }
-    },
-  );
+    }
+  });
 
   return newObjectVariable;
 };
 
 export const getVariableItemValueNumber = (
-  variableToSet: VariableToSet,
+  variableValue: VariableValueType,
   getAnswerToCheckValue: AnswerToCheckValueFn,
 ): number => {
-  if (isNumber(variableToSet.variableValue)) {
-    return variableToSet.variableValue;
-  } else if (isArray(variableToSet.variableValue)) {
-    for (const variableValueLogicItem of variableToSet.variableValue) {
+  if (isNumber(variableValue)) return variableValue;
+
+  if (isArray(variableValue)) {
+    for (const variableValueLogicItem of variableValue) {
       if (
         ThisModule.variableValueLogicItemIsTrue(
           variableValueLogicItem,
@@ -155,7 +154,7 @@ export const getVariableItemValueNumber = (
   }
 
   throw new Error(
-    `getVariableItemValueString: variableToSet.variableValue must be a number, or array, got ${typeof variableToSet.variableValue}`,
+    `getVariableItemValueString: variableValue must be a number, or array, got ${typeof variableValue}`,
   );
 };
 

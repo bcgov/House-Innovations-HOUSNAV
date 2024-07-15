@@ -117,16 +117,17 @@ export enum VariableToSetType {
   Number = "number",
   Copy = "copy",
 }
+export type VariableValueType =
+  | {
+      [key: string]: VariableValueLogic[];
+    }
+  | VariableValueLogic[]
+  | number
+  | string;
 export interface VariableToSet {
   variableType: VariableToSetType | string;
   variableName: string;
-  variableValue:
-    | {
-        [key: string]: VariableValueLogic[];
-      }
-    | VariableValueLogic[]
-    | number
-    | string;
+  variableValue: VariableValueType;
 }
 
 type QuestionCodeReferenceType = {
