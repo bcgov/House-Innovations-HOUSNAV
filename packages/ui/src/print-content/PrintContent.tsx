@@ -147,7 +147,13 @@ export default function PrintContent({ contentType }: PrintContentProps) {
 
         return (
           <tr key={`${groupIndex}-${sectionIndex}-${index}`}>
-            <td className="ui-printContent--questionColumn">
+            <td
+              className={
+                groupIndex === 0
+                  ? "ui-printContent--introColumn"
+                  : "ui-printContent--questionColumn"
+              }
+            >
               {parsedQuestion}
               <br />
               <strong>Answer:</strong>{" "}
@@ -202,7 +208,7 @@ export default function PrintContent({ contentType }: PrintContentProps) {
             <table className="ui-printContent--table" key={groupIndex}>
               <thead>
                 <tr>
-                  <th className="ui-printContent--questionColumn" colSpan={2}>
+                  <th colSpan={2}>
                     <h5 className="ui-printContent--sectionTitle">
                       {group.sectionTitle}
                     </h5>
