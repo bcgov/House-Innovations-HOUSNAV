@@ -50,8 +50,6 @@ export default function PrintContent({ contentType }: PrintContentProps) {
     getQuestionAsDisplayType,
   } = useWalkthroughState();
 
-  const questionHistory = toJS(navigationStore.questionHistory);
-
   /*
     Combine questions with the same reference into a single group
     This is basically used to ensure the reference is only displayed once
@@ -110,17 +108,17 @@ export default function PrintContent({ contentType }: PrintContentProps) {
   };
 
   // Get the question data from the question history for the PDF
-  const questionPdf = questionHistory
-    .map((questionId): QuestionData | undefined => {
+  const questionPdf = navigationStore.questionHistory
+    .map((history): QuestionData | undefined => {
       // const question = walkthroughData.questions[questionId];
-      const question = getQuestionAsDisplayType(questionId);
+      const question = getQuestionAsDisplayType(history.questionId);
       if (!question) {
         return undefined;
       } else {
         return {
-          questionId,
+          questionId: history.questionId,
           question: question.questionText,
-          answer: getQuestionAnswerValueDisplay(questionId, true),
+          answer: getQuestionAnswerValueDisplay(history.questionId, true),
           reference: toJS(question.questionCodeReference?.codeNumber),
           referenceDisplay: toJS(question.questionCodeReference?.displayString),
         };
