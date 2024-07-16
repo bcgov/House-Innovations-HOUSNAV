@@ -8,6 +8,7 @@ import {
   SectionType,
   SubsectionType,
   ImageModalType,
+  AllBuildingCodeTypes,
 } from "@repo/data/useGlossaryData";
 import { Heading } from "react-aria-components";
 import {
@@ -18,17 +19,19 @@ import Image from "../image/Image";
 import "./ModalBuildingCodeContent.css";
 
 interface BuildingCodeContentProps {
-  modalData: PartType[];
-  highlightedSection: string | null;
-  sectionRefs: React.MutableRefObject<{ [key: string]: HTMLElement | null }>;
-  setFocusSection: (section: string) => void;
+  modalData?: PartType[];
+  printData?: AllBuildingCodeTypes;
+  highlightedSection?: string | null;
+  sectionRefs?: React.MutableRefObject<{ [key: string]: HTMLElement | null }>;
+  setFocusSection?: (section: string) => void;
 }
 
 const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
   modalData,
-  highlightedSection,
-  sectionRefs,
+  highlightedSection = null,
+  sectionRefs = { current: {} },
   setFocusSection,
+  printData,
 }) => {
   const renderSubClauses = (subClauses: string[]) => {
     return (
@@ -256,7 +259,26 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
     );
   };
 
-  return <>{renderParts(modalData)}</>;
+  // Render logic for printData
+  const renderPrintData = () => {
+    if (!printData) return null;
+    if ("sentences" in printData) return renderSentences(printData.sentences);
+    if ("articles" in printData) return renderArticles(printData.articles);
+    if ("subsections" in printData)
+      return renderSubSections(printData.subsections);
+    if ("sections" in printData) return renderSections(printData.sections);
+    return null;
+  };
+
+  return (
+    <>
+      {printData
+        ? renderPrintData()
+        : modalData
+          ? renderParts(modalData)
+          : null}
+    </>
+  );
 };
 
 export default BuildingCodeContent;

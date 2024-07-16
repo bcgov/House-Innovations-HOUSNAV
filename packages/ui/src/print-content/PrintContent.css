@@ -2,6 +2,7 @@
 .ui-printContent--printContainer {
   display: none;
   visibility: hidden;
+  overflow: hidden;
 }
 
 .ui-printContent--table th,
@@ -22,11 +23,14 @@
 .ui-printContent--table td,
 .ui-printContent--table th {
   break-inside: avoid;
+  padding: var(--layout-padding-10);
+  width: 1%; /* I'm not completely sure why but this ensures the width of the table is at 100% of the page. */
 }
 
 .ui-printContent--table {
   display: block;
   width: 99%; /* Ensure table width doesn't cut off border */
+  table-layout: fixed; /* Ensure cells share the available space equally */
   border-collapse: collapse;
   break-inside: auto;
   page-break-inside: auto;
