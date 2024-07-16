@@ -1,10 +1,7 @@
 "use client";
 
 // 3rd party
-import {
-  Button as ReactAriaButton,
-  ButtonProps as ReactAriaButtonProps,
-} from "react-aria-components";
+import { ButtonProps as ReactAriaButtonProps } from "react-aria-components";
 
 import "./PdfResultDownload.css";
 import Button from "../button/Button";
@@ -18,7 +15,6 @@ export interface PdfResultDownloadProps extends ReactAriaButtonProps {
 
 export default function PdfResultDownload({
   "data-testid": testid = "",
-  ...props
 }: PdfResultDownloadProps) {
   const handleDownload = () => {
     window.print();
@@ -26,12 +22,16 @@ export default function PdfResultDownload({
 
   return (
     <>
-      <ReactAriaButton
+      <div
         aria-label="Download walkthrough questions, answers, and references as PDF"
-        onPress={handleDownload}
+        role="button"
+        onClick={handleDownload}
         data-testid={testid}
         className="ui-PdfResultDownload-container"
-        {...props}
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") handleDownload();
+        }}
       >
         <div className="ui-PdfResultDownload-imageContainer">
           <Image
@@ -60,7 +60,7 @@ export default function PdfResultDownload({
             <span>Download</span>
           </Button>
         </div>
-      </ReactAriaButton>
+      </div>
       <PrintContent contentType={PrintContentType.RESULTS} />
     </>
   );

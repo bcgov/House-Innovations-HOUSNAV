@@ -20,7 +20,7 @@
   opacity: 1;
   width: auto;
   height: auto;
-  max-width: 230px;
+  max-width: 229px;
   max-height: 198px;
   border-right: 1px solid var(--surface-color-border-default);
   border-radius: var(--pdf-result-download-image-border-radius);
@@ -57,12 +57,12 @@
   opacity: 1;
 }
 
-.ui-PdfResultDownload-container[data-hovered] {
+.ui-PdfResultDownload-container:hover {
   cursor: pointer;
   box-shadow: var(--surface-shadow-medium), var(--surface-shadow-medium);
   border: var(--walkthrough-card-border-default);
 }
-.ui-PdfResultDownload-container[data-focus-visible] {
+.ui-PdfResultDownload-container:focus-visible {
   outline: var(--layout-border-width-medium) solid
     var(--surface-color-border-active);
   outline-offset: var(--outline-offset);
@@ -92,14 +92,17 @@
 @media (max-width: 980px) {
   .ui-PdfResultDownload-container {
     grid-template-columns: 1fr;
-    max-width: 400px;
+    max-width: 350px;
+  }
+
+  .ui-PdfResultDownload-title {
+    max-width: 250px;
   }
 
   .ui-PdfResultDownload-aside {
     align-items: center;
     text-align: center;
     margin: 0 auto;
-    margin: var(--layout-margin-small);
   }
 
   .ui-PdfResultDownload-image,
