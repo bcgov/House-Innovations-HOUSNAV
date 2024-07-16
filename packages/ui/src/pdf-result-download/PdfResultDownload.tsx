@@ -2,8 +2,8 @@
 
 // 3rd party
 import {
-  Link as ReactAriaLink,
-  LinkProps as ReactAriaLinkProps,
+  Button as ReactAriaButton,
+  ButtonProps as ReactAriaButtonProps,
 } from "react-aria-components";
 
 import "./PdfResultDownload.css";
@@ -12,7 +12,7 @@ import Image from "../image/Image";
 import Icon from "@repo/ui/icon";
 import PrintContent, { PrintContentType } from "../print-content/PrintContent";
 
-export interface PdfResultDownloadProps extends ReactAriaLinkProps {
+export interface PdfResultDownloadProps extends ReactAriaButtonProps {
   "data-testid"?: string;
 }
 
@@ -26,7 +26,7 @@ export default function PdfResultDownload({
 
   return (
     <>
-      <ReactAriaLink
+      <ReactAriaButton
         aria-label="Download walkthrough questions, answers, and references as PDF"
         onPress={handleDownload}
         data-testid={testid}
@@ -60,7 +60,7 @@ export default function PdfResultDownload({
             <span>Download</span>
           </Button>
         </div>
-      </ReactAriaLink>
+      </ReactAriaButton>
       <PrintContent contentType={PrintContentType.RESULTS} />
     </>
   );
