@@ -241,9 +241,9 @@ export class WalkthroughRootStore {
   };
 
   getQuestionTextByQuestionId = (questionId: string) => {
-    const question = this.walkthroughData.questions[questionId];
+    const question = this.getQuestionAsDisplayType(questionId);
 
-    if (!question || !(PropertyNameQuestionText in question)) {
+    if (!question) {
       console.warn(
         `Question with id ${questionId} not found or has no ${PropertyNameQuestionText}.`,
       );
