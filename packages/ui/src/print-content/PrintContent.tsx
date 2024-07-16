@@ -55,7 +55,7 @@ export default function PrintContent({ contentType }: PrintContentProps) {
     This is basically used to ensure the reference is only displayed once
   */
   const groupQuestionsWithReferences = (
-    questions: QuestionData[],
+    questions: QuestionData[]
   ): GroupedQuestion[] => {
     const grouped: GroupedQuestion[] = [];
     let currentGroup: QuestionData[] = [];
@@ -78,7 +78,7 @@ export default function PrintContent({ contentType }: PrintContentProps) {
             buildingCodeSection: buildingCodeSection,
             sectionTitle: findSectionTitleByQuestionId(
               currentGroup[0]?.questionId,
-              walkthroughSections,
+              walkthroughSections
             ),
           });
         }
@@ -99,7 +99,7 @@ export default function PrintContent({ contentType }: PrintContentProps) {
         buildingCodeSection: buildingCodeSection,
         sectionTitle: findSectionTitleByQuestionId(
           currentGroup[0]?.questionId,
-          walkthroughSections,
+          walkthroughSections
         ),
       });
     }
@@ -130,8 +130,9 @@ export default function PrintContent({ contentType }: PrintContentProps) {
 
   const renderGroupQuestionsAndAnswers = (
     group: GroupedQuestion,
-    groupIndex: number,
+    groupIndex: number
   ) => {
+    const buildingCodeHtml = JSON.stringify(group.buildingCodeSection);
     return group.questions.map((item, index) => {
       const parsedQuestion = getStringFromComponents(
         parseStringToComponents(item.question),
@@ -159,7 +160,7 @@ export default function PrintContent({ contentType }: PrintContentProps) {
               <span>{parsedAnswer}</span>
             )}
           </td>
-          {index === 0 && groupIndex !== 0 && (
+          {index === 0 && (
             <td
               className="ui-printContent--referenceColumn"
               rowSpan={group.questions.length}
@@ -167,6 +168,17 @@ export default function PrintContent({ contentType }: PrintContentProps) {
               {group.referenceDisplay}
             </td>
           )}
+        </tr>
+      );
+    });
+  };
+
+  const renderReferences = (group: GroupedQuestion) => {
+    const buildingCodeHtml = JSON.stringify(group.buildingCodeSection);
+    return group.questions.map((item, index) => {
+      return (
+        <tr key={`${group.reference}`}>
+          {index === 0 && <td>{buildingCodeHtml}</td>}
         </tr>
       );
     });
@@ -181,7 +193,7 @@ export default function PrintContent({ contentType }: PrintContentProps) {
           </h3>
           {groupedQuestions.map((group, groupIndex) => (
             <div key={groupIndex}>
-              <table className="ui-printContent--questionTable">
+              <table className="ui-printContent--table">
                 <thead>
                   <tr>
                     <th className="ui-printContent--questionColumn" colSpan={2}>
@@ -194,6 +206,23 @@ export default function PrintContent({ contentType }: PrintContentProps) {
                 <tbody>
                   {renderGroupQuestionsAndAnswers(group, groupIndex)}
                 </tbody>
+              </table>
+            </div>
+          ))}
+          <span className="ui-printContent--references"></span>
+          {groupedQuestions.map((group, groupIndex) => (
+            <div key={groupIndex}>
+              <table className="ui-printContent--table">
+                <thead>
+                  <tr>
+                    <th className="ui-printContent--questionColumn">
+                      <h5 className="ui-printContent--sectionTitle">
+                        {group.sectionTitle}
+                      </h5>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>{renderReferences(group, groupIndex)}</tbody>
               </table>
             </div>
           ))}
