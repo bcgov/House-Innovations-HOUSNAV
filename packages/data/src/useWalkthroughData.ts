@@ -66,15 +66,23 @@ export enum VariableValueCalculationType {
   Then = "then",
 }
 
-interface VariableValueCalculation {
+export interface VariableValueToSetItemCalculations {
   variableValueCalculationType: VariableValueCalculationType | string;
-  variableValueToSetCalculations?: VariableValueCalculation[];
-  answerToUse?: string;
-  valueToUse?: string;
+  calculationValueToUse?: number;
+}
+
+export interface VariableValueToSetCalculation
+  extends VariableValueToSetItemCalculations {
+  variableValueToSetItemCalculations?: VariableValueToSetItemCalculations[];
+  answerToUse: string;
 }
 
 export enum VariableValueLogicType {
   Equals = "equals",
+  And = "and",
+  Or = "or",
+  LessThan = "lessThan",
+  GreaterThan = "greaterThan",
   ContainsOnly = "containsOnly",
   Fallback = "fallback",
 }
@@ -86,10 +94,10 @@ export interface VariableValuesToCheckType {
   valuesToCheck?: VariableValuesToCheckType[];
 }
 
-interface VariableValueLogic extends VariableValuesToCheckType {
+export interface VariableValueLogic extends VariableValuesToCheckType {
   answerValues?: AnswerValueTypes[];
-  variableValueToSet?: string;
-  variableValueToSetCalculations?: VariableValueCalculation;
+  variableValueToSet?: string | number;
+  variableValueToSetCalculation?: VariableValueToSetCalculation;
 }
 
 export interface InvalidAnswerLogic {
@@ -106,16 +114,20 @@ export interface PossibleInvalidAnswer {
 
 export enum VariableToSetType {
   Object = "object",
-  String = "string",
+  Number = "number",
+  Copy = "copy",
 }
+export type VariableValueType =
+  | {
+      [key: string]: VariableValueLogic[];
+    }
+  | VariableValueLogic[]
+  | number
+  | string;
 export interface VariableToSet {
   variableType: VariableToSetType | string;
   variableName: string;
-  variableValue:
-    | {
-        [key: string]: VariableValueLogic[];
-      }
-    | string;
+  variableValue: VariableValueType;
 }
 
 type QuestionCodeReferenceType = {

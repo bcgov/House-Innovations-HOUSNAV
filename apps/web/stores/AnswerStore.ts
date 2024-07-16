@@ -3,14 +3,11 @@ import { makeAutoObservable } from "mobx";
 // local
 import { WalkthroughRootStore } from "./WalkthroughRootStore";
 import {
-  QuestionVariableData,
   PropertyNameVariableToSet,
+  QuestionVariableData,
 } from "@repo/data/useWalkthroughData";
-import {
-  answerValuesAreNotEqual,
-  getVariableItemValue,
-} from "../utils/logic/variableItem";
-import { isNumber, isObject, isString } from "../utils/typeChecking";
+import { getVariableItemValue } from "../utils/logic/variableItem";
+import { isArray, isNumber, isObject, isString } from "../utils/typeChecking";
 
 export type AnswerTypes = string | string[] | Record<string, string> | number;
 export type AnswerState = Record<string, AnswerTypes>;
@@ -21,6 +18,25 @@ export type AnswerToCheckValueFn = (
 export const DEFAULT_ANSWER_VALUE_MULTI_CHOICE = null;
 export const DEFAULT_ANSWER_VALUE_NUMBER_FLOAT = NaN;
 export const DEFAULT_ANSWER_VALUE_MULTI_CHOICE_MULTI: string[] = [];
+
+export const answerValuesAreNotEqual = (
+  newAnswerValue: AnswerTypes,
+  currentAnswerValue: AnswerTypes,
+): boolean => {
+  if (isArray(newAnswerValue) && isArray(currentAnswerValue)) {
+    return !newAnswerValue.every((value) => currentAnswerValue.includes(value));
+  } else if (isString(newAnswerValue) && isString(currentAnswerValue)) {
+    return newAnswerValue !== currentAnswerValue;
+  } else if (isNumber(newAnswerValue) && isNumber(currentAnswerValue)) {
+    return newAnswerValue !== currentAnswerValue;
+  } else if (isObject(newAnswerValue) && isObject(currentAnswerValue)) {
+    return !Object.entries(newAnswerValue).every(
+      ([key, value]) => currentAnswerValue[key] === value,
+    );
+  }
+
+  throw new Error("Invalid types");
+};
 
 export class AnswerStore {
   rootStore: WalkthroughRootStore;
@@ -47,7 +63,7 @@ export class AnswerStore {
       this.getAnswerToCheckValue,
     );
 
-    const currentItemValue = this.answers[currentId];
+    const currentItemValue = this.answers[variableToSet.variableName];
 
     // This handles the case when a user has gone back and changed an answer
     // We need to erase all future answers because the flow could be different now
@@ -56,10 +72,13 @@ export class AnswerStore {
       (currentItemValue &&
         answerValuesAreNotEqual(currentItemValue, newItemValue))
     ) {
-      this.setAnswerValueOnChange(newItemValue, currentId);
+      this.setAnswerValueOnChange(newItemValue, variableToSet.variableName);
     }
 
-    addItemIdToHistory(currentId);
+    addItemIdToHistory({
+      questionId: currentId,
+      answerVariableId: variableToSet.variableName,
+    });
 
     handleForwardNavigation(currentItem.nextNavigationLogic);
   };
@@ -109,15 +128,20 @@ export class AnswerStore {
     } = this.rootStore;
 
     // if current question is NOT last one in questionHistory, remove all questions after current question and their answers
-    const currentQuestionIndex = questionHistory.indexOf(currentItemId);
+    const currentQuestionIndex = questionHistory.findIndex(
+      ({ questionId }) => questionId === currentItemId,
+    );
     if (currentQuestionIndex < questionHistory.length - 1) {
       this.rootStore.navigationStore.questionHistory = questionHistory.slice(
         0,
         currentQuestionIndex + 1,
       );
       this.answers = Object.fromEntries(
-        Object.entries(this.answers).filter(([key]) =>
-          this.rootStore.navigationStore.questionHistory.includes(key),
+        Object.entries(this.answers).filter(
+          ([key]) =>
+            this.rootStore.navigationStore.questionHistory.findIndex(
+              ({ answerVariableId }) => answerVariableId === key,
+            ) > -1,
         ),
       );
     }

@@ -4,7 +4,7 @@ image:
   name: house-innovations-housnav-web
   repository: ""
   tag: ""
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 imagePullSecrets:
   - name: ""
@@ -25,4 +25,17 @@ readinessProbe:
 networkPolicy:
   enabled: true
 
-resources: {}
+resources:
+  requests:
+    memory: "50Mi"
+    cpu: "25m"
+  limits:
+    memory: "100Mi"
+    cpu: "50m"
+
+vault:
+  secretPath: d6af69-nonprod/housnav-secret-dev
+  authPath: auth/k8s-silver
+  namespace: platform-services
+  role: d6af69-nonprod
+  serviceAccountName: d6af69-vault
