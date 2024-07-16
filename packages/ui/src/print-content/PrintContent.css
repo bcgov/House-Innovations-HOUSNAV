@@ -8,10 +8,11 @@
 .ui-printContent--table th,
 .ui-printContent--table td {
   border: var(--print-content-table-th-td-border);
-  padding: var(--layout-padding-xsmall);
+  padding: var(--layout-padding-10);
+  font: var(--typography-regular-small-body);
   text-align: left;
   word-wrap: break-word;
-  font: var(--typography-regular-small-body);
+  break-inside: avoid;
 }
 
 .ui-printContent--table tr {
@@ -20,17 +21,9 @@
   page-break-inside: auto;
 }
 
-.ui-printContent--table td,
-.ui-printContent--table th {
-  break-inside: avoid;
-  padding: var(--layout-padding-10);
-  width: 1%; /* I'm not completely sure why but this ensures the width of the table is at 100% of the page. */
-}
-
 .ui-printContent--table {
   display: block;
   width: 99%; /* Ensure table width doesn't cut off border */
-  table-layout: fixed; /* Ensure cells share the available space equally */
   border-collapse: collapse;
   break-inside: auto;
   page-break-inside: auto;
@@ -61,12 +54,16 @@
 }
 
 /* Set fixed widths for table columns */
+.ui-printContent--introColumn {
+  width: 30%;
+}
+
 .ui-printContent--questionColumn {
-  width: 70%;
+  width: 30%;
 }
 
 .ui-printContent--referenceColumn {
-  width: 30%;
+  width: 17%;
 }
 
 /* Print styles that only need to apply when print window is open */
