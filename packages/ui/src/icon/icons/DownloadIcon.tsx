@@ -1,4 +1,6 @@
-export default function DownloadIcon() {
+import { IconProps } from "../Icon";
+
+export default function DownloadIcon({ title, id, ...props }: IconProps) {
   return (
     <svg
       width="21"
@@ -6,7 +8,13 @@ export default function DownloadIcon() {
       viewBox="0 0 21 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      aria-labelledby={id ? id : undefined}
+      aria-hidden="true"
+      {...props}
     >
+      {id === undefined || title === undefined ? null : (
+        <title id={id}>{title}</title>
+      )}
       <g id="file_download">
         <path
           id="Vector"

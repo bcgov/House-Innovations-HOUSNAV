@@ -201,10 +201,8 @@ export class WalkthroughRootStore {
     } else if (isNumber(answer)) {
       return answer.toString();
     } else {
-      const cleanAnswer = toJS(answer);
-
-      if (isArray(cleanAnswer) && "possibleAnswers" in question) {
-        const displayValue = cleanAnswer
+      if (isArray(answer) && PropertyNamePossibleAnswers in question) {
+        const displayValue = answer
           .map((answerItem) => {
             const matchedAnswer = question.possibleAnswers.find(
               (possibleAnswer) => possibleAnswer.answerValue === answerItem,
@@ -219,11 +217,11 @@ export class WalkthroughRootStore {
 
         return displayValue.join(lineBreakOnMultiple ? "\n" : ", ");
       } else if (
-        isObject(cleanAnswer) &&
-        cleanAnswer !== null &&
-        "possibleAnswers" in question
+        isObject(answer) &&
+        answer !== null &&
+        PropertyNamePossibleAnswers in question
       ) {
-        const displayValue = Object.entries(cleanAnswer)
+        const displayValue = Object.entries(answer)
           .filter(([, value]) => value === "true") // Only include entries where the value is "true"
           .map(([key]) => {
             const matchedAnswer = question.possibleAnswers.find(

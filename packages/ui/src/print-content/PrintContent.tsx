@@ -6,7 +6,7 @@ import { toJS } from "mobx";
 import { useWalkthroughState } from "web/stores/WalkthroughRootStore";
 import {
   parseStringToComponents,
-  parseComponentToPlainText,
+  getStringFromComponents,
 } from "web/utils/string";
 import {
   AllBuildingCodeTypes,
@@ -43,8 +43,12 @@ export interface PrintContentProps {
 }
 
 export default function PrintContent({ contentType }: PrintContentProps) {
-  const { navigationStore, walkthroughData, getQuestionAnswerValueDisplay } =
-    useWalkthroughState();
+  const {
+    navigationStore,
+    walkthroughData,
+    getQuestionAnswerValueDisplay,
+    getQuestionAsDisplayType,
+  } = useWalkthroughState();
 
   const questionHistory = toJS(navigationStore.questionHistory);
 
@@ -108,8 +112,9 @@ export default function PrintContent({ contentType }: PrintContentProps) {
   // Get the question data from the question history for the PDF
   const questionPdf = questionHistory
     .map((questionId): QuestionData | undefined => {
-      const question = walkthroughData.questions[questionId];
-      if (!question || !("questionText" in question)) {
+      // const question = walkthroughData.questions[questionId];
+      const question = getQuestionAsDisplayType(questionId);
+      if (!question) {
         return undefined;
       } else {
         return {
@@ -130,10 +135,10 @@ export default function PrintContent({ contentType }: PrintContentProps) {
     groupIndex: number,
   ) => {
     return group.questions.map((item, index) => {
-      const parsedQuestion = parseComponentToPlainText(
+      const parsedQuestion = getStringFromComponents(
         parseStringToComponents(item.question),
       );
-      const parsedAnswer = parseComponentToPlainText(
+      const parsedAnswer = getStringFromComponents(
         parseStringToComponents(item.answer),
       );
 

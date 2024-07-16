@@ -23,6 +23,7 @@
   max-width: 230px;
   max-height: 198px;
   border-right: 1px solid var(--surface-color-border-default);
+  border-radius: var(--pdf-result-download-image-border-radius);
 }
 
 .ui-PdfResultDownload-imageContainer {
@@ -31,9 +32,7 @@
   background-color: var(--pdf-result-download-container-image-container);
   width: 229px;
   height: 190px;
-  margin: 1px; /* prevents 1px of the 2px "focus" border from being covered */
   border-radius: var(--pdf-result-download-image-border-radius);
-  border-color: 1px solid white;
 }
 
 .ui-PdfResultDownload-imageMiddle {
@@ -62,6 +61,11 @@
   cursor: pointer;
   box-shadow: var(--surface-shadow-medium), var(--surface-shadow-medium);
   border: var(--walkthrough-card-border-default);
+}
+.ui-PdfResultDownload-container[data-focus-visible] {
+  outline: var(--layout-border-width-medium) solid
+    var(--surface-color-border-active);
+  outline-offset: var(--outline-offset);
 }
 
 .ui-PdfResultDownload-title {
@@ -95,6 +99,7 @@
     align-items: center;
     text-align: center;
     margin: 0 auto;
+    margin: var(--layout-margin-small);
   }
 
   .ui-PdfResultDownload-image,
