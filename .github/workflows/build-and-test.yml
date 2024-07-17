@@ -61,10 +61,11 @@ jobs:
       - name: Docker ps
         run: docker ps
 
-      # - name: use node.js
-      #   uses: actions/setup-node@v3
-      #   with:
-      #     node-version: "18.x"
+      - name: use node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "22.x"
+
       - name: Print node version
         run: node --version
 
