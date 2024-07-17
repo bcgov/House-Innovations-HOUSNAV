@@ -55,32 +55,49 @@ jobs:
       - name: Build Docker image
         run: docker build -t ${{ vars.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web:${{ steps.set-pr-number.outputs.pr-number }} -f apps/web/Dockerfile . --no-cache
 
-      - name: Trivy Vulnerability Scan
-        uses: aquasecurity/trivy-action@master
+      - name: Run Docker container
+        run: docker run -d -p 3000:3000 --name hausnav ${{ vars.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web:${{ steps.set-pr-number.outputs.pr-number }}
+
+      - name: Docker ps
+        run: docker ps
+
+      - name: use node.js
+        uses: actions/setup-node@v3
         with:
-          image-ref: ${{ vars.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web:${{ steps.set-pr-number.outputs.pr-number }}
-          format: table
-          exit-code: '0'
-          ignore-unfixed: true
-          vuln-type: os,library
-          severity: "CRITICAL,HIGH"
+          node-version: "18.x"
 
-      - name: Login to Artifactory image registry with Docker
-        uses: docker/login-action@v3
-        with:
-          registry: ${{ vars.ARTIFACTORY_URL }}
-          username: ${{ secrets.ARTIFACTORY_SERVICEACCOUNT_USERNAME }}
-          password: ${{ secrets.ARTIFACTORY_SERVICEACCOUNT_PASSWORD }}
+      - name: Install Cypress dependencies
+        run: npm install cypress
 
-      - name: Push Docker image to Artifactory
-        run: docker push ${{ vars.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web:${{ steps.set-pr-number.outputs.pr-number }}
+      - name: Run Cypress tests
+        run: npx cypress run --config baseUrl=http://localhost:3000
 
-  cypress-run:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - run: npm ci
-      - run: npm run dev &
-      - run: npm run e2e
+      # - name: Trivy Vulnerability Scan
+      #   uses: aquasecurity/trivy-action@master
+      #   with:
+      #     image-ref: ${{ vars.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web:${{ steps.set-pr-number.outputs.pr-number }}
+      #     format: table
+      #     exit-code: '0'
+      #     ignore-unfixed: true
+      #     vuln-type: os,library
+      #     severity: "CRITICAL,HIGH"
+
+      # - name: Login to Artifactory image registry with Docker
+      #   uses: docker/login-action@v3
+      #   with:
+      #     registry: ${{ vars.ARTIFACTORY_URL }}
+      #     username: ${{ secrets.ARTIFACTORY_SERVICEACCOUNT_USERNAME }}
+      #     password: ${{ secrets.ARTIFACTORY_SERVICEACCOUNT_PASSWORD }}
+
+      # - name: Push Docker image to Artifactory
+      #   run: docker push ${{ vars.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web:${{ steps.set-pr-number.outputs.pr-number }}
+
+  # cypress-run:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v3
+  #     - run: npm ci
+  #     - run: npm run dev &
+  #     - run: npm run e2e
