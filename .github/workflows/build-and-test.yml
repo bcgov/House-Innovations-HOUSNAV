@@ -58,12 +58,12 @@ jobs:
       - name: Run Docker container
         run: docker run -d -p 3000:3000 --name housnav ${{ vars.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web:${{ steps.set-pr-number.outputs.pr-number }}
 
-      - name: Install Cypress dependencies
-        run: npm install cypress
+      - name: Install dependencies
+        run: npm ci
         working-directory: ./apps/web
 
       - name: Run Cypress tests
-        run: npx cypress run --browser chrome
+        run: npm run e2e:chrome
         working-directory: ./apps/web
 
       - name: Upload screenshots if Cypress tests fail
