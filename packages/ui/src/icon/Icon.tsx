@@ -15,6 +15,8 @@ import ArrowBack from "./icons/ArrowBack";
 import ArrowForward from "./icons/ArrowForward";
 import ExpandMore from "./icons/ExpandMore";
 import Check from "./icons/Check";
+import CheckCircle from "./icons/CheckCircle";
+import RestartAlt from "./icons/RestartAlt";
 import AccountTree from "./icons/AccountTree";
 import DownloadIcon from "./icons/DownloadIcon";
 
@@ -32,6 +34,8 @@ export type IconType =
   | "arrowForward"
   | "expandMore"
   | "check"
+  | "restartAlt"
+  | "checkCircle"
   | "accountTree" // NOTE: account tree is the name in Material Icons, this is used for the mobile step tracker toggle
   | "download";
 
@@ -76,6 +80,8 @@ const ICONS: Record<IconType, FunctionComponent<IconProps>> = {
   arrowForward: ArrowForward,
   expandMore: ExpandMore,
   check: Check,
+  restartAlt: RestartAlt,
+  checkCircle: CheckCircle,
   accountTree: AccountTree,
   download: DownloadIcon,
 };

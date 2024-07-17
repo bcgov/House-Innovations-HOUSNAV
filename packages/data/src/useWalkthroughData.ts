@@ -13,6 +13,10 @@ interface UseWalkthroughDataProps {
 export const PropertyNameVariableToSet = "variableToSet";
 export const PropertyNameQuestionText = "questionText";
 export const PropertyNamePossibleAnswers = "possibleAnswers";
+export const PropertyNameAnswerToUse = "answerToUse";
+export const PropertyResultLogicItems = "resultLogicItems";
+export const PropertyCalculationValueToUse = "calculationValueToUse";
+export const PropertyDefaultValue = "defaultValue";
 export type AnswerValueTypes = string;
 
 export enum ShowAnswerIfLogicType {
@@ -182,9 +186,50 @@ export interface QuestionNumberFloatData
   unit?: string;
 }
 
+export enum ResultCalculationType {
+  MaxBetween = "maxBetween",
+  MinBetween = "minBetween",
+  Divide = "divide",
+  Multiply = "multiply",
+  Minus = "minus",
+  Square = "square",
+  Answer = "answer",
+  Number = "number",
+  Logic = "logic",
+}
+
+export enum ResultLogicTypes {
+  Fallback = "fallback",
+  GreaterThan = "greaterThan",
+}
+
+export interface ResultLogicItem {
+  resultLogicType: ResultLogicTypes | string;
+  answerToCheck?: string;
+  answerValue?: number;
+  valueToUse: number;
+}
+
+interface ResultCalculationBase {
+  resultCalculationType: ResultCalculationType | string;
+  calculationValuesToUse?: ResultCalculationValue[];
+}
+
+export interface ResultCalculationValue extends ResultCalculationBase {
+  [PropertyNameAnswerToUse]?: string;
+  [PropertyCalculationValueToUse]?: number | ResultCalculationValue;
+  [PropertyDefaultValue]?: number;
+  [PropertyResultLogicItems]?: ResultLogicItem[];
+}
+
+export interface ResultCalculation extends ResultCalculationBase {
+  id: string;
+  calculationValuesToUse: ResultCalculationValue[];
+}
+
 export interface ResultData {
-  needsAnswerValue?: boolean;
   resultDisplayMessage: string;
+  resultCalculations?: ResultCalculation[];
 }
 
 export interface SectionData {
@@ -200,6 +245,7 @@ export interface WalkthroughInfo {
   startingSectionId: StartingSectionIdType;
 }
 
+export type RelatedWalkthroughsType = string[] | Walkthroughs[];
 export type StartingSectionIdType = string;
 export type QuestionDisplayData =
   | QuestionMultipleChoiceData
@@ -213,6 +259,7 @@ export interface WalkthroughJSONType {
   questions: {
     [key: string]: QuestionDisplayData | QuestionVariableData;
   };
+  relatedWalkthroughs: RelatedWalkthroughsType;
   results: {
     [key: string]: ResultData;
   };

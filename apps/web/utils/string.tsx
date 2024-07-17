@@ -1,5 +1,5 @@
 // 3rd party
-import React, { FunctionComponent, ReactNode } from "react";
+import React, { FunctionComponent, ReactNode, JSX } from "react";
 import parse, {
   DOMNode,
   Element,
@@ -26,6 +26,7 @@ import PDFDownloadLink, {
   PDFDownloadLinkProps,
 } from "../components/pdf-download-link/PDFDownloadLink";
 import { useWalkthroughState } from "../stores/WalkthroughRootStore";
+import { calculateResultDisplayNumber } from "./calculations";
 
 // Define custom components for html-react-parser
 const definedTermName = "defined-term";
@@ -35,6 +36,7 @@ const buildingCode = "building-code";
 const buildingCodeModal = "building-code-modal";
 const pdfDownloadLinkName = "pdf-download-link";
 const answerValue = "answer-value";
+const resultCalculation = "result-calculation";
 
 type CustomComponentTypes = typeof definedTermName | typeof pdfDownloadLinkName;
 
@@ -69,6 +71,7 @@ export const parseStringToComponents = (
       ) {
         const props = attributesToProps(domNode.attribs);
         let term = domToReact(domNode.children as DOMNode[]) as string;
+        const termNotLowerCase = term;
         try {
           term = (domNode.attribs["override-term"] ?? term).toLocaleLowerCase();
         } catch (error) {
@@ -147,13 +150,21 @@ export const parseStringToComponents = (
             return (
               <ModalSide
                 type={ModalSideDataEnum.BUILDING_CODE}
-                triggerContent={<Button variant="code">{term}</Button>}
+                triggerContent={
+                  <Button variant="code">{termNotLowerCase}</Button>
+                }
                 scrollTo={domNode.attribs["reference"] ?? ""}
               />
             );
 
           case answerValue: {
-            return getAnswerValueDisplay(domNode.attribs["answer"]);
+            return getAnswerValueDisplay(
+              domNode.attribs["answer"],
+              Object.hasOwn(domNode.attribs, "return-markup"),
+            );
+          }
+          case resultCalculation: {
+            return getResultCalculation(domNode.attribs["id"]);
           }
         }
       } else if (
@@ -182,18 +193,63 @@ const AnswerDisplayValuePlaceholder = () => (
     {ANSWER_DISPLAY_VALUE_PLACEHOLDER}
   </span>
 );
-export const getAnswerValueDisplay = (questionId?: string) => {
+export const getAnswerValueDisplay = (
+  questionId?: string,
+  returnMarkup = false,
+): string | JSX.Element | JSX.Element[] => {
   if (!questionId) {
     console.warn("Missing question ID - incorrect json data.");
     return <AnswerDisplayValuePlaceholder />;
   }
 
   const { getQuestionAnswerValueDisplay } = useWalkthroughState();
-  const displayValue = getQuestionAnswerValueDisplay(questionId);
+  const displayValue = getQuestionAnswerValueDisplay(
+    questionId,
+    false,
+    returnMarkup,
+  );
 
   if (displayValue) {
+    if (returnMarkup) {
+      return <>{parseStringToComponents(displayValue)}</>;
+    }
     return <>{displayValue}</>;
   } else {
+    return <AnswerDisplayValuePlaceholder />;
+  }
+};
+
+export const getResultCalculation = (calculationId?: string) => {
+  const { currentResult } = useWalkthroughState();
+  if (!calculationId || !currentResult || !currentResult.resultCalculations) {
+    console.warn("Missing result calculation ID correct result data.");
+    return <AnswerDisplayValuePlaceholder />;
+  }
+
+  const resultCalculation = currentResult.resultCalculations.find(
+    ({ id }) => id === calculationId,
+  );
+
+  if (!resultCalculation) {
+    console.warn("Missing result calculation - incorrect json data.");
+    return <AnswerDisplayValuePlaceholder />;
+  }
+
+  try {
+    const {
+      answerStore: { getAnswerToCheckValue },
+    } = useWalkthroughState();
+    const displayNumber = calculateResultDisplayNumber(
+      resultCalculation,
+      getAnswerToCheckValue,
+    );
+    if (displayNumber) {
+      return <>{Math.round((displayNumber + Number.EPSILON) * 100) / 100}</>;
+    } else {
+      return <AnswerDisplayValuePlaceholder />;
+    }
+  } catch (error) {
+    console.warn("Error calculating result value", error);
     return <AnswerDisplayValuePlaceholder />;
   }
 };

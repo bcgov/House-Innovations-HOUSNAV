@@ -95,9 +95,14 @@
   text-decoration: line-through;
 }
 
+.web-StepTrackerItems--SectionItem sup {
+  line-height: 0;
+}
+
 .web-StepTrackerItems--SectionItem .ui-Icon {
   width: 20px;
   height: 20px;
   flex-shrink: 0;
   color: var(--icons-color-success);
+  margin-left: auto;
 }

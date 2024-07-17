@@ -6,6 +6,7 @@ import {
   QuestionMultipleChoiceSelectMultipleData,
   QuestionNumberFloatData,
   QuestionVariableData,
+  ResultData,
   WalkthroughItemTypeMultiChoice,
   WalkthroughItemTypeMultiChoiceMultiple,
   WalkthroughItemTypeNumberFloat,
@@ -90,6 +91,23 @@ export function getNumberFloatQuestion() {
   return {
     questionKey,
     questionData: questions[questionKey] as QuestionNumberFloatData,
+  };
+}
+
+export function getFirstResult() {
+  // find the first result
+  const results: {
+    [key: string]: ResultData;
+  } = testCase999.results;
+  const resultKey = Object.keys(results)[0];
+
+  if (!resultKey || !results[resultKey]) {
+    throw new Error("No result info");
+  }
+
+  return {
+    resultKey,
+    resultData: results[resultKey] as ResultData,
   };
 }
 

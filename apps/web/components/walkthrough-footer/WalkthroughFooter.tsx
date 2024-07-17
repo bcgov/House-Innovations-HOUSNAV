@@ -6,14 +6,15 @@ import { observer } from "mobx-react-lite";
 import {
   TESTID_WALKTHROUGH_FOOTER_BACK,
   TESTID_WALKTHROUGH_FOOTER_NEXT,
+  TESTID_WALKTHROUGH_FOOTER_START_OVER,
 } from "@repo/constants/src/testids";
 import { ID_QUESTION_FORM } from "@repo/constants/src/ids";
+import { SHOW_LOG_STATE_BUTTON } from "@repo/constants/src/constants";
 import Button from "@repo/ui/button";
 import Icon from "@repo/ui/icon";
 // local
 import { useWalkthroughState } from "../../stores/WalkthroughRootStore";
 import "./WalkthroughFooter.css";
-import { SHOW_LOG_STATE_BUTTON } from "@repo/constants/src/constants";
 
 const WalkthroughFooter = observer((): JSX.Element => {
   // get information from store
@@ -23,6 +24,7 @@ const WalkthroughFooter = observer((): JSX.Element => {
       backButtonIsDisabled,
       handleBackNavigation,
     },
+    currentResult,
     logCurrentState,
   } = useWalkthroughState();
 
@@ -37,17 +39,27 @@ const WalkthroughFooter = observer((): JSX.Element => {
 
   return (
     <div className="web-WalkthroughFooter">
-      <Button
-        data-testid={TESTID_WALKTHROUGH_FOOTER_NEXT}
-        type="submit"
-        form={ID_QUESTION_FORM}
-        className="web-WalkthroughFooter--FooterNext"
-        isDisabled={nextButtonIsDisabled}
-      >
-        Next Step
-        <Icon type="arrowForward" />
-        {/* TODO - Add logic for start over text at end */}
-      </Button>
+      {currentResult ? (
+        <Button
+          data-testid={TESTID_WALKTHROUGH_FOOTER_START_OVER}
+          onPress={() => window.location.reload()}
+          className="web-WalkthroughFooter--FooterNext"
+        >
+          Start Over
+          <Icon type="restartAlt" />
+        </Button>
+      ) : (
+        <Button
+          data-testid={TESTID_WALKTHROUGH_FOOTER_NEXT}
+          type="submit"
+          form={ID_QUESTION_FORM}
+          className="web-WalkthroughFooter--FooterNext"
+          isDisabled={nextButtonIsDisabled}
+        >
+          Next Step
+          <Icon type="arrowForward" />
+        </Button>
+      )}
       <Button
         data-testid={TESTID_WALKTHROUGH_FOOTER_BACK}
         variant="tertiary"
