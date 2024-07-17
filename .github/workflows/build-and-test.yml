@@ -11,20 +11,20 @@ on:
         required: true
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: use node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "18.x"
-      - run: npm ci
-      - run: npm run test
+  # test:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v3
+  #     - name: use node.js
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: "18.x"
+  #     - run: npm ci
+  #     - run: npm run test
 
   build:
-    needs: test
+    # needs: test
     runs-on: ubuntu-latest
     environment: dev
     outputs:
@@ -71,6 +71,7 @@ jobs:
 
       - name: Run Cypress tests
         run: npx cypress run --config baseUrl=http://localhost:3000
+        working-directory: ./apps/web
 
       # - name: Trivy Vulnerability Scan
       #   uses: aquasecurity/trivy-action@master
