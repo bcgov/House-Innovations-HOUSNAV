@@ -587,7 +587,7 @@
     "P5": {
       "walkthroughItemType": "numberFloat",
       "questionText": "What is the area of the <defined-term>exposing building face</defined-term> of this <defined-term>fire compartment</defined-term> <span aria-label='in meters squared'>(m<sup>2</sup>)</span>?",
-      "questionSubtext": "<p>The area of an <defined-term>exposing building face</defined-term> is calculated by taking the exterior wall area facing in one direction on any side of a <defined-term>building</defined-term>, calculate the total area measured from the finished ground level to the uppermost ceiling, or the area for each <defined-term>fire compartment</defined-term>, where a building is divided into <defined-term override-term='fire compartment'>fire compartments</defined-term> by <defined-term override-term='fire separation'>fire separations</defined-term> with <defined-term override-term='fire-resistance rating'>fire-resistance ratings</defined-term> not less than 45 min. <building-code reference='v2-db-9.10.14.2.(1)'>Sentence 9.10.14.2.(1)</building-code-link></p><p>If a <defined-term>building</defined-term> is divided by <defined-term override-term='fire separation'>fire separations</defined-term> into <defined-term override-term='fire compartment'>fire compartments</defined-term>, the area of the <defined-term>exposing building face</defined-term> is permitted to be calculated for each <defined-term>fire compartment</defined-term>, provided the <defined-term override-term='fire separation'>fire separations</defined-term> have a <defined-term>fire-resistance rating</defined-term> not less than 45 min. <building-code reference='v2-db-9.10.14.2.(4)'>Sentence 9.10.14.2.(4)</building-code-link></p>",
+      "questionSubtext": "<p>The area of an <defined-term>exposing building face</defined-term> is calculated by taking the exterior wall area facing in one direction on any side of a <defined-term>building</defined-term>, calculate the total area measured from the finished ground level to the uppermost ceiling, or the area for each <defined-term>fire compartment</defined-term>, where a building is divided into <defined-term override-term='fire compartment'>fire compartments</defined-term> by <defined-term override-term='fire separation'>fire separations</defined-term> with <defined-term override-term='fire-resistance rating'>fire-resistance ratings</defined-term> not less than 45 min. <building-code reference='v2-db-9.10.14.2.(1)'>Sentence 9.10.14.2.(1)</building-code></p><p>If a <defined-term>building</defined-term> is divided by <defined-term override-term='fire separation'>fire separations</defined-term> into <defined-term override-term='fire compartment'>fire compartments</defined-term>, the area of the <defined-term>exposing building face</defined-term> is permitted to be calculated for each <defined-term>fire compartment</defined-term>, provided the <defined-term override-term='fire separation'>fire separations</defined-term> have a <defined-term>fire-resistance rating</defined-term> not less than 45 min. <building-code reference='v2-db-9.10.14.2.(4)'>Sentence 9.10.14.2.(4)</building-code></p>",
       "placeholder": "Enter area",
       "unit": "m<sup>2</sup>",
       "nextNavigationLogic": [
@@ -1993,93 +1993,145 @@
       ]
     }
   },
+  "relatedWalkthroughs": [
+    "9.9.9"
+  ],
   "results": {
     "R00": {
-      "resultDisplayMessage": "You have selected an answer that indicates that the BC Building Code 2024 does not apply to this structure. This tool is used to assist building code users in determining the applicable requirements for their building, as such all structures that are not governed by the BC Building Code 2024 are beyond the scope of this tool."
+      "resultDisplayMessage": "<p>You have selected an answer that indicates that the BC Building Code 2024 does not apply to this structure. This tool is used to assist building code users in determining the applicable requirements for their building, as such all structures that are not governed by the BC Building Code 2024 are beyond the scope of this tool.</p>"
     },
     "R01": {
-      "needsAnswerValue": true,
-      "resultDisplayMessage": "You have selected {passedAnswerValue}. This indicates that some or all of this structure may not be governed by the BC Building Code 2024. This tool has been designed to assist BC Building Code 2024 users in determining the Building Code requirements for Part 9 buildings. Based on your selection, some or all of your project is beyond the scope of this tool at this time."
+      "resultDisplayMessage": "<p>You have selected:</p><answer-value return-markup answer='P03'></answer-value><p>This indicates that some or all of this structure may not be governed by the BC Building Code 2024. This tool has been designed to assist BC Building Code 2024 users in determining the Building Code requirements for Part 9 buildings. Based on your selection, some or all of your project is beyond the scope of this tool at this time.</p>"
     },
     "R02": {
-      "resultDisplayMessage": "You have selected an option that indicates that this building is a heritage building. Heritage buildings have alternative measures for Building Code compliance. These alternative measures are beyond the scope of this tool at this time. Please see in <pdf-download-link>Table 1.1.1.1.(5)</pdf-download-link> of Division A - Section 1.1 ‘General’ for more information."
+      "resultDisplayMessage": "<p>You have selected an option that indicates that this building is a heritage building. Heritage buildings have alternative measures for Building Code compliance. These alternative measures are beyond the scope of this tool at this time. Please see in Table 1.1.1.1.(5) of <pdf-download-link named-dest='Section 1.1. General'>Division A - Section 1.1 ‘General’</pdf-download-link> for more information.</p>"
     },
     "R03": {
-      "resultDisplayMessage": "You have selected an option that indicates that this building is an alteration to an existing building. Alteration to existing buildings have alternative measures for Building Code compliance. These alternative measures are beyond the scope of this tool at this time. Please see Sentences <pdf-download-link>1.1.1.1(6)</pdf-download-link> and <pdf-download-link>1.1.1.2.(1)</pdf-download-link>, and <pdf-download-link>Table 1.1.1.1.(6)</pdf-download-link> in Division A - Section 1.1 ‘General’ for more information."
+      "resultDisplayMessage": "<p>You have selected an option that indicates that this building is an alteration to an existing building. Alteration to existing buildings have alternative measures for Building Code compliance. These alternative measures are beyond the scope of this tool at this time. Please see Sentences 1.1.1.1(6) and 1.1.1.2.(1), and Table 1.1.1.1.(6) in <pdf-download-link named-dest='Section 1.1. General'>Division A - Section 1.1 ‘General’</pdf-download-link> for more information.</p>"
     },
     "R05": {
-      "resultDisplayMessage": "Based on the options you have selected; this project is not a Part 9 building. This tool is designed to assist BC Building Code 2024 users in evaluating Part 9 buildings for conformance with Division B Acceptable Solutions of the BC Building Code, therefore your project is beyond the scope of this tool at this time."
+      "resultDisplayMessage": "<p>Based on the options you have selected; this project is not a Part 9 building. This tool is designed to assist BC Building Code 2024 users in evaluating Part 9 buildings for conformance with Division B Acceptable Solutions of the BC Building Code, therefore your project is beyond the scope of this tool at this time.</p>"
     },
     "R10": {
-      "resultDisplayMessage": "Openings in a wall having a <defined-term>limiting distance</defined-term> of less than 1.2m are required to be protected by <defined-term>closures</defined-term>, other than wired glass or glass block, whose <defined-term>fire-protection rating</defined-term> is in conformance with the <defined-term>fire-resistance rating</defined-term> required for the wall. (See <pdf-download-link>Table 9.10.13.1.</pdf-download-link>)"
+      "resultDisplayMessage": "<p>Openings in a wall having a <defined-term>limiting distance</defined-term> of less than 1.2m are required to be protected by <defined-term override-term='closure'>closures</defined-term>, other than wired glass or glass block, whose <defined-term>fire-protection rating</defined-term> is in conformance with the <defined-term>fire-resistance rating</defined-term> required for the wall. (See <pdf-download-link named-dest='9.10.13.1. Closures'>Table 9.10.13.1.</pdf-download-link>)</p>"
     },
     "R20": {
-      "resultDisplayMessage": "Based on <building-code reference='v2-db-9.10.14.4.(1)'>Table 9.10.14.4.-A</building-code-link> and <building-code reference='v2-db-9.10.14.4.(1)'>Sentence 9.10.14.4.(1)</building-code-link> the maximum percentage of unprotected openings in this exterior wall is <result-calculation id='1'/>%, based on an exposing building face of <answer-value answer='P5'/>m<sup>2</sup>, the maximum area would be <result-calculation id='2'/>m<sup>2</sup>.<br/>The maximum size of openable windows having an unobstructed opening equal to or greater than 0.35m<sup>2</sup> installed in accordance with <pdf-download-link>Sentences 9.9.10.1.(1)</pdf-download-link> and <pdf-download-link>(2)</pdf-download-link> is: <result-calculation id='3'/>m<sup>2</sup><br/>A ‘single room or space’ shall mean:<ul><li>two or more adjacent spaces having a full-height separating wall extending less than 1.5 m from the interior face of the exterior wall, or<li></li>two or more stacked spaces that are on the same storey.</li></ul><br/>The spacing between individual unprotected openings described that serve a single room or space shall be not less than:<ul><li>2 m horizontally of another unprotected opening that is on the same exposing building face and serves the single room or space, or<li></li>2 m vertically of another unprotected opening that serves the single room or space, or another room or space on the same storey.</li></ul><br/>*Note: Per <building-code reference='v2-db-9.10.14.4.(1)(b)'>Clause 9.10.14.4.(1)(b)</building-code-link> the percentage of unprotected openings is permitted to be calculated in conformance with <pdf-download-link>Subsection 3.2.3.</pdf-download-link> At this time Subsection 3.2.3 is beyond the scope of this tool",
+      "resultDisplayMessage": "<p>Based on <building-code reference='v2-db-9.10.14.4.(1)'>Table 9.10.14.4.-A</building-code> and <building-code reference='v2-db-9.10.14.4.(1)'>Sentence 9.10.14.4.(1)</building-code> the maximum percentage of unprotected openings in this exterior wall is <result-calculation id='1'></result-calculation>%, based on an exposing building face of <answer-value answer='P5'></answer-value> m<sup>2</sup>, the maximum area would be <result-calculation id='2'></result-calculation> m<sup>2</sup>.</p><p>The maximum size of openable windows having an unobstructed opening equal to or greater than 0.35 m<sup>2</sup> installed in accordance with <pdf-download-link named-dest='9.9.10.1. Egress Windows or Doors for Bedrooms'>Sentences 9.9.10.1.(1)</pdf-download-link> and <pdf-download-link named-dest='9.9.10.1. Egress Windows or Doors for Bedrooms'>(2)</pdf-download-link> is: <result-calculation id='3'></result-calculation> m<sup>2</sup>.</p><p>A ‘single room or space’ shall mean:</p><ul><li>two or more adjacent spaces having a full-height separating wall extending less than 1.5 m from the interior face of the exterior wall, or</li><li>two or more stacked spaces that are on the same storey.</li></ul><p>The spacing between individual unprotected openings described that serve a single room or space shall be not less than:</p><ul><li>2 m horizontally of another unprotected opening that is on the same exposing building face and serves the single room or space, or</li><li>2 m vertically of another unprotected opening that serves the single room or space, or another room or space on the same storey.</li></ul><p>*Note: Per <building-code reference='v2-db-9.10.14.4.(1)(b)'>Clause 9.10.14.4.(1)(b)</building-code> the percentage of unprotected openings is permitted to be calculated in conformance with <pdf-download-link named-dest='3.2.3. Spatial Separation and Exposure Protection'>Subsection 3.2.3.</pdf-download-link> At this time Subsection 3.2.3 is beyond the scope of this tool.</p>",
       "resultCalculations": [
         {
           "id": "1",
           "resultCalculationType": "maxBetween",
-          "valuesToUse": [
-            "P9",
+          "calculationValuesToUse": [
+            {
+              "resultCalculationType": "answer",
+              "answerToUse": "P9"
+            },
             {
               "resultCalculationType": "divide",
-              "valuesToUse": ["P10", "P5"]
+              "calculationValuesToUse": [
+                {
+                  "resultCalculationType": "answer",
+                  "answerToUse": "P10",
+                  "defaultValue": 0
+                },
+                {
+                  "resultCalculationType": "answer",
+                  "answerToUse": "P5"
+                }
+              ]
             }
           ]
         },
         {
           "id": "2",
           "resultCalculationType": "maxBetween",
-          "valuesToUse": [
-            "P10",
+          "calculationValuesToUse": [
+            {
+              "resultCalculationType": "answer",
+              "answerToUse": "P10",
+              "defaultValue": 0
+            },
             {
               "resultCalculationType": "multiply",
-              "valuesToUse": ["P9", "P5"]
+              "calculationValuesToUse": [
+                {
+                  "resultCalculationType": "divide",
+                  "calculationValuesToUse": [
+                    {
+                      "resultCalculationType": "answer",
+                      "answerToUse": "P9"
+                    },
+                    {
+                      "resultCalculationType": "number",
+                      "calculationValueToUse": 100
+                    }
+                  ]
+                },
+                {
+                  "resultCalculationType": "answer",
+                  "answerToUse": "P5"
+                }
+              ]
             }
           ]
         },
         {
           "id": "3",
           "resultCalculationType": "minBetween",
-          "valuesToUse": [
+          "calculationValuesToUse": [
             {
               "resultCalculationType": "maxBetween",
-              "valuesToUse": [
+              "calculationValuesToUse": [
                 {
-                  "resultCalculationType": "logicCheck",
-                  "valuesToUse": [
+                  "resultCalculationType": "logic",
+                  "resultLogicItems": [
                     {
                       "resultLogicType": "greaterThan",
                       "answerToCheck": "P6Editable",
-                      "answerValue": "2",
-                      "valueToUse": "1.88"
+                      "answerValue": 2,
+                      "valueToUse": 1.88
                     },
                     {
                       "resultLogicType": "greaterThan",
                       "answerToCheck": "P6Editable",
-                      "answerValue": "1.5",
-                      "valueToUse": "0.78"
+                      "answerValue": 1.5,
+                      "valueToUse": 0.78
                     },
                     {
                       "resultLogicType": "fallback",
-                      "valueToUse": "0.35"
+                      "valueToUse": 0.35
                     }
                   ]
                 },
                 {
                   "resultCalculationType": "multiply",
-                  "valuesToUse": [
-                    "0.24",
+                  "calculationValuesToUse": [
+                    {
+                      "resultCalculationType": "number",
+                      "calculationValueToUse": 0.24
+                    },
                     {
                       "resultCalculationType": "square",
-                      "valueToUse": {
+                      "calculationValueToUse": {
                         "resultCalculationType": "minus",
-                        "valuesToUse": [
+                        "calculationValuesToUse": [
                           {
                             "resultCalculationType": "multiply",
-                            "valuesToUse": ["2", "P6Editable"]
+                            "calculationValuesToUse": [
+                              {
+                                "resultCalculationType": "number",
+                                "calculationValueToUse": 2
+                              },
+                              {
+                                "resultCalculationType": "answer",
+                                "answerToUse": "P6Editable"
+                              }
+                            ]
                           },
-                          "1.2"
+                          {
+                            "resultCalculationType": "number",
+                            "calculationValueToUse": 1.2
+                          }
                         ]
                       }
                     }
@@ -2089,11 +2141,33 @@
             },
             {
               "resultCalculationType": "maxBetween",
-              "valuesToUse": [
-                "P10",
+              "calculationValuesToUse": [
+                {
+                  "resultCalculationType": "answer",
+                  "answerToUse": "P10",
+                  "defaultValue": 0
+                },
                 {
                   "resultCalculationType": "multiply",
-                  "valuesToUse": ["P9", "P5"]
+                  "calculationValuesToUse": [
+                    {
+                      "resultCalculationType": "divide",
+                      "calculationValuesToUse": [
+                        {
+                          "resultCalculationType": "answer",
+                          "answerToUse": "P9"
+                        },
+                        {
+                          "resultCalculationType": "number",
+                          "calculationValueToUse": 100
+                        }
+                      ]
+                    },
+                    {
+                      "resultCalculationType": "answer",
+                      "answerToUse": "P5"
+                    }
+                  ]
                 }
               ]
             }
@@ -2102,40 +2176,75 @@
       ]
     },
     "R30": {
-      "resultDisplayMessage": "The maximum percentage of unprotected openings in this exterior wall is <result-calculation id='1'/>%, based on an exposing building face of <answer-value answer='P5'/>m<sup>2</sup>, the maximum area would be: <result-calculation id='2'/>m<sup>2</sup>.<br/>*Note: Per <building-code reference='v2-db-9.10.14.4.(1)(b)'>Clause 9.10.14.4.(1)(b)</building-code-link> the percentage of unprotected openings is permitted to be calculated in conformance with <pdf-download-link>Subsection 3.2.3.</pdf-download-link> At this time Subsection 3.2.3 is beyond the scope of this tool",
+      "resultDisplayMessage": "<p>The maximum percentage of unprotected openings in this exterior wall is <result-calculation id='1'></result-calculation>%, based on an exposing building face of <answer-value answer='P5'></answer-value> m<sup>2</sup>, the maximum area would be: <result-calculation id='2'></result-calculation> m<sup>2</sup>.</p><p>*Note: Per <building-code reference='v2-db-9.10.14.4.(1)(b)'>Clause 9.10.14.4.(1)(b)</building-code> the percentage of unprotected openings is permitted to be calculated in conformance with <pdf-download-link named-dest='3.2.3. Spatial Separation and Exposure Protection'>Subsection 3.2.3.</pdf-download-link> At this time Subsection 3.2.3 is beyond the scope of this tool.</p>",
       "resultCalculations": [
         {
           "id": "1",
           "resultCalculationType": "maxBetween",
-          "valuesToUse": [
-            "P9",
+          "calculationValuesToUse": [
+            {
+              "resultCalculationType": "answer",
+              "answerToUse": "P9"
+            },
             {
               "resultCalculationType": "divide",
-              "valuesToUse": ["P10", "P5"]
+              "calculationValuesToUse": [
+                {
+                  "resultCalculationType": "answer",
+                  "answerToUse": "P10",
+                  "defaultValue": 0
+                },
+                {
+                  "resultCalculationType": "answer",
+                  "answerToUse": "P5"
+                }
+              ]
             }
           ]
         },
         {
           "id": "2",
           "resultCalculationType": "maxBetween",
-          "valuesToUse": [
-            "P10",
+          "calculationValuesToUse": [
+            {
+              "resultCalculationType": "answer",
+              "answerToUse": "P10",
+              "defaultValue": 0
+            },
             {
               "resultCalculationType": "multiply",
-              "valuesToUse": ["P9", "P5"]
+              "calculationValuesToUse": [
+                {
+                  "resultCalculationType": "divide",
+                  "calculationValuesToUse": [
+                    {
+                      "resultCalculationType": "answer",
+                      "answerToUse": "P9"
+                    },
+                    {
+                      "resultCalculationType": "number",
+                      "calculationValueToUse": 100
+                    }
+                  ]
+                },
+                {
+                  "resultCalculationType": "answer",
+                  "answerToUse": "P5"
+                }
+              ]
             }
           ]
         }
       ]
     },
     "R40": {
-      "resultDisplayMessage": "Based on your selections and <building-code reference='v2-db-9.10.14.4'>Article 9.10.14.4.</building-code-link>, this fire compartment is permitted to have unlimited unprotected openings."
+      "resultDisplayMessage": "<p>Based on your selections and <building-code reference='v2-db-9.10.14.4'>Article 9.10.14.4.</building-code>, this fire compartment is permitted to have unlimited unprotected openings.</p>"
     },
     "R50": {
-      "resultDisplayMessage": "<building-code reference='v2-db-9.10.14.'>Subsection 9.10.14</building-code-link> does not apply to detached carports conforming to <pdf-download-link>Section 9.35.</pdf-download-link> that serve not more than one dwelling unit or a house with a secondary suite."
+      "resultDisplayMessage": "<p><building-code reference='v2-db-9.10.14.'>Subsection 9.10.14</building-code> does not apply to detached carports conforming to <pdf-download-link named-dest='9.35. Garages and Carport'>Section 9.35.</pdf-download-link> that serve not more than one dwelling unit or a house with a secondary suite.</p>"
     },
     "R51": {
-      "resultDisplayMessage": "Based on your selection the percentage and area of unprotected openings should be calculated based on <pdf-download-link>Subsection 9.10.15.</pdf-download-link> At this time this tool does not calculate the percentage and area of unprotected openings of houses that meet the requirements of Subsection 9.10.15."
+      "resultDisplayMessage": "<p>Based on your selection the percentage and area of unprotected openings should be calculated based on <pdf-download-link named-dest='9.10.15. Spatial Separation Between Houses'>Subsection 9.10.15.</pdf-download-link> At this time this tool does not calculate the percentage and area of unprotected openings of houses that meet the requirements of Subsection 9.10.15.</p>"
     }
   }
 }

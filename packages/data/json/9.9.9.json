@@ -2371,37 +2371,39 @@
       ]
     }
   },
+  "relatedWalkthroughs": [
+    "9.10.14"
+  ],
   "results": {
     "R00": {
-      "resultDisplayMessage": "You have selected an answer that indicates that the BC Building Code 2024 does not apply to this structure. This tool is used to assist building code users in determining the applicable requirements for their building, as such all structures that are not governed by the BC Building Code 2024 are beyond the scope of this tool."
+      "resultDisplayMessage": "<p>You have selected an answer that indicates that the BC Building Code 2024 does not apply to this structure. This tool is used to assist building code users in determining the applicable requirements for their building, as such all structures that are not governed by the BC Building Code 2024 are beyond the scope of this tool.</p>"
     },
     "R01": {
-      "needsAnswerValue": true,
-      "resultDisplayMessage": "You have selected {passedAnswerValue}. This indicates that some or all of this structure may not be governed by the BC Building Code 2024. This tool has been designed to assist BC Building Code 2024 users in determining the Building Code requirements for Part 9 buildings. Based on your selection, some or all of your project is beyond the scope of this tool at this time."
+      "resultDisplayMessage": "<p>You have selected: <answer-value return-markup answer='P03'></answer-value> This indicates that some or all of this structure may not be governed by the BC Building Code 2024. This tool has been designed to assist BC Building Code 2024 users in determining the Building Code requirements for Part 9 buildings. Based on your selection, some or all of your project is beyond the scope of this tool at this time.</p>"
     },
     "R02": {
-      "resultDisplayMessage": "You have selected an option that indicates that this building is a heritage building. Heritage buildings have alternative measures for Building Code compliance. These alternative measures are beyond the scope of this tool at this time. Please see in <pdf-download-link>Table 1.1.1.1.(5)</pdf-download-link> of Division A - Section 1.1 ‘General’ for more information."
+      "resultDisplayMessage": "<p>You have selected an option that indicates that this building is a heritage building. Heritage buildings have alternative measures for Building Code compliance. These alternative measures are beyond the scope of this tool at this time. Please see in Table 1.1.1.1.(5) of <pdf-download-link named-dest='Section 1.1. General'>Division A - Section 1.1 ‘General’</pdf-download-link> for more information.</p>"
     },
     "R03": {
-      "resultDisplayMessage": "You have selected an option that indicates that this building is an alteration to an existing building. Alteration to existing buildings have alternative measures for Building Code compliance. These alternative measures are beyond the scope of this tool at this time. Please see Sentences <pdf-download-link>1.1.1.1(6)</pdf-download-link> and <pdf-download-link>1.1.1.2.(1)</pdf-download-link>, and <pdf-download-link>Table 1.1.1.1.(6)</pdf-download-link> in Division A - Section 1.1 ‘General’ for more information."
+      "resultDisplayMessage": "<p>You have selected an option that indicates that this building is an alteration to an existing building. Alteration to existing buildings have alternative measures for Building Code compliance. These alternative measures are beyond the scope of this tool at this time. Please see Sentences 1.1.1.1(6) and 1.1.1.2.(1), and Table 1.1.1.1.(6) in <pdf-download-link named-dest='Section 1.1. General'>Division A - Section 1.1 ‘General’</pdf-download-link> for more information.</p>"
     },
     "R04": {
-      "resultDisplayMessage": "Based on the options you have selected this project does not contain a Group C residential occupancy. This tool is designed to assist BC Building Code 2024 users in evaluating the prescriptive requirements of the BC Building Code for Part 9 Group C residential occupancy buildings, therefore your project is beyond the scope of this tool at this time."
+      "resultDisplayMessage": "<p>Based on the options you have selected this project does not contain a Group C residential occupancy. This tool is designed to assist BC Building Code 2024 users in evaluating the prescriptive requirements of the BC Building Code for Part 9 Group C residential occupancy buildings, therefore your project is beyond the scope of this tool at this time.</p>"
     },
     "R05": {
-      "resultDisplayMessage": "Based on the options you have selected; this project is not a Part 9 building. This tool is designed to assist BC Building Code 2024 users in evaluating the Acceptable Solutions in Division B of the BC Building Code for Part 9 buildings, therefore your project is beyond the scope of this tool at this time."
+      "resultDisplayMessage": "<p>Based on the options you have selected; this project is not a Part 9 building. This tool is designed to assist BC Building Code 2024 users in evaluating the Acceptable Solutions in Division B of the BC Building Code for Part 9 buildings, therefore your project is beyond the scope of this tool at this time.</p>"
     },
     "R10": {
-      "resultDisplayMessage": "Based on the building characteristics provided, this dwelling unit meets the provision of Subsection <building-code reference='9.9.9'>9.9.9. ‘Egress from Dwelling Units’</building-code-link>."
+      "resultDisplayMessage": "<p>Based on the building characteristics provided, this dwelling unit meets the provision of Subsection <building-code reference='9.9.9'>9.9.9. ‘Egress from Dwelling Units’</building-code>.</p>"
     },
     "R11": {
-      "resultDisplayMessage": "Based on the provided building characteristics the dwelling unit must be provided with:<ul><li>an exterior passageway that has a floor assembly with a <defined-term>fire-resistance rating</defined-term> less than 45 min, and</li><li>be served by a single <defined-term>exit</defined-term> stairway or <defined-term>ramp</defined-term>, and</li><li>be located more than 1.5 m above adjacent ground level, to meet the provisions of the BC Building Code 2024.</li></ul>"
+      "resultDisplayMessage": "<p>Based on the provided building characteristics the dwelling unit must be provided with:</p><ul><li>an exterior passageway that has a floor assembly with a <defined-term>fire-resistance rating</defined-term> less than 45 min, and</li><li>be served by a single <defined-term>exit</defined-term> stairway or <defined-term>ramp</defined-term>, and</li><li>be located more than 1.5 m above adjacent ground level, to meet the provisions of the BC Building Code 2024.</li></ul>"
     },
     "R20": {
-      "resultDisplayMessage": "The dwelling unit has not been provided with sufficient means of egress per the building characteristics provided and Subsection <building-code reference='9.9.9'>9.9.9. ‘Egress from Dwelling Units’</building-code-link> of the BC Building Code 2024."
+      "resultDisplayMessage": "<p>The dwelling unit has not been provided with sufficient means of egress per the building characteristics provided and Subsection <building-code reference='9.9.9'>9.9.9. ‘Egress from Dwelling Units’</building-code> of the BC Building Code 2024.</p>"
     },
     "R30": {
-      "resultDisplayMessage": "Based on the building characteristics provided this dwelling unit or building is not governed by Part 9 of the Building Code or is not a dwelling unit. This tool is only designed to address the egress from dwelling units of Part 9 buildings."
+      "resultDisplayMessage": "<p>Based on the building characteristics provided this dwelling unit or building is not governed by Part 9 of the Building Code or is not a dwelling unit. This tool is only designed to address the egress from dwelling units of Part 9 buildings.</p>"
     }
   }
 }

@@ -54,6 +54,10 @@ export class WalkthroughRootStore {
     }
   }
 
+  get relatedWalkthroughs() {
+    return this.walkthroughData.relatedWalkthroughs;
+  }
+
   getQuestionAsDisplayType = (
     questionId: string,
   ): QuestionDisplayData | undefined => {
@@ -191,6 +195,7 @@ export class WalkthroughRootStore {
   getQuestionAnswerValueDisplay = (
     questionId: string,
     lineBreakOnMultiple: boolean = false,
+    returnMarkup = false,
   ): string => {
     // Get the question object in display type format
     const question = this.getQuestionAsDisplayType(questionId);
@@ -221,6 +226,10 @@ export class WalkthroughRootStore {
             );
           })
           .filter(Boolean); // Filter out falsy values
+
+        if (returnMarkup) {
+          return `<ul>${displayValue.map((value) => `<li>${value}</li>`).join("")}</ul>`;
+        }
 
         return displayValue.join(lineBreakOnMultiple ? "\n" : ", ");
       } else if (

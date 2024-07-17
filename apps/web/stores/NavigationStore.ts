@@ -54,29 +54,35 @@ export class NavigationStore {
    * Next button is disabled if:
    * - current question has not been answered
    * - current question is required and has not been answered
+   * - we are not on the results page
    */
   get nextButtonIsDisabled() {
-    const currentAnswer =
-      this.rootStore.answerStore.answers[this.currentItemId];
-    if (!currentAnswer) {
+    const {
+      answerStore: { currentAnswerValue },
+      currentResult,
+    } = this.rootStore;
+
+    if (currentResult) return false;
+
+    if (!currentAnswerValue) {
       return true;
     }
 
     if (this.rootStore.currentQuestionIsNotRequired) return false;
 
     let currentQuestionHasBeenAnswered = false;
-    if (isString(currentAnswer)) {
+    if (isString(currentAnswerValue)) {
       currentQuestionHasBeenAnswered =
-        currentAnswer !== DEFAULT_ANSWER_VALUE_MULTI_CHOICE;
-    } else if (isArray(currentAnswer)) {
-      currentQuestionHasBeenAnswered = currentAnswer.length > 0;
-    } else if (isObject(currentAnswer)) {
-      currentQuestionHasBeenAnswered = Object.values(currentAnswer).some(
+        currentAnswerValue !== DEFAULT_ANSWER_VALUE_MULTI_CHOICE;
+    } else if (isArray(currentAnswerValue)) {
+      currentQuestionHasBeenAnswered = currentAnswerValue.length > 0;
+    } else if (isObject(currentAnswerValue)) {
+      currentQuestionHasBeenAnswered = Object.values(currentAnswerValue).some(
         (value) => value === "true",
       );
-    } else if (isNumber(currentAnswer)) {
+    } else if (isNumber(currentAnswerValue)) {
       currentQuestionHasBeenAnswered =
-        currentAnswer !== DEFAULT_ANSWER_VALUE_NUMBER_FLOAT;
+        currentAnswerValue !== DEFAULT_ANSWER_VALUE_NUMBER_FLOAT;
     }
 
     return !currentQuestionHasBeenAnswered;

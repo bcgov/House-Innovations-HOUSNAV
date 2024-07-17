@@ -71,12 +71,12 @@
   .ui-Header,
   .web-Walkthrough--StepTracker,
   .web-WalkthroughFooter,
-  .u-container-walkthrough,
+  .p-hide,
   .ui-PdfResultDownload-container,
   .ui-PdfResultDownload-button,
   .ui-PdfResultDownload-imageContainer,
   .ui-PdfResultDownload-aside {
-    display: none;
+    display: none !important;
   }
 
   /* Override these class displays to enable page breaks */

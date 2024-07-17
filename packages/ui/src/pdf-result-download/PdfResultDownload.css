@@ -7,7 +7,8 @@
   border: var(--pdf-result-download-container-border);
   border-radius: var(--layout-border-radius-xlarge);
   max-width: var(--pdf-result-download-container-max-width);
-  margin: 0 auto;
+  margin-top: var(--layout-margin-huge);
+  margin-inline: auto;
   transition:
     box-shadow var(--transition-medium),
     border-color var(--transition-medium);
@@ -108,7 +109,7 @@
   .ui-PdfResultDownload-image,
   .ui-PdfResultDownload-imageContainer {
     margin: 0 auto;
-    border-radius: 0px;
+    border-radius: 0;
     border: none;
   }
 }

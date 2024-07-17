@@ -30,6 +30,8 @@ export const TESTID_QUESTION_CODE_REFERENCE = "question-code-reference";
 export const TESTID_WALKTHROUGH = "walkthrough";
 export const TESTID_WALKTHROUGH_FOOTER_BACK = "walkthrough-footer-back";
 export const TESTID_WALKTHROUGH_FOOTER_NEXT = "walkthrough-footer-next";
+export const TESTID_WALKTHROUGH_FOOTER_START_OVER =
+  "walkthrough-footer-start-over";
 export const TESTID_STEP_TRACKER = "step-tracker";
 export const TESTID_STEP_TRACKER_MOBILE = "step-tracker-mobile";
 export const TESTID_STEP_TRACKER_MOBILE_BUTTON_OPEN =

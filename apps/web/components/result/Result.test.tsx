@@ -10,10 +10,12 @@ describe("Result", () => {
   it("renders", () => {
     // render component
     const { getByTestId } = renderWithWalkthroughProvider({
-      ui: <Result displayMessage="result message here" />,
+      ui: (
+        <Result displayMessage="result message here" relatedWalkthroughs={[]} />
+      ),
     });
 
-    // expect back and next to render
+    // expect result screen
     expect(getByTestId(TESTID_RESULT)).toBeInTheDocument();
   });
 });
