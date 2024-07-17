@@ -2,14 +2,15 @@ import {
   TESTID_WALKTHROUGH_FOOTER_NEXT,
   GET_TESTID_CHECKBOX,
   GET_TESTID_RADIO,
+  GET_TESTID_NUMBER_FIELD,
 } from "@repo/constants/src/testids";
 
-import { walkthroughs } from "../fixtures/workflow1-test-data.json";
+import { walkthroughs } from "../fixtures/workflow2-test-data.json";
 import { results } from "../fixtures/results-data.json";
 
-describe("walkthrough 1", () => {
+describe("walkthrough 2", () => {
   beforeEach(() => {
-    cy.visit("/walkthrough/9.9.9");
+    cy.visit("/walkthrough/9.10.14");
   });
 
   // Test all walkthroughs defined in test data
@@ -28,14 +29,18 @@ describe("walkthrough 1", () => {
               ).click({ force: true });
             });
           }
+        } else if (step.type === "input") {
+          cy.getByTestID(GET_TESTID_NUMBER_FIELD(step.question))
+            .find("input")
+            .type(step.answer);
         }
         cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_NEXT).click();
       });
       if (walkthrough.result) {
         // Cypress will throw an error if the result is undefined
         const result =
-          results.workflow1[
-            walkthrough.result as keyof typeof results.workflow1
+          results.workflow2[
+            walkthrough.result as keyof typeof results.workflow2
           ];
         cy.contains(result);
       }
