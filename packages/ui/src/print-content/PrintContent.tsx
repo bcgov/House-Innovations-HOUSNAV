@@ -86,7 +86,7 @@ export default function PrintContent({ contentType }: PrintContentProps) {
       }
 
       const sectionGroup = grouped[sectionTitle];
-      let referenceGroup = sectionGroup.questions.find(
+      let referenceGroup = sectionGroup?.questions.find(
         (group) => group.reference === item.reference,
       );
 
@@ -100,7 +100,7 @@ export default function PrintContent({ contentType }: PrintContentProps) {
             : null,
           sectionTitle,
         };
-        sectionGroup.questions.push(referenceGroup);
+        sectionGroup?.questions.push(referenceGroup);
       }
 
       referenceGroup.questions.push(item);
