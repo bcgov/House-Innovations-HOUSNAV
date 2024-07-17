@@ -76,6 +76,13 @@ jobs:
         run: npx cypress run --config baseUrl=http://localhost:3000
         working-directory: ./apps/web
 
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-snapshots
+          path: cypress/snapshots
+
       # - name: Trivy Vulnerability Scan
       #   uses: aquasecurity/trivy-action@master
       #   with:
