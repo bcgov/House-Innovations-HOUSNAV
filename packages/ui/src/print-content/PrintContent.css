@@ -22,7 +22,6 @@
 }
 
 .ui-printContent--table {
-  display: block;
   width: 99%; /* Ensure table width doesn't cut off border */
   border-collapse: collapse;
   break-inside: auto;
