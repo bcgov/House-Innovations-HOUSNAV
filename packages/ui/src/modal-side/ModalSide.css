@@ -68,7 +68,7 @@
 
 .ui-ModalSide--SectionHeaderLine {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, 1fr) auto;
   align-items: center;
 }
 
@@ -91,7 +91,6 @@
 
 .ui-ModalSide--SectionHeader,
 .ui-ModalSide--SectionHeaderLarge {
-  grid-column: span 5;
   padding-top: var(--layout-padding-medium);
   padding-left: var(--layout-padding-medium);
   font-weight: var(--typography-font-weights-bold);
@@ -105,19 +104,14 @@
   font-size: var(--typography-font-size-h4);
 }
 
-.ui-ModalSide--SectionHeader,
-.ui-ModalSide--SectionHeaderLarge {
-  grid-column: span 5;
-  padding-top: var(--layout-padding-medium);
-  padding-left: var(--layout-padding-medium);
-  font-weight: var(--typography-font-weights-bold);
-}
-
 .ui-ModalSide--SectionHeader {
+  grid-column: span 5;
   font-size: var(--typography-font-size-h5);
 }
 
 .ui-ModalSide--SectionHeaderLarge {
+  grid-column: span 5;
+  padding: var(--layout-padding-xsmall);
   padding-bottom: var(--layout-padding-medium);
   font-size: var(--typography-font-size-h4);
 }
@@ -174,7 +168,8 @@
     grid-column: span 6;
   }
   .ui-ModalSide--SectionHeaderLine {
-    display: inline;
+    display: grid;
+    grid-template-columns: 1fr auto;
   }
   .ui-ModalSide--SectionNumber,
   .ui-ModalSide--SectionNumberLarge {
@@ -183,6 +178,6 @@
   }
   .ui-ModalSide--SectionHeader,
   .ui-ModalSide--SectionHeaderLarge {
-    grid-column: span 4;
+    grid-column: span 1;
   }
 }

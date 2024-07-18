@@ -9,6 +9,7 @@ import {
   SubsectionType,
   ImageModalType,
   AllBuildingCodeTypes,
+  findBuildingCodeByNumberReference,
 } from "@repo/data/useGlossaryData";
 import { Heading } from "react-aria-components";
 import {
@@ -17,10 +18,14 @@ import {
 } from "web/utils/string";
 import Image from "../image/Image";
 import "./ModalBuildingCodeContent.css";
+import Icon from "../icon/Icon";
+import Button from "../button/Button";
+import { useEffect, useState } from "react";
 
 interface BuildingCodeContentProps {
   modalData?: PartType[];
   printData?: AllBuildingCodeTypes;
+  displayType?: "modal" | "pdf_result" | "pdf_modal";
   highlightedSection?: string | null;
   sectionRefs?: React.MutableRefObject<{ [key: string]: HTMLElement | null }>;
   setFocusSection?: (section: string) => void;
@@ -28,11 +33,28 @@ interface BuildingCodeContentProps {
 
 const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
   modalData,
+  printData,
+  displayType = "modal",
   highlightedSection = null,
   sectionRefs = { current: {} },
   setFocusSection,
-  printData,
 }) => {
+  const [printReference, setPrintReference] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (printReference) {
+      window.print();
+    }
+  }, [printReference]);
+
+  const handleDownload = (numberReference: string) => {
+    if (printReference == numberReference) {
+      window.print();
+    } else {
+      setPrintReference(numberReference);
+    }
+  };
+
   const renderSubClauses = (subClauses: string[]) => {
     return (
       <ol type="i" className="ui-ModalSide--List">
@@ -137,6 +159,17 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
                   {stripReferencePrefix(data.numberReference)}
                 </span>
                 {data.title}
+                {!printData && (
+                  <Button
+                    variant="secondary"
+                    onPress={() => handleDownload(data.numberReference)}
+                    aria-label={`Download Building Code Subsection ${stripReferencePrefix(data.numberReference)} ${data.title}`}
+                    className="ui-ModalSide-pdfButton"
+                  >
+                    <Icon type="download" />
+                    <span>PDF</span>
+                  </Button>
+                )}
               </Heading>
             </header>
             {data.articles && renderArticles(data.articles)}
@@ -259,6 +292,30 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
     );
   };
 
+  const renderBuildingCodePdf = () => {
+    if (!printReference) return null;
+    const data = findBuildingCodeByNumberReference(printReference);
+    return (
+      data && (
+        <>
+          <div className="ui-printContent--printContainer">
+            <table className="ui-printContent--modalTable">
+              <tbody>
+                <tr>
+                  <td>
+                    {"subsections" in data
+                      ? renderSubSections(data.subsections)
+                      : null}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </>
+      )
+    );
+  };
+
   // Render logic for printData
   const renderPrintData = () => {
     if (!printData) return null;
@@ -272,11 +329,9 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
 
   return (
     <>
-      {printData
-        ? renderPrintData()
-        : modalData
-          ? renderParts(modalData)
-          : null}
+      {displayType === "modal" && modalData && renderParts(modalData)}
+      {displayType === "pdf_result" && printData && renderPrintData()}
+      {displayType === "pdf_modal" && printReference && renderBuildingCodePdf()}
     </>
   );
 };
