@@ -4,8 +4,9 @@ import {
   GET_TESTID_RADIO,
 } from "@repo/constants/src/testids";
 
-import { walkthroughs } from "../fixtures/test-data.json";
+import { walkthroughs } from "../fixtures/workflow1-test-data.json";
 import { results } from "../fixtures/results-data.json";
+import { runWalkthrough } from "../support/helpers";
 
 describe("walkthrough 1", () => {
   beforeEach(() => {
@@ -15,27 +16,7 @@ describe("walkthrough 1", () => {
   // Test all walkthroughs defined in test data
   walkthroughs.forEach((walkthrough) => {
     it(walkthrough.title, () => {
-      walkthrough.steps.forEach((step) => {
-        // Select and submit an answer for the given question
-        if (step.type === "radio") {
-          cy.getByTestID(GET_TESTID_RADIO(step.question, step.answer)).click();
-        } else if (step.type === "checkbox") {
-          // Skip tapping the checkbox if the answer is empty
-          if (step.answer != "") {
-            step.answer.split(",").forEach((answer) => {
-              cy.getInputByTestID(
-                GET_TESTID_CHECKBOX(step.question, answer),
-              ).click({ force: true });
-            });
-          }
-        }
-        cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_NEXT).click();
-      });
-      if (walkthrough.result) {
-        // Cypress will throw an error if the result is undefined
-        const result = results[walkthrough.result as keyof typeof results];
-        cy.contains(result);
-      }
+      runWalkthrough(walkthrough, results.workflow1);
     });
   });
 

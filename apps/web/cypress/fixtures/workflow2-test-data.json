@@ -1,0 +1,666 @@
+{
+  "walkthroughs": [
+    {
+      "title": "code does not apply",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "no"
+        }
+      ],
+      "result": "R00"
+    },
+    {
+      "title": "heritage building",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "yes"
+        },
+        {
+          "question": "P04",
+          "type": "radio",
+          "answer": "true"
+        }
+      ],
+      "result": "R02"
+    },
+    {
+      "title": "existing building",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "yes"
+        },
+        {
+          "question": "P04",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P05",
+          "type": "radio",
+          "answer": "true"
+        }
+      ],
+      "result": "R03"
+    },
+    {
+      "title": "building has no occupancy",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "yes"
+        },
+        {
+          "question": "P04",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P05",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P06",
+          "type": "checkbox",
+          "answer": "none"
+        }
+      ],
+      "result": "R00"
+    },
+    {
+      "title": "building includes Group A1 occupancy",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "yes"
+        },
+        {
+          "question": "P04",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P05",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P06",
+          "type": "checkbox",
+          "answer": "A1"
+        }
+      ],
+      "result": "R05"
+    },
+    {
+      "title": "building is larger than 600m^2",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "yes"
+        },
+        {
+          "question": "P04",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P05",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P06",
+          "type": "checkbox",
+          "answer": "D"
+        },
+        {
+          "question": "P07",
+          "type": "radio",
+          "answer": "true"
+        }
+      ],
+      "result": "R05"
+    },
+    {
+      "title": "building has 4+ storeys",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "yes"
+        },
+        {
+          "question": "P04",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P05",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P06",
+          "type": "checkbox",
+          "answer": "C"
+        },
+        {
+          "question": "P07",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P08",
+          "type": "radio",
+          "answer": "false"
+        }
+      ],
+      "result": "R05"
+    },
+    {
+      "title": "not sure if code applies, after one question does not",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "notSure"
+        },
+        {
+          "question": "P02",
+          "type": "checkbox",
+          "answer": "18"
+        }
+      ],
+      "result": "R00"
+    },
+    {
+      "title": "not sure if code applies, but is outside scope of this tool",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "notSure"
+        },
+        {
+          "question": "P02",
+          "type": "checkbox",
+          "answer": "13"
+        },
+        {
+          "question": "P03",
+          "type": "checkbox",
+          "answer": "3,6"
+        }
+      ],
+      "result": "R01"
+    },
+    {
+      "title": "not sure if code applies, is heratage building",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "notSure"
+        },
+        {
+          "question": "P02",
+          "type": "checkbox",
+          "answer": "10"
+        },
+        {
+          "question": "P03",
+          "type": "checkbox",
+          "answer": "9"
+        },
+        {
+          "question": "P04",
+          "type": "radio",
+          "answer": "true"
+        }
+      ],
+      "result": "R02"
+    },
+    {
+      "title": "building is required to meet Subsection 9.10.15",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "yes"
+        },
+        {
+          "question": "P04",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P05",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P06",
+          "type": "checkbox",
+          "answer": "C"
+        },
+        {
+          "question": "P07",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P08",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P1",
+          "type": "checkbox",
+          "answer": "C"
+        },
+        {
+          "question": "P2",
+          "type": "radio",
+          "answer": "true"
+        }
+      ],
+      "result": "R51"
+    },
+    {
+      "title": "limiting distance not far enough",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "yes"
+        },
+        {
+          "question": "P04",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P05",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P06",
+          "type": "checkbox",
+          "answer": "C"
+        },
+        {
+          "question": "P07",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P08",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P1",
+          "type": "checkbox",
+          "answer": "C"
+        },
+        {
+          "question": "P2",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P5",
+          "type": "input",
+          "answer": "10"
+        },
+        {
+          "question": "P6",
+          "type": "input",
+          "answer": "1"
+        },
+        {
+          "question": "P7",
+          "type": "radio",
+          "answer": "true"
+        }
+      ],
+      "result": "R10"
+    },
+    {
+      "title": "detached garage or accessory building that meets requirements",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "yes"
+        },
+        {
+          "question": "P04",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P05",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P06",
+          "type": "checkbox",
+          "answer": "E"
+        },
+        {
+          "question": "P07",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P08",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P1",
+          "type": "checkbox",
+          "answer": "F3"
+        },
+        {
+          "question": "P3",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P4",
+          "type": "radio",
+          "answer": "true"
+        }
+      ],
+      "result": "R40"
+    },
+    {
+      "title": "low hazard industrial building conforms to Article 9.35.1.1",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "yes"
+        },
+        {
+          "question": "P04",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P05",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P06",
+          "type": "checkbox",
+          "answer": "C"
+        },
+        {
+          "question": "P07",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P08",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P1",
+          "type": "checkbox",
+          "answer": "F3"
+        },
+        {
+          "question": "P3",
+          "type": "radio",
+          "answer": "true"
+        }
+      ],
+      "result": "R50"
+    },
+    {
+      "title": "low hazard industrial building and P6 > 3",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "yes"
+        },
+        {
+          "question": "P04",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P05",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P06",
+          "type": "checkbox",
+          "answer": "C"
+        },
+        {
+          "question": "P07",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P08",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P1",
+          "type": "checkbox",
+          "answer": "F3"
+        },
+        {
+          "question": "P3",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P4",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P5",
+          "type": "input",
+          "answer": "10"
+        },
+        {
+          "question": "P6",
+          "type": "input",
+          "answer": "3"
+        },
+        {
+          "question": "P7",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P8",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P11",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P12",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P13",
+          "type": "radio",
+          "answer": "false"
+        }
+      ],
+      "result": "R20"
+    },
+    {
+      "title": "compartment is sprinklered",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "yes"
+        },
+        {
+          "question": "P04",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P05",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P06",
+          "type": "checkbox",
+          "answer": "C"
+        },
+        {
+          "question": "P07",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P08",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P1",
+          "type": "checkbox",
+          "answer": "F3"
+        },
+        {
+          "question": "P3",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P4",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P5",
+          "type": "input",
+          "answer": "10"
+        },
+        {
+          "question": "P6",
+          "type": "input",
+          "answer": "3"
+        },
+        {
+          "question": "P7",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P11",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P12",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P13",
+          "type": "radio",
+          "answer": "false"
+        }
+      ],
+      "result": "R30"
+    },
+    {
+      "title": "office building with unglazed windows",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "yes"
+        },
+        {
+          "question": "P04",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P05",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P06",
+          "type": "checkbox",
+          "answer": "C"
+        },
+        {
+          "question": "P07",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P08",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P1",
+          "type": "checkbox",
+          "answer": "D"
+        },
+        {
+          "question": "P5",
+          "type": "input",
+          "answer": "10"
+        },
+        {
+          "question": "P6",
+          "type": "input",
+          "answer": "3"
+        },
+        {
+          "question": "P7",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P13",
+          "type": "radio",
+          "answer": "false"
+        }
+      ],
+      "result": "R30"
+    }
+  ]
+}

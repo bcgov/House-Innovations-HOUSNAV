@@ -2,30 +2,26 @@
 .ui-printContent--printContainer {
   display: none;
   visibility: hidden;
+  overflow: hidden;
 }
 
-.ui-printContent--questionTable th,
-.ui-printContent--questionTable td {
+.ui-printContent--table th,
+.ui-printContent--table td {
   border: var(--print-content-table-th-td-border);
-  padding: var(--layout-padding-xsmall);
+  padding: var(--layout-padding-10);
+  font: var(--typography-regular-small-body);
   text-align: left;
   word-wrap: break-word;
-  font: var(--typography-regular-small-body);
+  break-inside: avoid;
 }
 
-.ui-printContent--questionTable tr {
+.ui-printContent--table tr {
   break-inside: auto;
   break-after: auto;
   page-break-inside: auto;
 }
 
-.ui-printContent--questionTable td,
-.ui-printContent--questionTable th {
-  break-inside: avoid;
-}
-
-.ui-printContent--questionTable {
-  display: block;
+.ui-printContent--table {
   width: 99%; /* Ensure table width doesn't cut off border */
   border-collapse: collapse;
   break-inside: auto;
@@ -46,17 +42,27 @@
   font: var(--typography-bold-h3);
 }
 
+.ui-printContent--references {
+  padding: var(--layout-padding-small);
+  font: var(--typography-bold-h3);
+  page-break-before: always;
+}
+
 .ui-printContent--sectionTitle {
   font: var(--typography-bold-h5);
 }
 
 /* Set fixed widths for table columns */
+.ui-printContent--introColumn {
+  width: 30%;
+}
+
 .ui-printContent--questionColumn {
-  width: 60%;
+  width: 30%;
 }
 
 .ui-printContent--referenceColumn {
-  width: 40%;
+  width: 17%;
 }
 
 /* Print styles that only need to apply when print window is open */

@@ -15,6 +15,7 @@ import {
 import { findSectionTitleByQuestionId } from "@repo/data/useWalkthroughData";
 
 import "./PrintContent.css";
+import BuildingCodeContent from "../modal-building-code-content/ModalBuildingCodeContent";
 
 interface QuestionData {
   questionId: string;
@@ -30,6 +31,11 @@ interface GroupedQuestion {
   questions: QuestionData[];
   buildingCodeSection: AllBuildingCodeTypes | null;
   sectionTitle: string | null;
+}
+
+interface GroupedSectionQuestions {
+  sectionTitle: string | null;
+  questions: GroupedQuestion[];
 }
 
 export enum PrintContentType {
@@ -51,60 +57,55 @@ export default function PrintContent({ contentType }: PrintContentProps) {
   } = useWalkthroughState();
 
   /*
-    Combine questions with the same reference into a single group
-    This is basically used to ensure the reference is only displayed once
+    Combine questions with the same section into a single group
+    Then combine questions within the section that have the same reference into a single group
+    This is basically used to ensure the reference is only displayed once and spans all questions with the same reference
   */
   const groupQuestionsWithReferences = (
     questions: QuestionData[],
-  ): GroupedQuestion[] => {
-    const grouped: GroupedQuestion[] = [];
-    let currentGroup: QuestionData[] = [];
-    let currentReference = questions[0]?.reference;
-    let currentDisplay = questions[0]?.referenceDisplay;
-    let buildingCodeSection = currentReference
-      ? findBuildingCodeByNumberReference(currentReference)
-      : null;
+  ): GroupedSectionQuestions[] => {
+    const grouped: {
+      [key: string]: {
+        sectionTitle: string | null;
+        questions: GroupedQuestion[];
+      };
+    } = {};
     const walkthroughSections = walkthroughData.sections;
 
+    // For each of the questions, group them by section and then by reference
     questions.forEach((item) => {
-      if (item.reference === currentReference) {
-        currentGroup.push(item);
-      } else {
-        if (currentGroup[0]?.questionId) {
-          grouped.push({
-            reference: currentReference,
-            referenceDisplay: currentDisplay,
-            questions: currentGroup,
-            buildingCodeSection: buildingCodeSection,
-            sectionTitle: findSectionTitleByQuestionId(
-              currentGroup[0]?.questionId,
-              walkthroughSections,
-            ),
-          });
-        }
-        currentGroup = [item];
-        currentReference = item.reference;
-        currentDisplay = item.referenceDisplay;
-        buildingCodeSection = currentReference
-          ? findBuildingCodeByNumberReference(currentReference)
-          : null;
+      const sectionTitle = findSectionTitleByQuestionId(
+        item.questionId,
+        walkthroughSections,
+      );
+      if (!sectionTitle) {
+        return;
       }
+      if (!grouped[sectionTitle]) {
+        grouped[sectionTitle] = { sectionTitle, questions: [] };
+      }
+
+      const sectionGroup = grouped[sectionTitle];
+      let referenceGroup = sectionGroup?.questions.find(
+        (group) => group.reference === item.reference,
+      );
+
+      if (!referenceGroup) {
+        referenceGroup = {
+          reference: item.reference,
+          referenceDisplay: item.referenceDisplay,
+          questions: [],
+          buildingCodeSection: item.reference
+            ? findBuildingCodeByNumberReference(item.reference)
+            : null,
+          sectionTitle,
+        };
+        sectionGroup?.questions.push(referenceGroup);
+      }
+
+      referenceGroup.questions.push(item);
     });
-
-    if (currentGroup.length > 0 && currentGroup[0]?.questionId) {
-      grouped.push({
-        reference: currentReference,
-        referenceDisplay: currentDisplay,
-        questions: currentGroup,
-        buildingCodeSection: buildingCodeSection,
-        sectionTitle: findSectionTitleByQuestionId(
-          currentGroup[0]?.questionId,
-          walkthroughSections,
-        ),
-      });
-    }
-
-    return grouped;
+    return Object.values(grouped);
   };
 
   // Get the question data from the question history for the PDF
@@ -129,42 +130,66 @@ export default function PrintContent({ contentType }: PrintContentProps) {
   const groupedQuestions = groupQuestionsWithReferences(questionPdf);
 
   const renderGroupQuestionsAndAnswers = (
-    group: GroupedQuestion,
+    group: GroupedSectionQuestions,
     groupIndex: number,
   ) => {
-    return group.questions.map((item, index) => {
-      const parsedQuestion = getStringFromComponents(
-        parseStringToComponents(item.question),
-      );
-      const parsedAnswer = getStringFromComponents(
-        parseStringToComponents(item.answer),
-      );
+    return group.questions.map((sectionQuestions, sectionIndex) => {
+      return sectionQuestions.questions.map((item, index) => {
+        const parsedQuestion = getStringFromComponents(
+          parseStringToComponents(item.question),
+        );
+        const parsedAnswer = getStringFromComponents(
+          parseStringToComponents(item.answer),
+        );
 
-      // If the answer is multiline, split it into an array so we can render it as a list
-      const answerLines = parsedAnswer.split("\n");
+        // If the answer is multiline, split it into an array so we can render it as a list
+        const answerLines = parsedAnswer.split("\n");
 
-      return (
-        <tr key={`${groupIndex}-${index}`}>
-          <td className="ui-printContent--questionColumn">
-            {parsedQuestion}
-            <br />
-            <strong>Answer:</strong>{" "}
-            {answerLines.length > 1 ? (
-              <ul>
-                {answerLines.map((line, i) => (
-                  <li key={i}>{line}</li>
-                ))}
-              </ul>
-            ) : (
-              <span>{parsedAnswer}</span>
-            )}
-          </td>
-          {index === 0 && groupIndex !== 0 && (
+        return (
+          <tr key={`${groupIndex}-${sectionIndex}-${index}`}>
             <td
-              className="ui-printContent--referenceColumn"
-              rowSpan={group.questions.length}
+              className={
+                groupIndex === 0
+                  ? "ui-printContent--introColumn"
+                  : "ui-printContent--questionColumn"
+              }
             >
-              {group.referenceDisplay}
+              {parsedQuestion}
+              <br />
+              <strong>Answer:</strong>{" "}
+              {answerLines.length > 1 ? (
+                <ul>
+                  {answerLines.map((line, i) => (
+                    <li key={i}>{line}</li>
+                  ))}
+                </ul>
+              ) : (
+                <span>{parsedAnswer}</span>
+              )}
+            </td>
+            {index === 0 && groupIndex !== 0 && (
+              <td
+                className="ui-printContent--referenceColumn"
+                rowSpan={sectionQuestions.questions.length}
+              >
+                {item.referenceDisplay}
+              </td>
+            )}
+          </tr>
+        );
+      });
+    });
+  };
+
+  const renderReferences = (group: GroupedSectionQuestions) => {
+    return group.questions.map((sectionQuestions, index) => {
+      return (
+        <tr key={`${group.sectionTitle}-${index}`}>
+          {index === 0 && (
+            <td>
+              <BuildingCodeContent
+                printData={sectionQuestions.buildingCodeSection ?? undefined}
+              />
             </td>
           )}
         </tr>
@@ -180,23 +205,37 @@ export default function PrintContent({ contentType }: PrintContentProps) {
             {walkthroughData.info.walkthroughTitle}
           </h3>
           {groupedQuestions.map((group, groupIndex) => (
-            <div key={groupIndex}>
-              <table className="ui-printContent--questionTable">
-                <thead>
-                  <tr>
-                    <th className="ui-printContent--questionColumn" colSpan={2}>
-                      <h5 className="ui-printContent--sectionTitle">
-                        {group.sectionTitle}
-                      </h5>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {renderGroupQuestionsAndAnswers(group, groupIndex)}
-                </tbody>
-              </table>
-            </div>
+            <table className="ui-printContent--table" key={groupIndex}>
+              <thead>
+                <tr>
+                  <th colSpan={2}>
+                    <h5 className="ui-printContent--sectionTitle">
+                      {group.sectionTitle}
+                    </h5>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>{renderGroupQuestionsAndAnswers(group, groupIndex)}</tbody>
+            </table>
           ))}
+          <span className="ui-printContent--references"></span>
+          {groupedQuestions.map(
+            (group, groupIndex) =>
+              groupIndex !== 0 && (
+                <table className="ui-printContent--table" key={groupIndex}>
+                  <thead>
+                    <tr>
+                      <th className="ui-printContent--questionColumn">
+                        <h5 className="ui-printContent--sectionTitle">
+                          {group.sectionTitle}
+                        </h5>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>{renderReferences(group)}</tbody>
+                </table>
+              ),
+          )}
         </div>
       )}
     </>
