@@ -813,7 +813,7 @@
             "answerToCheck": "P8",
             "answerValue": "true",
             "variableValueToSetCalculation": {
-              "answerToUse": "P6Editable",
+              "answerToUse": "P6",
               "variableValueCalculationType": "divide",
               "calculationValueToUse": 2
             }
@@ -823,7 +823,7 @@
             "answerToCheck": "P8",
             "answerValue": "false",
             "variableValueToSetCalculation": {
-              "answerToUse": "P6Editable",
+              "answerToUse": "P6",
               "variableValueCalculationType": "divide",
               "calculationValueToUse": 1
             }
