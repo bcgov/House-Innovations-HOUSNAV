@@ -34,3 +34,25 @@
   text-align: left;
   font-size: var(--typography-font-size-small-body);
 }
+
+.ui-ModalSide-pdfButton {
+  float: right;
+  margin: 0 auto;
+  margin-top: var(--layout-padding-xsmall);
+}
+
+/* DESKTOP - 912px */
+@media (max-width: 57rem) {
+  .ui-ModalSide-pdfButton {
+    margin-top: var(--layout-padding-small);
+    width: 100%;
+  }
+}
+
+/* DESKTOP - 1350px */
+@media (max-width: 84.375rem) {
+  .ui-ModalSide-pdfButton {
+    margin-top: var(--layout-padding-small);
+    width: 100%;
+  }
+}

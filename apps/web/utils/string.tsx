@@ -227,6 +227,6 @@ export const stripReferencePrefix = (reference: string) => {
   // Removes the `v2-db-` prefix from `v2-db-9.9.9.1`
   const prefix = "v";
   if (reference.toLowerCase().startsWith(prefix)) {
-    return reference.split("-").slice(2);
+    return reference.split("-").slice(2).join("");
   }
 };
