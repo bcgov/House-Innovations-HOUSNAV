@@ -1,0 +1,45 @@
+.page-Root--Header {
+  padding-block: var(--page-root-header-padding-block);
+}
+
+.page-Root--Header h1 {
+  font: var(--typography-bold-h1);
+  line-height: normal;
+  margin-bottom: var(--page-root-subhead-margin-bottom);
+}
+
+.page-Root--Subhead {
+  font: var(--typography-regular-large-body);
+}
+
+.page-Root--WalkthroughCards {
+  background: radial-gradient(
+      153.43% 75.68% at -3.92% 94.86%,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(237, 237, 237, 0.11) 100%
+    ),
+    var(--surface-color-background-dark-blue);
+  padding-block: var(--page-root-cards-padding-block);
+}
+
+.page-Root--WalkthroughCards ul {
+  list-style: none;
+  display: flex;
+  flex-direction: var(--page-root-cards-flex-direction);
+  justify-content: center;
+  gap: var(--layout-margin-xlarge);
+}
+
+.page-Root--WalkthroughCards li {
+  display: flex;
+}
+
+.page-Root--PreFooter {
+  background-color: var(--theme-gray-110);
+  color: var(--theme-gray-10);
+  font: var(--typography-regular-small-body);
+  border-top: var(--layout-border-width-large) solid var(--theme-primary-gold);
+  border-bottom: var(--layout-border-width-large) solid
+    var(--theme-primary-gold);
+  padding-block: var(--layout-margin-xlarge);
+}

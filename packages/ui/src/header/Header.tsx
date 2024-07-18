@@ -113,8 +113,8 @@ export default function Header({
             <Image
               src={logoSrc}
               alt={"Government of British Columbia Logo - Go to the homepage"}
-              width={"117"}
-              height={"45"}
+              width={"156"}
+              height={"60"}
             />
           </ReactAriaLink>
         )}

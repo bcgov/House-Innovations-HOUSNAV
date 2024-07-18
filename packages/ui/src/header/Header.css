@@ -9,6 +9,9 @@
   border-bottom-width: var(--layout-border-width-small);
   min-height: var(--header-height);
   width: 100%;
+  box-shadow: var(--surface-shadow-medium);
+  z-index: 1;
+  position: relative;
 }
 
 .ui-Header--Container {
@@ -56,7 +59,7 @@
 .ui-Header--Line {
   background-color: var(--surface-color-border-default);
   width: 1px;
-  height: 32px;
+  height: 41px;
 }
 
 .ui-Header--LogoLink {

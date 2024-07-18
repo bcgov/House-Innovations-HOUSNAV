@@ -26,7 +26,6 @@ export default function RootLayout({
 }: {
   children: ReactNode;
 }): JSX.Element {
-  // TODO - footer logic for pages without it
   return (
     <html lang="en-US">
       <body>

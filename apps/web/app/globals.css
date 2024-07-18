@@ -42,8 +42,16 @@ p {
 }
 
 /* Utility classes - add as needed */
+html:has(.u-page-background-gray) {
+  background: var(--theme-gray-10);
+}
 .u-container {
   max-width: var(--layout-max-width);
+  margin: 0 auto;
+  padding: 0 var(--layout-padding-container);
+}
+.u-container-content {
+  max-width: var(--layout-max-width-content);
   margin: 0 auto;
   padding: 0 var(--layout-padding-container);
 }
