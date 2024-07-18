@@ -11,34 +11,39 @@ on:
         required: true
 
 jobs:
-  test:
+  run-unit-tests:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v3
-      - name: use node.js
+
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "18.x"
-      - run: npm ci
-      - run: npm run test
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Unit Tests
+        run: npm run test
 
   build:
-    needs: test
+    needs: run-unit-tests
     runs-on: ubuntu-latest
     environment: dev
     outputs:
       pr-number-output: ${{ steps.set-output.outputs.pr-number }}
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Set up Docker Buildx
+      - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v2
 
       ### Not recommended to use the PR number Docker tag in production.
       ### Use only for dev and UAT
-      - name: Set PR number
+      - name: Set PR Number
         id: set-pr-number
         run: |
           if [ -z "${{ github.event.inputs.pr-number }}" ]; then
@@ -52,31 +57,35 @@ jobs:
             echo "pr-number=${{ github.event.inputs.pr-number }}" >> $GITHUB_OUTPUT
           fi
 
-      - name: Build Docker image
+      - name: Build Docker Image
         run: docker build -t ${{ vars.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web:${{ steps.set-pr-number.outputs.pr-number }} -f apps/web/Dockerfile . --no-cache
 
-      - name: Run Docker container
+      - name: Run Docker Container
         run: docker run -d -p 3000:3000 --name housnav ${{ vars.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web:${{ steps.set-pr-number.outputs.pr-number }}
 
-      - name: Install dependencies
-        run: npm ci
-        working-directory: ./apps/web
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
 
-      - name: Run Cypress tests
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Cypress End-to-End Tests
         run: npm run e2e:chrome
         working-directory: ./apps/web
 
-      - name: Upload screenshots if Cypress tests fail
+      - name: Upload Cypress Screenshots on Failure
         uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-snapshots
           path: apps/web/cypress/screenshots
 
-      - name: Stop Docker container
+      - name: Stop Docker Container
         run: docker stop housnav
 
-      - name: Trivy Vulnerability Scan
+      - name: Run Trivy Vulnerability Scan
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: ${{ vars.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web:${{ steps.set-pr-number.outputs.pr-number }}
@@ -86,13 +95,13 @@ jobs:
           vuln-type: os,library
           severity: "CRITICAL,HIGH"
 
-      - name: Login to Artifactory image registry with Docker
+      - name: Login to Artifactory
         uses: docker/login-action@v3
         with:
           registry: ${{ vars.ARTIFACTORY_URL }}
           username: ${{ secrets.ARTIFACTORY_SERVICEACCOUNT_USERNAME }}
           password: ${{ secrets.ARTIFACTORY_SERVICEACCOUNT_PASSWORD }}
 
-      - name: Push Docker image to Artifactory
+      - name: Push Docker Image to Artifactory
         run: docker push ${{ vars.ARTIFACTORY_URL }}/${{ secrets.ARTIFACTORY_REPOSITORY_NAME }}/house-innovations-housnav-web:${{ steps.set-pr-number.outputs.pr-number }}
 
