@@ -91,11 +91,6 @@
   --layout-padding-26: 1.625rem;
   --layout-padding-xlarge: 2rem;
   --layout-padding-64: 4rem;
-  --layout-padding-container: var(--layout-padding-medium);
-  --layout-padding-radio-x: var(--layout-padding-medium);
-  --layout-padding-radio-y: var(--layout-padding-medium);
-  --layout-padding-checkbox-x: var(--layout-padding-medium);
-  --layout-padding-checkbox-y: var(--layout-padding-medium);
   --layout-margin-none: 0rem;
   --layout-margin-hair: 0.125rem;
   --layout-margin-xsmall: 0.25rem;
@@ -112,7 +107,6 @@
   --layout-border-radius-medium: 4px;
   --layout-border-radius-large: 6px;
   --layout-border-radius-xlarge: 8px;
-  --layout-max-width: 85.25rem; /* 1364px */
   --typography-font-families-bc-sans: "BC Sans", sans-serif;
   --typography-line-heights-xxxdense: 1.125rem;
   --typography-line-heights-xxdense: 1.313rem;
@@ -220,6 +214,13 @@
 
 /* CUSTOM */
 :root {
+  --layout-padding-container: var(--layout-padding-medium);
+  --layout-padding-radio-x: var(--layout-padding-medium);
+  --layout-padding-radio-y: var(--layout-padding-medium);
+  --layout-padding-checkbox-x: var(--layout-padding-medium);
+  --layout-padding-checkbox-y: var(--layout-padding-medium);
+  --layout-max-width: 85.25rem; /* 1364px */
+  --layout-max-width-content: 67.375rem; /* 1078px */
   --size-button: 40px;
   --size-button-large: 52px;
   --outline-offset: 2px;
@@ -239,7 +240,11 @@
   --walkthrough-footer-next-width: 228px;
   --transition-medium: 300ms;
   --theme-black-opacity-40: #00000040;
-  --walkthrough-card-max-width: 27.5rem;
+  --page-root-header-padding-block: var(--layout-margin-large);
+  --page-root-subhead-margin-bottom: var(--layout-margin-medium);
+  --page-root-cards-padding-block: var(--layout-margin-large);
+  --page-root-cards-flex-direction: column;
+  --walkthrough-card-max-width: 26.25rem;
   --walkthrough-card-border-transparent: 1px solid #00000000;
   --walkthrough-card-border-default: 1px solid
     var(--surface-color-border-default);
@@ -277,6 +282,10 @@
     --question-form-margin-top: var(--layout-margin-large);
     --walkthrough-footer-back-width: auto;
     --walkthrough-footer-next-width: auto;
+    --page-root-header-padding-block: var(--layout-margin-xlarge);
+    --page-root-subhead-margin-bottom: var(--layout-margin-large);
+    --page-root-cards-padding-block: var(--layout-margin-xxxlarge);
+    --page-root-cards-flex-direction: row;
     --step-tracker-mobile-toggle-display: none;
     --step-tracker-tablet-up-display: block;
     --step-tracker-heading-padding-left: 0;

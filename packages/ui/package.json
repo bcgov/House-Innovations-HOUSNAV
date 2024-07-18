@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
+    "./footer": "./src/footer/Footer.tsx",
     "./number-field": "./src/number-field/NumberField.tsx",
     "./print-content": "./src/print-content/PrintContent.tsx",
     "./button-modal-close": "./src/button-modal-close/ButtonModalClose.tsx",
