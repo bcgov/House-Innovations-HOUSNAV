@@ -1,20 +1,37 @@
 // 3rd part
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { JSX } from "react";
 // repo
-import { getQuestion } from "@repo/data/useWalkthroughTestData";
-import { PropertyNameQuestionText } from "@repo/data/useWalkthroughData";
+import useWalkthroughTestData, {
+  getFirstResult,
+  getFirstResultWithCalculations,
+  getQuestion,
+  useWalkthroughTestData91014,
+} from "@repo/data/useWalkthroughTestData";
+import {
+  PropertyNameQuestionText,
+  ResultData,
+} from "@repo/data/useWalkthroughData";
 // local
 import {
   getStringFromComponents,
   parseStringToComponents,
   getAnswerValueDisplay,
+  getResultCalculation,
 } from "./string";
 import { isArray } from "./typeChecking";
 import { renderWithWalkthroughProvider } from "../tests/utils";
+import * as CalculationModule from "./calculations";
 
 const AnswerValueTestComponent = ({ questionId }: { questionId?: string }) => {
   return <>{getAnswerValueDisplay(questionId)}</>;
+};
+const ResultCalculationTestComponent = ({
+  calculationId,
+}: {
+  calculationId?: string;
+}) => {
+  return <>{getResultCalculation(calculationId)}</>;
 };
 
 describe("string", () => {
@@ -181,5 +198,90 @@ describe("string", () => {
       },
     });
     expect(container).toMatchSnapshot();
+  });
+  /*
+   * getResultCalculation
+   */
+  it("getResultCalculation: no calculationId", () => {
+    const { container } = renderWithWalkthroughProvider({
+      ui: <ResultCalculationTestComponent />,
+    });
+    expect(container).toMatchSnapshot();
+  });
+  it("getResultCalculation: no currentResult", () => {
+    const { container } = renderWithWalkthroughProvider({
+      ui: <ResultCalculationTestComponent calculationId={"test"} />,
+    });
+    expect(container).toMatchSnapshot();
+  });
+  it("getResultCalculation: result missing resultCalculations", () => {
+    // setup data so first question is a result
+    const walkthroughData = useWalkthroughTestData();
+    const resultData = getFirstResult();
+    walkthroughData.sections[
+      walkthroughData.info.startingSectionId
+    ]?.sectionQuestions.unshift(resultData.resultKey);
+
+    const { container } = renderWithWalkthroughProvider({
+      ui: <ResultCalculationTestComponent calculationId={"test"} />,
+      data: walkthroughData,
+    });
+
+    expect(container).toMatchSnapshot();
+  });
+  it("getResultCalculation: wrong calculation id", () => {
+    // setup data so first question is a result
+    const walkthroughData = useWalkthroughTestData91014();
+    const resultData = getFirstResultWithCalculations();
+    walkthroughData.sections[
+      walkthroughData.info.startingSectionId
+    ]?.sectionQuestions.unshift(resultData.resultKey);
+
+    const { container } = renderWithWalkthroughProvider({
+      ui: <ResultCalculationTestComponent calculationId={"test"} />,
+      data: walkthroughData,
+    });
+
+    expect(container).toMatchSnapshot();
+  });
+  it("getResultCalculation: display returned value ", () => {
+    // setup data so first question is a result
+    const walkthroughData = useWalkthroughTestData();
+    const calculationResult = 123.456;
+    const resultKey = "R99";
+    const calculationId = "1";
+    const resultData: ResultData = {
+      resultDisplayMessage: "Test result",
+      resultCalculations: [
+        {
+          id: calculationId,
+          resultCalculationType: "number",
+          calculationValuesToUse: [],
+        },
+      ],
+    };
+    walkthroughData.sections[
+      walkthroughData.info.startingSectionId
+    ]?.sectionQuestions.unshift(resultKey);
+    walkthroughData.results[resultKey] = resultData;
+
+    // spy on calculateResultDisplayNumber
+    const calculateResultDisplayNumberSpy = vi.spyOn(
+      CalculationModule,
+      "calculateResultDisplayNumber",
+    );
+    // setup spy return value
+    calculateResultDisplayNumberSpy.mockReturnValueOnce(calculationResult);
+
+    const { container } = renderWithWalkthroughProvider({
+      ui: <ResultCalculationTestComponent calculationId={calculationId} />,
+      data: walkthroughData,
+    });
+
+    expect(container).toHaveTextContent(
+      CalculationModule.mathRoundToTwoDecimalsIfNeeded(
+        calculationResult,
+      ).toString(),
+    );
   });
 });

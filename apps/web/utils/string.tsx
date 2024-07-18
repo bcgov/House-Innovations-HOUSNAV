@@ -26,7 +26,10 @@ import PDFDownloadLink, {
   PDFDownloadLinkProps,
 } from "../components/pdf-download-link/PDFDownloadLink";
 import { useWalkthroughState } from "../stores/WalkthroughRootStore";
-import { calculateResultDisplayNumber } from "./calculations";
+import {
+  calculateResultDisplayNumber,
+  mathRoundToTwoDecimalsIfNeeded,
+} from "./calculations";
 
 // Define custom components for html-react-parser
 const definedTermName = "defined-term";
@@ -222,7 +225,7 @@ export const getAnswerValueDisplay = (
 export const getResultCalculation = (calculationId?: string) => {
   const { currentResult } = useWalkthroughState();
   if (!calculationId || !currentResult || !currentResult.resultCalculations) {
-    console.warn("Missing result calculation ID correct result data.");
+    console.warn("Missing result calculation ID or current result data.");
     return <AnswerDisplayValuePlaceholder />;
   }
 
@@ -244,7 +247,7 @@ export const getResultCalculation = (calculationId?: string) => {
       getAnswerToCheckValue,
     );
     if (displayNumber) {
-      return <>{Math.round((displayNumber + Number.EPSILON) * 100) / 100}</>;
+      return <>{mathRoundToTwoDecimalsIfNeeded(displayNumber)}</>;
     } else {
       return <AnswerDisplayValuePlaceholder />;
     }

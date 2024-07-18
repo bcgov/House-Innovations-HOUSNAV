@@ -111,8 +111,32 @@ export function getFirstResult() {
   };
 }
 
+export function getFirstResultWithCalculations() {
+  const results: {
+    [key: string]: ResultData;
+  } = testCase91014.results;
+  const resultKey = Object.keys(results).find((resultId) => {
+    const result = results[resultId] as ResultData;
+    return result.resultCalculations && result.resultCalculations.length > 0;
+  });
+
+  if (!resultKey || !results[resultKey]) {
+    throw new Error("No result with calculations info");
+  }
+
+  return {
+    resultKey,
+    resultData: results[resultKey] as ResultData,
+  };
+}
+
 export default function useWalkthroughTestData() {
   // deep clone and return test data
   const testData = JSON.parse(JSON.stringify(testCase999));
+  return testData as WalkthroughJSONType;
+}
+
+export function useWalkthroughTestData91014() {
+  const testData = JSON.parse(JSON.stringify(testCase91014));
   return testData as WalkthroughJSONType;
 }
