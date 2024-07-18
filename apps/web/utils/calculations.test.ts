@@ -1,9 +1,21 @@
 // 3rd party
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 // repo
-import { VariableValueToSetCalculation } from "@repo/data/useWalkthroughData";
+import {
+  PropertyCalculationValueToUse,
+  PropertyDefaultValue,
+  PropertyNameAnswerToUse,
+  PropertyResultLogicItems,
+  ResultCalculation,
+  ResultCalculationType,
+  ResultLogicTypes,
+  VariableValueToSetCalculation,
+} from "@repo/data/useWalkthroughData";
 // local
-import { calculateVariableValueToSet } from "./calculations";
+import {
+  calculateVariableValueToSet,
+  calculateResultDisplayNumber,
+} from "./calculations";
 
 describe("calculations", () => {
   /*
@@ -102,5 +114,135 @@ describe("calculations", () => {
 
     // expect result to be 2
     expect(result).toBe(2);
+  });
+  /*
+   * calculateResultDisplayNumber
+   */
+  it(`calculateResultDisplayNumber: calculationType is ${ResultCalculationType.MaxBetween} with a ${ResultCalculationType.Divide} and ${ResultCalculationType.Multiply} and ${ResultCalculationType.Number}`, () => {
+    const resultCalculation: ResultCalculation = {
+      id: "1",
+      resultCalculationType: ResultCalculationType.MaxBetween,
+      calculationValuesToUse: [
+        {
+          resultCalculationType: ResultCalculationType.Divide,
+          calculationValuesToUse: [
+            {
+              resultCalculationType: ResultCalculationType.Number,
+              [PropertyCalculationValueToUse]: 2,
+            },
+            {
+              resultCalculationType: ResultCalculationType.Number,
+              [PropertyCalculationValueToUse]: 1,
+            },
+          ],
+        },
+        {
+          resultCalculationType: ResultCalculationType.Multiply,
+          calculationValuesToUse: [
+            {
+              resultCalculationType: ResultCalculationType.Number,
+              [PropertyCalculationValueToUse]: 1,
+            },
+            {
+              resultCalculationType: ResultCalculationType.Number,
+              [PropertyCalculationValueToUse]: 1,
+            },
+          ],
+        },
+      ],
+    };
+    const mockGetAnswerToCheckValue = vi.fn();
+
+    const result = calculateResultDisplayNumber(
+      resultCalculation,
+      mockGetAnswerToCheckValue,
+    );
+
+    expect(result).toBe(2);
+  });
+  it(`calculateResultDisplayNumber: calculationType is ${ResultCalculationType.MinBetween} with a ${ResultCalculationType.Minus} and ${ResultCalculationType.Square} and ${ResultCalculationType.Number}`, () => {
+    const resultCalculation: ResultCalculation = {
+      id: "1",
+      resultCalculationType: ResultCalculationType.MinBetween,
+      calculationValuesToUse: [
+        {
+          resultCalculationType: ResultCalculationType.Minus,
+          calculationValuesToUse: [
+            {
+              resultCalculationType: ResultCalculationType.Number,
+              [PropertyCalculationValueToUse]: 2,
+            },
+            {
+              resultCalculationType: ResultCalculationType.Number,
+              [PropertyCalculationValueToUse]: 2,
+            },
+          ],
+        },
+        {
+          resultCalculationType: ResultCalculationType.Square,
+          [PropertyCalculationValueToUse]: {
+            resultCalculationType: ResultCalculationType.Number,
+            [PropertyCalculationValueToUse]: 2,
+          },
+        },
+      ],
+    };
+    const mockGetAnswerToCheckValue = vi.fn();
+
+    const result = calculateResultDisplayNumber(
+      resultCalculation,
+      mockGetAnswerToCheckValue,
+    );
+
+    expect(result).toBe(0);
+  });
+  it(`calculateResultDisplayNumber: calculationType is ${ResultCalculationType.MinBetween} with a type ${ResultCalculationType.Logic} and ${ResultLogicTypes.GreaterThan} and a type ${ResultCalculationType.Answer}`, () => {
+    const resultCalculation: ResultCalculation = {
+      id: "1",
+      resultCalculationType: ResultCalculationType.MinBetween,
+      calculationValuesToUse: [
+        {
+          resultCalculationType: ResultCalculationType.Logic,
+          [PropertyResultLogicItems]: [
+            {
+              resultLogicType: ResultLogicTypes.GreaterThan,
+              answerToCheck: "1",
+              answerValue: 3,
+              valueToUse: 3,
+            },
+            {
+              resultLogicType: ResultLogicTypes.Fallback,
+              valueToUse: 10,
+            },
+          ],
+        },
+        {
+          resultCalculationType: ResultCalculationType.Minus,
+          calculationValuesToUse: [
+            {
+              resultCalculationType: ResultCalculationType.Answer,
+              [PropertyNameAnswerToUse]: "1",
+            },
+            {
+              resultCalculationType: ResultCalculationType.Answer,
+              [PropertyNameAnswerToUse]: "1",
+              [PropertyDefaultValue]: 0,
+            },
+          ],
+        },
+      ],
+    };
+    const mockGetAnswerToCheckValue = vi.fn();
+    mockGetAnswerToCheckValue.mockReturnValueOnce(2);
+    mockGetAnswerToCheckValue.mockReturnValueOnce(2);
+    mockGetAnswerToCheckValue.mockReturnValueOnce(undefined);
+
+    const result = calculateResultDisplayNumber(
+      resultCalculation,
+      mockGetAnswerToCheckValue,
+    );
+
+    expect(result).toBe(2);
+    expect(mockGetAnswerToCheckValue).toHaveBeenCalledTimes(3);
   });
 });

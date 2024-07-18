@@ -368,3 +368,7 @@ export const calculationTypeMultiply = (value1: number, value2: number) => {
 export const calculationTypeMinus = (value1: number, value2: number) => {
   return value1 - value2;
 };
+
+export const mathRoundToTwoDecimalsIfNeeded = (value: number) => {
+  return Math.round((value + Number.EPSILON) * 100) / 100;
+};
