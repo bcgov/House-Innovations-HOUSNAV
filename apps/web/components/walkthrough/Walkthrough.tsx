@@ -1,6 +1,6 @@
 "use client";
 // 3rd party
-import { FormEvent, JSX, useCallback } from "react";
+import { FormEvent, JSX, useCallback, useEffect, useState } from "react";
 import { Form } from "react-aria-components";
 import { observer } from "mobx-react-lite";
 // repo
@@ -24,6 +24,26 @@ const Walkthrough = observer((): JSX.Element => {
     handleStateError,
     answerStore: { currentAnswerValue },
   } = useWalkthroughState();
+
+  const [isBlocking, setIsBlocking] = useState(true);
+
+  useEffect(() => {
+    // Block the user from leaving the page with confirmation if they have unsaved changes
+    // (ie. they have interacted with the form)
+    const onBeforeUnload = (ev: Event) => {
+      if (isBlocking) {
+        ev.preventDefault();
+      }
+      ev.returnValue = isBlocking;
+      return isBlocking;
+    };
+
+    window.addEventListener("beforeunload", onBeforeUnload);
+    setIsBlocking(true);
+    return () => {
+      window.removeEventListener("beforeunload", onBeforeUnload);
+    };
+  }, [isBlocking]);
 
   const handleQuestionSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
@@ -49,29 +69,31 @@ const Walkthrough = observer((): JSX.Element => {
   );
 
   return (
-    <div className="web-Walkthrough" data-testid={TESTID_WALKTHROUGH}>
-      <section className="web-Walkthrough--Content">
-        {currentResult ? (
-          <Result
-            displayMessage={currentResult.resultDisplayMessage}
-            relatedWalkthroughs={relatedWalkthroughs}
-          />
-        ) : (
-          <Form
-            className="web-Walkthrough--Form"
-            id={ID_QUESTION_FORM}
-            onSubmit={handleQuestionSubmit}
-            key={`question-${currentItemId}`}
-          >
-            <Question />
-          </Form>
-        )}
-        <WalkthroughFooter />
-      </section>
-      <section className="web-Walkthrough--StepTracker">
-        <StepTracker />
-      </section>
-    </div>
+    <>
+      <div className="web-Walkthrough" data-testid={TESTID_WALKTHROUGH}>
+        <section className="web-Walkthrough--Content">
+          {currentResult ? (
+            <Result
+              displayMessage={currentResult.resultDisplayMessage}
+              relatedWalkthroughs={relatedWalkthroughs}
+            />
+          ) : (
+            <Form
+              className="web-Walkthrough--Form"
+              id={ID_QUESTION_FORM}
+              onSubmit={handleQuestionSubmit}
+              key={`question-${currentItemId}`}
+            >
+              <Question />
+            </Form>
+          )}
+          <WalkthroughFooter />
+        </section>
+        <section className="web-Walkthrough--StepTracker">
+          <StepTracker />
+        </section>
+      </div>
+    </>
   );
 });
 
