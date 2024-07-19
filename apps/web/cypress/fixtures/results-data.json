@@ -19,7 +19,7 @@
       "R03": "You have selected an option that indicates that this building is an alteration to an existing building. Alteration to existing buildings have alternative measures for Building Code compliance. These alternative measures are beyond the scope of this tool at this time.",
       "R05": "Based on the options you have selected; this project is not a Part 9 building. This tool is designed to assist BC Building Code 2024 users in evaluating Part 9 buildings for conformance with Division B Acceptable Solutions of the BC Building Code, therefore your project is beyond the scope of this tool at this time.",
       "R10": "Openings in a wall having a",
-      "R20": "The maximum size of openable windows having an unobstructed opening equal to or greater than 0.35m",
+      "R20": "The maximum size of openable windows having an unobstructed opening equal to or greater than 0.35 m",
       "R30": "The maximum percentage of unprotected openings in this exterior wall is",
       "R40": "this fire compartment is permitted to have unlimited unprotected openings.",
       "R50": "that serve not more than one dwelling unit or a house with a secondary suite.",
