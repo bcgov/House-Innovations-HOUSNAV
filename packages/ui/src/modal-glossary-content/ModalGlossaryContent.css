@@ -1,5 +1,11 @@
+.ui-ModalSide--SectionHeaderLineGlossary {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr) auto;
+  align-items: center;
+}
+
 .ui-ModalSide--ModalContentHeader {
-  grid-column: span 3;
+  grid-column: span 4;
   font-size: var(--typography-font-size-h4);
   font-weight: var(--typography-font-weights-bold);
   padding-left: var(--layout-margin-large);
@@ -15,4 +21,15 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   align-items: center;
+}
+
+/* DESKTOP - 912px */
+@media (max-width: 57rem) {
+  .ui-ModalSide--SectionHeaderLineGlossary {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .ui-ModalSide-pdfButtonGlossary {
+    grid-column: span 5;
+  }
 }

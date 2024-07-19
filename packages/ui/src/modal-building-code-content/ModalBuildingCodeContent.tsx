@@ -101,7 +101,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
             ref={(el) => {
               sectionRefs.current[data.numberReference] = el;
             }}
-            className={`${
+            className={`ui-ModalSide--parts ${
               highlightedSection === data.numberReference
                 ? "ui-ModalSide--SectionHighlighted"
                 : ""
@@ -159,7 +159,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
                   {stripReferencePrefix(data.numberReference)}
                 </span>
                 {data.title}
-                {!printData && (
+                {displayType === "modal" && (
                   <Button
                     variant="secondary"
                     onPress={() => handleDownload(data.numberReference)}
@@ -296,17 +296,17 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
     if (!printReference) return null;
     const data = findBuildingCodeByNumberReference(printReference);
     return (
-      data && (
+      data &&
+      "articles" in data && (
         <>
-          <div className="ui-printContent--printContainer">
-            <table className="ui-printContent--modalTable">
+          <div className="ui-ModalBuildingCodeContent--printContainer">
+            <h5 className="ui-ModalBuildingCodeContent--buildingCodeTitle">
+              {stripReferencePrefix(data.numberReference) + " " + data.title}
+            </h5>
+            <table className="ui-ModalBuildingCodeContent--modalTable">
               <tbody>
                 <tr>
-                  <td>
-                    {"subsections" in data
-                      ? renderSubSections(data.subsections)
-                      : null}
-                  </td>
+                  <td>{renderArticles(data.articles)}</td>
                 </tr>
               </tbody>
             </table>
@@ -331,7 +331,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
     <>
       {displayType === "modal" && modalData && renderParts(modalData)}
       {displayType === "pdf_result" && printData && renderPrintData()}
-      {displayType === "pdf_modal" && printReference && renderBuildingCodePdf()}
+      {printReference && renderBuildingCodePdf()}
     </>
   );
 };
