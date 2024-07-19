@@ -25,7 +25,6 @@ import { useEffect, useState } from "react";
 interface BuildingCodeContentProps {
   modalData?: PartType[];
   printData?: AllBuildingCodeTypes;
-  displayType?: "modal" | "pdf_result" | "pdf_modal";
   highlightedSection?: string | null;
   sectionRefs?: React.MutableRefObject<{ [key: string]: HTMLElement | null }>;
   setFocusSection?: (section: string) => void;
@@ -34,7 +33,6 @@ interface BuildingCodeContentProps {
 const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
   modalData,
   printData,
-  displayType = "modal",
   highlightedSection = null,
   sectionRefs = { current: {} },
   setFocusSection,
@@ -159,7 +157,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
                   {stripReferencePrefix(data.numberReference)}
                 </span>
                 {data.title}
-                {displayType === "modal" && (
+                {!printData && (
                   <Button
                     variant="secondary"
                     onPress={() => handleDownload(data.numberReference)}
@@ -329,8 +327,8 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
 
   return (
     <>
-      {displayType === "modal" && modalData && renderParts(modalData)}
-      {displayType === "pdf_result" && printData && renderPrintData()}
+      {!printData && modalData && renderParts(modalData)}
+      {printData && renderPrintData()}
       {printReference && renderBuildingCodePdf()}
     </>
   );

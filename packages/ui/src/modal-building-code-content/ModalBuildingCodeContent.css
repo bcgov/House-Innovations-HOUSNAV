@@ -99,7 +99,6 @@
   /* Override these class attributes to enable page breaks */
   .ui-ModalBuildingCodeContent--printContainer {
     display: block !important;
-    margin: 20px;
   }
 
   .ui-ModalSide--Content,
@@ -126,15 +125,5 @@
     border-radius: 0;
     border: 0;
     background: none;
-  }
-
-  /* Ensure no overflow and hide any scrollbars */
-  html,
-  body {
-    height: initial !important;
-    overflow: initial !important;
-    margin: 0;
-    padding: 0;
-    width: 100%;
   }
 }
