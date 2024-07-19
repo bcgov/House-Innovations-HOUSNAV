@@ -1045,7 +1045,7 @@
       "walkthroughItemType": "variable",
       "variableToSet": {
         "variableType": "number",
-        "variableName": "P9",
+        "variableName": "P9Editable",
         "variableValue": 100
       },
       "nextNavigationLogic": [
@@ -1931,6 +1931,20 @@
           "nextNavigateTo": "P9P13"
         },
         {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P9Editable"
+        }
+      ]
+    },
+    "P9Editable": {
+      "walkthroughItemType": "variable",
+      "variableToSet": {
+        "variableType": "copy",
+        "variableName": "P9Editable",
+        "variableValue": "P9"
+      },
+      "nextNavigationLogic": [
+        {
           "nextLogicType": "equal",
           "answerToCheck": "P7",
           "answerValue": "false",
@@ -1946,7 +1960,7 @@
       "walkthroughItemType": "variable",
       "variableToSet": {
         "variableType": "number",
-        "variableName": "P9",
+        "variableName": "P9Editable",
         "variableValue": [
           {
             "variableValueLogicType": "equals",
@@ -2024,7 +2038,7 @@
           "calculationValuesToUse": [
             {
               "resultCalculationType": "answer",
-              "answerToUse": "P9"
+              "answerToUse": "P9Editable"
             },
             {
               "resultCalculationType": "divide",
@@ -2059,7 +2073,7 @@
                   "calculationValuesToUse": [
                     {
                       "resultCalculationType": "answer",
-                      "answerToUse": "P9"
+                      "answerToUse": "P9Editable"
                     },
                     {
                       "resultCalculationType": "number",
@@ -2155,7 +2169,7 @@
                       "calculationValuesToUse": [
                         {
                           "resultCalculationType": "answer",
-                          "answerToUse": "P9"
+                          "answerToUse": "P9Editable"
                         },
                         {
                           "resultCalculationType": "number",
@@ -2184,7 +2198,7 @@
           "calculationValuesToUse": [
             {
               "resultCalculationType": "answer",
-              "answerToUse": "P9"
+              "answerToUse": "P9Editable"
             },
             {
               "resultCalculationType": "divide",
@@ -2219,7 +2233,7 @@
                   "calculationValuesToUse": [
                     {
                       "resultCalculationType": "answer",
-                      "answerToUse": "P9"
+                      "answerToUse": "P9Editable"
                     },
                     {
                       "resultCalculationType": "number",
