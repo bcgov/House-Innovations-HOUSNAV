@@ -189,7 +189,6 @@ export default function PrintContent({ contentType }: PrintContentProps) {
             <td>
               <BuildingCodeContent
                 printData={sectionQuestions.buildingCodeSection ?? undefined}
-                displayType="pdf_result"
               />
             </td>
           )}
