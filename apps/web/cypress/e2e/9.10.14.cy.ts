@@ -19,7 +19,7 @@ describe("walkthrough 2", () => {
 
   it("new walkthrough works correctly after using back button", () => {
     /**
-     * This test is designed to test that backing doesn't yeild incorrect data. the back button functionality.
+     * This test is designed to test that backing doesn't yield incorrect data. the back button functionality.
      * In theory you can use any walkthroughs here, but if they both take the same path for most of it, you will have trouble on checkbox screens.
      * TODO - Update checkbox screens to unselect unused options
      * TODO - Make selecting walkthroughs less brittle
