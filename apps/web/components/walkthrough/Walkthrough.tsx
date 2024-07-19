@@ -25,23 +25,50 @@ const Walkthrough = observer((): JSX.Element => {
     answerStore: { currentAnswerValue },
   } = useWalkthroughState();
 
+  // Used to manage back navigation AFTER a refresh occurs which messes up the history state.
+  const [blockBackNavigation, setBlockBackNavigation] = useState(true);
   const [isBlocking, setIsBlocking] = useState(true);
 
   useEffect(() => {
-    // Block the user from leaving the page with confirmation if they have unsaved changes
-    // (ie. they have interacted with the form)
-    const onBeforeUnload = (ev: Event) => {
-      if (isBlocking) {
-        ev.preventDefault();
+    // Handle Refresh
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      if (isBlocking && !blockBackNavigation) {
+        event.preventDefault();
+        setBlockBackNavigation(false);
+        window.history.pushState(null, "", window.location.href);
       }
-      ev.returnValue = isBlocking;
-      return isBlocking;
     };
 
-    window.addEventListener("beforeunload", onBeforeUnload);
+    // Handle Back Button
+    const handlePopState = () => {
+      if (isBlocking) {
+        const confirmationMessage =
+          "You will lose your progress if you continue. Are you sure you want to proceed?";
+        if (window.confirm(confirmationMessage)) {
+          console.log("window.history", window.history);
+          if (blockBackNavigation) {
+            window.location.href = "/";
+          } else {
+            window.history.back();
+          }
+        } else {
+          // Push state back to prevent navigation
+          window.history.pushState(null, "", window.location.href);
+        }
+      }
+    };
+
+    // Push initial state to manage popstate events
+    window.history.pushState(null, "", window.location.href);
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    window.addEventListener("popstate", handlePopState);
+
+    // In the future we may want to set this to false after the user downloads the pdf on the result page or completes the walkthrough.
     setIsBlocking(true);
     return () => {
-      window.removeEventListener("beforeunload", onBeforeUnload);
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+      window.removeEventListener("popstate", handlePopState);
     };
   }, [isBlocking]);
 
@@ -69,31 +96,29 @@ const Walkthrough = observer((): JSX.Element => {
   );
 
   return (
-    <>
-      <div className="web-Walkthrough" data-testid={TESTID_WALKTHROUGH}>
-        <section className="web-Walkthrough--Content">
-          {currentResult ? (
-            <Result
-              displayMessage={currentResult.resultDisplayMessage}
-              relatedWalkthroughs={relatedWalkthroughs}
-            />
-          ) : (
-            <Form
-              className="web-Walkthrough--Form"
-              id={ID_QUESTION_FORM}
-              onSubmit={handleQuestionSubmit}
-              key={`question-${currentItemId}`}
-            >
-              <Question />
-            </Form>
-          )}
-          <WalkthroughFooter />
-        </section>
-        <section className="web-Walkthrough--StepTracker">
-          <StepTracker />
-        </section>
-      </div>
-    </>
+    <div className="web-Walkthrough" data-testid={TESTID_WALKTHROUGH}>
+      <section className="web-Walkthrough--Content">
+        {currentResult ? (
+          <Result
+            displayMessage={currentResult.resultDisplayMessage}
+            relatedWalkthroughs={relatedWalkthroughs}
+          />
+        ) : (
+          <Form
+            className="web-Walkthrough--Form"
+            id={ID_QUESTION_FORM}
+            onSubmit={handleQuestionSubmit}
+            key={`question-${currentItemId}`}
+          >
+            <Question />
+          </Form>
+        )}
+        <WalkthroughFooter />
+      </section>
+      <section className="web-Walkthrough--StepTracker">
+        <StepTracker />
+      </section>
+    </div>
   );
 });
 
