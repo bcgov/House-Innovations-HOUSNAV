@@ -108,6 +108,7 @@
   --layout-border-radius-medium: 4px;
   --layout-border-radius-large: 6px;
   --layout-border-radius-xlarge: 8px;
+  --layout-border-radius-xxlarge: 12px;
   --typography-font-families-bc-sans: "BC Sans", sans-serif;
   --typography-line-heights-xxxdense: 1.125rem;
   --typography-line-heights-xxdense: 1.313rem;
@@ -271,6 +272,7 @@
   --pdf-result-download-container-max-width: 650px;
   --pdf-result-download-container-image-border: 1px solid var(#00000000);
   --pdf-result-download-container-image-container: #000000;
+  --confirmation-modal-max-width: 500px;
 }
 
 /* TABLET - 608px */
