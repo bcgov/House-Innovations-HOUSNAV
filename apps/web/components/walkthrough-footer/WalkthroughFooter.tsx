@@ -42,7 +42,7 @@ const WalkthroughFooter = observer((): JSX.Element => {
       {currentResult ? (
         <Button
           data-testid={TESTID_WALKTHROUGH_FOOTER_START_OVER}
-          onPress={() => window.location.reload()}
+          onPressStart={() => window.location.reload()}
           className="web-WalkthroughFooter--FooterNext"
         >
           Start Over
