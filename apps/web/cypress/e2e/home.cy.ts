@@ -13,6 +13,6 @@ describe("home", () => {
 
   it("should be accessible", () => {
     cy.injectAxe();
-    cy.checkA11y();
+    cy.checkA11yWithErrorLogging();
   });
 });

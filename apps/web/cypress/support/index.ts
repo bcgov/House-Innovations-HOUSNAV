@@ -34,6 +34,12 @@ declare global {
         id: string,
         options?: Partial<Loggable & Timeoutable & Withinable & Shadow>,
       ): Chainable<JQuery<HTMLElement>>;
+
+      /**
+       * Check the accessibility of the page or an element.
+       * @example cy.checkA11yWithErrorLogging()
+       */
+      checkA11yWithErrorLogging(): Chainable<void>;
     }
   }
 }

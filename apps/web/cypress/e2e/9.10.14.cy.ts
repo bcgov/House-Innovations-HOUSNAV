@@ -48,6 +48,6 @@ describe("walkthrough 2", () => {
 
   it("default state should be accessible", () => {
     cy.injectAxe();
-    cy.checkA11y();
+    cy.checkA11yWithErrorLogging();
   });
 });
