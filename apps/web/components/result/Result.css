@@ -40,3 +40,13 @@
   grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
   gap: var(--layout-padding-large);
 }
+
+.web-Result--Feedback {
+  margin: 0 auto;
+  margin-top: var(--layout-margin-huge);
+}
+
+.web-Result--FormLinks {
+  display: flex;
+  gap: var(--layout-padding-medium);
+}

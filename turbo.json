@@ -7,7 +7,9 @@
       "env": [
         "NEXT_PUBLIC_ENVIRONMENT",
         "NEXT_PUBLIC_SHOW_LOG_STATE_BUTTON",
-        "NEXT_PUBLIC_SHOW_QUESTION_LABELS"
+        "NEXT_PUBLIC_SHOW_QUESTION_LABELS",
+        "NEXT_PUBLIC_SHOW_FEEDBACK_FORM_2",
+        "NEXT_PUBLIC_SHOW_FEEDBACK_FORM_4"
       ],
       "outputs": [".next/**", "!.next/cache/**"]
     },
@@ -16,7 +18,9 @@
       "env": [
         "NEXT_PUBLIC_ENVIRONMENT",
         "NEXT_PUBLIC_SHOW_LOG_STATE_BUTTON",
-        "NEXT_PUBLIC_SHOW_QUESTION_LABELS"
+        "NEXT_PUBLIC_SHOW_QUESTION_LABELS",
+        "NEXT_PUBLIC_SHOW_FEEDBACK_FORM_2",
+        "NEXT_PUBLIC_SHOW_FEEDBACK_FORM_4"
       ]
     },
     "format": {

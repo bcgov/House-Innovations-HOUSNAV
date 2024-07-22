@@ -11,6 +11,8 @@ import PdfResultDownload from "@repo/ui/pdf-result-download";
 // local
 import { parseStringToComponents } from "../../utils/string";
 import "./Result.css";
+import Link from "@repo/ui/link";
+import { BETA_TEST_FORMS } from "@repo/constants/src/constants";
 
 interface ResultProps {
   displayMessage: string;
@@ -35,6 +37,22 @@ export default function Result({
             {parseStringToComponents(displayMessage)}
           </div>
           <PdfResultDownload />
+          <div className="web-Result--Feedback p-hide">
+            <Heading level={2} className="h4">
+              Beta Testing Feedback
+            </Heading>
+            <div className="web-Result--FormLinks">
+              {BETA_TEST_FORMS.map((form) => {
+                return (
+                  form.display && (
+                    <Link href={form.url} target="_blank">
+                      {form.name}
+                    </Link>
+                  )
+                );
+              })}
+            </div>
+          </div>
           {relatedWalkthroughs.length > 0 && (
             <section className="web-Result--Related p-hide">
               <Heading level={2} className="h4">
