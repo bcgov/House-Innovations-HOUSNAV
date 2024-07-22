@@ -40,7 +40,6 @@ export default function RootLayout({
             logoSrc={"bc-logo.png"}
           />
           <main id={ID_MAIN_CONTENT}>{children}</main>
-          <footer id={ID_FOOTER}></footer>
         </ClientProviders>
       </body>
     </html>

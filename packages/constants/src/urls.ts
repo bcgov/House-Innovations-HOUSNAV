@@ -14,3 +14,32 @@ export const URLS_MAIN_NAVIGATION = [
     target: "_blank",
   },
 ];
+
+export const URLS_FOOTER = [
+  { title: "Home", href: "/" },
+  {
+    title: "Contact us",
+    href: "mailto:Julia.leggett@gov.bc.ca",
+    target: "_blank",
+  },
+  {
+    title: "Disclaimer",
+    href: "https://www2.gov.bc.ca/gov/content/home/disclaimer",
+    target: "_blank",
+  },
+  {
+    title: "Privacy",
+    href: "https://www2.gov.bc.ca/gov/content/home/privacy",
+    target: "_blank",
+  },
+  {
+    title: "Accessibility",
+    href: "https://www2.gov.bc.ca/gov/content/home/accessible-government",
+    target: "_blank",
+  },
+  {
+    title: "Copyright",
+    href: "https://www2.gov.bc.ca/gov/content/home/copyright",
+    target: "_blank",
+  },
+];

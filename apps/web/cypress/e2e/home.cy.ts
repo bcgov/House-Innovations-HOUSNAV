@@ -11,8 +11,7 @@ describe("home", () => {
     cy.url().should("contain", walkthrough);
   });
 
-  // TODO: Enable when HOUSNAV-72 is done
-  it.skip("should be accessible", () => {
+  it("should be accessible", () => {
     cy.injectAxe();
     cy.checkA11y();
   });
