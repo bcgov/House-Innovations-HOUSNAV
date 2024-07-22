@@ -13,7 +13,7 @@ import "./Footer.css";
 export default function Footer() {
   return (
     <footer
-      className="u-container ui-Footer"
+      className="u-container ui-Footer u-show-footer-skip-link"
       id={ID_FOOTER}
       data-testid={TESTID_FOOTER}
     >
