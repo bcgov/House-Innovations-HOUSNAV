@@ -231,6 +231,9 @@
   --button-gap: var(--layout-padding-12);
   --header-height: 55px;
   --header-nav-mobile-padding: var(--layout-padding-medium);
+  --footer-margin-block: var(--layout-margin-large);
+  --footer-main-direction: column;
+  --footer-main-margin-bottom: var(--layout-margin-large);
   --walkthrough-side-nav-width: 0;
   --question-container-max-width: 46.875rem; /* 750px */
   --question-container-padding-y: var(--layout-padding-medium);
@@ -276,6 +279,9 @@
     --layout-padding-radio-x: var(--layout-padding-large);
     --layout-padding-checkbox-x: var(--layout-padding-large);
     --header-nav-mobile-padding: var(--layout-padding-large);
+    --footer-margin-block: var(--layout-margin-xlarge);
+    --footer-main-direction: row;
+    --footer-main-margin-bottom: var(--layout-margin-xlarge);
     --walkthrough-side-nav-width: 15.625rem; /* 250px */
     --question-container-padding-y: var(--layout-padding-large);
     --question-reference-margin-top: var(--layout-margin-12);
