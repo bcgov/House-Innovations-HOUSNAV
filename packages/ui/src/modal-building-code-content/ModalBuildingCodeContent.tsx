@@ -274,6 +274,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
               aria-label={image.imageLabel}
               width={800}
               height={600}
+              loading="eager" // Will not lazy load images in Safari
               className="ui-ModalBuildingCodeContent-ImageResponsive"
             />
             {image.imageNotes && (

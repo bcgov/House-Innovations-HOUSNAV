@@ -48,7 +48,10 @@ const Question = observer(() => {
   // get question component
   const component = getQuestionComponent(currentQuestion.walkthroughItemType);
   return (
-    <div className="u-container-walkthrough" data-testid={TESTID_QUESTION}>
+    <div
+      className="u-container-walkthrough p-hide"
+      data-testid={TESTID_QUESTION}
+    >
       <h1
         className="web-Question--Title"
         id={ID_QUESTION_TEXT}
