@@ -103,6 +103,7 @@
   --layout-margin-xxlarge: 2.5rem;
   --layout-margin-xxxlarge: 3rem;
   --layout-margin-huge: 3.5rem;
+  --layout-margin-80: 5rem;
   --layout-border-radius-none: 0;
   --layout-border-radius-small: 2px;
   --layout-border-radius-medium: 4px;
@@ -152,7 +153,8 @@
   --typography-bold-h6: 700 1.125rem/1.913rem "BC Sans";
   --typography-bold-h5: 700 1.25rem/2.125rem "BC Sans";
   --typography-bold-h4: 700 1.5rem/2.25rem "BC Sans";
-  --typography-bold-h3: 700 1.75rem/3rem "BC Sans";
+  --typography-bold-h3: 700 1.75rem / var(--typography-line-heights-xsparse)
+    "BC Sans";
   --typography-bold-h2: 700 2rem/3rem "BC Sans";
   --typography-bold-h1: 700 2.25rem/3.375rem "BC Sans";
   --typography-bold-display: 700 3rem / AUTO "BC Sans";
@@ -263,8 +265,15 @@
     var(--step-tracker-padding-left);
   --step-tracker-mobile-toggle-display: flex;
   --step-tracker-tablet-up-display: none;
+  --modal-bc-padding: 0 var(--layout-margin-small) var(--layout-margin-huge);
+  --modal-bc-padding-subsection: var(--layout-margin-medium)
+    var(--layout-margin-small);
+  --modal-bc-sentence-padding-start: calc(
+    var(--layout-margin-large) + var(--layout-margin-medium)
+  );
+  --modal-bc-sentence-padding-end: calc(var(--layout-margin-small) * 2);
+  --modal-bc-indent: 114px;
   --modal-side-number-padding: 8%;
-  --modal-table-image-caption-margin-negative: -0.5rem;
   --print-content-table-th-td-border: 2px solid #000;
   --pdf-result-download-image-border-radius: 8px 0px 0px 8px;
   --pdf-result-download-container-border: 1px solid
@@ -295,6 +304,11 @@
     --page-root-subhead-margin-bottom: var(--layout-margin-large);
     --page-root-cards-padding-block: var(--layout-margin-xxxlarge);
     --page-root-cards-flex-direction: row;
+    --modal-bc-padding: var(--layout-margin-large)
+      calc(var(--layout-margin-xlarge) - var(--layout-margin-small))
+      var(--layout-margin-huge)
+      calc(var(--layout-margin-xxxlarge) - var(--layout-margin-small));
+    --modal-bc-padding-subsection: 0 var(--layout-margin-small);
     --step-tracker-mobile-toggle-display: none;
     --step-tracker-tablet-up-display: block;
     --step-tracker-heading-padding-left: 0;

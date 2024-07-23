@@ -12,7 +12,7 @@
             "title": "Egress from Dwelling Units",
             "articles": [
               {
-                "numberReference": "v2-db-9.9.9.1",
+                "numberReference": "v2-db-9.9.9.1.",
                 "title": "Travel Limit to Exits or Egress Doors",
                 "sentences": [
                   {
@@ -54,7 +54,7 @@
                 ]
               },
               {
-                "numberReference": "v2-db-9.9.9.2",
+                "numberReference": "v2-db-9.9.9.2.",
                 "title": "Two Separate exits",
                 "sentences": [
                   {
@@ -78,7 +78,7 @@
                 ]
               },
               {
-                "numberReference": "v2-db-9.9.9.3",
+                "numberReference": "v2-db-9.9.9.3.",
                 "title": "Shared Egress Facilities",
                 "sentences": [
                   {
@@ -164,7 +164,7 @@
             "title": "Spatial Separation Between Buildings",
             "articles": [
               {
-                "numberReference": "v2-db-9.10.14.1",
+                "numberReference": "v2-db-9.10.14.1.",
                 "title": "Application",
                 "sentences": [
                   {
@@ -178,7 +178,7 @@
                 ]
               },
               {
-                "numberReference": "v2-db-9.10.14.2",
+                "numberReference": "v2-db-9.10.14.2.",
                 "title": "Area and Location of Exposing Building Face",
                 "sentences": [
                   {
@@ -224,7 +224,7 @@
                 ]
               },
               {
-                "numberReference": "v2-db-9.10.14.3",
+                "numberReference": "v2-db-9.10.14.3.",
                 "title": "Limiting Distance and Fire Department Response",
                 "sentences": [
                   {
@@ -244,7 +244,7 @@
                 ]
               },
               {
-                "numberReference": "v2-db-9.10.14.4",
+                "numberReference": "v2-db-9.10.14.4.",
                 "title": "Openings in Exposing Building Face",
                 "sentences": [
                   {
@@ -264,7 +264,7 @@
                         "description": "where the <defined-term>limiting distance</defined-term> is not less than 1.2 m, be equal to or less than",
                         "subClauses": [
                           "the <defined-term>limiting distance</defined-term> squared, for <defined-term override-term='residential occupancy'>residential occupancies</defined-term>, <defined-term override-term='business and personal services occupancy'>business and personal services occupancies</defined-term> and <defined-term override-term='low-hazard industrial occupancy'>low-hazard industrial occupancies</defined-term>, and",
-                          "half the <defined-term>limiting distance</defined-term> squared, for <defined-term>mercantile occupancies</defined-term> and <defined-term-glossary override-term='medium-hazard industrial occupancy'>medium hazard industrial occupancies</defined-term-glossary>."
+                          "half the <defined-term>limiting distance</defined-term> squared, for <defined-term>mercantile occupancies</defined-term> and <defined-term override-term='medium-hazard industrial occupancy'>medium hazard industrial occupancies</defined-term>."
                         ]
                       }
                     ],
@@ -288,7 +288,7 @@
                     "clauses": [
                       {
                         "numberReference": "v2-db-9.10.14.4.(3)(a)",
-                        "description": "the area stated in <building-code-modal reference='v2-db-9.10.14.4.-b'>Table 9.10.14.4.-B</building-code-modal'>, or"
+                        "description": "the area stated in <building-code-modal reference='v2-db-9.10.14.4.-b'>Table 9.10.14.4.-B</building-code-modal>, or"
                       },
                       {
                         "numberReference": "v2-db-9.10.14.4.(3)(b)",

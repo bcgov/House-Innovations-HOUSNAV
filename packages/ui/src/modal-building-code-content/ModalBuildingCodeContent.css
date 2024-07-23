@@ -1,46 +1,33 @@
-.ui-ModalSide--ListItems {
-  padding-bottom: var(--layout-padding-xsmall);
-  padding-top: var(--layout-padding-xsmall);
-}
-
-.ui-ModalBuildingCodeContent--SectionLine {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  padding: var(--layout-padding-medium);
-  align-items: center;
-}
-
 .ui-ModalBuildingCodeContent-ImageResponsive {
   max-width: 100%;
+  width: 100%;
   height: auto;
   display: block;
   margin: 0 auto;
+  padding-block: var(--layout-padding-small);
 }
 
-.ui-ModalBuildingCodeContent--Figure {
+.ui-ModalBuildingCodeContent--Figure,
+.ui-ModalBuildingCodeContent--Figure .ui-Button {
   text-align: center;
-}
-
-.ui-ModalBuildingCodeContent--FigureCaption,
-.ui-ModalBuildingCodeContent--FigureCaptionBold {
-  font-size: var(--typography-font-size-small-body);
-  margin: var(--modal-table-image-caption-margin-negative);
+  font: var(--typography-regular-small-body);
 }
 
 .ui-ModalBuildingCodeContent--FigureCaptionBold {
   font-weight: var(--typography-font-weights-bold);
 }
-.ui-ModalBuildingCodeContent--TableImageNotes {
-  text-align: left;
-  font-size: var(--typography-font-size-small-body);
-}
 
-.ui-ModalBuildingCodeContent--buildingCodeTitle {
-  font: var(--typography-bold-h3);
+.ui-ModalBuildingCodeContent--TableImageNotes,
+.ui-ModalBuildingCodeContent--TableImageNotes .ui-Button {
+  text-align: left;
 }
 
 .ui-ModalBuildingCodeContent--printContainer {
   display: none;
+}
+
+.ui-ModalBuildingCodeContent--printContainer .ui-ModalSide--SubsectionHeader {
+  margin: var(--layout-margin-small);
 }
 
 /* Ensure table cells break correctly within pages */
@@ -64,35 +51,12 @@
   page-break-inside: auto;
 }
 
-.ui-ModalSide-pdfButton {
-  float: right;
-  margin: 0 auto;
-  margin-top: var(--layout-padding-xsmall);
-}
-
-/* DESKTOP - 912px */
-@media (max-width: 57rem) {
-  .ui-ModalSide-pdfButton {
-    margin-top: var(--layout-padding-small);
-    width: 100%;
-  }
-}
-
-/* DESKTOP - 1350px */
-@media (max-width: 84.375rem) {
-  .ui-ModalSide-pdfButton {
-    margin-top: var(--layout-padding-small);
-    width: 100%;
-  }
-}
-
 /* Print styles that only need to apply when print window is open */
 @media print {
   /* Hide modal classes not needed for print */
-  .ui-ModalSide--parts,
+  .ui-ModalSide--Parts:not(.--glossary),
   .ui-ModalSide--Header,
-  .ui-ModalSide-pdfButton,
-  .ui-ModalSide-pdfButtonGlossary {
+  .ui-ModalSide-pdfButton {
     display: none !important;
   }
 

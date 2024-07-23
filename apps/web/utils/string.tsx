@@ -6,6 +6,7 @@ import parse, {
   domToReact,
   attributesToProps,
 } from "html-react-parser";
+import { Heading } from "react-aria-components";
 // repo
 import Button from "@repo/ui/button";
 import Tooltip from "@repo/ui/tooltip";
@@ -144,9 +145,9 @@ export const parseStringToComponents = (
 
           case glossaryTerm:
             return (
-              <span className="ui-ModalGlossaryContent-Term">
+              <Heading level={3} className="ui-ModalSide--Term">
                 {domToReact(domNode.children as DOMNode[]) as string}
-              </span>
+              </Heading>
             );
 
           case buildingCode:

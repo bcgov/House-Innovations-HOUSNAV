@@ -2250,7 +2250,7 @@
       ]
     },
     "R40": {
-      "resultDisplayMessage": "<p>Based on your selections and <building-code reference='v2-db-9.10.14.4'>Article 9.10.14.4.</building-code>, this fire compartment is permitted to have unlimited unprotected openings.</p>"
+      "resultDisplayMessage": "<p>Based on your selections and <building-code reference='v2-db-9.10.14.4.'>Article 9.10.14.4.</building-code>, this fire compartment is permitted to have unlimited unprotected openings.</p>"
     },
     "R50": {
       "resultDisplayMessage": "<p><building-code reference='v2-db-9.10.14.'>Subsection 9.10.14</building-code> does not apply to detached carports conforming to <pdf-download-link named-dest='9.35. Garages and Carport'>Section 9.35.</pdf-download-link> that serve not more than one dwelling unit or a house with a secondary suite.</p>"
