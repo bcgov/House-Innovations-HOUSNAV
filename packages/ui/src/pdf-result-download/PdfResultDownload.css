@@ -71,8 +71,8 @@
 
 .ui-PdfResultDownload-title {
   color: var(--typography-color-primary);
-  font-size: var(--typography-font-size-h5);
-  font-weight: var(--typography-font-weights-bold);
+  font: var(--typography-bold-large-body);
+  text-align: center;
 }
 
 .ui-PdfResultDownload-button {
@@ -86,7 +86,8 @@
   align-items: center;
   gap: var(--layout-margin-large);
   flex: 1 0 0;
-  width: max-content;
+  grid-column: 2 / span 2;
+  padding-right: var(--layout-margin-large);
 }
 
 /* Media query for small screens */
@@ -104,6 +105,9 @@
     align-items: center;
     text-align: center;
     margin: 0 auto;
+    width: max-content;
+    grid-column: auto;
+    padding-right: 0;
   }
 
   .ui-PdfResultDownload-image,
