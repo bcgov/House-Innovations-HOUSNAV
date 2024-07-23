@@ -37,11 +37,11 @@ describe("walkthrough 1", () => {
 
     // Test accessibility
     cy.injectAxe();
-    cy.checkA11y();
+    cy.checkA11yWithErrorLogging();
   });
 
   it("default state should be accessible", () => {
     cy.injectAxe();
-    cy.checkA11y();
+    cy.checkA11yWithErrorLogging();
   });
 });

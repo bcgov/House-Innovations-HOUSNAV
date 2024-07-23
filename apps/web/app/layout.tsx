@@ -35,12 +35,13 @@ export default function RootLayout({
             skipLinks={[
               <a href={`#${ID_MAIN_CONTENT}`}>Skip to main content</a>,
               <a href={`#${ID_MAIN_NAVIGATION}`}>Skip to main navigation</a>,
-              <a href={`#${ID_FOOTER}`}>Skip to footer</a>,
+              <a href={`#${ID_FOOTER}`} data-footer-skip-link>
+                Skip to footer
+              </a>,
             ]}
             logoSrc={"bc-logo.png"}
           />
           <main id={ID_MAIN_CONTENT}>{children}</main>
-          <footer id={ID_FOOTER}></footer>
         </ClientProviders>
       </body>
     </html>

@@ -36,6 +36,20 @@
 //   }
 // }
 
+// Print cypress-axe violations to the terminal
+import * as axe from "axe-core";
+
+function printAccessibilityViolations(violations: axe.Result[]) {
+  cy.task(
+    "table",
+    violations.map(({ id, impact, description, nodes }) => ({
+      impact,
+      description: `${description} (${id})`,
+      nodes: nodes.length,
+    })),
+  );
+}
+
 Cypress.Commands.add("getByTestID", (id, options) => {
   return cy.get(`[data-testid='${id}']`, options);
 });
@@ -46,4 +60,8 @@ Cypress.Commands.add("getByGeneralTestID", (id, options) => {
 
 Cypress.Commands.add("getInputByTestID", (id, options) => {
   return cy.get(`input[data-testid='${id}']`, options);
+});
+
+Cypress.Commands.add("checkA11yWithErrorLogging", () => {
+  cy.checkA11y(undefined, undefined, printAccessibilityViolations);
 });
