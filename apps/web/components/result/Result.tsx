@@ -27,7 +27,7 @@ export default function Result({
         <div className="u-container-walkthrough">
           <header className="web-Result--Header p-hide">
             <Icon type={"checkCircle"} />
-            <Heading level={1} className="h4">
+            <Heading level={2} className="h4">
               Walkthrough Complete
             </Heading>
           </header>
