@@ -66,7 +66,7 @@ const getNavList = (onLinkClick: (href: string) => void) => {
 export default function Header({
   skipLinks,
   title = "",
-  titleElement = "span",
+  titleElement = "h1",
   logoSrc,
 }: PropsWithChildren<HeaderProps>) {
   // setup state
