@@ -265,7 +265,7 @@
   --step-tracker-tablet-up-display: none;
   --modal-side-number-padding: 8%;
   --modal-table-image-caption-margin-negative: -0.5rem;
-  --print-content-table-th-td-border: 1px solid #000;
+  --print-content-table-th-td-border: 2px solid #000;
   --pdf-result-download-image-border-radius: 8px 0px 0px 8px;
   --pdf-result-download-container-border: 1px solid
     var(--surface-color-border-default);
