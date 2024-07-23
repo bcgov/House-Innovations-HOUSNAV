@@ -4,7 +4,6 @@
 import { ButtonProps as ReactAriaButtonProps } from "react-aria-components";
 
 import "./PdfResultDownload.css";
-import Button from "../button/Button";
 import Image from "../image/Image";
 import Icon from "@repo/ui/icon";
 import PrintContent, { PrintContentType } from "../print-content/PrintContent";
@@ -50,15 +49,10 @@ export default function PdfResultDownload({
           <h3 className="ui-PdfResultDownload-title">
             Download results & references as PDF
           </h3>
-          <Button
-            variant="primary"
-            onPress={handleDownload}
-            aria-label="Download walkthrough questions, answers, and references as PDF"
-            className="ui-PdfResultDownload-button"
-          >
+          <div className="ui-PdfResultDownload-button ui-Button --primary">
             <Icon type="download" />
             <span>Download</span>
-          </Button>
+          </div>
         </div>
       </div>
       <PrintContent contentType={PrintContentType.RESULTS} />

@@ -41,16 +41,21 @@ export const runWalkthrough = (walkthrough: Walkthrough, results: Results) => {
         .type(step.answer);
     }
     cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_NEXT).click();
+
+    // Test accessibility for the current step
+    cy.injectAxe();
+    cy.checkA11yWithErrorLogging();
   });
 
   if (walkthrough.result) {
-    if (walkthrough.result) {
-      const result = results[walkthrough.result];
-      if (result) {
-        cy.contains(result);
-      } else {
-        throw new Error("Result not defined in results data");
-      }
+    const result = results[walkthrough.result];
+    if (result) {
+      cy.contains(result);
+    } else {
+      throw new Error("Result not defined in results data");
     }
+    // Test accessibility for the result
+    cy.injectAxe();
+    cy.checkA11yWithErrorLogging();
   }
 };
