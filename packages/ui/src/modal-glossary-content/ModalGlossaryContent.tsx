@@ -40,46 +40,44 @@ const GlossaryContent: React.FC<GlossaryContentProps> = ({
   };
 
   return (
-    <>
-      <header className="ui-ModalSide--SectionHeaderLineGlossary">
-        <Heading level={3} className="ui-ModalSide--SectionNumber">
-          {DEFINED_TERMS_SECTION_NUMBER}
-        </Heading>
-        <Heading className="ui-ModalSide--ModalContentHeader">
-          Defined Terms
-        </Heading>
-        <Button
-          variant="secondary"
-          onPress={() => handleDownload()}
-          aria-label={`Download Building Code Defined Terms`}
-          className="ui-ModalSide-pdfButtonGlossary"
-        >
-          <Icon type="download" />
-          <span>PDF</span>
-        </Button>
-      </header>
-      {modalData.map(
-        (data, index) =>
-          !data.content?.hideTerm && (
-            <section
-              key={index}
-              ref={(el) => {
-                sectionRefs.current[data.reference] = el;
-              }}
-              className={`${
-                highlightedSection === data.reference
-                  ? "ui-ModalSide--SectionHighlighted"
-                  : ""
-              }`}
+    <div className="ui-ModalSide--Parts --glossary">
+      <article className="ui-ModalSide--Subsection">
+        <header className="ui-ModalSide--SectionHeaderLine">
+          <Heading level={2} className="ui-ModalSide--SubsectionHeader">
+            <span className="ui-ModalSide--SubsectionNumber">
+              {DEFINED_TERMS_SECTION_NUMBER}{" "}
+            </span>
+            Defined Terms
+            <Button
+              variant="secondary"
+              onPress={() => handleDownload()}
+              aria-label={`Download Building Code Defined Terms`}
+              className="ui-ModalSide-pdfButton"
             >
-              <article className="ui-ModalGlossaryContent--SectionLine">
-                <p className="ui-ModalSide--SectionContent">
+              <Icon type="download" />
+              <span>PDF</span>
+            </Button>
+          </Heading>
+        </header>
+        {modalData.map(
+          (data, index) =>
+            !data.content?.hideTerm && (
+              <article
+                key={index}
+                ref={(el) => {
+                  sectionRefs.current[data.reference] = el;
+                }}
+                className={`ui-ModalSide--Article ${
+                  highlightedSection === data.reference
+                    ? "ui-ModalSide--SectionHighlighted"
+                    : ""
+                }`}
+              >
+                <div className="ui-ModalSide--ArticleContentWrapper">
                   {parseStringToComponents(
                     (data.content as GlossaryContentType).definition,
                     setFocusSection,
                   )}
-                </p>
-                <div className="ui-ModalSide--SectionContent">
                   {data.content.definitionList &&
                     renderDefinitionList(
                       data.content.definitionList,
@@ -87,10 +85,10 @@ const GlossaryContent: React.FC<GlossaryContentProps> = ({
                     )}
                 </div>
               </article>
-            </section>
-          ),
-      )}
-    </>
+            ),
+        )}
+      </article>
+    </div>
   );
 };
 

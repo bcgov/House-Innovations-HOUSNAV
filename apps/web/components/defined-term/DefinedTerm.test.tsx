@@ -4,6 +4,7 @@ import { render } from "@testing-library/react";
 // repo
 import {
   GET_TESTID_BUTTON,
+  TESTID_BUTTON_MODAL_CLOSE,
   TESTID_DEFINED_TERM,
   TESTID_MODAL_SIDE,
 } from "@repo/constants/src/testids";
@@ -39,7 +40,7 @@ describe("DefinedTerm", () => {
     expect(modal).toBeInTheDocument();
 
     const closeButton = getByTestId(
-      GET_TESTID_BUTTON(`${TESTID_MODAL_SIDE}-close-button`),
+      GET_TESTID_BUTTON(TESTID_BUTTON_MODAL_CLOSE),
     );
 
     await userEvent.click(closeButton);

@@ -10,12 +10,11 @@ import {
 
 import { TESTID_MODAL_SIDE } from "@repo/constants/src/testids";
 import "./ModalSide.css";
-import Icon from "../icon/Icon";
-import Button from "../button/Button";
 
 import { ModalSideDataEnum, StaticData } from "@repo/data/useGlossaryData";
 import GlossaryContent from "@repo/ui/modal-glossary-content";
 import BuildingCodeContent from "@repo/ui/modal-building-code-content";
+import ButtonModalClose from "../button-modal-close/ButtonModalClose";
 
 export interface ModalSideProps {
   type:
@@ -45,7 +44,6 @@ export default function ModalSide({
       const sectionElement = sectionRefs.current[focusSection];
       sectionElement?.scrollIntoView({
         behavior: "instant",
-        block: "center",
       });
       setHighlightedSection(focusSection.toLocaleLowerCase());
     }
@@ -81,16 +79,7 @@ export default function ModalSide({
             {({ close }) => (
               <>
                 <header className="ui-ModalSide--Header">
-                  <Button
-                    isIconButton
-                    variant="tertiary"
-                    className="ui-ModalSide--CloseButton"
-                    onPress={close}
-                    data-testid={`${testid}-close-button`}
-                    aria-label="Close modal"
-                  >
-                    <Icon type="close" />
-                  </Button>
+                  <ButtonModalClose label="Close modal" onPress={close} />
                 </header>
                 <div className="ui-ModalSide--Content">
                   {type === ModalSideDataEnum.GLOSSARY && (

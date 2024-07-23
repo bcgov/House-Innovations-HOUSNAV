@@ -20,7 +20,7 @@
   top: 0;
   bottom: 0;
   right: 0;
-  width: 60%;
+  width: 100%;
   outline: none;
   border-left: var(--layout-border-width-small) solid
     var(--surface-color-border-default);
@@ -28,7 +28,6 @@
   background: var(--theme-gray-white);
   display: flex;
   flex-direction: column;
-  padding: var(--layout-padding-large);
 }
 
 .ui-ModalSide--Modal[data-entering] {
@@ -39,103 +38,165 @@
   animation: modal-slide-out 300ms reverse ease-in;
 }
 
-.ui-ModalSide--CloseButton {
+.ui-ModalSide--Header {
+  z-index: 1;
   position: fixed;
-  color: var(--icons-color-primary) !important;
-  top: var(--layout-padding-medium);
-  right: var(--layout-padding-large);
-  z-index: 1001;
+  top: 0;
 }
 
-.ui-ModalSide--Header {
-  position: fixed;
-  text-align: right;
-  top: 0;
-  right: var(--layout-padding-medium);
-  background-color: var(--theme-gray-white);
+.ui-ModalSide--Header .ui-ButtonModalClose.--icon {
+  right: var(--layout-margin-large);
+  top: var(--layout-margin-medium);
 }
 
 .ui-ModalSide--Content {
   display: flex;
   flex-direction: column;
   gap: var(--layout-padding-medium);
-  margin-top: 50px;
-  padding: var(--layout-padding-small);
-  padding-bottom: 75px;
   overflow-y: scroll;
   height: 100vh;
 }
 
-.ui-ModalSide--SectionHeaderLine {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr) auto;
-  align-items: center;
+.ui-ModalSide--Parts {
+  padding: var(--modal-bc-padding);
+  margin-top: 80px;
 }
 
-.ui-ModalSide--SectionNumber,
-.ui-ModalSide--SectionNumberLarge {
-  grid-column: span 1;
-  text-align: left;
-  padding: var(--layout-padding-medium);
-  padding-right: var(--modal-side-number-padding);
-  font-weight: var(--typography-font-weights-bold);
+.ui-ModalSide--Parts sup {
+  line-height: 0;
 }
 
-.ui-ModalSide--SectionNumber {
-  font-size: var(--typography-font-size-h5);
+.ui-ModalSide--Parts article,
+.ui-ModalSide--Parts li,
+.ui-ModalSide--Image {
+  scroll-margin-top: var(--layout-margin-80);
 }
 
-.ui-ModalSide--SectionNumberLarge {
-  font-size: var(--typography-font-size-h4);
+.ui-ModalSide--Subsection {
+  padding: var(--modal-bc-padding-subsection);
 }
 
-.ui-ModalSide--SectionHeader,
-.ui-ModalSide--SectionHeaderLarge {
-  padding-top: var(--layout-padding-medium);
-  padding-left: var(--layout-padding-medium);
-  font-weight: var(--typography-font-weights-bold);
+.ui-ModalSide--ArticleHeader {
+  font: var(--typography-bold-h5);
 }
 
-.ui-ModalSide--SectionNumber {
-  font-size: var(--typography-font-size-h5);
+.ui-ModalSide--SubsectionHeader {
+  font: var(--typography-bold-h4);
 }
 
-.ui-ModalSide--SectionNumberLarge {
-  font-size: var(--typography-font-size-h4);
+.ui-ModalSide-pdfButton {
+  width: 100%;
+  margin-top: var(--layout-margin-medium);
+  padding-inline: var(--layout-padding-12);
 }
 
-.ui-ModalSide--SectionHeader {
-  grid-column: span 5;
-  font-size: var(--typography-font-size-h5);
+.ui-ModalSide-pdfButton .ui-Icon {
+  flex-shrink: 0;
 }
 
-.ui-ModalSide--SectionHeaderLarge {
-  grid-column: span 5;
-  padding: var(--layout-padding-xsmall);
-  padding-bottom: var(--layout-padding-medium);
-  font-size: var(--typography-font-size-h4);
+.ui-ModalSide--ArticleHeader {
+  padding: var(--layout-padding-small) var(--layout-padding-medium) 0;
 }
 
-.ui-ModalSide--SectionContent {
-  grid-column: span 4 / 6;
-  font-size: var(--typography-font-size-body);
-  line-height: var(--typography-line-heights-dense);
-  padding: var(--layout-margin-small);
-  margin-top: 1px;
+.ui-ModalSide--Article {
+  margin-top: var(--layout-margin-large);
+}
+
+.ui-ModalSide--ArticleContentWrapper {
+  padding: var(--layout-padding-small);
+  margin: 0;
+}
+
+.ui-ModalSide--ArticleContent {
+  font: var(--typography-regular-body);
+}
+
+.ui-ModalSide--ArticleContent ol {
+  list-style: none;
+}
+
+.ui-ModalSide--ArticleContent li {
+  position: relative;
+  padding-block: var(--layout-margin-small);
+}
+
+.ui-ModalSide--ArticleContent li:before {
+  position: absolute;
+  right: calc(
+    calc(100% - var(--modal-bc-sentence-padding-start)) +
+      var(--layout-margin-small)
+  );
+}
+
+.ui-ModalSide--Sentences {
+  counter-reset: countsentence;
+}
+
+.ui-ModalSide--Sentences > li {
+  counter-increment: countsentence;
+  padding-inline: var(--modal-bc-sentence-padding-start)
+    var(--modal-bc-sentence-padding-end);
+  margin-right: calc(var(--layout-margin-small) * -1);
+}
+
+.ui-ModalSide--Sentences > li:has(.ui-ModalSide--Clauses) {
+  padding-bottom: 0;
+}
+
+.ui-ModalSide--Sentences > li:before {
+  content: counter(countsentence) ".";
+}
+
+.ui-ModalSide--Clauses,
+.ui-ModalSide--Subclauses {
+  counter-reset: countclause;
+  padding-top: var(--layout-margin-small);
+  margin-inline: calc(var(--layout-margin-small) * -1);
+}
+
+.ui-ModalSide--Clauses li {
+  counter-increment: countclause;
+  padding-inline: calc(var(--layout-margin-large) + var(--layout-margin-small))
+    var(--layout-margin-small);
+}
+
+.ui-ModalSide--Clauses > li:has(.ui-ModalSide--Subclauses) {
+  padding-bottom: 0;
+}
+
+.ui-ModalSide--Clauses li:before {
+  right: calc(
+    calc(100% - var(--modal-bc-sentence-padding-start)) +
+      var(--layout-margin-medium)
+  );
+}
+
+.ui-ModalSide--Clauses > li:before {
+  content: counter(countclause, lower-alpha) ".";
+}
+
+.ui-ModalSide--Subclauses {
+  counter-reset: countsubclause;
+}
+
+.ui-ModalSide--Subclauses > li {
+  counter-increment: countsubclause;
+}
+
+.ui-ModalSide--Subclauses > li:before {
+  content: counter(countsubclause, lower-roman) ".";
 }
 
 .ui-ModalSide--SectionHighlighted {
   border-radius: var(--layout-margin-small, 8px);
-  border: 1px solid var(--support-borderColor-info, #053662);
-  background: var(--support-surfaceColor-info, #f7f9fc);
+  border: 1px solid var(--support-border-color-info);
+  background: var(--support-surface-color-info);
 }
 
-.ui-ModalSide--SectionHighlightedPadding {
-  padding: var(--layout-padding-large);
-}
-
-.ui-ModalSide--List {
-  padding-left: revert;
+.ui-ModalSide--Image {
+  padding: var(--layout-padding-medium);
+  margin-inline: calc(var(--modal-bc-sentence-padding-start) * -1)
+    calc(var(--modal-bc-sentence-padding-end) * -1);
 }
 
 @keyframes modal-slide-out {
@@ -156,28 +217,60 @@
   }
 }
 
+/* TABLET - 608px */
+@media (min-width: 38rem) {
+  .ui-ModalSide--SubsectionHeader {
+    font: var(--typography-bold-h3);
+  }
+  .ui-ModalSide--Article {
+    margin-top: 0;
+    padding-bottom: var(--layout-margin-small);
+  }
+  .ui-ModalSide--SubsectionHeader,
+  .ui-ModalSide--ArticleHeader {
+    display: flex;
+    gap: var(--layout-margin-medium);
+    align-items: flex-start;
+    padding-inline-start: var(--layout-margin-large);
+    padding-block: var(--layout-margin-large);
+  }
+  .ui-ModalSide--ArticleHeader {
+    font: var(--typography-bold-h4);
+    padding-bottom: 0;
+  }
+  .ui-ModalSide--SubsectionNumber,
+  .ui-ModalSide--ArticleNumber {
+    width: var(--modal-bc-indent);
+    flex-shrink: 0;
+  }
+  .ui-ModalSide-pdfButton {
+    width: 90px;
+    margin-top: calc(
+      calc(var(--typography-line-heights-xsparse) - var(--size-button)) / 2
+    );
+    margin-left: auto;
+  }
+  .ui-ModalSide--ArticleContentWrapper {
+    padding-left: var(--layout-margin-large);
+  }
+  .ui-ModalSide--ArticleContent {
+    padding-left: calc(var(--modal-bc-indent) + var(--layout-margin-small));
+  }
+  .ui-ModalSide--Sentences > li {
+    margin-left: calc(var(--layout-margin-small) * -1);
+  }
+  .ui-ModalSide--Image {
+    margin-inline: calc(
+        calc(var(--modal-bc-sentence-padding-start) + var(--modal-bc-indent)) *
+          -1
+      )
+      calc(var(--modal-bc-sentence-padding-end) * -1);
+  }
+}
+
 /* DESKTOP - 912px */
-@media (max-width: 57rem) {
+@media (min-width: 57rem) {
   .ui-ModalSide--Modal {
-    width: 100%;
-  }
-  .ui-ModalSide--Header {
-    width: 100%;
-  }
-  .ui-ModalSide--SectionContent {
-    grid-column: span 6;
-  }
-  .ui-ModalSide--SectionHeaderLine {
-    display: grid;
-    grid-template-columns: 1fr auto;
-  }
-  .ui-ModalSide--SectionNumber,
-  .ui-ModalSide--SectionNumberLarge {
-    padding: 0;
-    padding-right: var(--layout-padding-medium);
-  }
-  .ui-ModalSide--SectionHeader,
-  .ui-ModalSide--SectionHeaderLarge {
-    grid-column: span 1;
+    width: 60%;
   }
 }

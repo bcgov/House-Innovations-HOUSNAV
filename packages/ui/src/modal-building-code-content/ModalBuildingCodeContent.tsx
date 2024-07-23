@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import {
   ArticleType,
   SubClauseType,
@@ -55,9 +56,9 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
 
   const renderSubClauses = (subClauses: string[]) => {
     return (
-      <ol type="i" className="ui-ModalSide--List">
+      <ol className="ui-ModalSide--Subclauses">
         {subClauses.map((subClause, index) => (
-          <li key={index} className="ui-ModalSide--ListItems">
+          <li key={index}>
             <span>{parseStringToComponents(subClause, setFocusSection)}</span>
           </li>
         ))}
@@ -67,16 +68,16 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
 
   const renderClauses = (clauses: SubClauseType[]) => {
     return (
-      <ol type="a" className="ui-ModalSide--List">
+      <ol className="ui-ModalSide--Clauses">
         {clauses.map((data, index) => (
           <li
             key={index}
             ref={(el) => {
               sectionRefs.current[data.numberReference] = el;
             }}
-            className={`ui-ModalSide--ListItems ${
+            className={`${
               highlightedSection === data.numberReference
-                ? "ui-ModalSide--SectionHighlighted ui-ModalSide--SectionHighlightedPadding"
+                ? "ui-ModalSide--SectionHighlighted"
                 : ""
             }`}
           >
@@ -99,7 +100,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
             ref={(el) => {
               sectionRefs.current[data.numberReference] = el;
             }}
-            className={`ui-ModalSide--parts ${
+            className={`ui-ModalSide--Parts ${
               highlightedSection === data.numberReference
                 ? "ui-ModalSide--SectionHighlighted"
                 : ""
@@ -145,16 +146,16 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
             ref={(el) => {
               sectionRefs.current[data.numberReference] = el;
             }}
-            className={`${
+            className={`ui-ModalSide--Subsection ${
               highlightedSection === data.numberReference
                 ? "ui-ModalSide--SectionHighlighted"
                 : ""
             }`}
           >
-            <header className="ui-ModalSide--SectionHeaderLine">
-              <Heading className="ui-ModalSide--SectionHeaderLarge">
-                <span className="ui-ModalSide--SectionNumberLarge">
-                  {stripReferencePrefix(data.numberReference)}
+            <header className="ui-ModalSide--SubsectionHeaderLine">
+              <Heading className="ui-ModalSide--SubsectionHeader">
+                <span className="ui-ModalSide--SubsectionNumber">
+                  {stripReferencePrefix(data.numberReference)}{" "}
                 </span>
                 {data.title}
                 {!printData && (
@@ -186,16 +187,16 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
             ref={(el) => {
               sectionRefs.current[data.numberReference] = el;
             }}
-            className={`${
+            className={`ui-ModalSide--Article ${
               highlightedSection === data.numberReference
                 ? "ui-ModalSide--SectionHighlighted"
                 : ""
             }`}
           >
-            <header className="ui-ModalSide--SectionHeaderLine">
-              <Heading className="ui-ModalSide--SectionHeader">
-                <span className="ui-ModalSide--SectionNumber">
-                  {stripReferencePrefix(data.numberReference)}
+            <header className="ui-ModalSide--ArticleHeaderLine">
+              <Heading className="ui-ModalSide--ArticleHeader">
+                <span className="ui-ModalSide--ArticleNumber">
+                  {stripReferencePrefix(data.numberReference)}{" "}
                 </span>
                 {data.title}
               </Heading>
@@ -209,9 +210,9 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
 
   const renderSentences = (sentences: SentenceType[]) => {
     return (
-      <div className="ui-ModalBuildingCodeContent--SectionLine">
-        <div className="ui-ModalSide--SectionContent">
-          <ol type="1">
+      <div className="ui-ModalSide--ArticleContentWrapper">
+        <div className="ui-ModalSide--ArticleContent">
+          <ol className="ui-ModalSide--Sentences">
             {sentences.map((sentence, index) => (
               <li
                 key={index}
@@ -220,7 +221,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
                 }}
                 className={`${
                   highlightedSection === sentence.numberReference
-                    ? "ui-ModalSide--SectionHighlighted ui-ModalSide--SectionHighlightedPadding"
+                    ? "ui-ModalSide--SectionHighlighted"
                     : ""
                 }`}
               >
@@ -250,9 +251,9 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
           ref={(el) => {
             sectionRefs.current[image.numberReference] = el;
           }}
-          className={`${
+          className={`ui-ModalSide--Image ${
             highlightedSection === image.numberReference
-              ? "ui-ModalSide--SectionHighlighted ui-ModalSide--SectionHighlightedPadding"
+              ? "ui-ModalSide--SectionHighlighted"
               : ""
           }`}
         >
@@ -260,8 +261,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
             <figcaption>
               <div className="ui-ModalBuildingCodeContent--FigureCaptionBold">
                 {image.tableName}
-              </div>
-              <div className="ui-ModalBuildingCodeContent--FigureCaptionBold">
+                <br />
                 {parseStringToComponents(image.title)}
               </div>
               <div className="ui-ModalBuildingCodeContent--FigureCaption">
@@ -299,8 +299,11 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
       "articles" in data && (
         <>
           <div className="ui-ModalBuildingCodeContent--printContainer">
-            <h5 className="ui-ModalBuildingCodeContent--buildingCodeTitle">
-              {stripReferencePrefix(data.numberReference) + " " + data.title}
+            <h5 className="ui-ModalSide--SubsectionHeader">
+              <span className="ui-ModalSide--SubsectionNumber">
+                {stripReferencePrefix(data.numberReference)}{" "}
+              </span>
+              {data.title}
             </h5>
             <table className="ui-ModalBuildingCodeContent--modalTable">
               <tbody>
