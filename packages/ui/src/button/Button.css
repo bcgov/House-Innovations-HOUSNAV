@@ -56,7 +56,7 @@
 }
 .ui-Button.--primary[data-disabled] {
   background-color: var(--surface-color-primary-button-disabled);
-  color: var(--typography-color-disabled);
+  color: var(--typography-color-disabled-accessible);
 }
 .ui-Button.--primary[data-hovered] {
   background-color: var(--surface-color-primary-button-hover);
