@@ -661,6 +661,265 @@
         }
       ],
       "result": "R30"
+    },
+    {
+      "title": "fire department will arrive in less than 10",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "yes"
+        },
+        {
+          "question": "P04",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P05",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P06",
+          "type": "checkbox",
+          "answer": "C"
+        },
+        {
+          "question": "P07",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P08",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P1",
+          "type": "checkbox",
+          "answer": "F2"
+        },
+        {
+          "question": "P5",
+          "type": "input",
+          "answer": "10"
+        },
+        {
+          "question": "P6",
+          "type": "input",
+          "answer": "17"
+        },
+        {
+          "question": "P7",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P8",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P13",
+          "type": "radio",
+          "answer": "false"
+        }
+      ],
+      "result": "R20"
+    },
+    {
+      "title": "medium hazard building P6 < 2m",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "yes"
+        },
+        {
+          "question": "P04",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P05",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P06",
+          "type": "checkbox",
+          "answer": "C"
+        },
+        {
+          "question": "P07",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P08",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P1",
+          "type": "checkbox",
+          "answer": "F2"
+        },
+        {
+          "question": "P5",
+          "type": "input",
+          "answer": "10"
+        },
+        {
+          "question": "P6",
+          "type": "input",
+          "answer": "1.5"
+        },
+        {
+          "question": "P7",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P8",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P13",
+          "type": "radio",
+          "answer": "false"
+        }
+      ],
+      "result": "R20"
+    },
+    {
+      "title": "building with glazed windows and P6>= 9m",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "yes"
+        },
+        {
+          "question": "P04",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P05",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P06",
+          "type": "checkbox",
+          "answer": "C"
+        },
+        {
+          "question": "P07",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P08",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P1",
+          "type": "checkbox",
+          "answer": "F2"
+        },
+        {
+          "question": "P5",
+          "type": "input",
+          "answer": "10"
+        },
+        {
+          "question": "P6",
+          "type": "input",
+          "answer": "10"
+        },
+        {
+          "question": "P7",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P8",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P13",
+          "type": "radio",
+          "answer": "true"
+        }
+      ],
+      "result": "R20"
+    },
+    {
+      "title": "sprinklered building with glazed windows",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "yes"
+        },
+        {
+          "question": "P04",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P05",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P06",
+          "type": "checkbox",
+          "answer": "C"
+        },
+        {
+          "question": "P07",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P08",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P1",
+          "type": "checkbox",
+          "answer": "F2"
+        },
+        {
+          "question": "P5",
+          "type": "input",
+          "answer": "10"
+        },
+        {
+          "question": "P6",
+          "type": "input",
+          "answer": "5"
+        },
+        {
+          "question": "P7",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P13",
+          "type": "radio",
+          "answer": "true"
+        }
+      ],
+      "result": "R30"
     }
   ]
 }
