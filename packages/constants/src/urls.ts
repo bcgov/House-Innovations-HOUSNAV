@@ -12,6 +12,7 @@ export const URLS_MAIN_NAVIGATION = [
     href: URL_DOWNLOAD_HREF,
     download: true,
     target: "_blank",
+    "aria-label": "Download the BC Building Code PDF in a new tab",
   },
 ];
 
