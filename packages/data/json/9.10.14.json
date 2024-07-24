@@ -76,7 +76,7 @@
     },
     "P02": {
       "walkthroughItemType": "multiChoiceMultiple",
-      "questionText": "Check all the following that apply to this project.",
+      "questionText": "Check all that apply to the structure in this project.",
       "possibleAnswers": [
         {
           "answerDisplayText": "This project will involve the construction or design of a new <defined-term>building</defined-term>.",
@@ -179,7 +179,7 @@
     },
     "P03": {
       "walkthroughItemType": "multiChoiceMultiple",
-      "questionText": "Check all the following that apply to this project.",
+      "questionText": "Check all that apply to this project.",
       "possibleAnswers": [
         {
           "answerDisplayText": "This project consists of sewage, water, electrical, telephone, rail or similar public infrastructure systems located in a <defined-term>street</defined-term> or a public transit right of way.",
@@ -2007,9 +2007,7 @@
       ]
     }
   },
-  "relatedWalkthroughs": [
-    "9.9.9"
-  ],
+  "relatedWalkthroughs": ["9.9.9"],
   "results": {
     "R00": {
       "resultDisplayMessage": "<p>You have selected an answer that indicates that the BC Building Code 2024 does not apply to this structure. This tool is used to assist building code users in determining the applicable requirements for their building, as such all structures that are not governed by the BC Building Code 2024 are beyond the scope of this tool.</p>"

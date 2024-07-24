@@ -304,7 +304,7 @@
     },
     "P06": {
       "walkthroughItemType": "multiChoiceMultiple",
-      "questionText": "Which <defined-term override-term='major occupancy'>major occupancies</defined-term> will be included in this <defined-term>building</defined-term>.",
+      "questionText": "Which <defined-term override-term='major occupancy'>major occupancies</defined-term> will be included in this <defined-term>building</defined-term>?",
       "possibleAnswers": [
         {
           "answerDisplayText": "<defined-term override-term='major occupancy' override-tooltip='group a division 1'>Group A Division 1.</defined-term>",
@@ -767,7 +767,7 @@
       "answersAreDynamic": true,
       "storeAnswerAsObject": true,
       "isNotRequired": true,
-      "questionText": "Which level(s) of the <defined-term>dwelling unit</defined-term> have access to a balcony?",
+      "questionText": "Which level(s) with greater than 1 storey of travel to an <defined-term>exit</defined-term> of the <defined-term>dwelling unit</defined-term> have access to a balcony?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Article 9.9.9.1.",
         "codeNumber": "v2-db-9.9.9.1"
