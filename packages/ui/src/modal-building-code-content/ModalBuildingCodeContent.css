@@ -80,6 +80,10 @@
     border: none !important;
   }
 
+  .ui-ModalSide--Image {
+    margin: 0;
+  }
+
   .ui-ModalSide--ArticleContent,
   .--glossary .ui-ModalSide--Article {
     padding-left: 0;
