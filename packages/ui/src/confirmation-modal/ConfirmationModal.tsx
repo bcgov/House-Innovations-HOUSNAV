@@ -47,6 +47,7 @@ export default function ConfirmationModal({
                     type="button"
                     className="dialog-button"
                     variant="secondary"
+                    aria-label="Cancel back navigation"
                     onPress={() => {
                       onCancel();
                       close();
@@ -58,6 +59,7 @@ export default function ConfirmationModal({
                     type="button"
                     className="dialog-button"
                     variant="primary"
+                    aria-label="Continue back navigation"
                     onPress={() => {
                       onConfirm();
                       close();
