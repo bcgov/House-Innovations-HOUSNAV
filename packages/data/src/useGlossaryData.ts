@@ -58,10 +58,15 @@ export type GlossaryType = {
   content: GlossaryContentType;
 };
 
+export type GlossaryDefinitionListType = {
+  definition: string; // The definition of the term in HTML format
+  definitionList?: GlossaryDefinitionListType[]; // A list of definitions for the term to be in a bulleted list
+};
+
 export type GlossaryContentType = {
   definition: string; // The definition of the term in HTML format
   cleanDefinition: string; // The definition of the term in plain text format
-  definitionList?: string[]; // A list of definitions for the term to be in a bulleted list
+  definitionList?: GlossaryDefinitionListType[]; // A list of definitions for the term to be in a bulleted list
   hideTerm?: boolean; // A boolean to hide the term from the glossary (Used for major occupancy groups currently)
 };
 

@@ -54,7 +54,7 @@ const Walkthrough = observer((): JSX.Element => {
       window.removeEventListener("beforeunload", handleBeforeUnload);
       window.removeEventListener("popstate", handlePopState);
     };
-  }, [blockBackNavigation]);
+  }, [blockBackNavigation, showModal]);
 
   const handleQuestionSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>) => {

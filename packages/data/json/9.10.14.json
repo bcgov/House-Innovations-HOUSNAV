@@ -458,7 +458,7 @@
           "answerValue": "D"
         },
         {
-          "answerDisplayText": "<defined-term override-term='mercantile occupancies'>Mercantile</defined-term>",
+          "answerDisplayText": "<defined-term override-term='mercantile occupancy'>Mercantile</defined-term>",
           "answerValue": "E"
         },
         {
