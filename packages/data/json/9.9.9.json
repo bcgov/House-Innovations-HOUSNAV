@@ -82,7 +82,7 @@
     },
     "P02": {
       "walkthroughItemType": "multiChoiceMultiple",
-      "questionText": "Check all the following that apply to this project.",
+      "questionText": "Check all that apply to the structure in this project.",
       "possibleAnswers": [
         {
           "answerDisplayText": "This project will involve the construction or design of a new <defined-term>building</defined-term>.",
@@ -185,7 +185,7 @@
     },
     "P03": {
       "walkthroughItemType": "multiChoiceMultiple",
-      "questionText": "Check all the following that apply to this project.",
+      "questionText": "Check all that apply to this project.",
       "possibleAnswers": [
         {
           "answerDisplayText": "This project consists of sewage, water, electrical, telephone, rail or similar public infrastructure systems located in a <defined-term>street</defined-term> or a public transit right of way.",
