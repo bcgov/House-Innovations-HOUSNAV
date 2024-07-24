@@ -264,7 +264,7 @@
                         "description": "where the <defined-term>limiting distance</defined-term> is not less than 1.2 m, be equal to or less than",
                         "subClauses": [
                           "the <defined-term>limiting distance</defined-term> squared, for <defined-term override-term='residential occupancy'>residential occupancies</defined-term>, <defined-term override-term='business and personal services occupancy'>business and personal services occupancies</defined-term> and <defined-term override-term='low-hazard industrial occupancy'>low-hazard industrial occupancies</defined-term>, and",
-                          "half the <defined-term>limiting distance</defined-term> squared, for <defined-term>mercantile occupancies</defined-term> and <defined-term override-term='medium-hazard industrial occupancy'>medium hazard industrial occupancies</defined-term>."
+                          "half the <defined-term>limiting distance</defined-term> squared, for <defined-term override-term='mercantile occupancy'>mercantile occupancies</defined-term> and <defined-term-glossary override-term='medium-hazard industrial occupancy'>medium hazard industrial occupancies</defined-term-glossary>."
                         ]
                       }
                     ],
