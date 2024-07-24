@@ -1,7 +1,11 @@
 "use client";
 
 import React from "react";
-import { GlossaryType, GlossaryContentType } from "@repo/data/useGlossaryData";
+import {
+  GlossaryType,
+  GlossaryContentType,
+  GlossaryDefinitionListType,
+} from "@repo/data/useGlossaryData";
 import { parseStringToComponents } from "web/utils/string";
 import { DEFINED_TERMS_SECTION_NUMBER } from "@repo/constants/src/constants";
 import { Heading } from "react-aria-components";
@@ -17,13 +21,18 @@ interface GlossaryContentProps {
 }
 
 function renderDefinitionList(
-  definitionList: string[],
+  definitionList: GlossaryDefinitionListType[],
   customHandler?: (location: string) => void,
 ) {
   return (
     <ul className="ui-ModalSide--List">
       {definitionList.map((item, index) => (
-        <li key={index}>{parseStringToComponents(item, customHandler)}</li>
+        <>
+          <li key={index}>
+            {parseStringToComponents(item.definition, customHandler)}
+          </li>
+          {item.definitionList && renderDefinitionList(item.definitionList)}
+        </>
       ))}
     </ul>
   );

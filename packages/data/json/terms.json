@@ -7,20 +7,20 @@
     "definition": "<glossary-term>Alteration</glossary-term> means a change or extension to any matter or thing or to any <defined-term-glossary>occupancy</defined-term-glossary> regulated by this Code.",
     "cleanDefinition": "Alteration means a change or extension to any matter or thing or to any occupancy regulated by this Code."
   },
-  "appliances": {
-    "definition": "<glossary-term>Appliances</glossary-term> means a device to convert fuel into energy and includes all components, controls, wiring and piping required to be part of the device by the applicable standard referred to in this Code.",
-    "cleanDefinition": "Appliances means a device to convert fuel into energy and includes all components, controls, wiring and piping required to be part of the device by the applicable standard referred to in this Code."
+  "appliance": {
+    "definition": "<glossary-term>Appliance</glossary-term> means a device to convert fuel into energy and includes all components, controls, wiring and piping required to be part of the device by the applicable standard referred to in this Code.",
+    "cleanDefinition": "Appliance means a device to convert fuel into energy and includes all components, controls, wiring and piping required to be part of the device by the applicable standard referred to in this Code."
   },
-  "assembly occupancies": {
-    "definition": "<glossary-term>Assembly Occupancies</glossary-term> means the <defined-term-glossary>occupancy</defined-term-glossary> or the use of a <defined-term-glossary>building</defined-term-glossary> or part thereof by a gathering of persons for civic, political, travel, religious, social, educational, recreational or like purposes, or for the consumption of food or drink.",
-    "cleanDefinition": "Assembly Occupancies means the occupancy or the use of a building or part thereof by a gathering of persons for civic, political, travel, religious, social, educational, recreational or like purposes, or for the consumption of food or drink."
+  "assembly occupancy": {
+    "definition": "<glossary-term>Assembly occupancy</glossary-term> <defined-term-glossary override-term='major occupancy' override-tooltip='group a'>(Group A)</defined-term-glossary>means the <defined-term-glossary>occupancy</defined-term-glossary> or the use of a <defined-term-glossary>building</defined-term-glossary> or part thereof by a gathering of persons for civic, political, travel, religious, social, educational, recreational or like purposes, or for the consumption of food or drink.",
+    "cleanDefinition": "Assembly occupancy means the occupancy or the use of a building or part thereof by a gathering of persons for civic, political, travel, religious, social, educational, recreational or like purposes, or for the consumption of food or drink."
   },
   "authority having jurisdiction": {
     "definition": "<glossary-term>Authority having jurisdiction</glossary-term> means the governmental body responsible for the enforcement of any part of this Code or the official or agency designated by that body to exercise such a function. Notwithstanding this definition, the Chief Inspector of Mines has the sole responsibility for administration and enforcement in respect to all <defined-term-glossary override-term='building'>buildings</defined-term-glossary>, structures and site services used at a mine, as defined in the Mines Act.",
     "cleanDefinition": "Authority having jurisdiction means the governmental body responsible for the enforcement of any part of this Code or the official or agency designated by that body to exercise such a function. Notwithstanding this definition, the Chief Inspector of Mines has the sole responsibility for administration and enforcement in respect to all buildings, structures and site services used at a mine, as defined in the Mines Act."
   },
   "basement": {
-    "definition": "<glossary-term>Basement</glossary-term> means a <defined-term-glossary>storey</defined-term-glossary> or <defined-term-glossary override-term='storey'>storeys</defined-term-glossary> of a building located below the first storey.",
+    "definition": "<glossary-term>Basement</glossary-term> means a <defined-term-glossary>storey</defined-term-glossary> or <defined-term-glossary override-term='storey'>storeys</defined-term-glossary> of a building located below the <defined-term-glossary>first storey</defined-term-glossary>.",
     "cleanDefinition": "Basement means a storey or storeys of a building located below the first storey. "
   },
   "building": {
@@ -28,12 +28,12 @@
     "cleanDefinition": "Building means any structure used or intended for supporting or sheltering any use or occupancy."
   },
   "building area": {
-    "definition": "<glossary-term>Building Area</glossary-term> means the greatest horizontal area of a <defined-term-glossary>building</defined-term-glossary> above <defined-term-glossary>grade</defined-term-glossary> within the outside surface of exterior walls or within the outside surface of exterior walls and the centre line of <defined-term-glossary override-term='firewall'>firewalls</defined-term-glossary>.",
-    "cleanDefinition": "Building Area means the greatest horizontal area of a building above grade within the outside surface of exterior walls or within the outside surface of exterior walls and the centre line of firewalls."
+    "definition": "<glossary-term>Building area</glossary-term> means the greatest horizontal area of a <defined-term-glossary>building</defined-term-glossary> above <defined-term-glossary>grade</defined-term-glossary> within the outside surface of exterior walls or within the outside surface of exterior walls and the centre line of <defined-term-glossary override-term='firewall'>firewalls</defined-term-glossary>.",
+    "cleanDefinition": "Building area means the greatest horizontal area of a building above grade within the outside surface of exterior walls or within the outside surface of exterior walls and the centre line of firewalls."
   },
   "building height": {
-    "definition": "<glossary-term>Building Height</glossary-term> (in storeys) means the number of <defined-term-glossary override-term='storey'>storeys</defined-term-glossary> contained between the roof and the floor of the <defined-term-glossary>first storey</defined-term-glossary>.",
-    "cleanDefinition": "Building Height (in storeys) means the number of storeys contained between the roof and the floor of the first storey. "
+    "definition": "<glossary-term>Building height</glossary-term> (in <defined-term-glossary override-term='storey'>storeys</defined-term-glossary>) means the number of <defined-term-glossary override-term='storey'>storeys</defined-term-glossary> contained between the roof and the floor of the <defined-term-glossary>first storey</defined-term-glossary>.",
+    "cleanDefinition": "Building height (in storeys) means the number of storeys contained between the roof and the floor of the first storey. "
   },
   "business and personal services occupancy": {
     "definition": "<glossary-term>Business and personal services occupancy</glossary-term> <defined-term-glossary override-term='major occupancy' override-tooltip='group d'>(Group D)</defined-term-glossary> means the <defined-term-glossary>occupancy</defined-term-glossary> or use of a <defined-term-glossary>building</defined-term-glossary> or part thereof for the transaction of business or the rendering or receiving of professional or personal services.",
@@ -42,6 +42,10 @@
   "care": {
     "definition": "<glossary-term>Care</glossary-term> means the provision of services other than <defined-term-glossary>treatment</defined-term-glossary> by or through care facility management to residents who require these services because of cognitive, physical or behavioural limitations.",
     "cleanDefinition": "Care means the provision of services other than treatment by or through care facility management to residents who require these services because of cognitive, physical or behavioural limitations."
+  },
+  "care occupancy": {
+    "definition": "<glossary-term>Care occupancy</glossary-term> <defined-term-glossary override-term='major occupancy' override-tooltip='group b division 3'>(Group B, Division 3)</defined-term-glossary> means the <defined-term-glossary>occupancy</defined-term-glossary> or use of a <defined-term-glossary>building</defined-term-glossary> or part thereof where <defined-term-glossary>care</defined-term-glossary> is provided to residents. (<pdf-download-link named-dest='A-1.4.1.2.(1) Defined Terms.'>See Note A-1.4.1.2.(1).</pdf-download-link>)",
+    "cleanDefinition": "Care occupancy means the occupancy or use of a building or part thereof where care is provided to residents."
   },
   "closure": {
     "definition": "<glossary-term>Closure</glossary-term> means a device or assembly for closing an opening through a <defined-term-glossary>fire separation</defined-term-glossary> or an exterior wall, such as a door, a shutter, a damper, wired glass or glass block, and includes all components such as hardware, closing devices, frames and anchors.",
@@ -55,9 +59,9 @@
     "definition": "<glossary-term>Dead load</glossary-term> means the weight of all permanent structural and non-structural components of a <defined-term-glossary>building</defined-term-glossary>.",
     "cleanDefinition": "Dead load means the weight of all permanent structural and non-structural components of a building."
   },
-  "detention occupancies": {
-    "definition": "<glossary-term>Detention Occupancies</glossary-term> <defined-term-glossary override-term='major occupancy' override-tooltip='group b division 1'>(Group B, Division 1)</defined-term-glossary> means the <defined-term-glossary>occupancy</defined-term-glossary> by persons who are restrained from or are incapable of evacuating to a safe location without the assistance of another person because of security measures not under their control.",
-    "cleanDefinition": "Detention Occupancies means the occupancy by persons who are restrained from or are incapable of evacuating to a safe location without the assistance of another person because of security measures not under their control."
+  "detention occupancy": {
+    "definition": "<glossary-term>Detention occupancy</glossary-term> <defined-term-glossary override-term='major occupancy' override-tooltip='group b division 1'>(Group B, Division 1)</defined-term-glossary> means the <defined-term-glossary>occupancy</defined-term-glossary> by persons who are restrained from or are incapable of evacuating to a safe location without the assistance of another person because of security measures not under their control.",
+    "cleanDefinition": "Detention occupancy means the occupancy by persons who are restrained from or are incapable of evacuating to a safe location without the assistance of another person because of security measures not under their control."
   },
   "dwelling unit": {
     "definition": "<glossary-term>Dwelling unit</glossary-term> means a <defined-term-glossary>suite</defined-term-glossary> operated as a housekeeping unit, used or intended to be used by one or more persons and usually containing cooking, eating, living, sleeping and sanitary facilities.",
@@ -72,8 +76,8 @@
     "cleanDefinition": "Exposing building face means that part of the exterior wall of a building that faces one direction and is located between ground level and the ceiling of its top storey or, where a building is divided into fire compartments, the exterior wall of a fire compartment that faces one direction."
   },
   "farm building": {
-    "definition": "<glossary-term>Farm Building</glossary-term> means a <defined-term-glossary>building</defined-term-glossary> or part thereof that does not contain a <defined-term-glossary>residential occupancy</defined-term-glossary> and that is associated with and located on land devoted to the practice of farming, and used essentially for the housing of equipment or livestock, or production, storage or processing of agricultural and horticultural produce or feeds. <pdf-download-link named-dest='A-1.4.1.2.(1) Defined Terms.'>See Note A-1.4.1.2.(1).</pdf-download-link>",
-    "cleanDefinition": "Farm Building means a building or part thereof that does not contain a residential occupancy and that is associated with and located on land devoted to the practice of farming, and used essentially for the housing of equipment or livestock, or production, storage or processing of agricultural and horticultural produce or feeds."
+    "definition": "<glossary-term>Farm building</glossary-term> means a <defined-term-glossary>building</defined-term-glossary> or part thereof that does not contain a <defined-term-glossary>residential occupancy</defined-term-glossary> and that is associated with and located on land devoted to the practice of farming, and used essentially for the housing of equipment or livestock, or production, storage or processing of agricultural and horticultural produce or feeds. <pdf-download-link named-dest='A-1.4.1.2.(1) Defined Terms.'>See Note A-1.4.1.2.(1).</pdf-download-link>",
+    "cleanDefinition": "Farm building means a building or part thereof that does not contain a residential occupancy and that is associated with and located on land devoted to the practice of farming, and used essentially for the housing of equipment or livestock, or production, storage or processing of agricultural and horticultural produce or feeds."
   },
   "fire compartment": {
     "definition": "<glossary-term>Fire compartment</glossary-term> means an enclosed space in a <defined-term-glossary>building</defined-term-glossary> that is separated from all other parts of the <defined-term-glossary>building</defined-term-glossary> by enclosing construction providing a <defined-term-glossary>fire separation</defined-term-glossary> having a required <defined-term-glossary>fire-resistance rating</defined-term-glossary>.",
@@ -92,62 +96,88 @@
     "cleanDefinition": "Fire separation means a construction assembly that acts as a barrier against the spread of fire."
   },
   "firewall": {
-    "definition": "<glossary-term>Firewall</glossary-term> means a type of <defined-term-glossary>fire separation</defined-term-glossary> of noncombustible construction that subdivides a <defined-term-glossary>building</defined-term-glossary> or separates adjoining <defined-term-glossary override-term='building'>buildings</defined-term-glossary> to resist the spread of fire and that has a <defined-term-glossary>fire-resistance rating</defined-term-glossary> as prescribed in this Code and has structural stability to remain intact under fire conditions for the required fire-rated time.",
+    "definition": "<glossary-term>Firewall</glossary-term> means a type of <defined-term-glossary>fire separation</defined-term-glossary> of <defined-term-glossary>noncombustible construction</defined-term-glossary> that subdivides a <defined-term-glossary>building</defined-term-glossary> or separates adjoining <defined-term-glossary override-term='building'>buildings</defined-term-glossary> to resist the spread of fire and that has a <defined-term-glossary>fire-resistance rating</defined-term-glossary> as prescribed in this Code and has structural stability to remain intact under fire conditions for the required fire-rated time.",
     "cleanDefinition": "Firewall means a type of fire separation of noncombustible construction that subdivides a building or separates adjoining buildings to resist the spread of fire and that has a fire-resistance rating as prescribed in this Code and has structural stability to remain intact under fire conditions for the required fire-rated time."
   },
   "first storey": {
-    "definition": "<glossary-term>First Story</glossary-term> means the uppermost <defined-term-glossary>storey</defined-term-glossary> having its floor level not more than 2m above <defined-term-glossary>grade</defined-term-glossary>.",
-    "cleanDefinition": "First Story means the uppermost storey having its floor level not more than 2m above grade."
+    "definition": "<glossary-term>First story</glossary-term> means the uppermost <defined-term-glossary>storey</defined-term-glossary> having its floor level not more than 2m above <defined-term-glossary>grade</defined-term-glossary>.",
+    "cleanDefinition": "First story means the uppermost storey having its floor level not more than 2m above grade."
   },
   "floor area": {
-    "definition": "<glossary-term>Floor area</glossary-term> means the space on any <defined-term-glossary>storey</defined-term-glossary> of a <defined-term-glossary>building</defined-term-glossary> between exterior walls and required <defined-term-glossary override-term='firewall'>firewalls</defined-term-glossary>, including the space occupied by interior walls and <defined-term-glossary>partitions</defined-term-glossary>, but not including <defined-term-glossary override-term='exit'>exits</defined-term-glossary>, <defined-term-glossary override-term='vertical service space'>vertical service spaces</defined-term-glossary>, and their enclosing assemblies.",
+    "definition": "<glossary-term>Floor area</glossary-term> means the space on any <defined-term-glossary>storey</defined-term-glossary> of a <defined-term-glossary>building</defined-term-glossary> between exterior walls and required <defined-term-glossary override-term='firewall'>firewalls</defined-term-glossary>, including the space occupied by interior walls and <defined-term-glossary override-term='partition'>partitions</defined-term-glossary>, but not including <defined-term-glossary override-term='exit'>exits</defined-term-glossary>, <defined-term-glossary override-term='vertical service space'>vertical service spaces</defined-term-glossary>, and their enclosing assemblies.",
     "cleanDefinition": "Floor area means the space on any storey of a building between exterior walls and required firewalls, including the space occupied by interior walls and partitions, but not including exits, vertical service spaces, and their enclosing assemblies."
   },
   "grade": {
-    "definition": "<glossary-term>Grade</glossary-term> means the lowest of the average levels of finished ground adjoining each exterior wall of a <defined-term-glossary>building</defined-term-glossary>, except that localized depressions need not be considered in the determination of average levels of finished ground. (See First <defined-term-glossary>storey</defined-term-glossary> and <pdf-download-link named-dest='A-1.4.1.2.(1) Defined Terms.'> Note A-1.4.1.2.(1).</pdf-download-link>",
+    "definition": "<glossary-term>Grade</glossary-term> means the lowest of the average levels of finished ground adjoining each exterior wall of a <defined-term-glossary>building</defined-term-glossary>, except that localized depressions need not be considered in the determination of average levels of finished ground. (See <defined-term-glossary>First storey</defined-term-glossary> and <pdf-download-link named-dest='A-1.4.1.2.(1) Defined Terms.'> Note A-1.4.1.2.(1).</pdf-download-link>",
     "cleanDefinition": "Grade means the lowest of the average levels of finished ground adjoining each exterior wall of a building, except that localized depressions need not be considered in the determination of average levels of finished ground."
   },
   "heritage building": {
-    "definition": "<glossary-term>Heritage Building</glossary-term> is a <defined-term-glossary>building</defined-term-glossary> which is legally protected or officially recognized as a heritage property by the Provincial government or a local government. <pdf-download-link named-dest='A-1.1.1.1.(5) Heritage Buildings.'>See Note A-1.1.1.1.(5).</pdf-download-link>",
-    "cleanDefinition": "Heritage Building is a building which is legally protected or officially recognized as a heritage property by the Provincial government or a local government."
+    "definition": "<glossary-term>Heritage building</glossary-term> is a <defined-term-glossary>building</defined-term-glossary> which is legally protected or officially recognized as a heritage property by the Provincial government or a local government. <pdf-download-link named-dest='A-1.1.1.1.(5) Heritage Buildings.'>See Note A-1.1.1.1.(5).</pdf-download-link>",
+    "cleanDefinition": "Heritage building is a building which is legally protected or officially recognized as a heritage property by the Provincial government or a local government."
   },
   "high-hazard industrial occupancy": {
-    "definition": "<glossary-term>High-hazard industrial occupancy</glossary-term> <defined-term-glossary override-term='major occupancy' override-tooltip='group f division 1'>(Group F, Division 1)</defined-term-glossary> means an <defined-term-glossary>industrial occupancy</defined-term-glossary> containing sufficient quantities of highly combustible and flammable or explosive materials which, because of their inherent characteristics, constitute a special firehazard.",
-    "cleanDefinition": "High-hazard industrial occupancy means an industrial occupancy containing sufficient quantities of highly combustible and flammable or explosive materials which, because of their inherent characteristics, constitute a special firehazard."
+    "definition": "<glossary-term>High-hazard industrial occupancy</glossary-term> <defined-term-glossary override-term='major occupancy' override-tooltip='group f division 1'>(Group F, Division 1)</defined-term-glossary> means an <defined-term-glossary>industrial occupancy</defined-term-glossary> containing sufficient quantities of highly <defined-term-glossary>combustible</defined-term-glossary> and flammable or explosive materials which, because of their inherent characteristics, constitute a special fire hazard.",
+    "cleanDefinition": "High-hazard industrial occupancy means an industrial occupancy containing sufficient quantities of highly combustible and flammable or explosive materials which, because of their inherent characteristics, constitute a special fire hazard."
   },
   "industrial occupancy": {
     "definition": "<glossary-term>Industrial occupancy</glossary-term> <defined-term-glossary override-term='major occupancy' override-tooltip='group f'>(Group F)</defined-term-glossary> means the <defined-term-glossary>occupancy</defined-term-glossary> or use of a <defined-term-glossary>building</defined-term-glossary> or part thereof for the assembling, fabricating, manufacturing, processing, repairing or storing of goods and materials.",
     "cleanDefinition": "Industrial occupancy means the occupancy or use of a building or part thereof for the assembling, fabricating, manufacturing, processing, repairing or storing of goods and materials. "
   },
   "limiting distance": {
-    "definition": "<glossary-term>Limiting distance</glossary-term> means the distance from an <defined-term-glossary>exposing building face</defined-term-glossary> to a property line, the centre line of a street, lane or public thoroughfare, or to an imaginary line between 2 <defined-term-glossary override-term='building'>buildings</defined-term-glossary> or <defined-term-glossary override-term='fire compartment'>fire compartments</defined-term-glossary> on the same property, measured at right angles to the <defined-term-glossary>exposing building face</defined-term-glossary>.",
+    "definition": "<glossary-term>Limiting distance</glossary-term> means the distance from an <defined-term-glossary>exposing building face</defined-term-glossary> to a property line, the centre line of a <defined-term-glossary>street</defined-term-glossary>, lane or public thoroughfare, or to an imaginary line between 2 <defined-term-glossary override-term='building'>buildings</defined-term-glossary> or <defined-term-glossary override-term='fire compartment'>fire compartments</defined-term-glossary> on the same property, measured at right angles to the <defined-term-glossary>exposing building face</defined-term-glossary>.",
     "cleanDefinition": "Limiting distance means the distance from an exposing building face to a property line, the centre line of a street, lane or public thoroughfare, or to an imaginary line between 2 buildings or fire compartments on the same property, measured at right angles to the exposing building face."
   },
   "loadbearing": {
-    "definition": "<glossary-term>Loadbearing</glossary-term> (as applying to a <defined-term-glossary>building</defined-term-glossary> element) means subjected to or designed to carry loads in addition to its own <defined-term-glossary>dead load</defined-term-glossary>, excepting a wall element subjected only to wind or earthquake loads in addition to its own dead load.",
+    "definition": "<glossary-term>Loadbearing</glossary-term> (as applying to a <defined-term-glossary>building</defined-term-glossary> element) means subjected to or designed to carry loads in addition to its own <defined-term-glossary>dead load</defined-term-glossary>, excepting a wall element subjected only to wind or earthquake loads in addition to its own <defined-term-glossary>dead load</defined-term-glossary>.",
     "cleanDefinition": "Loadbearing means subjected to or designed to carry loads in addition to its own dead load, excepting a wall element subjected only to wind or earthquake loads in addition to its own dead load."
   },
   "low-hazard industrial occupancy": {
-    "definition": "<glossary-term>Low-hazard Industrial Occupancies</glossary-term> <defined-term-glossary override-term='major occupancy' override-tooltip='group f division 3'>(Group F, Division 3)</defined-term-glossary> means an industrial <defined-term-glossary>occupancy</defined-term-glossary> in which the combustible content is not more than 50 kg/m² or 1,200 MJ/m² of <defined-term-glossary>floor area</defined-term-glossary>.",
-    "cleanDefinition": "Low-hazard industrial occupancies means an industrial occupancy in which the combustible content is not more than 50 kg/m² or 1,200 MJ/m² of floor area."
+    "definition": "<glossary-term>Low-hazard industrial occupancy</glossary-term> <defined-term-glossary override-term='major occupancy' override-tooltip='group f division 3'>(Group F, Division 3)</defined-term-glossary> means an <defined-term-glossary>industrial occupancy</defined-term-glossary> in which the combustible content is not more than 50 kg/m² or 1,200 MJ/m² of <defined-term-glossary>floor area</defined-term-glossary>.",
+    "cleanDefinition": "Low-hazard industrial occupancy means an industrial occupancy in which the combustible content is not more than 50 kg/m² or 1,200 MJ/m² of floor area."
   },
   "major occupancy": {
-    "definition": "<glossary-term>Major occupancy</glossary-term> means the principal occupancy for which a <defined-term-glossary>building</defined-term-glossary> or part thereof is used or intended to be used, and shall be deemed to include the subsidiary <defined-term-glossary override-term='occupancy'>occupancies</defined-term-glossary> that are an integral part of the principal <defined-term-glossary>occupancy</defined-term-glossary>. The major occupancy classifications used in this Code are as follows: ",
+    "definition": "<glossary-term>Major occupancy</glossary-term> means the principal <defined-term-glossary>occupancy</defined-term-glossary> for which a <defined-term-glossary>building</defined-term-glossary> or part thereof is used or intended to be used, and shall be deemed to include the subsidiary <defined-term-glossary override-term='occupancy'>occupancies</defined-term-glossary> that are an integral part of the principal <defined-term-glossary>occupancy</defined-term-glossary>. The major occupancy classifications used in this Code are as follows: ",
     "cleanDefinition": "Major occupancy means the principal occupancy for which a building or part thereof is used or intended to be used, and shall be deemed to include the subsidiary occupancies that are an integral part of the principal occupancy.",
     "definitionList": [
-      "A1 - <defined-term-glossary>Assembly occupancies</defined-term-glossary> intended for the production and viewing of the performing arts",
-      "A2 - <defined-term-glossary>Assembly occupancies</defined-term-glossary> not elsewhere classified in Group A ",
-      "A3 - <defined-term-glossary>Assembly occupancies</defined-term-glossary> of the arena type ",
-      "A4 - <defined-term-glossary>Assembly occupancies</defined-term-glossary> in which the occupants are gathered in the open air ",
-      "B1 - <defined-term-glossary>Detention occupancies</defined-term-glossary> in which persons are under restraint or are incapable of self-preservation because of security measures not under their control ",
-      "B2 - <defined-term-glossary>Treatment</defined-term-glossary> <defined-term-glossary override-term='occupancy'>occupancies</defined-term-glossary> ",
-      "B3 - <defined-term-glossary>Care</defined-term-glossary> <defined-term-glossary override-term='occupancy'>occupancies</defined-term-glossary> ",
-      "C - <defined-term-glossary override-term='residential occupancy'>Residential occupancies</defined-term-glossary>",
-      "D - <defined-term-glossary override-term='business and personal services occupancy'>Business and personal services occupancies</defined-term-glossary>",
-      "E - <defined-term-glossary override-term='mercantile occupancies'>Mercantile occupancies</defined-term-glossary>",
-      "F1 - <defined-term-glossary override-term='high-hazard industrial occupancy'>High-hazard industrial occupancies</defined-term-glossary>",
-      "F2 - <defined-term-glossary override-term='medium-hazard industrial occupancy'>Medium-hazard industrial occupancies</defined-term-glossary>",
-      "F3 - <defined-term-glossary override-term='low-hazard industrial occupancy'>Low-hazard industrial occupancies</defined-term-glossary>"
+      {
+        "definition": "A1 - <defined-term-glossary override-term='assembly occupancy'>Assembly occupancies</defined-term-glossary> intended for the production and viewing of the performing arts"
+      },
+      {
+        "definition": "A2 - <defined-term-glossary override-term='assembly occupancy'>Assembly occupancies</defined-term-glossary> not elsewhere classified in Group A"
+      },
+      {
+        "definition": "A3 - <defined-term-glossary override-term='assembly occupancy'>Assembly occupancies</defined-term-glossary> of the arena type"
+      },
+      {
+        "definition": "A4 - <defined-term-glossary override-term='assembly occupancy'>Assembly occupancies</defined-term-glossary> in which the occupants are gathered in the open air"
+      },
+      {
+        "definition": "B1 - <defined-term-glossary override-term='detention occupancy'>Detention occupancies</defined-term-glossary> in which persons are under restraint or are incapable of self-preservation because of security measures not under their control"
+      },
+      {
+        "definition": "B2 - <defined-term-glossary override-term='treatment occupancy'>Treatment occupancies</defined-term-glossary>"
+      },
+      {
+        "definition": "B3 - <defined-term-glossary override-term='care occupancy'>Care occupancies</defined-term-glossary>"
+      },
+      {
+        "definition": "C - <defined-term-glossary override-term='residential occupancy'>Residential occupancies</defined-term-glossary>"
+      },
+      {
+        "definition": "D - <defined-term-glossary override-term='business and personal services occupancy'>Business and personal services occupancies</defined-term-glossary>"
+      },
+      {
+        "definition": "E - <defined-term-glossary override-term='mercantile occupancy'>Mercantile occupancies</defined-term-glossary>"
+      },
+      {
+        "definition": "F1 - <defined-term-glossary override-term='high-hazard industrial occupancy'>High-hazard industrial occupancies</defined-term-glossary>"
+      },
+      {
+        "definition": "F2 - <defined-term-glossary override-term='medium-hazard industrial occupancy'>Medium-hazard industrial occupancies</defined-term-glossary>"
+      },
+      {
+        "definition": "F3 - <defined-term-glossary override-term='low-hazard industrial occupancy'>Low-hazard industrial occupancies</defined-term-glossary>"
+      }
     ]
   },
   "means of egress": {
@@ -155,12 +185,12 @@
     "cleanDefinition": "Means of egress means a continuous path of travel provided for the escape of persons from any point in a building or contained open space to a separate building, an open public thoroughfare, or an exterior open space protected from fire exposure from the building and having access to an open public thoroughfare. Means of egress includes exits and access to exits."
   },
   "medium-hazard industrial occupancy": {
-    "definition": "<glossary-term>Medium-hazard Industrial Occupancies</glossary-term> <defined-term-glossary override-term='major occupancy' override-tooltip='group f division 2'>(Group F, Division 2)</defined-term-glossary> means an industrial <defined-term-glossary>occupancy</defined-term-glossary> in which the combustible content is more than 50 kg/m² or 1,200 MJ/m² of <defined-term-glossary>floor area</defined-term-glossary> and not classified as a high-hazard industrial occupancy.",
-    "cleanDefinition": "Medium-hazard industrial occupancies means an industrial occupancy in which the combustible content is more than 50 kg/m² or 1,200 MJ/m² of floor area and not classified as a high-hazard industrial occupancy."
+    "definition": "<glossary-term>Medium-hazard industrial occupancy</glossary-term> <defined-term-glossary override-term='major occupancy' override-tooltip='group f division 2'>(Group F, Division 2)</defined-term-glossary> means an <defined-term-glossary>industrial occupancy</defined-term-glossary> in which the combustible content is more than 50 kg/m² or 1,200 MJ/m² of <defined-term-glossary>floor area</defined-term-glossary> and not classified as a high-hazard industrial occupancy.",
+    "cleanDefinition": "Medium-hazard industrial occupancy means an industrial occupancy in which the combustible content is more than 50 kg/m² or 1,200 MJ/m² of floor area and not classified as a high-hazard industrial occupancy."
   },
-  "mercantile occupancies": {
-    "definition": "<glossary-term>Mercantile occupancies</glossary-term> <defined-term-glossary override-term='major occupancy' override-tooltip='group e'>(Group E)</defined-term-glossary> means the occupancy or use of a <defined-term-glossary>building</defined-term-glossary> or part thereof for the displaying or selling of retail goods, wares or merchandise.",
-    "cleanDefinition": "Mercantile occupancies means the occupancy or use of a building or part thereof for the displaying or selling of retail goods, wares or merchandise."
+  "mercantile occupancy": {
+    "definition": "<glossary-term>Mercantile occupancy</glossary-term> <defined-term-glossary override-term='major occupancy' override-tooltip='group e'>(Group E)</defined-term-glossary> means the <defined-term-glossary>occupancy</defined-term-glossary> or use of a <defined-term-glossary>building</defined-term-glossary> or part thereof for the displaying or selling of retail goods, wares or merchandise.",
+    "cleanDefinition": "Mercantile occupancy means the occupancy or use of a building or part thereof for the displaying or selling of retail goods, wares or merchandise."
   },
   "noncombustible": {
     "definition": "<glossary-term>Noncombustible</glossary-term> means that a material meets the acceptance criteria of CAN/ULC-S114, \"Standard Method of Test for Determination of Non-Combustibility in Building Materials.\"",
@@ -178,29 +208,46 @@
     "definition": "<glossary-term>Open-air storey</glossary-term> means a <defined-term-glossary>storey</defined-term-glossary> in which at least 25% of the total area of its perimeter walls is open to the outdoors in a manner that will provide cross-ventilation to the entire <defined-term-glossary>storey</defined-term-glossary>.",
     "cleanDefinition": "Open-air storey means a storey in which at least 25% of the total area of its perimeter walls is open to the outdoors in a manner that will provide cross-ventilation to the entire storey."
   },
-  "partitions": {
-    "definition": "<glossary-term>Partitions</glossary-term> means an interior wall 1 <defined-term-glossary>storey</defined-term-glossary> or part-storey in height that is not <defined-term-glossary>loadbearing</defined-term-glossary>.",
-    "cleanDefinition": "Partitions means an interior wall 1 storey or part-storey in height that is not loadbearing."
+  "partition": {
+    "definition": "<glossary-term>Partition</glossary-term> means an interior wall 1 <defined-term-glossary>storey</defined-term-glossary> or part-<defined-term-glossary>storey</defined-term-glossary> in height that is not <defined-term-glossary>loadbearing</defined-term-glossary>.",
+    "cleanDefinition": "Partition means an interior wall 1 storey or part-storey in height that is not loadbearing."
   },
   "plumbing system": {
     "definition": "<glossary-term>Plumbing system</glossary-term> means a drainage system, a venting system and a water system or parts thereof.",
     "cleanDefinition": "Plumbing system means a drainage system, a venting system and a water system or parts thereof."
   },
   "post-disaster building": {
-    "definition": "<glossary-term>Post-disaster Building</glossary-term> means a <defined-term-glossary>building</defined-term-glossary> that the <defined-term-glossary>authority having jurisdiction</defined-term-glossary> has determined is necessary for the provision of essential services to the general public in the event of a disaster and includes <defined-term-glossary override-term='building'>buildings</defined-term-glossary> meeting these criteria but not limited to: ",
+    "definition": "<glossary-term>Post-disaster building</glossary-term> means a <defined-term-glossary>building</defined-term-glossary> that the <defined-term-glossary>authority having jurisdiction</defined-term-glossary> has determined is necessary for the provision of essential services to the general public in the event of a disaster and includes <defined-term-glossary override-term='building'>buildings</defined-term-glossary> meeting these criteria but not limited to: ",
     "cleanDefinition": "Post-disaster building means a building that the authority having jurisdiction has determined is necessary for the provision of essential services to the general public in the event of a disaster and includes buildings meeting certain criteria",
     "definitionList": [
-      "hospitals, emergency treatment facilities and blood banks",
-      "telephone exchanges",
-      "power generating stations and electrical substations",
-      "control centres for natural gas distribution",
-      "control centres for air, land and marine transportation",
-      "water treatment facilities",
-      "water storage facilities",
-      "water and sewage pumping stations",
-      "sewage treatment facilities",
-      "<defined-term-glossary override-term='building'>buildings</defined-term-glossary> having critical national defence functions",
-      "<defined-term-glossary override-term='building'>buildings</defined-term-glossary> of the following types, unless exempted from this designation by the <defined-term-glossary>authority having jurisdiction</defined-term-glossary>:  Emergency response facilities | emergency response facilities | fire, rescue and police stations and housing for vehicles, aircraft or boats used for such purposes | communications facilities, including radio and television stations. (<pdf-download-link named-dest='A-1.4.1.2.(1) Defined Terms.'>See Note A-1.4.1.2.(1).</pdf-download-link>)"
+      {
+        "definition": "hospitals, emergency treatment facilities and blood banks"
+      },
+      { "definition": "telephone exchanges" },
+      { "definition": "power generating stations and electrical substations" },
+      { "definition": "control centres for natural gas distribution" },
+      {
+        "definition": "control centres for air, land and marine transportation"
+      },
+      { "definition": "water treatment facilities" },
+      { "definition": "water storage facilities" },
+      { "definition": "water and sewage pumping stations" },
+      { "definition": "sewage treatment facilities" },
+      {
+        "definition": "<defined-term-glossary override-term='building'>buildings</defined-term-glossary> having critical national defence functions"
+      },
+      {
+        "definition": "<defined-term-glossary override-term='building'>buildings</defined-term-glossary> of the following types, unless exempted from this designation by the <defined-term-glossary>authority having jurisdiction</defined-term-glossary>:",
+        "definitionList": [
+          { "definition": "emergency response facilities" },
+          {
+            "definition": "fire, rescue and police stations and housing for vehicles, aircraft or boats used for such purposes"
+          },
+          {
+            "definition": "communications facilities, including radio and television stations. (<pdf-download-link named-dest='A-1.4.1.2.(1) Defined Terms.'>See Note A-1.4.1.2.(1).</pdf-download-link>)"
+          }
+        ]
+      }
     ]
   },
   "public corridor": {
@@ -216,12 +263,23 @@
     "cleanDefinition": "Residential occupancy means the occupancy or use of a building or part thereof by persons for whom sleeping accommodation is provided but who are not harboured for the purpose of receiving care or treatment and are not involuntarily detained."
   },
   "secondary suite": {
-    "definition": "<glossary-term>Secondary suite</glossary-term> means a self-contained <defined-term-glossary>dwelling unit</defined-term-glossary> located within a <defined-term-glossary>building</defined-term-glossary> or portion of a <defined-term-glossary>building</defined-term-glossary> • completely separated from other parts of the <defined-term-glossary>building</defined-term-glossary> by a vertical <defined-term-glossary>fire separation</defined-term-glossary> that has a <defined-term-glossary>fire-resistance rating</defined-term-glossary> of not less than 1 h and extends from ground or lowermost assembly continuously through or adjacent to all <defined-term-glossary override-term='storey'>storeys</defined-term-glossary> and spaces including <defined-term-glossary override-term='service space'>service spaces</defined-term-glossary> of the separated portions, • of only <defined-term-glossary>residential occupancy</defined-term-glossary> that contains only one other <defined-term-glossary>dwelling unit</defined-term-glossary> and common spaces, and • where both <defined-term-glossary override-term='dwelling unit'>dwelling units</defined-term-glossary> constitute a single real estate entity. <pdf-download-link named-dest='A-1.4.1.2.(1) Defined Terms.'>See Note A-1.4.1.2.(1) of Division A.</pdf-download-link>",
-    "cleanDefinition": "Secondary suite means a self-contained dwelling unit located within a building or portion of a building completely separated from other parts of the building by a vertical fire separation that has a fire-resistance rating of not less than 1 h and extends from ground or lowermost assembly continuously through or adjacent to all storeys and spaces including service spaces of the separated portions, of only residential occupancy that contains only one other dwelling unit and common spaces, and where both dwelling units constitute a single real estate entity."
+    "definition": "<glossary-term>Secondary suite</glossary-term> means a self-contained <defined-term-glossary>dwelling unit</defined-term-glossary> located within a <defined-term-glossary>building</defined-term-glossary> or portion of a <defined-term-glossary>building</defined-term-glossary>",
+    "cleanDefinition": "Secondary suite means a self-contained dwelling unit located within a building or portion of a building completely separated from other parts of the building by a vertical fire separation that has a fire-resistance rating of not less than 1 h and extends from ground or lowermost assembly continuously through or adjacent to all storeys and spaces including service spaces of the separated portions, of only residential occupancy that contains only one other dwelling unit and common spaces, and where both dwelling units constitute a single real estate entity.",
+    "definitionList": [
+      {
+        "definition": "completely separated from other parts of the <defined-term-glossary>building</defined-term-glossary> by a vertical <defined-term-glossary>fire separation</defined-term-glossary> that has a <defined-term-glossary>fire-resistance rating</defined-term-glossary> of not less than 1 h and extends from ground or lowermost assembly continuously through or adjacent to all <defined-term-glossary override-term='storey'>storeys</defined-term-glossary> and spaces including <defined-term-glossary override-term='service space'>service spaces</defined-term-glossary> of the separated portions,"
+      },
+      {
+        "definition": "of only <defined-term-glossary>residential occupancy</defined-term-glossary> that contains only one other <defined-term-glossary>dwelling unit</defined-term-glossary> and common spaces, and "
+      },
+      {
+        "definition": "where both <defined-term-glossary override-term='dwelling unit'>dwelling units</defined-term-glossary> constitute a single real estate entity. <pdf-download-link named-dest='A-1.4.1.2.(1) Defined Terms.'>See Note A-1.4.1.2.(1) of Division A.</pdf-download-link>"
+      }
+    ]
   },
   "service space": {
-    "definition": "<glossary-term>Service Space</glossary-term> means space provided in a <defined-term-glossary>building</defined-term-glossary> to facilitate or conceal the installation of <defined-term-glossary>building</defined-term-glossary> service facilities such as chutes, ducts, pipes, shafts or wires. ",
-    "cleanDefinition": "Service Space means space provided in a building to facilitate or conceal the installation of building service facilities such as chutes, ducts, pipes, shafts or wires."
+    "definition": "<glossary-term>Service space</glossary-term> means space provided in a <defined-term-glossary>building</defined-term-glossary> to facilitate or conceal the installation of <defined-term-glossary>building</defined-term-glossary> service facilities such as chutes, ducts, pipes, shafts or wires. ",
+    "cleanDefinition": "Service space means space provided in a building to facilitate or conceal the installation of building service facilities such as chutes, ducts, pipes, shafts or wires."
   },
   "sprinklered": {
     "definition": "<glossary-term>Sprinklered</glossary-term> (as applying to a <defined-term-glossary>building</defined-term-glossary> or part thereof) means that the <defined-term-glossary>building</defined-term-glossary> or part thereof is equipped with a system of automatic sprinklers.",
@@ -247,6 +305,10 @@
     "definition": "<glossary-term>Treatment</glossary-term> means the provision of medical or other health-related intervention to persons, where the administration or lack of administration of these interventions may render them incapable of evacuating to a safe location without the assistance of another person. <pdf-download-link named-dest='A-1.4.1.2.(1) Defined Terms.'>See Note A-1.4.1.2.(1).</pdf-download-link>",
     "cleanDefinition": "Treatment means the provision of medical or other health-related intervention to persons, where the administration or lack of administration of these interventions may render them incapable of evacuating to a safe location without the assistance of another person."
   },
+  "treatment occupancy": {
+    "definition": "<glossary-term>Treatment occupancy</glossary-term> means the <defined-term-glossary>occupancy</defined-term-glossary> or use of a <defined-term-glossary>building</defined-term-glossary> or part thereof for the provision of <defined-term-glossary>treatment</defined-term-glossary>, and where overnight accommodation is available to facilitate the <defined-term-glossary>treatment</defined-term-glossary>. <pdf-download-link named-dest='A-1.4.1.2.(1) Defined Terms.'>See Note A-1.4.1.2.(1).</pdf-download-link>",
+    "cleanDefinition": "Treatment occupancy means the occupancy or use of a building or part thereof for the provision of treatment, and where overnight accommodation is available to facilitate the treatment."
+  },
   "unsafe condition": {
     "definition": "<glossary-term>Unsafe condition</glossary-term> means any condition that could cause undue hazard to the life, limb or health of any person authorized or expected to be on or about the premises.",
     "cleanDefinition": "Unsafe condition means any condition that could cause undue hazard to the life, limb or health of any person authorized or expected to be on or about the premises."
@@ -256,77 +318,82 @@
     "cleanDefinition": "Unprotected opening means a doorway, window or opening other than one equipped with a closure having the required fire-protection rating,  or any part of a wall forming part of the exposing building face that has a fire-resistance rating less than that required for the exposing building face."
   },
   "vertical service space": {
-    "definition": "<glossary-term>Vertical service space</glossary-term> means a shaft oriented essentially vertically that is provided in a <defined-term-glossary>building</defined-term-glossary> to facilitate the installation of building services including mechanical, electrical and plumbing installations and facilities such as elevators, refuse chutes and linen chutes.",
+    "definition": "<glossary-term>Vertical service space</glossary-term> means a shaft oriented essentially vertically that is provided in a <defined-term-glossary>building</defined-term-glossary> to facilitate the installation of <defined-term-glossary>building</defined-term-glossary> services including mechanical, electrical and plumbing installations and facilities such as elevators, refuse chutes and linen chutes.",
     "cleanDefinition": "Vertical service space means a shaft oriented essentially vertically that is provided in a building to facilitate the installation of building services including mechanical, electrical and plumbing installations and facilities such as elevators, refuse chutes and linen chutes."
   },
+  "group a": {
+    "definition": "<defined-term-glossary override-term='major occupancy'>(Group A) </defined-term-glossary> <defined-term-glossary>Assembly occupancy</defined-term-glossary>",
+    "cleanDefinition": "Assembly occupancy",
+    "hideTerm": true
+  },
   "group a division 1": {
-    "definition": "<defined-term-glossary override-term='major occupancy'>(Group A Division 1) </defined-term-glossary> defined-term-glossary>Assembly occupancies</defined-term-glossary> intended for the production and viewing of the performing arts.",
+    "definition": "<defined-term-glossary override-term='major occupancy'>(Group A Division 1) </defined-term-glossary> <defined-term-glossary override-term='assembly occupancy'>Assembly occupancies</defined-term-glossary> intended for the production and viewing of the performing arts.",
     "cleanDefinition": "Assembly occupancies intended for the production and viewing of the performing arts.",
     "hideTerm": true
   },
   "group a division 2": {
-    "definition": "<defined-term-glossary override-term='major occupancy'>(Group A Division 2)</defined-term-glossary> defined-term-glossary>Assembly occupancies</defined-term-glossary> not elsewhere classified in Group A.",
+    "definition": "<defined-term-glossary override-term='major occupancy'>(Group A Division 2)</defined-term-glossary> <defined-term-glossary override-term='assembly occupancy'>Assembly occupancies</defined-term-glossary> not elsewhere classified in Group A.",
     "cleanDefinition": "Assembly occupancies not elsewhere classified in Group A.",
     "hideTerm": true
   },
   "group a division 3": {
-    "definition": "<defined-term-glossary override-term='major occupancy'>(Group A Division 3)</defined-term-glossary> defined-term-glossary>Assembly occupancies</defined-term-glossary> of the arena type.",
+    "definition": "<defined-term-glossary override-term='major occupancy'>(Group A Division 3)</defined-term-glossary> <defined-term-glossary override-term='assembly occupancy'>Assembly occupancies</defined-term-glossary> of the arena type.",
     "cleanDefinition": "Assembly occupancies of the arena type.",
     "hideTerm": true
   },
   "group a division 4": {
-    "definition": "<defined-term-glossary override-term='major occupancy'>(Group A Division 4)</defined-term-glossary> <defined-term-glossary>Assembly occupancies</defined-term-glossary> in which the occupants are gathered in the open air.",
+    "definition": "<defined-term-glossary override-term='major occupancy'>(Group A Division 4)</defined-term-glossary> <defined-term-glossary override-term='assembly occupancy'>Assembly occupancies</defined-term-glossary> in which the occupants are gathered in the open air.",
     "cleanDefinition": "Assembly occupancies in which the occupants are gathered in the open air.",
     "hideTerm": true
   },
   "group b division 1": {
-    "definition": "<defined-term-glossary override-term='major occupancy'>(Group B Division 1)</defined-term-glossary>Detention occupancies in which persons are under restraint or are incapable of self-preservation because of security measures not under their control.",
+    "definition": "<defined-term-glossary override-term='major occupancy'>(Group B Division 1)</defined-term-glossary><defined-term-glossary override-term='detention occupancy'>Detention occupancies</defined-term-glossary> in which persons are under restraint or are incapable of self-preservation because of security measures not under their control.",
     "cleanDefinition": "Detention occupancies in which persons are under restraint or are incapable of self-preservation because of security measures not under their control.",
     "hideTerm": true
   },
   "group b division 2": {
     "definition": "<defined-term-glossary override-term='major occupancy'>(Group B Division 2)</defined-term-glossary> <defined-term-glossary>Treatment occupancies</defined-term-glossary>",
-    "cleanDefinition": "Treatment occupancies",
+    "cleanDefinition": "Treatment occupancy",
     "hideTerm": true
   },
   "group b division 3": {
     "definition": "<defined-term-glossary override-term='major occupancy'>(Group B Division 3) Care occupancies</defined-term-glossary>",
-    "cleanDefinition": "Care occupancies",
+    "cleanDefinition": "Care occupancy",
     "hideTerm": true
   },
   "group c": {
     "definition": "<defined-term-glossary override-term='major occupancy'>(Group C) Residential occupancies</defined-term-glossary>",
-    "cleanDefinition": "Residential occupancies",
+    "cleanDefinition": "Residential occupancy",
     "hideTerm": true
   },
   "group d": {
     "definition": "<defined-term-glossary override-term='major occupancy'>(Group D) Business and personal services occupancies</defined-term-glossary>",
-    "cleanDefinition": "Business and personal services occupancies",
+    "cleanDefinition": "Business and personal services occupancy",
     "hideTerm": true
   },
   "group e": {
     "definition": "<defined-term-glossary override-term='major occupancy'>(Group E) Mercantile occupancies</defined-term-glossary>",
-    "cleanDefinition": "Mercantile occupancies",
+    "cleanDefinition": "Mercantile occupancy",
     "hideTerm": true
   },
   "group f": {
     "definition": "<defined-term-glossary override-term='major occupancy'>(Group F) (Low/Medium/High)-hazard industrial occupancies</defined-term-glossary>",
-    "cleanDefinition": "Industrial occupancies",
+    "cleanDefinition": "Industrial occupancy",
     "hideTerm": true
   },
   "group f division 1": {
     "definition": "<defined-term-glossary override-term='major occupancy'>(Group F Division 1) High-hazard industrial occupancies</defined-term-glossary>",
-    "cleanDefinition": "High-hazard industrial occupancies",
+    "cleanDefinition": "High-hazard industrial occupancy",
     "hideTerm": true
   },
   "group f division 2": {
     "definition": "<defined-term-glossary override-term='major occupancy'>(Group F Division 2) Medium-hazard industrial occupancies</defined-term-glossary>",
-    "cleanDefinition": "Medium-hazard industrial occupancies",
+    "cleanDefinition": "Medium-hazard industrial occupancy",
     "hideTerm": true
   },
   "group f division 3": {
     "definition": "<defined-term-glossary override-term='major occupancy'>(Group F Division 3) Low-hazard industrial occupancies</defined-term-glossary>",
-    "cleanDefinition": "Low-hazard industrial occupancies",
+    "cleanDefinition": "Low-hazard industrial occupancy",
     "hideTerm": true
   }
 }
