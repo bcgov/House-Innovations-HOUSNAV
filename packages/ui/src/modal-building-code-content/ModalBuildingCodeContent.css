@@ -80,6 +80,11 @@
     border: none !important;
   }
 
+  .ui-ModalSide--ArticleContent,
+  .--glossary .ui-ModalSide--Article {
+    padding-left: 0;
+  }
+
   /* We should be able to remove this once the margin-top 50px is no longer there */
   .ui-ModalSide--Content {
     margin: 0;
