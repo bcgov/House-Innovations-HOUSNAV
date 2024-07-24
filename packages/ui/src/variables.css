@@ -30,7 +30,7 @@
     0 25.600000381469727px 57.599998474121094px 0 #00000038; /* Primarily used for dialogs */
   --surface-color-primary-button-default: #013366;
   --surface-color-primary-button-hover: #1e5189;
-  --surface-color-primary-button-disabled: #edebe9;
+  --surface-color-primary-button-disabled: #9f9d9c;
   --surface-color-primary-danger-button-default: #ce3e39;
   --surface-color-primary-danger-button-hover: #a2312d;
   --surface-color-primary-danger-button-disabled: #edebe9;
@@ -69,6 +69,7 @@
   --icons-color-primary: #2d2d2d;
   --icons-color-secondary: #474543;
   --icons-color-disabled: #9f9d9c;
+  --icons-color-disabled-accessible: #edebe9;
   --icons-color-link: #255a90;
   --icons-color-info: #053662;
   --icons-color-danger: #ce3e39;
@@ -107,6 +108,7 @@
   --layout-border-radius-medium: 4px;
   --layout-border-radius-large: 6px;
   --layout-border-radius-xlarge: 8px;
+  --layout-border-radius-xxlarge: 12px;
   --typography-font-families-bc-sans: "BC Sans", sans-serif;
   --typography-line-heights-xxxdense: 1.125rem;
   --typography-line-heights-xxdense: 1.313rem;
@@ -171,7 +173,7 @@
   --typography-color-primary: #2d2d2d;
   --typography-color-secondary: #474543;
   --typography-color-placeholder: #9f9d9c;
-  --typography-color-disabled: #9f9d9c;
+  --typography-color-disabled: #565353;
   --typography-color-link: #255a90;
   --typography-color-danger: #ce3e39;
   --typography-color-primary-invert: #ffffff;
@@ -263,13 +265,14 @@
   --step-tracker-tablet-up-display: none;
   --modal-side-number-padding: 8%;
   --modal-table-image-caption-margin-negative: -0.5rem;
-  --print-content-table-th-td-border: 1px solid #000;
+  --print-content-table-th-td-border: 2px solid #000;
   --pdf-result-download-image-border-radius: 8px 0px 0px 8px;
   --pdf-result-download-container-border: 1px solid
     var(--surface-color-border-default);
   --pdf-result-download-container-max-width: 650px;
   --pdf-result-download-container-image-border: 1px solid var(#00000000);
   --pdf-result-download-container-image-container: #000000;
+  --confirmation-modal-max-width: 500px;
 }
 
 /* TABLET - 608px */

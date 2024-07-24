@@ -79,6 +79,10 @@
   margin: var(--layout-margin-small);
 }
 
+.ui-PdfResultDownload-button:hover {
+  background-color: var(--surface-color-primary-button-hover);
+}
+
 .ui-PdfResultDownload-aside {
   display: flex;
   flex-direction: column;

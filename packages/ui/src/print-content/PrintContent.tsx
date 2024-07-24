@@ -209,9 +209,9 @@ export default function PrintContent({ contentType }: PrintContentProps) {
               <thead>
                 <tr>
                   <th colSpan={2}>
-                    <h5 className="ui-printContent--sectionTitle">
+                    <h4 className="ui-printContent--sectionTitle">
                       {group.sectionTitle}
-                    </h5>
+                    </h4>
                   </th>
                 </tr>
               </thead>
@@ -226,9 +226,9 @@ export default function PrintContent({ contentType }: PrintContentProps) {
                   <thead>
                     <tr>
                       <th className="ui-printContent--questionColumn">
-                        <h5 className="ui-printContent--sectionTitle">
+                        <h4 className="ui-printContent--sectionTitle">
                           {group.sectionTitle}
-                        </h5>
+                        </h4>
                       </th>
                     </tr>
                   </thead>
