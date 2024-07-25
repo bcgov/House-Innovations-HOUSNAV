@@ -34,6 +34,7 @@ export default function DefinedTerm({
 
   const tooltipButton = (
     <Tooltip
+      tooltipLabel={`${term} select to open glossary modal`}
       tooltipContent={TooltipGlossaryData.get(tooltipTerm.toLocaleLowerCase())}
       triggerContent={button}
     ></Tooltip>

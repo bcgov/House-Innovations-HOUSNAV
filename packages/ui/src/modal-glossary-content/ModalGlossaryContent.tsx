@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import {
   GlossaryType,
   GlossaryContentType,
@@ -44,9 +44,14 @@ const GlossaryContent: React.FC<GlossaryContentProps> = ({
   sectionRefs,
   setFocusSection,
 }) => {
+  const liveRegionRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (highlightedSection && sectionRefs.current[highlightedSection]) {
       sectionRefs.current[highlightedSection]?.focus();
+    }
+    if (highlightedSection && liveRegionRef.current) {
+      liveRegionRef.current.innerText = `Scroll or tab to navigate to new terms.`;
     }
   }, [highlightedSection]);
 
@@ -66,7 +71,7 @@ const GlossaryContent: React.FC<GlossaryContentProps> = ({
             <Button
               variant="secondary"
               onPress={() => handleDownload()}
-              aria-label={`Download Building Code Defined Terms`}
+              aria-label={`Download Building Code Section 1.4.1.2 Defined Terms`}
               className="ui-ModalSide-pdfButton"
             >
               <Icon type="download" />
@@ -74,6 +79,11 @@ const GlossaryContent: React.FC<GlossaryContentProps> = ({
             </Button>
           </Heading>
         </header>
+        <span
+          ref={liveRegionRef}
+          aria-live="assertive"
+          className="ui-ModalSide--LiveRegion"
+        ></span>
         {modalData.map(
           (data, index) =>
             !data.content?.hideTerm && (
