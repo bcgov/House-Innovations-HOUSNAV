@@ -5,6 +5,10 @@
   overflow: hidden;
 }
 
+.ui-printContent--printContainer sup {
+  line-height: 0;
+}
+
 .ui-printContent--table th,
 .ui-printContent--table td {
   border: var(--print-content-table-th-td-border);
