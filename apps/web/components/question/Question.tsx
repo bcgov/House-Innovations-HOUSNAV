@@ -22,7 +22,10 @@ import QuestionMultiChoiceMultiple from "./question-types/QuestionMultiChoiceMul
 import QuestionMissing from "./question-types/QuestionMissing";
 import QuestionNumberFloat from "./question-types/QuestionNumberFloat";
 import { useWalkthroughState } from "../../stores/WalkthroughRootStore";
-import { parseStringToComponents } from "../../utils/string";
+import {
+  getStringFromComponents,
+  parseStringToComponents,
+} from "../../utils/string";
 import "./Question.css";
 
 // helper function to get the correct question component
@@ -47,21 +50,33 @@ const Question = observer(() => {
 
   // get question component
   const component = getQuestionComponent(currentQuestion.walkthroughItemType);
+  const questionText = parseStringToComponents(
+    currentQuestion[PropertyNameQuestionText],
+  );
+  const questionSubtext = currentQuestion.questionSubtext
+    ? parseStringToComponents(currentQuestion.questionSubtext)
+    : null;
   return (
     <div
       className="u-container-walkthrough p-hide"
       data-testid={TESTID_QUESTION}
+      aria-label={getStringFromComponents(questionText)}
+      tabIndex={0}
     >
       <h1
         className="web-Question--Title"
         id={ID_QUESTION_TEXT}
         data-testid={TESTID_QUESTION_TITLE}
       >
-        {parseStringToComponents(currentQuestion[PropertyNameQuestionText])}
+        {questionText}
       </h1>
-      {currentQuestion.questionSubtext && (
-        <div className="web-Question--Subtext">
-          {parseStringToComponents(currentQuestion.questionSubtext)}
+      {questionSubtext && (
+        <div
+          className="web-Question--Subtext"
+          aria-label={getStringFromComponents(questionSubtext)}
+          tabIndex={0}
+        >
+          {questionSubtext}
         </div>
       )}
       {currentQuestion.questionCodeReference && (
@@ -73,7 +88,10 @@ const Question = observer(() => {
           <ModalSide
             type={ModalSideDataEnum.BUILDING_CODE}
             triggerContent={
-              <Button variant="code">
+              <Button
+                variant="code"
+                aria-label={`${currentQuestion.questionCodeReference.displayString} Select to open building code reference modal.`}
+              >
                 {currentQuestion.questionCodeReference.displayString}
               </Button>
             }

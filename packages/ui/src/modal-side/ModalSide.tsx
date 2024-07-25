@@ -78,12 +78,10 @@ export default function ModalSide({
           <Dialog className="ui-ModalSide--AriaDialog">
             {({ close }) => (
               <>
-                <header className="ui-ModalSide--Header">
-                  <ButtonModalClose
-                    label={`Close ${type} popup modal and return to walkthrough`}
-                    onPress={close}
-                  />
-                </header>
+                <ButtonModalClose
+                  label={`Close ${type} popup modal and return to walkthrough`}
+                  onPress={close}
+                />
                 <div className="ui-ModalSide--Content">
                   {type === ModalSideDataEnum.GLOSSARY && (
                     <GlossaryContent

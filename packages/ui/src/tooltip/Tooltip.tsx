@@ -11,11 +11,13 @@ import Image from "@repo/ui/image";
 import "./Tooltip.css";
 
 export interface TooltipProps extends ReactAriaTooltipProps {
+  tooltipLabel: string;
   tooltipContent: ReactNode;
   triggerContent: ReactNode;
 }
 
 export default function Tooltip({
+  tooltipLabel,
   tooltipContent,
   triggerContent,
   ...props
@@ -27,7 +29,8 @@ export default function Tooltip({
         {...props}
         className="ui-Tooltip--Aria"
         placement="bottom"
-        aria-live="polite"
+        aria-live="assertive"
+        aria-label={tooltipLabel}
       >
         <Image
           src="tooltip-triangle.svg"

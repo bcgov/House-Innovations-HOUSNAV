@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import {
   ArticleType,
   SubClauseType,
@@ -38,6 +38,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
   sectionRefs = { current: {} },
   setFocusSection,
 }) => {
+  const liveRegionRef = useRef<HTMLDivElement>(null);
   const [printReference, setPrintReference] = useState<string | null>(null);
 
   useEffect(() => {
@@ -49,6 +50,9 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
   useEffect(() => {
     if (highlightedSection && sectionRefs.current[highlightedSection]) {
       sectionRefs.current[highlightedSection]?.focus();
+    }
+    if (highlightedSection && liveRegionRef.current) {
+      liveRegionRef.current.innerText = `Scroll or tab to navigate to new building code references.`;
     }
   }, [highlightedSection]);
 
@@ -344,6 +348,11 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
 
   return (
     <>
+      <span
+        ref={liveRegionRef}
+        aria-live="assertive"
+        className="ui-ModalSide--LiveRegion"
+      ></span>
       {!printData && modalData && renderParts(modalData)}
       {printData && renderPrintData()}
       {printReference && renderBuildingCodePdf()}
