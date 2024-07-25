@@ -22,3 +22,10 @@
   width: 25px;
   height: 12px;
 }
+
+.ui-Tooltip--HiddenLabel {
+  position: absolute;
+  overflow: hidden;
+  width: 0px;
+  height: 0px;
+}

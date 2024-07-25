@@ -20,6 +20,13 @@
   display: inline;
 }
 
+.ui-ModalSide--LiveRegion {
+  position: absolute;
+  overflow: hidden;
+  width: 0px;
+  height: 0px;
+}
+
 /* TABLET - 608px */
 @media (min-width: 38rem) {
   .--glossary .ui-ModalSide--Article {

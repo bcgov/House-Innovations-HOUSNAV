@@ -115,6 +115,7 @@ export const parseStringToComponents = (
           case definedTermModal:
             return (
               <Tooltip
+                tooltipLabel={`Select to focus on ${tooltipTerm}`}
                 tooltipContent={TooltipGlossaryData.get(tooltipTerm)}
                 triggerContent={
                   <Button
