@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import {
   GlossaryType,
   GlossaryContentType,
@@ -44,6 +44,12 @@ const GlossaryContent: React.FC<GlossaryContentProps> = ({
   sectionRefs,
   setFocusSection,
 }) => {
+  useEffect(() => {
+    if (highlightedSection && sectionRefs.current[highlightedSection]) {
+      sectionRefs.current[highlightedSection]?.focus();
+    }
+  }, [highlightedSection]);
+
   const handleDownload = () => {
     window.print();
   };
@@ -81,6 +87,7 @@ const GlossaryContent: React.FC<GlossaryContentProps> = ({
                     ? "ui-ModalSide--SectionHighlighted"
                     : ""
                 }`}
+                tabIndex={0}
               >
                 <div className="ui-ModalSide--ArticleContentWrapper">
                   {parseStringToComponents(

@@ -46,6 +46,12 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
     }
   }, [printReference]);
 
+  useEffect(() => {
+    if (highlightedSection && sectionRefs.current[highlightedSection]) {
+      sectionRefs.current[highlightedSection]?.focus();
+    }
+  }, [highlightedSection]);
+
   const handleDownload = (numberReference: string) => {
     if (printReference == numberReference) {
       window.print();
@@ -80,6 +86,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
                 ? "ui-ModalSide--SectionHighlighted"
                 : ""
             }`}
+            tabIndex={0}
           >
             <span>
               {parseStringToComponents(data.description, setFocusSection)}
@@ -105,6 +112,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
                 ? "ui-ModalSide--SectionHighlighted"
                 : ""
             }`}
+            tabIndex={0}
           >
             {/* Designs do not show this high level of headings. */}
             {data.sections && renderSections(data.sections)}
@@ -128,6 +136,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
                 ? "ui-ModalSide--SectionHighlighted"
                 : ""
             }`}
+            tabIndex={0}
           >
             {/* Designs do not show this high level of headings. */}
             {data.subsections && renderSubSections(data.subsections)}
@@ -151,6 +160,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
                 ? "ui-ModalSide--SectionHighlighted"
                 : ""
             }`}
+            tabIndex={0}
           >
             <header className="ui-ModalSide--SubsectionHeaderLine">
               <Heading className="ui-ModalSide--SubsectionHeader">
@@ -192,6 +202,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
                 ? "ui-ModalSide--SectionHighlighted"
                 : ""
             }`}
+            tabIndex={0}
           >
             <header className="ui-ModalSide--ArticleHeaderLine">
               <Heading className="ui-ModalSide--ArticleHeader">
@@ -224,6 +235,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
                     ? "ui-ModalSide--SectionHighlighted"
                     : ""
                 }`}
+                tabIndex={0}
               >
                 {sentence.description && (
                   <span>
@@ -256,6 +268,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
               ? "ui-ModalSide--SectionHighlighted"
               : ""
           }`}
+          tabIndex={0}
         >
           <figure className="ui-ModalBuildingCodeContent--Figure">
             <figcaption>
