@@ -135,8 +135,10 @@ export default function PrintContent({ contentType }: PrintContentProps) {
   ) => {
     return group.questions.map((sectionQuestions, sectionIndex) => {
       return sectionQuestions.questions.map((item, index) => {
-        const parsedQuestion = getStringFromComponents(
-          parseStringToComponents(item.question),
+        const parsedQuestion = parseStringToComponents(
+          item.question,
+          undefined,
+          true,
         );
         const parsedAnswer = getStringFromComponents(
           parseStringToComponents(item.answer),
