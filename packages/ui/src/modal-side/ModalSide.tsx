@@ -79,7 +79,10 @@ export default function ModalSide({
             {({ close }) => (
               <>
                 <header className="ui-ModalSide--Header">
-                  <ButtonModalClose label="Close modal" onPress={close} />
+                  <ButtonModalClose
+                    label={`Close ${type} popup modal and return to walkthrough`}
+                    onPress={close}
+                  />
                 </header>
                 <div className="ui-ModalSide--Content">
                   {type === ModalSideDataEnum.GLOSSARY && (
