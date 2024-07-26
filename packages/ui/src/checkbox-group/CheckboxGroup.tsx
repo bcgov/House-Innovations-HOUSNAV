@@ -91,6 +91,12 @@ export default function CheckboxGroup({
           {label || name}
         </Label>
       )}
+      <InputError
+        data-testid={`${TESTID_CHECKBOX_GROUP_ERROR}-${testIdNamespace}`}
+        className={"ui-CheckboxGroup--Error"}
+      >
+        {errorMessageText}
+      </InputError>
       {options.map((option) => (
         <ReactAriaCheckbox
           className={"ui-Checkbox"}
@@ -107,13 +113,6 @@ export default function CheckboxGroup({
           <span>{parseStringToComponents(option.label)}</span>
         </ReactAriaCheckbox>
       ))}
-      {/* TODO - is this data-testid applied? */}
-      <InputError
-        data-testid={`${TESTID_CHECKBOX_GROUP_ERROR}-${testIdNamespace}`}
-        className={"ui-CheckboxGroup--Error"}
-      >
-        {errorMessageText}
-      </InputError>
     </ReactAriaCheckboxGroup>
   );
 }
