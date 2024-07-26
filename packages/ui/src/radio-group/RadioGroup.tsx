@@ -89,6 +89,12 @@ export default function RadioGroup({
           {label || name}
         </Label>
       )}
+      <InputError
+        data-testid={`${TESTID_RADIO_GROUP_ERROR}-${testIdNamespace}`}
+        className={"ui-RadioGroup--Error"}
+      >
+        {errorMessageText}
+      </InputError>
       {options.map((option) => (
         <ReactAriaRadio
           className={"ui-Radio"}
@@ -105,13 +111,6 @@ export default function RadioGroup({
           <span>{parseStringToComponents(option.label)}</span>
         </ReactAriaRadio>
       ))}
-      {/* TODO - is this data-testid applied? */}
-      <InputError
-        data-testid={`${TESTID_RADIO_GROUP_ERROR}-${testIdNamespace}`}
-        className={"ui-RadioGroup--Error"}
-      >
-        {errorMessageText}
-      </InputError>
     </ReactAriaRadioGroup>
   );
 }
