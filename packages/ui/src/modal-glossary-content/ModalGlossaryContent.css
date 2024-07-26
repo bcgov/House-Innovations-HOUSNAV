@@ -1,10 +1,11 @@
-.--glossary .ui-ModalSide--ArticleContentWrapper {
-  padding-inline: var(--layout-padding-medium);
-}
-
 .--glossary .ui-ModalSide--Article {
   margin-top: var(--layout-margin-medium);
-  padding-bottom: 0;
+  padding-inline: var(--layout-padding-medium);
+  padding-block: var(--layout-padding-small);
+}
+
+.--glossary .ui-ModalSide--Subsection > ol {
+  list-style: none;
 }
 
 .ui-ModalSide--List {
@@ -23,13 +24,15 @@
 .ui-ModalSide--LiveRegion {
   position: absolute;
   overflow: hidden;
-  width: 0px;
-  height: 0px;
+  width: 0;
+  height: 0;
 }
 
 /* TABLET - 608px */
 @media (min-width: 38rem) {
   .--glossary .ui-ModalSide--Article {
-    padding-left: calc(var(--modal-bc-indent) + var(--layout-margin-large));
+    padding-left: calc(
+      var(--modal-bc-indent) + var(--layout-margin-xxlarge) + 0.2rem
+    );
   }
 }
