@@ -106,7 +106,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
     return (
       (!!parts &&
         parts.map((data, index) => (
-          <div
+          <ol
             key={index}
             ref={(el) => {
               sectionRefs.current[data.numberReference] = el;
@@ -120,7 +120,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
           >
             {/* Designs do not show this high level of headings. */}
             {data.sections && renderSections(data.sections)}
-          </div>
+          </ol>
         ))) ??
       null
     );
@@ -130,21 +130,10 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
     return (
       (!!sections &&
         sections.map((data, index) => (
-          <div
-            key={index}
-            ref={(el) => {
-              sectionRefs.current[data.numberReference] = el;
-            }}
-            className={`${
-              highlightedSection === data.numberReference
-                ? "ui-ModalSide--SectionHighlighted"
-                : ""
-            }`}
-            tabIndex={0}
-          >
+          <li key={index}>
             {/* Designs do not show this high level of headings. */}
-            {data.subsections && renderSubSections(data.subsections)}
-          </div>
+            <ol>{data.subsections && renderSubSections(data.subsections)}</ol>
+          </li>
         ))) ??
       null
     );
@@ -154,7 +143,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
     return (
       (!!subSections &&
         subSections.map((data, index) => (
-          <article
+          <li
             key={index}
             ref={(el) => {
               sectionRefs.current[data.numberReference] = el;
@@ -166,27 +155,25 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
             }`}
             tabIndex={0}
           >
-            <header className="ui-ModalSide--SubsectionHeaderLine">
-              <Heading className="ui-ModalSide--SubsectionHeader">
-                <span className="ui-ModalSide--SubsectionNumber">
-                  {stripReferencePrefix(data.numberReference)}{" "}
-                </span>
-                {data.title}
-                {!printData && (
-                  <Button
-                    variant="secondary"
-                    onPress={() => handleDownload(data.numberReference)}
-                    aria-label={`Download Building Code Subsection ${stripReferencePrefix(data.numberReference)} ${data.title}`}
-                    className="ui-ModalSide-pdfButton"
-                  >
-                    <Icon type="download" />
-                    <span>PDF</span>
-                  </Button>
-                )}
-              </Heading>
-            </header>
-            {data.articles && renderArticles(data.articles)}
-          </article>
+            <Heading className="ui-ModalSide--SubsectionHeader">
+              <span className="ui-ModalSide--SubsectionNumber">
+                {stripReferencePrefix(data.numberReference)}{" "}
+              </span>
+              {data.title}
+              {!printData && (
+                <Button
+                  variant="secondary"
+                  onPress={() => handleDownload(data.numberReference)}
+                  aria-label={`Download Building Code Subsection ${stripReferencePrefix(data.numberReference)} ${data.title}`}
+                  className="ui-ModalSide-pdfButton"
+                >
+                  <Icon type="download" />
+                  <span>PDF</span>
+                </Button>
+              )}
+            </Heading>
+            <ol>{data.articles && renderArticles(data.articles)}</ol>
+          </li>
         ))) ??
       null
     );
@@ -196,7 +183,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
     return (
       (!!articles &&
         articles.map((data, index) => (
-          <article
+          <li
             key={index}
             ref={(el) => {
               sectionRefs.current[data.numberReference] = el;
@@ -208,16 +195,14 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
             }`}
             tabIndex={0}
           >
-            <header className="ui-ModalSide--ArticleHeaderLine">
-              <Heading className="ui-ModalSide--ArticleHeader">
-                <span className="ui-ModalSide--ArticleNumber">
-                  {stripReferencePrefix(data.numberReference)}{" "}
-                </span>
-                {data.title}
-              </Heading>
-            </header>
-            {data.sentences && renderSentences(data.sentences)}
-          </article>
+            <Heading className="ui-ModalSide--ArticleHeader">
+              <span className="ui-ModalSide--ArticleNumber">
+                {stripReferencePrefix(data.numberReference)}{" "}
+              </span>
+              {data.title}
+            </Heading>
+            <ol>{data.sentences && renderSentences(data.sentences)}</ol>
+          </li>
         ))) ??
       null
     );
@@ -225,37 +210,35 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
 
   const renderSentences = (sentences: SentenceType[]) => {
     return (
-      <div className="ui-ModalSide--ArticleContentWrapper">
-        <div className="ui-ModalSide--ArticleContent">
-          <ol className="ui-ModalSide--Sentences">
-            {sentences.map((sentence, index) => (
-              <li
-                key={index}
-                ref={(el) => {
-                  sectionRefs.current[sentence.numberReference] = el;
-                }}
-                className={`${
-                  highlightedSection === sentence.numberReference
-                    ? "ui-ModalSide--SectionHighlighted"
-                    : ""
-                }`}
-                tabIndex={0}
-              >
-                {sentence.description && (
-                  <span>
-                    {parseStringToComponents(
-                      sentence.description,
-                      setFocusSection,
-                    )}
-                  </span>
-                )}
-                {sentence.clauses && renderClauses(sentence.clauses)}
-                {sentence.image && renderTableImage(sentence.image)}
-              </li>
-            ))}
-          </ol>
-        </div>
-      </div>
+      <li className="ui-ModalSide--ArticleContent">
+        <ol className="ui-ModalSide--Sentences">
+          {sentences.map((sentence, index) => (
+            <li
+              key={index}
+              ref={(el) => {
+                sectionRefs.current[sentence.numberReference] = el;
+              }}
+              className={`${
+                highlightedSection === sentence.numberReference
+                  ? "ui-ModalSide--SectionHighlighted"
+                  : ""
+              }`}
+              tabIndex={0}
+            >
+              {sentence.description && (
+                <span>
+                  {parseStringToComponents(
+                    sentence.description,
+                    setFocusSection,
+                  )}
+                </span>
+              )}
+              {sentence.clauses && renderClauses(sentence.clauses)}
+              {sentence.image && renderTableImage(sentence.image)}
+            </li>
+          ))}
+        </ol>
+      </li>
     );
   };
 

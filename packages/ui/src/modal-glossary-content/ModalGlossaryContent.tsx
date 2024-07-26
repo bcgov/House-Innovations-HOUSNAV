@@ -27,12 +27,10 @@ function renderDefinitionList(
   return (
     <ul className="ui-ModalSide--List">
       {definitionList.map((item, index) => (
-        <>
-          <li key={index}>
-            {parseStringToComponents(item.definition, customHandler)}
-          </li>
+        <li key={index}>
+          {parseStringToComponents(item.definition, customHandler)}
           {item.definitionList && renderDefinitionList(item.definitionList)}
-        </>
+        </li>
       ))}
     </ul>
   );
@@ -84,22 +82,22 @@ const GlossaryContent: React.FC<GlossaryContentProps> = ({
           aria-live="assertive"
           className="ui-ModalSide--LiveRegion"
         ></span>
-        {modalData.map(
-          (data, index) =>
-            !data.content?.hideTerm && (
-              <article
-                key={index}
-                ref={(el) => {
-                  sectionRefs.current[data.reference] = el;
-                }}
-                className={`ui-ModalSide--Article ${
-                  highlightedSection === data.reference
-                    ? "ui-ModalSide--SectionHighlighted"
-                    : ""
-                }`}
-                tabIndex={0}
-              >
-                <div className="ui-ModalSide--ArticleContentWrapper">
+        <ol>
+          {modalData.map(
+            (data, index) =>
+              !data.content?.hideTerm && (
+                <li
+                  key={index}
+                  ref={(el) => {
+                    sectionRefs.current[data.reference] = el;
+                  }}
+                  className={`ui-ModalSide--Article ${
+                    highlightedSection === data.reference
+                      ? "ui-ModalSide--SectionHighlighted"
+                      : ""
+                  }`}
+                  tabIndex={0}
+                >
                   {parseStringToComponents(
                     (data.content as GlossaryContentType).definition,
                     setFocusSection,
@@ -109,10 +107,10 @@ const GlossaryContent: React.FC<GlossaryContentProps> = ({
                       data.content.definitionList,
                       setFocusSection,
                     )}
-                </div>
-              </article>
-            ),
-        )}
+                </li>
+              ),
+          )}
+        </ol>
       </article>
     </div>
   );

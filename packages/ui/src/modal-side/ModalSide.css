@@ -41,7 +41,6 @@
 .ui-ModalSide--Modal .ui-ButtonModalClose.--icon {
   z-index: 1;
   position: fixed;
-  top: 0;
   right: var(--layout-margin-large);
   top: var(--layout-margin-medium);
 }
@@ -54,9 +53,14 @@
   height: 100vh;
 }
 
+.ui-ModalSide--Parts ol {
+  list-style: none;
+}
+
 .ui-ModalSide--Parts {
   padding: var(--modal-bc-padding);
   margin-top: 80px;
+  list-style: none;
 }
 
 .ui-ModalSide--Parts sup {
@@ -99,12 +103,8 @@
   margin-top: var(--layout-margin-large);
 }
 
-.ui-ModalSide--ArticleContentWrapper {
-  padding: var(--layout-padding-small);
-  margin: 0;
-}
-
 .ui-ModalSide--ArticleContent {
+  padding: var(--layout-padding-small);
   font: var(--typography-regular-body);
 }
 
@@ -247,11 +247,11 @@
     );
     margin-left: auto;
   }
-  .ui-ModalSide--ArticleContentWrapper {
-    padding-left: var(--layout-margin-large);
-  }
   .ui-ModalSide--ArticleContent {
-    padding-left: calc(var(--modal-bc-indent) + var(--layout-margin-small));
+    padding-left: calc(
+      var(--modal-bc-indent) + var(--layout-margin-small) +
+        var(--layout-margin-large)
+    );
   }
   .ui-ModalSide--Sentences > li {
     margin-left: calc(var(--layout-margin-small) * -1);
