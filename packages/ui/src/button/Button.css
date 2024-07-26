@@ -14,9 +14,11 @@
   transition: var(--transition-link-background-color),
     var(--transition-link-color);
 }
-.ui-Button[data-disabled] {
-  cursor: not-allowed;
+.ui-Button[aria-disabled] {
+  pointer-events: none;
 }
+
+.ui-Button[aria-disabled]:focus,
 .ui-Button[data-focus-visible] {
   outline: var(--layout-border-width-medium) solid
     var(--surface-color-border-active);
@@ -54,9 +56,9 @@
   background: var(--surface-color-primary-button-default);
   color: var(--icons-color-primary-invert);
 }
-.ui-Button.--primary[data-disabled] {
+.ui-Button.--primary[aria-disabled] {
   background-color: var(--surface-color-primary-button-disabled);
-  color: var(--typography-color-disabled-accessible);
+  color: var(--typography-color-disabled);
 }
 .ui-Button.--primary[data-hovered] {
   background-color: var(--surface-color-primary-button-hover);
@@ -72,7 +74,7 @@
     var(--surface-color-border-dark);
   color: var(--typography-color-primary);
 }
-.ui-Button.--secondary[data-disabled] {
+.ui-Button.--secondary[aria-disabled] {
   background-color: var(--surface-color-secondary-button-disabled);
   border-color: var(--surface-color-border-default);
   color: var(--typography-color-disabled);
@@ -89,7 +91,7 @@
   background-color: var(--surface-color-tertiary-button-default);
   color: var(--theme-primary-blue);
 }
-.ui-Button.--tertiary[data-disabled] {
+.ui-Button.--tertiary[aria-disabled] {
   color: var(--typography-color-disabled);
 }
 .ui-Button.--tertiary[data-hovered] {
@@ -107,7 +109,7 @@
   text-underline-offset: var(--link-underline-offset);
   text-decoration: underline;
 }
-.ui-Button.--link[data-disabled] {
+.ui-Button.--link[aria-disabled] {
   color: var(--typography-color-disabled);
 }
 .ui-Button.--link[data-hovered] {
@@ -127,7 +129,7 @@
   gap: var(--layout-padding-xxsmall);
   padding: var(--layout-padding-xxsmall) var(--layout-padding-xsmall);
 }
-.ui-Button.--code[data-disabled] {
+.ui-Button.--code[aria-disabled] {
   color: var(--typography-color-disabled);
 }
 .ui-Button.--code[data-hovered] {

@@ -30,7 +30,7 @@
     0 25.600000381469727px 57.599998474121094px 0 #00000038; /* Primarily used for dialogs */
   --surface-color-primary-button-default: #013366;
   --surface-color-primary-button-hover: #1e5189;
-  --surface-color-primary-button-disabled: #9f9d9c;
+  --surface-color-primary-button-disabled: #edebe9;
   --surface-color-primary-danger-button-default: #ce3e39;
   --surface-color-primary-danger-button-hover: #a2312d;
   --surface-color-primary-danger-button-disabled: #edebe9;
@@ -175,7 +175,7 @@
   --typography-color-primary: #2d2d2d;
   --typography-color-secondary: #474543;
   --typography-color-placeholder: #9f9d9c;
-  --typography-color-disabled: #565353;
+  --typography-color-disabled: #6d6969;
   --typography-color-link: #255a90;
   --typography-color-danger: #ce3e39;
   --typography-color-primary-invert: #ffffff;
