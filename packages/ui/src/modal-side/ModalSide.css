@@ -38,13 +38,10 @@
   animation: modal-slide-out 300ms reverse ease-in;
 }
 
-.ui-ModalSide--Header {
+.ui-ModalSide--Modal .ui-ButtonModalClose.--icon {
   z-index: 1;
   position: fixed;
   top: 0;
-}
-
-.ui-ModalSide--Header .ui-ButtonModalClose.--icon {
   right: var(--layout-margin-large);
   top: var(--layout-margin-medium);
 }
