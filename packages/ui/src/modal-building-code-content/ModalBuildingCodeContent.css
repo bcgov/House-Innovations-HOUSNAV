@@ -44,6 +44,10 @@
   page-break-inside: auto;
 }
 
+.ui-ModalBuildingCodeContent--modalTable li {
+  list-style: none;
+}
+
 .ui-ModalBuildingCodeContent--modalTable {
   width: 100%;
   height: 100%;
@@ -56,6 +60,7 @@
   /* Hide modal classes not needed for print */
   .ui-ModalSide--Parts:not(.--glossary),
   .ui-ModalSide--Header,
+  .ui-ButtonModalClose,
   .ui-ModalSide-pdfButton {
     display: none !important;
   }
@@ -98,5 +103,11 @@
     border-radius: 0;
     border: 0;
     background: none;
+  }
+
+  .ui-ModalBuildingCodeContent--printContainer .ui-ModalSide--SubsectionHeader,
+  .ui-ModalBuildingCodeContent--printContainer .ui-ModalSide--ArticleHeader {
+    padding: 0;
+    margin: 0;
   }
 }
