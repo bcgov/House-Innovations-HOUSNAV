@@ -155,7 +155,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
             }`}
             tabIndex={0}
           >
-            <Heading className="ui-ModalSide--SubsectionHeader">
+            <Heading level={2} className="ui-ModalSide--SubsectionHeader">
               <span className="ui-ModalSide--SubsectionNumber">
                 {stripReferencePrefix(data.numberReference)}{" "}
               </span>
