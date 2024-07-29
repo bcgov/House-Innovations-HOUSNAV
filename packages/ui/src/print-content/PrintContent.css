@@ -25,6 +25,10 @@
   page-break-inside: auto;
 }
 
+.ui-printContent--table li {
+  list-style: none;
+}
+
 .ui-printContent--table {
   width: 99%; /* Ensure table width doesn't cut off border */
   border-collapse: collapse;
