@@ -1,6 +1,6 @@
 "use client";
 // 3rd party
-import { FormEvent, JSX, useCallback, useEffect, useState } from "react";
+import { FormEvent, JSX, useCallback } from "react";
 import { Form } from "react-aria-components";
 import { observer } from "mobx-react-lite";
 // repo
@@ -13,7 +13,6 @@ import Result from "../result/Result";
 import StepTracker from "../step-tracker/StepTracker";
 import { useWalkthroughState } from "../../stores/WalkthroughRootStore";
 import "./Walkthrough.css";
-import ConfirmationModal from "@repo/ui/confirmation-modal";
 
 const Walkthrough = observer((): JSX.Element => {
   // get current question from store as variable type question
@@ -25,36 +24,6 @@ const Walkthrough = observer((): JSX.Element => {
     handleStateError,
     answerStore: { currentAnswerValue },
   } = useWalkthroughState();
-
-  const [showModal, setShowModal] = useState(false);
-  const [blockBackNavigation, setBlockBackNavigation] = useState(true);
-
-  useEffect(() => {
-    // Handle Refresh
-    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
-      if (!blockBackNavigation) {
-        event.preventDefault();
-        setBlockBackNavigation(false);
-        window.history.pushState(null, "", window.location.href);
-      }
-    };
-
-    // Handle Back Button
-    const handlePopState = () => {
-      setShowModal(true);
-    };
-
-    // Push initial state to manage popstate events
-    window.history.pushState(null, "", window.location.href);
-
-    window.addEventListener("beforeunload", handleBeforeUnload);
-    window.addEventListener("popstate", handlePopState);
-
-    return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-      window.removeEventListener("popstate", handlePopState);
-    };
-  }, [blockBackNavigation, showModal]);
 
   const handleQuestionSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
@@ -78,19 +47,6 @@ const Walkthrough = observer((): JSX.Element => {
       handleStateError,
     ],
   );
-
-  const handleConfirmationCancel = () => {
-    setShowModal(false);
-  };
-
-  const handleConfirmationConfirm = () => {
-    setShowModal(false);
-    if (blockBackNavigation) {
-      window.location.href = "/";
-    } else {
-      window.history.go(-2);
-    }
-  };
 
   return (
     <>
@@ -117,12 +73,6 @@ const Walkthrough = observer((): JSX.Element => {
           <StepTracker />
         </section>
       </div>
-      {showModal && (
-        <ConfirmationModal
-          onConfirm={handleConfirmationConfirm}
-          onCancel={handleConfirmationCancel}
-        />
-      )}
     </>
   );
 });
