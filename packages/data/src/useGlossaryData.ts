@@ -14,6 +14,7 @@ export type ImageModalType = {
   imageReference: string;
   imageLabel: string;
   imageNotes?: string;
+  imageTable?: string;
 };
 
 export type PartType = {
