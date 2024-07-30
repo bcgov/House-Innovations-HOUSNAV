@@ -276,7 +276,9 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
               height={600}
               loading="eager" // Will not lazy load images in Safari
               className="ui-ModalBuildingCodeContent-ImageResponsive"
+              aria-hidden={image.imageTable ? "true" : "false"}
             />
+            {image.imageTable && parseStringToComponents(image.imageTable)}
             {image.imageNotes && (
               <section className="ui-ModalBuildingCodeContent--TableImageNotes">
                 <header className="ui-ModalBuildingCodeContent--FigureCaptionBold">

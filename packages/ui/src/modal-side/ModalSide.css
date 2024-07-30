@@ -196,6 +196,14 @@
     calc(var(--modal-bc-sentence-padding-end) * -1);
 }
 
+.ui-ModalSide--Image table {
+  width: 100%;
+}
+.ui-ModalSide--Image table th,
+.ui-ModalSide--Image table td {
+  outline: 1px solid black;
+}
+
 @keyframes modal-slide-out {
   from {
     transform: translateX(100%);
