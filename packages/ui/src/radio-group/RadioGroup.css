@@ -3,6 +3,10 @@
   flex-direction: column;
 }
 
+.ui-RadioGroup > label + label {
+  margin-top: var(--layout-margin-small);
+}
+
 .ui-RadioGroup--Label {
   font: var(--typography-bold-large-body);
 }

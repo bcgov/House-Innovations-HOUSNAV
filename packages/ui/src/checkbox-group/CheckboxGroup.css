@@ -3,6 +3,10 @@
   flex-direction: column;
 }
 
+.ui-CheckboxGroup > label + label {
+  margin-top: var(--layout-margin-small);
+}
+
 .ui-CheckboxGroup--Label {
   font: var(--typography-bold-large-body);
 }
