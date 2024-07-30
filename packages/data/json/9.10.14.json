@@ -2,7 +2,7 @@
   "info": {
     "title": "Spatial Separation Between Buildings",
     "subtitle": "Volume II - 9.10.14.1-4",
-    "description": "Ensure a building’s separation passes code.",
+    "description": "Calculations for size/number of doors/windows in a wall facing another building",
     "startingSectionId": "1_intro",
     "walkthroughTitle": "9.10.14.1-4 Spatial Separation Between Buildings"
   },

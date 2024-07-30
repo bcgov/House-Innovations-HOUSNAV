@@ -14,20 +14,24 @@ export default function Page(): JSX.Element {
     <>
       <section className="u-page-background-gray">
         <header className="page-Root--Header u-container-content">
-          <Heading level={1}>Code walkthroughs (beta)</Heading>
+          <Heading level={1}>
+            Welcome to the BC Building Code Walk-Through
+          </Heading>
           <p className="page-Root--Subhead">
-            The British Columbia Ministry of Housing is presenting this proof of
-            concept (POC) as an initial test of a guided walk-through for two
-            key sections of the 2024 BC Building Code which pertain to
-            multi-unit dwellings.
+            The Ministry of Housing invites you to test our proof of concept
+            (tool), designed to provide a guided walk-through experience for
+            code users that returns relevant areas of the BC Building Code
+            (BCBC) related to individual projects. This initial test focuses on
+            two subsections of the 2024 BCBC to evaluate the tool’s
+            functionality.
           </p>
           <p className="page-Root--Subhead">
-            You may choose from the below two cards to be taken through each
-            section one at a time. You will be presented with questions about
-            your proposed building structure to determine the applicable code
-            requirements. At the conclusion of the walk-through you will be
-            presented with the option to review and download the questions along
-            with your answers and the corresponding building code requirements.
+            Choose one of the cards below to start your journey through each
+            subsection. During the walk-through, you will answer questions about
+            your proposed building structure to determine the applicable Code
+            requirements. At the end, you will have the option to review and
+            download your questions, answers, and the relevant BCBC
+            requirements.
           </p>
         </header>
         <div className="page-Root--WalkthroughCards">
