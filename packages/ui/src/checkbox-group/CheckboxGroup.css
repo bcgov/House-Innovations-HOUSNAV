@@ -12,7 +12,7 @@
 }
 
 .ui-CheckboxGroup--Error {
-  margin-bottom: var(--layout-margin-small);
+  margin-bottom: var(--layout-margin-medium);
 }
 
 .ui-Checkbox {
@@ -33,10 +33,6 @@
     right: 0;
     position: absolute;
     margin-top: calc(var(--icons-size-large) / -2);
-  }
-
-  &[data-invalid] {
-    color: var(--typography-color-danger);
   }
 
   &[data-hovered] {
