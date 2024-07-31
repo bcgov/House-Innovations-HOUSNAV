@@ -147,7 +147,8 @@
         {
           "question": "P04",
           "type": "radio",
-          "answer": "false"
+          "answer": "false",
+          "checkGlossary": true
         },
         {
           "question": "P05",
@@ -248,7 +249,8 @@
         {
           "question": "P06",
           "type": "checkbox",
-          "answer": "C"
+          "answer": "C",
+          "checkGlossary": true
         },
         {
           "question": "P07",
@@ -552,7 +554,8 @@
         {
           "question": "P1",
           "type": "radio",
-          "answer": "false"
+          "answer": "false",
+          "checkBuildingCode": true
         }
       ],
       "result": "R30"
@@ -738,7 +741,8 @@
         {
           "question": "P2",
           "type": "radio",
-          "answer": "3"
+          "answer": "3",
+          "checkBuildingCode": true
         },
         {
           "question": "P3",
@@ -793,7 +797,8 @@
         {
           "question": "P14",
           "type": "radio",
-          "answer": "false"
+          "answer": "false",
+          "checkBuildingCode": true
         },
         {
           "question": "P15",
@@ -813,7 +818,8 @@
         {
           "question": "P18",
           "type": "radio",
-          "answer": "true"
+          "answer": "true",
+          "checkBuildingCode": true
         }
       ],
       "result": "R11"
@@ -874,7 +880,8 @@
         {
           "question": "P13",
           "type": "radio",
-          "answer": "true"
+          "answer": "true",
+          "checkBuildingCode": true
         },
         {
           "question": "P14",
