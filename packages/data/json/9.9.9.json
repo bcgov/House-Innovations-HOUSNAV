@@ -2379,7 +2379,7 @@
       "resultDisplayMessage": "<p>You have selected an answer that indicates that the BC Building Code 2024 does not apply to this structure. This tool is used to assist building code users in determining the applicable requirements for their building, as such all structures that are not governed by the BC Building Code 2024 are beyond the scope of this tool.</p>"
     },
     "R01": {
-      "resultDisplayMessage": "<p>You have selected: <answer-value return-markup answer='P03'></answer-value> This indicates that some or all of this structure may not be governed by the BC Building Code 2024. This tool has been designed to assist BC Building Code 2024 users in determining the Building Code requirements for Part 9 buildings. Based on your selection, some or all of your project is beyond the scope of this tool at this time.</p>"
+      "resultDisplayMessage": "<p>You have selected:</p><answer-value return-markup answer='P03'></answer-value><p>This indicates that some or all of this structure may not be governed by the BC Building Code 2024. This tool has been designed to assist BC Building Code 2024 users in determining the Building Code requirements for Part 9 buildings. Based on your selection, some or all of your project is beyond the scope of this tool at this time.</p>"
     },
     "R02": {
       "resultDisplayMessage": "<p>You have selected an option that indicates that this building is a heritage building. Heritage buildings have alternative measures for Building Code compliance. These alternative measures are beyond the scope of this tool at this time. Please see in Table 1.1.1.1.(5) of <pdf-download-link named-dest='Section 1.1. General'>Division A - Section 1.1 ‘General’</pdf-download-link> for more information.</p>"
