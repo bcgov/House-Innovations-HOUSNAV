@@ -74,7 +74,10 @@ const StepTrackerItems = observer(({ id }: { id?: string }): JSX.Element => {
                   />
                 )}
               </h3>
-              <div className="web-StepTrackerItems--SectionBody">
+              <div
+                className="web-StepTrackerItems--SectionBody"
+                aria-hidden={!isCurrentSection}
+              >
                 <ol>
                   {section.sectionQuestions.map((itemId) => {
                     const itemComplete = itemIsComplete(itemId);
