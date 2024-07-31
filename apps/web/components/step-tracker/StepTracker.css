@@ -11,6 +11,11 @@
   height: 1.25rem;
 }
 
+.web-StepTracker--MobileOverlay {
+  position: relative;
+  z-index: 1;
+}
+
 .web-StepTracker--Mobile {
   position: fixed;
   top: 0;

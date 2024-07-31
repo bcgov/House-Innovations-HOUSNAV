@@ -1,7 +1,7 @@
 "use client";
 // 3rd party
 import { JSX, useState } from "react";
-import { Dialog, Modal } from "react-aria-components";
+import { Dialog, Modal, ModalOverlay } from "react-aria-components";
 // repo
 import {
   TESTID_STEP_TRACKER,
@@ -29,23 +29,25 @@ const StepTracker = (): JSX.Element => {
       >
         Steps <Icon type="accountTree" />
       </Button>
-      <Modal
+      <ModalOverlay
         isDismissable
         isOpen={stepTrackerIsOpen}
         onOpenChange={setStepTrackerIsOpen}
-        data-testid={TESTID_STEP_TRACKER_MOBILE}
+        className="web-StepTracker--MobileOverlay"
       >
-        <Dialog
-          className="web-StepTracker--Mobile"
-          aria-labelledby={ID_STEP_TRACKER_TITLE}
-        >
-          <ButtonModalClose
-            label="Close the step tracker"
-            onPress={() => setStepTrackerIsOpen(false)}
-          />
-          <StepTrackerItems id={ID_STEP_TRACKER_TITLE} />
-        </Dialog>
-      </Modal>
+        <Modal data-testid={TESTID_STEP_TRACKER_MOBILE}>
+          <Dialog
+            className="web-StepTracker--Mobile"
+            aria-labelledby={ID_STEP_TRACKER_TITLE}
+          >
+            <ButtonModalClose
+              label="Close the step tracker"
+              onPress={() => setStepTrackerIsOpen(false)}
+            />
+            <StepTrackerItems id={ID_STEP_TRACKER_TITLE} />
+          </Dialog>
+        </Modal>
+      </ModalOverlay>
       <div className="web-StepTracker--TabletUp">
         <StepTrackerItems />
       </div>
