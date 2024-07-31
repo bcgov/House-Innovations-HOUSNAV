@@ -3,6 +3,10 @@ kind: Route
 metadata:
   name: house-innovations-housnav-web-route
 spec:
+  host: {{ .Values.route.hostName }}
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
   to:
     kind: Service
     name: house-innovations-housnav-web-service
