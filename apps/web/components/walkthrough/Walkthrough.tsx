@@ -55,6 +55,9 @@ const Walkthrough = observer((): JSX.Element => {
         data-testid={TESTID_WALKTHROUGH}
         key={`walkthrough-wrapper-${currentItemId}`}
       >
+        <section className="web-Walkthrough--StepTracker">
+          <StepTracker />
+        </section>
         <section className="web-Walkthrough--Content">
           {currentResult ? (
             <Result
@@ -72,9 +75,6 @@ const Walkthrough = observer((): JSX.Element => {
             </Form>
           )}
           <WalkthroughFooter />
-        </section>
-        <section className="web-Walkthrough--StepTracker">
-          <StepTracker />
         </section>
       </div>
     </>
