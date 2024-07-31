@@ -40,6 +40,27 @@ export interface HeaderProps {
   titleElement?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span" | "p";
 }
 
+const getCloseButton = (
+  setMobileNavIsOpen: () => void,
+  mobileNavIsOpen: boolean,
+) => {
+  return (
+    <Button
+      id={ID_MAIN_NAVIGATION}
+      aria-label={
+        mobileNavIsOpen ? "Close the navigation" : "Open the navigation"
+      }
+      isIconButton
+      variant="secondary"
+      className="ui-Header--NavMobileToggle"
+      onPress={() => setMobileNavIsOpen()}
+      data-testid={TESTID_HEADER_MOBILE_NAV_BUTTON}
+    >
+      {mobileNavIsOpen ? <Icon type="close" /> : <Icon type="menu" />}
+    </Button>
+  );
+};
+
 const getNavList = (onLinkClick: (href: string) => void) => {
   return (
     <ul className="ui-Header--NavList">
@@ -99,7 +120,10 @@ export default function Header({
   }
 
   return (
-    <header className="ui-Header" data-testid={TESTID_HEADER}>
+    <header
+      className={`ui-Header ${mobileNavIsOpen ? "--mobile-open" : ""}`}
+      data-testid={TESTID_HEADER}
+    >
       <div className="u-container ui-Header--Container">
         {skipLinks && (
           <ul className="ui-Header--SkipLinks">
@@ -127,27 +151,19 @@ export default function Header({
         <nav className="ui-Header--NavDesktop" id={ID_MAIN_NAVIGATION}>
           {getNavList(router.push)}
         </nav>
-        <Button
-          id={ID_MAIN_NAVIGATION}
-          aria-label={
-            mobileNavIsOpen ? "Close the navigation" : "Open the navigation"
-          }
-          isIconButton
-          variant="secondary"
-          className="ui-Header--NavMobileToggle"
-          onPress={() => setMobileNavIsOpen(true)}
-          data-testid={TESTID_HEADER_MOBILE_NAV_BUTTON}
-        >
-          {mobileNavIsOpen ? <Icon type="close" /> : <Icon type="menu" />}
-        </Button>
+        {!mobileNavIsOpen &&
+          getCloseButton(() => setMobileNavIsOpen(true), mobileNavIsOpen)}
         <Modal
           isDismissable
           isOpen={mobileNavIsOpen}
           onOpenChange={setMobileNavIsOpen}
           data-testid={TESTID_HEADER_MOBILE_NAV}
         >
-          <Dialog className="ui-Header--NavMobile">
-            {getNavList(onMobileNavLinkClick)}
+          <Dialog className="ui-Header--NavMobileWrapper" aria-label={title}>
+            {getCloseButton(() => setMobileNavIsOpen(false), mobileNavIsOpen)}
+            <div className="ui-Header--NavMobile">
+              {getNavList(onMobileNavLinkClick)}
+            </div>
           </Dialog>
         </Modal>
       </div>
