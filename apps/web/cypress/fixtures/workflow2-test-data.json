@@ -22,7 +22,8 @@
         {
           "question": "P04",
           "type": "radio",
-          "answer": "true"
+          "answer": "true",
+          "checkGlossary": true
         }
       ],
       "result": "R02"
@@ -126,7 +127,8 @@
         {
           "question": "P07",
           "type": "radio",
-          "answer": "true"
+          "answer": "true",
+          "checkGlossary": true
         }
       ],
       "result": "R05"
@@ -266,7 +268,8 @@
         {
           "question": "P1",
           "type": "checkbox",
-          "answer": "C"
+          "answer": "C",
+          "checkBuildingCode": true
         },
         {
           "question": "P2",
@@ -327,7 +330,8 @@
         {
           "question": "P6",
           "type": "input",
-          "answer": "1"
+          "answer": "1",
+          "checkBuildingCode": true
         },
         {
           "question": "P7",

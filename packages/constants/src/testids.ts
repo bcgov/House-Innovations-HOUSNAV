@@ -27,6 +27,8 @@ export const GET_TESTID_PDF_DOWNLOAD_LINK = (title: string) =>
 export const TESTID_QUESTION = "question";
 export const TESTID_QUESTION_TITLE = "question-title";
 export const TESTID_QUESTION_CODE_REFERENCE = "question-code-reference";
+export const TESTID_QUESTION_CODE_REFERENCE_BUTTON =
+  "question-code-reference-button";
 export const TESTID_WALKTHROUGH = "walkthrough";
 export const TESTID_WALKTHROUGH_FOOTER_BACK = "walkthrough-footer-back";
 export const TESTID_WALKTHROUGH_FOOTER_NEXT = "walkthrough-footer-next";

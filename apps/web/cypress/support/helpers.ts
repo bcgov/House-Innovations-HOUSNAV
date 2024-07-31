@@ -3,6 +3,9 @@ import {
   GET_TESTID_CHECKBOX,
   GET_TESTID_RADIO,
   GET_TESTID_NUMBER_FIELD,
+  TESTID_BUTTON_MODAL_CLOSE,
+  TESTID_DEFINED_TERM,
+  TESTID_QUESTION_CODE_REFERENCE_BUTTON,
 } from "@repo/constants/src/testids";
 
 interface Walkthrough {
@@ -15,6 +18,8 @@ interface Step {
   type: string;
   question: string;
   answer: string;
+  checkGlossary?: boolean;
+  checkBuildingCode?: boolean;
 }
 
 interface Results {
@@ -40,8 +45,38 @@ export const runWalkthrough = (walkthrough: Walkthrough, results: Results) => {
         .find("input")
         .type(step.answer);
     }
-    cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_NEXT).click();
+    cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_NEXT).click({
+      force: true,
+    });
 
+    // Open and close the glossary modal to check accessibility for step if needed
+    if (step.checkGlossary) {
+      cy.get("body").then(($body) => {
+        const definedTerms = $body.find(
+          `[data-testid*="button-${TESTID_DEFINED_TERM}-"]`,
+        );
+
+        // Click the first defined term if it exists
+        if (definedTerms[0]) {
+          definedTerms[0].click();
+          cy.getByTestID(`button-${TESTID_BUTTON_MODAL_CLOSE}`).click();
+        }
+      });
+    }
+    // Open and close the building code modal to check accessibility for step if needed
+    if (step.checkBuildingCode) {
+      cy.get("body").then(($body) => {
+        const reference = $body.find(`[data-testid*="button-code"]`);
+
+        // Click the first building code reference if it exists
+        if (reference[0]) {
+          reference[0].click();
+          cy.getByTestID(
+            `button-${TESTID_QUESTION_CODE_REFERENCE_BUTTON}`,
+          ).click();
+        }
+      });
+    }
     // Test accessibility for the current step
     cy.injectAxe();
     cy.checkA11yWithErrorLogging();

@@ -42,10 +42,11 @@ import * as axe from "axe-core";
 function printAccessibilityViolations(violations: axe.Result[]) {
   cy.task(
     "table",
-    violations.map(({ id, impact, description, nodes }) => ({
+    violations.map(({ id, impact, description, nodes, helpUrl }) => ({
       impact,
       description: `${description} (${id})`,
       nodes: nodes.length,
+      helpUrl,
     })),
   );
 }

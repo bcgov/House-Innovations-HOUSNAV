@@ -11,6 +11,7 @@ import { ID_QUESTION_TEXT } from "@repo/constants/src/ids";
 import {
   TESTID_QUESTION,
   TESTID_QUESTION_CODE_REFERENCE,
+  TESTID_QUESTION_CODE_REFERENCE_BUTTON,
   TESTID_QUESTION_TITLE,
 } from "@repo/constants/src/testids";
 import Button from "@repo/ui/button";
@@ -90,6 +91,7 @@ const Question = observer(() => {
             triggerContent={
               <Button
                 variant="code"
+                data-testid={TESTID_QUESTION_CODE_REFERENCE_BUTTON}
                 aria-label={`${currentQuestion.questionCodeReference.displayString} Select to open building code reference modal.`}
               >
                 {currentQuestion.questionCodeReference.displayString}
