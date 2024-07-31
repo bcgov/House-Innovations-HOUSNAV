@@ -39,3 +39,6 @@ vault:
   namespace: platform-services
   role: d6af69-nonprod
   serviceAccountName: d6af69-vault
+
+route:
+  hostName: test.buildcodenavigator.gov.bc.ca
