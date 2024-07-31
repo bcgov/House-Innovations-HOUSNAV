@@ -6,12 +6,16 @@
   background-color: var(--surface-color-background-white);
   border-bottom-color: var(--surface-color-border-default);
   border-bottom-style: solid;
-  border-bottom-width: var(--layout-border-width-small);
+  border-bottom-width: var(--header-border-width);
   min-height: var(--header-height);
   width: 100%;
   box-shadow: var(--surface-shadow-medium);
   z-index: 1;
   position: relative;
+}
+
+.ui-Header.--mobile-open {
+  box-shadow: none;
 }
 
 .ui-Header--Container {
@@ -75,15 +79,32 @@
   margin-left: auto;
 }
 
-.ui-Header--NavMobile {
+.ui-Header--NavMobileOverlay {
+  z-index: 1;
+}
+
+.ui-Header--NavMobileWrapper {
   position: fixed;
-  top: var(--header-height);
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: var(--surface-color-background-white);
-  padding: var(--header-nav-mobile-padding);
   outline: none;
+  z-index: 1;
+  display: flex;
+}
+
+.ui-Header--NavMobileWrapper .ui-Header--NavMobileToggle {
+  position: absolute;
+  right: var(--layout-padding-container);
+  top: var(--layout-padding-10);
+}
+
+.ui-Header--NavMobile {
+  background-color: var(--surface-color-background-white);
+  margin-top: calc(var(--header-height-full));
+  padding: var(--header-nav-mobile-padding);
+  width: 100%;
 }
 
 .ui-Header--NavMobile .ui-Header--NavList {

@@ -1,5 +1,5 @@
 .web-Walkthrough {
-  height: calc(100dvh - var(--header-height));
+  height: calc(100dvh - var(--header-height-full));
   overflow: auto;
   display: grid;
   grid-template-rows: 48px 1fr;

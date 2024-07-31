@@ -233,7 +233,9 @@
   --transition-link-color: color 150ms ease-in;
   --transition-link-icon-fill-color: fill 150ms ease-in;
   --button-gap: var(--layout-padding-12);
-  --header-height: 55px;
+  --header-height: 60px;
+  --header-border-width: var(--layout-border-width-small);
+  --header-height-full: calc(var(--header-height) + var(--header-border-width));
   --header-nav-mobile-padding: var(--layout-padding-medium);
   --footer-margin-block: var(--layout-margin-large);
   --footer-main-direction: column;
