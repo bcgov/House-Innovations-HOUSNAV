@@ -50,7 +50,11 @@ const Walkthrough = observer((): JSX.Element => {
 
   return (
     <>
-      <div className="web-Walkthrough" data-testid={TESTID_WALKTHROUGH}>
+      <div
+        className="web-Walkthrough"
+        data-testid={TESTID_WALKTHROUGH}
+        key={`walkthrough-wrapper-${currentItemId}`}
+      >
         <section className="web-Walkthrough--Content">
           {currentResult ? (
             <Result
