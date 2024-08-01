@@ -96,7 +96,7 @@ const GlossaryContent: React.FC<GlossaryContentProps> = ({
                       ? "ui-ModalSide--SectionHighlighted"
                       : ""
                   }`}
-                  tabIndex={0}
+                  tabIndex={-1}
                 >
                   {parseStringToComponents(
                     (data.content as GlossaryContentType).definition,
