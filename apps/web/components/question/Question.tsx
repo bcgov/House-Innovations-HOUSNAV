@@ -62,7 +62,7 @@ const Question = observer(() => {
       className="u-container-walkthrough p-hide"
       data-testid={TESTID_QUESTION}
       aria-label={getStringFromComponents(questionText)}
-      tabIndex={0}
+      tabIndex={-1}
     >
       <h1
         className="web-Question--Title"
@@ -75,7 +75,7 @@ const Question = observer(() => {
         <div
           className="web-Question--Subtext"
           aria-label={getStringFromComponents(questionSubtext)}
-          tabIndex={0}
+          tabIndex={-1}
         >
           {questionSubtext}
         </div>

@@ -90,7 +90,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
                 ? "ui-ModalSide--SectionHighlighted"
                 : ""
             }`}
-            tabIndex={0}
+            tabIndex={-1}
           >
             <span>
               {parseStringToComponents(data.description, setFocusSection)}
@@ -116,7 +116,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
                 ? "ui-ModalSide--SectionHighlighted"
                 : ""
             }`}
-            tabIndex={0}
+            tabIndex={-1}
           >
             {/* Designs do not show this high level of headings. */}
             {data.sections && renderSections(data.sections)}
@@ -153,7 +153,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
                 ? "ui-ModalSide--SectionHighlighted"
                 : ""
             }`}
-            tabIndex={0}
+            tabIndex={-1}
           >
             <Heading level={2} className="ui-ModalSide--SubsectionHeader">
               <span className="ui-ModalSide--SubsectionNumber">
@@ -193,7 +193,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
                 ? "ui-ModalSide--SectionHighlighted"
                 : ""
             }`}
-            tabIndex={0}
+            tabIndex={-1}
           >
             <Heading className="ui-ModalSide--ArticleHeader">
               <span className="ui-ModalSide--ArticleNumber">
@@ -223,7 +223,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
                   ? "ui-ModalSide--SectionHighlighted"
                   : ""
               }`}
-              tabIndex={0}
+              tabIndex={-1}
             >
               {sentence.description && (
                 <span>
@@ -245,50 +245,49 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
   const renderTableImage = (image: ImageModalType) => {
     return (
       image && (
-        <section
+        <figure
           key={image.numberReference}
           ref={(el) => {
             sectionRefs.current[image.numberReference] = el;
           }}
-          className={`ui-ModalSide--Image ${
+          className={`ui-ModalSide--Image ui-ModalBuildingCodeContent--Figure ${
             highlightedSection === image.numberReference
               ? "ui-ModalSide--SectionHighlighted"
               : ""
           }`}
-          tabIndex={0}
+          tabIndex={-1}
+          aria-labelledby={image.numberReference}
         >
-          <figure className="ui-ModalBuildingCodeContent--Figure">
-            <figcaption>
-              <div className="ui-ModalBuildingCodeContent--FigureCaptionBold">
-                {image.tableName}
-                <br />
-                {parseStringToComponents(image.title)}
-              </div>
-              <div className="ui-ModalBuildingCodeContent--FigureCaption">
-                {parseStringToComponents(image.imageReference, setFocusSection)}
-              </div>
-            </figcaption>
-            <Image
-              src={image.fileName}
-              alt={image.title}
-              aria-label={image.imageLabel}
-              width={800}
-              height={600}
-              loading="eager" // Will not lazy load images in Safari
-              className="ui-ModalBuildingCodeContent-ImageResponsive"
-              aria-hidden={image.imageTable ? "true" : "false"}
-            />
-            {image.imageTable && parseStringToComponents(image.imageTable)}
-            {image.imageNotes && (
-              <section className="ui-ModalBuildingCodeContent--TableImageNotes">
-                <header className="ui-ModalBuildingCodeContent--FigureCaptionBold">
-                  Notes to {image.tableName}:
-                </header>
-                {parseStringToComponents(image.imageNotes, setFocusSection)}
-              </section>
-            )}
-          </figure>
-        </section>
+          <figcaption id={image.numberReference}>
+            <div className="ui-ModalBuildingCodeContent--FigureCaptionBold">
+              {image.tableName}
+              <br />
+              {parseStringToComponents(image.title)}
+            </div>
+            <div className="ui-ModalBuildingCodeContent--FigureCaption">
+              {parseStringToComponents(image.imageReference, setFocusSection)}
+            </div>
+          </figcaption>
+          <Image
+            src={image.fileName}
+            alt={image.title}
+            aria-label={image.imageLabel}
+            width={800}
+            height={600}
+            loading="eager" // Will not lazy load images in Safari
+            className="ui-ModalBuildingCodeContent-ImageResponsive"
+            aria-hidden={image.imageTable ? "true" : "false"}
+          />
+          {image.imageTable && parseStringToComponents(image.imageTable)}
+          {image.imageNotes && (
+            <section className="ui-ModalBuildingCodeContent--TableImageNotes">
+              <header className="ui-ModalBuildingCodeContent--FigureCaptionBold">
+                Notes to {image.tableName}:
+              </header>
+              {parseStringToComponents(image.imageNotes, setFocusSection)}
+            </section>
+          )}
+        </figure>
       )
     );
   };
