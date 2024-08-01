@@ -41,4 +41,4 @@ vault:
   serviceAccountName: d6af69-vault
 
 route:
-  hostName: house-innovations-housnav-web-route-d6af69-dev.apps.silver.devops.gov.bc.ca
+  hostName: dev.buildcodenavigator.gov.bc.ca
