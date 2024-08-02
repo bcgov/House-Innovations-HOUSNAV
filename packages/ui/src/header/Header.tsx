@@ -1,12 +1,21 @@
 "use client";
 // 3rd party
-import { PropsWithChildren, ReactElement, useState } from "react";
+import {
+  PropsWithChildren,
+  ReactElement,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 import { useRouter } from "next/navigation";
 import Image from "@repo/ui/image";
 import { Dialog, Link as ReactAriaLink, Modal } from "react-aria-components";
 // repo
 import { URLS_MAIN_NAVIGATION } from "@repo/constants/src/urls";
-import { ID_MAIN_NAVIGATION } from "@repo/constants/src/ids";
+import {
+  ID_MAIN_NAVIGATION,
+  ID_MAIN_NAVIGATION_MOBILE,
+} from "@repo/constants/src/ids";
 import {
   GET_TESTID_HEADER_NAV_ITEM,
   TESTID_HEADER,
@@ -46,7 +55,7 @@ const getCloseButton = (
 ) => {
   return (
     <Button
-      id={ID_MAIN_NAVIGATION}
+      id={ID_MAIN_NAVIGATION_MOBILE}
       aria-label={
         mobileNavIsOpen ? "Close the navigation" : "Open the navigation"
       }
@@ -98,6 +107,26 @@ export default function Header({
     router.push(href);
   };
 
+  useEffect(() => {
+    if (mobileNavIsOpen) {
+      // scroll page to top when main nav is opened on mobile
+      // this is a weird case because the design shows the header when the main nav is open, but the nav isn't sticky
+      // easiest solution is to scroll to top - rare use case
+      window.scrollTo(0, 0);
+    }
+  }, [mobileNavIsOpen]);
+
+  const onWindowResize = useCallback(() => {
+    setMobileNavIsOpen(false);
+  }, [setMobileNavIsOpen]);
+
+  useEffect(() => {
+    window.addEventListener("resize", onWindowResize);
+    return () => {
+      window.removeEventListener("resize", onWindowResize);
+    };
+  }, [onWindowResize]);
+
   function getTitle() {
     switch (titleElement) {
       case "h1":
@@ -148,11 +177,13 @@ export default function Header({
             {getTitle()}
           </div>
         )}
-        <nav className="ui-Header--NavDesktop" id={ID_MAIN_NAVIGATION}>
-          {getNavList(router.push)}
-        </nav>
-        {!mobileNavIsOpen &&
-          getCloseButton(() => setMobileNavIsOpen(true), mobileNavIsOpen)}
+
+        {!mobileNavIsOpen && (
+          <nav className="ui-Header--Nav" id={ID_MAIN_NAVIGATION}>
+            {getNavList(router.push)}
+            {getCloseButton(() => setMobileNavIsOpen(true), mobileNavIsOpen)}
+          </nav>
+        )}
         <Modal
           isDismissable
           isOpen={mobileNavIsOpen}
@@ -161,9 +192,9 @@ export default function Header({
         >
           <Dialog className="ui-Header--NavMobileWrapper" aria-label={title}>
             {getCloseButton(() => setMobileNavIsOpen(false), mobileNavIsOpen)}
-            <div className="ui-Header--NavMobile">
+            <nav className="ui-Header--NavMobile">
               {getNavList(onMobileNavLinkClick)}
-            </div>
+            </nav>
           </Dialog>
         </Modal>
       </div>
