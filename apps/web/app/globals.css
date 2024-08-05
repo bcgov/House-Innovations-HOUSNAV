@@ -40,16 +40,18 @@ h5,
 p {
   margin-top: var(--layout-margin-medium);
 }
-a[data-footer-skip-link] {
+a[data-skip-link-footer] {
   display: none;
+  visibility: hidden;
 }
 
 /* Utility classes - add as needed */
 html:has(.u-page-background-gray) {
   background: var(--theme-gray-10);
 }
-html:has(.u-show-footer-skip-link) a[data-footer-skip-link] {
+html:has(.u-show-footer-skip-link) a[data-skip-link-footer] {
   display: block;
+  visibility: revert;
 }
 .u-container {
   max-width: var(--layout-max-width);

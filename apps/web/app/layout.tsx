@@ -9,6 +9,7 @@ import {
   ID_FOOTER,
   ID_MAIN_CONTENT,
   ID_MAIN_NAVIGATION,
+  ID_MAIN_NAVIGATION_MOBILE,
 } from "@repo/constants/src/ids";
 import "@repo/ui/cssVariables";
 // local
@@ -34,8 +35,16 @@ export default function RootLayout({
             title="2024 Building Code"
             skipLinks={[
               <a href={`#${ID_MAIN_CONTENT}`}>Skip to main content</a>,
-              <a href={`#${ID_MAIN_NAVIGATION}`}>Skip to main navigation</a>,
-              <a href={`#${ID_FOOTER}`} data-footer-skip-link>
+              <a href={`#${ID_MAIN_NAVIGATION}`} data-skip-link-nav>
+                Skip to main navigation
+              </a>,
+              <a
+                href={`#${ID_MAIN_NAVIGATION_MOBILE}`}
+                data-skip-link-nav-mobile
+              >
+                Skip to main navigation
+              </a>,
+              <a href={`#${ID_FOOTER}`} data-skip-link-footer>
                 Skip to footer
               </a>,
             ]}
