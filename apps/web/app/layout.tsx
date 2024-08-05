@@ -28,7 +28,7 @@ export default function RootLayout({
   children: ReactNode;
 }): JSX.Element {
   return (
-    <html lang="en-US">
+    <html lang="en">
       <body>
         <ClientProviders>
           <Header
