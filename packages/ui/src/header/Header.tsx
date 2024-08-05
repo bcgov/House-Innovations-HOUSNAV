@@ -177,13 +177,10 @@ export default function Header({
             {getTitle()}
           </div>
         )}
-
-        {!mobileNavIsOpen && (
-          <nav className="ui-Header--Nav" id={ID_MAIN_NAVIGATION}>
-            {getNavList(router.push)}
-            {getCloseButton(() => setMobileNavIsOpen(true), mobileNavIsOpen)}
-          </nav>
-        )}
+        <nav className="ui-Header--Nav" id={ID_MAIN_NAVIGATION}>
+          {getNavList(router.push)}
+          {getCloseButton(() => setMobileNavIsOpen(true), mobileNavIsOpen)}
+        </nav>
         <Modal
           isDismissable
           isOpen={mobileNavIsOpen}
