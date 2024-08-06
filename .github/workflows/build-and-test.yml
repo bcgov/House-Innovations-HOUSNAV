@@ -79,7 +79,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: cypress-snapshots
+          name: cypress-screenshots
           path: apps/web/cypress/screenshots
 
       - name: Stop Docker Container
