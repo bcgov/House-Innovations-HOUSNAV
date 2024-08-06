@@ -59,5 +59,3 @@ spec:
       maxSurge: 1
       maxUnavailable: 1
   revisionHistoryLimit: 3
-  rollbackTo:
-    revision: 1

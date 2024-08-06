@@ -1,0 +1,16 @@
+image:
+  name: house-innovations-housnav-web
+  repository: ""
+  tag: ""
+  pullPolicy: Always
+
+imagePullSecrets:
+  - name: ""
+
+networkPolicy:
+  enabled: true
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 3000
