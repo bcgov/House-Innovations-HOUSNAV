@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Extract pull request number associated with a commit
         run: echo "PR_NUMBER=$(gh api /repos/bcgov/House-Innovations-HOUSNAV/commits/${{ github.sha }}/pulls | jq -r '.[0].number')" >> $GITHUB_ENV
