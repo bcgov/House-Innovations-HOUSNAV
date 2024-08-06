@@ -27,7 +27,7 @@ export default function WalkthroughCard({
     <ReactAriaLink
       className="ui-WalkthroughCard--CardContainer"
       href={`${URL_WALKTHROUGH_HREF}/${walkthroughId}`}
-      aria-label={`walkthrough ${walkthroughId} - ${data.title}`}
+      aria-label={`walkthrough ${walkthroughId} - ${data.title} - ${data.description}`}
       data-testid={GET_TESTID_WALKTHROUGH_CARD(testid || walkthroughId)}
       {...props}
     >
