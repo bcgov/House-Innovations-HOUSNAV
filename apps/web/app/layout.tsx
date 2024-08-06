@@ -17,9 +17,9 @@ import { ClientProviders } from "./ClientProviders";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "BC Gov - 2024 Building Code - Walkthroughs",
+  title: "BC Gov - 2024 BC Building Code - Walkthroughs",
   description:
-    "Get step-by-step guidance through specific sections of the 2024 BC Building Code.",
+    "Get step-by-step guidance through specific subsections of the 2024 BC Building Code.",
 };
 
 export default function RootLayout({
@@ -32,7 +32,7 @@ export default function RootLayout({
       <body>
         <ClientProviders>
           <Header
-            title="2024 Building Code"
+            title="2024 BC Building Code"
             skipLinks={[
               <a href={`#${ID_MAIN_CONTENT}`}>Skip to main content</a>,
               <a href={`#${ID_MAIN_NAVIGATION}`} data-skip-link-nav>
