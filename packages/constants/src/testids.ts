@@ -47,6 +47,7 @@ export const TESTID_HEADER_MOBILE_NAV_BUTTON = "header-mobile-nav-button";
 export const GET_TESTID_HEADER_NAV_ITEM = (title: string) =>
   `header-nav-item-${title}`;
 export const TESTID_FOOTER = "footer";
+export const TESTID_PRE_FOOTER = "pre-footer";
 export const TESTID_MODAL_SIDE = "modal-side";
 export const TESTID_CONFIRMATION_MODAL = "confirmation-modal";
 export const GET_TESTID_WALKTHROUGH_CARD = (walkthrough: string) =>
