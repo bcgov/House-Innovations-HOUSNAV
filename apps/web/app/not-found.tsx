@@ -7,6 +7,7 @@ import Image from "@repo/ui/image";
 import Footer from "@repo/ui/footer";
 import PreFooter from "@repo/ui/pre-footer";
 import { STR_WEBSITE_NAME } from "@repo/constants/src/constants";
+import { TESTID_404_IMAGE } from "@repo/constants/src/testids";
 // local
 import "./not-found.css";
 
@@ -20,6 +21,7 @@ export default function NotFound() {
           </Heading>
           <Image
             className="web-NotFound--Image"
+            data-testid={TESTID_404_IMAGE}
             src={"error-404.svg"}
             alt=""
             width={403}
