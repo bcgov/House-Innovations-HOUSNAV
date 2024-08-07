@@ -97,18 +97,22 @@ The infrastructure uses a combination of GitHub Actions, JFrog Artifactory, Open
 #### Build and Test
 This workflow runs on pull requests to the **main** branch and can also be manually triggered. It performs the following actions:
 - Runs unit tests
-- Builds the project and pushes the Docker image to JFrog Artifactory
-- Uploads the short Git SHA to JFrog Artifactory for use in the Deployment-Dev workflow
-- Executes end-to-end tests with Cypress
+- Builds the docker image
+- Executes end-to-end tests with Cypress using the previously built image
+- Runs a Trivy Vulnerability Scan using the previously built image
+- Pushes the Docker image to JFrog Artifactory after successful tests
+#### Analysis
+This workflow runs on pull requests to the **main** branch and can also be manually triggered. It performs the following actions:
+- Runs CodeQL semantic code analysis
+- Runs Trivy vulnerability scanner in repo mode
 #### Deploy to dev
 This workflow runs on pushes to the **main** branch and can also be manually triggered. It performs the following actions:
-- Downloads the short Git SHA from JFrog Artifactory
-- Compares the Git SHAs. If different, retags the Docker image and pushes it to JFrog Artifactory
-- Deploys the application to the dev environment in OpenShift using Helm
+- Extracts the pull request number associated with a commit
+- Deploys the application to the dev environment in OpenShift using Helm and the tag extracted previously
 #### Deploy to UAT
 This workflow runs when the **Deployment-Dev** workflow completes successfully. The workflow pauses until one of the team members approves it (the list of team members is assigned in the repository settings). It performs the following actions:
-- Pulls the Docker image from Artifactory
-- Deploys the application to the UAT environment in OpenShift using Helm
+- Extracts the pull request number associated with a commit
+- Deploys the application to the dev environment in OpenShift using Helm and the tag extracted previously
 
 ## Style Naming Conventions
 
