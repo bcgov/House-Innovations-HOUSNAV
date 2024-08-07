@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
+    "./pre-footer": "./src/pre-footer/PreFooter.tsx",
     "./confirmation-modal": "./src/confirmation-modal/ConfirmationModal.tsx",
     "./footer": "./src/footer/Footer.tsx",
     "./number-field": "./src/number-field/NumberField.tsx",

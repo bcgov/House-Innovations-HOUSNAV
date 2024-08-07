@@ -5,6 +5,7 @@ import { Heading } from "react-aria-components";
 // repo
 import WalkthroughCard from "@repo/ui/walkthrough-card";
 import Footer from "@repo/ui/footer";
+import PreFooter from "@repo/ui/pre-footer";
 import { WalkthroughJSONData } from "@repo/data/useWalkthroughData";
 // local
 import "./page.css";
@@ -45,16 +46,7 @@ export default function Page(): JSX.Element {
             })}
           </ul>
         </div>
-        <aside className="page-Root--PreFooter">
-          <p className="u-container">
-            The B.C. Public Service acknowledges the territories of First
-            Nations around B.C. and is grateful to carry out our work on these
-            lands. We acknowledge the rights, interests, priorities, and
-            concerns of all Indigenous Peoples - First Nations, Métis, and Inuit
-            - respecting and acknowledging their distinct cultures, histories,
-            rights, laws, and governments.
-          </p>
-        </aside>
+        <PreFooter />
       </section>
       <Footer />
     </>

@@ -1,0 +1,27 @@
+.web-NotFound {
+  padding-block-end: var(--layout-margin-xlarge);
+}
+
+.web-NotFound ul {
+  margin-block: var(--layout-margin-medium);
+  padding-inline-start: var(--layout-margin-xxlarge);
+}
+
+.web-NotFound li + li {
+  margin-block-start: var(--layout-margin-small);
+}
+
+.web-NotFound--Title {
+  margin-block: var(--layout-margin-large);
+}
+
+.web-NotFound--Title,
+.web-NotFound--SubTitle {
+  font-weight: var(--typography-font-weights-bold);
+}
+
+.web-NotFound--Image {
+  display: block;
+  margin-inline: auto;
+  max-width: 100%;
+}
