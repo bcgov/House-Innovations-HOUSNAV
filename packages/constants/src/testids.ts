@@ -52,3 +52,4 @@ export const TESTID_MODAL_SIDE = "modal-side";
 export const TESTID_CONFIRMATION_MODAL = "confirmation-modal";
 export const GET_TESTID_WALKTHROUGH_CARD = (walkthrough: string) =>
   `walkthrough-card-${walkthrough}`;
+export const TESTID_404_IMAGE = "not-found-image";
