@@ -4,6 +4,7 @@ export const NEXT_NAVIGATION_ID_ERROR = "";
 export const ANSWER_DISPLAY_VALUE_PLACEHOLDER = "_____";
 export const ANSWER_DISPLAY_VALUE_PLACEHOLDER_A11Y = "blank";
 
+export const STR_WEBSITE_NAME = "2024 BC Building Code";
 export const DEFINED_TERMS_SECTION_NUMBER = "1.4.1.2";
 
 export const SHOW_QUESTION_LABELS =
