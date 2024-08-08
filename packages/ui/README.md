@@ -1,6 +1,6 @@
 # `@repo/ui`
 
-Collection of ui components
+Collection of ui components used for this repo project. The only current consumer of this package is the `@repo/web` package.
 
 ## Installation
 
