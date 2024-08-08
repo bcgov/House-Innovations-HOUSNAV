@@ -35,9 +35,9 @@ export default function NotFound() {
           <ul>
             <li>Checking that the web URL has been entered correctly</li>
             <li>
-              Going to the {STR_WEBSITE_NAME} Walkthrough{" "}
-              <Link href="/">Home Page</Link> and browse through the available
-              walkthroughs
+              Going to the {STR_WEBSITE_NAME}{" "}
+              <Link href="/">Walkthrough Home Page</Link> to browse through the
+              available walkthroughs
             </li>
           </ul>
           <p>
