@@ -12,14 +12,14 @@ import {
   ID_MAIN_NAVIGATION_MOBILE,
 } from "@repo/constants/src/ids";
 import "@repo/ui/cssVariables";
+import { STR_WEBSITE_NAME } from "@repo/constants/src/constants";
 // local
 import { ClientProviders } from "./ClientProviders";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "BC Gov - 2024 BC Building Code - Walkthroughs",
-  description:
-    "Get step-by-step guidance through specific subsections of the 2024 BC Building Code.",
+  title: `BC Gov - ${STR_WEBSITE_NAME} - Walkthroughs`,
+  description: `Get step-by-step guidance through specific subsections of the ${STR_WEBSITE_NAME}.`,
 };
 
 export default function RootLayout({
@@ -32,7 +32,7 @@ export default function RootLayout({
       <body>
         <ClientProviders>
           <Header
-            title="2024 BC Building Code"
+            title={STR_WEBSITE_NAME}
             skipLinks={[
               <a href={`#${ID_MAIN_CONTENT}`}>Skip to main content</a>,
               <a href={`#${ID_MAIN_NAVIGATION}`} data-skip-link-nav>
