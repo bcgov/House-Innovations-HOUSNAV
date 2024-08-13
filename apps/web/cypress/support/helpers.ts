@@ -12,6 +12,7 @@ interface Walkthrough {
   title: string;
   steps: Step[];
   result?: string;
+  resultValue?: string;
 }
 
 interface Step {
@@ -84,8 +85,14 @@ export const runWalkthrough = (walkthrough: Walkthrough, results: Results) => {
 
   if (walkthrough.result) {
     const result = results[walkthrough.result];
+    // Check if the walkthrough is on the correct result page
     if (result) {
       cy.contains(result);
+
+      // Check if the result has a specific value
+      if (walkthrough.resultValue) {
+        cy.contains(walkthrough.resultValue);
+      }
     } else {
       throw new Error("Result not defined in results data");
     }
