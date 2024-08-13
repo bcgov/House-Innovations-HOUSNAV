@@ -196,7 +196,7 @@ describe("calculations", () => {
 
     expect(result).toBe(0);
   });
-  it(`calculateResultDisplayNumber: calculationType is ${ResultCalculationType.MinBetween} with a type ${ResultCalculationType.Logic} and ${ResultLogicTypes.GreaterThan} and a type ${ResultCalculationType.Answer}`, () => {
+  it(`calculateResultDisplayNumber: calculationType is ${ResultCalculationType.MinBetween} with a type ${ResultCalculationType.Logic} and ${ResultLogicTypes.GreaterThanOrEqual} and a type ${ResultCalculationType.Answer}`, () => {
     const resultCalculation: ResultCalculation = {
       id: "1",
       resultCalculationType: ResultCalculationType.MinBetween,
@@ -205,7 +205,7 @@ describe("calculations", () => {
           resultCalculationType: ResultCalculationType.Logic,
           [PropertyResultLogicItems]: [
             {
-              resultLogicType: ResultLogicTypes.GreaterThan,
+              resultLogicType: ResultLogicTypes.GreaterThanOrEqual,
               answerToCheck: "1",
               answerValue: 3,
               valueToUse: 3,

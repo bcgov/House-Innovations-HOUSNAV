@@ -329,21 +329,21 @@ export const resultLogicTypeIsTrue = (
     return true;
   }
 
-  if (resultLogicType === ResultLogicTypes.GreaterThan) {
+  if (resultLogicType === ResultLogicTypes.GreaterThanOrEqual) {
     const { answerValue, answerToCheck } = resultLogicItem;
     if (answerValue && answerToCheck) {
       const answerToCheckValue = getAnswerToCheckValue(answerToCheck);
       if (isNumber(answerToCheckValue)) {
-        return answerToCheckValue > answerValue;
+        return answerToCheckValue >= answerValue;
       }
 
       throw new Error(
-        `resultLogicType ${ResultLogicTypes.GreaterThan} found no answerToCheckValue, or answerToCheckValue was not a number.`,
+        `resultLogicType ${ResultLogicTypes.GreaterThanOrEqual} found no answerToCheckValue, or answerToCheckValue was not a number.`,
       );
     }
 
     throw new Error(
-      `resultLogicType ${ResultLogicTypes.GreaterThan} must have answerValue and answerToCheck.`,
+      `resultLogicType ${ResultLogicTypes.GreaterThanOrEqual} must have answerValue and answerToCheck.`,
     );
   }
 
