@@ -11,10 +11,10 @@ readinessProbe:
 resources:
   requests:
     memory: "100Mi"
-    cpu: "50m"
+    cpu: "100m"
   limits:
     memory: "200Mi"
-    cpu: "100m"
+    cpu: "300m"
 
 vault:
   secretPath: d6af69-nonprod/housnav-secret-dev
@@ -24,14 +24,11 @@ vault:
   serviceAccountName: d6af69-vault
 
 route:
-  hostName: ""
+  hostName: "dev.buildcodenavigator.gov.bc.ca"
 
-vpa:
+hpa:
   enabled: true
-  mode: "Auto"
-  minAllowed:
-    memory: 50Mi
-    cpu: 25m
-  maxAllowed:
-    memory: 250Mi
-    cpu: 150m
+  minReplicas: 2
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
