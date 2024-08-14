@@ -65,6 +65,23 @@ To build all apps and packages, run the following command:
 npm run build
 ```
 
+### Test
+
+To run the unit tests, run the following command:
+
+```
+npm run test
+```
+
+Note: you generally shouldn't need to run unit tests directly as they run as part of our precommit hooks.
+
+To run the Cypress e2e tests:
+
+1. Ensure the application is running at [http://localhost:3000](http://localhost:3000)
+2. Run one of the two following commands:
+   - Use `npm run e2e` to run tests headlessly in your terminal.
+   - Use `npm run e2e:open` to open the cypress test runner UI.
+
 ### Docker
 
 This application uses Docker to provide containerization and portability. You can install Docker on your local
