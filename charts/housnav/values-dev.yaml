@@ -24,7 +24,7 @@ vault:
   serviceAccountName: d6af69-vault
 
 route:
-  hostName: "dev.buildcodenavigator.gov.bc.ca"
+  hostName: dev.buildcodenavigator.gov.bc.ca
 
 hpa:
   enabled: true
