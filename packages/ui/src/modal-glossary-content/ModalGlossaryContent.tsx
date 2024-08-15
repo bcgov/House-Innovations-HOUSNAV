@@ -6,7 +6,10 @@ import {
   GlossaryContentType,
   GlossaryDefinitionListType,
 } from "@repo/data/useGlossaryData";
-import { parseStringToComponents } from "web/utils/string";
+import {
+  getStringFromComponents,
+  parseStringToComponents,
+} from "web/utils/string";
 import { DEFINED_TERMS_SECTION_NUMBER } from "@repo/constants/src/constants";
 import { Heading } from "react-aria-components";
 import "./ModalGlossaryContent.css";
@@ -35,6 +38,22 @@ function renderDefinitionList(
     </ul>
   );
 }
+
+const getDefinitionListContent = (
+  definitionList: GlossaryDefinitionListType[],
+) => {
+  return definitionList.reduce<string>((content, item) => {
+    let itemText = getStringFromComponents(
+      parseStringToComponents(item.definition, undefined, true),
+    );
+
+    if (item.definitionList) {
+      itemText = `${itemText} ${getDefinitionListContent(item.definitionList)}`;
+    }
+
+    return `${content}, ${itemText}`;
+  }, "");
+};
 
 const GlossaryContent: React.FC<GlossaryContentProps> = ({
   modalData,
@@ -83,8 +102,16 @@ const GlossaryContent: React.FC<GlossaryContentProps> = ({
           className="ui-ModalSide--LiveRegion"
         ></span>
         <ol>
-          {modalData.map(
-            (data, index) =>
+          {modalData.map((data, index) => {
+            const ariaLabelContent = `${getStringFromComponents(
+              parseStringToComponents(
+                (data.content as GlossaryContentType).definition,
+                undefined,
+                true,
+              ),
+            )} ${getDefinitionListContent((data.content as GlossaryContentType).definitionList || [])}`;
+
+            return (
               !data.content?.hideTerm && (
                 <li
                   key={index}
@@ -97,6 +124,7 @@ const GlossaryContent: React.FC<GlossaryContentProps> = ({
                       : ""
                   }`}
                   tabIndex={-1}
+                  aria-label={ariaLabelContent}
                 >
                   {parseStringToComponents(
                     (data.content as GlossaryContentType).definition,
@@ -108,8 +136,9 @@ const GlossaryContent: React.FC<GlossaryContentProps> = ({
                       setFocusSection,
                     )}
                 </li>
-              ),
-          )}
+              )
+            );
+          })}
         </ol>
       </article>
     </div>
