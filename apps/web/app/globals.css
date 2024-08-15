@@ -10,6 +10,7 @@ body {
   font: var(--typography-regular-body);
   -webkit-font-smoothing: antialiased;
   color: var(--typography-color-primary);
+  hanging-punctuation: allow-end;
 }
 
 h1,

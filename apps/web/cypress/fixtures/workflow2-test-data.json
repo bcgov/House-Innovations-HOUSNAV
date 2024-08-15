@@ -924,6 +924,391 @@
         }
       ],
       "result": "R30"
+    },
+    {
+      "title": "P6 = 1.5",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "yes"
+        },
+        {
+          "question": "P04",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P05",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P06",
+          "type": "checkbox",
+          "answer": "C"
+        },
+        {
+          "question": "P07",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P08",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P1",
+          "type": "checkbox",
+          "answer": "F3"
+        },
+        {
+          "question": "P3",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P4",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P5",
+          "type": "input",
+          "answer": "100"
+        },
+        {
+          "question": "P6",
+          "type": "input",
+          "answer": "3"
+        },
+        {
+          "question": "P7",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P8",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P13",
+          "type": "radio",
+          "answer": "false"
+        }
+      ],
+      "result": "R20",
+      "resultValue": "is: 0.78"
+    },
+    {
+      "title": "P6 = 1.2",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "yes"
+        },
+        {
+          "question": "P04",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P05",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P06",
+          "type": "checkbox",
+          "answer": "C"
+        },
+        {
+          "question": "P07",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P08",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P1",
+          "type": "checkbox",
+          "answer": "F3"
+        },
+        {
+          "question": "P3",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P4",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P5",
+          "type": "input",
+          "answer": "80"
+        },
+        {
+          "question": "P6",
+          "type": "input",
+          "answer": "2.4"
+        },
+        {
+          "question": "P7",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P8",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P13",
+          "type": "radio",
+          "answer": "false"
+        }
+      ],
+      "result": "R20",
+      "resultValue": "is: 0.35"
+    },
+    {
+      "title": "P6 = 2",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "yes"
+        },
+        {
+          "question": "P04",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P05",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P06",
+          "type": "checkbox",
+          "answer": "C"
+        },
+        {
+          "question": "P07",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P08",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P1",
+          "type": "checkbox",
+          "answer": "F3"
+        },
+        {
+          "question": "P3",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P4",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P5",
+          "type": "input",
+          "answer": "70"
+        },
+        {
+          "question": "P6",
+          "type": "input",
+          "answer": "4"
+        },
+        {
+          "question": "P7",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P8",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P13",
+          "type": "radio",
+          "answer": "false"
+        }
+      ],
+      "result": "R20",
+      "resultValue": "is: 1.88"
+    },
+    {
+      "title": "2 > P6 > 1.5",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "yes"
+        },
+        {
+          "question": "P04",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P05",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P06",
+          "type": "checkbox",
+          "answer": "C"
+        },
+        {
+          "question": "P07",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P08",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P1",
+          "type": "checkbox",
+          "answer": "F3"
+        },
+        {
+          "question": "P3",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P4",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P5",
+          "type": "input",
+          "answer": "100"
+        },
+        {
+          "question": "P6",
+          "type": "input",
+          "answer": "3.9"
+        },
+        {
+          "question": "P7",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P8",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P13",
+          "type": "radio",
+          "answer": "false"
+        }
+      ],
+      "result": "R20",
+      "resultValue": "is: 1.75"
+    },
+    {
+      "title": "1.5 > P6 > 1.2",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "yes"
+        },
+        {
+          "question": "P04",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P05",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P06",
+          "type": "checkbox",
+          "answer": "C"
+        },
+        {
+          "question": "P07",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P08",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P1",
+          "type": "checkbox",
+          "answer": "F3"
+        },
+        {
+          "question": "P3",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P4",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P5",
+          "type": "input",
+          "answer": "100"
+        },
+        {
+          "question": "P6",
+          "type": "input",
+          "answer": "2.7"
+        },
+        {
+          "question": "P7",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P8",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P13",
+          "type": "radio",
+          "answer": "false"
+        }
+      ],
+      "result": "R20",
+      "resultValue": "is: 0.54"
     }
   ]
 }

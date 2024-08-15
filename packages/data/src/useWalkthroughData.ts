@@ -200,7 +200,7 @@ export enum ResultCalculationType {
 
 export enum ResultLogicTypes {
   Fallback = "fallback",
-  GreaterThan = "greaterThan",
+  GreaterThanOrEqual = "greaterThanOrEqual",
 }
 
 export interface ResultLogicItem {

@@ -2098,13 +2098,13 @@
                   "resultCalculationType": "logic",
                   "resultLogicItems": [
                     {
-                      "resultLogicType": "greaterThan",
+                      "resultLogicType": "greaterThanOrEqual",
                       "answerToCheck": "P6Editable",
                       "answerValue": 2,
                       "valueToUse": 1.88
                     },
                     {
-                      "resultLogicType": "greaterThan",
+                      "resultLogicType": "greaterThanOrEqual",
                       "answerToCheck": "P6Editable",
                       "answerValue": 1.5,
                       "valueToUse": 0.78

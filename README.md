@@ -11,17 +11,24 @@ Housing Innovation Branch has received funding from Strategic Investment Funding
 
 This Turborepo includes the following packages/apps:
 
-### Apps and Packages
+### Apps
+
+These are located in the `apps` directory:
 
 - `web`: a [Next.js](https://nextjs.org/) app that serves as the main application
+
+### Packages
+
+These are located in the `packages` directory:
+
 - `@repo/ui`: a React component library used by the `web` application
-  - Could be used by other applications in the future or replaced by the BC Gov Design System
+  - Could be used by other applications in the future or replaced by the British Columbia Government Design System
 - `@repo/constants`: shared constants
 - `@repo/data`: data and data utilities
 - `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+Each package and app is 100% [TypeScript](https://www.typescriptlang.org/). Refer to each workspace's README for more information on each.
 
 ### Utilities
 
@@ -60,10 +67,10 @@ npm run build
 
 ### Docker
 
-This application is built with Docker to provide containerization and portability. You can install Docker on your local
+This application uses Docker to provide containerization and portability. You can install Docker on your local
 machine from this [link](https://docs.docker.com/engine/install/).
 
-We utilize [docker-compose](https://docs.docker.com/compose/) to help with the local building process
+We utilize [docker-compose](https://docs.docker.com/compose/) to help with the building process
 
 To run the application locally in a Docker container, run the following commands:
 
@@ -85,7 +92,7 @@ As noted above, this repository uses [Lefthook](https://github.com/evilmartians/
 
 #### Pre-Commit
 
-Pre-commit the `format`, `lint`, and `test` turbo tasks will run. This will run any `scripts` called `format`, `lint`, or `test` in any of the workspaces. Look at the `package.json` in each workspace for what executes in each. If there are any errors, the commit will be aborted. (Note: `test` normally includes the vitests.)
+Pre-commit the `format`, `lint`, and `test` turbo tasks will run. This will run any `scripts` called `format:check`, `lint`, or `test` in any of the workspaces. Look at the `package.json` in each workspace for what executes in each. If there are any errors, the commit will be aborted. (Note: `test` normally includes the vitests.)
 
 ## Infrastructure & Deployment
 The infrastructure uses a combination of GitHub Actions, JFrog Artifactory, OpenShift, and Helm to manage the continuous integration and deployment (CI/CD) of the application.
@@ -113,6 +120,10 @@ This workflow runs on pushes to the **main** branch and can also be manually tri
 This workflow runs when the **Deployment-Dev** workflow completes successfully. The workflow pauses until one of the team members approves it (the list of team members is assigned in the repository settings). It performs the following actions:
 - Extracts the pull request number associated with a commit
 - Deploys the application to the dev environment in OpenShift using Helm and the tag extracted previously
+
+## Components
+
+This project builds on top of React Aria Components to start from a base of accessibility. You can find more information about React Aria Components [here](https://react-spectrum.adobe.com/react-aria/getting-started.html).
 
 ## Style Naming Conventions
 
