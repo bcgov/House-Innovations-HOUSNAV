@@ -36,7 +36,7 @@
     },
     "3_9992": {
       "sectionTitle": "9.9.9.2. Two Separate Exits",
-      "sectionQuestions": ["P11", "P12", "P13", "P14", "P15", "P16", "P17"]
+      "sectionQuestions": ["P11", "P12", "P13", "P14", "P15", "P16", "P17", "P171", "P172"]
     },
     "4_9993": {
       "sectionTitle": "9.9.9.3. Shared Egress Facilities",
@@ -525,7 +525,7 @@
           "nextLogicType": "equal",
           "answerToCheck": "P2",
           "answerValue": "1",
-          "nextNavigateTo": "P10"
+          "nextNavigateTo": "P11"
         },
         {
           "nextLogicType": "equal",
@@ -2021,6 +2021,28 @@
           "nextNavigateTo": "P20"
         },
         {
+          "nextLogicType": "equal",
+          "answerToCheck": "P17",
+          "answerValue": "false",
+          "nextNavigateTo": "R20"
+        },
+        {
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P17",
+              "answerValue": "true"
+            },
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P16",
+              "answerValue": "true"
+            }
+          ],
+          "nextNavigateTo": "P18"
+        },
+        {
           "nextLogicType": "and",
           "valuesToCheck": [
             {
@@ -2033,57 +2055,123 @@
               "valuesToCheck": [
                 {
                   "nextLogicType": "equal",
-                  "answerToCheck": "P15",
+                  "answerToCheck": "P5.B",
                   "answerValue": "true"
                 },
                 {
-                  "nextLogicType": "or",
-                  "valuesToCheck": [
-                    {
-                      "nextLogicType": "equal",
-                      "answerToCheck": "P5.B",
-                      "answerValue": "true"
-                    },
-                    {
-                      "nextLogicType": "equal",
-                      "answerToCheck": "P5.1",
-                      "answerValue": "true"
-                    },
-                    {
-                      "nextLogicType": "equal",
-                      "answerToCheck": "P5.2",
-                      "answerValue": "true"
-                    },
-                    {
-                      "nextLogicType": "equal",
-                      "answerToCheck": "P5.3",
-                      "answerValue": "true"
-                    },
-                    {
-                      "nextLogicType": "equal",
-                      "answerToCheck": "P8.B",
-                      "answerValue": "true"
-                    },
-                    {
-                      "nextLogicType": "equal",
-                      "answerToCheck": "P8.1",
-                      "answerValue": "true"
-                    },
-                    {
-                      "nextLogicType": "equal",
-                      "answerToCheck": "P8.2",
-                      "answerValue": "true"
-                    },
-                    {
-                      "nextLogicType": "equal",
-                      "answerToCheck": "P8.3",
-                      "answerValue": "true"
-                    }
-                  ]
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.1",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.2",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.3",
+                  "answerValue": "true"
                 }
               ]
             }
           ],
+          "nextNavigateTo": "P171"
+        },
+        {
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P17",
+              "answerValue": "true"
+            },
+            {
+              "nextLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P8.B",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P8.1",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P8.2",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P8.3",
+                  "answerValue": "true"
+                }
+              ]
+            }
+          ],
+          "nextNavigateTo": "P172"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R20"
+        }
+      ]
+    },
+    "P171": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Does this dwelling unit have separate and direct access to the balcony(s) on level(s): <answer-value answer='P5'></answer-value>?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Article 9.9.9.2.",
+        "codeNumber": "v2-db-9.9.9.2."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P171",
+          "answerValue": "true",
+          "nextNavigateTo": "P18"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R20"
+        }
+      ]
+    },
+    "P172": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Does this dwelling unit have separate and direct access to openable window(s) on level(s): <answer-value answer='P8'></answer-value>?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Article 9.9.9.2.",
+        "codeNumber": "v2-db-9.9.9.2."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P172",
+          "answerValue": "true",
           "nextNavigateTo": "P18"
         },
         {
