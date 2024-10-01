@@ -137,6 +137,218 @@
       "result": "R10"
     },
     {
+      "title": "covers P17.1",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "yes"
+        },
+        {
+          "question": "P04",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P05",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P06",
+          "type": "checkbox",
+          "answer": "C"
+        },
+        {
+          "question": "P07",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P08",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P1",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P2",
+          "type": "radio",
+          "answer": "3"
+        },
+        {
+          "question": "P3",
+          "type": "checkbox",
+          "answer": "1"
+        },
+        {
+          "question": "P5",
+          "type": "checkbox",
+          "answer": "3"
+        },
+        {
+          "question": "P6",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P9",
+          "type": "checkbox",
+          "answer": "1"
+        },
+        {
+          "question": "P11",
+          "type": "radio",
+          "answer": "2"
+        },
+        {
+          "question": "P12",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P13",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P14",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P17",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P171",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P18",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P19",
+          "type": "radio",
+          "answer": "true"
+        }
+      ],
+      "result": "R10"
+    },
+    {
+      "title": "covers P17.2",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "radio",
+          "answer": "yes"
+        },
+        {
+          "question": "P04",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P05",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P06",
+          "type": "checkbox",
+          "answer": "C"
+        },
+        {
+          "question": "P07",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P08",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P1",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P2",
+          "type": "radio",
+          "answer": "3"
+        },
+        {
+          "question": "P3",
+          "type": "checkbox",
+          "answer": "1"
+        },
+        {
+          "question": "P5",
+          "type": "checkbox",
+          "answer": ""
+        },
+        {
+          "question": "P6",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P7",
+          "type": "checkbox",
+          "answer": "3"
+        },
+        {
+          "question": "P8",
+          "type": "checkbox",
+          "answer": "3"
+        },
+        {
+          "question": "P9",
+          "type": "checkbox",
+          "answer": "1"
+        },
+        {
+          "question": "P11",
+          "type": "radio",
+          "answer": "2"
+        },
+        {
+          "question": "P12",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P13",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P14",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P17",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P172",
+          "type": "radio",
+          "answer": "false"
+        }
+      ],
+      "result": "R20"
+    },
+    {
       "title": "covers P20-22",
       "steps": [
         {
@@ -598,7 +810,7 @@
       "result": "R01"
     },
     {
-      "title": "not sure if code applies, is heratage building",
+      "title": "not sure if code applies, is heritage building",
       "steps": [
         {
           "question": "P01",
