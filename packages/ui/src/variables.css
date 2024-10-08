@@ -224,7 +224,7 @@
   --layout-padding-checkbox-x: var(--layout-padding-medium);
   --layout-padding-checkbox-y: var(--layout-padding-medium);
   --layout-max-width: 85.25rem; /* 1364px */
-  --layout-max-width-content: 67.375rem; /* 1078px */
+  --layout-max-width-content: 71.375rem; /* 1142px */
   --size-button: 40px;
   --size-button-large: 52px;
   --outline-offset: 2px;
@@ -254,7 +254,10 @@
   --page-root-subhead-margin-bottom: var(--layout-margin-medium);
   --page-root-cards-padding-block: var(--layout-margin-large);
   --page-root-cards-flex-direction: column;
-  --walkthrough-card-max-width: 26.25rem;
+  --page-root-cards-flex-wrap: nowrap;
+  --link-card-min-width: 20.625rem; /* 330px */
+  --link-card-max-width: 26.25rem; /* 420px */
+  /*TODO - refactor HOUSNAV-186 */
   --walkthrough-card-border-transparent: 1px solid #00000000;
   --walkthrough-card-border-default: 1px solid
     var(--surface-color-border-default);
@@ -305,8 +308,10 @@
     --walkthrough-footer-next-width: auto;
     --page-root-header-padding-block: var(--layout-margin-xlarge);
     --page-root-subhead-margin-bottom: var(--layout-margin-large);
+    /* TODO - refactor HOUSNAV-186*/
     --page-root-cards-padding-block: var(--layout-margin-xxxlarge);
     --page-root-cards-flex-direction: row;
+    --page-root-cards-flex-wrap: wrap;
     --modal-bc-padding: var(--layout-margin-large)
       calc(var(--layout-margin-xlarge) - var(--layout-margin-small))
       var(--layout-margin-huge)
@@ -328,6 +333,13 @@
     --walkthrough-side-nav-width: 21.25rem; /* 340px */
     --step-tracker-padding-top: var(--layout-padding-26);
     --step-tracker-padding-left: var(--layout-padding-xlarge);
+  }
+}
+
+/* DESKTOP - 912px */
+@media (min-width: 70rem) {
+  :root {
+    --page-root-cards-flex-wrap: nowrap;
   }
 }
 

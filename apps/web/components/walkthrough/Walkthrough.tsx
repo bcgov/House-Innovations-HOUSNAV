@@ -18,7 +18,6 @@ const Walkthrough = observer((): JSX.Element => {
   // get current question from store as variable type question
   const {
     currentResult,
-    relatedWalkthroughs,
     currentQuestionAsDisplayType,
     navigationStore: { handleForwardNavigation, currentItemId },
     handleStateError,
@@ -59,10 +58,8 @@ const Walkthrough = observer((): JSX.Element => {
           key={`walkthrough-wrapper-${currentItemId}`}
         >
           {currentResult ? (
-            <Result
-              displayMessage={currentResult.resultDisplayMessage}
-              relatedWalkthroughs={relatedWalkthroughs}
-            />
+            // TODO - HOUSNAV-191
+            <Result displayMessage={currentResult.resultDisplayMessage} />
           ) : (
             <Form
               className="web-Walkthrough--Form"

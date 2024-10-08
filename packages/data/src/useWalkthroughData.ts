@@ -1,7 +1,8 @@
-import testCase999 from "../json/9.9.9.json";
-import testCase91014 from "../json/9.10.14.json";
+import testCase999 from "../json/walkthroughs/single-dwelling-9.9.9.json";
+import testCase91014 from "../json/walkthroughs/single-dwelling-9.10.14.json";
 
-type Walkthroughs = "9.9.9" | "9.10.14";
+// TODO - HOUSNAV-186
+export type Walkthroughs = "9.9.9" | "9.10.14";
 
 interface UseWalkthroughDataProps {
   /*
@@ -245,7 +246,8 @@ export interface WalkthroughInfo {
   startingSectionId: StartingSectionIdType;
 }
 
-export type RelatedWalkthroughsType = string[] | Walkthroughs[];
+// TODO - HOUSNAV-191
+// export type RelatedWalkthroughsType = string[] | Walkthroughs[];
 export type StartingSectionIdType = string;
 export type QuestionDisplayData =
   | QuestionMultipleChoiceData
@@ -259,7 +261,7 @@ export interface WalkthroughJSONType {
   questions: {
     [key: string]: QuestionDisplayData | QuestionVariableData;
   };
-  relatedWalkthroughs: RelatedWalkthroughsType;
+  // relatedWalkthroughs: RelatedWalkthroughsType;
   results: {
     [key: string]: ResultData;
   };

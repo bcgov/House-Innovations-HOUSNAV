@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
-    "./useData": "./src/useData.ts",
     "./useWalkthroughData": "./src/useWalkthroughData.ts",
     "./useWalkthroughTestData": "./src/useWalkthroughTestData.ts",
-    "./useGlossaryData": "./src/useGlossaryData.ts"
+    "./useGlossaryData": "./src/useGlossaryData.ts",
+    "./useBuildingTypeData": "./src/useBuildingTypeData.ts"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",

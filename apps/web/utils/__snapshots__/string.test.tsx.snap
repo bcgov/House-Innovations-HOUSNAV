@@ -18,26 +18,6 @@ exports[`string > getAnswerValueDisplay: with displayValue 1`] = `
 </div>
 `;
 
-exports[`string > getResultCalculation: error calculating result value 1`] = `
-<div>
-  <span
-    aria-label="blank"
-  >
-    _____
-  </span>
-</div>
-`;
-
-exports[`string > getResultCalculation: missing result calculation 1`] = `
-<div>
-  <span
-    aria-label="blank"
-  >
-    _____
-  </span>
-</div>
-`;
-
 exports[`string > getResultCalculation: no calculationId 1`] = `
 <div>
   <span

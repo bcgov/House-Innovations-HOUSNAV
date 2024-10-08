@@ -33,3 +33,10 @@ The navigation store is located at `/stores/NavigationStore.ts`. It contains the
 ### Utilities
 
 The `/utils` directory contains utility and logic functions used throughout the application. This includes functions for parsing the walkthrough data, calculating items and progress, and more.
+
+### Environment Variables
+
+There are currently 2 environment variables used in this project. Set them to `yes` to enable them. They are both helpers related to the development of the application and should not be used in any environment other than local:
+
+- `NEXT_PUBLIC_SHOW_QUESTION_LABELS` - Displays the question number on the website for each question.
+- `NEXT_PUBLIC_SHOW_LOG_STATE_BUTTON` - Shows a button in the walkthrough footer to log the current answer state of the walkthrough to the console.
