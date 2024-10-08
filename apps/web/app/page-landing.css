@@ -1,29 +1,28 @@
-.page-Root--Header {
-  padding-block: var(--page-root-header-padding-block);
+.page-Landing--Header {
+  padding-block: var(--page-landing-header-padding-block);
 }
 
-.page-Root--Header h1 {
+.page-Landing--Header h1 {
   font: var(--typography-bold-h1);
   line-height: normal;
-  margin-bottom: var(--page-root-subhead-margin-bottom);
+  margin-bottom: var(--page-landing-subhead-margin-bottom);
 }
 
-.page-Root--Subhead {
+.page-Landing--Subhead {
   font: var(--typography-regular-large-body);
 }
 
-/*TODO - refactor HOUSNAV-186 */
-.page-Root--LinkCards {
+.page-Landing--LinkCards {
   background: radial-gradient(
       153.43% 75.68% at -3.92% 94.86%,
       rgba(255, 255, 255, 0) 0%,
       rgba(237, 237, 237, 0.11) 100%
     ),
     var(--surface-color-background-dark-blue);
-  padding-block: var(--page-root-cards-padding-block);
+  padding-block: var(--page-landing-cards-padding-block);
 }
 
-.page-Root--LinkCards ul {
+.page-Landing--LinkCards ul {
   list-style: none;
   display: flex;
   flex-direction: row;
@@ -32,7 +31,7 @@
   gap: var(--layout-margin-large);
 }
 
-.page-Root--LinkCards li {
+.page-Landing--LinkCards li {
   display: flex;
   flex: 1;
   min-width: var(--link-card-min-width);

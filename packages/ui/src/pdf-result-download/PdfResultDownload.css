@@ -61,7 +61,7 @@
 .ui-PdfResultDownload-container:hover {
   cursor: pointer;
   box-shadow: var(--surface-shadow-medium), var(--surface-shadow-medium);
-  border: var(--walkthrough-card-border-default);
+  border: var(--link-card-border-default);
 }
 .ui-PdfResultDownload-container:focus-visible {
   outline: var(--layout-border-width-medium) solid

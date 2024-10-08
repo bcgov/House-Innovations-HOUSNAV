@@ -250,20 +250,18 @@
   --walkthrough-footer-next-width: 228px;
   --transition-medium: 300ms;
   --theme-black-opacity-40: #00000040;
-  --page-root-header-padding-block: var(--layout-margin-large);
-  --page-root-subhead-margin-bottom: var(--layout-margin-medium);
-  --page-root-cards-padding-block: var(--layout-margin-large);
-  --page-root-cards-flex-direction: column;
-  --page-root-cards-flex-wrap: nowrap;
+  --page-landing-header-padding-block: var(--layout-margin-large);
+  --page-landing-subhead-margin-bottom: var(--layout-margin-medium);
+  --page-landing-cards-padding-block: var(--layout-margin-large);
+  --page-landing-cards-flex-direction: column;
+  --page-landing-cards-flex-wrap: nowrap;
   --link-card-min-width: 20.625rem; /* 330px */
   --link-card-max-width: 26.25rem; /* 420px */
-  /*TODO - refactor HOUSNAV-186 */
-  --walkthrough-card-border-transparent: 1px solid #00000000;
-  --walkthrough-card-border-default: 1px solid
-    var(--surface-color-border-default);
-  --walkthrough-card-title-text-decoration-hidden: underline 1px #00000000;
-  --walkthrough-card-title-text-decoration-color-transition: underline 1px;
-  --walkthrough-card-title-text-underline-offset: 0.2em;
+  --link-card-border-transparent: 1px solid #00000000;
+  --link-card-border-default: 1px solid var(--surface-color-border-default);
+  --link-card-title-text-decoration-hidden: underline 1px #00000000;
+  --link-card-title-text-decoration-color-transition: underline 1px;
+  --link-card-title-text-underline-offset: 0.2em;
   --step-tracker-heading-padding-left: var(--layout-padding-xlarge);
   --step-tracker-padding-top: var(--layout-padding-xsmall);
   --step-tracker-padding-left: var(--layout-padding-medium);
@@ -306,12 +304,11 @@
     --question-form-margin-top: var(--layout-margin-large);
     --walkthrough-footer-back-width: auto;
     --walkthrough-footer-next-width: auto;
-    --page-root-header-padding-block: var(--layout-margin-xlarge);
-    --page-root-subhead-margin-bottom: var(--layout-margin-large);
-    /* TODO - refactor HOUSNAV-186*/
-    --page-root-cards-padding-block: var(--layout-margin-xxxlarge);
-    --page-root-cards-flex-direction: row;
-    --page-root-cards-flex-wrap: wrap;
+    --page-landing-header-padding-block: var(--layout-margin-xlarge);
+    --page-landing-subhead-margin-bottom: var(--layout-margin-large);
+    --page-landing-cards-padding-block: var(--layout-margin-xxxlarge);
+    --page-landing-cards-flex-direction: row;
+    --page-landing-cards-flex-wrap: wrap;
     --modal-bc-padding: var(--layout-margin-large)
       calc(var(--layout-margin-xlarge) - var(--layout-margin-small))
       var(--layout-margin-huge)
@@ -336,10 +333,10 @@
   }
 }
 
-/* DESKTOP - 912px */
+/* DESKTOP - MEDIUM - 1120px */
 @media (min-width: 70rem) {
   :root {
-    --page-root-cards-flex-wrap: nowrap;
+    --page-landing-cards-flex-wrap: nowrap;
   }
 }
 

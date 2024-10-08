@@ -4,44 +4,46 @@ import React, { JSX } from "react";
 import { Heading } from "react-aria-components";
 import { notFound } from "next/navigation";
 // repo
-import { BUILDING_TYPE_SINGLE_DWELLING } from "@repo/constants/src/constants";
-import { URL_SINGLE_DWELLING } from "@repo/constants/src/urls";
-import useBuildingTypeData from "@repo/data/useBuildingTypeData";
 import {
-  WalkthroughJSONData,
-  Walkthroughs,
-} from "@repo/data/useWalkthroughData";
+  EnumBuildingTypes,
+  EnumWalkthroughIds,
+} from "@repo/constants/src/constants";
+import { URLS_WALKTHROUGHS } from "@repo/constants/src/urls";
+import useBuildingTypeData from "@repo/data/useBuildingTypeData";
+import { WalkthroughJSONData } from "@repo/data/useWalkthroughData";
 import LinkCard, { LinkCardProps } from "@repo/ui/link-card";
 // local
-import LayoutFooter from "../../components/layout-footer/layout-footer";
-import "../page.css";
+import LayoutFooter from "../../components/layout-footer/LayoutFooter";
+import "../page-landing.css";
 
-const CARDS: Record<Walkthroughs, LinkCardProps> = {
-  "9.9.9": {
-    title: WalkthroughJSONData["9.9.9"].info.title,
-    subtitle: WalkthroughJSONData["9.9.9"].info.subtitle,
-    description: WalkthroughJSONData["9.9.9"].info.description,
-    href: URL_SINGLE_DWELLING,
-  },
-  "9.10.14": {
-    title: WalkthroughJSONData["9.10.14"].info.title,
-    subtitle: WalkthroughJSONData["9.10.14"].info.subtitle,
-    description: WalkthroughJSONData["9.10.14"].info.description,
-    href: URL_SINGLE_DWELLING,
-  },
-};
+const CARDS = Object.entries(
+  WalkthroughJSONData[EnumBuildingTypes.SINGLE_DWELLING],
+).reduce(
+  (acc, [id, { info }]) => ({
+    ...acc,
+    [id]: {
+      title: info.title,
+      subtitle: info.subtitle,
+      description: info.description,
+      href: URLS_WALKTHROUGHS[EnumBuildingTypes.SINGLE_DWELLING][
+        id as EnumWalkthroughIds
+      ].href,
+    },
+  }),
+  {} as Record<EnumWalkthroughIds, LinkCardProps>,
+);
 
 const TEMPSingleDwellingPage = () => {
   return (
     <>
-      <header className="page-Root--Header u-container-content">
+      <header className="page-Landing--Header u-container-content">
         <Heading level={1}>Single Dwelling Unit</Heading>
-        <p className="page-Root--Subhead">
+        <p className="page-Landing--Subhead">
           Get step-by-step guidance to determine applicable Code requirements
           for your proposed building structure of the 2024 BC Building Code.
         </p>
       </header>
-      <div className="page-Root--LinkCards">
+      <div className="page-Landing--LinkCards">
         <ul className="u-container-content">
           {Object.entries(CARDS).map(
             ([id, { title, description, subtitle, href }]) => {
@@ -53,7 +55,7 @@ const TEMPSingleDwellingPage = () => {
                     subtitle={subtitle}
                     aria-label={`walkthrough ${id} - ${title} - ${description}`}
                     data-testid={id}
-                    href={`${href}/${id}`}
+                    href={href}
                   />
                 </li>
               );
@@ -78,14 +80,14 @@ export default function Page({
     notFound();
   }
 
-  const name = buildingType.name;
+  const title = buildingType.title;
 
   return (
     <LayoutFooter>
-      {params.buildingType === BUILDING_TYPE_SINGLE_DWELLING ? (
+      {params.buildingType === EnumBuildingTypes.SINGLE_DWELLING ? (
         <TEMPSingleDwellingPage />
       ) : (
-        <>{name}</>
+        <>{title}</>
       )}
     </LayoutFooter>
   );

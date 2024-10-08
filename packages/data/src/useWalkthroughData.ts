@@ -1,14 +1,19 @@
 import testCase999 from "../json/walkthroughs/single-dwelling-9.9.9.json";
 import testCase91014 from "../json/walkthroughs/single-dwelling-9.10.14.json";
-
-// TODO - HOUSNAV-186
-export type Walkthroughs = "9.9.9" | "9.10.14";
+import {
+  EnumBuildingTypes,
+  EnumWalkthroughIds,
+} from "@repo/constants/src/constants";
 
 interface UseWalkthroughDataProps {
   /*
-   * ID of the data to get
+   * walkthrough ID of the data to get
    */
   id: string;
+  /*
+   * building type of the data to get
+   */
+  buildingType: string;
 }
 
 export const PropertyNameVariableToSet = "variableToSet";
@@ -267,15 +272,31 @@ export interface WalkthroughJSONType {
   };
 }
 
-export const WalkthroughJSONData: Record<Walkthroughs, WalkthroughJSONType> = {
-  "9.9.9": testCase999,
-  "9.10.14": testCase91014,
+export const WalkthroughJSONData: Record<
+  EnumBuildingTypes,
+  Record<EnumWalkthroughIds, WalkthroughJSONType>
+> = {
+  [EnumBuildingTypes.SINGLE_DWELLING]: {
+    [EnumWalkthroughIds._9_9_9]: testCase999,
+    [EnumWalkthroughIds._9_10_14]: testCase91014,
+  },
+  // TODO - HOUSNAV-200
+  [EnumBuildingTypes.MULTI_DWELLING]: {
+    [EnumWalkthroughIds._9_9_9]: testCase999,
+    [EnumWalkthroughIds._9_10_14]: testCase91014,
+  },
 };
 
 export default function useWalkthroughData({
   id,
+  buildingType,
 }: UseWalkthroughDataProps): WalkthroughJSONType {
-  const data = WalkthroughJSONData[id as Walkthroughs];
+  console.log("id", id);
+  console.log("buildingType", buildingType);
+  const data =
+    WalkthroughJSONData[buildingType as EnumBuildingTypes][
+      id as EnumWalkthroughIds
+    ];
   if (!data) {
     throw new Error(`No data found for walkthrough ${id}`);
   }
