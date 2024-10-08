@@ -55,7 +55,7 @@
     "vitest": "^1.6.0"
   },
   "dependencies": {
-    "next": "^14.1.1",
+    "next": "^14.2.10",
     "react-aria-components": "^1.2.0"
   }
 }
