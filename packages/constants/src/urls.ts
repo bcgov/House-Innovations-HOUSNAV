@@ -1,6 +1,14 @@
+import {
+  BUILDING_TYPE_MULTI_DWELLING,
+  BUILDING_TYPE_SINGLE_DWELLING,
+} from "./constants";
+
 export const URL_HOME_HREF = "/";
 export const URL_HOME_TITLE = "Home";
-export const URL_WALKTHROUGH_HREF = "/walkthrough";
+export const URL_SINGLE_DWELLING = `/${BUILDING_TYPE_SINGLE_DWELLING}`;
+export const URL_MULTI_DWELLING = `/${BUILDING_TYPE_MULTI_DWELLING}`;
+// TODO - HOUSNAV-186
+export const URL_BUILDING_TYPE = "/building-type";
 export const URL_DOWNLOAD_HREF =
   "https://www2.gov.bc.ca/assets/gov/farming-natural-resources-and-industry/construction-industry/building-codes-and-standards/revisions-and-mo/bcbc_2024.pdf";
 export const URL_DOWNLOAD_TITLE = "Download";

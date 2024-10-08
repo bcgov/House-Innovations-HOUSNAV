@@ -12,7 +12,8 @@
   font: var(--typography-regular-large-body);
 }
 
-.page-Root--WalkthroughCards {
+/*TODO - refactor HOUSNAV-186 */
+.page-Root--LinkCards {
   background: radial-gradient(
       153.43% 75.68% at -3.92% 94.86%,
       rgba(255, 255, 255, 0) 0%,
@@ -22,14 +23,18 @@
   padding-block: var(--page-root-cards-padding-block);
 }
 
-.page-Root--WalkthroughCards ul {
+.page-Root--LinkCards ul {
   list-style: none;
   display: flex;
-  flex-direction: var(--page-root-cards-flex-direction);
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: var(--layout-margin-xlarge);
+  gap: var(--layout-margin-large);
 }
 
-.page-Root--WalkthroughCards li {
+.page-Root--LinkCards li {
   display: flex;
+  flex: 1;
+  min-width: var(--link-card-min-width);
+  max-width: var(--link-card-max-width);
 }

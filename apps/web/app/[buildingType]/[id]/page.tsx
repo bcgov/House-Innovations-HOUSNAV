@@ -19,6 +19,7 @@ export default function Page({
   // get walkthrough data, else show not found content
   let data;
   try {
+    // TODO - HOUSNAV-186 - use building type as well
     data = useWalkthroughData({ id: params.id });
   } catch (e) {
     notFound();

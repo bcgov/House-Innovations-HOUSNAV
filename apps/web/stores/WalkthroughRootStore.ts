@@ -54,9 +54,10 @@ export class WalkthroughRootStore {
     }
   }
 
-  get relatedWalkthroughs() {
-    return this.walkthroughData.relatedWalkthroughs;
-  }
+  // TODO - HOUSNAV-191
+  // get relatedWalkthroughs() {
+  //   return this.walkthroughData.relatedWalkthroughs;
+  // }
 
   getQuestionAsDisplayType = (
     questionId: string,

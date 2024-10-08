@@ -1,10 +1,10 @@
-.ui-WalkthroughCard--CardContainer {
+.ui-LinkCard--CardContainer {
   display: flex;
   border: var(--walkthrough-card-border-transparent);
   border-radius: var(--layout-border-radius-xlarge);
   box-shadow: var(--surface-shadow-medium), var(--surface-shadow-medium);
   background-color: var(--surface-color-background-white);
-  max-width: var(--walkthrough-card-max-width);
+  max-width: var(--link-card-max-width);
   flex-direction: column;
   color: var(--support-border-color-info);
   padding: var(--layout-padding-large);
@@ -15,7 +15,7 @@
   text-decoration: none;
 }
 
-.ui-WalkthroughCard--Title {
+.ui-LinkCard--Title {
   color: var(--support-border-color-info);
   font: var(--typography-bold-h4);
   text-decoration: var(--walkthrough-card-title-text-decoration-hidden);
@@ -23,21 +23,26 @@
   text-underline-offset: var(--walkthrough-card-title-text-underline-offset);
 }
 
-.ui-WalkthroughCard--CardContainer[data-hovered] {
+.ui-LinkCard--CardContainer[data-hovered] {
   cursor: pointer;
   box-shadow: var(--surface-shadow-large), var(--surface-shadow-large);
   border: var(--walkthrough-card-border-default);
 }
-.ui-WalkthroughCard--CardContainer[data-focus-visible] {
+.ui-LinkCard--CardContainer[data-focus-visible] {
   outline: var(--layout-border-width-medium) solid
     var(--surface-color-border-active);
 }
 
-.ui-WalkthroughCard--CardContainer[data-hovered] .ui-WalkthroughCard--Title {
+.ui-LinkCard--CardContainer[data-hovered] .ui-LinkCard--Title {
   text-decoration-color: var(--support-border-color-info);
 }
 
-.ui-WalkthroughCard--Subtitle {
+.ui-LinkCard--ContentWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.ui-LinkCard--Subtitle {
   font: var(--typography-regular-label);
   color: var(--support-border-color-info);
   border: var(--layout-border-width-small) solid var(--theme-blue-90);
@@ -46,7 +51,12 @@
   width: fit-content;
 }
 
-.ui-WalkthroughCard--Description {
+.ui-LinkCard--Description {
   font: var(--typography-regular-body);
   color: var(--typography-color-primary);
+}
+
+.ui-LinkCard--CTA {
+  align-self: flex-end;
+  margin-top: var(--layout-margin-large);
 }
