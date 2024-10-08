@@ -3,14 +3,23 @@ import {
   GET_TESTID_CHECKBOX,
   GET_TESTID_RADIO,
 } from "@repo/constants/src/testids";
+import { URLS_WALKTHROUGHS } from "@repo/constants/src/urls";
+import {
+  EnumBuildingTypes,
+  EnumWalkthroughIds,
+} from "@repo/constants/src/constants";
 
 import { walkthroughs } from "../fixtures/workflow1-test-data.json";
 import { results } from "../fixtures/results-data.json";
 import { runWalkthrough } from "../support/helpers";
 
-describe("walkthrough 1", () => {
+describe("walkthrough 9.9.9", () => {
   beforeEach(() => {
-    cy.visit("/walkthrough/9.9.9");
+    cy.visit(
+      URLS_WALKTHROUGHS[EnumBuildingTypes.SINGLE_DWELLING][
+        EnumWalkthroughIds._9_9_9
+      ].href,
+    );
   });
 
   // Test all walkthroughs defined in test data
