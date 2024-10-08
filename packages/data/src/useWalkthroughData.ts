@@ -291,8 +291,6 @@ export default function useWalkthroughData({
   id,
   buildingType,
 }: UseWalkthroughDataProps): WalkthroughJSONType {
-  console.log("id", id);
-  console.log("buildingType", buildingType);
   const data =
     WalkthroughJSONData[buildingType as EnumBuildingTypes][
       id as EnumWalkthroughIds
