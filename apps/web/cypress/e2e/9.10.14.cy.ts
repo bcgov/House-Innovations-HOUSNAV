@@ -1,13 +1,22 @@
 import { TESTID_WALKTHROUGH_FOOTER_BACK } from "@repo/constants/src/testids";
+import { URLS_WALKTHROUGHS } from "@repo/constants/src/urls";
+import {
+  EnumBuildingTypes,
+  EnumWalkthroughIds,
+} from "@repo/constants/src/constants";
 
 import { runWalkthrough } from "../support/helpers";
 
 import { walkthroughs } from "../fixtures/workflow2-test-data.json";
 import { results } from "../fixtures/results-data.json";
 
-describe("walkthrough 2", () => {
+describe("walkthrough 9.10.14", () => {
   beforeEach(() => {
-    cy.visit("/walkthrough/9.10.14");
+    cy.visit(
+      URLS_WALKTHROUGHS[EnumBuildingTypes.SINGLE_DWELLING][
+        EnumWalkthroughIds._9_10_14
+      ].href,
+    );
   });
 
   // Test all walkthroughs defined in test data
