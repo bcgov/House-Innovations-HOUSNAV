@@ -1,11 +1,4 @@
-import {
-  BUILDING_TYPE_SINGLE_DWELLING,
-  BUILDING_TYPE_MULTI_DWELLING,
-} from "@repo/constants/src/constants";
-
-type BuildingTypes =
-  | typeof BUILDING_TYPE_SINGLE_DWELLING
-  | typeof BUILDING_TYPE_MULTI_DWELLING;
+import { EnumBuildingTypes } from "@repo/constants/src/constants";
 
 interface UseBuildingTypeDataProps {
   /*
@@ -15,23 +8,25 @@ interface UseBuildingTypeDataProps {
 }
 
 export interface BuildingTypeJSONType {
-  name: string;
+  title: string;
 }
 
-export const BuildingTypeJSONData: Record<BuildingTypes, BuildingTypeJSONType> =
-  {
-    [BUILDING_TYPE_SINGLE_DWELLING]: {
-      name: "Single Dwelling Unit",
-    },
-    [BUILDING_TYPE_MULTI_DWELLING]: {
-      name: "Multi-Unit Dwelling",
-    },
-  };
+export const BuildingTypeJSONData: Record<
+  EnumBuildingTypes,
+  BuildingTypeJSONType
+> = {
+  [EnumBuildingTypes.SINGLE_DWELLING]: {
+    title: "Single Dwelling Unit",
+  },
+  [EnumBuildingTypes.MULTI_DWELLING]: {
+    title: "Multi-Unit Dwelling",
+  },
+};
 
 export default function useBuildingTypeData({
   buildingType,
 }: UseBuildingTypeDataProps): BuildingTypeJSONType {
-  const data = BuildingTypeJSONData[buildingType as BuildingTypes];
+  const data = BuildingTypeJSONData[buildingType as EnumBuildingTypes];
   if (!data) {
     throw new Error(`No data found for building type ${buildingType}`);
   }

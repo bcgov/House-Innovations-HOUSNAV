@@ -3,6 +3,7 @@ import { JSX, ReactNode } from "react";
 // repo
 import PreFooter from "@repo/ui/pre-footer";
 import Footer from "@repo/ui/footer";
+import { TESTID_LAYOUT_FOOTER } from "@repo/constants/src/testids";
 
 export default function LayoutFooter({
   children,
@@ -11,7 +12,10 @@ export default function LayoutFooter({
 }): JSX.Element {
   return (
     <>
-      <section className="u-page-background-gray">
+      <section
+        className="u-page-background-gray"
+        data-testid={TESTID_LAYOUT_FOOTER}
+      >
         {children}
         <PreFooter />
       </section>

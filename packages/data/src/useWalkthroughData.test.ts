@@ -1,5 +1,11 @@
+// 3rd party
 import { describe, it, expect } from "vitest";
-
+// repo
+import {
+  EnumBuildingTypes,
+  EnumWalkthroughIds,
+} from "@repo/constants/src/constants";
+// local
 import {
   SectionData,
   WalkthroughJSONData,
@@ -8,7 +14,9 @@ import {
 
 describe("findSectionTitleByQuestionId", () => {
   const sections: { [key: string]: SectionData } =
-    WalkthroughJSONData["9.9.9"].sections;
+    WalkthroughJSONData[EnumBuildingTypes.SINGLE_DWELLING][
+      EnumWalkthroughIds._9_9_9
+    ].sections;
 
   it("should return the correct section title for a given questionId", () => {
     expect(findSectionTitleByQuestionId("P01", sections)).toBe("Introduction");

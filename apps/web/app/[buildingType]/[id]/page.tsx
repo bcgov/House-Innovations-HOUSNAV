@@ -14,13 +14,15 @@ import {
 export default function Page({
   params,
 }: {
-  params: { id: string };
+  params: { id: string; buildingType: string };
 }): JSX.Element {
   // get walkthrough data, else show not found content
   let data;
   try {
-    // TODO - HOUSNAV-186 - use building type as well
-    data = useWalkthroughData({ id: params.id });
+    data = useWalkthroughData({
+      id: params.id,
+      buildingType: params.buildingType,
+    });
   } catch (e) {
     notFound();
   }

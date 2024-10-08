@@ -1,6 +1,6 @@
 .ui-LinkCard--CardContainer {
   display: flex;
-  border: var(--walkthrough-card-border-transparent);
+  border: var(--link-card-border-transparent);
   border-radius: var(--layout-border-radius-xlarge);
   box-shadow: var(--surface-shadow-medium), var(--surface-shadow-medium);
   background-color: var(--surface-color-background-white);
@@ -18,15 +18,15 @@
 .ui-LinkCard--Title {
   color: var(--support-border-color-info);
   font: var(--typography-bold-h4);
-  text-decoration: var(--walkthrough-card-title-text-decoration-hidden);
+  text-decoration: var(--link-card-title-text-decoration-hidden);
   transition: text-decoration-color var(--transition-medium);
-  text-underline-offset: var(--walkthrough-card-title-text-underline-offset);
+  text-underline-offset: var(--link-card-title-text-underline-offset);
 }
 
 .ui-LinkCard--CardContainer[data-hovered] {
   cursor: pointer;
   box-shadow: var(--surface-shadow-large), var(--surface-shadow-large);
-  border: var(--walkthrough-card-border-default);
+  border: var(--link-card-border-default);
 }
 .ui-LinkCard--CardContainer[data-focus-visible] {
   outline: var(--layout-border-width-medium) solid
