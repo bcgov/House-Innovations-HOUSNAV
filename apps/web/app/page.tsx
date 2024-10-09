@@ -53,9 +53,15 @@ export default function Page(): JSX.Element {
           (tool), designed to provide a guided walk-through experience for code
           users that returns relevant areas of the BC Building Code (BCBC)
           related to individual projects. This initial test focuses on two
-          subsections of the 2024 BCBC to evaluate the tool’s functionality:
-          Subsection 9.9.9 - Egress From Dwelling Units and Subsection 9.10.14
-          1-4 – Spatial Separation Between Buildings.
+          subsections of the 2024 BCBC to evaluate the tool’s functionality:{" "}
+          <cite className="u-italic">
+            Subsection 9.9.9 - Egress From Dwelling Units
+          </cite>{" "}
+          and{" "}
+          <cite className="u-italic">
+            Subsection 9.10.14 1-4 – Spatial Separation Between Buildings
+          </cite>
+          .
         </p>
         <p className="page-Landing--Subhead">
           Choose one of the cards below to start your journey. During the
