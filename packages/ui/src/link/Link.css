@@ -1,7 +1,7 @@
 .ui-Link {
   color: var(--typography-color-link);
   text-decoration: underline;
-  text-underline-offset: var(--link-underline-offset);
+  text-underline-offset: var(--text-underline-offset-large);
   outline: none;
   transition: var(--transition-link-background-color),
     var(--transition-link-color);

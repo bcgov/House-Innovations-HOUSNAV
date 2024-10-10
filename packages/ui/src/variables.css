@@ -218,6 +218,10 @@
 
 /* CUSTOM */
 :root {
+  --surface-color-transparent: #00000000;
+  --theme-gold-100-a0: #fcba1900;
+  --theme-gold-100-a20: #fcba1933;
+  --layout-border-width-xlarge: 6px;
   --layout-padding-container: var(--layout-padding-medium);
   --layout-padding-radio-x: var(--layout-padding-medium);
   --layout-padding-radio-y: var(--layout-padding-medium);
@@ -228,7 +232,9 @@
   --size-button: 40px;
   --size-button-large: 52px;
   --outline-offset: 2px;
-  --link-underline-offset: 0.35em;
+  --text-underline-offset: 0.2em; /* 3px */
+  --text-underline-offset-large: 0.35em; /* 5.6px */
+  --text-decoration-hidden: underline 1px var(--surface-color-transparent);
   --transition-link-background-color: background-color 150ms ease-in;
   --transition-link-color: color 150ms ease-in;
   --transition-link-icon-fill-color: fill 150ms ease-in;
@@ -253,15 +259,13 @@
   --page-landing-header-padding-block: var(--layout-margin-large);
   --page-landing-subhead-margin-bottom: var(--layout-margin-medium);
   --page-landing-cards-padding-block: var(--layout-margin-large);
-  --page-landing-cards-flex-direction: column;
-  --page-landing-cards-flex-wrap: nowrap;
   --link-card-min-width: 20.625rem; /* 330px */
   --link-card-max-width: 26.25rem; /* 420px */
-  --link-card-border-transparent: 1px solid #00000000;
   --link-card-border-default: 1px solid var(--surface-color-border-default);
-  --link-card-title-text-decoration-hidden: underline 1px #00000000;
-  --link-card-title-text-decoration-color-transition: underline 1px;
-  --link-card-title-text-underline-offset: 0.2em;
+  --checkbox-card-padding: var(--layout-padding-large)
+    var(--layout-padding-medium)
+    calc(var(--layout-padding-large) - var(--layout-border-width-xlarge));
+  --checkbox-card-gap: var(--layout-padding-medium);
   --step-tracker-heading-padding-left: var(--layout-padding-xlarge);
   --step-tracker-padding-top: var(--layout-padding-xsmall);
   --step-tracker-padding-left: var(--layout-padding-medium);
@@ -307,8 +311,10 @@
     --page-landing-header-padding-block: var(--layout-margin-xlarge);
     --page-landing-subhead-margin-bottom: var(--layout-margin-large);
     --page-landing-cards-padding-block: var(--layout-margin-xxxlarge);
-    --page-landing-cards-flex-direction: row;
-    --page-landing-cards-flex-wrap: wrap;
+    --checkbox-card-padding: var(--layout-padding-large)
+      var(--layout-padding-large)
+      calc(var(--layout-padding-large) - var(--layout-border-width-xlarge));
+    --checkbox-card-gap: var(--layout-padding-large);
     --modal-bc-padding: var(--layout-margin-large)
       calc(var(--layout-margin-xlarge) - var(--layout-margin-small))
       var(--layout-margin-huge)
@@ -330,13 +336,6 @@
     --walkthrough-side-nav-width: 21.25rem; /* 340px */
     --step-tracker-padding-top: var(--layout-padding-26);
     --step-tracker-padding-left: var(--layout-padding-xlarge);
-  }
-}
-
-/* DESKTOP - MEDIUM - 1120px */
-@media (min-width: 70rem) {
-  :root {
-    --page-landing-cards-flex-wrap: nowrap;
   }
 }
 

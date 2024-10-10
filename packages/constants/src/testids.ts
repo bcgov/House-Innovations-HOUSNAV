@@ -53,4 +53,5 @@ export const TESTID_MODAL_SIDE = "modal-side";
 export const TESTID_BUILDING_TYPE = "building-type";
 export const TESTID_CONFIRMATION_MODAL = "confirmation-modal";
 export const GET_TESTID_LINK_CARD = (id: string) => `link-card-${id}`;
+export const GET_TESTID_CHECKBOX_CARD = (id: string) => `checkbox-card-${id}`;
 export const TESTID_404_IMAGE = "not-found-image";

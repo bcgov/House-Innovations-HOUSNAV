@@ -34,6 +34,11 @@ const testIcons: Array<{ type: IconType; id: string; title: string }> = [
     title: "Checkbox checked",
   },
   {
+    type: "checkboxCheckedFilled",
+    id: "checkboxCheckedFilledIcon",
+    title: "Checkbox checked filled",
+  },
+  {
     type: "checkboxUnchecked",
     id: "checkboxUncheckedIcon",
     title: "Checkbox unchecked",

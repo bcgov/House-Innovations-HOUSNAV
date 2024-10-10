@@ -105,7 +105,7 @@ export default function CheckboxGroup({
           data-testid={GET_TESTID_CHECKBOX(testIdNamespace, option.value)}
         >
           {currentValue?.includes(option.value) && (
-            <Icon type="checkboxChecked" className="ui-Checkbox--Icon" />
+            <Icon type="checkboxCheckedFilled" className="ui-Checkbox--Icon" />
           )}
           {!currentValue?.includes(option.value) && (
             <Icon type="checkboxUnchecked" className="ui-Checkbox--Icon" />

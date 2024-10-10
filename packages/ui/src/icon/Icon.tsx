@@ -10,6 +10,7 @@ import OpenInNew from "./icons/OpenInNew";
 import RadioUnchecked from "./icons/RadioUnchecked";
 import RadioChecked from "./icons/RadioChecked";
 import CheckboxChecked from "./icons/CheckboxChecked";
+import CheckboxCheckedFilled from "./icons/CheckboxCheckedFilled";
 import CheckboxUnchecked from "./icons/CheckboxUnchecked";
 import ArrowBack from "./icons/ArrowBack";
 import ArrowForward from "./icons/ArrowForward";
@@ -29,6 +30,7 @@ export type IconType =
   | "radioUnchecked"
   | "radioChecked"
   | "checkboxChecked"
+  | "checkboxCheckedFilled"
   | "checkboxUnchecked"
   | "arrowBack"
   | "arrowForward"
@@ -75,6 +77,7 @@ const ICONS: Record<IconType, FunctionComponent<IconProps>> = {
   radioUnchecked: RadioUnchecked,
   radioChecked: RadioChecked,
   checkboxChecked: CheckboxChecked,
+  checkboxCheckedFilled: CheckboxCheckedFilled,
   checkboxUnchecked: CheckboxUnchecked,
   arrowBack: ArrowBack,
   arrowForward: ArrowForward,

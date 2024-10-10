@@ -9,11 +9,11 @@ import {
   EnumWalkthroughIds,
 } from "@repo/constants/src/constants";
 
-import { walkthroughs } from "../fixtures/workflow1-test-data.json";
+import { walkthroughs } from "../fixtures/single-dwelling-9.9.9-test-data.json";
 import { results } from "../fixtures/results-data.json";
 import { runWalkthrough } from "../support/helpers";
 
-describe("walkthrough 9.9.9", () => {
+describe("single dwelling: 9.9.9", () => {
   beforeEach(() => {
     cy.visit(
       URLS_WALKTHROUGHS[EnumBuildingTypes.SINGLE_DWELLING][
