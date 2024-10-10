@@ -6,7 +6,7 @@ import {
 } from "@repo/constants/src/constants";
 import { URLS_BUILDING_TYPE } from "@repo/constants/src/urls";
 
-describe("single dwelling", () => {
+describe("single dwelling: landing", () => {
   beforeEach(() => {
     cy.visit(URLS_BUILDING_TYPE[EnumBuildingTypes.SINGLE_DWELLING].href);
   });

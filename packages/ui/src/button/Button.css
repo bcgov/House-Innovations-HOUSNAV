@@ -95,7 +95,7 @@
   color: var(--typography-color-disabled);
 }
 .ui-Button.--tertiary[data-hovered] {
-  text-underline-offset: var(--link-underline-offset);
+  text-underline-offset: var(--text-underline-offset-large);
   text-decoration: underline;
 }
 .ui-Button.--tertiary[data-pressed] {
@@ -106,7 +106,7 @@
 .ui-Button.--link {
   background-color: var(--surface-color-tertiary-button-default);
   color: var(--typography-color-link);
-  text-underline-offset: var(--link-underline-offset);
+  text-underline-offset: var(--text-underline-offset-large);
   text-decoration: underline;
 }
 .ui-Button.--link[aria-disabled] {
@@ -123,7 +123,7 @@
 .ui-Button.--code {
   background-color: var(--surface-color-tertiary-button-default);
   color: var(--typography-color-link);
-  text-underline-offset: var(--link-underline-offset);
+  text-underline-offset: var(--text-underline-offset-large);
   text-decoration: underline;
   min-height: auto;
   gap: var(--layout-padding-xxsmall);
@@ -151,7 +151,7 @@
 .ui-Button.--glossary {
   background-color: var(--surface-color-tertiary-button-default);
   color: var(--typography-color-link);
-  text-underline-offset: var(--link-underline-offset);
+  text-underline-offset: var(--text-underline-offset-large);
   text-decoration: dotted underline;
   min-height: auto;
   padding: 0;

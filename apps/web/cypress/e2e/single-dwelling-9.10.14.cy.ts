@@ -7,10 +7,10 @@ import {
 
 import { runWalkthrough } from "../support/helpers";
 
-import { walkthroughs } from "../fixtures/workflow2-test-data.json";
+import { walkthroughs } from "../fixtures/single-dwelling-9.10.14-test-data.json";
 import { results } from "../fixtures/results-data.json";
 
-describe("walkthrough 9.10.14", () => {
+describe("single dwelling: 9.10.14", () => {
   beforeEach(() => {
     cy.visit(
       URLS_WALKTHROUGHS[EnumBuildingTypes.SINGLE_DWELLING][

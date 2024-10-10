@@ -1,6 +1,6 @@
 "use client";
 // 3rd party
-import React, { JSX } from "react";
+import React, { JSX, useState } from "react";
 import { Heading } from "react-aria-components";
 import { notFound } from "next/navigation";
 // repo
@@ -12,6 +12,7 @@ import { URLS_WALKTHROUGHS } from "@repo/constants/src/urls";
 import useBuildingTypeData from "@repo/data/useBuildingTypeData";
 import { WalkthroughJSONData } from "@repo/data/useWalkthroughData";
 import LinkCard, { LinkCardProps } from "@repo/ui/link-card";
+import CheckboxCard from "@repo/ui/checkbox-card";
 // local
 import LayoutFooter from "../../components/layout-footer/LayoutFooter";
 import "../page-landing.css";
@@ -72,6 +73,7 @@ export default function Page({
 }: {
   params: { buildingType: string };
 }): JSX.Element {
+  const [isChecked, setIsChecked] = useState({ 0: false, 1: false });
   // get buildingType, else show not found content
   let buildingType;
   try {
@@ -87,7 +89,31 @@ export default function Page({
       {params.buildingType === EnumBuildingTypes.SINGLE_DWELLING ? (
         <TEMPSingleDwellingPage />
       ) : (
-        <>{title}</>
+        <div className="u-container TEMP-multi-dwelling">
+          <header>
+            <Heading level={1}>{title}</Heading>
+          </header>
+          <CheckboxCard
+            title={"Egress from Dwelling Units"}
+            description={
+              "Location and distances of exists from living spaces in a building."
+            }
+            data-testid={EnumWalkthroughIds._9_9_9}
+            superTitle={"Volume II - 9.9.9."}
+            onChange={() => setIsChecked({ 0: !isChecked[0], 1: isChecked[1] })}
+            isSelected={isChecked[0]}
+          />
+          <CheckboxCard
+            title={"Spatial Separation Between Buildings"}
+            description={
+              "Calculations for size and number of doors and windows in a wall facing another building."
+            }
+            data-testid={EnumWalkthroughIds._9_10_14}
+            superTitle={"Volume II - 9.10.14."}
+            onChange={() => setIsChecked({ 0: isChecked[0], 1: !isChecked[1] })}
+            isSelected={isChecked[1]}
+          />
+        </div>
       )}
     </LayoutFooter>
   );
