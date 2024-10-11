@@ -1,9 +1,12 @@
-import testCase999 from "../json/walkthroughs/single-dwelling-9.9.9.json";
-import testCase91014 from "../json/walkthroughs/single-dwelling-9.10.14.json";
+// repo
 import {
   EnumBuildingTypes,
   EnumWalkthroughIds,
 } from "@repo/constants/src/constants";
+// local
+import buildingTypeAnalysisData from "../json/building-types/wt-building-type-analysis.json";
+import singleDwelling999 from "../json/building-types/single-dwelling/wt-single-dwelling-9.9.9.json";
+import singleDwelling91014 from "../json/building-types/single-dwelling/wt-single-dwelling-9.10.14.json";
 
 interface UseWalkthroughDataProps {
   /*
@@ -272,18 +275,21 @@ export interface WalkthroughJSONType {
   };
 }
 
+export const BuildingTypeAnalysisJSONData: WalkthroughJSONType =
+  buildingTypeAnalysisData;
+
 export const WalkthroughJSONData: Record<
   EnumBuildingTypes,
   Record<EnumWalkthroughIds, WalkthroughJSONType>
 > = {
   [EnumBuildingTypes.SINGLE_DWELLING]: {
-    [EnumWalkthroughIds._9_9_9]: testCase999,
-    [EnumWalkthroughIds._9_10_14]: testCase91014,
+    [EnumWalkthroughIds._9_9_9]: singleDwelling999,
+    [EnumWalkthroughIds._9_10_14]: singleDwelling91014,
   },
   // TODO - HOUSNAV-200
   [EnumBuildingTypes.MULTI_DWELLING]: {
-    [EnumWalkthroughIds._9_9_9]: testCase999,
-    [EnumWalkthroughIds._9_10_14]: testCase91014,
+    [EnumWalkthroughIds._9_9_9]: singleDwelling999,
+    [EnumWalkthroughIds._9_10_14]: singleDwelling91014,
   },
 };
 

@@ -79,6 +79,9 @@ html:has(.u-show-footer-skip-link) a[data-skip-link-footer] {
 .u-italic {
   font-style: italic;
 }
+.u-bold {
+  font-weight: bold;
+}
 .u-ellipsis {
   white-space: nowrap;
   overflow: hidden;

@@ -259,6 +259,15 @@
   --page-landing-header-padding-block: var(--layout-margin-large);
   --page-landing-subhead-margin-bottom: var(--layout-margin-medium);
   --page-landing-cards-padding-block: var(--layout-margin-large);
+  --page-building-type-display: block;
+  --page-building-type-content-padding: var(--layout-margin-large);
+  --page-building-type-wizard-width: 100%;
+  --page-building-type-wizard-padding: var(--layout-margin-large)
+    var(--layout-margin-medium);
+  --page-building-type-wizard-gap: var(--layout-margin-large);
+  --page-building-type-wizard-button-margin-left: calc(
+    var(--layout-margin-12) * -1
+  );
   --link-card-min-width: 20.625rem; /* 330px */
   --link-card-max-width: 26.25rem; /* 420px */
   --link-card-border-default: 1px solid var(--surface-color-border-default);
@@ -311,6 +320,11 @@
     --page-landing-header-padding-block: var(--layout-margin-xlarge);
     --page-landing-subhead-margin-bottom: var(--layout-margin-large);
     --page-landing-cards-padding-block: var(--layout-margin-xxxlarge);
+    --page-building-type-content-padding: var(--layout-margin-large)
+      var(--layout-margin-xxlarge);
+    --page-building-type-wizard-padding: var(--layout-margin-xxlarge);
+    --page-building-type-wizard-gap: var(--layout-margin-xlarge);
+    --page-building-type-wizard-button-margin-left: 0;
     --checkbox-card-padding: var(--layout-padding-large)
       var(--layout-padding-large)
       calc(var(--layout-padding-large) - var(--layout-border-width-xlarge));
@@ -336,6 +350,8 @@
     --walkthrough-side-nav-width: 21.25rem; /* 340px */
     --step-tracker-padding-top: var(--layout-padding-26);
     --step-tracker-padding-left: var(--layout-padding-xlarge);
+    --page-building-type-display: flex;
+    --page-building-type-wizard-width: 50%;
   }
 }
 

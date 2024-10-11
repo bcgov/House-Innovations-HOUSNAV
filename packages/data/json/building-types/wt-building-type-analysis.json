@@ -1,0 +1,53 @@
+{
+  "info": {
+    "title": "Building Type Analysis",
+    "subtitle": "",
+    "description": "Not sure? Narrow down whether your project falls under the specifications of a single- or a multi-unit dwelling.",
+    "startingSectionId": "1_intro",
+    "walkthroughTitle": "FPO - Building Type Analysis"
+  },
+  "sections": {
+    "1_intro": {
+      "sectionTitle": "FPO - Introduction",
+      "sectionQuestions": [
+        "P01"
+      ]
+    }
+  },
+  "questions": {
+    "P01": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "FPO - Does the Building Code apply to this structure?",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "yes"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "no"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P01",
+          "answerValue": "yes",
+          "nextNavigateTo": "R10"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R00"
+        }
+      ]
+    }
+  },
+  "results": {
+    "R00": {
+      "resultDisplayMessage": "<p>FPO - You have selected an answer...</p>"
+    },
+    "R10": {
+      "resultDisplayMessage": "<p>FPO - Based on the building characteristics provided, ...</p>"
+    }
+  }
+}

@@ -4,7 +4,6 @@
   border-radius: var(--layout-border-radius-xlarge);
   box-shadow: var(--surface-shadow-medium), var(--surface-shadow-medium);
   background: var(--surface-color-background-white);
-  max-width: 37.5rem; /* 600px */
   color: var(--typography-color-primary);
   padding: var(--checkbox-card-padding);
   gap: var(--checkbox-card-gap);

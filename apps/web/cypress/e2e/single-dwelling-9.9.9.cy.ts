@@ -18,7 +18,7 @@ describe("single dwelling: 9.9.9", () => {
     cy.visit(
       URLS_WALKTHROUGHS[EnumBuildingTypes.SINGLE_DWELLING][
         EnumWalkthroughIds._9_9_9
-      ].href,
+      ],
     );
   });
 

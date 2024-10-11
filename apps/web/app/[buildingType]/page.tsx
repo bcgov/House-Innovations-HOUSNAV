@@ -1,6 +1,6 @@
 "use client";
 // 3rd party
-import React, { JSX, useState } from "react";
+import React, { JSX, useMemo, useState } from "react";
 import { Heading } from "react-aria-components";
 import { notFound } from "next/navigation";
 // repo
@@ -8,16 +8,25 @@ import {
   EnumBuildingTypes,
   EnumWalkthroughIds,
 } from "@repo/constants/src/constants";
-import { URLS_WALKTHROUGHS } from "@repo/constants/src/urls";
+import {
+  URLS_GET_BUILDING_TYPE,
+  URLS_WALKTHROUGHS,
+} from "@repo/constants/src/urls";
 import useBuildingTypeData from "@repo/data/useBuildingTypeData";
-import { WalkthroughJSONData } from "@repo/data/useWalkthroughData";
+import useWalkthroughData, {
+  WalkthroughJSONData,
+  WalkthroughJSONType,
+} from "@repo/data/useWalkthroughData";
 import LinkCard, { LinkCardProps } from "@repo/ui/link-card";
 import CheckboxCard from "@repo/ui/checkbox-card";
+import Button from "@repo/ui/button";
+import Link from "@repo/ui/link";
 // local
 import LayoutFooter from "../../components/layout-footer/LayoutFooter";
 import "../page-landing.css";
+import "./page-building-type.css";
 
-const CARDS = Object.entries(
+const TEMP_CARDS = Object.entries(
   WalkthroughJSONData[EnumBuildingTypes.SINGLE_DWELLING],
 ).reduce(
   (acc, [id, { info }]) => ({
@@ -28,25 +37,25 @@ const CARDS = Object.entries(
       description: info.description,
       href: URLS_WALKTHROUGHS[EnumBuildingTypes.SINGLE_DWELLING][
         id as EnumWalkthroughIds
-      ].href,
+      ],
     },
   }),
   {} as Record<EnumWalkthroughIds, LinkCardProps>,
 );
 
-const TEMPSingleDwellingPage = () => {
+const TEMPSingleDwellingPage = ({ title }: { title: string }) => {
   return (
     <>
       <header className="page-Landing--Header u-container-content">
-        <Heading level={1}>Single Dwelling Unit</Heading>
-        <p className="page-Landing--Subhead">
+        <Heading level={1}>{title}</Heading>
+        <p>
           Get step-by-step guidance to determine applicable Code requirements
           for your proposed building structure of the 2024 BC Building Code.
         </p>
       </header>
       <div className="page-Landing--LinkCards">
         <ul className="u-container-content">
-          {Object.entries(CARDS).map(
+          {Object.entries(TEMP_CARDS).map(
             ([id, { title, description, subtitle, href }]) => {
               return (
                 <li key={id}>
@@ -73,7 +82,9 @@ export default function Page({
 }: {
   params: { buildingType: string };
 }): JSX.Element {
-  const [isChecked, setIsChecked] = useState({ 0: false, 1: false });
+  // state storage for selected walkthroughs
+  const [isChecked, setIsChecked] = useState<Record<string, boolean>>({});
+
   // get buildingType, else show not found content
   let buildingType;
   try {
@@ -82,39 +93,115 @@ export default function Page({
     notFound();
   }
 
-  const title = buildingType.title;
+  // shortcut for single dwelling
+  if (params.buildingType === EnumBuildingTypes.SINGLE_DWELLING) {
+    return (
+      <LayoutFooter>
+        <TEMPSingleDwellingPage title={buildingType.title} />
+      </LayoutFooter>
+    );
+  }
+
+  // gather walkthrough data for buildingType
+  const walkthroughs = buildingType.walkthroughs.reduce<
+    Record<string, WalkthroughJSONType>
+  >((arr, walkthroughId) => {
+    arr[walkthroughId] = useWalkthroughData({
+      id: walkthroughId,
+      buildingType: params.buildingType,
+    });
+
+    return arr;
+  }, {});
+
+  // set initial state for isChecked - this will make sure the CheckboxCard components are controlled from the initial render
+  if (Object.keys(isChecked).length === 0) {
+    const initialState = buildingType.walkthroughs.reduce<
+      Record<string, boolean>
+    >((state, walkthroughId) => {
+      state[walkthroughId] = false;
+      return state;
+    }, {});
+    setIsChecked(initialState);
+  }
+
+  // display helpers
+  const totalSelected = Object.values(isChecked).filter(Boolean).length;
+  const totalWalkthroughs = Object.keys(walkthroughs).length;
+  const memoSetAllSelectedObject = useMemo(
+    () =>
+      buildingType.walkthroughs.reduce<Record<string, boolean>>(
+        (state, walkthroughId) => {
+          state[walkthroughId] = true;
+          return state;
+        },
+        {},
+      ),
+    [buildingType.walkthroughs],
+  );
 
   return (
     <LayoutFooter>
-      {params.buildingType === EnumBuildingTypes.SINGLE_DWELLING ? (
-        <TEMPSingleDwellingPage />
-      ) : (
-        <div className="u-container TEMP-multi-dwelling">
-          <header>
-            <Heading level={1}>{title}</Heading>
-          </header>
-          <CheckboxCard
-            title={"Egress from Dwelling Units"}
-            description={
-              "Location and distances of exists from living spaces in a building."
-            }
-            data-testid={EnumWalkthroughIds._9_9_9}
-            superTitle={"Volume II - 9.9.9."}
-            onChange={() => setIsChecked({ 0: !isChecked[0], 1: isChecked[1] })}
-            isSelected={isChecked[0]}
-          />
-          <CheckboxCard
-            title={"Spatial Separation Between Buildings"}
-            description={
-              "Calculations for size and number of doors and windows in a wall facing another building."
-            }
-            data-testid={EnumWalkthroughIds._9_10_14}
-            superTitle={"Volume II - 9.10.14."}
-            onChange={() => setIsChecked({ 0: isChecked[0], 1: !isChecked[1] })}
-            isSelected={isChecked[1]}
-          />
+      <div className="page-BuildingType">
+        <header className="page-Landing--Header">
+          <Heading level={1}>{buildingType.title}</Heading>
+          <p>
+            <b className="u-bold">Select All</b> to experience the full
+            walkthrough. If you’d prefer to focus on a certain topic, choose
+            only one subsection.
+          </p>
+          <p>
+            Get step-by-step guidance to determine applicable Code requirements
+            for your proposed building structure of the 2024 BC Building Code.
+          </p>
+        </header>
+        <div className="page-BuildingType--Wizard">
+          <div className="page-BuildingType--WizardHeader">
+            <Button
+              variant="link"
+              className="--white"
+              isDisabled={totalSelected === totalWalkthroughs}
+              onPress={() => {
+                setIsChecked(memoSetAllSelectedObject);
+              }}
+            >
+              Select All
+            </Button>
+            <p>
+              {totalSelected} out of {totalWalkthroughs} selected
+            </p>
+          </div>
+          <ul>
+            {Object.entries(walkthroughs).map(([walkthroughId, { info }]) => (
+              <li key={walkthroughId}>
+                <CheckboxCard
+                  title={info.title}
+                  description={info.description}
+                  data-testid={walkthroughId}
+                  superTitle={info.subtitle}
+                  isSelected={isChecked[walkthroughId]}
+                  onChange={() => {
+                    setIsChecked({
+                      ...isChecked,
+                      [walkthroughId]: !isChecked[walkthroughId],
+                    });
+                  }}
+                />
+              </li>
+            ))}
+          </ul>
+          {/* TODO - HOUSNAV-200 - update HREF to be multi walkthrough type */}
+          <Link
+            variant="secondary"
+            isDisabled={totalSelected === 0}
+            showAsButton
+            isLargeButton
+            href={`${URLS_GET_BUILDING_TYPE(params.buildingType)}/9.9.9`}
+          >
+            Begin Walkthrough
+          </Link>
         </div>
-      )}
+      </div>
     </LayoutFooter>
   );
 }
