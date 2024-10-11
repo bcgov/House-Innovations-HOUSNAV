@@ -25,6 +25,12 @@ import Link from "@repo/ui/link";
 import LayoutFooter from "../../components/layout-footer/LayoutFooter";
 import "../page-landing.css";
 import "./page-building-type.css";
+import {
+  TESTID_BUILD_WIZARD_SELECT_ALL,
+  TESTID_BUILD_WIZARD_TOTAL_SELECTED,
+  TESTID_BUILD_WIZARD_TOTAL_AVAILABLE,
+  TESTID_BUILD_WIZARD_BEGIN_WALKTHROUGH,
+} from "@repo/constants/src/testids";
 
 const TEMP_CARDS = Object.entries(
   WalkthroughJSONData[EnumBuildingTypes.SINGLE_DWELLING],
@@ -164,11 +170,19 @@ export default function Page({
               onPress={() => {
                 setIsChecked(memoSetAllSelectedObject);
               }}
+              data-testid={TESTID_BUILD_WIZARD_SELECT_ALL}
             >
               Select All
             </Button>
             <p>
-              {totalSelected} out of {totalWalkthroughs} selected
+              <span data-testid={TESTID_BUILD_WIZARD_TOTAL_SELECTED}>
+                {totalSelected}
+              </span>{" "}
+              out of{" "}
+              <span data-testid={TESTID_BUILD_WIZARD_TOTAL_AVAILABLE}>
+                {totalWalkthroughs}
+              </span>{" "}
+              selected
             </p>
           </div>
           <ul>
@@ -197,6 +211,7 @@ export default function Page({
             showAsButton
             isLargeButton
             href={`${URLS_GET_BUILDING_TYPE(params.buildingType)}/9.9.9`}
+            data-testid={TESTID_BUILD_WIZARD_BEGIN_WALKTHROUGH}
           >
             Begin Walkthrough
           </Link>
