@@ -15,7 +15,7 @@ describe("single dwelling: 9.10.14", () => {
     cy.visit(
       URLS_WALKTHROUGHS[EnumBuildingTypes.SINGLE_DWELLING][
         EnumWalkthroughIds._9_10_14
-      ].href,
+      ],
     );
   });
 

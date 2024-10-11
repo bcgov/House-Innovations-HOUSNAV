@@ -1,11 +1,8 @@
 import { EnumBuildingTypes, EnumWalkthroughIds } from "./constants";
-import { WalkthroughJSONData } from "@repo/data/useWalkthroughData";
-import { BuildingTypeJSONData } from "@repo/data/useBuildingTypeData";
 
 export const URL_HOME_HREF = "/";
 export const URL_HOME_TITLE = "Home";
-// TODO - refactor with HOUSNAV-192 - this will be the url for the building type analysis walkthrough
-export const URL_BUILDING_TYPE = "/building-type";
+export const URL_BUILDING_TYPE_HREF = "/building-type-analysis";
 export const URL_DOWNLOAD_HREF =
   "https://www2.gov.bc.ca/assets/gov/farming-natural-resources-and-industry/construction-industry/building-codes-and-standards/revisions-and-mo/bcbc_2024.pdf";
 export const URL_DOWNLOAD_TITLE = "Download";
@@ -50,48 +47,33 @@ export const URLS_FOOTER = [
   },
 ];
 
-type UrlType = {
-  title: string;
-  href: string;
+export const URLS_GET_BUILDING_TYPE = (buildingType: string) => {
+  if (
+    Object.values(EnumBuildingTypes).includes(buildingType as EnumBuildingTypes)
+  ) {
+    return `/${buildingType}`;
+  }
+  return URL_HOME_HREF;
 };
-
-export const URLS_BUILDING_TYPE = Object.values(EnumBuildingTypes).reduce(
-  (arr, value) => {
-    arr[value] = {
-      title: BuildingTypeJSONData[value].title,
-      href: `/${value}`,
-    };
-    return arr;
-  },
-  {} as Record<EnumBuildingTypes, UrlType>,
-);
 
 export const URLS_WALKTHROUGHS: Record<
   EnumBuildingTypes,
-  Record<EnumWalkthroughIds, UrlType>
+  Record<EnumWalkthroughIds, string>
 > = {
   [EnumBuildingTypes.SINGLE_DWELLING]: Object.values(EnumWalkthroughIds).reduce(
     (arr, value) => {
-      arr[value] = {
-        title:
-          WalkthroughJSONData[EnumBuildingTypes.SINGLE_DWELLING][value].info
-            .title,
-        href: `${URLS_BUILDING_TYPE[EnumBuildingTypes.SINGLE_DWELLING].href}/${value}`,
-      };
+      arr[value] =
+        `${URLS_GET_BUILDING_TYPE(EnumBuildingTypes.SINGLE_DWELLING)}/${value}`;
       return arr;
     },
-    {} as Record<EnumWalkthroughIds, UrlType>,
+    {} as Record<EnumWalkthroughIds, string>,
   ),
   [EnumBuildingTypes.MULTI_DWELLING]: Object.values(EnumWalkthroughIds).reduce(
     (arr, value) => {
-      arr[value] = {
-        title:
-          WalkthroughJSONData[EnumBuildingTypes.MULTI_DWELLING][value].info
-            .title,
-        href: `${URLS_BUILDING_TYPE[EnumBuildingTypes.MULTI_DWELLING].href}/${value}`,
-      };
+      arr[value] =
+        `${URLS_GET_BUILDING_TYPE(EnumBuildingTypes.MULTI_DWELLING)}/${value}`;
       return arr;
     },
-    {} as Record<EnumWalkthroughIds, UrlType>,
+    {} as Record<EnumWalkthroughIds, string>,
   ),
 };

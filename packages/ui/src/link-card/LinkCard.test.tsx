@@ -21,7 +21,7 @@ describe("LinkCard", () => {
     const href =
       URLS_WALKTHROUGHS[EnumBuildingTypes.SINGLE_DWELLING][
         EnumWalkthroughIds._9_9_9
-      ].href;
+      ];
     const { getByTestId } = renderWithWalkthroughProvider({
       ui: (
         <LinkCard

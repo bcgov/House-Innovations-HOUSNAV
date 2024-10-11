@@ -118,6 +118,19 @@
 .ui-Button.--link[data-pressed] {
   color: var(--typography-color-link);
 }
+/* white link variant */
+.ui-Button.--link.--white {
+  color: var(--theme-gray-white);
+}
+.ui-Button.--link[aria-disabled].--white {
+  color: var(--theme-gray-70);
+}
+.ui-Button.--link[data-hovered].--white {
+  color: var(--theme-gray-40);
+}
+.ui-Button.--link[data-pressed].--white {
+  color: var(--theme-gray-white);
+}
 
 /* Variant - Code */
 .ui-Button.--code {

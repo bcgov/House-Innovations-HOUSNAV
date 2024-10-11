@@ -1,4 +1,8 @@
+// repo
 import { EnumBuildingTypes } from "@repo/constants/src/constants";
+// local
+import multiDwelling from "../json/building-types/multi-dwelling/multi-dwelling.json";
+import singleDwelling from "../json/building-types/single-dwelling/single-dwelling.json";
 
 interface UseBuildingTypeDataProps {
   /*
@@ -9,18 +13,16 @@ interface UseBuildingTypeDataProps {
 
 export interface BuildingTypeJSONType {
   title: string;
+  description: string;
+  walkthroughs: string[];
 }
 
 export const BuildingTypeJSONData: Record<
   EnumBuildingTypes,
   BuildingTypeJSONType
 > = {
-  [EnumBuildingTypes.SINGLE_DWELLING]: {
-    title: "Single Dwelling Unit",
-  },
-  [EnumBuildingTypes.MULTI_DWELLING]: {
-    title: "Multi-Unit Dwelling",
-  },
+  [EnumBuildingTypes.SINGLE_DWELLING]: singleDwelling,
+  [EnumBuildingTypes.MULTI_DWELLING]: multiDwelling,
 };
 
 export default function useBuildingTypeData({

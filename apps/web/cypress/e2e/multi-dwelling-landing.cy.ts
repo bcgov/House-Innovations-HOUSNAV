@@ -4,11 +4,11 @@ import {
   EnumBuildingTypes,
   EnumWalkthroughIds,
 } from "@repo/constants/src/constants";
-import { URLS_BUILDING_TYPE } from "@repo/constants/src/urls";
+import { URLS_GET_BUILDING_TYPE } from "@repo/constants/src/urls";
 
 describe("multi dwelling: landing", () => {
   beforeEach(() => {
-    cy.visit(URLS_BUILDING_TYPE[EnumBuildingTypes.MULTI_DWELLING].href);
+    cy.visit(URLS_GET_BUILDING_TYPE(EnumBuildingTypes.MULTI_DWELLING));
   });
 
   it("should display correct ui elements", () => {

@@ -4,8 +4,8 @@ import {
 } from "@repo/constants/src/testids";
 import { EnumBuildingTypes } from "@repo/constants/src/constants";
 import {
-  URL_BUILDING_TYPE,
-  URLS_BUILDING_TYPE,
+  URL_BUILDING_TYPE_HREF,
+  URLS_GET_BUILDING_TYPE,
 } from "@repo/constants/src/urls";
 
 describe("home", () => {
@@ -29,7 +29,7 @@ describe("home", () => {
     ).click();
     cy.url().should(
       "contain",
-      URLS_BUILDING_TYPE[EnumBuildingTypes.SINGLE_DWELLING].href,
+      URLS_GET_BUILDING_TYPE(EnumBuildingTypes.SINGLE_DWELLING),
     );
   });
 
@@ -39,13 +39,13 @@ describe("home", () => {
     ).click();
     cy.url().should(
       "contain",
-      URLS_BUILDING_TYPE[EnumBuildingTypes.MULTI_DWELLING].href,
+      URLS_GET_BUILDING_TYPE(EnumBuildingTypes.MULTI_DWELLING),
     );
   });
 
   it("should be able to navigate to building type analysis page", () => {
     cy.getByTestID(GET_TESTID_LINK_CARD(TESTID_BUILDING_TYPE)).click();
-    cy.url().should("contain", URL_BUILDING_TYPE);
+    cy.url().should("contain", URL_BUILDING_TYPE_HREF);
   });
 
   it("should be accessible", () => {

@@ -11,7 +11,7 @@ import { GET_TESTID_LINK } from "@repo/constants/src/testids";
 import "./Link.css";
 import Icon from "../icon/Icon";
 
-export type LinkVariant = "default" | "glossary";
+export type LinkVariant = "default" | "glossary" | "secondary";
 export interface LinkProps extends ReactAriaLinkProps {
   /**
    * Defaults to `default`.
@@ -23,6 +23,14 @@ export interface LinkProps extends ReactAriaLinkProps {
    * eg. `data-testid="link-passedValue"`.
    */
   "data-testid"?: string;
+  /*
+   * If true, renders a button-styled link.
+   */
+  showAsButton?: boolean;
+  /**
+   * If true, renders a larger button.
+   */
+  isLargeButton?: boolean;
 }
 
 export default function Link({
@@ -31,11 +39,13 @@ export default function Link({
   children,
   target = "_self",
   "data-testid": testid = "",
+  showAsButton = false,
+  isLargeButton = false,
   ...props
 }: LinkProps) {
   return (
     <ReactAriaLink
-      className={`ui-Link --${variant} ${className}`}
+      className={`ui-Link --${variant} ${showAsButton ? "--button" : ""} ${isLargeButton ? "--large" : ""} ${className}`}
       data-testid={GET_TESTID_LINK(testid || variant)}
       {...props}
       target={target}

@@ -1,5 +1,5 @@
-import testCase999 from "../json/walkthroughs/single-dwelling-9.9.9.json";
-import testCase91014 from "../json/walkthroughs/single-dwelling-9.10.14.json";
+import testCase999 from "../json/building-types/single-dwelling/wt-single-dwelling-9.9.9.json";
+import testCase91014 from "../json/building-types/single-dwelling/wt-single-dwelling-9.10.14.json";
 import {
   QuestionDisplayData,
   QuestionMultipleChoiceData,

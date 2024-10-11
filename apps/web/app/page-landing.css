@@ -8,17 +8,12 @@
   margin-bottom: var(--page-landing-subhead-margin-bottom);
 }
 
-.page-Landing--Subhead {
+.page-Landing--Header p {
   font: var(--typography-regular-large-body);
 }
 
 .page-Landing--LinkCards {
-  background: radial-gradient(
-      153.43% 75.68% at -3.92% 94.86%,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(237, 237, 237, 0.11) 100%
-    ),
-    var(--surface-color-background-dark-blue);
+  background-color: var(--theme-primary-blue);
   padding-block: var(--page-landing-cards-padding-block);
 }
 
@@ -36,11 +31,4 @@
   flex: 1;
   min-width: var(--link-card-min-width);
   max-width: var(--link-card-max-width);
-}
-
-.TEMP-multi-dwelling {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding-bottom: 40px;
 }

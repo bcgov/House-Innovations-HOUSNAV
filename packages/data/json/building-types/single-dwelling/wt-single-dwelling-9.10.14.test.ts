@@ -1,10 +1,10 @@
 // 3rd party
 import { describe, it, expect } from "vitest";
 // local
-import { isWalkthroughItemTypeVariable } from "../../src/useWalkthroughData";
-import data from "./single-dwelling-9.9.9.json";
+import { isWalkthroughItemTypeVariable } from "../../../src/useWalkthroughData";
+import data from "./wt-single-dwelling-9.10.14.json";
 
-describe("Data - 9.9.9", () => {
+describe("Data - 9.10.14", () => {
   it("verify all questions either appear in a section or are of variable type", () => {
     // iterate through each question and check if it appears in a section or is of variable type
     const possibleUnusedQuestion = Object.entries(data.questions).find(
@@ -18,8 +18,6 @@ describe("Data - 9.9.9", () => {
         );
       },
     );
-    if (possibleUnusedQuestion)
-      console.log("Possible unused question ID:", possibleUnusedQuestion[0]);
 
     // expect possibleUnusedQuestion to be undefined
     expect(possibleUnusedQuestion).toBe(undefined);
