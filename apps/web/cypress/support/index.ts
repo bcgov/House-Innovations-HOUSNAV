@@ -36,6 +36,17 @@ declare global {
       ): Chainable<JQuery<HTMLElement>>;
 
       /**
+       * Get a label element by the data-testid attribute.
+       * This is often used to find checkboxes as they have duplicate IDs for the label and input.
+       * @example cy.getInputByTestID('question-title')
+       */
+      getLabelByTestID(id: string): Chainable<JQuery<HTMLElement>>;
+      getLabelByTestID(
+        id: string,
+        options?: Partial<Loggable & Timeoutable & Withinable & Shadow>,
+      ): Chainable<JQuery<HTMLElement>>;
+
+      /**
        * Check the accessibility of the page or an element.
        * @example cy.checkA11yWithErrorLogging()
        */

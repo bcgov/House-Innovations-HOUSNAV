@@ -63,6 +63,10 @@ Cypress.Commands.add("getInputByTestID", (id, options) => {
   return cy.get(`input[data-testid='${id}']`, options);
 });
 
+Cypress.Commands.add("getLabelByTestID", (id, options) => {
+  return cy.get(`label[data-testid='${id}']`, options);
+});
+
 Cypress.Commands.add("checkA11yWithErrorLogging", () => {
   cy.checkA11y(undefined, undefined, printAccessibilityViolations);
 });
