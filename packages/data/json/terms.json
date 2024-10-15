@@ -23,6 +23,10 @@
     "definition": "<glossary-term>Basement</glossary-term> means a <defined-term-glossary>storey</defined-term-glossary> or <defined-term-glossary override-term='storey'>storeys</defined-term-glossary> of a building located below the <defined-term-glossary>first storey</defined-term-glossary>.",
     "cleanDefinition": "Basement means a storey or storeys of a building located below the first storey. "
   },
+  "braced wall panel": {
+    "definition": "<glossary-term>Braced wall panel</glossary-term> means a portion of a wood-frame wall where bracing, sheathing, cladding or interior finish is designed and installed to provide the required resistance to lateral loads due to wind or earthquake.",
+    "cleanDefinition": "Braced wall panel means a portion of a wood-frame wall where bracing, sheathing, cladding or interior finish is designed and installed to provide the required resistance to lateral loads due to wind or earthquake."
+  },
   "building": {
     "definition": "<glossary-term>Building</glossary-term> means any structure used or intended for supporting or sheltering any use or <defined-term-glossary>occupancy</defined-term-glossary>.",
     "cleanDefinition": "Building means any structure used or intended for supporting or sheltering any use or occupancy."
@@ -102,6 +106,10 @@
   "first storey": {
     "definition": "<glossary-term>First story</glossary-term> means the uppermost <defined-term-glossary>storey</defined-term-glossary> having its floor level not more than 2m above <defined-term-glossary>grade</defined-term-glossary>.",
     "cleanDefinition": "First story means the uppermost storey having its floor level not more than 2m above grade."
+  },
+  "flame-spread rating": {
+    "definition": "<glossary-term>Flame-spread rating</glossary-term> means an index or classification indicating the extent of spread-of-flame on the surface of a material or an assembly of materials as determined in a standard fire test as prescribed in this Code.",
+    "cleanDefinition": "Flame-spread rating means an index or classification indicating the extent of spread-of-flame on the surface of a material or an assembly of materials as determined in a standard fire test as prescribed in this Code."
   },
   "floor area": {
     "definition": "<glossary-term>Floor area</glossary-term> means the space on any <defined-term-glossary>storey</defined-term-glossary> of a <defined-term-glossary>building</defined-term-glossary> between exterior walls and required <defined-term-glossary override-term='firewall'>firewalls</defined-term-glossary>, including the space occupied by interior walls and <defined-term-glossary override-term='partition'>partitions</defined-term-glossary>, but not including <defined-term-glossary override-term='exit'>exits</defined-term-glossary>, <defined-term-glossary override-term='vertical service space'>vertical service spaces</defined-term-glossary>, and their enclosing assemblies.",
