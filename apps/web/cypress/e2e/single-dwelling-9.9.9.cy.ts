@@ -34,12 +34,8 @@ describe("single dwelling: 9.9.9", () => {
     cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_NEXT).click();
 
     // Select both "none" and another option
-    cy.getInputByTestID(GET_TESTID_CHECKBOX("P02", "17")).click({
-      force: true,
-    });
-    cy.getInputByTestID(GET_TESTID_CHECKBOX("P02", "18")).click({
-      force: true,
-    });
+    cy.getLabelByTestID(GET_TESTID_CHECKBOX("P02", "17")).click();
+    cy.getLabelByTestID(GET_TESTID_CHECKBOX("P02", "18")).click();
 
     // Show error message
     cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_NEXT).click();
