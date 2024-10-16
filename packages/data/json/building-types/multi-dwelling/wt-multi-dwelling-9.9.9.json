@@ -1,0 +1,57 @@
+{
+  "info": {
+    "title": "Egress from Dwelling Units",
+    "subtitle": "Volume II - 9.9.9.",
+    "description": "Location and distances of exits from living spaces in a building",
+    "startingSectionId": "1_9991",
+    "walkthroughTitle": "9.9.9. Egress from Dwelling Units"
+  },
+  "sections": {
+    "1_9991": {
+      "sectionTitle": "9.9.9.1. Travel limit to Exits or Egress Doors",
+      "sectionQuestions": [
+        "P1"
+      ]
+    }
+  },
+  "questions": {
+    "P1": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Is this location a <defined-term>dwelling unit</defined-term>?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Article 9.9.9.1.",
+        "codeNumber": "v2-db-9.9.9.1."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P1",
+          "answerValue": "true",
+          "nextNavigateTo": "R10"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R30"
+        }
+      ]
+    }
+  },
+  "results": {
+    "R10": {
+      "resultDisplayMessage": "<p>Based on the building characteristics provided, this dwelling unit meets the provision of Subsection <building-code reference='9.9.9'>9.9.9. ‘Egress from Dwelling Units’</building-code>.</p>"
+    },
+    "R30": {
+      "resultDisplayMessage": "<p>Based on the building characteristics provided this dwelling unit or building is not governed by Part 9 of the Building Code or is not a dwelling unit. This tool is only designed to address the egress from dwelling units of Part 9 buildings.</p>"
+    }
+  }
+}

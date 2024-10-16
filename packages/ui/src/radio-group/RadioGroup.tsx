@@ -13,7 +13,7 @@ import {
   TESTID_RADIO_GROUP_ERROR,
   TESTID_RADIO_GROUP_LABEL,
 } from "@repo/constants/src/testids";
-import { AnswerValueTypes } from "@repo/data/useWalkthroughData";
+import { AnswerValueTypes } from "@repo/data/useWalkthroughsData";
 // workspace
 import "./RadioGroup.css";
 import Icon from "../icon/Icon";

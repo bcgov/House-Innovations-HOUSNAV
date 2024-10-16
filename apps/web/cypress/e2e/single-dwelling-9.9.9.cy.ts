@@ -3,11 +3,8 @@ import {
   GET_TESTID_CHECKBOX,
   GET_TESTID_RADIO,
 } from "@repo/constants/src/testids";
-import { URLS_WALKTHROUGHS } from "@repo/constants/src/urls";
-import {
-  EnumBuildingTypes,
-  EnumWalkthroughIds,
-} from "@repo/constants/src/constants";
+import { TEMP_GET_URL_SINGLE_DWELLING_WALKTHROUGH } from "@repo/constants/src/urls";
+import { EnumWalkthroughIds } from "@repo/constants/src/constants";
 
 import { walkthroughs } from "../fixtures/single-dwelling-9.9.9-test-data.json";
 import { results } from "../fixtures/results-data.json";
@@ -16,9 +13,7 @@ import { runWalkthrough } from "../support/helpers";
 describe("single dwelling: 9.9.9", () => {
   beforeEach(() => {
     cy.visit(
-      URLS_WALKTHROUGHS[EnumBuildingTypes.SINGLE_DWELLING][
-        EnumWalkthroughIds._9_9_9
-      ],
+      TEMP_GET_URL_SINGLE_DWELLING_WALKTHROUGH(EnumWalkthroughIds._9_9_9),
     );
   });
 

@@ -6,8 +6,7 @@ import {
   EnumWalkthroughIds,
 } from "@repo/constants/src/constants";
 import { GET_TESTID_LINK_CARD } from "@repo/constants/src/testids";
-import { URLS_WALKTHROUGHS } from "@repo/constants/src/urls";
-import { WalkthroughJSONData } from "@repo/data/useWalkthroughData";
+import { WalkthroughJSONData } from "@repo/data/useWalkthroughsData";
 // local
 import { renderWithWalkthroughProvider } from "web/tests/utils";
 import LinkCard from "./LinkCard";
@@ -18,10 +17,7 @@ describe("LinkCard", () => {
       WalkthroughJSONData[EnumBuildingTypes.SINGLE_DWELLING][
         EnumWalkthroughIds._9_9_9
       ].info;
-    const href =
-      URLS_WALKTHROUGHS[EnumBuildingTypes.SINGLE_DWELLING][
-        EnumWalkthroughIds._9_9_9
-      ];
+    const href = "/path/to/somewhere";
     const { getByTestId } = renderWithWalkthroughProvider({
       ui: (
         <LinkCard

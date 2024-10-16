@@ -7,17 +7,8 @@ import {
 import buildingTypeAnalysisData from "../json/building-types/wt-building-type-analysis.json";
 import singleDwelling999 from "../json/building-types/single-dwelling/wt-single-dwelling-9.9.9.json";
 import singleDwelling91014 from "../json/building-types/single-dwelling/wt-single-dwelling-9.10.14.json";
-
-interface UseWalkthroughDataProps {
-  /*
-   * walkthrough ID of the data to get
-   */
-  id: string;
-  /*
-   * building type of the data to get
-   */
-  buildingType: string;
-}
+import multiDwelling999 from "../json/building-types/multi-dwelling/wt-multi-dwelling-9.9.9.json";
+import multiDwelling91014 from "../json/building-types/multi-dwelling/wt-multi-dwelling-9.10.14.json";
 
 export const PropertyNameVariableToSet = "variableToSet";
 export const PropertyNameQuestionText = "questionText";
@@ -261,7 +252,7 @@ export type QuestionDisplayData =
   | QuestionMultipleChoiceData
   | QuestionMultipleChoiceSelectMultipleData
   | QuestionNumberFloatData;
-export interface WalkthroughJSONType {
+export interface WalkthroughJSONInterface {
   info: WalkthroughInfo;
   sections: {
     [key: string]: SectionData;
@@ -275,35 +266,68 @@ export interface WalkthroughJSONType {
   };
 }
 
-export const BuildingTypeAnalysisJSONData: WalkthroughJSONType =
+export interface WalkthroughsDataInterface {
+  startingWalkthroughId: EnumWalkthroughIds;
+  walkthroughOrder: EnumWalkthroughIds[];
+  walkthroughsById: Record<EnumWalkthroughIds, WalkthroughJSONInterface>;
+}
+
+export const BuildingTypeAnalysisJSONData: WalkthroughJSONInterface =
   buildingTypeAnalysisData;
 
 export const WalkthroughJSONData: Record<
   EnumBuildingTypes,
-  Record<EnumWalkthroughIds, WalkthroughJSONType>
+  Record<EnumWalkthroughIds, WalkthroughJSONInterface>
 > = {
   [EnumBuildingTypes.SINGLE_DWELLING]: {
     [EnumWalkthroughIds._9_9_9]: singleDwelling999,
     [EnumWalkthroughIds._9_10_14]: singleDwelling91014,
   },
-  // TODO - HOUSNAV-200
   [EnumBuildingTypes.MULTI_DWELLING]: {
-    [EnumWalkthroughIds._9_9_9]: singleDwelling999,
-    [EnumWalkthroughIds._9_10_14]: singleDwelling91014,
+    [EnumWalkthroughIds._9_9_9]: multiDwelling999,
+    [EnumWalkthroughIds._9_10_14]: multiDwelling91014,
   },
 };
 
-export default function useWalkthroughData({
-  id,
+interface UseWalkthroughsDataProps {
+  /*
+   * walkthrough IDs of the data to get
+   */
+  wtIds: string[];
+  /*
+   * building type of the data to get
+   */
+  buildingType: string;
+}
+
+export default function useWalkthroughsData({
+  wtIds,
   buildingType,
-}: UseWalkthroughDataProps): WalkthroughJSONType {
-  const data =
-    WalkthroughJSONData[buildingType as EnumBuildingTypes][
-      id as EnumWalkthroughIds
-    ];
-  if (!data) {
-    throw new Error(`No data found for walkthrough ${id}`);
+}: UseWalkthroughsDataProps): WalkthroughsDataInterface {
+  const data = { walkthroughsById: {} } as WalkthroughsDataInterface;
+
+  if (!buildingType || wtIds.length === 0) {
+    throw new Error("No building type or ids provided");
   }
+
+  // the starting walkthrough will be the first one in the list
+  data.startingWalkthroughId = wtIds[0] as EnumWalkthroughIds;
+
+  // the order of the walkthroughs will be the order of the IDs
+  data.walkthroughOrder = wtIds as EnumWalkthroughIds[];
+
+  // iterate through the walkthrough IDs and merge the data
+  wtIds.forEach((wtId) => {
+    const wtData =
+      WalkthroughJSONData[buildingType as EnumBuildingTypes][
+        wtId as EnumWalkthroughIds
+      ];
+    if (!wtData) {
+      throw new Error(`No data found for walkthrough ${wtId}`);
+    }
+
+    data.walkthroughsById[wtId as EnumWalkthroughIds] = wtData;
+  });
 
   return data;
 }

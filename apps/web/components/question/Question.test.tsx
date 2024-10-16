@@ -1,11 +1,12 @@
 // 3rd party
 import { describe, expect, it } from "vitest";
 // repo
-import useWalkthroughTestData, {
+import {
+  useWalkthroughTestData999,
   getMultiChoiceMultipleQuestion,
   getMultiChoiceQuestion,
   getNumberFloatQuestion,
-} from "@repo/data/useWalkthroughTestData";
+} from "@repo/data/useWalkthroughsTestData";
 import {
   GET_TESTID_CHECKBOX_GROUP,
   GET_TESTID_NUMBER_FIELD,
@@ -14,7 +15,8 @@ import {
   TESTID_QUESTION_CODE_REFERENCE,
   TESTID_QUESTION_TITLE,
 } from "@repo/constants/src/testids";
-import { PropertyNameQuestionText } from "@repo/data/useWalkthroughData";
+import { PropertyNameQuestionText } from "@repo/data/useWalkthroughsData";
+import { EnumWalkthroughIds } from "@repo/constants/src/constants";
 // local
 import Question from "./Question";
 import {
@@ -27,12 +29,17 @@ describe("Question", () => {
   // renders null if no question type found
   it("Question: renders null if it doesn't get question data", () => {
     // get data
-    const walkthroughData = useWalkthroughTestData();
-    walkthroughData.info.startingSectionId = "TESTQUESTION";
+    const walkthroughData = useWalkthroughTestData999();
+    walkthroughData.walkthroughsById[
+      EnumWalkthroughIds._9_9_9
+    ].info.startingSectionId = "TESTQUESTION";
     const testQuestion = getMultiChoiceQuestion();
     testQuestion.questionData.walkthroughItemType = "TESTQUESTION";
-    walkthroughData.questions[walkthroughData.info.startingSectionId] =
-      testQuestion.questionData;
+    walkthroughData.walkthroughsById[EnumWalkthroughIds._9_9_9].questions[
+      walkthroughData.walkthroughsById[
+        EnumWalkthroughIds._9_9_9
+      ].info.startingSectionId
+    ] = testQuestion.questionData;
 
     // render component
     const { queryByTestId } = renderWithWalkthroughProvider({
@@ -48,7 +55,7 @@ describe("Question", () => {
    */
   it("QuestionMultiChoice: renders", () => {
     // get data
-    const walkthroughData = useWalkthroughTestData();
+    const walkthroughData = useWalkthroughTestData999();
     const testQuestion = getMultiChoiceQuestion();
 
     // remove questionCodeReference if it exists in questionData
@@ -57,11 +64,13 @@ describe("Question", () => {
     }
 
     // set test question as first question in section
-    walkthroughData.sections[
-      walkthroughData.info.startingSectionId
+    walkthroughData.walkthroughsById[EnumWalkthroughIds._9_9_9].sections[
+      walkthroughData.walkthroughsById[EnumWalkthroughIds._9_9_9].info
+        .startingSectionId
     ]?.sectionQuestions.unshift(testQuestion.questionKey);
-    walkthroughData.questions[testQuestion.questionKey] =
-      testQuestion.questionData;
+    walkthroughData.walkthroughsById[EnumWalkthroughIds._9_9_9].questions[
+      testQuestion.questionKey
+    ] = testQuestion.questionData;
 
     // render component
     const { getByTestId, queryByTestId } = renderWithWalkthroughProvider({
@@ -94,7 +103,7 @@ describe("Question", () => {
   // check question with code reference
   it("QuestionMultiChoice: renders with code reference", () => {
     // get data
-    const walkthroughData = useWalkthroughTestData();
+    const walkthroughData = useWalkthroughTestData999();
     const testQuestion = getMultiChoiceQuestion();
 
     // add questionCodeReference if it does not exist in questionData
@@ -106,11 +115,13 @@ describe("Question", () => {
     }
 
     // set test question as first question in section
-    walkthroughData.sections[
-      walkthroughData.info.startingSectionId
+    walkthroughData.walkthroughsById[EnumWalkthroughIds._9_9_9].sections[
+      walkthroughData.walkthroughsById[EnumWalkthroughIds._9_9_9].info
+        .startingSectionId
     ]?.sectionQuestions.unshift(testQuestion.questionKey);
-    walkthroughData.questions[testQuestion.questionKey] =
-      testQuestion.questionData;
+    walkthroughData.walkthroughsById[EnumWalkthroughIds._9_9_9].questions[
+      testQuestion.questionKey
+    ] = testQuestion.questionData;
 
     const { getByTestId } = renderWithWalkthroughProvider({
       ui: <Question />,
@@ -128,15 +139,17 @@ describe("Question", () => {
    */
   it("QuestionMultiChoiceMultiple: renders", () => {
     // get data
-    const walkthroughData = useWalkthroughTestData();
+    const walkthroughData = useWalkthroughTestData999();
     const testQuestion = getMultiChoiceMultipleQuestion();
 
     // set test question as first question in section
-    walkthroughData.sections[
-      walkthroughData.info.startingSectionId
+    walkthroughData.walkthroughsById[EnumWalkthroughIds._9_9_9].sections[
+      walkthroughData.walkthroughsById[EnumWalkthroughIds._9_9_9].info
+        .startingSectionId
     ]?.sectionQuestions.unshift(testQuestion.questionKey);
-    walkthroughData.questions[testQuestion.questionKey] =
-      testQuestion.questionData;
+    walkthroughData.walkthroughsById[EnumWalkthroughIds._9_9_9].questions[
+      testQuestion.questionKey
+    ] = testQuestion.questionData;
 
     const { getByTestId } = renderWithWalkthroughProvider({
       ui: <Question />,
@@ -156,15 +169,17 @@ describe("Question", () => {
    */
   it("QuestionNumberFloat: renders", () => {
     // get data
-    const walkthroughData = useWalkthroughTestData();
+    const walkthroughData = useWalkthroughTestData999();
     const testQuestion = getNumberFloatQuestion();
 
     // set test question as first question in section
-    walkthroughData.sections[
-      walkthroughData.info.startingSectionId
+    walkthroughData.walkthroughsById[EnumWalkthroughIds._9_9_9].sections[
+      walkthroughData.walkthroughsById[EnumWalkthroughIds._9_9_9].info
+        .startingSectionId
     ]?.sectionQuestions.unshift(testQuestion.questionKey);
-    walkthroughData.questions[testQuestion.questionKey] =
-      testQuestion.questionData;
+    walkthroughData.walkthroughsById[EnumWalkthroughIds._9_9_9].questions[
+      testQuestion.questionKey
+    ] = testQuestion.questionData;
 
     const { getByTestId } = renderWithWalkthroughProvider({
       ui: <Question />,

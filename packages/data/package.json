@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
-    "./useWalkthroughData": "./src/useWalkthroughData.ts",
-    "./useWalkthroughTestData": "./src/useWalkthroughTestData.ts",
+    "./useWalkthroughsData": "./src/useWalkthroughsData.ts",
+    "./useWalkthroughsTestData": "./src/useWalkthroughsTestData.ts",
     "./useGlossaryData": "./src/useGlossaryData.ts",
     "./useBuildingTypeData": "./src/useBuildingTypeData.ts"
   },

@@ -9,7 +9,7 @@ import {
   GET_TESTID_CHECKBOX_CARD,
   GET_TESTID_ICON,
 } from "@repo/constants/src/testids";
-import { WalkthroughJSONData } from "@repo/data/useWalkthroughData";
+import { WalkthroughJSONData } from "@repo/data/useWalkthroughsData";
 // local
 import { renderWithWalkthroughProvider } from "web/tests/utils";
 import CheckboxCard from "./CheckboxCard";

@@ -42,7 +42,7 @@ const QuestionMultiChoiceMultiple = observer((): JSX.Element => {
     currentQuestionAsMultipleChoiceMultiple,
     getPossibleAnswersFromMultipleChoiceMultiple,
     answerStore: { setAnswerValueOnChange, multipleChoiceMultipleAnswerValue },
-    navigationStore: { currentItemId },
+    navigationStore: { currentItemId, currentWalkthroughId },
   } = useWalkthroughState();
 
   // handle missing question data
@@ -50,6 +50,7 @@ const QuestionMultiChoiceMultiple = observer((): JSX.Element => {
 
   // convert possible answers to checkbox group options
   const checkboxGroupOptions = getPossibleAnswersFromMultipleChoiceMultiple(
+    currentWalkthroughId,
     currentItemId,
   ).map((possibleAnswer) => ({
     label: possibleAnswer.answerDisplayText,

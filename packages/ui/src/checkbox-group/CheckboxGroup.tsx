@@ -13,7 +13,7 @@ import {
   TESTID_CHECKBOX_GROUP_ERROR,
   TESTID_CHECKBOX_GROUP_LABEL,
 } from "@repo/constants/src/testids";
-import { AnswerValueTypes } from "@repo/data/useWalkthroughData";
+import { AnswerValueTypes } from "@repo/data/useWalkthroughsData";
 // workspace
 import "./CheckboxGroup.css";
 import Icon from "../icon/Icon";

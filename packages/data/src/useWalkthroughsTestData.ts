@@ -1,3 +1,6 @@
+// repo
+import { EnumWalkthroughIds } from "@repo/constants/src/constants";
+// local
 import testCase999 from "../json/building-types/single-dwelling/wt-single-dwelling-9.9.9.json";
 import testCase91014 from "../json/building-types/single-dwelling/wt-single-dwelling-9.10.14.json";
 import {
@@ -10,8 +13,8 @@ import {
   WalkthroughItemTypeMultiChoice,
   WalkthroughItemTypeMultiChoiceMultiple,
   WalkthroughItemTypeNumberFloat,
-  WalkthroughJSONType,
-} from "./useWalkthroughData";
+  WalkthroughsDataInterface,
+} from "./useWalkthroughsData";
 
 export function getMultiChoiceQuestion() {
   // find the first question that is a multi-choice question
@@ -130,13 +133,19 @@ export function getFirstResultWithCalculations() {
   };
 }
 
-export default function useWalkthroughTestData() {
+export function useWalkthroughTestData999() {
   // deep clone and return test data
   const testData = JSON.parse(JSON.stringify(testCase999));
-  return testData as WalkthroughJSONType;
+  return {
+    startingWalkthroughId: EnumWalkthroughIds._9_9_9,
+    walkthroughsById: { [EnumWalkthroughIds._9_9_9]: testData },
+  } as WalkthroughsDataInterface;
 }
 
 export function useWalkthroughTestData91014() {
   const testData = JSON.parse(JSON.stringify(testCase91014));
-  return testData as WalkthroughJSONType;
+  return {
+    startingWalkthroughId: EnumWalkthroughIds._9_10_14,
+    walkthroughsById: { [EnumWalkthroughIds._9_10_14]: testData },
+  } as WalkthroughsDataInterface;
 }

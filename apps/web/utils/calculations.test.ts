@@ -10,7 +10,7 @@ import {
   ResultCalculationType,
   ResultLogicTypes,
   VariableValueToSetCalculation,
-} from "@repo/data/useWalkthroughData";
+} from "@repo/data/useWalkthroughsData";
 // local
 import {
   calculateVariableValueToSet,

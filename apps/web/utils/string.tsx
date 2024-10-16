@@ -207,11 +207,11 @@ export const getAnswerValueDisplay = (
   }
 
   const { getQuestionAnswerValueDisplay } = useWalkthroughState();
-  const displayValue = getQuestionAnswerValueDisplay(
+  const displayValue = getQuestionAnswerValueDisplay({
     questionId,
-    false,
+    lineBreakOnMultiple: false,
     returnMarkup,
-  );
+  });
 
   if (displayValue) {
     if (returnMarkup) {

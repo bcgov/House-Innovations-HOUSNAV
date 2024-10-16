@@ -5,7 +5,7 @@ import {
   NextNavigationLogic,
   NextNavigationLogicType,
   NextValuesToCheckType,
-} from "@repo/data/useWalkthroughData";
+} from "@repo/data/useWalkthroughsData";
 import { NEXT_NAVIGATION_ID_ERROR } from "@repo/constants/src/constants";
 // local
 import {

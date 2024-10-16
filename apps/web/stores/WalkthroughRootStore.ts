@@ -14,8 +14,10 @@ import {
   PropertyNameQuestionText,
   QuestionVariableData,
   PropertyNameVariableToSet,
-  WalkthroughJSONType,
-} from "@repo/data/useWalkthroughData";
+  WalkthroughJSONInterface,
+  WalkthroughsDataInterface,
+  SectionData,
+} from "@repo/data/useWalkthroughsData";
 import { NEXT_NAVIGATION_ID_ERROR } from "@repo/constants/src/constants";
 // local
 import { NavigationStore } from "./NavigationStore";
@@ -27,26 +29,39 @@ export class WalkthroughRootStore {
   navigationStore: NavigationStore;
   answerStore: AnswerStore;
 
-  walkthroughData: WalkthroughJSONType = {} as WalkthroughJSONType;
+  walkthroughsById = {} as Record<string, WalkthroughJSONInterface>;
+  walkthroughsOrder: string[] = [];
 
   constructor(
-    walkthroughData: WalkthroughJSONType,
+    walkthroughsData: WalkthroughsDataInterface,
     initialAnswers?: AnswerState,
   ) {
     makeAutoObservable(this);
-    this.walkthroughData = walkthroughData;
+    this.walkthroughsById = walkthroughsData.walkthroughsById;
+    this.walkthroughsOrder = walkthroughsData.walkthroughOrder;
 
     this.navigationStore = new NavigationStore(this);
     this.answerStore = new AnswerStore(this, initialAnswers);
 
-    // set first question as the first question of the starting section
-    if (walkthroughData?.info?.startingSectionId && walkthroughData.sections) {
+    // set current question as the first question of the starting section of the starting walkthrough
+    if (
+      walkthroughsData.startingWalkthroughId &&
+      walkthroughsData.walkthroughsById[walkthroughsData.startingWalkthroughId]
+        .info?.startingSectionId &&
+      walkthroughsData.walkthroughsById[walkthroughsData.startingWalkthroughId]
+        .sections
+    ) {
+      const firstWalkthroughId = walkthroughsData.startingWalkthroughId;
       const firstQuestionId =
-        walkthroughData.sections[walkthroughData.info.startingSectionId]
-          ?.sectionQuestions[0] || "";
+        walkthroughsData.walkthroughsById[firstWalkthroughId].sections[
+          walkthroughsData.walkthroughsById[firstWalkthroughId].info
+            .startingSectionId
+        ]?.sectionQuestions[0] || "";
 
+      this.navigationStore.currentWalkthroughId = firstWalkthroughId;
       this.navigationStore.currentItemId = firstQuestionId;
       this.navigationStore.addItemIdToHistory({
+        walkthroughId: firstWalkthroughId,
         questionId: firstQuestionId,
         answerVariableId: firstQuestionId,
       });
@@ -59,10 +74,64 @@ export class WalkthroughRootStore {
   //   return this.walkthroughData.relatedWalkthroughs;
   // }
 
+  get currentWalkthroughData() {
+    for (const [walkthroughId, walkthrough] of Object.entries(
+      this.walkthroughsById,
+    )) {
+      if (walkthroughId === this.navigationStore.currentWalkthroughId) {
+        return walkthrough;
+      }
+    }
+  }
+
+  getWalkthroughData = (walkthroughId: string) => {
+    return this.walkthroughsById[walkthroughId];
+  };
+
+  getWalkthroughQuestion = (walkthroughId: string, questionId: string) => {
+    return this.getWalkthroughData(walkthroughId)?.questions[questionId];
+  };
+
+  get currentWalkthroughSectionData() {
+    return this.currentWalkthroughData?.sections;
+  }
+
+  getWalkthroughSectionData = (walkthroughId: string) => {
+    return this.getWalkthroughData(walkthroughId)?.sections;
+  };
+
+  getAllSections = () => {
+    return Object.entries(this.walkthroughsById).reduce<
+      Record<string, SectionData>
+    >((allSections, [, walkthrough]) => {
+      return { ...allSections, ...walkthrough.sections };
+    }, {});
+  };
+
+  getFirstQuestionId = (walkthroughId: string) => {
+    const walkthroughData = this.getWalkthroughData(walkthroughId);
+    if (!walkthroughData) return "";
+
+    return (
+      walkthroughData.sections[walkthroughData.info.startingSectionId]
+        ?.sectionQuestions[0] || ""
+    );
+  };
+
+  getNextWalkthroughId = (walkthroughId: string) => {
+    const currentWalkthroughIndex =
+      this.walkthroughsOrder.indexOf(walkthroughId);
+    return this.walkthroughsOrder[currentWalkthroughIndex + 1];
+  };
+
   getQuestionAsDisplayType = (
+    walkthroughId: string,
     questionId: string,
   ): QuestionDisplayData | undefined => {
-    const displayTypeQuestion = this.walkthroughData.questions[questionId];
+    const displayTypeQuestion = this.getWalkthroughQuestion(
+      walkthroughId,
+      questionId,
+    );
 
     // check if current question exists
     // or if it has the unique key VariableToSetPropertyName (which means it's a variable type question)
@@ -76,13 +145,20 @@ export class WalkthroughRootStore {
   };
 
   get currentQuestionAsDisplayType(): QuestionDisplayData | undefined {
-    return this.getQuestionAsDisplayType(this.navigationStore.currentItemId);
+    return this.getQuestionAsDisplayType(
+      this.navigationStore.currentWalkthroughId,
+      this.navigationStore.currentItemId,
+    );
   }
 
   getQuestionAsMultipleChoice = (
+    walkthroughId: string,
     questionId: string,
   ): QuestionMultipleChoiceData | undefined => {
-    const multiChoiceQuestion = this.getQuestionAsDisplayType(questionId);
+    const multiChoiceQuestion = this.getQuestionAsDisplayType(
+      walkthroughId,
+      questionId,
+    );
 
     // check if current question exists and is a multiple choice type
     if (
@@ -95,14 +171,20 @@ export class WalkthroughRootStore {
   };
 
   get currentQuestionAsMultipleChoice() {
-    return this.getQuestionAsMultipleChoice(this.navigationStore.currentItemId);
+    return this.getQuestionAsMultipleChoice(
+      this.navigationStore.currentWalkthroughId,
+      this.navigationStore.currentItemId,
+    );
   }
 
   getQuestionAsMultipleChoiceMultiple = (
+    walkthroughId: string,
     questionId: string,
   ): QuestionMultipleChoiceSelectMultipleData | undefined => {
-    const multiChoiceMultipleQuestion =
-      this.getQuestionAsDisplayType(questionId);
+    const multiChoiceMultipleQuestion = this.getQuestionAsDisplayType(
+      walkthroughId,
+      questionId,
+    );
 
     // check if current question exists and is a multiple choice multiple type
     if (
@@ -118,14 +200,19 @@ export class WalkthroughRootStore {
 
   get currentQuestionAsMultipleChoiceMultiple() {
     return this.getQuestionAsMultipleChoiceMultiple(
+      this.navigationStore.currentWalkthroughId,
       this.navigationStore.currentItemId,
     );
   }
 
   getQuestionAsNumberFloat = (
+    walkthroughId: string,
     questionId: string,
   ): QuestionNumberFloatData | undefined => {
-    const numberFloatQuestion = this.getQuestionAsDisplayType(questionId);
+    const numberFloatQuestion = this.getQuestionAsDisplayType(
+      walkthroughId,
+      questionId,
+    );
 
     // check if current question exists and is a multiple choice type
     if (
@@ -138,12 +225,18 @@ export class WalkthroughRootStore {
   };
 
   get currentQuestionAsNumberFloat() {
-    return this.getQuestionAsNumberFloat(this.navigationStore.currentItemId);
+    return this.getQuestionAsNumberFloat(
+      this.navigationStore.currentWalkthroughId,
+      this.navigationStore.currentItemId,
+    );
   }
 
-  getPossibleAnswersFromMultipleChoiceMultiple = (questionId: string) => {
+  getPossibleAnswersFromMultipleChoiceMultiple = (
+    walkthroughId: string,
+    questionId: string,
+  ) => {
     const multiChoiceMultipleQuestion =
-      this.getQuestionAsMultipleChoiceMultiple(questionId);
+      this.getQuestionAsMultipleChoiceMultiple(walkthroughId, questionId);
 
     // check if current question is a multiple choice multiple type and has possible answers
     if (
@@ -171,9 +264,15 @@ export class WalkthroughRootStore {
     }
   };
 
+  // TODO - HOUSNAV-191
   get currentResult() {
-    return this.walkthroughData.results[this.navigationStore.currentItemId];
+    return this.getWalkthroughData(this.navigationStore.currentWalkthroughId)
+      ?.results[this.navigationStore.currentItemId];
   }
+
+  getCurrentWalkthroughQuestionAsResult = (questionId: string) => {
+    return this.currentWalkthroughData?.results[questionId];
+  };
 
   get currentQuestionIsNotRequired() {
     // currently, only multiple choice multiple questions can be not required
@@ -184,25 +283,35 @@ export class WalkthroughRootStore {
   }
 
   getQuestionAsVariable = (
+    walkthroughId: string,
     questionId: string,
   ): QuestionVariableData | undefined => {
-    const questionAsVar = this.walkthroughData.questions[questionId];
+    const questionAsVar = this.getWalkthroughQuestion(
+      walkthroughId,
+      questionId,
+    );
     if (!questionAsVar || !(PropertyNameVariableToSet in questionAsVar))
       return undefined;
 
     return questionAsVar;
   };
 
-  getQuestionAnswerValueDisplay = (
-    questionId: string,
-    lineBreakOnMultiple: boolean = false,
+  getQuestionAnswerValueDisplay = ({
+    questionId,
+    walkthroughId = this.navigationStore.currentWalkthroughId,
+    lineBreakOnMultiple = false,
     returnMarkup = false,
-  ): string => {
+  }: {
+    questionId: string;
+    walkthroughId?: string;
+    lineBreakOnMultiple?: boolean;
+    returnMarkup?: boolean;
+  }): string => {
     // Get the question object in display type format
-    const question = this.getQuestionAsDisplayType(questionId);
+    const question = this.getQuestionAsDisplayType(walkthroughId, questionId);
     if (!question) return "";
 
-    const answer = this.answerStore.answers[questionId];
+    const answer = this.answerStore.getAnswerValue(walkthroughId, questionId);
     if (isString(answer) && PropertyNamePossibleAnswers in question) {
       const matchedAnswer = question[PropertyNamePossibleAnswers].find(
         (possibleAnswer) => possibleAnswer.answerValue === answer,
@@ -257,12 +366,12 @@ export class WalkthroughRootStore {
     return "";
   };
 
-  getQuestionTextByQuestionId = (questionId: string) => {
-    const question = this.getQuestionAsDisplayType(questionId);
+  getQuestionTextByQuestionId = (walkthroughId: string, questionId: string) => {
+    const question = this.getQuestionAsDisplayType(walkthroughId, questionId);
 
     if (!question) {
       console.warn(
-        `Question with id ${questionId} not found or has no ${PropertyNameQuestionText}.`,
+        `Question from walkthrough ${walkthroughId} with id ${questionId} not found or has no ${PropertyNameQuestionText}.`,
       );
       return "";
     }
@@ -270,14 +379,16 @@ export class WalkthroughRootStore {
     return question[PropertyNameQuestionText];
   };
 
-  questionIsVariable = (questionId: string) => {
-    const question = this.walkthroughData.questions[questionId];
+  questionIsVariable = (walkthroughId: string, questionId: string) => {
+    const question = this.getWalkthroughQuestion(walkthroughId, questionId);
     return question && PropertyNameVariableToSet in question;
   };
 
   handleStateError = (where: string, error: unknown) => {
+    this.navigationStore.currentWalkthroughId = NEXT_NAVIGATION_ID_ERROR;
     this.navigationStore.currentItemId = NEXT_NAVIGATION_ID_ERROR;
     this.navigationStore.addItemIdToHistory({
+      walkthroughId: NEXT_NAVIGATION_ID_ERROR,
       questionId: NEXT_NAVIGATION_ID_ERROR,
       answerVariableId: NEXT_NAVIGATION_ID_ERROR,
     });
@@ -292,16 +403,16 @@ export class WalkthroughRootStore {
 }
 
 export const CreateWalkthroughStore = (
-  walkthroughData: WalkthroughJSONType,
+  walkthroughsData: WalkthroughsDataInterface,
   initialAnswers?: AnswerState,
 ) => {
-  return new WalkthroughRootStore(walkthroughData, initialAnswers);
+  return new WalkthroughRootStore(walkthroughsData, initialAnswers);
 };
 
 // create context
 export const WalkthroughStateContext =
   React.createContext<WalkthroughRootStore>(
-    CreateWalkthroughStore({} as WalkthroughJSONType),
+    CreateWalkthroughStore({} as WalkthroughsDataInterface),
   );
 
 /* Hook to use store in any functional component */

@@ -5,12 +5,12 @@ import { WalkthroughRootStore } from "./WalkthroughRootStore";
 import {
   PropertyNameVariableToSet,
   QuestionVariableData,
-} from "@repo/data/useWalkthroughData";
+} from "@repo/data/useWalkthroughsData";
 import { getVariableItemValue } from "../utils/logic/variableItem";
 import { isArray, isNumber, isObject, isString } from "../utils/typeChecking";
 
 export type AnswerTypes = string | string[] | Record<string, string> | number;
-export type AnswerState = Record<string, AnswerTypes>;
+export type AnswerState = Record<string, Record<string, AnswerTypes>>;
 export type AnswerToCheckValueFn = (
   answerToCheck: string,
 ) => AnswerTypes | undefined;
@@ -49,12 +49,34 @@ export class AnswerStore {
     if (initialAnswers) this.answers = initialAnswers;
   }
 
+  setAnswerValue = (
+    walkthroughId: string,
+    questionId: string,
+    value: AnswerTypes,
+  ) => {
+    const walkthroughIdAnswers = this.answers[walkthroughId];
+
+    if (walkthroughIdAnswers) {
+      walkthroughIdAnswers[questionId] = value;
+    } else {
+      this.answers[walkthroughId] = { [questionId]: value };
+    }
+  };
+
+  getAnswerValue = (walkthroughId: string, questionId: string) => {
+    return this.answers[walkthroughId]?.[questionId];
+  };
+
   handleVariableItem = (
     currentItem: QuestionVariableData,
     currentId: string,
   ) => {
     const {
-      navigationStore: { handleForwardNavigation, addItemIdToHistory },
+      navigationStore: {
+        handleForwardNavigation,
+        addItemIdToHistory,
+        currentWalkthroughId,
+      },
     } = this.rootStore;
 
     const variableToSet = currentItem[PropertyNameVariableToSet];
@@ -63,7 +85,10 @@ export class AnswerStore {
       this.getAnswerToCheckValue,
     );
 
-    const currentItemValue = this.answers[variableToSet.variableName];
+    const currentItemValue = this.getAnswerValue(
+      currentWalkthroughId,
+      variableToSet.variableName,
+    );
 
     // This handles the case when a user has gone back and changed an answer
     // We need to erase all future answers because the flow could be different now
@@ -76,6 +101,7 @@ export class AnswerStore {
     }
 
     addItemIdToHistory({
+      walkthroughId: currentWalkthroughId,
       questionId: currentId,
       answerVariableId: variableToSet.variableName,
     });
@@ -87,19 +113,26 @@ export class AnswerStore {
   setAnswerValueOnChange = (value: AnswerTypes, questionId: string) => {
     this.eraseAnswersAfterCurrentItem();
 
-    this.rootStore.navigationStore.farthestItemId = questionId;
+    this.rootStore.navigationStore.setFarthestIds(questionId);
 
-    this.answers[questionId] = value;
+    this.setAnswerValue(
+      this.rootStore.navigationStore.currentWalkthroughId,
+      questionId,
+      value,
+    );
   };
 
   setDefaultAnswerValue = () => {
     const {
-      navigationStore: { currentItemId },
+      navigationStore: { currentWalkthroughId, currentItemId },
       currentQuestionAsMultipleChoiceMultiple,
       getPossibleAnswersFromMultipleChoiceMultiple,
     } = this.rootStore;
 
-    this.rootStore.navigationStore.farthestItemId = currentItemId;
+    this.rootStore.navigationStore.setFarthestIds(
+      currentItemId,
+      currentWalkthroughId,
+    );
 
     // set default value for new item if it's a multiple choice multiple question and isNotRequired
     // we want to be able to reference the answer object in the future even if the user doesn't answer it
@@ -108,15 +141,23 @@ export class AnswerStore {
       currentQuestionAsMultipleChoiceMultiple.isNotRequired
     ) {
       if (currentQuestionAsMultipleChoiceMultiple.storeAnswerAsObject) {
-        this.answers[currentItemId] =
-          getPossibleAnswersFromMultipleChoiceMultiple(currentItemId).reduce<
-            Record<string, string>
-          >((acc, curr) => {
+        this.setAnswerValue(
+          currentWalkthroughId,
+          currentItemId,
+          getPossibleAnswersFromMultipleChoiceMultiple(
+            currentWalkthroughId,
+            currentItemId,
+          ).reduce<Record<string, string>>((acc, curr) => {
             acc[curr.answerValue] = "false";
             return acc;
-          }, {});
+          }, {}),
+        );
       } else {
-        this.answers[currentItemId] = DEFAULT_ANSWER_VALUE_MULTI_CHOICE_MULTI;
+        this.setAnswerValue(
+          currentWalkthroughId,
+          currentItemId,
+          DEFAULT_ANSWER_VALUE_MULTI_CHOICE_MULTI,
+        );
       }
     }
   };
@@ -124,59 +165,74 @@ export class AnswerStore {
   eraseAnswersAfterCurrentItem = () => {
     // get state of other store variables
     const {
-      navigationStore: { questionHistory, currentItemId },
+      navigationStore: {
+        questionHistory,
+        getIndexOfQuestionInHistory,
+        currentItemId,
+        currentWalkthroughId,
+      },
     } = this.rootStore;
 
     // if current question is NOT last one in questionHistory, remove all questions after current question and their answers
-    const currentQuestionIndex = questionHistory.findIndex(
-      ({ questionId }) => questionId === currentItemId,
+    const currentQuestionIndex = getIndexOfQuestionInHistory(
+      currentWalkthroughId,
+      currentItemId,
     );
     if (currentQuestionIndex < questionHistory.length - 1) {
       this.rootStore.navigationStore.questionHistory = questionHistory.slice(
         0,
         currentQuestionIndex + 1,
       );
-      this.answers = Object.fromEntries(
-        Object.entries(this.answers).filter(
-          ([key]) =>
-            this.rootStore.navigationStore.questionHistory.findIndex(
-              ({ answerVariableId }) => answerVariableId === key,
-            ) > -1,
-        ),
+
+      this.answers = Object.entries(this.answers).reduce<AnswerState>(
+        (acc, [walkthroughId, walkthroughIdAnswers]) => {
+          acc[walkthroughId] = Object.fromEntries(
+            Object.entries(walkthroughIdAnswers).filter(
+              ([answerId]) =>
+                // check if answer is in newly updated questionHistory
+                this.rootStore.navigationStore.questionHistory.findIndex(
+                  ({ answerVariableId, walkthroughId }) =>
+                    answerVariableId === answerId &&
+                    walkthroughId === walkthroughId,
+                ) > -1,
+            ),
+          );
+          return acc;
+        },
+        {},
       );
     }
   };
 
   get currentAnswerValue() {
-    return this.answers[this.rootStore.navigationStore.currentItemId];
+    return this.getAnswerValue(
+      this.rootStore.navigationStore.currentWalkthroughId,
+      this.rootStore.navigationStore.currentItemId,
+    );
   }
 
   get multipleChoiceAnswerValue() {
-    const answer = this.answers[this.rootStore.navigationStore.currentItemId];
-
     // multipleChoice answers can only be strings
-    if (!isString(answer)) return DEFAULT_ANSWER_VALUE_MULTI_CHOICE;
+    if (!isString(this.currentAnswerValue))
+      return DEFAULT_ANSWER_VALUE_MULTI_CHOICE;
 
-    return answer;
+    return this.currentAnswerValue;
   }
 
   get multipleChoiceMultipleAnswerValue() {
-    const answer = this.answers[this.rootStore.navigationStore.currentItemId];
-
     // multipleChoiceMultiple answers cannot be strings, they are either arrays or objects
-    if (!answer || isString(answer))
+    if (!this.currentAnswerValue || isString(this.currentAnswerValue))
       return DEFAULT_ANSWER_VALUE_MULTI_CHOICE_MULTI;
 
-    return answer;
+    return this.currentAnswerValue;
   }
 
   get numberFloatAnswerValue() {
-    const answer = this.answers[this.rootStore.navigationStore.currentItemId];
-
     // numberFloat answers can only be numbers
-    if (!isNumber(answer)) return DEFAULT_ANSWER_VALUE_NUMBER_FLOAT;
+    if (!isNumber(this.currentAnswerValue))
+      return DEFAULT_ANSWER_VALUE_NUMBER_FLOAT;
 
-    return answer;
+    return this.currentAnswerValue;
   }
 
   getAnswerToCheckValue: AnswerToCheckValueFn = (answerToCheck: string) => {
@@ -184,7 +240,10 @@ export class AnswerStore {
     const answerToCheckSplit = answerToCheck.split(".");
     const answerToCheckId = answerToCheckSplit[0] || answerToCheck;
     const answerToCheckProperty = answerToCheckSplit[1];
-    const answerToCheckValue = this.answers[answerToCheckId];
+    const answerToCheckValue = this.getAnswerValue(
+      this.rootStore.navigationStore.currentWalkthroughId,
+      answerToCheckId,
+    );
 
     if (answerToCheckValue === undefined) return answerToCheckValue;
 

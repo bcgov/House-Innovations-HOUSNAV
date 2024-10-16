@@ -7,7 +7,7 @@ import {
   VariableValueLogic,
   VariableValueLogicType,
   VariableValuesToCheckType,
-} from "@repo/data/useWalkthroughData";
+} from "@repo/data/useWalkthroughsData";
 // local
 import {
   getVariableItemValue,

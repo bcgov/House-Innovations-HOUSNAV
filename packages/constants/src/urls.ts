@@ -1,17 +1,25 @@
-import { EnumBuildingTypes, EnumWalkthroughIds } from "./constants";
+// local
+import { EnumBuildingTypes } from "./constants";
 
-export const URL_HOME_HREF = "/";
-export const URL_HOME_TITLE = "Home";
-export const URL_BUILDING_TYPE_HREF = "/building-type-analysis";
-export const URL_DOWNLOAD_HREF =
+export const URL_DOWNLOAD_BCBC_PDF =
   "https://www2.gov.bc.ca/assets/gov/farming-natural-resources-and-industry/construction-industry/building-codes-and-standards/revisions-and-mo/bcbc_2024.pdf";
-export const URL_DOWNLOAD_TITLE = "Download";
 
+// path urls
+export const URL_PATH_HOME = "/";
+export const URL_PATH_BUILDING_TYPE_ANALYSIS = "/building-type-analysis";
+export const URL_PATH_WALKTHROUGH = "/walkthrough";
+
+// search param keys
+export const SEARCH_PARAM_WALKTHROUGH_ID = "wtid";
+export const SEARCH_PARAM_WALKTHROUGH_ID_SEPARATOR = "_";
+
+export const URL_DOWNLOAD_TITLE = "Download";
+export const URL_HOME_TITLE = "Home";
 export const URLS_MAIN_NAVIGATION = [
-  { title: URL_HOME_TITLE, href: URL_HOME_HREF },
+  { title: URL_HOME_TITLE, href: URL_PATH_HOME },
   {
     title: URL_DOWNLOAD_TITLE,
-    href: URL_DOWNLOAD_HREF,
+    href: URL_DOWNLOAD_BCBC_PDF,
     download: true,
     target: "_blank",
     "aria-label": "Download the BC Building Code PDF in a new tab",
@@ -53,27 +61,17 @@ export const URLS_GET_BUILDING_TYPE = (buildingType: string) => {
   ) {
     return `/${buildingType}`;
   }
-  return URL_HOME_HREF;
+  return URL_PATH_HOME;
 };
 
-export const URLS_WALKTHROUGHS: Record<
-  EnumBuildingTypes,
-  Record<EnumWalkthroughIds, string>
-> = {
-  [EnumBuildingTypes.SINGLE_DWELLING]: Object.values(EnumWalkthroughIds).reduce(
-    (arr, value) => {
-      arr[value] =
-        `${URLS_GET_BUILDING_TYPE(EnumBuildingTypes.SINGLE_DWELLING)}/${value}`;
-      return arr;
-    },
-    {} as Record<EnumWalkthroughIds, string>,
-  ),
-  [EnumBuildingTypes.MULTI_DWELLING]: Object.values(EnumWalkthroughIds).reduce(
-    (arr, value) => {
-      arr[value] =
-        `${URLS_GET_BUILDING_TYPE(EnumBuildingTypes.MULTI_DWELLING)}/${value}`;
-      return arr;
-    },
-    {} as Record<EnumWalkthroughIds, string>,
-  ),
+export const URLS_GET_WALKTHROUGH = (
+  buildingType: string,
+  walkthroughIds: string[],
+) => {
+  return `${URLS_GET_BUILDING_TYPE(buildingType)}${URL_PATH_WALKTHROUGH}?${SEARCH_PARAM_WALKTHROUGH_ID}=${walkthroughIds.join(SEARCH_PARAM_WALKTHROUGH_ID_SEPARATOR)}`;
 };
+
+export const TEMP_GET_URL_SINGLE_DWELLING_WALKTHROUGH = (
+  walkthroughId: string,
+) =>
+  `${URLS_GET_BUILDING_TYPE(EnumBuildingTypes.SINGLE_DWELLING)}${URL_PATH_WALKTHROUGH}?${SEARCH_PARAM_WALKTHROUGH_ID}=${walkthroughId}`;

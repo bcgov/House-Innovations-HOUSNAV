@@ -4,7 +4,7 @@ import {
 } from "@repo/constants/src/testids";
 import { EnumBuildingTypes } from "@repo/constants/src/constants";
 import {
-  URL_BUILDING_TYPE_HREF,
+  URL_PATH_BUILDING_TYPE_ANALYSIS,
   URLS_GET_BUILDING_TYPE,
 } from "@repo/constants/src/urls";
 
@@ -45,7 +45,7 @@ describe("home", () => {
 
   it("should be able to navigate to building type analysis page", () => {
     cy.getByTestID(GET_TESTID_LINK_CARD(TESTID_BUILDING_TYPE)).click();
-    cy.url().should("contain", URL_BUILDING_TYPE_HREF);
+    cy.url().should("contain", URL_PATH_BUILDING_TYPE_ANALYSIS);
   });
 
   it("should be accessible", () => {

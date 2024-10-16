@@ -2,16 +2,18 @@
 import { describe, it, expect, vi } from "vitest";
 import { JSX } from "react";
 // repo
-import useWalkthroughTestData, {
+import {
+  useWalkthroughTestData999,
   getFirstResult,
   getFirstResultWithCalculations,
   getQuestion,
   useWalkthroughTestData91014,
-} from "@repo/data/useWalkthroughTestData";
+} from "@repo/data/useWalkthroughsTestData";
 import {
   PropertyNameQuestionText,
   ResultData,
-} from "@repo/data/useWalkthroughData";
+} from "@repo/data/useWalkthroughsData";
+import { EnumWalkthroughIds } from "@repo/constants/src/constants";
 // local
 import {
   getStringFromComponents,
@@ -194,7 +196,9 @@ describe("string", () => {
     const { container } = renderWithWalkthroughProvider({
       ui: <AnswerValueTestComponent questionId={"P01"} />,
       initialAnswers: {
-        P01: "yes",
+        [EnumWalkthroughIds._9_9_9]: {
+          P01: "yes",
+        },
       },
     });
     expect(container).toMatchSnapshot();
@@ -216,10 +220,11 @@ describe("string", () => {
   });
   it("getResultCalculation: result missing resultCalculations", () => {
     // setup data so first question is a result
-    const walkthroughData = useWalkthroughTestData();
+    const walkthroughData = useWalkthroughTestData999();
     const resultData = getFirstResult();
-    walkthroughData.sections[
-      walkthroughData.info.startingSectionId
+    walkthroughData.walkthroughsById[EnumWalkthroughIds._9_9_9].sections[
+      walkthroughData.walkthroughsById[EnumWalkthroughIds._9_9_9].info
+        .startingSectionId
     ]?.sectionQuestions.unshift(resultData.resultKey);
 
     const { container } = renderWithWalkthroughProvider({
@@ -233,8 +238,9 @@ describe("string", () => {
     // setup data so first question is a result
     const walkthroughData = useWalkthroughTestData91014();
     const resultData = getFirstResultWithCalculations();
-    walkthroughData.sections[
-      walkthroughData.info.startingSectionId
+    walkthroughData.walkthroughsById[EnumWalkthroughIds._9_10_14].sections[
+      walkthroughData.walkthroughsById[EnumWalkthroughIds._9_10_14].info
+        .startingSectionId
     ]?.sectionQuestions.unshift(resultData.resultKey);
 
     const { container } = renderWithWalkthroughProvider({
@@ -246,7 +252,7 @@ describe("string", () => {
   });
   it("getResultCalculation: display returned value ", () => {
     // setup data so first question is a result
-    const walkthroughData = useWalkthroughTestData();
+    const walkthroughData = useWalkthroughTestData999();
     const calculationResult = 123.456;
     const resultKey = "R99";
     const calculationId = "1";
@@ -260,10 +266,13 @@ describe("string", () => {
         },
       ],
     };
-    walkthroughData.sections[
-      walkthroughData.info.startingSectionId
+    walkthroughData.walkthroughsById[EnumWalkthroughIds._9_9_9].sections[
+      walkthroughData.walkthroughsById[EnumWalkthroughIds._9_9_9].info
+        .startingSectionId
     ]?.sectionQuestions.unshift(resultKey);
-    walkthroughData.results[resultKey] = resultData;
+    walkthroughData.walkthroughsById[EnumWalkthroughIds._9_9_9].results[
+      resultKey
+    ] = resultData;
 
     // spy on calculateResultDisplayNumber
     const calculateResultDisplayNumberSpy = vi.spyOn(

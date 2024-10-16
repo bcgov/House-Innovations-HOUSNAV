@@ -2,17 +2,17 @@
 import React, { ReactElement } from "react";
 import userEvent from "@testing-library/user-event";
 import { render, RenderOptions } from "@testing-library/react";
-import useWalkthroughTestData from "@repo/data/useWalkthroughTestData";
+import { useWalkthroughTestData999 } from "@repo/data/useWalkthroughsTestData";
 import {
   CreateWalkthroughStore,
   WalkthroughStateContext,
 } from "../stores/WalkthroughRootStore";
-import { WalkthroughJSONType } from "@repo/data/useWalkthroughData";
+import { WalkthroughsDataInterface } from "@repo/data/useWalkthroughsData";
 import { AnswerState } from "../stores/AnswerStore";
 
 interface RenderWithWalkthroughProviderOptions extends RenderOptions {
   ui: ReactElement;
-  data?: WalkthroughJSONType;
+  data?: WalkthroughsDataInterface;
   options?: Omit<RenderOptions, "wrapper">;
   initialAnswers?: AnswerState;
 }
@@ -25,7 +25,7 @@ export const renderWithWalkthroughProvider = ({
 }: RenderWithWalkthroughProviderOptions) => {
   // create store
   const WalkthroughStore = CreateWalkthroughStore(
-    data || useWalkthroughTestData(),
+    data || useWalkthroughTestData999(),
     initialAnswers,
   );
 

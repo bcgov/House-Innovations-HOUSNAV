@@ -11,7 +11,7 @@ import {
   ResultLogicTypes,
   VariableValueCalculationType,
   VariableValueToSetCalculation,
-} from "@repo/data/useWalkthroughData";
+} from "@repo/data/useWalkthroughsData";
 // local
 import { AnswerToCheckValueFn } from "../stores/AnswerStore";
 import { isNumber } from "./typeChecking";
