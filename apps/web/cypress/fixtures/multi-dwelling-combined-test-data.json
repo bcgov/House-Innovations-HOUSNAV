@@ -1,0 +1,36 @@
+{
+  "walkthroughs": [
+    {
+      "title": "transition between questions in Multi-Dwelling 9.9.9 and 9.10.14",
+      "steps": [
+        {
+          "question": "P1",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P1",
+          "type": "checkbox",
+          "answer": "C"
+        }
+      ],
+      "result": "R40"
+    },
+    {
+      "title": "transition between questions in Multi-Dwelling 9.9.9 and 9.10.14 different result scenario",
+      "steps": [
+        {
+          "question": "P1",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P1",
+          "type": "checkbox",
+          "answer": "D"
+        }
+      ],
+      "result": "R51"
+    }
+  ]
+}

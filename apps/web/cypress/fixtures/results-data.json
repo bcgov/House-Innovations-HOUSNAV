@@ -1,6 +1,6 @@
 {
   "results": {
-    "workflow1": {
+    "single_dwelling_workflow_999": {
       "R00": "You have selected an answer that indicates that the BC Building Code 2024 does not apply to this structure. This tool is used to assist building code users in determining the applicable requirements for their building, as such all structures that are not governed by the BC Building Code 2024 are beyond the scope of this tool.",
       "R01": "This indicates that some or all of this structure may not be governed by the BC Building Code 2024. This tool has been designed to assist BC Building Code 2024 users in determining the Building Code requirements for Part 9 buildings. Based on your selection, some or all of your project is beyond the scope of this tool at this time.",
       "R02": "You have selected an option that indicates that this building is a heritage building. Heritage buildings have alternative measures for Building Code compliance. These alternative measures are beyond the scope of this tool at this time.",
@@ -12,7 +12,7 @@
       "R20": "The dwelling unit has not been provided with sufficient means of egress per the building characteristics provided",
       "R30": "Based on the building characteristics provided this dwelling unit or building is not governed by Part 9 of the Building Code or is not a dwelling unit. This tool is only designed to address the egress from dwelling units of Part 9 buildings."
     },
-    "workflow2": {
+    "single_dwelling_workflow_91014": {
       "R00": "You have selected an answer that indicates that the BC Building Code 2024 does not apply to this structure. This tool is used to assist building code users in determining the applicable requirements for their building, as such all structures that are not governed by the BC Building Code 2024 are beyond the scope of this tool.",
       "R01": "This indicates that some or all of this structure may not be governed by the BC Building Code 2024. This tool has been designed to assist BC Building Code 2024 users in determining the Building Code requirements for Part 9 buildings. Based on your selection, some or all of your project is beyond the scope of this tool at this time.",
       "R02": "You have selected an option that indicates that this building is a heritage building. Heritage buildings have alternative measures for Building Code compliance. These alternative measures are beyond the scope of this tool at this time.",
@@ -23,6 +23,12 @@
       "R30": "The maximum percentage of unprotected openings in this exterior wall is",
       "R40": "this fire compartment is permitted to have unlimited unprotected openings.",
       "R50": "that serve not more than one dwelling unit or a house with a secondary suite.",
+      "R51": "Based on your selection the percentage and area of unprotected openings should be calculated based on"
+    },
+    "multi_dwelling_workflow_combined": {
+      "R10": "Based on the building characteristics provided, this dwelling unit meets the provision of Subsection",
+      "R30": "Based on the building characteristics provided this dwelling unit or building is not governed by Part 9 of the Building Code or is not a dwelling unit. This tool is only designed to address the egress from dwelling units of Part 9 buildings.",
+      "R40": "this fire compartment is permitted to have unlimited unprotected openings.",
       "R51": "Based on your selection the percentage and area of unprotected openings should be calculated based on"
     }
   }

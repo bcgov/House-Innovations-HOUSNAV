@@ -30,8 +30,8 @@ describe("Experimental tests", () => {
       if (walkthrough.result) {
         // Cypress will throw an error if the result is undefined
         const result =
-          results.workflow1[
-            walkthrough.result as keyof typeof results.workflow1
+          results.single_dwelling_workflow_999[
+            walkthrough.result as keyof typeof results.single_dwelling_workflow_999
           ];
         cy.contains(result);
       }
