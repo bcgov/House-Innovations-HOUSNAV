@@ -1,7 +1,7 @@
 // 3rd party
 import { describe, it, expect, vi } from "vitest";
 // repo
-import { PossibleAnswer } from "@repo/data/useWalkthroughData";
+import { PossibleAnswer } from "@repo/data/useWalkthroughsData";
 // local
 import {
   showAnswerTypeEquals,

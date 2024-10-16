@@ -3,7 +3,7 @@ import { useMemo } from "react";
 // repo
 import Link, { LinkProps } from "@repo/ui/link";
 import { GET_TESTID_PDF_DOWNLOAD_LINK } from "@repo/constants/src/testids";
-import { URL_DOWNLOAD_HREF } from "@repo/constants/src/urls";
+import { URL_DOWNLOAD_BCBC_PDF } from "@repo/constants/src/urls";
 
 export interface PDFDownloadLinkProps
   extends Omit<LinkProps, "target" | "download" | "href" | "onPress"> {
@@ -30,8 +30,8 @@ export default function PDFDownloadLink({
 }: PDFDownloadLinkProps) {
   const fullUrl = useMemo(() => {
     return namedDest
-      ? `${URL_DOWNLOAD_HREF}#nameddest=${namedDest}`
-      : URL_DOWNLOAD_HREF;
+      ? `${URL_DOWNLOAD_BCBC_PDF}#nameddest=${namedDest}`
+      : URL_DOWNLOAD_BCBC_PDF;
   }, [namedDest]);
 
   return (

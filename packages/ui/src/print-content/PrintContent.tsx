@@ -12,7 +12,7 @@ import {
   AllBuildingCodeTypes,
   findBuildingCodeByNumberReference,
 } from "@repo/data/useGlossaryData";
-import { findSectionTitleByQuestionId } from "@repo/data/useWalkthroughData";
+import { findSectionTitleByQuestionId } from "@repo/data/useWalkthroughsData";
 
 import "./PrintContent.css";
 import BuildingCodeContent from "../modal-building-code-content/ModalBuildingCodeContent";
@@ -51,7 +51,8 @@ export interface PrintContentProps {
 export default function PrintContent({ contentType }: PrintContentProps) {
   const {
     navigationStore,
-    walkthroughData,
+    currentWalkthroughData,
+    getAllSections,
     getQuestionAnswerValueDisplay,
     getQuestionAsDisplayType,
   } = useWalkthroughState();
@@ -70,7 +71,8 @@ export default function PrintContent({ contentType }: PrintContentProps) {
         questions: GroupedQuestion[];
       };
     } = {};
-    const walkthroughSections = walkthroughData.sections;
+    // TODO - HOUSNAV-191 - need to account for multiple walkthroughs
+    const walkthroughSections = getAllSections();
 
     // For each of the questions, group them by section and then by reference
     questions.forEach((item) => {
@@ -111,15 +113,21 @@ export default function PrintContent({ contentType }: PrintContentProps) {
   // Get the question data from the question history for the PDF
   const questionPdf = navigationStore.questionHistory
     .map((history): QuestionData | undefined => {
-      // const question = walkthroughData.questions[questionId];
-      const question = getQuestionAsDisplayType(history.questionId);
+      const question = getQuestionAsDisplayType(
+        history.walkthroughId,
+        history.questionId,
+      );
       if (!question) {
         return undefined;
       } else {
         return {
           questionId: history.questionId,
           question: question.questionText,
-          answer: getQuestionAnswerValueDisplay(history.questionId, true),
+          answer: getQuestionAnswerValueDisplay({
+            questionId: history.questionId,
+            walkthroughId: history.walkthroughId,
+            lineBreakOnMultiple: true,
+          }),
           reference: toJS(question.questionCodeReference?.codeNumber),
           referenceDisplay: toJS(question.questionCodeReference?.displayString),
         };
@@ -204,7 +212,8 @@ export default function PrintContent({ contentType }: PrintContentProps) {
       {contentType === PrintContentType.RESULTS && (
         <div className="ui-printContent--printContainer">
           <h3 className="ui-printContent--walkthroughTitle">
-            {walkthroughData.info.walkthroughTitle}
+            {/* TODO - HOUSNAV-191 - update to account for more than 1 walkthrough and title */}
+            {currentWalkthroughData?.info.walkthroughTitle}
           </h3>
           {groupedQuestions.map((group, groupIndex) => (
             <table className="ui-printContent--table" key={groupIndex}>

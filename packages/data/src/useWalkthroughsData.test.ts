@@ -10,7 +10,7 @@ import {
   SectionData,
   WalkthroughJSONData,
   findSectionTitleByQuestionId,
-} from "./useWalkthroughData";
+} from "./useWalkthroughsData";
 
 describe("findSectionTitleByQuestionId", () => {
   const sections: { [key: string]: SectionData } =

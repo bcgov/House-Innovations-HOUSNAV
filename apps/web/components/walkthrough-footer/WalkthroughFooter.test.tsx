@@ -7,9 +7,11 @@ import {
   TESTID_WALKTHROUGH_FOOTER_NEXT,
   TESTID_WALKTHROUGH_FOOTER_START_OVER,
 } from "@repo/constants/src/testids";
-import useWalkthroughTestData, {
+import {
+  useWalkthroughTestData999,
   getFirstResult,
-} from "@repo/data/useWalkthroughTestData";
+} from "@repo/data/useWalkthroughsTestData";
+import { EnumWalkthroughIds } from "@repo/constants/src/constants";
 // local
 import WalkthroughFooter from "./WalkthroughFooter";
 import { renderWithWalkthroughProvider } from "../../tests/utils";
@@ -32,10 +34,11 @@ describe("WalkthroughFooter", () => {
   // answer first question wrong and verify results screen with start over button
   it("renders start over button", async () => {
     // setup data so first question is a result to test start over button displaying
-    const walkthroughData = useWalkthroughTestData();
+    const walkthroughData = useWalkthroughTestData999();
     const resultData = getFirstResult();
-    walkthroughData.sections[
-      walkthroughData.info.startingSectionId
+    walkthroughData.walkthroughsById[EnumWalkthroughIds._9_9_9].sections[
+      walkthroughData.walkthroughsById[EnumWalkthroughIds._9_9_9].info
+        .startingSectionId
     ]?.sectionQuestions.unshift(resultData.resultKey);
 
     // render component

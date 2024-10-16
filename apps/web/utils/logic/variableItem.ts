@@ -6,7 +6,7 @@ import {
   VariableValueLogicType,
   VariableValuesToCheckType,
   VariableValueType,
-} from "@repo/data/useWalkthroughData";
+} from "@repo/data/useWalkthroughsData";
 // local
 import { AnswerToCheckValueFn, AnswerTypes } from "../../stores/AnswerStore";
 import { isArray, isNumber, isString } from "../typeChecking";

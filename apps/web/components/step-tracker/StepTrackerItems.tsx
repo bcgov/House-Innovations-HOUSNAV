@@ -16,6 +16,7 @@ import { TESTID_STEP_TRACKER_ITEMS } from "@repo/constants/src/testids";
 const StepTrackerItems = observer(({ id }: { id?: string }): JSX.Element => {
   const {
     navigationStore: {
+      currentWalkthroughId,
       currentSectionId,
       currentItemId,
       itemIsComplete,
@@ -23,7 +24,7 @@ const StepTrackerItems = observer(({ id }: { id?: string }): JSX.Element => {
       itemWasSkipped,
       sectionWasSkipped,
     },
-    walkthroughData: { sections },
+    currentWalkthroughSectionData,
     getQuestionTextByQuestionId,
     currentResult,
   } = useWalkthroughState();
@@ -38,84 +39,99 @@ const StepTrackerItems = observer(({ id }: { id?: string }): JSX.Element => {
         Steps
       </h2>
       <ol>
-        {Object.keys(sections).map((sectionId) => {
-          const section = sections[sectionId];
-          if (!section) {
-            return null;
-          }
-          const sectionComplete = sectionIsComplete(sectionId);
-          const sectionSkipped = sectionWasSkipped(sectionId);
-          const isCurrentSection = sectionId === currentSectionId;
-          const sectionStatusArray = [
-            sectionComplete ? "is marked complete" : "",
-            sectionSkipped ? "is marked skipped" : "",
-            isCurrentSection ? "is the current section" : "",
-          ].filter(Boolean) as string[];
-          const sectionAriaLabel = `${section.sectionTitle} ${sectionStatusArray.join(" and ")}`;
+        {/* TODO - HOUSNAV-199 - show more than one walkthrough sections */}
+        {!!currentWalkthroughSectionData &&
+          Object.keys(currentWalkthroughSectionData).map((sectionId) => {
+            const section = currentWalkthroughSectionData[sectionId];
+            if (!section) {
+              return null;
+            }
+            const sectionComplete = sectionIsComplete(
+              currentWalkthroughId,
+              sectionId,
+            );
+            const sectionSkipped = sectionWasSkipped(
+              currentWalkthroughId,
+              sectionId,
+            );
+            const isCurrentSection = sectionId === currentSectionId;
+            const sectionStatusArray = [
+              sectionComplete ? "is marked complete" : "",
+              sectionSkipped ? "is marked skipped" : "",
+              isCurrentSection ? "is the current section" : "",
+            ].filter(Boolean) as string[];
+            const sectionAriaLabel = `${section.sectionTitle} ${sectionStatusArray.join(" and ")}`;
 
-          return (
-            <li
-              key={sectionId}
-              className={`web-StepTrackerItems--Section ${isCurrentSection ? "-currentSection" : ""} ${sectionSkipped ? "-skippedSection" : ""}`}
-            >
-              <h3
-                className="web-StepTrackerItems--SectionTitle"
-                aria-label={sectionAriaLabel}
+            return (
+              <li
+                key={sectionId}
+                className={`web-StepTrackerItems--Section ${isCurrentSection ? "-currentSection" : ""} ${sectionSkipped ? "-skippedSection" : ""}`}
               >
-                <Icon
-                  type="expandMore"
-                  className="web-StepTrackerItems--SectionTitleToggleIcon"
-                />
-                <span className="u-ellipsis">{section.sectionTitle}</span>
-                {sectionComplete && (
+                <h3
+                  className="web-StepTrackerItems--SectionTitle"
+                  aria-label={sectionAriaLabel}
+                >
                   <Icon
-                    type="check"
-                    className="web-StepTrackerItems--SectionTitleCompleteIcon"
+                    type="expandMore"
+                    className="web-StepTrackerItems--SectionTitleToggleIcon"
                   />
-                )}
-              </h3>
-              <div
-                className="web-StepTrackerItems--SectionBody"
-                aria-hidden={!isCurrentSection}
-              >
-                <ol>
-                  {section.sectionQuestions.map((itemId) => {
-                    const itemComplete = itemIsComplete(itemId);
-                    const itemSkipped = itemWasSkipped(
-                      itemId,
-                      sectionId,
-                      sectionComplete,
-                    );
-                    const isCurrentItem = itemId === currentItemId;
-                    const itemTextAsComponents = parseStringToComponents(
-                      getQuestionTextByQuestionId(itemId),
-                      undefined,
-                      true,
-                    );
-                    const itemStatusArray = [
-                      itemComplete ? "is marked complete" : "",
-                      itemSkipped ? "is marked skipped" : "",
-                      isCurrentItem ? "is the current step" : "",
-                    ].filter(Boolean) as string[];
-                    const itemAriaLabel = `${getStringFromComponents(itemTextAsComponents)} ${itemStatusArray.join(" and ")}`;
+                  <span className="u-ellipsis">{section.sectionTitle}</span>
+                  {sectionComplete && (
+                    <Icon
+                      type="check"
+                      className="web-StepTrackerItems--SectionTitleCompleteIcon"
+                    />
+                  )}
+                </h3>
+                <div
+                  className="web-StepTrackerItems--SectionBody"
+                  aria-hidden={!isCurrentSection}
+                >
+                  <ol>
+                    {section.sectionQuestions.map((itemId) => {
+                      const itemComplete = itemIsComplete(
+                        currentWalkthroughId,
+                        itemId,
+                      );
+                      const itemSkipped = itemWasSkipped(
+                        currentWalkthroughId,
+                        itemId,
+                        sectionId,
+                        sectionComplete,
+                      );
+                      const isCurrentItem = itemId === currentItemId;
+                      const itemTextAsComponents = parseStringToComponents(
+                        getQuestionTextByQuestionId(
+                          currentWalkthroughId,
+                          itemId,
+                        ),
+                        undefined,
+                        true,
+                      );
+                      const itemStatusArray = [
+                        itemComplete ? "is marked complete" : "",
+                        itemSkipped ? "is marked skipped" : "",
+                        isCurrentItem ? "is the current step" : "",
+                      ].filter(Boolean) as string[];
+                      const itemAriaLabel = `${getStringFromComponents(itemTextAsComponents)} ${itemStatusArray.join(" and ")}`;
 
-                    return (
-                      <li
-                        key={itemId}
-                        className={`web-StepTrackerItems--SectionItem ${isCurrentItem ? "-currentItem" : ""} ${itemSkipped ? "-skippedItem" : ""}`}
-                      >
-                        <h4 className="u-ellipsis" aria-label={itemAriaLabel}>
-                          {itemTextAsComponents}
-                        </h4>
-                        {itemComplete && <Icon type="check" />}
-                      </li>
-                    );
-                  })}
-                </ol>
-              </div>
-            </li>
-          );
-        })}
+                      return (
+                        <li
+                          key={itemId}
+                          className={`web-StepTrackerItems--SectionItem ${isCurrentItem ? "-currentItem" : ""} ${itemSkipped ? "-skippedItem" : ""}`}
+                        >
+                          <h4 className="u-ellipsis" aria-label={itemAriaLabel}>
+                            {itemTextAsComponents}
+                          </h4>
+                          {itemComplete && <Icon type="check" />}
+                        </li>
+                      );
+                    })}
+                  </ol>
+                </div>
+              </li>
+            );
+          })}
         <li
           key="results"
           className={`web-StepTrackerItems--Section ${currentResult ? "-currentSection" : ""}`}

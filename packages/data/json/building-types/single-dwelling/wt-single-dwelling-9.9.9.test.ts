@@ -1,7 +1,7 @@
 // 3rd party
 import { describe, it, expect } from "vitest";
 // local
-import { isWalkthroughItemTypeVariable } from "../../../src/useWalkthroughData";
+import { isWalkthroughItemTypeVariable } from "../../../src/useWalkthroughsData";
 import data from "./wt-single-dwelling-9.9.9.json";
 
 describe("Data - 9.9.9", () => {

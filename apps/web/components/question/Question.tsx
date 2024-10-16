@@ -6,7 +6,7 @@ import {
   isWalkthroughItemTypeMultiChoiceMultiple,
   isWalkthroughItemTypeNumberFloat,
   PropertyNameQuestionText,
-} from "@repo/data/useWalkthroughData";
+} from "@repo/data/useWalkthroughsData";
 import { ID_QUESTION_TEXT } from "@repo/constants/src/ids";
 import {
   TESTID_QUESTION,

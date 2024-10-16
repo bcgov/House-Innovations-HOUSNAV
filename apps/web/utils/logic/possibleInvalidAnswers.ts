@@ -2,7 +2,7 @@
 import {
   PossibleInvalidAnswer,
   InvalidAnswerLogic,
-} from "@repo/data/useWalkthroughData";
+} from "@repo/data/useWalkthroughsData";
 // local
 import { AnswerTypes } from "../../stores/AnswerStore";
 import { isArray } from "../typeChecking";

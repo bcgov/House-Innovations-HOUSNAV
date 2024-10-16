@@ -3,7 +3,11 @@
 import React, { JSX } from "react";
 import { notFound } from "next/navigation";
 // repo
-import useWalkthroughData from "@repo/data/useWalkthroughData";
+import useWalkthroughsData from "@repo/data/useWalkthroughsData";
+import {
+  SEARCH_PARAM_WALKTHROUGH_ID,
+  SEARCH_PARAM_WALKTHROUGH_ID_SEPARATOR,
+} from "@repo/constants/src/urls";
 // local
 import Walkthrough from "../../../components/walkthrough/Walkthrough";
 import {
@@ -13,14 +17,18 @@ import {
 
 export default function Page({
   params,
+  searchParams,
 }: {
-  params: { id: string; buildingType: string };
+  params: { buildingType: string };
+  searchParams: { [SEARCH_PARAM_WALKTHROUGH_ID]: string };
 }): JSX.Element {
   // get walkthrough data, else show not found content
-  let data;
+  let walkthroughsData;
   try {
-    data = useWalkthroughData({
-      id: params.id,
+    walkthroughsData = useWalkthroughsData({
+      wtIds: searchParams[SEARCH_PARAM_WALKTHROUGH_ID].split(
+        SEARCH_PARAM_WALKTHROUGH_ID_SEPARATOR,
+      ),
       buildingType: params.buildingType,
     });
   } catch (e) {
@@ -28,7 +36,7 @@ export default function Page({
   }
 
   // create store
-  const WalkthroughStore = CreateWalkthroughStore(data);
+  const WalkthroughStore = CreateWalkthroughStore(walkthroughsData);
 
   return (
     <WalkthroughStateContext.Provider value={WalkthroughStore}>

@@ -2,7 +2,7 @@
 import {
   PossibleAnswer,
   ShowAnswerIfLogicType,
-} from "@repo/data/useWalkthroughData";
+} from "@repo/data/useWalkthroughsData";
 // local
 import { AnswerTypes, AnswerToCheckValueFn } from "../../stores/AnswerStore";
 import { isArray, isString } from "../typeChecking";

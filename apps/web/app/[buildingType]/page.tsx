@@ -9,14 +9,14 @@ import {
   EnumWalkthroughIds,
 } from "@repo/constants/src/constants";
 import {
-  URLS_GET_BUILDING_TYPE,
-  URLS_WALKTHROUGHS,
+  TEMP_GET_URL_SINGLE_DWELLING_WALKTHROUGH,
+  URLS_GET_WALKTHROUGH,
 } from "@repo/constants/src/urls";
 import useBuildingTypeData from "@repo/data/useBuildingTypeData";
-import useWalkthroughData, {
+import {
   WalkthroughJSONData,
-  WalkthroughJSONType,
-} from "@repo/data/useWalkthroughData";
+  WalkthroughJSONInterface,
+} from "@repo/data/useWalkthroughsData";
 import LinkCard, { LinkCardProps } from "@repo/ui/link-card";
 import CheckboxCard from "@repo/ui/checkbox-card";
 import Button from "@repo/ui/button";
@@ -41,9 +41,7 @@ const TEMP_CARDS = Object.entries(
       title: info.title,
       subtitle: info.subtitle,
       description: info.description,
-      href: URLS_WALKTHROUGHS[EnumBuildingTypes.SINGLE_DWELLING][
-        id as EnumWalkthroughIds
-      ],
+      href: TEMP_GET_URL_SINGLE_DWELLING_WALKTHROUGH(id),
     },
   }),
   {} as Record<EnumWalkthroughIds, LinkCardProps>,
@@ -110,12 +108,12 @@ export default function Page({
 
   // gather walkthrough data for buildingType
   const walkthroughs = buildingType.walkthroughs.reduce<
-    Record<string, WalkthroughJSONType>
+    Record<string, WalkthroughJSONInterface>
   >((arr, walkthroughId) => {
-    arr[walkthroughId] = useWalkthroughData({
-      id: walkthroughId,
-      buildingType: params.buildingType,
-    });
+    arr[walkthroughId] =
+      WalkthroughJSONData[params.buildingType as EnumBuildingTypes][
+        walkthroughId as EnumWalkthroughIds
+      ];
 
     return arr;
   }, {});
@@ -144,6 +142,15 @@ export default function Page({
         {},
       ),
     [buildingType.walkthroughs],
+  );
+  const selectedWalkthroughIds = Object.entries(isChecked).reduce<string[]>(
+    (arr, [walkthroughId, isSelected]) => {
+      if (isSelected) {
+        arr.push(walkthroughId);
+      }
+      return arr;
+    },
+    [],
   );
 
   return (
@@ -204,13 +211,15 @@ export default function Page({
               </li>
             ))}
           </ul>
-          {/* TODO - HOUSNAV-200 - update HREF to be multi walkthrough type */}
           <Link
             variant="secondary"
             isDisabled={totalSelected === 0}
             showAsButton
             isLargeButton
-            href={`${URLS_GET_BUILDING_TYPE(params.buildingType)}/9.9.9`}
+            href={URLS_GET_WALKTHROUGH(
+              params.buildingType,
+              selectedWalkthroughIds,
+            )}
             data-testid={TESTID_BUILD_WIZARD_BEGIN_WALKTHROUGH}
           >
             Begin Walkthrough

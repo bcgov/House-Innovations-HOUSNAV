@@ -5,16 +5,16 @@ import { Heading } from "react-aria-components";
 // repo
 import LinkCard, { LinkCardProps } from "@repo/ui/link-card";
 import {
-  URL_BUILDING_TYPE_HREF,
+  URL_PATH_BUILDING_TYPE_ANALYSIS,
   URLS_GET_BUILDING_TYPE,
 } from "@repo/constants/src/urls";
 import { EnumBuildingTypes } from "@repo/constants/src/constants";
 import { TESTID_BUILDING_TYPE } from "@repo/constants/src/testids";
+import { BuildingTypeAnalysisJSONData } from "@repo/data/useWalkthroughsData";
+import { BuildingTypeJSONData } from "@repo/data/useBuildingTypeData";
 // local
 import LayoutFooter from "../components/layout-footer/LayoutFooter";
 import "./page-landing.css";
-import { BuildingTypeAnalysisJSONData } from "@repo/data/useWalkthroughData";
-import { BuildingTypeJSONData } from "@repo/data/useBuildingTypeData";
 
 const CARDS: LinkCardProps[] = [
   {
@@ -36,7 +36,7 @@ const CARDS: LinkCardProps[] = [
   {
     title: BuildingTypeAnalysisJSONData.info.title,
     description: BuildingTypeAnalysisJSONData.info.description,
-    href: URL_BUILDING_TYPE_HREF,
+    href: URL_PATH_BUILDING_TYPE_ANALYSIS,
     ctaText: "Begin",
     ctaVariant: "secondary",
     "data-testid": TESTID_BUILDING_TYPE,

@@ -1,0 +1,73 @@
+{
+  "info": {
+    "title": "Spatial Separation Between Buildings",
+    "subtitle": "Volume II - 9.10.14.1-4",
+    "description": "Calculations for size/number of doors/windows in a wall facing another building",
+    "startingSectionId": "1_91014",
+    "walkthroughTitle": "9.10.14.1-4 Spatial Separation Between Buildings"
+  },
+  "sections": {
+    "1_91014": {
+      "sectionTitle": "9.10.14. Spatial Separation Between Buildings",
+      "sectionQuestions": [
+        "P1"
+      ]
+    }
+  },
+  "questions": {
+    "P1": {
+      "walkthroughItemType": "multiChoiceMultiple",
+      "questionText": "FPO - What are the <defined-term override-term='major occupancy'>major occupancies</defined-term> of this building?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Subsection 9.10.14.",
+        "codeNumber": "v2-db-9.10.14."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "<defined-term override-term='residential occupancy'>Residential</defined-term>",
+          "answerValue": "C"
+        },
+        {
+          "answerDisplayText": "<defined-term override-term='business and personal services occupancy'>Office</defined-term>",
+          "answerValue": "D"
+        },
+        {
+          "answerDisplayText": "<defined-term override-term='mercantile occupancy'>Mercantile</defined-term>",
+          "answerValue": "E"
+        },
+        {
+          "answerDisplayText": "<defined-term override-term='low-hazard industrial occupancy'>Low Hazard Industrial</defined-term>",
+          "answerValue": "F3"
+        },
+        {
+          "answerDisplayText": "<defined-term override-term='medium-hazard industrial occupancy'>Medium Hazard Industrial</defined-term>",
+          "answerValue": "F2"
+        },
+        {
+          "answerDisplayText": "No <defined-term>occupancy</defined-term> or accessory building",
+          "answerValue": "none"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P1",
+          "answerValue": "C",
+          "nextNavigateTo": "R40"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R51"
+        }
+      ]
+    }
+  },
+  "results": {
+    "R40": {
+      "resultDisplayMessage": "<p>FPO - Based on your selections and <building-code reference='v2-db-9.10.14.4.'>Article 9.10.14.4.</building-code>, this fire compartment is permitted to have unlimited unprotected openings.</p>"
+    },
+    "R51": {
+      "resultDisplayMessage": "<p>FPO - Based on your selection the percentage and area of unprotected openings should be calculated based on <pdf-download-link named-dest='9.10.15. Spatial Separation Between Houses'>Subsection 9.10.15.</pdf-download-link> At this time this tool does not calculate the percentage and area of unprotected openings of houses that meet the requirements of Subsection 9.10.15.</p>"
+    }
+  }
+}

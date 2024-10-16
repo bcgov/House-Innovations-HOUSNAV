@@ -5,7 +5,7 @@ import { observer } from "mobx-react-lite";
 import RadioGroup from "@repo/ui/radio-group";
 import { ID_QUESTION_TEXT } from "@repo/constants/src/ids";
 import { SHOW_QUESTION_LABELS } from "@repo/constants/src/constants";
-import { PropertyNamePossibleAnswers } from "@repo/data/useWalkthroughData";
+import { PropertyNamePossibleAnswers } from "@repo/data/useWalkthroughsData";
 // local
 import QuestionMissing from "./QuestionMissing";
 import { useWalkthroughState } from "../../../stores/WalkthroughRootStore";
