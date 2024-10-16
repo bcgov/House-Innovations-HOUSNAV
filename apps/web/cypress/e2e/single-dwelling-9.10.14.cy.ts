@@ -17,11 +17,11 @@ describe("single dwelling: 9.10.14", () => {
   // Test all walkthroughs defined in test data
   walkthroughs.forEach((walkthrough) => {
     it(walkthrough.title, () => {
-      runWalkthrough(walkthrough, results.workflow2);
+      runWalkthrough(walkthrough, results.single_dwelling_workflow_91014);
     });
   });
 
-  it("new walkthrough works correctly after using back button", () => {
+  it("new walkthrough works correctly after using back button and selecting different answers", () => {
     /**
      * This test is designed to test that backing doesn't yield incorrect data. the back button functionality.
      * In theory you can use any walkthroughs here, but if they both take the same path for most of it, you will have trouble on checkbox screens.
@@ -33,7 +33,32 @@ describe("single dwelling: 9.10.14", () => {
 
     // Run the first walkthrough
     if (firstWalkthrough) {
-      runWalkthrough(firstWalkthrough, results.workflow2);
+      runWalkthrough(firstWalkthrough, results.single_dwelling_workflow_91014);
+
+      // Go back to the beginning
+      for (let i = 0; i < firstWalkthrough.steps.length; i++) {
+        cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_BACK).click();
+      }
+    } else {
+      throw new Error("First walkthrough does not exist in workflow data");
+    }
+    // Run the second walkthrough
+    if (secondWalkthrough) {
+      runWalkthrough(secondWalkthrough, results.single_dwelling_workflow_91014);
+    } else {
+      throw new Error("Second walkthrough does not exist in workflow data");
+    }
+  });
+
+  it("new walkthrough works correctly after using back button and selecting the same answers", () => {
+    /**
+     * This test is designed to test that backing doesn't yield incorrect data. the back button functionality.
+     */
+    const firstWalkthrough = walkthroughs[12];
+
+    // Run the first walkthrough
+    if (firstWalkthrough) {
+      runWalkthrough(firstWalkthrough, results.single_dwelling_workflow_91014);
 
       // Go back to the beginning
       for (let i = 0; i < firstWalkthrough.steps.length; i++) {
@@ -42,9 +67,9 @@ describe("single dwelling: 9.10.14", () => {
     } else {
       throw new Error("Walkthrough does not exist in workflow data");
     }
-    // Run the second walkthrough
-    if (secondWalkthrough) {
-      runWalkthrough(secondWalkthrough, results.workflow2);
+    // Run the first walkthrough again
+    if (firstWalkthrough) {
+      runWalkthrough(firstWalkthrough, results.single_dwelling_workflow_91014);
     } else {
       throw new Error("Walkthrough does not exist in workflow data");
     }

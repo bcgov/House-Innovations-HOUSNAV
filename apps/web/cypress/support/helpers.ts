@@ -5,7 +5,7 @@ import {
   GET_TESTID_NUMBER_FIELD,
   TESTID_BUTTON_MODAL_CLOSE,
   TESTID_DEFINED_TERM,
-  TESTID_QUESTION_CODE_REFERENCE_BUTTON,
+  GET_TESTID_BUTTON,
 } from "@repo/constants/src/testids";
 
 interface Walkthrough {
@@ -36,9 +36,15 @@ export const runWalkthrough = (walkthrough: Walkthrough, results: Results) => {
       // Skip tapping the checkbox if the answer is empty
       if (step.answer !== "") {
         step.answer.split(",").forEach((answer) => {
-          cy.getInputByTestID(GET_TESTID_CHECKBOX(step.question, answer)).click(
-            { force: true },
-          );
+          cy.getInputByTestID(GET_TESTID_CHECKBOX(step.question, answer))
+            .invoke("prop", "checked")
+            .then((checked) => {
+              if (!checked) {
+                cy.getInputByTestID(
+                  GET_TESTID_CHECKBOX(step.question, answer),
+                ).click({ force: true });
+              }
+            });
         });
       }
     } else if (step.type === "input") {
@@ -46,9 +52,6 @@ export const runWalkthrough = (walkthrough: Walkthrough, results: Results) => {
         .find("input")
         .type(step.answer);
     }
-    cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_NEXT).click({
-      force: true,
-    });
 
     // Open and close the glossary modal to check accessibility for step if needed
     if (step.checkGlossary) {
@@ -60,7 +63,7 @@ export const runWalkthrough = (walkthrough: Walkthrough, results: Results) => {
         // Click the first defined term if it exists
         if (definedTerms[0]) {
           definedTerms[0].click();
-          cy.getByTestID(`button-${TESTID_BUTTON_MODAL_CLOSE}`).click();
+          cy.getByTestID(GET_TESTID_BUTTON(TESTID_BUTTON_MODAL_CLOSE)).click();
         }
       });
     }
@@ -72,15 +75,15 @@ export const runWalkthrough = (walkthrough: Walkthrough, results: Results) => {
         // Click the first building code reference if it exists
         if (reference[0]) {
           reference[0].click();
-          cy.getByTestID(
-            `button-${TESTID_QUESTION_CODE_REFERENCE_BUTTON}`,
-          ).click();
+          cy.getByTestID(GET_TESTID_BUTTON(TESTID_BUTTON_MODAL_CLOSE)).click();
         }
       });
     }
     // Test accessibility for the current step
     cy.injectAxe();
     cy.checkA11yWithErrorLogging();
+
+    cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_NEXT).click();
   });
 
   if (walkthrough.result) {

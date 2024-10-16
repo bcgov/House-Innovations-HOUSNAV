@@ -20,7 +20,7 @@ describe("single dwelling: 9.9.9", () => {
   // Test all walkthroughs defined in test data
   walkthroughs.forEach((walkthrough) => {
     it(walkthrough.title, () => {
-      runWalkthrough(walkthrough, results.workflow1);
+      runWalkthrough(walkthrough, results.single_dwelling_workflow_999);
     });
   });
 
