@@ -2,6 +2,7 @@
 // 3rd party
 import { JSX } from "react";
 import { observer } from "mobx-react-lite";
+import { Heading } from "react-aria-components";
 // repo
 import Icon from "@repo/ui/icon";
 import {
@@ -44,6 +45,7 @@ const StepTrackerItems = observer(({ id }: { id?: string }): JSX.Element => {
       <ol>
         {walkthroughsOrder.map((walkthroughId) => {
           const walkthrough = walkthroughsById[walkthroughId];
+          const isSingleWalkthrough = walkthroughsOrder.length === 1;
           if (!walkthrough) {
             return null;
           }
@@ -53,12 +55,13 @@ const StepTrackerItems = observer(({ id }: { id?: string }): JSX.Element => {
               key={walkthroughId}
               className="web-StepTrackerItems--Walkthrough"
             >
-              <h3
-                className={`web-StepTrackerItems--WalkthroughTitle u-ellipsis ${walkthroughsOrder.length === 1 ? "--singleWalkthrough" : ""}`}
+              <Heading
+                className={`web-StepTrackerItems--WalkthroughTitle u-ellipsis ${isSingleWalkthrough ? "--singleWalkthrough" : ""}`}
                 data-testid={TESTID_STEP_TRACKER_WALKTHROUGH_HEADER}
+                level={3}
               >
                 {walkthrough.info.title}
-              </h3>
+              </Heading>
               <ol>
                 {Object.keys(walkthrough.sections).map((sectionId) => {
                   const section = walkthrough.sections[sectionId];
@@ -86,9 +89,10 @@ const StepTrackerItems = observer(({ id }: { id?: string }): JSX.Element => {
                       key={sectionId}
                       className={`web-StepTrackerItems--Section ${isCurrentSection ? "--currentSection" : ""} ${sectionSkipped ? "--skippedSection" : ""}`}
                     >
-                      <h4
+                      <Heading
                         className="web-StepTrackerItems--SectionTitle"
                         aria-label={sectionAriaLabel}
+                        level={isSingleWalkthrough ? 3 : 4}
                       >
                         <Icon
                           type="expandMore"
@@ -103,7 +107,7 @@ const StepTrackerItems = observer(({ id }: { id?: string }): JSX.Element => {
                             className="web-StepTrackerItems--SectionTitleCompleteIcon"
                           />
                         )}
-                      </h4>
+                      </Heading>
                       <div
                         className="web-StepTrackerItems--SectionBody"
                         aria-hidden={!isCurrentSection}
@@ -142,12 +146,13 @@ const StepTrackerItems = observer(({ id }: { id?: string }): JSX.Element => {
                                 key={itemId}
                                 className={`web-StepTrackerItems--SectionItem ${isCurrentItem ? "--currentItem" : ""} ${itemSkipped ? "--skippedItem" : ""}`}
                               >
-                                <h5
-                                  className="u-ellipsis"
+                                <Heading
+                                  className="web-StepTrackerItems--SectionItemHeader u-ellipsis"
                                   aria-label={itemAriaLabel}
+                                  level={isSingleWalkthrough ? 4 : 5}
                                 >
                                   {itemTextAsComponents}
-                                </h5>
+                                </Heading>
                                 {itemComplete && <Icon type="check" />}
                               </li>
                             );

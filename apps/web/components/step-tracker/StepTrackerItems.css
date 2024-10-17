@@ -96,15 +96,17 @@
   background-color: var(--theme-gray-10);
 }
 
-.web-StepTrackerItems--SectionItem h5 {
+.web-StepTrackerItems--SectionItem .web-StepTrackerItems--SectionItemHeader {
   font: var(--typography-regular-small-body);
 }
 
-.web-StepTrackerItems--SectionItem.--currentItem h5 {
+.web-StepTrackerItems--SectionItem.--currentItem
+  .web-StepTrackerItems--SectionItemHeader {
   font: var(--typography-bold-small-body);
 }
 
-.web-StepTrackerItems--SectionItem.--skippedItem h5 {
+.web-StepTrackerItems--SectionItem.--skippedItem
+  .web-StepTrackerItems--SectionItemHeader {
   color: var(--typography-color-disabled);
   text-decoration: line-through;
 }
