@@ -5,10 +5,24 @@
   padding-bottom: var(--layout-padding-10);
 }
 
+.web-StepTrackerItems--Walkthrough {
+  list-style-type: none;
+}
+
+.web-StepTrackerItems--Walkthrough:not(:first-child) {
+  border-top: var(--layout-border-width-small) solid
+    var(--surface-color-border-medium);
+}
+
+.web-StepTrackerItems--WalkthroughTitle.--singleWalkthrough {
+  display: none;
+}
+
 .web-StepTrackerItems--Section {
   list-style-type: none;
 }
 
+.web-StepTrackerItems--WalkthroughTitle,
 .web-StepTrackerItems--SectionTitle {
   padding: var(--layout-padding-small);
   display: flex;
@@ -18,14 +32,14 @@
   border-left: var(--layout-border-width-large) solid transparent;
 }
 
-.-currentSection .web-StepTrackerItems--SectionTitle {
+.--currentSection .web-StepTrackerItems--SectionTitle {
   color: var(--typography-color-primary);
   font: var(--typography-bold-body);
   background-color: var(--theme-blue-10);
   border-left-color: var(--surface-color-background-dark-blue);
 }
 
-.-skippedSection .web-StepTrackerItems--SectionTitle {
+.--skippedSection .web-StepTrackerItems--SectionTitle {
   color: var(--typography-color-disabled);
   text-decoration: line-through;
 }
@@ -39,7 +53,7 @@
   color: var(--icons-color-disabled);
 }
 
-.-currentSection .web-StepTrackerItems--SectionTitleToggleIcon {
+.--currentSection .web-StepTrackerItems--SectionTitleToggleIcon {
   color: var(--typography-color-primary);
   transform: rotate(0);
 }
@@ -58,7 +72,7 @@
   transition: 250ms grid-template-rows ease;
 }
 
-.-currentSection .web-StepTrackerItems--SectionBody {
+.--currentSection .web-StepTrackerItems--SectionBody {
   grid-template-rows: 1fr;
 }
 
@@ -78,7 +92,7 @@
   gap: var(--layout-padding-small);
 }
 
-.web-StepTrackerItems--SectionItem.-currentItem {
+.web-StepTrackerItems--SectionItem.--currentItem {
   background-color: var(--theme-gray-10);
 }
 
@@ -86,11 +100,11 @@
   font: var(--typography-regular-small-body);
 }
 
-.web-StepTrackerItems--SectionItem.-currentItem h4 {
+.web-StepTrackerItems--SectionItem.--currentItem h4 {
   font: var(--typography-bold-small-body);
 }
 
-.web-StepTrackerItems--SectionItem.-skippedItem h4 {
+.web-StepTrackerItems--SectionItem.--skippedItem h4 {
   color: var(--typography-color-disabled);
   text-decoration: line-through;
 }
