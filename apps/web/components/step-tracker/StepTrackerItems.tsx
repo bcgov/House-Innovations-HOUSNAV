@@ -4,7 +4,10 @@ import { JSX } from "react";
 import { observer } from "mobx-react-lite";
 // repo
 import Icon from "@repo/ui/icon";
-import { TESTID_STEP_TRACKER_ITEMS } from "@repo/constants/src/testids";
+import {
+  TESTID_STEP_TRACKER_ITEMS,
+  TESTID_STEP_TRACKER_WALKTHROUGH_HEADER,
+} from "@repo/constants/src/testids";
 // local
 import {
   getStringFromComponents,
@@ -52,6 +55,7 @@ const StepTrackerItems = observer(({ id }: { id?: string }): JSX.Element => {
             >
               <h3
                 className={`web-StepTrackerItems--WalkthroughTitle u-ellipsis ${walkthroughsOrder.length === 1 ? "--singleWalkthrough" : ""}`}
+                data-testid={TESTID_STEP_TRACKER_WALKTHROUGH_HEADER}
               >
                 {walkthrough.info.title}
               </h3>
@@ -82,7 +86,7 @@ const StepTrackerItems = observer(({ id }: { id?: string }): JSX.Element => {
                       key={sectionId}
                       className={`web-StepTrackerItems--Section ${isCurrentSection ? "--currentSection" : ""} ${sectionSkipped ? "--skippedSection" : ""}`}
                     >
-                      <h3
+                      <h4
                         className="web-StepTrackerItems--SectionTitle"
                         aria-label={sectionAriaLabel}
                       >
@@ -99,7 +103,7 @@ const StepTrackerItems = observer(({ id }: { id?: string }): JSX.Element => {
                             className="web-StepTrackerItems--SectionTitleCompleteIcon"
                           />
                         )}
-                      </h3>
+                      </h4>
                       <div
                         className="web-StepTrackerItems--SectionBody"
                         aria-hidden={!isCurrentSection}
@@ -138,12 +142,12 @@ const StepTrackerItems = observer(({ id }: { id?: string }): JSX.Element => {
                                 key={itemId}
                                 className={`web-StepTrackerItems--SectionItem ${isCurrentItem ? "--currentItem" : ""} ${itemSkipped ? "--skippedItem" : ""}`}
                               >
-                                <h4
+                                <h5
                                   className="u-ellipsis"
                                   aria-label={itemAriaLabel}
                                 >
                                   {itemTextAsComponents}
-                                </h4>
+                                </h5>
                                 {itemComplete && <Icon type="check" />}
                               </li>
                             );

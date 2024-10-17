@@ -96,15 +96,15 @@
   background-color: var(--theme-gray-10);
 }
 
-.web-StepTrackerItems--SectionItem h4 {
+.web-StepTrackerItems--SectionItem h5 {
   font: var(--typography-regular-small-body);
 }
 
-.web-StepTrackerItems--SectionItem.--currentItem h4 {
+.web-StepTrackerItems--SectionItem.--currentItem h5 {
   font: var(--typography-bold-small-body);
 }
 
-.web-StepTrackerItems--SectionItem.--skippedItem h4 {
+.web-StepTrackerItems--SectionItem.--skippedItem h5 {
   color: var(--typography-color-disabled);
   text-decoration: line-through;
 }
