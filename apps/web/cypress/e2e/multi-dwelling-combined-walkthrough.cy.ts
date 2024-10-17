@@ -7,7 +7,10 @@ import {
 import { walkthroughs } from "../fixtures/multi-dwelling-combined-test-data.json";
 import { results } from "../fixtures/results-data.json";
 import { runWalkthrough } from "../support/helpers";
-import { TESTID_WALKTHROUGH_FOOTER_BACK } from "@repo/constants/src/testids";
+import {
+  GET_TESTID_STEP_TRACKER_WALKTHROUGH_HEADER,
+  TESTID_WALKTHROUGH_FOOTER_BACK,
+} from "@repo/constants/src/testids";
 
 describe("multi dwelling: 9.9.9 and 9.10.14", () => {
   beforeEach(() => {
@@ -56,6 +59,15 @@ describe("multi dwelling: 9.9.9 and 9.10.14", () => {
     } else {
       throw new Error("Second walkthrough does not exist in workflow data");
     }
+  });
+
+  it("combined walkthrough step tracker shows multiple section headers", () => {
+    cy.getByTestID(
+      GET_TESTID_STEP_TRACKER_WALKTHROUGH_HEADER(EnumWalkthroughIds._9_9_9),
+    ).should("be.visible");
+    cy.getByTestID(
+      GET_TESTID_STEP_TRACKER_WALKTHROUGH_HEADER(EnumWalkthroughIds._9_10_14),
+    ).should("be.visible");
   });
 
   it("default state should be accessible", () => {

@@ -64,8 +64,8 @@ export class NavigationStore {
     return "";
   }
 
-  setFarthestIds = (itemId: string, walkthroughId?: string) => {
-    if (walkthroughId) this.farthestWalkthroughId = walkthroughId;
+  setFarthestIds = (itemId: string, walkthroughId: string) => {
+    this.farthestWalkthroughId = walkthroughId;
     this.farthestItemId = itemId;
   };
 
@@ -333,21 +333,40 @@ export class NavigationStore {
   pastSection = (walkthroughId: string, sectionId: string) => {
     const walkthroughSectionData =
       this.rootStore.getWalkthroughSectionData(walkthroughId);
-    if (!this.farthestItemId || !walkthroughSectionData) return false;
 
+    if (
+      !this.farthestItemId ||
+      !this.farthestWalkthroughId ||
+      !walkthroughSectionData
+    ) {
+      return false;
+    }
+
+    // check if we're past or before this walkthrough
+    if (this.farthestWalkthroughId !== walkthroughId) {
+      const farthestWalkthroughIndex =
+        this.rootStore.walkthroughsOrder.findIndex(
+          (id) => id === this.farthestWalkthroughId,
+        );
+      const argumentWalkthroughIndex =
+        this.rootStore.walkthroughsOrder.findIndex(
+          (id) => id === walkthroughId,
+        );
+      return farthestWalkthroughIndex > argumentWalkthroughIndex;
+    }
+
+    // we're in this walkthrough, then check if we're past this section
     const sections = Object.entries(walkthroughSectionData);
     const sectionIndex = sections.findIndex(([id]) => id === sectionId);
     const farthestSectionIndex = sections.findIndex(([, section]) =>
       section.sectionQuestions.includes(this.farthestItemId),
     );
 
-    // TODO - HOUSNAV-199 - does this -1 check work still?
     // -1 case covers the case when the user is on the results page because the farthestItemId is set to a result, which don't appear in the sections
     return farthestSectionIndex === -1 || farthestSectionIndex > sectionIndex;
   };
 
   // a section is complete if the user is past the section and the section has at least one question answered
-  // TODO - HOUSNAV-199 - check for being past walkthrough?
   sectionIsComplete = (walkthroughId: string, sectionId: string): boolean => {
     const walkthroughSectionData =
       this.rootStore.getWalkthroughSectionData(walkthroughId);

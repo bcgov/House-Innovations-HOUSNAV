@@ -1,9 +1,12 @@
 // repo
-import { EnumWalkthroughIds } from "@repo/constants/src/constants";
+import {
+  EnumBuildingTypes,
+  EnumWalkthroughIds,
+} from "@repo/constants/src/constants";
 // local
 import testCase999 from "../json/building-types/single-dwelling/wt-single-dwelling-9.9.9.json";
 import testCase91014 from "../json/building-types/single-dwelling/wt-single-dwelling-9.10.14.json";
-import {
+import useWalkthroughsData, {
   QuestionDisplayData,
   QuestionMultipleChoiceData,
   QuestionMultipleChoiceSelectMultipleData,
@@ -133,19 +136,25 @@ export function getFirstResultWithCalculations() {
   };
 }
 
-export function useWalkthroughTestData999() {
+export function useWalkthroughTestData999(): WalkthroughsDataInterface {
   // deep clone and return test data
-  const testData = JSON.parse(JSON.stringify(testCase999));
-  return {
-    startingWalkthroughId: EnumWalkthroughIds._9_9_9,
-    walkthroughsById: { [EnumWalkthroughIds._9_9_9]: testData },
-  } as WalkthroughsDataInterface;
+  return JSON.parse(
+    JSON.stringify(
+      useWalkthroughsData({
+        wtIds: [EnumWalkthroughIds._9_9_9],
+        buildingType: EnumBuildingTypes.SINGLE_DWELLING,
+      }),
+    ),
+  );
 }
 
-export function useWalkthroughTestData91014() {
-  const testData = JSON.parse(JSON.stringify(testCase91014));
-  return {
-    startingWalkthroughId: EnumWalkthroughIds._9_10_14,
-    walkthroughsById: { [EnumWalkthroughIds._9_10_14]: testData },
-  } as WalkthroughsDataInterface;
+export function useWalkthroughTestData91014(): WalkthroughsDataInterface {
+  return JSON.parse(
+    JSON.stringify(
+      useWalkthroughsData({
+        wtIds: [EnumWalkthroughIds._9_10_14],
+        buildingType: EnumBuildingTypes.SINGLE_DWELLING,
+      }),
+    ),
+  );
 }

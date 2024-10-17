@@ -30,6 +30,11 @@
       "R30": "Based on the building characteristics provided this dwelling unit or building is not governed by Part 9 of the Building Code or is not a dwelling unit. This tool is only designed to address the egress from dwelling units of Part 9 buildings.",
       "R40": "this fire compartment is permitted to have unlimited unprotected openings.",
       "R51": "Based on your selection the percentage and area of unprotected openings should be calculated based on"
+    },
+    "multi_dwelling_workflow_999": {
+      "R10": "Based on the building characteristics provided, this dwelling unit meets the provision of Subsection",
+      "R30": "Based on the building characteristics provided this dwelling unit or building is not governed by Part 9 of the Building Code or is not a dwelling unit. This tool is only designed to address the egress from dwelling units of Part 9 buildings."
     }
+
   }
 }
