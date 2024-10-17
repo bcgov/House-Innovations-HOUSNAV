@@ -7,7 +7,7 @@ import { Heading } from "react-aria-components";
 import Icon from "@repo/ui/icon";
 import {
   TESTID_STEP_TRACKER_ITEMS,
-  TESTID_STEP_TRACKER_WALKTHROUGH_HEADER,
+  GET_TESTID_STEP_TRACKER_WALKTHROUGH_HEADER,
 } from "@repo/constants/src/testids";
 // local
 import {
@@ -57,7 +57,9 @@ const StepTrackerItems = observer(({ id }: { id?: string }): JSX.Element => {
             >
               <Heading
                 className={`web-StepTrackerItems--WalkthroughTitle u-ellipsis ${isSingleWalkthrough ? "--singleWalkthrough" : ""}`}
-                data-testid={TESTID_STEP_TRACKER_WALKTHROUGH_HEADER}
+                data-testid={GET_TESTID_STEP_TRACKER_WALKTHROUGH_HEADER(
+                  walkthroughId,
+                )}
                 level={3}
               >
                 {walkthrough.info.title}

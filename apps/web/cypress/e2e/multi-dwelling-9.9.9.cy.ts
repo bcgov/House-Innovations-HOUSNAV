@@ -4,7 +4,7 @@ import {
   EnumWalkthroughIds,
 } from "@repo/constants/src/constants";
 import { runWalkthrough } from "../support/helpers";
-import { TESTID_STEP_TRACKER_WALKTHROUGH_HEADER } from "@repo/constants/src/testids";
+import { GET_TESTID_STEP_TRACKER_WALKTHROUGH_HEADER } from "@repo/constants/src/testids";
 import { walkthroughs } from "../fixtures/multi-dwelling-9.9.9-test-data.json";
 import { results } from "../fixtures/results-data.json";
 
@@ -25,9 +25,9 @@ describe("multi dwelling: 9.9.9", () => {
   });
 
   it("step tracker doesn't show section headers for single section", () => {
-    cy.getByTestID(TESTID_STEP_TRACKER_WALKTHROUGH_HEADER)
-      .eq(0)
-      .should("be.hidden");
+    cy.getByTestID(
+      GET_TESTID_STEP_TRACKER_WALKTHROUGH_HEADER(EnumWalkthroughIds._9_9_9),
+    ).should("be.hidden");
   });
 
   it("default state should be accessible", () => {

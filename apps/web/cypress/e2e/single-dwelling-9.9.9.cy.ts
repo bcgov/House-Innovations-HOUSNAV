@@ -2,7 +2,7 @@ import {
   TESTID_WALKTHROUGH_FOOTER_NEXT,
   GET_TESTID_CHECKBOX,
   GET_TESTID_RADIO,
-  TESTID_STEP_TRACKER_WALKTHROUGH_HEADER,
+  GET_TESTID_STEP_TRACKER_WALKTHROUGH_HEADER,
 } from "@repo/constants/src/testids";
 import { TEMP_GET_URL_SINGLE_DWELLING_WALKTHROUGH } from "@repo/constants/src/urls";
 import { EnumWalkthroughIds } from "@repo/constants/src/constants";
@@ -42,9 +42,9 @@ describe("single dwelling: 9.9.9", () => {
   });
 
   it("step tracker doesn't show section headers for single section", () => {
-    cy.getByTestID(TESTID_STEP_TRACKER_WALKTHROUGH_HEADER)
-      .eq(0)
-      .should("be.hidden");
+    cy.getByTestID(
+      GET_TESTID_STEP_TRACKER_WALKTHROUGH_HEADER(EnumWalkthroughIds._9_9_9),
+    ).should("be.hidden");
   });
 
   it("default state should be accessible", () => {
