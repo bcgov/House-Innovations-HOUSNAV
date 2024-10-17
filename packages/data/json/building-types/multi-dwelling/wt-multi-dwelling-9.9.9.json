@@ -101,7 +101,7 @@
         {
           "nextLogicType": "equal",
           "answerToCheck": "P11",
-          "answerValue": "true",
+          "answerValue": "2",
           "nextNavigateTo": "R10"
         },
         {

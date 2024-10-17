@@ -1,0 +1,20 @@
+{
+  "walkthroughs": [
+    {
+      "title": "All Questions Multi-Dwelling 9.9.9",
+      "steps": [
+        {
+          "question": "P1",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P11",
+          "type": "radio",
+          "answer": "2"
+        }
+      ],
+      "result": "R10"
+    }
+  ]
+}
