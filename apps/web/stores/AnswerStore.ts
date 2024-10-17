@@ -113,7 +113,10 @@ export class AnswerStore {
   setAnswerValueOnChange = (value: AnswerTypes, questionId: string) => {
     this.eraseAnswersAfterCurrentItem();
 
-    this.rootStore.navigationStore.setFarthestIds(questionId);
+    this.rootStore.navigationStore.setFarthestIds(
+      questionId,
+      this.rootStore.navigationStore.currentWalkthroughId,
+    );
 
     this.setAnswerValue(
       this.rootStore.navigationStore.currentWalkthroughId,
@@ -191,9 +194,9 @@ export class AnswerStore {
               ([answerId]) =>
                 // check if answer is in newly updated questionHistory
                 this.rootStore.navigationStore.questionHistory.findIndex(
-                  ({ answerVariableId, walkthroughId }) =>
+                  ({ answerVariableId, walkthroughId: historyWalkthroughId }) =>
                     answerVariableId === answerId &&
-                    walkthroughId === walkthroughId,
+                    historyWalkthroughId === walkthroughId,
                 ) > -1,
             ),
           );

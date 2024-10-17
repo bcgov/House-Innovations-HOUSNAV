@@ -6,7 +6,12 @@
         {
           "question": "P1",
           "type": "radio",
-          "answer": "true"
+          "answer": "false"
+        },
+        {
+          "question": "P11",
+          "type": "radio",
+          "answer": "2"
         },
         {
           "question": "P1",
@@ -23,6 +28,11 @@
           "question": "P1",
           "type": "radio",
           "answer": "true"
+        },
+        {
+          "question": "P6",
+          "type": "radio",
+          "answer": "false"
         },
         {
           "question": "P1",
