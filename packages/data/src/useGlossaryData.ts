@@ -111,20 +111,19 @@ function setStaticData(): ModalSideDataType {
   };
 }
 
-export const ModalGlossaryData = transformGlossaryData(GlossaryJSONData);
 export const TooltipGlossaryData = setMappedGlossaryData(GlossaryJSONData);
 export const StaticData = setStaticData();
 
-export type AllBuildingCodeTypes =
+export type AllBuildingCodeNumberTypes =
   | PartType
   | SectionType
   | SubsectionType
   | ArticleType
   | SentenceType;
 
-export const findBuildingCodeByNumberReference = (
+export const findBuildingCodeNumberTypeByReferenceNumber = (
   numberReference: string,
-): AllBuildingCodeTypes | null => {
+): AllBuildingCodeNumberTypes | null => {
   const traverseSentences = (
     sentences: SentenceType[],
   ): SentenceType | null => {

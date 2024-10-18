@@ -2459,9 +2459,6 @@
       ]
     }
   },
-  "relatedWalkthroughs": [
-    "9.10.14"
-  ],
   "results": {
     "R00": {
       "resultDisplayMessage": "<p>You have selected an answer that indicates that the BC Building Code 2024 does not apply to this structure. This tool is used to assist building code users in determining the applicable requirements for their building, as such all structures that are not governed by the BC Building Code 2024 are beyond the scope of this tool.</p>"

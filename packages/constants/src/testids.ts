@@ -43,6 +43,9 @@ export const TESTID_STEP_TRACKER_ITEMS = "step-tracker-items";
 export const GET_TESTID_STEP_TRACKER_WALKTHROUGH_HEADER = (id: string) =>
   `step-tracker-walkthrough-header-${id}`;
 export const TESTID_RESULT = "result";
+export const GET_TESTID_RESULT_ITEM = (id: string) => `result-item-${id}`;
+export const GET_TESTID_RESULT_RELATED_ITEM = (id: string) =>
+  `result-related-item-${id}`;
 export const TESTID_HEADER = "header";
 export const TESTID_HEADER_MOBILE_NAV = "header-mobile-nav";
 export const TESTID_HEADER_MOBILE_NAV_BUTTON = "header-mobile-nav-button";

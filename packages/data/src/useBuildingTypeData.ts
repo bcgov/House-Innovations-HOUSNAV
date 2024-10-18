@@ -15,6 +15,7 @@ export interface BuildingTypeJSONType {
   title: string;
   description: string;
   walkthroughs: string[];
+  relatedBuildingTypes: string[];
 }
 
 export const BuildingTypeJSONData: Record<

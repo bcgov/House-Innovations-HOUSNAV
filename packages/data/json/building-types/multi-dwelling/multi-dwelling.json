@@ -4,5 +4,8 @@
   "walkthroughs": [
     "9.9.9",
     "9.10.14"
+  ],
+  "relatedBuildingTypes": [
+    "single-dwelling"
   ]
 }

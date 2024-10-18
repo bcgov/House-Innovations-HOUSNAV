@@ -11,7 +11,7 @@ import {
 } from "./AnswerStore";
 import { getNextNavigationId } from "../utils/logic/nextNavigation";
 
-type QuestionHistoryItem = {
+export type NavigationStoreQuestionHistoryItem = {
   walkthroughId: string;
   questionId: string;
   answerVariableId: string;
@@ -20,12 +20,11 @@ type QuestionHistoryItem = {
 export class NavigationStore {
   rootStore: WalkthroughRootStore;
 
-  questionHistory: QuestionHistoryItem[] = [];
+  questionHistory: NavigationStoreQuestionHistoryItem[] = [];
 
   private _currentWalkthroughId: string = "";
   private _currentItemId: string = "";
 
-  // TODO - HOUSNAV-199 - is this needed?
   farthestWalkthroughId: string = "";
   farthestItemId: string = "";
 
@@ -69,7 +68,7 @@ export class NavigationStore {
     this.farthestItemId = itemId;
   };
 
-  addItemIdToHistory = (historyItem: QuestionHistoryItem) => {
+  addItemIdToHistory = (historyItem: NavigationStoreQuestionHistoryItem) => {
     this.questionHistory.push(historyItem);
   };
 
@@ -92,7 +91,6 @@ export class NavigationStore {
       currentResult,
     } = this.rootStore;
 
-    // TODO - HOUSNAV-191
     if (currentResult) return false;
 
     if (!currentAnswerValue) {
@@ -183,6 +181,9 @@ export class NavigationStore {
     const nextQuestionAsResult =
       this.rootStore.getCurrentWalkthroughQuestionAsResult(nextNavigationId);
     if (nextQuestionAsResult) {
+      // add result to results list
+      this.rootStore.addResult(this.currentWalkthroughId, nextNavigationId);
+
       // this means we've reached a result for this walkthrough section
       // are there more walkthroughIds left?
       const nextWalkthroughId = this.rootStore.getNextWalkthroughId(
@@ -285,7 +286,6 @@ export class NavigationStore {
   };
 
   itemIsComplete = (walkthroughId: string, itemId: string) => {
-    // TODO - HOUSNAV-199 - is this sufficient?
     return (
       this.rootStore.answerStore.getAnswerValue(walkthroughId, itemId) !==
         undefined &&

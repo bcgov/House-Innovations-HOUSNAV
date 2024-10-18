@@ -245,8 +245,6 @@ export interface WalkthroughInfo {
   startingSectionId: StartingSectionIdType;
 }
 
-// TODO - HOUSNAV-191
-// export type RelatedWalkthroughsType = string[] | Walkthroughs[];
 export type StartingSectionIdType = string;
 export type QuestionDisplayData =
   | QuestionMultipleChoiceData
@@ -260,7 +258,6 @@ export interface WalkthroughJSONInterface {
   questions: {
     [key: string]: QuestionDisplayData | QuestionVariableData;
   };
-  // relatedWalkthroughs: RelatedWalkthroughsType;
   results: {
     [key: string]: ResultData;
   };

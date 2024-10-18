@@ -48,32 +48,29 @@ const Walkthrough = observer((): JSX.Element => {
   );
 
   return (
-    <>
-      <div className="web-Walkthrough" data-testid={TESTID_WALKTHROUGH}>
-        <section className="web-Walkthrough--StepTracker">
-          <StepTracker />
-        </section>
-        <section
-          className="web-Walkthrough--Content"
-          key={`walkthrough-wrapper-${currentItemId}`}
-        >
-          {currentResult ? (
-            // TODO - HOUSNAV-191
-            <Result displayMessage={currentResult.resultDisplayMessage} />
-          ) : (
-            <Form
-              className="web-Walkthrough--Form"
-              id={ID_QUESTION_FORM}
-              onSubmit={handleQuestionSubmit}
-              key={`question-${currentItemId}`}
-            >
-              <Question />
-            </Form>
-          )}
-          <WalkthroughFooter />
-        </section>
-      </div>
-    </>
+    <div className="web-Walkthrough" data-testid={TESTID_WALKTHROUGH}>
+      <section className="web-Walkthrough--StepTracker">
+        <StepTracker />
+      </section>
+      <section
+        className="web-Walkthrough--Content"
+        key={`walkthrough-wrapper-${currentItemId}`}
+      >
+        {currentResult ? (
+          <Result />
+        ) : (
+          <Form
+            className="web-Walkthrough--Form"
+            id={ID_QUESTION_FORM}
+            onSubmit={handleQuestionSubmit}
+            key={`question-${currentItemId}`}
+          >
+            <Question />
+          </Form>
+        )}
+        <WalkthroughFooter />
+      </section>
+    </div>
   );
 });
 

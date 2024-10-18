@@ -9,7 +9,7 @@ import {
 } from "@repo/constants/src/testids";
 import {
   useWalkthroughTestData999,
-  getFirstResult,
+  getResultData,
 } from "@repo/data/useWalkthroughsTestData";
 import { EnumWalkthroughIds } from "@repo/constants/src/constants";
 // local
@@ -35,7 +35,7 @@ describe("WalkthroughFooter", () => {
   it("renders start over button", async () => {
     // setup data so first question is a result to test start over button displaying
     const walkthroughData = useWalkthroughTestData999();
-    const resultData = getFirstResult();
+    const resultData = getResultData();
     walkthroughData.walkthroughsById[EnumWalkthroughIds._9_9_9].sections[
       walkthroughData.walkthroughsById[EnumWalkthroughIds._9_9_9].info
         .startingSectionId

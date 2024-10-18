@@ -9,8 +9,8 @@ import {
   SectionType,
   SubsectionType,
   ImageModalType,
-  AllBuildingCodeTypes,
-  findBuildingCodeByNumberReference,
+  AllBuildingCodeNumberTypes,
+  findBuildingCodeNumberTypeByReferenceNumber,
 } from "@repo/data/useGlossaryData";
 import { Heading } from "react-aria-components";
 import {
@@ -25,7 +25,7 @@ import { useEffect, useState } from "react";
 
 interface BuildingCodeContentProps {
   modalData?: PartType[];
-  printData?: AllBuildingCodeTypes;
+  printData?: AllBuildingCodeNumberTypes;
   highlightedSection?: string | null;
   sectionRefs?: React.MutableRefObject<{ [key: string]: HTMLElement | null }>;
   setFocusSection?: (section: string) => void;
@@ -294,7 +294,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
 
   const renderBuildingCodePdf = () => {
     if (!printReference) return null;
-    const data = findBuildingCodeByNumberReference(printReference);
+    const data = findBuildingCodeNumberTypeByReferenceNumber(printReference);
     return (
       data &&
       "articles" in data && (
