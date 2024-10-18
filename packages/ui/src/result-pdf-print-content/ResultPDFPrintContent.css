@@ -1,16 +1,16 @@
 /* Hide the print container by default */
-.ui-printContent--printContainer {
+.ui-ResultPDFPrintContent--printContainer {
   display: none;
   visibility: hidden;
   overflow: hidden;
 }
 
-.ui-printContent--printContainer sup {
+.ui-ResultPDFPrintContent--printContainer sup {
   line-height: 0;
 }
 
-.ui-printContent--table th,
-.ui-printContent--table td {
+.ui-ResultPDFPrintContent--table th,
+.ui-ResultPDFPrintContent--table td {
   border: var(--print-content-table-th-td-border);
   padding: var(--layout-padding-10);
   font: var(--typography-regular-small-body);
@@ -19,57 +19,56 @@
   break-inside: avoid;
 }
 
-.ui-printContent--table tr {
+.ui-ResultPDFPrintContent--table tr {
   break-inside: auto;
   break-after: auto;
   page-break-inside: auto;
 }
 
-.ui-printContent--table li {
+.ui-ResultPDFPrintContent--table li {
   list-style: none;
 }
 
-.ui-printContent--table {
+.ui-ResultPDFPrintContent--table {
   width: 99%; /* Ensure table width doesn't cut off border */
   border-collapse: collapse;
   break-inside: auto;
   page-break-inside: auto;
 }
 
-.ui-printContent--questionColumn ul {
+.ui-ResultPDFPrintContent--questionColumn ul {
   list-style-type: disc;
   margin-left: 20px; /* Indent list items */
 }
 
-.ui-printContent--questionColumn li {
+.ui-ResultPDFPrintContent--questionColumn li {
   display: list-item;
 }
 
-.ui-printContent--walkthroughTitle {
+.ui-ResultPDFPrintContent--walkthroughTitle {
   padding: var(--layout-padding-small);
   font: var(--typography-bold-h3);
 }
 
-.ui-printContent--references {
+.ui-ResultPDFPrintContent--spacer {
   padding: var(--layout-padding-small);
-  font: var(--typography-bold-h3);
   page-break-before: always;
 }
 
-.ui-printContent--sectionTitle {
+.ui-ResultPDFPrintContent--sectionTitle {
   font: var(--typography-bold-h5);
 }
 
 /* Set fixed widths for table columns */
-.ui-printContent--introColumn {
+.ui-ResultPDFPrintContent--introColumn {
   width: 30%;
 }
 
-.ui-printContent--questionColumn {
+.ui-ResultPDFPrintContent--questionColumn {
   width: 30%;
 }
 
-.ui-printContent--referenceColumn {
+.ui-ResultPDFPrintContent--referenceColumn {
   width: 17%;
 }
 
@@ -80,10 +79,10 @@
   .web-Walkthrough--StepTracker,
   .web-WalkthroughFooter,
   .p-hide,
-  .ui-PdfResultDownload-container,
-  .ui-PdfResultDownload-button,
-  .ui-PdfResultDownload-imageContainer,
-  .ui-PdfResultDownload-aside {
+  .ui-ResultPDFButton--container,
+  .ui-ResultPDFButton--button,
+  .ui-ResultPDFButton--imageContainer,
+  .ui-ResultPDFButton--aside {
     display: none !important;
   }
 
@@ -98,7 +97,7 @@
     height: 100% !important;
   }
 
-  .ui-printContent--printContainer {
+  .ui-ResultPDFPrintContent--printContainer {
     width: 100%;
     display: block;
     visibility: visible;

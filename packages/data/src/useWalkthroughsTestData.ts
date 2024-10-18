@@ -100,7 +100,7 @@ export function getNumberFloatQuestion() {
   };
 }
 
-export function getFirstResult() {
+export function getResultData() {
   // find the first result
   const results: {
     [key: string]: ResultData;

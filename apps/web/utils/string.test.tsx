@@ -4,7 +4,7 @@ import { JSX } from "react";
 // repo
 import {
   useWalkthroughTestData999,
-  getFirstResult,
+  getResultData,
   getFirstResultWithCalculations,
   getQuestion,
   useWalkthroughTestData91014,
@@ -221,7 +221,7 @@ describe("string", () => {
   it("getResultCalculation: result missing resultCalculations", () => {
     // setup data so first question is a result
     const walkthroughData = useWalkthroughTestData999();
-    const resultData = getFirstResult();
+    const resultData = getResultData();
     walkthroughData.walkthroughsById[EnumWalkthroughIds._9_9_9].sections[
       walkthroughData.walkthroughsById[EnumWalkthroughIds._9_9_9].info
         .startingSectionId
