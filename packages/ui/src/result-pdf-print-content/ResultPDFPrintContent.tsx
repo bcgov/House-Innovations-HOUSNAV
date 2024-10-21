@@ -23,6 +23,10 @@ import {
 import { NavigationStoreQuestionHistoryItem } from "web/stores/NavigationStore";
 import BuildingCodeContent from "../modal-building-code-content/ModalBuildingCodeContent";
 import "./ResultPDFPrintContent.css";
+import {
+  GET_TESTID_RESULT_PRINT_CONTENT_WALKTHROUGH,
+  TESTID_RESULT_PRINT_CONTENT,
+} from "@repo/constants/src/testids";
 
 interface PrintQuestionData {
   questionId: string;
@@ -266,14 +270,22 @@ export default function ResultPDFPrintContent() {
     );
 
   return (
-    <div className="ui-ResultPDFPrintContent--printContainer">
+    <div
+      className="ui-ResultPDFPrintContent--printContainer"
+      data-testid={TESTID_RESULT_PRINT_CONTENT}
+    >
       {walkthroughsOrder.map((walkthroughId) => {
         const printSectionDataBySectionTitle =
           questionDataBySectionTitleAndWalkthroughId[walkthroughId];
         if (!printSectionDataBySectionTitle) return null;
 
         return (
-          <div key={`print-walkthrough-${walkthroughId}`}>
+          <div
+            key={`print-walkthrough-${walkthroughId}`}
+            data-testid={GET_TESTID_RESULT_PRINT_CONTENT_WALKTHROUGH(
+              walkthroughId,
+            )}
+          >
             <h3 className="ui-ResultPDFPrintContent--walkthroughTitle">
               {walkthroughsById[walkthroughId]?.info.walkthroughTitle}
             </h3>
