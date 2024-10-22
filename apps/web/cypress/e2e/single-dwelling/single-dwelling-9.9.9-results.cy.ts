@@ -30,7 +30,7 @@ describe("single dwelling: 9.9.9 walkthrough results", () => {
       GET_TESTID_RESULT_RELATED_ITEM(EnumBuildingTypes.MULTI_DWELLING),
     ).scrollIntoView();
     cy.getByTestID(
-      GET_TESTID_RESULT_ITEM(EnumBuildingTypes.MULTI_DWELLING),
+      GET_TESTID_RESULT_RELATED_ITEM(EnumBuildingTypes.MULTI_DWELLING),
     ).should("be.visible");
     //should display correct print content
     cy.getByTestID(
