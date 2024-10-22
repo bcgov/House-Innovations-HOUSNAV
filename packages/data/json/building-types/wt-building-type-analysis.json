@@ -8,7 +8,7 @@
   },
   "sections": {
     "1_intro": {
-      "sectionTitle": "Introduction",
+      "sectionTitle": "Building Type Analysis",
       "sectionQuestions": [
         "P01",
         "P02"
