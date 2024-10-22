@@ -3,12 +3,12 @@ import {
   EnumBuildingTypes,
   EnumWalkthroughIds,
 } from "@repo/constants/src/constants";
-import { runWalkthrough } from "../support/helpers";
+import { runWalkthrough } from "../../support/helpers";
 import { GET_TESTID_STEP_TRACKER_WALKTHROUGH_HEADER } from "@repo/constants/src/testids";
-import { walkthroughs } from "../fixtures/multi-dwelling-9.9.9-test-data.json";
-import { results } from "../fixtures/results-data.json";
+import { walkthroughs } from "../../fixtures/multi-dwelling/multi-dwelling-9.9.9-test-data.json";
+import { results } from "../../fixtures/results-data.json";
 
-describe("multi dwelling: 9.9.9", () => {
+describe("multi dwelling: 9.9.9 walkthrough", () => {
   beforeEach(() => {
     cy.visit(
       URLS_GET_WALKTHROUGH(EnumBuildingTypes.MULTI_DWELLING, [
