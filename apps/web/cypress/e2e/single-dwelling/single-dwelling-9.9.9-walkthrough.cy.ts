@@ -7,11 +7,11 @@ import {
 import { TEMP_GET_URL_SINGLE_DWELLING_WALKTHROUGH } from "@repo/constants/src/urls";
 import { EnumWalkthroughIds } from "@repo/constants/src/constants";
 
-import { walkthroughs } from "../fixtures/single-dwelling-9.9.9-test-data.json";
-import { results } from "../fixtures/results-data.json";
-import { runWalkthrough } from "../support/helpers";
+import { walkthroughs } from "../../fixtures/single-dwelling/single-dwelling-9.9.9-test-data.json";
+import { results } from "../../fixtures/results-data.json";
+import { runWalkthrough } from "../../support/helpers";
 
-describe("single dwelling: 9.9.9", () => {
+describe("single dwelling: 9.9.9 walkthrough", () => {
   beforeEach(() => {
     cy.visit(
       TEMP_GET_URL_SINGLE_DWELLING_WALKTHROUGH(EnumWalkthroughIds._9_9_9),

@@ -27,7 +27,7 @@ interface Results {
   [key: string]: string;
 }
 
-export const runWalkthrough = (walkthrough: Walkthrough, results: Results) => {
+export function navigateThroughWalkthrough(walkthrough: Walkthrough) {
   walkthrough.steps.forEach((step) => {
     // Select and submit an answer for the given question
     if (step.type === "radio") {
@@ -85,6 +85,10 @@ export const runWalkthrough = (walkthrough: Walkthrough, results: Results) => {
 
     cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_NEXT).click();
   });
+}
+
+export const runWalkthrough = (walkthrough: Walkthrough, results: Results) => {
+  navigateThroughWalkthrough(walkthrough);
 
   if (walkthrough.result) {
     const result = results[walkthrough.result];
@@ -103,4 +107,13 @@ export const runWalkthrough = (walkthrough: Walkthrough, results: Results) => {
     cy.injectAxe();
     cy.checkA11yWithErrorLogging();
   }
+};
+
+//Get a specific walkthrough from a list of them without having to worry about it not existing
+export const getWalkthrough = (walkthroughs: Walkthrough[], index: number) => {
+  const walkthrough = walkthroughs[index];
+  if (!walkthrough) {
+    throw new Error("Walkthrough does not exist in workflow data");
+  }
+  return walkthrough;
 };

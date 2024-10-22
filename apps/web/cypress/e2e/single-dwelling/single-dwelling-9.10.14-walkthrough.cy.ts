@@ -2,12 +2,12 @@ import { TESTID_WALKTHROUGH_FOOTER_BACK } from "@repo/constants/src/testids";
 import { TEMP_GET_URL_SINGLE_DWELLING_WALKTHROUGH } from "@repo/constants/src/urls";
 import { EnumWalkthroughIds } from "@repo/constants/src/constants";
 
-import { runWalkthrough } from "../support/helpers";
+import { getWalkthrough, runWalkthrough } from "../../support/helpers";
 
-import { walkthroughs } from "../fixtures/single-dwelling-9.10.14-test-data.json";
-import { results } from "../fixtures/results-data.json";
+import { walkthroughs } from "../../fixtures/single-dwelling/single-dwelling-9.10.14-test-data.json";
+import { results } from "../../fixtures/results-data.json";
 
-describe("single dwelling: 9.10.14", () => {
+describe("single dwelling: 9.10.14 walkthrough", () => {
   beforeEach(() => {
     cy.visit(
       TEMP_GET_URL_SINGLE_DWELLING_WALKTHROUGH(EnumWalkthroughIds._9_10_14),
@@ -28,51 +28,37 @@ describe("single dwelling: 9.10.14", () => {
      * TODO - Update checkbox screens to unselect unused options
      * TODO - Make selecting walkthroughs less brittle
      */
-    const firstWalkthrough = walkthroughs[12];
-    const secondWalkthrough = walkthroughs[16];
+    const firstWalkthrough = getWalkthrough(walkthroughs, 12);
+    const secondWalkthrough = getWalkthrough(walkthroughs, 16);
 
     // Run the first walkthrough
-    if (firstWalkthrough) {
-      runWalkthrough(firstWalkthrough, results.single_dwelling_workflow_91014);
+    runWalkthrough(firstWalkthrough, results.single_dwelling_workflow_91014);
 
-      // Go back to the beginning
-      for (let i = 0; i < firstWalkthrough.steps.length; i++) {
-        cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_BACK).click();
-      }
-    } else {
-      throw new Error("First walkthrough does not exist in workflow data");
+    // Go back to the beginning
+    for (let i = 0; i < firstWalkthrough.steps.length; i++) {
+      cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_BACK).click();
     }
+
     // Run the second walkthrough
-    if (secondWalkthrough) {
-      runWalkthrough(secondWalkthrough, results.single_dwelling_workflow_91014);
-    } else {
-      throw new Error("Second walkthrough does not exist in workflow data");
-    }
+    runWalkthrough(secondWalkthrough, results.single_dwelling_workflow_91014);
   });
 
   it("new walkthrough works correctly after using back button and selecting the same answers", () => {
     /**
      * This test is designed to test that backing doesn't yield incorrect data. the back button functionality.
      */
-    const firstWalkthrough = walkthroughs[12];
+    const firstWalkthrough = getWalkthrough(walkthroughs, 12);
 
     // Run the first walkthrough
-    if (firstWalkthrough) {
-      runWalkthrough(firstWalkthrough, results.single_dwelling_workflow_91014);
+    runWalkthrough(firstWalkthrough, results.single_dwelling_workflow_91014);
 
-      // Go back to the beginning
-      for (let i = 0; i < firstWalkthrough.steps.length; i++) {
-        cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_BACK).click();
-      }
-    } else {
-      throw new Error("Walkthrough does not exist in workflow data");
+    // Go back to the beginning
+    for (let i = 0; i < firstWalkthrough.steps.length; i++) {
+      cy.getByGeneralTestID(TESTID_WALKTHROUGH_FOOTER_BACK).click();
     }
+
     // Run the first walkthrough again
-    if (firstWalkthrough) {
-      runWalkthrough(firstWalkthrough, results.single_dwelling_workflow_91014);
-    } else {
-      throw new Error("Walkthrough does not exist in workflow data");
-    }
+    runWalkthrough(firstWalkthrough, results.single_dwelling_workflow_91014);
   });
 
   it("default state should be accessible", () => {
