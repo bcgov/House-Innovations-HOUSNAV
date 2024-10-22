@@ -1,12 +1,12 @@
 // local
-import { EnumBuildingTypes } from "./constants";
+import { EnumBuildingTypes, STR_BUILDING_TYPE_ANALYSIS_ID } from "./constants";
 
 export const URL_DOWNLOAD_BCBC_PDF =
   "https://www2.gov.bc.ca/assets/gov/farming-natural-resources-and-industry/construction-industry/building-codes-and-standards/revisions-and-mo/bcbc_2024.pdf";
 
 // path urls
 export const URL_PATH_HOME = "/";
-export const URL_PATH_BUILDING_TYPE_ANALYSIS = "/building-type-analysis";
+export const URL_PATH_BUILDING_TYPE_ANALYSIS = `/${STR_BUILDING_TYPE_ANALYSIS_ID}`;
 export const URL_PATH_WALKTHROUGH = "/walkthrough";
 
 // search param keys

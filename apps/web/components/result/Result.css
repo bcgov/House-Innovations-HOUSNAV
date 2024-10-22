@@ -23,6 +23,10 @@
   margin-top: var(--layout-margin-xxlarge);
 }
 
+.web-Result--ContentHeader.--hasBanner {
+  margin-bottom: var(--layout-margin-xxlarge);
+}
+
 .web-Result--Content {
   font: var(--typography-regular-large-body);
   padding-bottom: var(--layout-padding-xxlarge);
@@ -37,6 +41,21 @@
 .web-Result--Content ul {
   padding: var(--layout-padding-medium) var(--layout-padding-medium)
     var(--layout-padding-medium) var(--layout-padding-xlarge);
+}
+
+.web-Result--Content.--hideBottomBorder {
+  border-bottom: none;
+}
+
+.web-Result--Continue {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--layout-margin-large);
+}
+
+.web-Result--ReturnToHome {
+  display: flex;
+  justify-content: center;
 }
 
 .web-Result--Related {
