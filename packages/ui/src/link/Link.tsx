@@ -11,7 +11,7 @@ import { GET_TESTID_LINK } from "@repo/constants/src/testids";
 import "./Link.css";
 import Icon from "../icon/Icon";
 
-export type LinkVariant = "default" | "glossary" | "secondary";
+export type LinkVariant = "default" | "glossary" | "primary" | "secondary";
 export interface LinkProps extends ReactAriaLinkProps {
   /**
    * Defaults to `default`.

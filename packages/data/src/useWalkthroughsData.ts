@@ -2,6 +2,7 @@
 import {
   EnumBuildingTypes,
   EnumWalkthroughIds,
+  STR_BUILDING_TYPE_ANALYSIS_ID,
 } from "@repo/constants/src/constants";
 // local
 import buildingTypeAnalysisData from "../json/building-types/wt-building-type-analysis.json";
@@ -230,6 +231,7 @@ export interface ResultCalculation extends ResultCalculationBase {
 export interface ResultData {
   resultDisplayMessage: string;
   resultCalculations?: ResultCalculation[];
+  relatedBuildingType?: string;
 }
 
 export interface SectionData {
@@ -263,10 +265,18 @@ export interface WalkthroughJSONInterface {
   };
 }
 
-export interface WalkthroughsDataInterface {
-  startingWalkthroughId: EnumWalkthroughIds;
-  walkthroughOrder: EnumWalkthroughIds[];
-  walkthroughsById: Record<EnumWalkthroughIds, WalkthroughJSONInterface>;
+export interface WalkthroughsDataInterface<
+  T extends string = EnumWalkthroughIds,
+> {
+  startingWalkthroughId: T;
+  walkthroughOrder: T[];
+  walkthroughsById: Record<T, WalkthroughJSONInterface>;
+  resultsDisplay?: {
+    hideRelatedItems?: boolean;
+    hidePDF?: boolean;
+    hideBanner?: boolean;
+    showReturnToHome?: boolean;
+  };
 }
 
 export const BuildingTypeAnalysisJSONData: WalkthroughJSONInterface =
@@ -302,13 +312,14 @@ export default function useWalkthroughsData({
   buildingType,
 }: UseWalkthroughsDataProps): WalkthroughsDataInterface {
   const data = { walkthroughsById: {} } as WalkthroughsDataInterface;
+  const startingWalkthroughId = wtIds[0];
 
-  if (!buildingType || wtIds.length === 0) {
+  if (!buildingType || !startingWalkthroughId) {
     throw new Error("No building type or ids provided");
   }
 
   // the starting walkthrough will be the first one in the list
-  data.startingWalkthroughId = wtIds[0] as EnumWalkthroughIds;
+  data.startingWalkthroughId = startingWalkthroughId as EnumWalkthroughIds;
 
   // the order of the walkthroughs will be the order of the IDs
   data.walkthroughOrder = wtIds as EnumWalkthroughIds[];
@@ -327,6 +338,22 @@ export default function useWalkthroughsData({
   });
 
   return data;
+}
+
+export function useBuildingTypeAnalysisData(): WalkthroughsDataInterface<string> {
+  return {
+    walkthroughOrder: [STR_BUILDING_TYPE_ANALYSIS_ID],
+    startingWalkthroughId: STR_BUILDING_TYPE_ANALYSIS_ID,
+    walkthroughsById: {
+      [STR_BUILDING_TYPE_ANALYSIS_ID]: BuildingTypeAnalysisJSONData,
+    },
+    resultsDisplay: {
+      hideRelatedItems: true,
+      hidePDF: true,
+      hideBanner: true,
+      showReturnToHome: true,
+    },
+  };
 }
 
 export const findSectionTitleByQuestionId = (
