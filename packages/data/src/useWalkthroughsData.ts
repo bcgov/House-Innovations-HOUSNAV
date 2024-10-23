@@ -55,11 +55,11 @@ export interface NextValuesToCheckType {
   nextLogicType: NextNavigationLogicType | string;
   answerToCheck?: string;
   answerValue?: AnswerValueTypes;
+  answerValues?: AnswerValueTypes[];
   valuesToCheck?: NextValuesToCheckType[];
 }
 
 export interface NextNavigationLogic extends NextValuesToCheckType {
-  answerValues?: AnswerValueTypes[];
   nextNavigateTo?: string;
 }
 
