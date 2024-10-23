@@ -1,4 +1,5 @@
 {
+  "$schema": "../../../schema/walkthrough.schema.json",
   "info": {
     "title": "Spatial Separation Between Buildings",
     "subtitle": "Volume II - 9.10.14.1-4",
