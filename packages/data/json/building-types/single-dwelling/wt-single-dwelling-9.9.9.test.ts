@@ -5,6 +5,9 @@ import { isWalkthroughItemTypeVariable } from "../../../src/useWalkthroughsData"
 import data from "./wt-single-dwelling-9.9.9.json";
 
 describe("Data - 9.9.9", () => {
+  it("verify the $schema property is present", () => {
+    expect(data).toHaveProperty("$schema");
+  });
   it("verify all questions either appear in a section or are of variable type", () => {
     // iterate through each question and check if it appears in a section or is of variable type
     const possibleUnusedQuestion = Object.entries(data.questions).find(

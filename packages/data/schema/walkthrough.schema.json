@@ -1,0 +1,659 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/$defs/WalkthroughJSONInterface",
+  "$defs": {
+    "WalkthroughJSONInterface": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "$schema": {
+          "type": "string"
+        },
+        "info": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "subtitle": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "startingSectionId": {
+              "type": "string",
+              "pattern": "^\\d+_[a-zA-Z0-9]+$",
+              "description": "MUST be a key in the sections object."
+            },
+            "walkthroughTitle": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "description",
+            "startingSectionId",
+            "subtitle",
+            "title",
+            "walkthroughTitle"
+          ],
+          "title": "Info"
+        },
+        "sections": {
+          "type": "object",
+          "patternProperties": {
+            "^\\d+_[a-zA-Z0-9]+$": {
+              "$ref": "#/$defs/Section"
+            }
+          },
+          "additionalProperties": false
+        },
+        "questions": {
+          "type": "object",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^P\\d+[a-zA-Z0-9]*$": {
+              "$ref": "#/$defs/Question"
+            }
+          }
+        },
+        "results": {
+          "type": "object",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^R\\d+$": {
+              "$ref": "#/$defs/Result"
+            }
+          }
+        }
+      },
+      "required": ["info", "sections", "questions", "results", "$schema"],
+      "title": "WalkthroughJSONInterface"
+    },
+    "Section": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sectionTitle": {
+          "type": "string"
+        },
+        "sectionQuestions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^P\\d+$",
+            "description": "Keys of the questions in the questions object. Include only the keys you want to show in the step tracker display."
+          }
+        }
+      },
+      "required": ["sectionTitle", "sectionQuestions"],
+      "title": "Section"
+    },
+    "Question": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/QuestionTypeMultiChoice"
+        },
+        {
+          "$ref": "#/$defs/QuestionTypeMultiChoiceMultiple"
+        },
+        {
+          "$ref": "#/$defs/QuestionTypeVariable"
+        },
+        {
+          "$ref": "#/$defs/QuestionTypeNumberFloat"
+        }
+      ]
+    },
+    "QuestionTypeMultiChoice": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "walkthroughItemType": {
+          "const": "multiChoice"
+        },
+        "questionText": {
+          "$ref": "#/$defs/QuestionQuestionText"
+        },
+        "questionSubtext": {
+          "$ref": "#/$defs/QuestionQuestionSubtext"
+        },
+        "questionCodeReference": {
+          "$ref": "#/$defs/QuestionQuestionCodeReference"
+        },
+        "possibleAnswers": {
+          "$ref": "#/$defs/QuestionPossibleAnswers"
+        },
+        "nextNavigationLogic": {
+          "$ref": "#/$defs/NextNavigationLogic"
+        }
+      },
+      "required": ["walkthroughItemType", "questionText", "possibleAnswers", "nextNavigationLogic"],
+      "title": "QuestionTypeMultiChoice"
+    },
+    "QuestionTypeMultiChoiceMultiple": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "walkthroughItemType": {
+          "const": "multiChoiceMultiple"
+        },
+        "questionText": {
+          "$ref": "#/$defs/QuestionQuestionText"
+        },
+        "questionSubtext": {
+          "$ref": "#/$defs/QuestionQuestionSubtext"
+        },
+        "questionCodeReference": {
+          "$ref": "#/$defs/QuestionQuestionCodeReference"
+        },
+        "possibleAnswers": {
+          "$ref": "#/$defs/QuestionPossibleAnswers"
+        },
+        "possibleInvalidAnswers": {
+          "$ref": "#/$defs/QuestionPossibleInvalidAnswers"
+        },
+        "nextNavigationLogic": {
+          "$ref": "#/$defs/NextNavigationLogic"
+        },
+        "answersAreDynamic": {
+          "type": "boolean"
+        },
+        "storeAnswerAsObject": {
+          "type": "boolean"
+        },
+        "isNotRequired": {
+          "type": "boolean"
+        }
+      },
+      "required": ["walkthroughItemType", "questionText", "possibleAnswers", "nextNavigationLogic"],
+      "title": "QuestionTypeMultiChoiceMultiple"
+    },
+    "QuestionTypeVariable": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "walkthroughItemType": {
+          "const": "variable"
+        },
+        "variableToSet": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "variableType": {
+              "type": "string",
+              "enum": ["string", "object", "copy", "number"]
+            },
+            "variableName": {
+              "type": "string"
+            },
+            "variableValue": {
+              "oneOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/QuestionVariableValueLogic"
+                  }
+                },
+                {
+                  "type": "object",
+                  "patternProperties": {
+                    "^\\w+$": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/$defs/QuestionVariableValueLogic"
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            }
+          },
+          "required": ["variableType", "variableName", "variableValue"]
+        },
+        "nextNavigationLogic": {
+          "$ref": "#/$defs/NextNavigationLogic"
+        }
+      },
+      "required": ["walkthroughItemType", "variableToSet", "nextNavigationLogic"],
+      "title": "QuestionTypeVariable"
+    },
+    "QuestionTypeNumberFloat": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "walkthroughItemType": {
+          "const": "numberFloat"
+        },
+        "questionText": {
+          "$ref": "#/$defs/QuestionQuestionText"
+        },
+        "questionSubtext": {
+          "$ref": "#/$defs/QuestionQuestionSubtext"
+        },
+        "questionCodeReference": {
+          "$ref": "#/$defs/QuestionQuestionCodeReference"
+        },
+        "placeholder": {
+          "type": "string",
+          "description": "Placeholder text for numberFloat fields."
+        },
+        "unit": {
+          "type": "string",
+          "description": "Unit of measurement for numberFloat fields. Will display in the UI after input field. Can include HTML."
+        },
+        "nextNavigationLogic": {
+          "$ref": "#/$defs/NextNavigationLogic"
+        }
+      },
+      "required": ["walkthroughItemType", "questionText", "placeholder", "nextNavigationLogic"],
+      "title": "QuestionTypeNumberFloat"
+    },
+    "QuestionQuestionText": {
+      "type": "string",
+      "description": "Can include HTML that the application will parse. Can also include references to specific parsed elements used in the parsing function in string.tsx."
+    },
+    "QuestionQuestionSubtext": {
+      "type": "string",
+      "description": "Optional subtext that can provide additional context to the question. Can include HTML."
+    },
+    "QuestionQuestionCodeReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "displayString": {
+          "type": "string",
+          "description": "A human-readable string that references the code. Will be displayed in the UI below the question text."
+        },
+        "codeNumber": {
+          "type": "string",
+          "description": "Used to scroll the modal to the correct building code item."
+        }
+      },
+      "required": ["displayString", "codeNumber"]
+    },
+    "QuestionPossibleAnswers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "answerDisplayText": {
+            "type": "string"
+          },
+          "answerValue": {
+            "type": "string",
+            "description": "A unique value for the answer. Stored in the state. Can be used for navigation logic or calculations."
+          }
+        },
+        "required": ["answerDisplayText", "answerValue"]
+      }
+    },
+    "QuestionPossibleInvalidAnswers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "invalidAnswerType": {
+            "type": "string",
+            "enum": ["contains", "doesNotContain", "maxNumberOfAnswers"]
+          },
+          "answerValue": {
+            "type": "string"
+          },
+          "invalidAnswerLogic": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "invalidAnswerLogicType": {
+                  "type": "string",
+                  "enum": ["maxNumberOfAnswers"]
+                },
+                "invalidAnswerLogicValue": {
+                  "type": "integer"
+                }
+              },
+              "required": ["invalidAnswerLogicType", "invalidAnswerLogicValue"]
+            }
+          },
+          "errorMessage": {
+            "type": "string"
+          }
+        },
+        "required": ["invalidAnswerType", "answerValue", "errorMessage"]
+      }
+    },
+    "QuestionVariableValueLogic": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "variableValueLogicType": {
+          "$ref": "#/$defs/VariableValueLogicTypeEnum"
+        },
+        "answerToCheck": {
+          "$ref": "#/$defs/VariableValueLogicAnswerToCheck"
+        },
+        "answerValue": {
+          "$ref": "#/$defs/VariableValueLogicAnswerValue"
+        },
+        "answerValues": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/VariableValueLogicAnswerValue"
+          }
+        },
+        "variableValueToSet": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            }
+          ]
+        },
+        "variableValueToSetCalculation": {
+          "$ref": "#/$defs/VariableValueToSetCalculation"
+        },
+        "valuesToCheck": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/VariableValuesToCheck"
+          }
+        }
+      },
+      "required": ["variableValueLogicType"]
+    },
+    "NextNavigationLogicType": {
+      "type": "string",
+      "enum": [
+        "equal",
+        "notEqual",
+        "doesNotContain",
+        "containsAny",
+        "containsOnly",
+        "and",
+        "or",
+        "lessThan",
+        "greaterThan",
+        "fallback"
+      ]
+    },
+    "NextNavigationLogic": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "nextLogicType": {
+            "$ref": "#/$defs/NextNavigationLogicType"
+          },
+          "answerToCheck": {
+            "type": "string"
+          },
+          "answerValue": {
+            "type": "string"
+          },
+          "valuesToCheck": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/NextValuesToCheckType"
+            }
+          },
+          "answerValues": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "An answerValue from possibleAnswers."
+            }
+          },
+          "nextNavigateTo": {
+            "type": "string",
+            "description": "The key of the next question or result."
+          }
+        },
+        "required": ["nextLogicType"]
+      }
+    },
+    "NextValuesToCheckType": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "nextLogicType": {
+          "$ref": "#/$defs/NextNavigationLogicType"
+        },
+        "answerToCheck": {
+          "type": "string"
+        },
+        "answerValue": {
+          "type": "string"
+        },
+        "answerValues": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "An answerValue from possibleAnswers."
+          }
+        },
+        "valuesToCheck": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/NextValuesToCheckType"
+          }
+        }
+      },
+      "required": ["nextLogicType"]
+    },
+    "VariableValueLogicTypeEnum": {
+      "type": "string",
+      "enum": [
+        "equals",
+        "and",
+        "or",
+        "lessThan",
+        "greaterThan",
+        "containsOnly",
+        "fallback"
+      ]
+    },
+    "VariableValueLogicAnswerToCheck": {
+      "type": "string"
+    },
+    "VariableValueLogicAnswerValue": {
+      "type": "string"
+    },
+    "VariableValuesToCheck": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "variableValueLogicType": {
+          "$ref": "#/$defs/VariableValueLogicTypeEnum"
+        },
+        "answerToCheck": {
+          "$ref": "#/$defs/VariableValueLogicAnswerToCheck"
+        },
+        "answerValue": {
+          "$ref": "#/$defs/VariableValueLogicAnswerValue"
+        },
+        "valuesToCheck": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/VariableValuesToCheck"
+          }
+        }
+      },
+      "required": ["variableValueLogicType"]
+    },
+    "VariableValueCalculationTypeEnum": {
+      "type": "string",
+      "enum": [
+        "square",
+        "divide",
+        "multiply",
+        "maxValue",
+        "then"
+      ]
+    },
+    "VariableValueToSetItemCalculations": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "variableValueCalculationType": {
+          "$ref": "#/$defs/VariableValueCalculationTypeEnum"
+        },
+        "calculationValueToUse": {
+          "type": "number"
+        }
+      },
+      "required": ["variableValueCalculationType"]
+    },
+    "VariableValueToSetCalculation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "variableValueCalculationType": {
+          "$ref": "#/$defs/VariableValueCalculationTypeEnum"
+        },
+        "calculationValueToUse": {
+          "type": "number"
+        },
+        "variableValueToSetItemCalculations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/VariableValueToSetItemCalculations"
+          }
+        },
+        "answerToUse": {
+          "type": "string"
+        }
+      },
+      "required": ["variableValueCalculationType", "answerToUse"]
+    },
+    "Result": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "resultDisplayMessage": {
+          "type": "string"
+        },
+        "relatedBuildingType": {
+          "type": "string",
+          "description": "Optional reference to a related building type. MUST be one of the supported building types from the EnumBuildingTypes."
+        },
+        "resultCalculations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResultCalculationItem"
+          }
+        }
+      },
+      "required": ["resultDisplayMessage"]
+    },
+    "ResultCalculationTypeEnum": {
+      "type": "string",
+      "enum": [
+        "maxBetween",
+        "minBetween",
+        "divide",
+        "multiply",
+        "minus",
+        "square",
+        "answer",
+        "number",
+        "logic"
+      ]
+    },
+    "ResultLogicTypeEnum": {
+      "type": "string",
+      "enum": [
+        "fallback",
+        "greaterThanOrEqual"
+      ]
+    },
+    "ResultLogicItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "resultLogicType": {
+          "$ref": "#/$defs/ResultLogicTypeEnum"
+        },
+        "answerToCheck": {
+          "type": "string"
+        },
+        "answerValue": {
+          "type": "number"
+        },
+        "valueToUse": {
+          "type": "number"
+        }
+      },
+      "required": ["resultLogicType", "valueToUse"]
+    },
+    "ResultCalculationValue": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "resultCalculationType": {
+          "$ref": "#/$defs/ResultCalculationTypeEnum"
+        },
+        "calculationValuesToUse": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResultCalculationValue"
+          }
+        },
+        "answerToUse": {
+          "type": "string"
+        },
+        "calculationValueToUse": {
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "$ref": "#/$defs/ResultCalculationValue"
+            }
+          ]
+        },
+        "defaultValue": {
+          "type": "number"
+        },
+        "resultLogicItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResultLogicItem"
+          }
+        }
+      },
+      "required": ["resultCalculationType"]
+    },
+    "ResultCalculationItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "resultCalculationType": {
+          "$ref": "#/$defs/ResultCalculationTypeEnum"
+        },
+        "calculationValuesToUse": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResultCalculationValue"
+          }
+        },
+        "id": {
+          "type": "string"
+        }
+      },
+      "required": ["resultCalculationType", "id", "calculationValuesToUse"]
+    }
+  }
+}

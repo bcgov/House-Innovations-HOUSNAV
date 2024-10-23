@@ -1,4 +1,5 @@
 {
+  "$schema": "../../../schema/walkthrough.schema.json",
   "info": {
     "title": "Egress from Dwelling Units",
     "subtitle": "Volume II - 9.9.9.",
