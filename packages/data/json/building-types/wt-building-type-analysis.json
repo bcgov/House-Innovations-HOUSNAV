@@ -25,11 +25,11 @@
           "answerValue": "1"
         },
         {
-          "answerDisplayText": "This building is a single-family residential dwelling unit.",
+          "answerDisplayText": "This building is a single dwelling unit.",
           "answerValue": "2"
         },
         {
-          "answerDisplayText": "This building is a multi-dwelling unit building with no other <defined-term override-term='major occupancy'>major occupancies</defined-term> (including single-family house with a <defined-term>secondary suite</defined-term>)",
+          "answerDisplayText": "This building is a multi-dwelling unit with no other <defined-term override-term='major occupancy'>major occupancies</defined-term> (including single-family house with a <defined-term>secondary suite</defined-term>)",
           "answerValue": "3"
         },
         {
@@ -168,11 +168,11 @@
       "resultDisplayMessage": "<p>This tool is only designed to assist users evaluating the code compliance for construction of a new single unit or multi-unit dwelling building to the BC Building Code 2024, as such this tool is not applicable to your building.</p>"
     },
     "R01": {
-      "resultDisplayMessage": "<p>Based on your selection this building is a new <strong>single dwelling unit</strong> building. Click Continue to view the associated walkthroughs.</p>",
+      "resultDisplayMessage": "<p>Based on your selection this building is a new <strong>single dwelling unit</strong>. Click Continue to view the associated walkthroughs.</p>",
       "relatedBuildingType": "single-dwelling"
     },
     "R02": {
-      "resultDisplayMessage": "<p>Based on your selection this building is a new <strong>multi-dwelling unit</strong> building. Click Continue to build your walkthrough.</p>",
+      "resultDisplayMessage": "<p>Based on your selection this building is a new <strong>multi-dwelling unit</strong>. Click Continue to build your walkthrough.</p>",
       "relatedBuildingType": "multi-dwelling"
     },
     "R03": {
