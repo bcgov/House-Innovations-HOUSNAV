@@ -1,403 +1,406 @@
-[
-  {
-    "numberReference": "v2-db-9",
-    "title": "Housing and Small Buildings",
-    "sections": [
-      {
-        "numberReference": "v2-db-9.9.",
-        "title": "Means of Egress",
-        "subsections": [
-          {
-            "numberReference": "v2-db-9.9.9.",
-            "title": "Egress from Dwelling Units",
-            "articles": [
-              {
-                "numberReference": "v2-db-9.9.9.1.",
-                "title": "Travel Limit to Exits or Egress Doors",
-                "sentences": [
-                  {
-                    "numberReference": "v2-db-9.9.9.1.(1)",
-                    "description": "Except as provided in <building-code-modal reference='v2-db-9.9.9.1.(2)'>Sentences (2)</building-code-modal> and <building-code-modal reference='v2-db-9.9.9.1.(3)'>(3)</building-code-modal>, every <defined-term>dwelling unit</defined-term> containing more than 1 <defined-term>storey</defined-term> shall have <defined-term override-term='exit'>exits</defined-term> or egress doors located so that it shall not be necessary to travel up or down more than 1 <defined-term>storey</defined-term> to reach a level served by:",
-                    "clauses": [
-                      {
-                        "numberReference": "v2-db-9.9.9.1.(1)(a)",
-                        "description": "an egress door to a <defined-term>public corridor</defined-term>, enclosed <defined-term>exit</defined-term> stair or exterior passageway, or"
-                      },
-                      {
-                        "numberReference": "v2-db-9.9.9.1.(1)(b)",
-                        "description": "an <defined-term>exit</defined-term> doorway not more than 1.5m above adjacent ground level."
-                      }
-                    ]
-                  },
-                  {
-                    "numberReference": "v2-db-9.9.9.1.(2)",
-                    "description": "Where a <defined-term>dwelling unit</defined-term> is not located above or below another <defined-term>suite</defined-term>, the travel limit from a floor level in the <defined-term>dwelling unit</defined-term> to an <defined-term>exit</defined-term> or egress door may exceed 1 <defined-term>storey</defined-term> where that floor level is served by an openable window",
-                    "clauses": [
-                      {
-                        "numberReference": "v2-db-9.9.9.1.(2)(a)",
-                        "description": "providing an unobstructed opening of not less than 1m in height and 0.55m in width, and"
-                      },
-                      {
-                        "numberReference": "v2-db-9.9.9.1.(2)(b)",
-                        "description": "located so that the sill is not more than",
-                        "subClauses": [
-                          "1m above the floor, and",
-                          "7m above adjacent ground level."
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "numberReference": "v2-db-9.9.9.1.(3)",
-                    "description": "The travel limit from a floor level in a <defined-term>dwelling unit</defined-term> to an <defined-term>exit</defined-term> or egress door may exceed 1 <defined-term>storey</defined-term> where that floor level has direct access to a balcony."
-                  }
-                ]
-              },
-              {
-                "numberReference": "v2-db-9.9.9.2.",
-                "title": "Two Separate exits",
-                "sentences": [
-                  {
-                    "numberReference": "v2-db-9.9.9.2.(1)",
-                    "description": "Except as provided in <building-code-modal reference='v2-db-9.9.9.2.(2)'>Sentence (2)</building-code-modal> and <pdf-download-link number='99731' named-dest='9.9.7.3. Dead-End Corridors'>Sentence 9.9.7.3.(1)</pdf-download-link>, where an egress door from a <defined-term>dwelling unit</defined-term> opens onto a <defined-term>public corridor</defined-term> or exterior passageway it shall be possible from the location where the egress door opens onto the corridor or exterior passageway to go in opposite directions to 2 separate <defined-term override-term='exit'>exits</defined-term> unless the <defined-term>dwelling unit</defined-term> has a second and separate <defined-term>means of egress</defined-term>."
-                  },
-                  {
-                    "numberReference": "v2-db-9.9.9.2.(2)",
-                    "description": "For <defined-term override-term='dwelling unit'>dwelling units</defined-term> in a house with a <defined-term>secondary suite</defined-term>, it need not be possible to go in more than one direction to an <defined-term>exit</defined-term> from the location where the egress door opens into a <defined-term>public corridor</defined-term> or exterior passageway if the <defined-term>building</defined-term> is <defined-term>sprinklered</defined-term> or if each <defined-term>dwelling unit</defined-term> has separate and direct access from each <defined-term>storey</defined-term> to",
-                    "clauses": [
-                      {
-                        "numberReference": "v2-db-9.9.9.2.(2)(a)",
-                        "description": "a balcony, or"
-                      },
-                      {
-                        "numberReference": "v2-db-9.9.9.2.(2)(b)",
-                        "description": "an openable window conforming to sentences <building-code-modal reference='v2-db-9.9.9.1.(2)(a)'>9.9.9.1.(2)(a)</building-code-modal> and <building-code-modal reference='v2-db-9.9.9.1.(2)(b)'>(b)</building-code-modal>."
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "numberReference": "v2-db-9.9.9.3.",
-                "title": "Shared Egress Facilities",
-                "sentences": [
-                  {
-                    "numberReference": "v2-db-9.9.9.3.(1)",
-                    "description": "Except for as provided in <building-code-modal reference='v2-db-9.9.9.3.(2)'>Sentences (2)</building-code-modal>  and <building-code-modal reference='v2-db-9.9.9.3.(3)'>(3)</building-code-modal>, a <defined-term>dwelling unit</defined-term> shall be provided with a second and separate <defined-term>means of egress</defined-term> where an egress door from the <defined-term>dwelling unit</defined-term> opens onto",
-                    "clauses": [
-                      {
-                        "numberReference": "v2-db-9.9.9.3.(1)(a)",
-                        "description": "an <defined-term>exit</defined-term> stairway serving more than one <defined-term>suite</defined-term>,"
-                      },
-                      {
-                        "numberReference": "v2-db-9.9.9.3.(1)(b)",
-                        "description": "a <defined-term>public corridor</defined-term>",
-                        "subClauses": [
-                          "serving more than one <defined-term>suite</defined-term>, and",
-                          "served by a single <defined-term>exit</defined-term>"
-                        ]
-                      },
-                      {
-                        "numberReference": "v2-db-9.9.9.3.(1)(c)",
-                        "description": "an exterior passageway",
-                        "subClauses": [
-                          "serving more than one <defined-term>suite</defined-term>,",
-                          "served by a single <defined-term>exit</defined-term> stairway or <defined-term>ramp</defined-term>, and",
-                          "more than 1.5m above adjacent ground level, or"
-                        ]
-                      },
-                      {
-                        "numberReference": "v2-db-9.9.9.3.(1)(d)",
-                        "description": "a balcony",
-                        "subClauses": [
-                          "serving more than one <defined-term>suite</defined-term>,",
-                          "served by a single <defined-term>exit</defined-term> stairway or <defined-term>ramp</defined-term>, and",
-                          "more than 1.5m above adjacent ground level."
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "numberReference": "v2-db-9.9.9.3.(2)",
-                    "description": "Where a <defined-term>dwelling unit</defined-term> is located above another <defined-term>dwelling unit</defined-term> or common space in a house with a <defined-term>secondary suite</defined-term>, the upper <defined-term>dwelling unit</defined-term> shall be provided with a second  and separate <defined-term>means of egress</defined-term> where an egress door from that <defined-term>dwelling unit</defined-term> opens onto an exterior passageway that",
-                    "clauses": [
-                      {
-                        "numberReference": "v2-db-9.9.9.3.(2)(a)",
-                        "description": "has a floor assembly with a <defined-term>fire-resistance rating</defined-term> less than 45 min,"
-                      },
-                      {
-                        "numberReference": "v2-db-9.9.9.3.(2)(b)",
-                        "description": "is served by a single <defined-term>exit</defined-term> stairway or <defined-term>ramp</defined-term>, and"
-                      },
-                      {
-                        "numberReference": "v2-db-9.9.9.3.(2)(c)",
-                        "description": "is located more than 1.5m above adjacent ground level."
-                      }
-                    ]
-                  },
-                  {
-                    "numberReference": "v2-db-9.9.9.3.(3)",
-                    "description": "For <defined-term override-term='dwelling unit'>dwelling units</defined-term> in a house with a <defined-term>secondary suite</defined-term> where an egress door from either <defined-term>dwelling unit</defined-term> opens onto a shared egress facility served by a single <defined-term>exit</defined-term> stairway or <defined-term>ramp</defined-term>, other than as described in <building-code-modal reference='v2-db-9.9.9.3.(2)'>Sentence (2)</building-code-modal>, a second and separate <defined-term>means of egress</defined-term> need not be provided if the <defined-term>building</defined-term> is <defined-term>sprinklered</defined-term> or if the <defined-term override-term='dwelling unit'>dwelling units</defined-term> have separate and direct access from each <defined-term>storey</defined-term> to",
-                    "clauses": [
-                      {
-                        "numberReference": "v2-db-9.9.9.3.(3)(a)",
-                        "description": "a balcony, or"
-                      },
-                      {
-                        "numberReference": "v2-db-9.9.9.3.(3)(b)",
-                        "description": " an openable window conforming to sentences <building-code-modal reference='v2-db-9.9.9.1.(2)(a)'>9.9.9.1.(2)(a)</building-code-modal> and <building-code-modal reference='v2-db-9.9.9.1.(2)(b)'>(b)</building-code-modal>."
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "numberReference": "v2-db-9.10.",
-        "title": "Fire Protection",
-        "subsections": [
-          {
-            "numberReference": "v2-db-9.10.14.",
-            "title": "Spatial Separation Between Buildings",
-            "articles": [
-              {
-                "numberReference": "v2-db-9.10.14.1.",
-                "title": "Application",
-                "sentences": [
-                  {
-                    "numberReference": "v2-db-9.10.14.1.(1)",
-                    "description": "This Subsection applies to <defined-term override-term='building'>buildings</defined-term> other than those to which <pdf-download-link named-dest='9.10.15. Spatial Separation Between Houses'>Subsection 9.10.15.</pdf-download-link> applies."
-                  },
-                  {
-                    "numberReference": "v2-db-9.10.14.1.(2)",
-                    "description": "This Subsection does not apply to detached carports conforming to <pdf-download-link named-dest='Section 9.35. Garages and Carports'>Section 9.35.</pdf-download-link> that serve not more than one <defined-term>dwelling unit</defined-term> or a house with a <defined-term>secondary suite</defined-term>."
-                  }
-                ]
-              },
-              {
-                "numberReference": "v2-db-9.10.14.2.",
-                "title": "Area and Location of Exposing Building Face",
-                "sentences": [
-                  {
-                    "numberReference": "v2-db-9.10.14.2.(1)",
-                    "description": "Except as permitted by <building-code-modal reference='v2-db-9.10.14.2.(4)'>Sentence (4)</building-code-modal>, the area of an <defined-term>exposing building face</defined-term> shall be",
-                    "clauses": [
-                      {
-                        "numberReference": "v2-db-9.10.14.2.(1)(a)",
-                        "description": "taken as the exterior wall area facing in one direction on any side of a <defined-term>building</defined-term>, and"
-                      },
-                      {
-                        "numberReference": "v2-db-9.10.14.2.(1)(b)",
-                        "description": "calculated as",
-                        "subClauses": [
-                          "the total area measured from the finished ground level to the uppermost ceiling, or",
-                          " the area for each <defined-term>fire compartment</defined-term>, where a <defined-term>building</defined-term> is divided into <defined-term override-term='fire compartment'>fire compartments</defined-term> by <defined-term override-term='fire separation'>fire separations</defined-term> with <defined-term override-term='fire-resistance rating'>fire-resistance ratings</defined-term> not less than 45 min."
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "numberReference": "v2-db-9.10.14.2.(2)",
-                    "description": "For the purpose of using <building-code-modal reference='v2-db-9.10.14.4.-a'>Table 9.10.14.4.-A</building-code-modal> to determine the maximum aggregate area of <defined-term>unprotected openings</defined-term> in an irregularly shaped or skewed exterior wall, the location of the <defined-term>exposing building face</defined-term> shall be taken as a vertical plane located so that there are no <defined-term>unprotected openings</defined-term> between the vertical plane and the line to which the <defined-term>limiting distance</defined-term> is measured. (<pdf-download-link named-dest='A-3.2.3.1.(4) Spatial Separation Design.'>See Note A-3.2.3.1.(4).</pdf-download-link>)"
-                  },
-                  {
-                    "numberReference": "v2-db-9.10.14.2.(3)",
-                    "description": "For the purpose of using <pdf-download-link named-dest='9.10.14.5. Construction of Exposing Building Face and Walls above Exposing Building Face'>Table 9.10.14.5.-A</pdf-download-link> to determine the required type of construction, cladding and <defined-term>fire-resistance rating</defined-term> for an irregularly shaped or skewed exterior wall,",
-                    "clauses": [
-                      {
-                        "numberReference": "v2-db-9.10.14.2.(1)(a)",
-                        "description": "the location of the <defined-term>exposing building face</defined-term> shall be taken as a vertical plane located so that no portion of the actual <defined-term>exposing building face</defined-term> is between the vertical plane and the line to which the <defined-term>limiting distance</defined-term> is measured, and"
-                      },
-                      {
-                        "numberReference": "v2-db-9.10.14.2.(1)(b)",
-                        "description": "the value for the maximum area of <defined-term>unprotected openings</defined-term> (see second column of <pdf-download-link named-dest='9.10.14.5. Construction of Exposing Building Face and Walls above Exposing Building Face'>Table 9.10.14.5.-A</pdf-download-link>) shall be determined using the <defined-term>limiting distance</defined-term> measured from the location described in Clause (a). (<pdf-download-link named-dest='A-3.2.3.1.(4) Spatial Separation Design.'>See Note A-3.2.3.1.(4).</pdf-download-link>)"
-                      }
-                    ]
-                  },
-                  {
-                    "numberReference": "v2-db-9.10.14.2.(4)",
-                    "description": "If a <defined-term>building</defined-term> is divided by <defined-term override-term='fire separation'>fire separations</defined-term> into <defined-term-glossary override-term='fire compartment'>fire compartments</defined-term-glossary>, the area of <defined-term>exposing building face</defined-term> is permitted to be calculated for each <defined-term-glossary>fire compartment</defined-term-glossary>, provided the <defined-term override-term='fire separation'>fire separations</defined-term> have a <defined-term>fire-resistance rating</defined-term> not less than 45 min."
-                  }
-                ]
-              },
-              {
-                "numberReference": "v2-db-9.10.14.3.",
-                "title": "Limiting Distance and Fire Department Response",
-                "sentences": [
-                  {
-                    "numberReference": "v2-db-9.10.14.3.(1)",
-                    "description": "Except for the purpose of applying <building-code-modal reference='v2-db-9.10.14.4'>Sentences 9.10.14.4.</building-code-modal> <building-code-modal reference='v2-db-9.10.14.4.(2)'>(2)</building-code-modal>, <building-code-modal reference='v2-db-9.10.14.4.(3)'>(3)</building-code-modal>, <building-code-modal reference='v2-db-9.10.14.4.(8)'>(8)</building-code-modal> and <building-code-modal reference='v2-db-9.10.14.4.(9)'>(9)</building-code-modal>, and <pdf-download-link named-dest='9.10.14.5. Construction of Exposing Building Face and Walls above Exposing Building Face'>Sentences 9.10.14.5.(3)</pdf-download-link>, <pdf-download-link named-dest='9.10.14.5. Construction of Exposing Building Face and Walls above Exposing Building Face'>(8)</pdf-download-link> and <pdf-download-link named-dest='9.10.14.5. Construction of Exposing Building Face and Walls above Exposing Building Face'>(13)</pdf-download-link>, a <defined-term>limiting distance</defined-term> equal to half the actual <defined-term>limiting distance</defined-term> shall be used as input to the requirements of this Subsection, where (<pdf-download-link named-dest='A-3.2.3. Fire Protection Related to Limiting Distance versus Separation Between Buildings.'>See Notes A-3.2.3.</pdf-download-link> and <pdf-download-link named-dest='A-3.2.3.1.(8) Intervention Time and Limiting Distance.'>A-3.2.3.1.(8).</pdf-download-link></pdf-download-link>)",
-                    "clauses": [
-                      {
-                        "numberReference": "v2-db-9.10.14.3.(1)(a)",
-                        "description": "the time from receipt of notification of a fire by the fire department until the first fire department vehicle arrives at the <defined-term>building</defined-term> exceeds 10 min in 10% or more of all calls to the building, and"
-                      },
-                      {
-                        "numberReference": "v2-db-9.10.14.3.(1)(b)",
-                        "description": "any storey in the <defined-term>building</defined-term> is not <defined-term>sprinklered</defined-term>."
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "numberReference": "v2-db-9.10.14.4.",
-                "title": "Openings in Exposing Building Face",
-                "sentences": [
-                  {
-                    "numberReference": "v2-db-9.10.14.4.(1)",
-                    "description": "Except as provided in <building-code-modal reference='v2-db-9.10.14.4.(6)'>Sentences (6)</building-code-modal> to <building-code-modal reference='v2-db-9.10.14.4.(10)'>(10)</building-code-modal>, the maximum aggregate area of <defined-term>unprotected openings</defined-term> in an <defined-term>exposing building face</defined-term> shall",
-                    "clauses": [
-                      {
-                        "numberReference": "v2-db-9.10.14.4.(1)(a)",
-                        "description": "conform to <building-code-modal reference='v2-db-9.10.14.4.-a'>Table 9.10.14.4.-A</building-code-modal>,"
-                      },
-                      {
-                        "numberReference": "v2-db-9.10.14.4.(1)(b)",
-                        "description": "conform to <pdf-download-link named-dest='3.2.3. Spatial Separation and Exposure Protection'>Subsection 3.2.3.</pdf-download-link>, or"
-                      },
-                      {
-                        "numberReference": "v2-db-9.10.14.4.(1)(c)",
-                        "description": "where the <defined-term>limiting distance</defined-term> is not less than 1.2 m, be equal to or less than",
-                        "subClauses": [
-                          "the <defined-term>limiting distance</defined-term> squared, for <defined-term override-term='residential occupancy'>residential occupancies</defined-term>, <defined-term override-term='business and personal services occupancy'>business and personal services occupancies</defined-term> and <defined-term override-term='low-hazard industrial occupancy'>low-hazard industrial occupancies</defined-term>, and",
-                          "half the <defined-term>limiting distance</defined-term> squared, for <defined-term override-term='mercantile occupancy'>mercantile occupancies</defined-term> and <defined-term-glossary override-term='medium-hazard industrial occupancy'>medium hazard industrial occupancies</defined-term-glossary>."
-                        ]
-                      }
-                    ],
-                    "image": {
-                      "fileName": "table-9.10.14.4.-a.png",
-                      "tableName": "Table: 9.10.14.4.-A",
-                      "numberReference": "v2-db-9.10.14.4.-a",
-                      "title": "Maximum Aggregate Area of Unprotected Openings in Exterior Walls <sup>(1)</sup>",
-                      "imageReference": "Forming Part of <building-code-modal reference='v2-db-9.10.14.4.(1)'>Sentence 9.10.14.4.(1)</building-code-modal>",
-                      "imageNotes": "<building-code-modal reference='v2-db-9.10.14.4.(1)'>(1)</building-code-modal> See also Sentences <building-code-modal reference='v2-db-9.10.14.4.(6)'>(6)</building-code-modal> and <building-code-modal reference='v2-db-9.10.14.4.(7)'>(7)</building-code-modal> to calculate the maximum permitted area of <defined-term>unprotected openings</defined-term> in <defined-term>sprinklered</defined-term> <defined-term override-term='building'>buildings</defined-term> or where wired glass or glass blocks are used.",
-                      "imageTable": "<table class='u-screen-reader-only'><thead><tr><th scope='col' rowSpan='3'>Occupancy Classification of Building</th><th scope='col' rowSpan='3'>Maximum Total Area of Exposing Building Face, in meters squared</th><th scope='col' colSpan='12'>Maximum Aggregate Area of Unprotected Openings, as a % ofExposing Building Face Area</th></tr><tr><th scope='col' colSpan='12'>Limiting Distance in meters</th></tr><tr><th scope='col'>Less than 1.2</th><th scope='col'>1.2</th><th scope='col'>1.5</th><th scope='col'>2.0</th><th scope='col'>4.0</th><th scope='col'>6.0</th><th scope='col'>8.0</th><th scope='col'>10.0</th><th scope='col'>12.0</th><th scope='col'>16.0</th><th scope='col'>20.0</th><th scope='col'>25.0</th></tr></thead><tbody><tr><th scope='row' rowSpan='5'>Residential, business and personal services, and low-hazard industrial</th><th scope='row'>30</th><td>0</td><td>7</td><td>9</td><td>12</td><td>39</td><td>88</td><td>100</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><th scope='row'>40</th><td>0</td><td>7</td><td>8</td><td>11</td><td>32</td><td>69</td><td>100</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><th scope='row'>50</th><td>0</td><td>7</td><td>8</td><td>10</td><td>28</td><td>57</td><td>100</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><th scope='row'>100</th><td>0</td><td>7</td><td>8</td><td>9</td><td>18</td><td>34</td><td>56</td><td>84</td><td>100</td><td>-</td><td>-</td><td>-</td></tr><tr><th scope='row'>Over 100</th><td>0</td><td>7</td><td>7</td><td>8</td><td>12</td><td>19</td><td>28</td><td>40</td><td>55</td><td>92</td><td>100</td><td>-</td></tr><tr><th scope='row' rowSpan='5'>Mercantile and medium-hazard industrial</th><th scope='row'>30</th><td>0</td><td>4</td><td>4</td><td>6</td><td>20</td><td>44</td><td>80</td><td>100</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><th scope='row'>40</th><td>0</td><td>4</td><td>4</td><td>6</td><td>16</td><td>34</td><td>61</td><td>97</td><td>100</td><td>-</td><td>-</td><td>-</td></tr><tr><th scope='row'>50</th><td>0</td><td>4</td><td>4</td><td>5</td><td>14</td><td>29</td><td>50</td><td>79</td><td>100</td><td>-</td><td>-</td><td>-</td></tr><tr><th scope='row'>100</th><td>0</td><td>4</td><td>4</td><td>4</td><td>9</td><td>17</td><td>28</td><td>42</td><td>60</td><td>100</td><td>-</td><td>-</td></tr><tr><th scope='row'>Over 100</th><td>0</td><td>4</td><td>4</td><td>4</td><td>6</td><td>10</td><td>14</td><td>20</td><td>27</td><td>46</td><td>70</td><td>100</td></tr></tbody></table>",
-                      "imageLabel": "Maximum Aggregate Area of Unprotected Openings in Exterior Walls"
+{
+  "$schema": "../schema/buildingCode.schema.json",
+  "data": [
+    {
+      "numberReference": "v2-db-9",
+      "title": "Housing and Small Buildings",
+      "sections": [
+        {
+          "numberReference": "v2-db-9.9.",
+          "title": "Means of Egress",
+          "subsections": [
+            {
+              "numberReference": "v2-db-9.9.9.",
+              "title": "Egress from Dwelling Units",
+              "articles": [
+                {
+                  "numberReference": "v2-db-9.9.9.1.",
+                  "title": "Travel Limit to Exits or Egress Doors",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.9.9.1.(1)",
+                      "description": "Except as provided in <building-code-modal reference='v2-db-9.9.9.1.(2)'>Sentences (2)</building-code-modal> and <building-code-modal reference='v2-db-9.9.9.1.(3)'>(3)</building-code-modal>, every <defined-term>dwelling unit</defined-term> containing more than 1 <defined-term>storey</defined-term> shall have <defined-term override-term='exit'>exits</defined-term> or egress doors located so that it shall not be necessary to travel up or down more than 1 <defined-term>storey</defined-term> to reach a level served by:",
+                      "clauses": [
+                        {
+                          "numberReference": "v2-db-9.9.9.1.(1)(a)",
+                          "description": "an egress door to a <defined-term>public corridor</defined-term>, enclosed <defined-term>exit</defined-term> stair or exterior passageway, or"
+                        },
+                        {
+                          "numberReference": "v2-db-9.9.9.1.(1)(b)",
+                          "description": "an <defined-term>exit</defined-term> doorway not more than 1.5m above adjacent ground level."
+                        }
+                      ]
+                    },
+                    {
+                      "numberReference": "v2-db-9.9.9.1.(2)",
+                      "description": "Where a <defined-term>dwelling unit</defined-term> is not located above or below another <defined-term>suite</defined-term>, the travel limit from a floor level in the <defined-term>dwelling unit</defined-term> to an <defined-term>exit</defined-term> or egress door may exceed 1 <defined-term>storey</defined-term> where that floor level is served by an openable window",
+                      "clauses": [
+                        {
+                          "numberReference": "v2-db-9.9.9.1.(2)(a)",
+                          "description": "providing an unobstructed opening of not less than 1m in height and 0.55m in width, and"
+                        },
+                        {
+                          "numberReference": "v2-db-9.9.9.1.(2)(b)",
+                          "description": "located so that the sill is not more than",
+                          "subClauses": [
+                            "1m above the floor, and",
+                            "7m above adjacent ground level."
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "numberReference": "v2-db-9.9.9.1.(3)",
+                      "description": "The travel limit from a floor level in a <defined-term>dwelling unit</defined-term> to an <defined-term>exit</defined-term> or egress door may exceed 1 <defined-term>storey</defined-term> where that floor level has direct access to a balcony."
                     }
-                  },
-                  {
-                    "numberReference": "v2-db-9.10.14.4.(2)",
-                    "description": "Openings in a wall having a <defined-term>limiting distance</defined-term> of less than 1.2m shall be protected by <defined-term override-term='closure'>closures</defined-term>, of other than wired glass or glass block, whose <defined-term>fire-protection rating</defined-term> is in conformance with the <defined-term>fire-resistance rating</defined-term> required for the wall. (<pdf-download-link named-dest='9.10.13.1. Closures'>See Table 9.10.13.1.</pdf-download-link>)"
-                  },
-                  {
-                    "numberReference": "v2-db-9.10.14.4.(3)",
-                    "description": "Except for <defined-term override-term='building'>buildings</defined-term> that are <defined-term>sprinklered</defined-term> and for openable windows having an unobstructed opening equal to 0.35 m<sup>2</sup> installed in accordance with <pdf-download-link named-dest='9.9.10.1. Egress Windows or Doors for Bedrooms'>Sentences 9.9.10.1.(1)</pdf-download-link> and <pdf-download-link named-dest='9.9.10.1. Egress Windows or Doors for Bedrooms'>(2)</pdf-download-link>, where the <defined-term>limiting distance</defined-term> is 2m or less, individual <defined-term>unprotected openings</defined-term> shall be no greater than",
-                    "clauses": [
-                      {
-                        "numberReference": "v2-db-9.10.14.4.(3)(a)",
-                        "description": "the area stated in <building-code-modal reference='v2-db-9.10.14.4.-b'>Table 9.10.14.4.-B</building-code-modal>, or"
-                      },
-                      {
-                        "numberReference": "v2-db-9.10.14.4.(3)(b)",
-                        "description": "where the <defined-term>limiting distance</defined-term> is equal to or greater than 1.2m, the area calculated by<br/><strong>Area = 0.24(2 x LD - 1.2)<sup>2</sup></strong><br/>where<br/>Area = area of the <defined-term override-term='unprotected openings'>unprotected opening</defined-term>, and<br/>LD = <defined-term>limiting distance</defined-term>."
-                      }
-                    ],
-                    "image": {
-                      "fileName": "table-9.10.14.4.-b.png",
-                      "tableName": "Table: 9.10.14.4.-B",
-                      "numberReference": "v2-db-9.10.14.4.-b",
-                      "title": "Maximum Concentrated Area of Unprotected Openings",
-                      "imageReference": "Forming Part of <building-code-modal reference='v2-db-9.10.14.4.(3)'>Sentence 9.10.14.4.(3)</building-code-modal>",
-                      "imageTable": "<table class='u-screen-reader-only'><thead><tr><th>limiting distance in meters</th><th>Maximum Area of Individual Unprotected Openings in meters squared</th></tr></thead><tbody><tr><td>1.2</td><td>0.35</td></tr><tr><td>1.5</td><td>0.78</td></tr><tr><td>2.0</td><td>1.88</td></tr></tbody></table>",
-                      "imageLabel": "Maximum Concentrated Area of Unprotected Openings"
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.9.9.2.",
+                  "title": "Two Separate exits",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.9.9.2.(1)",
+                      "description": "Except as provided in <building-code-modal reference='v2-db-9.9.9.2.(2)'>Sentence (2)</building-code-modal> and <pdf-download-link number='99731' named-dest='9.9.7.3. Dead-End Corridors'>Sentence 9.9.7.3.(1)</pdf-download-link>, where an egress door from a <defined-term>dwelling unit</defined-term> opens onto a <defined-term>public corridor</defined-term> or exterior passageway it shall be possible from the location where the egress door opens onto the corridor or exterior passageway to go in opposite directions to 2 separate <defined-term override-term='exit'>exits</defined-term> unless the <defined-term>dwelling unit</defined-term> has a second and separate <defined-term>means of egress</defined-term>."
+                    },
+                    {
+                      "numberReference": "v2-db-9.9.9.2.(2)",
+                      "description": "For <defined-term override-term='dwelling unit'>dwelling units</defined-term> in a house with a <defined-term>secondary suite</defined-term>, it need not be possible to go in more than one direction to an <defined-term>exit</defined-term> from the location where the egress door opens into a <defined-term>public corridor</defined-term> or exterior passageway if the <defined-term>building</defined-term> is <defined-term>sprinklered</defined-term> or if each <defined-term>dwelling unit</defined-term> has separate and direct access from each <defined-term>storey</defined-term> to",
+                      "clauses": [
+                        {
+                          "numberReference": "v2-db-9.9.9.2.(2)(a)",
+                          "description": "a balcony, or"
+                        },
+                        {
+                          "numberReference": "v2-db-9.9.9.2.(2)(b)",
+                          "description": "an openable window conforming to sentences <building-code-modal reference='v2-db-9.9.9.1.(2)(a)'>9.9.9.1.(2)(a)</building-code-modal> and <building-code-modal reference='v2-db-9.9.9.1.(2)(b)'>(b)</building-code-modal>."
+                        }
+                      ]
                     }
-                  },
-                  {
-                    "numberReference": "v2-db-9.10.14.4.(4)",
-                    "description": "The spacing between individual <defined-term>unprotected openings</defined-term> described in <building-code-modal reference='v2-db-9.10.14.4.(3)'>Sentence (3)</building-code-modal> that serve a single room or space described in <building-code-modal reference='v2-db-9.10.14.4.(5)'>Sentence (5)</building-code-modal> shall be not less than",
-                    "clauses": [
-                      {
-                        "numberReference": "v2-db-9.10.14.4.(4)(a)",
-                        "description": "2m horizontally of another <defined-term override-term='unprotected openings'>unprotected opening</defined-term> that is on the same <defined-term>exposing building face</defined-term> and serves the single room or space, or"
-                      },
-                      {
-                        "numberReference": "v2-db-9.10.14.4.(4)(b)",
-                        "description": "2m vertically of another <defined-term override-term='unprotected openings'>unprotected opening</defined-term> that serves the single room or space, or another room or space on the same <defined-term>storey</defined-term>."
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.9.9.3.",
+                  "title": "Shared Egress Facilities",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.9.9.3.(1)",
+                      "description": "Except for as provided in <building-code-modal reference='v2-db-9.9.9.3.(2)'>Sentences (2)</building-code-modal>  and <building-code-modal reference='v2-db-9.9.9.3.(3)'>(3)</building-code-modal>, a <defined-term>dwelling unit</defined-term> shall be provided with a second and separate <defined-term>means of egress</defined-term> where an egress door from the <defined-term>dwelling unit</defined-term> opens onto",
+                      "clauses": [
+                        {
+                          "numberReference": "v2-db-9.9.9.3.(1)(a)",
+                          "description": "an <defined-term>exit</defined-term> stairway serving more than one <defined-term>suite</defined-term>,"
+                        },
+                        {
+                          "numberReference": "v2-db-9.9.9.3.(1)(b)",
+                          "description": "a <defined-term>public corridor</defined-term>",
+                          "subClauses": [
+                            "serving more than one <defined-term>suite</defined-term>, and",
+                            "served by a single <defined-term>exit</defined-term>"
+                          ]
+                        },
+                        {
+                          "numberReference": "v2-db-9.9.9.3.(1)(c)",
+                          "description": "an exterior passageway",
+                          "subClauses": [
+                            "serving more than one <defined-term>suite</defined-term>,",
+                            "served by a single <defined-term>exit</defined-term> stairway or <defined-term>ramp</defined-term>, and",
+                            "more than 1.5m above adjacent ground level, or"
+                          ]
+                        },
+                        {
+                          "numberReference": "v2-db-9.9.9.3.(1)(d)",
+                          "description": "a balcony",
+                          "subClauses": [
+                            "serving more than one <defined-term>suite</defined-term>,",
+                            "served by a single <defined-term>exit</defined-term> stairway or <defined-term>ramp</defined-term>, and",
+                            "more than 1.5m above adjacent ground level."
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "numberReference": "v2-db-9.9.9.3.(2)",
+                      "description": "Where a <defined-term>dwelling unit</defined-term> is located above another <defined-term>dwelling unit</defined-term> or common space in a house with a <defined-term>secondary suite</defined-term>, the upper <defined-term>dwelling unit</defined-term> shall be provided with a second  and separate <defined-term>means of egress</defined-term> where an egress door from that <defined-term>dwelling unit</defined-term> opens onto an exterior passageway that",
+                      "clauses": [
+                        {
+                          "numberReference": "v2-db-9.9.9.3.(2)(a)",
+                          "description": "has a floor assembly with a <defined-term>fire-resistance rating</defined-term> less than 45 min,"
+                        },
+                        {
+                          "numberReference": "v2-db-9.9.9.3.(2)(b)",
+                          "description": "is served by a single <defined-term>exit</defined-term> stairway or <defined-term>ramp</defined-term>, and"
+                        },
+                        {
+                          "numberReference": "v2-db-9.9.9.3.(2)(c)",
+                          "description": "is located more than 1.5m above adjacent ground level."
+                        }
+                      ]
+                    },
+                    {
+                      "numberReference": "v2-db-9.9.9.3.(3)",
+                      "description": "For <defined-term override-term='dwelling unit'>dwelling units</defined-term> in a house with a <defined-term>secondary suite</defined-term> where an egress door from either <defined-term>dwelling unit</defined-term> opens onto a shared egress facility served by a single <defined-term>exit</defined-term> stairway or <defined-term>ramp</defined-term>, other than as described in <building-code-modal reference='v2-db-9.9.9.3.(2)'>Sentence (2)</building-code-modal>, a second and separate <defined-term>means of egress</defined-term> need not be provided if the <defined-term>building</defined-term> is <defined-term>sprinklered</defined-term> or if the <defined-term override-term='dwelling unit'>dwelling units</defined-term> have separate and direct access from each <defined-term>storey</defined-term> to",
+                      "clauses": [
+                        {
+                          "numberReference": "v2-db-9.9.9.3.(3)(a)",
+                          "description": "a balcony, or"
+                        },
+                        {
+                          "numberReference": "v2-db-9.9.9.3.(3)(b)",
+                          "description": " an openable window conforming to sentences <building-code-modal reference='v2-db-9.9.9.1.(2)(a)'>9.9.9.1.(2)(a)</building-code-modal> and <building-code-modal reference='v2-db-9.9.9.1.(2)(b)'>(b)</building-code-modal>."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "numberReference": "v2-db-9.10.",
+          "title": "Fire Protection",
+          "subsections": [
+            {
+              "numberReference": "v2-db-9.10.14.",
+              "title": "Spatial Separation Between Buildings",
+              "articles": [
+                {
+                  "numberReference": "v2-db-9.10.14.1.",
+                  "title": "Application",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.10.14.1.(1)",
+                      "description": "This Subsection applies to <defined-term override-term='building'>buildings</defined-term> other than those to which <pdf-download-link named-dest='9.10.15. Spatial Separation Between Houses'>Subsection 9.10.15.</pdf-download-link> applies."
+                    },
+                    {
+                      "numberReference": "v2-db-9.10.14.1.(2)",
+                      "description": "This Subsection does not apply to detached carports conforming to <pdf-download-link named-dest='Section 9.35. Garages and Carports'>Section 9.35.</pdf-download-link> that serve not more than one <defined-term>dwelling unit</defined-term> or a house with a <defined-term>secondary suite</defined-term>."
+                    }
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.10.14.2.",
+                  "title": "Area and Location of Exposing Building Face",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.10.14.2.(1)",
+                      "description": "Except as permitted by <building-code-modal reference='v2-db-9.10.14.2.(4)'>Sentence (4)</building-code-modal>, the area of an <defined-term>exposing building face</defined-term> shall be",
+                      "clauses": [
+                        {
+                          "numberReference": "v2-db-9.10.14.2.(1)(a)",
+                          "description": "taken as the exterior wall area facing in one direction on any side of a <defined-term>building</defined-term>, and"
+                        },
+                        {
+                          "numberReference": "v2-db-9.10.14.2.(1)(b)",
+                          "description": "calculated as",
+                          "subClauses": [
+                            "the total area measured from the finished ground level to the uppermost ceiling, or",
+                            " the area for each <defined-term>fire compartment</defined-term>, where a <defined-term>building</defined-term> is divided into <defined-term override-term='fire compartment'>fire compartments</defined-term> by <defined-term override-term='fire separation'>fire separations</defined-term> with <defined-term override-term='fire-resistance rating'>fire-resistance ratings</defined-term> not less than 45 min."
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "numberReference": "v2-db-9.10.14.2.(2)",
+                      "description": "For the purpose of using <building-code-modal reference='v2-db-9.10.14.4.-a'>Table 9.10.14.4.-A</building-code-modal> to determine the maximum aggregate area of <defined-term>unprotected openings</defined-term> in an irregularly shaped or skewed exterior wall, the location of the <defined-term>exposing building face</defined-term> shall be taken as a vertical plane located so that there are no <defined-term>unprotected openings</defined-term> between the vertical plane and the line to which the <defined-term>limiting distance</defined-term> is measured. (<pdf-download-link named-dest='A-3.2.3.1.(4) Spatial Separation Design.'>See Note A-3.2.3.1.(4).</pdf-download-link>)"
+                    },
+                    {
+                      "numberReference": "v2-db-9.10.14.2.(3)",
+                      "description": "For the purpose of using <pdf-download-link named-dest='9.10.14.5. Construction of Exposing Building Face and Walls above Exposing Building Face'>Table 9.10.14.5.-A</pdf-download-link> to determine the required type of construction, cladding and <defined-term>fire-resistance rating</defined-term> for an irregularly shaped or skewed exterior wall,",
+                      "clauses": [
+                        {
+                          "numberReference": "v2-db-9.10.14.2.(1)(a)",
+                          "description": "the location of the <defined-term>exposing building face</defined-term> shall be taken as a vertical plane located so that no portion of the actual <defined-term>exposing building face</defined-term> is between the vertical plane and the line to which the <defined-term>limiting distance</defined-term> is measured, and"
+                        },
+                        {
+                          "numberReference": "v2-db-9.10.14.2.(1)(b)",
+                          "description": "the value for the maximum area of <defined-term>unprotected openings</defined-term> (see second column of <pdf-download-link named-dest='9.10.14.5. Construction of Exposing Building Face and Walls above Exposing Building Face'>Table 9.10.14.5.-A</pdf-download-link>) shall be determined using the <defined-term>limiting distance</defined-term> measured from the location described in Clause (a). (<pdf-download-link named-dest='A-3.2.3.1.(4) Spatial Separation Design.'>See Note A-3.2.3.1.(4).</pdf-download-link>)"
+                        }
+                      ]
+                    },
+                    {
+                      "numberReference": "v2-db-9.10.14.2.(4)",
+                      "description": "If a <defined-term>building</defined-term> is divided by <defined-term override-term='fire separation'>fire separations</defined-term> into <defined-term-glossary override-term='fire compartment'>fire compartments</defined-term-glossary>, the area of <defined-term>exposing building face</defined-term> is permitted to be calculated for each <defined-term-glossary>fire compartment</defined-term-glossary>, provided the <defined-term override-term='fire separation'>fire separations</defined-term> have a <defined-term>fire-resistance rating</defined-term> not less than 45 min."
+                    }
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.10.14.3.",
+                  "title": "Limiting Distance and Fire Department Response",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.10.14.3.(1)",
+                      "description": "Except for the purpose of applying <building-code-modal reference='v2-db-9.10.14.4'>Sentences 9.10.14.4.</building-code-modal> <building-code-modal reference='v2-db-9.10.14.4.(2)'>(2)</building-code-modal>, <building-code-modal reference='v2-db-9.10.14.4.(3)'>(3)</building-code-modal>, <building-code-modal reference='v2-db-9.10.14.4.(8)'>(8)</building-code-modal> and <building-code-modal reference='v2-db-9.10.14.4.(9)'>(9)</building-code-modal>, and <pdf-download-link named-dest='9.10.14.5. Construction of Exposing Building Face and Walls above Exposing Building Face'>Sentences 9.10.14.5.(3)</pdf-download-link>, <pdf-download-link named-dest='9.10.14.5. Construction of Exposing Building Face and Walls above Exposing Building Face'>(8)</pdf-download-link> and <pdf-download-link named-dest='9.10.14.5. Construction of Exposing Building Face and Walls above Exposing Building Face'>(13)</pdf-download-link>, a <defined-term>limiting distance</defined-term> equal to half the actual <defined-term>limiting distance</defined-term> shall be used as input to the requirements of this Subsection, where (<pdf-download-link named-dest='A-3.2.3. Fire Protection Related to Limiting Distance versus Separation Between Buildings.'>See Notes A-3.2.3.</pdf-download-link> and <pdf-download-link named-dest='A-3.2.3.1.(8) Intervention Time and Limiting Distance.'>A-3.2.3.1.(8).</pdf-download-link></pdf-download-link>)",
+                      "clauses": [
+                        {
+                          "numberReference": "v2-db-9.10.14.3.(1)(a)",
+                          "description": "the time from receipt of notification of a fire by the fire department until the first fire department vehicle arrives at the <defined-term>building</defined-term> exceeds 10 min in 10% or more of all calls to the building, and"
+                        },
+                        {
+                          "numberReference": "v2-db-9.10.14.3.(1)(b)",
+                          "description": "any storey in the <defined-term>building</defined-term> is not <defined-term>sprinklered</defined-term>."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.10.14.4.",
+                  "title": "Openings in Exposing Building Face",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.10.14.4.(1)",
+                      "description": "Except as provided in <building-code-modal reference='v2-db-9.10.14.4.(6)'>Sentences (6)</building-code-modal> to <building-code-modal reference='v2-db-9.10.14.4.(10)'>(10)</building-code-modal>, the maximum aggregate area of <defined-term>unprotected openings</defined-term> in an <defined-term>exposing building face</defined-term> shall",
+                      "clauses": [
+                        {
+                          "numberReference": "v2-db-9.10.14.4.(1)(a)",
+                          "description": "conform to <building-code-modal reference='v2-db-9.10.14.4.-a'>Table 9.10.14.4.-A</building-code-modal>,"
+                        },
+                        {
+                          "numberReference": "v2-db-9.10.14.4.(1)(b)",
+                          "description": "conform to <pdf-download-link named-dest='3.2.3. Spatial Separation and Exposure Protection'>Subsection 3.2.3.</pdf-download-link>, or"
+                        },
+                        {
+                          "numberReference": "v2-db-9.10.14.4.(1)(c)",
+                          "description": "where the <defined-term>limiting distance</defined-term> is not less than 1.2 m, be equal to or less than",
+                          "subClauses": [
+                            "the <defined-term>limiting distance</defined-term> squared, for <defined-term override-term='residential occupancy'>residential occupancies</defined-term>, <defined-term override-term='business and personal services occupancy'>business and personal services occupancies</defined-term> and <defined-term override-term='low-hazard industrial occupancy'>low-hazard industrial occupancies</defined-term>, and",
+                            "half the <defined-term>limiting distance</defined-term> squared, for <defined-term override-term='mercantile occupancy'>mercantile occupancies</defined-term> and <defined-term-glossary override-term='medium-hazard industrial occupancy'>medium hazard industrial occupancies</defined-term-glossary>."
+                          ]
+                        }
+                      ],
+                      "image": {
+                        "fileName": "table-9.10.14.4.-a.png",
+                        "tableName": "Table: 9.10.14.4.-A",
+                        "numberReference": "v2-db-9.10.14.4.-a",
+                        "title": "Maximum Aggregate Area of Unprotected Openings in Exterior Walls <sup>(1)</sup>",
+                        "imageReference": "Forming Part of <building-code-modal reference='v2-db-9.10.14.4.(1)'>Sentence 9.10.14.4.(1)</building-code-modal>",
+                        "imageNotes": "<building-code-modal reference='v2-db-9.10.14.4.(1)'>(1)</building-code-modal> See also Sentences <building-code-modal reference='v2-db-9.10.14.4.(6)'>(6)</building-code-modal> and <building-code-modal reference='v2-db-9.10.14.4.(7)'>(7)</building-code-modal> to calculate the maximum permitted area of <defined-term>unprotected openings</defined-term> in <defined-term>sprinklered</defined-term> <defined-term override-term='building'>buildings</defined-term> or where wired glass or glass blocks are used.",
+                        "imageTable": "<table class='u-screen-reader-only'><thead><tr><th scope='col' rowSpan='3'>Occupancy Classification of Building</th><th scope='col' rowSpan='3'>Maximum Total Area of Exposing Building Face, in meters squared</th><th scope='col' colSpan='12'>Maximum Aggregate Area of Unprotected Openings, as a % ofExposing Building Face Area</th></tr><tr><th scope='col' colSpan='12'>Limiting Distance in meters</th></tr><tr><th scope='col'>Less than 1.2</th><th scope='col'>1.2</th><th scope='col'>1.5</th><th scope='col'>2.0</th><th scope='col'>4.0</th><th scope='col'>6.0</th><th scope='col'>8.0</th><th scope='col'>10.0</th><th scope='col'>12.0</th><th scope='col'>16.0</th><th scope='col'>20.0</th><th scope='col'>25.0</th></tr></thead><tbody><tr><th scope='row' rowSpan='5'>Residential, business and personal services, and low-hazard industrial</th><th scope='row'>30</th><td>0</td><td>7</td><td>9</td><td>12</td><td>39</td><td>88</td><td>100</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><th scope='row'>40</th><td>0</td><td>7</td><td>8</td><td>11</td><td>32</td><td>69</td><td>100</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><th scope='row'>50</th><td>0</td><td>7</td><td>8</td><td>10</td><td>28</td><td>57</td><td>100</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><th scope='row'>100</th><td>0</td><td>7</td><td>8</td><td>9</td><td>18</td><td>34</td><td>56</td><td>84</td><td>100</td><td>-</td><td>-</td><td>-</td></tr><tr><th scope='row'>Over 100</th><td>0</td><td>7</td><td>7</td><td>8</td><td>12</td><td>19</td><td>28</td><td>40</td><td>55</td><td>92</td><td>100</td><td>-</td></tr><tr><th scope='row' rowSpan='5'>Mercantile and medium-hazard industrial</th><th scope='row'>30</th><td>0</td><td>4</td><td>4</td><td>6</td><td>20</td><td>44</td><td>80</td><td>100</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><th scope='row'>40</th><td>0</td><td>4</td><td>4</td><td>6</td><td>16</td><td>34</td><td>61</td><td>97</td><td>100</td><td>-</td><td>-</td><td>-</td></tr><tr><th scope='row'>50</th><td>0</td><td>4</td><td>4</td><td>5</td><td>14</td><td>29</td><td>50</td><td>79</td><td>100</td><td>-</td><td>-</td><td>-</td></tr><tr><th scope='row'>100</th><td>0</td><td>4</td><td>4</td><td>4</td><td>9</td><td>17</td><td>28</td><td>42</td><td>60</td><td>100</td><td>-</td><td>-</td></tr><tr><th scope='row'>Over 100</th><td>0</td><td>4</td><td>4</td><td>4</td><td>6</td><td>10</td><td>14</td><td>20</td><td>27</td><td>46</td><td>70</td><td>100</td></tr></tbody></table>",
+                        "imageLabel": "Maximum Aggregate Area of Unprotected Openings in Exterior Walls"
                       }
-                    ]
-                  },
-                  {
-                    "numberReference": "v2-db-9.10.14.4.(5)",
-                    "description": "For the purpose of  <building-code-modal reference='v2-db-9.10.14.4.(4)'>Sentence (4)</building-code-modal>, “single room or space” shall mean",
-                    "clauses": [
-                      {
-                        "numberReference": "v2-db-9.10.14.4.(5)(a)",
-                        "description": "two or more adjacent spaces having a full-height separating wall extending less than 1.5m from the interior face of the exterior wall, or"
-                      },
-                      {
-                        "numberReference": "v2-db-9.10.14.4.(5)(b)",
-                        "description": "two or more stacked spaces that are on the same <defined-term>storey</defined-term>."
+                    },
+                    {
+                      "numberReference": "v2-db-9.10.14.4.(2)",
+                      "description": "Openings in a wall having a <defined-term>limiting distance</defined-term> of less than 1.2m shall be protected by <defined-term override-term='closure'>closures</defined-term>, of other than wired glass or glass block, whose <defined-term>fire-protection rating</defined-term> is in conformance with the <defined-term>fire-resistance rating</defined-term> required for the wall. (<pdf-download-link named-dest='9.10.13.1. Closures'>See Table 9.10.13.1.</pdf-download-link>)"
+                    },
+                    {
+                      "numberReference": "v2-db-9.10.14.4.(3)",
+                      "description": "Except for <defined-term override-term='building'>buildings</defined-term> that are <defined-term>sprinklered</defined-term> and for openable windows having an unobstructed opening equal to 0.35 m<sup>2</sup> installed in accordance with <pdf-download-link named-dest='9.9.10.1. Egress Windows or Doors for Bedrooms'>Sentences 9.9.10.1.(1)</pdf-download-link> and <pdf-download-link named-dest='9.9.10.1. Egress Windows or Doors for Bedrooms'>(2)</pdf-download-link>, where the <defined-term>limiting distance</defined-term> is 2m or less, individual <defined-term>unprotected openings</defined-term> shall be no greater than",
+                      "clauses": [
+                        {
+                          "numberReference": "v2-db-9.10.14.4.(3)(a)",
+                          "description": "the area stated in <building-code-modal reference='v2-db-9.10.14.4.-b'>Table 9.10.14.4.-B</building-code-modal>, or"
+                        },
+                        {
+                          "numberReference": "v2-db-9.10.14.4.(3)(b)",
+                          "description": "where the <defined-term>limiting distance</defined-term> is equal to or greater than 1.2m, the area calculated by<br/><strong>Area = 0.24(2 x LD - 1.2)<sup>2</sup></strong><br/>where<br/>Area = area of the <defined-term override-term='unprotected openings'>unprotected opening</defined-term>, and<br/>LD = <defined-term>limiting distance</defined-term>."
+                        }
+                      ],
+                      "image": {
+                        "fileName": "table-9.10.14.4.-b.png",
+                        "tableName": "Table: 9.10.14.4.-B",
+                        "numberReference": "v2-db-9.10.14.4.-b",
+                        "title": "Maximum Concentrated Area of Unprotected Openings",
+                        "imageReference": "Forming Part of <building-code-modal reference='v2-db-9.10.14.4.(3)'>Sentence 9.10.14.4.(3)</building-code-modal>",
+                        "imageTable": "<table class='u-screen-reader-only'><thead><tr><th>limiting distance in meters</th><th>Maximum Area of Individual Unprotected Openings in meters squared</th></tr></thead><tbody><tr><td>1.2</td><td>0.35</td></tr><tr><td>1.5</td><td>0.78</td></tr><tr><td>2.0</td><td>1.88</td></tr></tbody></table>",
+                        "imageLabel": "Maximum Concentrated Area of Unprotected Openings"
                       }
-                    ]
-                  },
-                  {
-                    "numberReference": "v2-db-9.10.14.4.(6)",
-                    "description": "The maximum aggregate area of <defined-term>unprotected openings</defined-term> is permitted to be up to twice the area determined according to <building-code-modal reference='v2-db-9.10.14.4.(1)'>Sentence (1)</building-code-modal>, where the <defined-term>unprotected openings</defined-term> are glazed with",
-                    "clauses": [
-                      {
-                        "numberReference": "v2-db-9.10.14.4.(6)(a)",
-                        "description": "wired glass in steel frames, as described in <pdf-download-link named-dest='9.10.13.5. Wired Glass as a Closure'>Article 9.10.13.5.</pdf-download-link>, or"
-                      },
-                      {
-                        "numberReference": "v2-db-9.10.14.4.(6)(b)",
-                        "description": "glass blocks, as described in <pdf-download-link named-dest='9.10.13.7. Glass Block as a Closure'>Article 9.10.13.7.</pdf-download-link>"
-                      }
-                    ]
-                  },
-                  {
-                    "numberReference": "v2-db-9.10.14.4.(7)",
-                    "description": "Where the <defined-term>building</defined-term> is <defined-term>sprinklered</defined-term>, the maximum aggregate area of <defined-term>unprotected openings</defined-term> is permitted to be up to twice the area determined according to <building-code-modal reference='v2-db-9.10.14.4.(1)'>Sentence (1)</building-code-modal>, provided all rooms, including closets and bathrooms, that are adjacent to the <defined-term>exposing building face</defined-term> and that have <defined-term>unprotected openings</defined-term> are <defined-term>sprinklered</defined-term>, notwithstanding any exemptions in the sprinkler standards referenced in <pdf-download-link named-dest='3.2.5.12. Automatic Sprinkler Systems'>Article 3.2.5.12.</pdf-download-link>"
-                  },
-                  {
-                    "numberReference": "v2-db-9.10.14.4.(8)",
-                    "description": "The maximum aggregate area of <defined-term>unprotected openings</defined-term> in an <defined-term>exposing building face</defined-term> of a <defined-term>storage garage</defined-term> need not comply with <building-code-modal reference='v2-db-9.10.14.4.(1)'>Sentence (1)</building-code-modal>, where",
-                    "clauses": [
-                      {
-                        "numberReference": "v2-db-9.10.14.4.(8)(a)",
-                        "description": "all <defined-term override-term='storey'>storeys</defined-term> are constructed as <defined-term override-term='open-air storey'>open-air storeys</defined-term>, and"
-                      },
-                      {
-                        "numberReference": "v2-db-9.10.14.4.(8)(b)",
-                        "description": " the <defined-term>storage garage</defined-term> has a <defined-term>limiting distance</defined-term> of not less than 3m."
-                      }
-                    ]
-                  },
-                  {
-                    "numberReference": "v2-db-9.10.14.4.(9)",
-                    "description": "The maximum aggregate area of <defined-term>unprotected openings</defined-term> in an <defined-term>exposing building face</defined-term> of a <defined-term>storey</defined-term> that faces a <defined-term>street</defined-term> and is at the same level as the <defined-term>street</defined-term> need not comply with <building-code-modal reference='v2-db-9.10.14.4.(1)'>Sentence (1)</building-code-modal>, where the <defined-term>limiting distance</defined-term> is not less than 9m."
-                  },
-                  {
-                    "numberReference": "v2-db-9.10.14.4.(10)",
-                    "description": " Except as provided in <building-code-modal reference='v2-db-9.10.14.4.(11)'>Sentence (11)</building-code-modal>, for garages or accessory <defined-term override-term='building'>buildings</defined-term> that serve a single <defined-term>dwelling unit</defined-term> only and are detached from any <defined-term>building</defined-term>, the maximum aggregate area of glazed openings shall comply with the requirements for <defined-term>unprotected openings</defined-term>."
-                  },
-                  {
-                    "numberReference": "v2-db-9.10.14.4.(11)",
-                    "description": "The limits on the area of glazed openings stated in <building-code-modal reference='v2-db-9.10.14.4.(10)'>Sentence (10)</building-code-modal> need not apply to the <defined-term>exposing building face</defined-term> of a detached garage or accessory <defined-term>building</defined-term> facing a <defined-term>dwelling unit</defined-term>, where",
-                    "clauses": [
-                      {
-                        "numberReference": "v2-db-9.10.14.4.(11)(a)",
-                        "description": "the detached garage or accessory <defined-term>building</defined-term> serves only one <defined-term>dwelling unit</defined-term>,"
-                      },
-                      {
-                        "numberReference": "v2-db-9.10.14.4.(11)(b)",
-                        "description": "the detached garage or accessory <defined-term>building</defined-term> is located on the same property as that <defined-term>dwelling unit</defined-term>, and"
-                      },
-                      {
-                        "numberReference": "v2-db-9.10.14.4.(11)(c)",
-                        "description": "the <defined-term>dwelling unit</defined-term> served by the detached garage or accessory <defined-term>building</defined-term> is the only <defined-term>major occupancy</defined-term> on the property."
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
-]
+                    },
+                    {
+                      "numberReference": "v2-db-9.10.14.4.(4)",
+                      "description": "The spacing between individual <defined-term>unprotected openings</defined-term> described in <building-code-modal reference='v2-db-9.10.14.4.(3)'>Sentence (3)</building-code-modal> that serve a single room or space described in <building-code-modal reference='v2-db-9.10.14.4.(5)'>Sentence (5)</building-code-modal> shall be not less than",
+                      "clauses": [
+                        {
+                          "numberReference": "v2-db-9.10.14.4.(4)(a)",
+                          "description": "2m horizontally of another <defined-term override-term='unprotected openings'>unprotected opening</defined-term> that is on the same <defined-term>exposing building face</defined-term> and serves the single room or space, or"
+                        },
+                        {
+                          "numberReference": "v2-db-9.10.14.4.(4)(b)",
+                          "description": "2m vertically of another <defined-term override-term='unprotected openings'>unprotected opening</defined-term> that serves the single room or space, or another room or space on the same <defined-term>storey</defined-term>."
+                        }
+                      ]
+                    },
+                    {
+                      "numberReference": "v2-db-9.10.14.4.(5)",
+                      "description": "For the purpose of  <building-code-modal reference='v2-db-9.10.14.4.(4)'>Sentence (4)</building-code-modal>, “single room or space” shall mean",
+                      "clauses": [
+                        {
+                          "numberReference": "v2-db-9.10.14.4.(5)(a)",
+                          "description": "two or more adjacent spaces having a full-height separating wall extending less than 1.5m from the interior face of the exterior wall, or"
+                        },
+                        {
+                          "numberReference": "v2-db-9.10.14.4.(5)(b)",
+                          "description": "two or more stacked spaces that are on the same <defined-term>storey</defined-term>."
+                        }
+                      ]
+                    },
+                    {
+                      "numberReference": "v2-db-9.10.14.4.(6)",
+                      "description": "The maximum aggregate area of <defined-term>unprotected openings</defined-term> is permitted to be up to twice the area determined according to <building-code-modal reference='v2-db-9.10.14.4.(1)'>Sentence (1)</building-code-modal>, where the <defined-term>unprotected openings</defined-term> are glazed with",
+                      "clauses": [
+                        {
+                          "numberReference": "v2-db-9.10.14.4.(6)(a)",
+                          "description": "wired glass in steel frames, as described in <pdf-download-link named-dest='9.10.13.5. Wired Glass as a Closure'>Article 9.10.13.5.</pdf-download-link>, or"
+                        },
+                        {
+                          "numberReference": "v2-db-9.10.14.4.(6)(b)",
+                          "description": "glass blocks, as described in <pdf-download-link named-dest='9.10.13.7. Glass Block as a Closure'>Article 9.10.13.7.</pdf-download-link>"
+                        }
+                      ]
+                    },
+                    {
+                      "numberReference": "v2-db-9.10.14.4.(7)",
+                      "description": "Where the <defined-term>building</defined-term> is <defined-term>sprinklered</defined-term>, the maximum aggregate area of <defined-term>unprotected openings</defined-term> is permitted to be up to twice the area determined according to <building-code-modal reference='v2-db-9.10.14.4.(1)'>Sentence (1)</building-code-modal>, provided all rooms, including closets and bathrooms, that are adjacent to the <defined-term>exposing building face</defined-term> and that have <defined-term>unprotected openings</defined-term> are <defined-term>sprinklered</defined-term>, notwithstanding any exemptions in the sprinkler standards referenced in <pdf-download-link named-dest='3.2.5.12. Automatic Sprinkler Systems'>Article 3.2.5.12.</pdf-download-link>"
+                    },
+                    {
+                      "numberReference": "v2-db-9.10.14.4.(8)",
+                      "description": "The maximum aggregate area of <defined-term>unprotected openings</defined-term> in an <defined-term>exposing building face</defined-term> of a <defined-term>storage garage</defined-term> need not comply with <building-code-modal reference='v2-db-9.10.14.4.(1)'>Sentence (1)</building-code-modal>, where",
+                      "clauses": [
+                        {
+                          "numberReference": "v2-db-9.10.14.4.(8)(a)",
+                          "description": "all <defined-term override-term='storey'>storeys</defined-term> are constructed as <defined-term override-term='open-air storey'>open-air storeys</defined-term>, and"
+                        },
+                        {
+                          "numberReference": "v2-db-9.10.14.4.(8)(b)",
+                          "description": " the <defined-term>storage garage</defined-term> has a <defined-term>limiting distance</defined-term> of not less than 3m."
+                        }
+                      ]
+                    },
+                    {
+                      "numberReference": "v2-db-9.10.14.4.(9)",
+                      "description": "The maximum aggregate area of <defined-term>unprotected openings</defined-term> in an <defined-term>exposing building face</defined-term> of a <defined-term>storey</defined-term> that faces a <defined-term>street</defined-term> and is at the same level as the <defined-term>street</defined-term> need not comply with <building-code-modal reference='v2-db-9.10.14.4.(1)'>Sentence (1)</building-code-modal>, where the <defined-term>limiting distance</defined-term> is not less than 9m."
+                    },
+                    {
+                      "numberReference": "v2-db-9.10.14.4.(10)",
+                      "description": " Except as provided in <building-code-modal reference='v2-db-9.10.14.4.(11)'>Sentence (11)</building-code-modal>, for garages or accessory <defined-term override-term='building'>buildings</defined-term> that serve a single <defined-term>dwelling unit</defined-term> only and are detached from any <defined-term>building</defined-term>, the maximum aggregate area of glazed openings shall comply with the requirements for <defined-term>unprotected openings</defined-term>."
+                    },
+                    {
+                      "numberReference": "v2-db-9.10.14.4.(11)",
+                      "description": "The limits on the area of glazed openings stated in <building-code-modal reference='v2-db-9.10.14.4.(10)'>Sentence (10)</building-code-modal> need not apply to the <defined-term>exposing building face</defined-term> of a detached garage or accessory <defined-term>building</defined-term> facing a <defined-term>dwelling unit</defined-term>, where",
+                      "clauses": [
+                        {
+                          "numberReference": "v2-db-9.10.14.4.(11)(a)",
+                          "description": "the detached garage or accessory <defined-term>building</defined-term> serves only one <defined-term>dwelling unit</defined-term>,"
+                        },
+                        {
+                          "numberReference": "v2-db-9.10.14.4.(11)(b)",
+                          "description": "the detached garage or accessory <defined-term>building</defined-term> is located on the same property as that <defined-term>dwelling unit</defined-term>, and"
+                        },
+                        {
+                          "numberReference": "v2-db-9.10.14.4.(11)(c)",
+                          "description": "the <defined-term>dwelling unit</defined-term> served by the detached garage or accessory <defined-term>building</defined-term> is the only <defined-term>major occupancy</defined-term> on the property."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

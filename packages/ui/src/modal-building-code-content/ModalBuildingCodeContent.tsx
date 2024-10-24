@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import {
   ArticleType,
-  SubClauseType,
+  ClauseType,
   PartType,
   SentenceType,
   SectionType,
@@ -76,7 +76,7 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
     );
   };
 
-  const renderClauses = (clauses: SubClauseType[]) => {
+  const renderClauses = (clauses: ClauseType[]) => {
     return (
       <ol className="ui-ModalSide--Clauses">
         {clauses.map((data, index) => (

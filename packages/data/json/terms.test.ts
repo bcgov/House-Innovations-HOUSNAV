@@ -8,6 +8,8 @@ const glossary = data as unknown as BuildingGlossaryJSONType;
 
 describe("Glossary Terms Format", () => {
   Object.entries(glossary).forEach(([term, content]) => {
+    if (term === "$schema") return; // Skip schema entry
+
     describe(`Term: ${term}`, () => {
       it('should have a "definition"', () => {
         expect(content.definition).toBeDefined();

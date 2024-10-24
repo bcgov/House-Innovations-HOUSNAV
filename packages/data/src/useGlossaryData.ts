@@ -37,18 +37,18 @@ export type SubsectionType = {
 
 export type ArticleType = {
   numberReference: string;
-  title?: string;
+  title: string;
   sentences: SentenceType[];
 };
 
 export type SentenceType = {
   numberReference: string;
   description: string;
-  clauses?: SubClauseType[];
+  clauses?: ClauseType[];
   image?: ImageModalType;
 };
 
-export type SubClauseType = {
+export type ClauseType = {
   numberReference: string;
   description: string;
   subClauses?: string[];
@@ -82,15 +82,25 @@ export type ModalSideDataType = {
 
 const GlossaryJSONData = glossary as unknown as BuildingGlossaryJSONType;
 
-export const BuildingCodeJSONData = buildingCode as unknown as PartType[];
+export interface BuildingCodeJSONType {
+  data: PartType[];
+}
+export const BuildingCodeJSONData = buildingCode as BuildingCodeJSONType;
 
 export default function transformGlossaryData(
   data: BuildingGlossaryJSONType,
 ): GlossaryType[] {
-  return Object.entries(data).map(([term, content]) => ({
-    reference: term.toLocaleLowerCase(),
-    content,
-  }));
+  return Object.entries(data).reduce((terms, [term, content]) => {
+    // Skip schema entry
+    if (term === "$schema") return terms;
+
+    terms.push({
+      reference: term.toLocaleLowerCase(),
+      content,
+    });
+
+    return terms;
+  }, [] as GlossaryType[]);
 }
 
 function setMappedGlossaryData(
@@ -107,7 +117,7 @@ function setMappedGlossaryData(
 function setStaticData(): ModalSideDataType {
   return {
     [ModalSideDataEnum.GLOSSARY]: transformGlossaryData(GlossaryJSONData),
-    [ModalSideDataEnum.BUILDING_CODE]: BuildingCodeJSONData,
+    [ModalSideDataEnum.BUILDING_CODE]: BuildingCodeJSONData.data,
   };
 }
 
@@ -177,7 +187,7 @@ export const findBuildingCodeNumberTypeByReferenceNumber = (
     return null;
   };
 
-  for (const part of BuildingCodeJSONData) {
+  for (const part of BuildingCodeJSONData.data) {
     if (part.numberReference === numberReference) {
       return part;
     } else {

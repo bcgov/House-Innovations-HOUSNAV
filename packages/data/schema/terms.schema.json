@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "patternProperties": {
+    "^[a-zA-Z0-9 -]+$": {
+      "$ref": "#/$defs/Type_Term"
+    }
+  },
+  "$defs": {
+    "Type_Term": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "definition": {
+          "$ref": "#/$defs/Property_Definition"
+        },
+        "cleanDefinition": {
+          "type": "string",
+          "description": "A clean version of the definition without HTML."
+        },
+        "definitionList": {
+          "$ref": "#/$defs/Type_DefinitionList"
+        },
+        "hideTerm": {
+          "type": "boolean",
+          "description": "Used to hide the term from the glossary (Used for major occupancy groups currently)",
+          "default": false
+        }
+      },
+      "required": [
+        "definition",
+        "cleanDefinition"
+      ]
+    },
+    "Type_DefinitionList": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "definition": {
+            "$ref": "#/$defs/Property_Definition"
+          },
+          "definitionList": {
+            "$ref": "#/$defs/Type_DefinitionList"
+          }
+        },
+        "required": [
+          "definition"
+        ]
+      }
+    },
+    "Property_Definition": {
+      "type": "string",
+      "description": "Can include HTML that will be parsed and rendered."
+    }
+  }
+}

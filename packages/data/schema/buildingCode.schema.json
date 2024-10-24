@@ -1,0 +1,222 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/$defs/BuildingCode",
+  "$defs": {
+    "BuildingCode": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "$schema": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Type_Part"
+          }
+        }
+      },
+      "required": [
+        "data"
+      ]
+    },
+    "Type_Part": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "numberReference": {
+          "$ref": "#/$defs/Property_NumberReference"
+        },
+        "title": {
+          "$ref": "#/$defs/Property_Title"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Type_Section"
+          }
+        }
+      },
+      "required": [
+        "numberReference",
+        "title",
+        "sections"
+      ]
+    },
+    "Type_Section": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "numberReference": {
+          "$ref": "#/$defs/Property_NumberReference"
+        },
+        "title": {
+          "$ref": "#/$defs/Property_Title"
+        },
+        "subsections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Type_SubSection"
+          }
+        }
+      },
+      "required": [
+        "numberReference",
+        "title",
+        "subsections"
+      ]
+    },
+    "Type_SubSection": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "numberReference": {
+          "$ref": "#/$defs/Property_NumberReference"
+        },
+        "title": {
+          "$ref": "#/$defs/Property_Title"
+        },
+        "articles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Type_Article"
+          }
+        }
+      },
+      "required": [
+        "numberReference",
+        "title",
+        "articles"
+      ]
+    },
+    "Type_Article": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "numberReference": {
+          "$ref": "#/$defs/Property_NumberReference"
+        },
+        "title": {
+          "$ref": "#/$defs/Property_Title"
+        },
+        "sentences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Type_Sentence"
+          }
+        }
+      },
+      "required": [
+        "numberReference",
+        "title",
+        "sentences"
+      ]
+    },
+    "Type_Sentence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "numberReference": {
+          "$ref": "#/$defs/Property_NumberReference"
+        },
+        "description": {
+          "$ref": "#/$defs/Property_Description"
+        },
+        "clauses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Type_Clause"
+          }
+        },
+        "image": {
+          "$ref": "#/$defs/Type_Image"
+        }
+      },
+      "required": [
+        "numberReference",
+        "description"
+      ]
+    },
+    "Type_Clause": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "numberReference": {
+          "$ref": "#/$defs/Property_NumberReference"
+        },
+        "description": {
+          "$ref": "#/$defs/Property_Description"
+        },
+        "subClauses": {
+          "$ref": "#/$defs/Type_SubClause"
+        }
+      },
+      "required": [
+        "numberReference",
+        "description"
+      ]
+    },
+    "Type_SubClause": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "description": "Can include HTML that will be parsed and rendered."
+      }
+    },
+    "Type_Image": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "fileName": {
+          "type": "string",
+          "description": "Name of image to display. Looks in the public/assets/images folder in the web application."
+        },
+        "tableName": {
+          "type": "string"
+        },
+        "numberReference": {
+          "$ref": "#/$defs/Property_NumberReference"
+        },
+        "title": {
+          "$ref": "#/$defs/Property_Title",
+          "description": "Can include HTML that will be parsed and rendered."
+        },
+        "imageReference": {
+          "type": "string",
+          "description": "Can include HTML that will be parsed and rendered."
+        },
+        "imageNotes": {
+          "type": "string",
+          "description": "Can include HTML that will be parsed and rendered."
+        },
+        "imageTable": {
+          "type": "string",
+          "description": "Hidden HTML for the image that a screen reader will use."
+        },
+        "imageLabel": {
+          "type": "string",
+          "description": "Aria-label for the image."
+        }
+      },
+      "required": [
+        "fileName",
+        "tableName",
+        "numberReference",
+        "title",
+        "imageReference",
+        "imageTable",
+        "imageLabel"
+      ]
+    },
+    "Property_NumberReference": {
+      "type": "string"
+    },
+    "Property_Title": {
+      "type": "string"
+    },
+    "Property_Description": {
+      "type": "string",
+      "description": "Can include HTML that will be parsed and rendered."
+    }
+  }
+}
