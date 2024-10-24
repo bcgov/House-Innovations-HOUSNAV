@@ -1,4 +1,5 @@
 {
+  "$schema": "../schema/terms.schema.json",
   "access to exit": {
     "definition": "<glossary-term>Access to exit</glossary-term> means that part of a <defined-term-glossary>means of egress</defined-term-glossary> within a <defined-term-glossary>floor area</defined-term-glossary> that provides access to an <defined-term-glossary>exit</defined-term-glossary> serving the <defined-term-glossary>floor area</defined-term-glossary>.",
     "cleanDefinition": "Access to exit means that part of a means of egress within a floor area that provides access to an exit serving the floor area."
