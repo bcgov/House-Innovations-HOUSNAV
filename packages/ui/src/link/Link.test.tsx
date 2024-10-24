@@ -25,6 +25,26 @@ describe("Link", () => {
     const { getByTestId } = render(<Link variant="glossary">{TEXT}</Link>);
     expect(getByTestId(GET_TESTID_LINK("glossary"))).toBeInTheDocument();
   });
+  // primary
+  it("renders primary link", () => {
+    const { getByTestId } = render(<Link variant="primary">{TEXT}</Link>);
+    expect(getByTestId(GET_TESTID_LINK("primary"))).toBeInTheDocument();
+  });
+  // secondary
+  it("renders secondary link", () => {
+    const { getByTestId } = render(<Link variant="secondary">{TEXT}</Link>);
+    expect(getByTestId(GET_TESTID_LINK("secondary"))).toBeInTheDocument();
+  });
+  // showAsButton
+  it("renders link with --button modifier when showAsButton is true", () => {
+    const { getByTestId } = render(<Link showAsButton>{TEXT}</Link>);
+    expect(getByTestId(GET_TESTID_LINK("default"))).toHaveClass("--button");
+  });
+  // isLargeButton
+  it("renders link with --large modifier when isLargeButton is true", () => {
+    const { getByTestId } = render(<Link isLargeButton>{TEXT}</Link>);
+    expect(getByTestId(GET_TESTID_LINK("default"))).toHaveClass("--large");
+  });
   // target
   it("renders link with blank target and icon", () => {
     const { getByTestId } = render(<Link target="_blank">{TEXT}</Link>);
