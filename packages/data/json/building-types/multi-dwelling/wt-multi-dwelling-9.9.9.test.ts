@@ -2,8 +2,8 @@
 import { describe } from "vitest";
 // local
 import { verifyWalkthroughDataIsValid } from "../../../utils/testing";
-import data from "./wt-single-dwelling-9.9.9.json";
+import data from "./wt-multi-dwelling-9.9.9.json";
 
-describe("Data - single dwelling - 9.9.9", () => {
+describe("Data - multi dwelling - 9.9.9", () => {
   verifyWalkthroughDataIsValid(data);
 });

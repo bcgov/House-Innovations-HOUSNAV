@@ -501,23 +501,23 @@
           "answerValue": "1B"
         },
         {
-          "answerDisplayText": "2 stories",
+          "answerDisplayText": "2 storeys",
           "answerValue": "2"
         },
         {
-          "answerDisplayText": "2 stories + <defined-term>basement</defined-term>",
+          "answerDisplayText": "2 storeys + <defined-term>basement</defined-term>",
           "answerValue": "2B"
         },
         {
-          "answerDisplayText": "3 stories",
+          "answerDisplayText": "3 storeys",
           "answerValue": "3"
         },
         {
-          "answerDisplayText": "3 stories + <defined-term>basement</defined-term>",
+          "answerDisplayText": "3 storeys + <defined-term>basement</defined-term>",
           "answerValue": "3B"
         },
         {
-          "answerDisplayText": "More than 3 stories",
+          "answerDisplayText": "More than 3 storeys",
           "answerValue": "4"
         }
       ],

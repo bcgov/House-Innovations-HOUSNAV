@@ -24,10 +24,14 @@
 }
 
 .web-Result--Content {
-  font: var(--typography-regular-large-body);
   padding-bottom: var(--layout-padding-xxlarge);
   border-bottom: var(--layout-border-width-small) solid
     var(--surface-color-border-default);
+}
+
+.web-Result--Content,
+.web-Result--Content button {
+  font: var(--typography-regular-large-body);
 }
 
 .web-Result--Content sup {

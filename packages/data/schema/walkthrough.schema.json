@@ -24,7 +24,7 @@
             },
             "startingSectionId": {
               "type": "string",
-              "pattern": "^\\d+_[a-zA-Z0-9]+$",
+              "pattern": "^\\d+[_[a-zA-Z0-9]]+$",
               "description": "MUST be a key in the sections object."
             },
             "walkthroughTitle": {
@@ -43,7 +43,7 @@
         "sections": {
           "type": "object",
           "patternProperties": {
-            "^\\d+_[a-zA-Z0-9]+$": {
+            "^\\d+[_[a-zA-Z0-9]]+$": {
               "$ref": "#/$defs/Section"
             }
           },
@@ -62,7 +62,7 @@
           "type": "object",
           "additionalProperties": false,
           "patternProperties": {
-            "^R\\d+$": {
+            "^R[\\d_]+$": {
               "$ref": "#/$defs/Result"
             }
           }

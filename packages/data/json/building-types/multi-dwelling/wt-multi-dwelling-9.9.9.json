@@ -4,56 +4,370 @@
     "title": "Egress from Dwelling Units",
     "subtitle": "Volume II - 9.9.9.",
     "description": "Location and distances of exits from living spaces in a building",
-    "startingSectionId": "1_9991",
+    "startingSectionId": "1_9_9_9_1",
     "walkthroughTitle": "9.9.9. Egress from Dwelling Units"
   },
   "sections": {
-    "1_9991": {
+    "1_9_9_9_1": {
       "sectionTitle": "9.9.9.1. Travel limit to Exits or Egress Doors",
-      "sectionQuestions": [
-        "P1",
-        "P6"
-      ]
+      "sectionQuestions": ["P2", "P3", "P5", "P6", "P7", "P8", "P9", "P10"]
     },
-    "2_9992": {
+    "2_9_9_9_2": {
       "sectionTitle": "9.9.9.2. Two Separate Exits",
-      "sectionQuestions": ["P11"]
+      "sectionQuestions": ["P11", "P12", "P13", "P14", "P15", "P16", "P17", "P18", "P19"]
+    },
+    "3_9_9_9_3": {
+      "sectionTitle": "9.9.9.3. Shared Egress Facilities",
+      "sectionQuestions": ["P20", "P21", "P22", "P23", "P24", "P25", "P26", "P28"]
     }
   },
   "questions": {
-    "P1": {
+    "P2": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Is this location a <defined-term>dwelling unit</defined-term>?",
+      "questionText": "How many <defined-term override-term='storey'>storeys</defined-term> does this <defined-term>dwelling unit</defined-term> have?",
+      "questionSubtext": "This tool will evaluate the means of egress from individual dwelling units, until advised otherwise, please evaluate all answers based on a single dwelling unit within the <defined-term>building</defined-term>.",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Article 9.9.9.1.",
         "codeNumber": "v2-db-9.9.9.1."
       },
       "possibleAnswers": [
         {
-          "answerDisplayText": "Yes",
-          "answerValue": "true"
+          "answerDisplayText": "1 storey",
+          "answerValue": "1"
         },
         {
-          "answerDisplayText": "No",
-          "answerValue": "false"
+          "answerDisplayText": "1 storey + <defined-term>basement</defined-term>",
+          "answerValue": "1B"
+        },
+        {
+          "answerDisplayText": "2 storeys",
+          "answerValue": "2"
+        },
+        {
+          "answerDisplayText": "2 storeys + basement",
+          "answerValue": "2B"
+        },
+        {
+          "answerDisplayText": "3 storeys",
+          "answerValue": "3"
+        },
+        {
+          "answerDisplayText": "3 storeys + basement",
+          "answerValue": "3B"
+        },
+        {
+          "answerDisplayText": "More than 3 storeys",
+          "answerValue": "4"
         }
       ],
       "nextNavigationLogic": [
         {
           "nextLogicType": "equal",
-          "answerToCheck": "P1",
-          "answerValue": "true",
-          "nextNavigateTo": "P6"
+          "answerToCheck": "P2",
+          "answerValue": "1",
+          "nextNavigateTo": "P11"
+        },
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P2",
+          "answerValue": "4",
+          "nextNavigateTo": "R1_1"
         },
         {
           "nextLogicType": "fallback",
-          "nextNavigateTo": "P11"
+          "nextNavigateTo": "P3"
+        }
+      ]
+    },
+    "P3": {
+      "walkthroughItemType": "multiChoiceMultiple",
+      "answersAreDynamic": true,
+      "storeAnswerAsObject": true,
+      "questionText": "Which of the following <defined-term override-term='storey'>storeys</defined-term> within the <defined-term>dwelling unit</defined-term> have an egress or <defined-term>exit</defined-term> doors on that storey?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Article 9.9.9.1.",
+        "codeNumber": "v2-db-9.9.9.1."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "<defined-term>Basement</defined-term>",
+          "answerValue": "B",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P2",
+              "answerValue": "1B"
+            },
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P2",
+              "answerValue": "2B"
+            },
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P2",
+              "answerValue": "3B"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 1",
+          "answerValue": "1",
+          "showAnswerIf": true
+        },
+        {
+          "answerDisplayText": "Level 2",
+          "answerValue": "2",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P2",
+              "answerValue": "2"
+            },
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P2",
+              "answerValue": "2B"
+            },
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P2",
+              "answerValue": "3"
+            },
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P2",
+              "answerValue": "3B"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 3",
+          "answerValue": "3",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P2",
+              "answerValue": "3"
+            },
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P2",
+              "answerValue": "3B"
+            }
+          ]
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P4"
+        }
+      ]
+    },
+    "P4": {
+      "walkthroughItemType": "variable",
+      "variableToSet": {
+        "variableType": "object",
+        "variableName": "P4",
+        "variableValue": {
+          "B": [
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.B",
+              "answerValue": "undefined",
+              "variableValueToSet": "undefined"
+            },
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.B",
+              "answerValue": "true",
+              "variableValueToSet": "0"
+            },
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.1",
+              "answerValue": "true",
+              "variableValueToSet": "1"
+            },
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.2",
+              "answerValue": "true",
+              "variableValueToSet": "2"
+            },
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.3",
+              "answerValue": "true",
+              "variableValueToSet": "3"
+            }
+          ],
+          "1": [
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.1",
+              "answerValue": "true",
+              "variableValueToSet": "0"
+            },
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.B",
+              "answerValue": "true",
+              "variableValueToSet": "1"
+            },
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.2",
+              "answerValue": "true",
+              "variableValueToSet": "1"
+            },
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.3",
+              "answerValue": "true",
+              "variableValueToSet": "2"
+            }
+          ],
+          "2": [
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.2",
+              "answerValue": "undefined",
+              "variableValueToSet": "undefined"
+            },
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.2",
+              "answerValue": "true",
+              "variableValueToSet": "0"
+            },
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.1",
+              "answerValue": "true",
+              "variableValueToSet": "1"
+            },
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.3",
+              "answerValue": "true",
+              "variableValueToSet": "1"
+            },
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.B",
+              "answerValue": "true",
+              "variableValueToSet": "2"
+            }
+          ],
+          "3": [
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.3",
+              "answerValue": "undefined",
+              "variableValueToSet": "undefined"
+            },
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.3",
+              "answerValue": "true",
+              "variableValueToSet": "0"
+            },
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.2",
+              "answerValue": "true",
+              "variableValueToSet": "1"
+            },
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.1",
+              "answerValue": "true",
+              "variableValueToSet": "2"
+            },
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P3.B",
+              "answerValue": "true",
+              "variableValueToSet": "3"
+            }
+          ]
+        }
+      },
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P5"
+        }
+      ]
+    },
+    "P5": {
+      "walkthroughItemType": "multiChoiceMultiple",
+      "answersAreDynamic": true,
+      "storeAnswerAsObject": true,
+      "isNotRequired": true,
+      "questionText": "Which level(s) with greater than 1 storey of travel to an <defined-term>exit</defined-term> of the <defined-term>dwelling unit</defined-term> have access to a balcony on that level?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Article 9.9.9.1.",
+        "codeNumber": "v2-db-9.9.9.1."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "<defined-term>Basement</defined-term>",
+          "answerValue": "B",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "greaterThan",
+              "answerToCheck": "P4.B",
+              "answerValue": "1"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 1",
+          "answerValue": "1",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "greaterThan",
+              "answerToCheck": "P4.1",
+              "answerValue": "1"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 2",
+          "answerValue": "2",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "greaterThan",
+              "answerToCheck": "P4.2",
+              "answerValue": "1"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 3",
+          "answerValue": "3",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "greaterThan",
+              "answerToCheck": "P4.3",
+              "answerValue": "1"
+            }
+          ]
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P6"
         }
       ]
     },
     "P6": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Is this <defined-term>dwelling unit</defined-term> above another <defined-term>dwelling unit</defined-term>?",
+      "questionText": "Is this <defined-term>dwelling unit</defined-term> above another dwelling unit?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Article 9.9.9.1.",
         "codeNumber": "v2-db-9.9.9.1."
@@ -73,51 +387,1710 @@
           "nextLogicType": "equal",
           "answerToCheck": "P6",
           "answerValue": "true",
-          "nextNavigateTo": "P11"
+          "nextNavigateTo": "P8F"
         },
         {
           "nextLogicType": "fallback",
-          "nextNavigateTo": "R30"
+          "nextNavigateTo": "P7"
+        }
+      ]
+    },
+    "P7": {
+      "walkthroughItemType": "multiChoiceMultiple",
+      "answersAreDynamic": true,
+      "storeAnswerAsObject": true,
+      "isNotRequired": true,
+      "questionText": "Which level(s) of the <defined-term>dwelling unit</defined-term> have access to an openable window that is at least 1m high and 0.55m wide at that level?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Article 9.9.9.1.",
+        "codeNumber": "v2-db-9.9.9.1."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "<defined-term>Basement</defined-term>",
+          "answerValue": "B",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P5.B",
+              "answerValue": "false"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 1",
+          "answerValue": "1",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P5.1",
+              "answerValue": "false"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 2",
+          "answerValue": "2",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P5.2",
+              "answerValue": "false"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 3",
+          "answerValue": "3",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P5.3",
+              "answerValue": "false"
+            }
+          ]
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "or",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.B",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P7.B",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.1",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P7.1",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.2",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P7.2",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.3",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P7.3",
+                  "answerValue": "false"
+                }
+              ]
+            }
+          ],
+          "nextNavigateTo": "R1_2"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P8"
+        }
+      ]
+    },
+    "P8F": {
+      "walkthroughItemType": "variable",
+      "variableToSet": {
+        "variableType": "object",
+        "variableName": "P8",
+        "variableValue": {
+          "B": [
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P5.B",
+              "answerValue": "undefined",
+              "variableValueToSet": "undefined"
+            },
+            {
+              "variableValueLogicType": "fallback",
+              "variableValueToSet": "false"
+            }
+          ],
+          "1": [
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P5.1",
+              "answerValue": "undefined",
+              "variableValueToSet": "undefined"
+            },
+            {
+              "variableValueLogicType": "fallback",
+              "variableValueToSet": "false"
+            }
+          ],
+          "2": [
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P5.2",
+              "answerValue": "undefined",
+              "variableValueToSet": "undefined"
+            },
+            {
+              "variableValueLogicType": "fallback",
+              "variableValueToSet": "false"
+            }
+          ],
+          "3": [
+            {
+              "variableValueLogicType": "equals",
+              "answerToCheck": "P5.3",
+              "answerValue": "undefined",
+              "variableValueToSet": "undefined"
+            },
+            {
+              "variableValueLogicType": "fallback",
+              "variableValueToSet": "false"
+            }
+          ]
+        }
+      },
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "or",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.B",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P8.B",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.1",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P8.1",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.2",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P8.2",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.3",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P8.3",
+                  "answerValue": "false"
+                }
+              ]
+            }
+          ],
+          "nextNavigateTo": "R1_2"
+        },
+        {
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "or",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P5.B",
+                      "answerValue": "true"
+                    },
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P8.B",
+                      "answerValue": "true"
+                    }
+                  ]
+                },
+                {
+                  "nextLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "and",
+                      "valuesToCheck": [
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P5.B",
+                          "answerValue": "true"
+                        },
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P8.B",
+                          "answerValue": "true"
+                        }
+                      ]
+                    },
+                    {
+                      "nextLogicType": "lessThan",
+                      "answerToCheck": "P4.B",
+                      "answerValue": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "nextLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "or",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P5.1",
+                      "answerValue": "true"
+                    },
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P8.1",
+                      "answerValue": "true"
+                    }
+                  ]
+                },
+                {
+                  "nextLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "and",
+                      "valuesToCheck": [
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P5.1",
+                          "answerValue": "true"
+                        },
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P8.1",
+                          "answerValue": "true"
+                        }
+                      ]
+                    },
+                    {
+                      "nextLogicType": "lessThan",
+                      "answerToCheck": "P4.1",
+                      "answerValue": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "nextLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "or",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P5.2",
+                      "answerValue": "true"
+                    },
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P8.2",
+                      "answerValue": "true"
+                    }
+                  ]
+                },
+                {
+                  "nextLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "and",
+                      "valuesToCheck": [
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P5.2",
+                          "answerValue": "true"
+                        },
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P8.2",
+                          "answerValue": "true"
+                        }
+                      ]
+                    },
+                    {
+                      "nextLogicType": "lessThan",
+                      "answerToCheck": "P4.2",
+                      "answerValue": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "nextLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "or",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P5.3",
+                      "answerValue": "true"
+                    },
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P8.3",
+                      "answerValue": "true"
+                    }
+                  ]
+                },
+                {
+                  "nextLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "and",
+                      "valuesToCheck": [
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P5.3",
+                          "answerValue": "true"
+                        },
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P8.3",
+                          "answerValue": "true"
+                        }
+                      ]
+                    },
+                    {
+                      "nextLogicType": "lessThan",
+                      "answerToCheck": "P4.3",
+                      "answerValue": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "nextNavigateTo": "P9"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R1_2"
+        }
+      ]
+    },
+    "P8": {
+      "walkthroughItemType": "multiChoiceMultiple",
+      "answersAreDynamic": true,
+      "storeAnswerAsObject": true,
+      "isNotRequired": true,
+      "questionText": "On which level(s) is the window less than 1m above the finish floor level and less than 7m above adjacent ground level?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Article 9.9.9.1.",
+        "codeNumber": "v2-db-9.9.9.1."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "<defined-term>Basement</defined-term>",
+          "answerValue": "B",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P7.B",
+              "answerValue": "true"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 1",
+          "answerValue": "1",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P7.1",
+              "answerValue": "true"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 2",
+          "answerValue": "2",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P7.2",
+              "answerValue": "true"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 3",
+          "answerValue": "3",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P7.3",
+              "answerValue": "true"
+            }
+          ]
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "or",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.B",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P8.B",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.1",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P8.1",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.2",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P8.2",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.3",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P8.3",
+                  "answerValue": "false"
+                }
+              ]
+            }
+          ],
+          "nextNavigateTo": "R1_2"
+        },
+        {
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "or",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P5.B",
+                      "answerValue": "true"
+                    },
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P8.B",
+                      "answerValue": "true"
+                    }
+                  ]
+                },
+                {
+                  "nextLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "and",
+                      "valuesToCheck": [
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P5.B",
+                          "answerValue": "true"
+                        },
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P8.B",
+                          "answerValue": "true"
+                        }
+                      ]
+                    },
+                    {
+                      "nextLogicType": "lessThan",
+                      "answerToCheck": "P4.B",
+                      "answerValue": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "nextLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "or",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P5.1",
+                      "answerValue": "true"
+                    },
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P8.1",
+                      "answerValue": "true"
+                    }
+                  ]
+                },
+                {
+                  "nextLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "and",
+                      "valuesToCheck": [
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P5.1",
+                          "answerValue": "true"
+                        },
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P8.1",
+                          "answerValue": "true"
+                        }
+                      ]
+                    },
+                    {
+                      "nextLogicType": "lessThan",
+                      "answerToCheck": "P4.1",
+                      "answerValue": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "nextLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "or",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P5.2",
+                      "answerValue": "true"
+                    },
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P8.2",
+                      "answerValue": "true"
+                    }
+                  ]
+                },
+                {
+                  "nextLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "and",
+                      "valuesToCheck": [
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P5.2",
+                          "answerValue": "true"
+                        },
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P8.2",
+                          "answerValue": "true"
+                        }
+                      ]
+                    },
+                    {
+                      "nextLogicType": "lessThan",
+                      "answerToCheck": "P4.2",
+                      "answerValue": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "nextLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "or",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P5.3",
+                      "answerValue": "true"
+                    },
+                    {
+                      "nextLogicType": "equal",
+                      "answerToCheck": "P8.3",
+                      "answerValue": "true"
+                    }
+                  ]
+                },
+                {
+                  "nextLogicType": "and",
+                  "valuesToCheck": [
+                    {
+                      "nextLogicType": "and",
+                      "valuesToCheck": [
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P5.3",
+                          "answerValue": "true"
+                        },
+                        {
+                          "nextLogicType": "notEqual",
+                          "answerToCheck": "P8.3",
+                          "answerValue": "true"
+                        }
+                      ]
+                    },
+                    {
+                      "nextLogicType": "lessThan",
+                      "answerToCheck": "P4.3",
+                      "answerValue": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "nextNavigateTo": "P9"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R1_2"
+        }
+      ]
+    },
+    "P9": {
+      "walkthroughItemType": "multiChoiceMultiple",
+      "answersAreDynamic": true,
+      "storeAnswerAsObject": true,
+      "isNotRequired": true,
+      "questionText": "On which level(s) is the door an egress door to a <defined-term>public corridor</defined-term>, enclosed <defined-term>exit</defined-term> stair, or passageway?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Article 9.9.9.1.",
+        "codeNumber": "v2-db-9.9.9.1."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "<defined-term>Basement</defined-term>",
+          "answerValue": "B",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P3.B",
+              "answerValue": "true"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 1",
+          "answerValue": "1",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P3.1",
+              "answerValue": "true"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 2",
+          "answerValue": "2",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P3.2",
+              "answerValue": "true"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 3",
+          "answerValue": "3",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P3.3",
+              "answerValue": "true"
+            }
+          ]
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P10"
+        }
+      ]
+    },
+    "P10": {
+      "walkthroughItemType": "multiChoiceMultiple",
+      "answersAreDynamic": true,
+      "storeAnswerAsObject": true,
+      "isNotRequired": true,
+      "questionText": "On which level(s) is the egress door an <defined-term>exit</defined-term> doorway that is not more than 1.5m above adjacent ground level?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Article 9.9.9.1.",
+        "codeNumber": "v2-db-9.9.9.1."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "<defined-term>Basement</defined-term>",
+          "answerValue": "B",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P9.B",
+              "answerValue": "false"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 1",
+          "answerValue": "1",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P9.1",
+              "answerValue": "false"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 2",
+          "answerValue": "2",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P9.2",
+              "answerValue": "false"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 3",
+          "answerValue": "3",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P9.3",
+              "answerValue": "false"
+            }
+          ]
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "or",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P9.B",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P10.B",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P9.1",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P10.1",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P9.2",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P10.2",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P9.3",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P10.3",
+                  "answerValue": "false"
+                }
+              ]
+            }
+          ],
+          "nextNavigateTo": "R1_2"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P11"
         }
       ]
     },
     "P11": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "How many <defined-term override-term='dwelling unit'>dwelling units</defined-term> are in this <defined-term>building</defined-term>?",
+      "questionText": "Are there more than 2 <defined-term override-term='dwelling unit'>dwelling units</defined-term> in this <defined-term>building</defined-term>?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Article 9.9.9.2.",
         "codeNumber": "v2-db-9.9.9.2."
       },
       "possibleAnswers": [
         {
-          "answerDisplayText": "1-2",
-          "answerValue": "2"
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
         },
         {
-          "answerDisplayText": "Greater than 2",
-          "answerValue": "3"
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P12"
+        }
+      ]
+    },
+    "P12": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Is this <defined-term>dwelling unit</defined-term> provided with at least two separate <defined-term>means of egress</defined-term>?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Article 9.9.9.2.",
+        "codeNumber": "v2-db-9.9.9.2."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
         }
       ],
       "nextNavigationLogic": [
         {
           "nextLogicType": "equal",
-          "answerToCheck": "P11",
-          "answerValue": "2",
-          "nextNavigateTo": "R10"
+          "answerToCheck": "P12",
+          "answerValue": "true",
+          "nextNavigateTo": "R1_3"
         },
         {
           "nextLogicType": "fallback",
-          "nextNavigateTo": "R30"
+          "nextNavigateTo": "P13"
+        }
+      ]
+    },
+    "P13": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Does this <defined-term>dwelling unit</defined-term>’s egress door open onto a <defined-term>public corridor</defined-term> or an exterior passageway?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Article 9.9.9.2.",
+        "codeNumber": "v2-db-9.9.9.2."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P13",
+          "answerValue": "false",
+          "nextNavigateTo": "P21"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P14"
+        }
+      ]
+    },
+    "P14": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Where the egress door opens onto the corridor or exterior passageway, is it possible to go in opposite directions to 2 separate <defined-term override-term='exit'>exits</defined-term>?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Article 9.9.9.2.",
+        "codeNumber": "v2-db-9.9.9.2."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P14",
+          "answerValue": "true",
+          "nextNavigateTo": "R1_3"
+        },
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P11",
+          "answerValue": "true",
+          "nextNavigateTo": "R1_1"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P15"
+        }
+      ]
+    },
+    "P15": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Does the egress door of this <defined-term>dwelling unit</defined-term> open onto a corridor that meets the requirements of <pdf-download-link number='99731' named-dest='9.9.7.3. Dead-End Corridors'>Sentence 9.9.7.3.(1)</pdf-download-link>?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Article 9.9.9.2.",
+        "codeNumber": "v2-db-9.9.9.2."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P15",
+          "answerValue": "true",
+          "nextNavigateTo": "P17"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P16"
+        }
+      ]
+    },
+    "P16": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Is the <defined-term>building</defined-term> <defined-term>sprinklered</defined-term>?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Article 9.9.9.2.",
+        "codeNumber": "v2-db-9.9.9.2."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P16",
+          "answerValue": "false",
+          "nextNavigateTo": "R1_2"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P17"
+        }
+      ]
+    },
+    "P17": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Does this <defined-term>building</defined-term> meet the definition of a <defined-term>secondary suite</defined-term>?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Article 9.9.9.2.",
+        "codeNumber": "v2-db-9.9.9.2."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P15",
+              "answerValue": "true"
+            },
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P17",
+              "answerValue": "true"
+            }
+          ],
+          "nextNavigateTo": "P20"
+        },
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P15",
+          "answerValue": "true",
+          "nextNavigateTo": "P22"
+        },
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P17",
+          "answerValue": "false",
+          "nextNavigateTo": "R1_2"
+        },
+        {
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P10.B",
+                  "answerValue": "undefined"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P10.B",
+                  "answerValue": "true"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P10.1",
+                  "answerValue": "undefined"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P10.1",
+                  "answerValue": "true"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P10.2",
+                  "answerValue": "undefined"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P10.2",
+                  "answerValue": "true"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P10.3",
+                  "answerValue": "undefined"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P10.3",
+                  "answerValue": "true"
+                }
+              ]
+            }
+          ],
+          "nextNavigateTo": "P18"
+        },
+        {
+          "nextLogicType": "or",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P5.B",
+              "answerValue": "true"
+            },
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P5.1",
+              "answerValue": "true"
+            },
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P5.2",
+              "answerValue": "true"
+            },
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P5.3",
+              "answerValue": "true"
+            }
+          ],
+          "nextNavigateTo": "P19"
+        },
+        {
+          "nextLogicType": "or",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P8.B",
+              "answerValue": "true"
+            },
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P8.1",
+              "answerValue": "true"
+            },
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P8.2",
+              "answerValue": "true"
+            },
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P8.3",
+              "answerValue": "true"
+            }
+          ],
+          "nextNavigateTo": "P19"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R1_2"
+        }
+      ]
+    },
+    "P18": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Does this <defined-term>dwelling unit</defined-term> have separate and direct access to the balcony(s) on level(s): <answer-value answer='P5'></answer-value>?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Article 9.9.9.2.",
+        "codeNumber": "v2-db-9.9.9.2."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P18",
+          "answerValue": "true",
+          "nextNavigateTo": "P20"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R1_2"
+        }
+      ]
+    },
+    "P19": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Does this <defined-term>dwelling unit</defined-term> have separate and direct access to openable window(s) on level(s): <answer-value answer='P8'></answer-value>?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Article 9.9.9.2.",
+        "codeNumber": "v2-db-9.9.9.2."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P19",
+          "answerValue": "false",
+          "nextNavigateTo": "P20"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R1_2"
+        }
+      ]
+    },
+    "P20": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Is this <defined-term>dwelling unit</defined-term> located above another <defined-term>dwelling unit</defined-term> or common space?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Article 9.9.9.3.",
+        "codeNumber": "v2-db-9.9.9.3."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P20",
+          "answerValue": "true",
+          "nextNavigateTo": "P28"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P21"
+        }
+      ]
+    },
+    "P21": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Does the egress door of this <defined-term>dwelling unit</defined-term> open onto a shared egress facility (corridor, passageway, stair, <defined-term>ramp</defined-term>, etc.) that is served by a single stair or <defined-term>ramp</defined-term>?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Article 9.9.9.3.",
+        "codeNumber": "v2-db-9.9.9.3."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P21",
+              "answerValue": "true"
+            },
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P13",
+              "answerValue": "false"
+            }
+          ],
+          "nextNavigateTo": "R1_3"
+        },
+        {
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P21",
+              "answerValue": "true"
+            },
+            {
+              "nextLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.B",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.1",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.2",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.3",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P8.B",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P8.1",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P8.2",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P8.3",
+                  "answerValue": "true"
+                }
+              ]
+            }
+          ],
+          "nextNavigateTo": "R1_3"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R1_2"
+        }
+      ]
+    },
+    "P22": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Does the egress door of this <defined-term>dwelling unit</defined-term> open onto an <defined-term>exit</defined-term> stair, <defined-term>public corridor</defined-term>, exterior passageway, or balcony, that serves more than one <defined-term>suite</defined-term>?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Article 9.9.9.3.",
+        "codeNumber": "v2-db-9.9.9.3."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P22",
+          "answerValue": "false",
+          "nextNavigateTo": "R1_3"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P23"
+        }
+      ]
+    },
+    "P23": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "The egress door of the <defined-term>dwelling unit</defined-term> opens onto ...",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Article 9.9.9.3.",
+        "codeNumber": "v2-db-9.9.9.3."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "An <defined-term>exit</defined-term> stairway",
+          "answerValueDisplay": "exit stairway",
+          "answerValue": "A"
+        },
+        {
+          "answerDisplayText": "A <defined-term>public corridor</defined-term>",
+          "answerValueDisplay": "public corridor",
+          "answerValue": "B"
+        },
+        {
+          "answerDisplayText": "An exterior passageway",
+          "answerValueDisplay": "exterior passageway",
+          "answerValue": "C"
+        },
+        {
+          "answerDisplayText": "A balcony",
+          "answerValueDisplay": "balcony",
+          "answerValue": "D"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P23",
+          "answerValue": "A",
+          "nextNavigateTo": "R1_2"
+        },
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P23",
+          "answerValue": "B",
+          "nextNavigateTo": "P24"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P25"
+        }
+      ]
+    },
+    "P24": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Is the <defined-term>public corridor</defined-term> served by a single <defined-term>exit</defined-term>?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Article 9.9.9.3.",
+        "codeNumber": "v2-db-9.9.9.3."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P24",
+          "answerValue": "false",
+          "nextNavigateTo": "R1_3"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R1_2"
+        }
+      ]
+    },
+    "P25": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Is the <answer-value answer='P23'></answer-value> served by a single <defined-term>exit</defined-term> stairway or <defined-term>ramp</defined-term>?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Article 9.9.9.3.",
+        "codeNumber": "v2-db-9.9.9.3."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P25",
+          "answerValue": "true",
+          "nextNavigateTo": "P26"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R1_3"
+        }
+      ]
+    },
+    "P26": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Is the <answer-value answer='P23'></answer-value> no more than 1.5m above adjacent ground level?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Article 9.9.9.3.",
+        "codeNumber": "v2-db-9.9.9.3."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P26",
+          "answerValue": "true",
+          "nextNavigateTo": "R1_3"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R1_2"
+        }
+      ]
+    },
+    "P28": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Based on the provided building characteristics the <defined-term>dwelling unit</defined-term> must be provided with the items listed below to meet the provisions of the BC Building Code 2024. Are these provided for this dwelling unit?",
+      "questionSubtext": "<ul><li>an exterior passageway that has a floor assembly with a <defined-term>fire-resistance rating</defined-term> less than 45 min</li><li>be served by a single <defined-term>exit</defined-term> stairway or <defined-term>ramp</defined-term></li><li>be located more than 1.5 m above adjacent ground level</li></ul>",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Article 9.9.9.3.",
+        "codeNumber": "v2-db-9.9.9.3."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P28",
+          "answerValue": "true",
+          "nextNavigateTo": "R1_3"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R1_1"
         }
       ]
     }
   },
   "results": {
-    "R10": {
-      "resultDisplayMessage": "<p>Based on the building characteristics provided, this dwelling unit meets the provision of Subsection <building-code reference='9.9.9'>9.9.9. ‘Egress from Dwelling Units’</building-code>.</p>"
+    "R1_1": {
+      "resultDisplayMessage": "<p>Based on your selections the height of this <defined-term>dwelling unit</defined-term> exceeds the maximum height of the <defined-term>building</defined-term> and the maximum height permitted for a Part 9 Building. Based on this the building can not be newly constructed to Part 9 of the BC Building Code. Please review your selections for error, if the height of the building exceeds 3 <defined-term override-term='storey'>storeys</defined-term> the building will need to be designed in accordance with Parts 3, 4, 5, and 6 in place of Part 9. This tool only evaluates the Building Code compliance of buildings designed in accordance with Part 9 of the BC Building Code 2024, if there are no errors in your selections, please contact the appropriate required design professionals for this building.</p>"
     },
-    "R30": {
-      "resultDisplayMessage": "<p>Based on the building characteristics provided this dwelling unit or building is not governed by Part 9 of the Building Code or is not a dwelling unit. This tool is only designed to address the egress from dwelling units of Part 9 buildings.</p>"
+    "R1_2": {
+      "resultDisplayMessage": "Based on your selections this <defined-term>building</defined-term> does not comply with the BC Building Code 2024 as this <defined-term>dwelling unit</defined-term> is not provided with a Building Code Compliant means of egress."
+    },
+    "R1_3": {
+      "resultDisplayMessage": "The evaluated <defined-term>dwelling unit</defined-term> has been deemed to satisfy all requirements of Subsection 9.9.9. of the Building Code. If there are additional dwelling units within this <defined-term>building</defined-term> that have not had their means of egress evaluated for compliance with the BC Building Code 2024 click \"Start Over\" below."
     }
   }
 }
