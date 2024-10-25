@@ -10,6 +10,7 @@ import {
   TESTID_RESULT,
   GET_TESTID_RESULT_BANNER,
   TESTID_RESULT_RETURN_TO_HOME,
+  TESTID_RESULT_CONTINUE,
 } from "@repo/constants/src/testids";
 import { EnumBuildingTypes } from "@repo/constants/src/constants";
 import { URLS_GET_BUILDING_TYPE } from "@repo/constants/src/urls";
@@ -124,6 +125,7 @@ const Result = observer((): JSX.Element => {
                     variant="primary"
                     showAsButton
                     isLargeButton
+                    data-testid={TESTID_RESULT_CONTINUE}
                   >
                     Continue
                   </Link>
@@ -133,11 +135,13 @@ const Result = observer((): JSX.Element => {
           );
         })}
         {showReturnToHome && (
-          <div
-            className="web-Result--ReturnToHome p-hide"
-            data-testid={TESTID_RESULT_RETURN_TO_HOME}
-          >
-            <Link href={"/"} variant="secondary" showAsButton>
+          <div className="web-Result--ReturnToHome p-hide">
+            <Link
+              href={"/"}
+              variant="secondary"
+              showAsButton
+              data-testid={TESTID_RESULT_RETURN_TO_HOME}
+            >
               Return to Home
             </Link>
           </div>

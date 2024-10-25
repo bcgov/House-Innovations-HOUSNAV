@@ -8,6 +8,7 @@ import {
   TESTID_RESULT_PDF_BUTTON,
   TESTID_RESULT_PRINT_CONTENT,
   TESTID_RESULT_RETURN_TO_HOME,
+  GET_TESTID_LINK,
 } from "@repo/constants/src/testids";
 import {
   EnumBuildingTypes,
@@ -72,7 +73,9 @@ describe("Result", () => {
     expect(getByTestId(GET_TESTID_RESULT_BANNER())).toBeInTheDocument();
 
     // expect return to home not to be in the document
-    expect(queryByTestId(TESTID_RESULT_RETURN_TO_HOME)).not.toBeInTheDocument();
+    expect(
+      queryByTestId(GET_TESTID_LINK(TESTID_RESULT_RETURN_TO_HOME)),
+    ).not.toBeInTheDocument();
   });
   // hide pdf
   it("does not render pdf button when resultsHidePDF is true", () => {
@@ -128,6 +131,8 @@ describe("Result", () => {
       data: walkthroughData,
     });
 
-    expect(getByTestId(TESTID_RESULT_RETURN_TO_HOME)).toBeInTheDocument();
+    expect(
+      getByTestId(GET_TESTID_LINK(TESTID_RESULT_RETURN_TO_HOME)),
+    ).toBeInTheDocument();
   });
 });
