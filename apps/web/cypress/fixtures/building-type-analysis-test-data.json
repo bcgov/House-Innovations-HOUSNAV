@@ -1,0 +1,47 @@
+{
+  "walkthroughs": [
+    {
+      "title": "Questions For Single-Dwelling",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "checkbox",
+          "answer": "2, 1"
+        },
+        {
+          "question": "P02",
+          "type": "radio",
+          "answer": "yes"
+        }
+      ],
+      "result": "R01"
+    },
+    {
+      "title": "Questions For Multi-Dwelling",
+      "steps": [
+        {
+          "question": "P01",
+          "type": "checkbox",
+          "answer": "1, 3"
+        },
+        {
+          "question": "P02",
+          "type": "radio",
+          "answer": "yes"
+        }
+      ],
+      "result": "R02"
+    },
+    {
+      "title": "Questions For Not Applicable",
+      "steps": [
+          {
+          "question": "P01",
+          "type": "checkbox",
+          "answer": "4"
+          }
+      ],
+      "result": "R00"
+    }
+  ]
+}
