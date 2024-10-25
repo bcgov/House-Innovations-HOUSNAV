@@ -4,6 +4,9 @@ import { describe, it, expect } from "vitest";
 import data from "./wt-building-type-analysis.json";
 
 describe("Data - Building Type Analysis", () => {
+  it("verify the $schema property is present", () => {
+    expect(data).toHaveProperty("$schema");
+  });
   it("verify all questions either appear in a section", () => {
     // iterate through each question and check if it appears in a section
     const possibleUnusedQuestion = Object.keys(data.questions).find(
