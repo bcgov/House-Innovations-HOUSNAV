@@ -30,7 +30,7 @@
           "answerValue": "2"
         },
         {
-          "answerDisplayText": "This building is a multi-dwelling unit with no other <defined-term override-term='major occupancy'>major occupancies</defined-term> (including single-family house with a <defined-term>secondary suite</defined-term>)",
+          "answerDisplayText": "This building has multiple dwelling units with no other <defined-term override-term='major occupancy'>major occupancies</defined-term> (including a single-family house with a <defined-term>secondary suite</defined-term>)",
           "answerValue": "3"
         },
         {
