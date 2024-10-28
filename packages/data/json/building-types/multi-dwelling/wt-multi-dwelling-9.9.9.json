@@ -18,7 +18,7 @@
     },
     "3_9_9_9_3": {
       "sectionTitle": "9.9.9.3. Shared Egress Facilities",
-      "sectionQuestions": ["P20", "P21", "P22", "P23", "P24", "P25", "P26", "P28"]
+      "sectionQuestions": ["P20", "P21", "P21P17", "P21P5", "P21P7", "P21P8", "P22", "P23", "P24", "P25", "P26", "P28"]
     }
   },
   "questions": {
@@ -1573,67 +1573,27 @@
           "nextNavigateTo": "R1_2"
         },
         {
-          "nextLogicType": "and",
+          "nextLogicType": "or",
           "valuesToCheck": [
             {
-              "nextLogicType": "or",
-              "valuesToCheck": [
-                {
-                  "nextLogicType": "equal",
-                  "answerToCheck": "P10.B",
-                  "answerValue": "undefined"
-                },
-                {
-                  "nextLogicType": "equal",
-                  "answerToCheck": "P10.B",
-                  "answerValue": "true"
-                }
-              ]
+              "nextLogicType": "equal",
+              "answerToCheck": "P10.B",
+              "answerValue": "true"
             },
             {
-              "nextLogicType": "or",
-              "valuesToCheck": [
-                {
-                  "nextLogicType": "equal",
-                  "answerToCheck": "P10.1",
-                  "answerValue": "undefined"
-                },
-                {
-                  "nextLogicType": "equal",
-                  "answerToCheck": "P10.1",
-                  "answerValue": "true"
-                }
-              ]
+              "nextLogicType": "equal",
+              "answerToCheck": "P10.1",
+              "answerValue": "true"
             },
             {
-              "nextLogicType": "or",
-              "valuesToCheck": [
-                {
-                  "nextLogicType": "equal",
-                  "answerToCheck": "P10.2",
-                  "answerValue": "undefined"
-                },
-                {
-                  "nextLogicType": "equal",
-                  "answerToCheck": "P10.2",
-                  "answerValue": "true"
-                }
-              ]
+              "nextLogicType": "equal",
+              "answerToCheck": "P10.2",
+              "answerValue": "true"
             },
             {
-              "nextLogicType": "or",
-              "valuesToCheck": [
-                {
-                  "nextLogicType": "equal",
-                  "answerToCheck": "P10.3",
-                  "answerValue": "undefined"
-                },
-                {
-                  "nextLogicType": "equal",
-                  "answerToCheck": "P10.3",
-                  "answerValue": "true"
-                }
-              ]
+              "nextLogicType": "equal",
+              "answerToCheck": "P10.3",
+              "answerValue": "true"
             }
           ],
           "nextNavigateTo": "P18"
@@ -1747,7 +1707,7 @@
         {
           "nextLogicType": "equal",
           "answerToCheck": "P19",
-          "answerValue": "false",
+          "answerValue": "true",
           "nextNavigateTo": "P20"
         },
         {
@@ -1810,7 +1770,7 @@
             {
               "nextLogicType": "equal",
               "answerToCheck": "P21",
-              "answerValue": "true"
+              "answerValue": "false"
             },
             {
               "nextLogicType": "equal",
@@ -1877,8 +1837,452 @@
           "nextNavigateTo": "R1_3"
         },
         {
+          "nextLogicType": "equal",
+          "answerToCheck": "P13",
+          "answerValue": "false",
+          "nextNavigateTo": "P21P17"
+        },
+        {
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P21",
+              "answerValue": "true"
+            },
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P5.B",
+              "answerValue": "undefined"
+            },
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P5.1",
+              "answerValue": "undefined"
+            },
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P5.2",
+              "answerValue": "undefined"
+            },
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P5.3",
+              "answerValue": "undefined"
+            }
+          ],
+          "nextNavigateTo": "P21P5"
+        },
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P21",
+          "answerValue": "true",
+          "nextNavigateTo": "P21P7"
+        },
+        {
           "nextLogicType": "fallback",
           "nextNavigateTo": "R1_2"
+        }
+      ]
+    },
+    "P21P17": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Does this <defined-term>building</defined-term> meet the definition of a <defined-term>secondary suite</defined-term>?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Article 9.9.9.2.",
+        "codeNumber": "v2-db-9.9.9.2."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P21P17",
+          "answerValue": "false",
+          "nextNavigateTo": "R1_3"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R1_2"
+        }
+      ]
+    },
+    "P21P5": {
+      "walkthroughItemType": "multiChoiceMultiple",
+      "answersAreDynamic": true,
+      "storeAnswerAsObject": true,
+      "isNotRequired": true,
+      "questionText": "Which of the following <defined-term override-term='storey'>storeys</defined-term> within the <defined-term>dwelling unit</defined-term> have access to a balcony on that storey?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Article 9.9.9.1.",
+        "codeNumber": "v2-db-9.9.9.1."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "<defined-term>Basement</defined-term>",
+          "answerValue": "B",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P2",
+              "answerValue": "1B"
+            },
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P2",
+              "answerValue": "2B"
+            },
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P2",
+              "answerValue": "3B"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 1",
+          "answerValue": "1",
+          "showAnswerIf": true
+        },
+        {
+          "answerDisplayText": "Level 2",
+          "answerValue": "2",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P2",
+              "answerValue": "2"
+            },
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P2",
+              "answerValue": "2B"
+            },
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P2",
+              "answerValue": "3"
+            },
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P2",
+              "answerValue": "3B"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 3",
+          "answerValue": "3",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P2",
+              "answerValue": "3"
+            },
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P2",
+              "answerValue": "3B"
+            }
+          ]
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "or",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P21P5.B",
+              "answerValue": "true"
+            },
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P21P5.1",
+              "answerValue": "true"
+            },
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P21P5.2",
+              "answerValue": "true"
+            },
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P21P5.3",
+              "answerValue": "true"
+            }
+          ],
+          "nextNavigateTo": "R1_3"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P21P7"
+        }
+      ]
+    },
+    "P21P7": {
+      "walkthroughItemType": "multiChoiceMultiple",
+      "answersAreDynamic": true,
+      "storeAnswerAsObject": true,
+      "isNotRequired": true,
+      "questionText": "Which level(s) of the <defined-term>dwelling unit</defined-term> have access to an openable window that is at least 1m high and 0.55m wide at that level?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Article 9.9.9.1.",
+        "codeNumber": "v2-db-9.9.9.1."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "<defined-term>Basement</defined-term>",
+          "answerValue": "B",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P21P5.B",
+              "answerValue": "false"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 1",
+          "answerValue": "1",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P21P5.1",
+              "answerValue": "false"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 2",
+          "answerValue": "2",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P21P5.2",
+              "answerValue": "false"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 3",
+          "answerValue": "3",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P21P5.3",
+              "answerValue": "false"
+            }
+          ]
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "or",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P21P5.B",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P21P7.B",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P21P5.1",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P21P7.1",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P21P5.2",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P21P7.2",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P21P5.3",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P21P7.3",
+                  "answerValue": "false"
+                }
+              ]
+            }
+          ],
+          "nextNavigateTo": "R1_2"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P21P8"
+        }
+      ]
+    },
+    "P21P8": {
+      "walkthroughItemType": "multiChoiceMultiple",
+      "answersAreDynamic": true,
+      "storeAnswerAsObject": true,
+      "isNotRequired": true,
+      "questionText": "On which level(s) is the window less than 1m above the finish floor level and less than 7m above adjacent ground level?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Article 9.9.9.1.",
+        "codeNumber": "v2-db-9.9.9.1."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "<defined-term>Basement</defined-term>",
+          "answerValue": "B",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P21P7.B",
+              "answerValue": "true"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 1",
+          "answerValue": "1",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P21P7.1",
+              "answerValue": "true"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 2",
+          "answerValue": "2",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P21P7.2",
+              "answerValue": "true"
+            }
+          ]
+        },
+        {
+          "answerDisplayText": "Level 3",
+          "answerValue": "3",
+          "showAnswerIf": [
+            {
+              "showAnswerLogicType": "equals",
+              "answerToCheck": "P21P7.3",
+              "answerValue": "true"
+            }
+          ]
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "or",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P21P5.B",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P21P8.B",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P21P5.1",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P21P8.1",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P21P5.2",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P21P8.2",
+                  "answerValue": "false"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "and",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P21P5.3",
+                  "answerValue": "false"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P21P8.3",
+                  "answerValue": "false"
+                }
+              ]
+            }
+          ],
+          "nextNavigateTo": "R1_2"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R1_3"
         }
       ]
     },

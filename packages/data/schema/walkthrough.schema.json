@@ -82,7 +82,7 @@
           "type": "array",
           "items": {
             "type": "string",
-            "pattern": "^P\\d+$",
+            "pattern": "^P\\d+[a-zA-Z0-9]*$",
             "description": "Keys of the questions in the questions object. Include only the keys you want to show in the step tracker display."
           }
         }
