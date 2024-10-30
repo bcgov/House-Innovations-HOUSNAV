@@ -79,6 +79,22 @@
   font: var(--typography-regular-h4);
 }
 
+/* Button - Primary */
+.ui-Link.--button.--primary {
+  background: var(--surface-color-primary-button-default);
+  color: var(--icons-color-primary-invert);
+}
+.ui-Link.--button.--primary[aria-disabled] {
+  background-color: var(--surface-color-primary-button-disabled);
+  color: var(--typography-color-disabled);
+}
+.ui-Link.--button.--primary[data-hovered] {
+  background-color: var(--surface-color-primary-button-hover);
+}
+.ui-Link.--button.--primary[data-pressed] {
+  background-color: var(--surface-color-primary-button-default);
+}
+
 /* Button - Secondary */
 .ui-Link.--button.--secondary {
   background-color: var(--surface-color-secondary-button-default);

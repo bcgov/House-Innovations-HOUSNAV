@@ -18,7 +18,10 @@ import {
   WalkthroughsDataInterface,
   SectionData,
 } from "@repo/data/useWalkthroughsData";
-import { NEXT_NAVIGATION_ID_ERROR } from "@repo/constants/src/constants";
+import {
+  EnumWalkthroughIds,
+  NEXT_NAVIGATION_ID_ERROR,
+} from "@repo/constants/src/constants";
 // local
 import { NavigationStore } from "./NavigationStore";
 import { AnswerState, AnswerStore } from "./AnswerStore";
@@ -47,44 +50,54 @@ export class WalkthroughRootStore {
   answerStore: AnswerStore;
 
   results: Record<string, string> = {};
+  resultsDisplay = {
+    hideRelatedItems: false,
+    hidePDF: false,
+    hideBanner: false,
+    showReturnToHome: false,
+  };
 
   walkthroughsById = {} as Record<string, WalkthroughJSONInterface>;
   walkthroughsOrder: string[] = [];
 
   constructor(
-    walkthroughsData: WalkthroughsDataInterface,
+    walkthroughsData: WalkthroughsDataInterface<string>,
     initialAnswers?: AnswerState,
   ) {
     makeAutoObservable(this);
     this.walkthroughsById = walkthroughsData.walkthroughsById;
     this.walkthroughsOrder = walkthroughsData.walkthroughOrder;
 
+    this.resultsDisplay = {
+      hideRelatedItems: !!walkthroughsData.resultsDisplay?.hideRelatedItems,
+      hidePDF: !!walkthroughsData.resultsDisplay?.hidePDF,
+      hideBanner: !!walkthroughsData.resultsDisplay?.hideBanner,
+      showReturnToHome: !!walkthroughsData.resultsDisplay?.showReturnToHome,
+    };
+
     this.navigationStore = new NavigationStore(this);
     this.answerStore = new AnswerStore(this, initialAnswers);
 
     // set current question as the first question of the starting section of the starting walkthrough
-    if (
-      walkthroughsData.startingWalkthroughId &&
-      walkthroughsData.walkthroughsById[walkthroughsData.startingWalkthroughId]
-        .info?.startingSectionId &&
-      walkthroughsData.walkthroughsById[walkthroughsData.startingWalkthroughId]
-        .sections
-    ) {
-      const firstWalkthroughId = walkthroughsData.startingWalkthroughId;
-      const firstQuestionId =
-        walkthroughsData.walkthroughsById[firstWalkthroughId].sections[
-          walkthroughsData.walkthroughsById[firstWalkthroughId].info
-            .startingSectionId
-        ]?.sectionQuestions[0] || "";
+    const firstWalkthroughId = walkthroughsData.startingWalkthroughId;
+    if (firstWalkthroughId) {
+      const firstWalkthrough =
+        walkthroughsData.walkthroughsById[firstWalkthroughId];
 
-      this.navigationStore.currentWalkthroughId = firstWalkthroughId;
-      this.navigationStore.currentItemId = firstQuestionId;
-      this.navigationStore.addItemIdToHistory({
-        walkthroughId: firstWalkthroughId,
-        questionId: firstQuestionId,
-        answerVariableId: firstQuestionId,
-      });
-      this.answerStore.setDefaultAnswerValue();
+      if (firstWalkthrough) {
+        const firstQuestionId =
+          firstWalkthrough.sections[firstWalkthrough.info.startingSectionId]
+            ?.sectionQuestions[0] || "";
+
+        this.navigationStore.currentWalkthroughId = firstWalkthroughId;
+        this.navigationStore.currentItemId = firstQuestionId;
+        this.navigationStore.addItemIdToHistory({
+          walkthroughId: firstWalkthroughId,
+          questionId: firstQuestionId,
+          answerVariableId: firstQuestionId,
+        });
+        this.answerStore.setDefaultAnswerValue();
+      }
     }
   }
 
@@ -419,7 +432,7 @@ export class WalkthroughRootStore {
 }
 
 export const CreateWalkthroughStore = (
-  walkthroughsData: WalkthroughsDataInterface,
+  walkthroughsData: WalkthroughsDataInterface<string | EnumWalkthroughIds>,
   initialAnswers?: AnswerState,
 ) => {
   return new WalkthroughRootStore(walkthroughsData, initialAnswers);
