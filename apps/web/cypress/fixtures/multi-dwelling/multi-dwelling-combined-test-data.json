@@ -4,14 +4,19 @@
       "title": "transition between questions in Multi-Dwelling 9.9.9 and 9.10.14",
       "steps": [
         {
-          "question": "P1",
+          "question": "P2",
           "type": "radio",
-          "answer": "false"
+          "answer": "1"
         },
         {
           "question": "P11",
           "type": "radio",
-          "answer": "2"
+          "answer": "true"
+        },
+        {
+          "question": "P12",
+          "type": "radio",
+          "answer": "true"
         },
         {
           "question": "P1",
@@ -25,14 +30,19 @@
       "title": "transition between questions in Multi-Dwelling 9.9.9 and 9.10.14 different result scenario",
       "steps": [
         {
-          "question": "P1",
+          "question": "P2",
+          "type": "radio",
+          "answer": "1"
+        },
+        {
+          "question": "P11",
           "type": "radio",
           "answer": "true"
         },
         {
-          "question": "P6",
+          "question": "P12",
           "type": "radio",
-          "answer": "false"
+          "answer": "true"
         },
         {
           "question": "P1",
