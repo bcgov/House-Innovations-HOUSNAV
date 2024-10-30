@@ -4,71 +4,1058 @@
     "title": "Spatial Separation Between Buildings",
     "subtitle": "Volume II - 9.10.14.1-4",
     "description": "Calculations for size/number of doors/windows in a wall facing another building",
-    "startingSectionId": "1_91014",
+    "startingSectionId": "1_9_10_14",
     "walkthroughTitle": "9.10.14.1-4 Spatial Separation Between Buildings"
   },
   "sections": {
-    "1_91014": {
+    "1_9_10_14": {
       "sectionTitle": "9.10.14. Spatial Separation Between Buildings",
       "sectionQuestions": [
-        "P1"
+        "P33", "P34", "P35", "P36", "P37", "P38"
       ]
     }
   },
   "questions": {
-    "P1": {
-      "walkthroughItemType": "multiChoiceMultiple",
-      "questionText": "FPO - What are the <defined-term override-term='major occupancy'>major occupancies</defined-term> of this building?",
+    "P33": {
+      "walkthroughItemType": "numberFloat",
+      "questionText": "What is the area of the selected <defined-term>exposing building face</defined-term> <span aria-label='in meters squared'>(m<sup>2</sup>)</span>?",
+      "questionSubtext": "<p>Answer all following questions based on one selected exposing building face that has not been evaluated yet. (It is recommended to track which exposing building faces have been evaluated.)</p><p>The area of an exposing building face is calculated by taking the exterior wall area that faces in one direction on any side of a <defined-term>building</defined-term> and calculating the total area of that exterior face from the finished ground level to the uppermost ceiling. <building-code reference='v2-db-9.10.14.2.(1)'>Sentence 9.10.14.2.(1)</building-code></p><p>Alternatively, an exterior wall may be divided into smaller exposing building faces that can be calculated separately in a building that is divided into <defined-term override-term='fire compartment'>fire compartments</defined-term> that are separated from the remainder of the building by <defined-term override-term='fire separation'>fire separations</defined-term> with <defined-term override-term='fire-resistance rating'>fire-resistance ratings</defined-term> not less than 45 min. In this circumstance the area of each exposing building face for each fire compartment is based on the area of the exposing wall of that fire compartment and calculated separately from other fire compartments. <building-code reference='v2-db-9.10.14.2.(4)'>Sentence 9.10.14.2.(4)</building-code></p>",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Sentence 9.10.14.2",
+        "codeNumber": "v2-db-9.10.14.2"
+      },
+      "placeholder": "Enter area",
+      "unit": "m<sup>2</sup>",
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P34"
+        }
+      ]
+    },
+    "P34": {
+      "walkthroughItemType": "numberFloat",
+      "questionText": "What is the <defined-term>limiting distance</defined-term> for the exterior wall for this <defined-term>fire compartment</defined-term> <span aria-label='in meters'>(m)</span>?",
+      "questionSubtext": "<p>The location of the <defined-term>exposing building face</defined-term> shall be taken as a vertical plane located so that there are no <defined-term>unprotected openings</defined-term> between the vertical plane and the line to which the <defined-term>limiting distance</defined-term> is measured. <pdf-download-link named-dest='A-3.2.3.1.(4) Spatial Separation Design.'>See Note A-3.2.3.1.(4).</pdf-download-link>",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Sentence 9.10.14.2.(2)",
+        "codeNumber": "v2-db-9.10.14.2.(2)"
+      },
+      "placeholder": "Enter limiting distance",
+      "unit": "m",
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P34Editable"
+        }
+      ]
+    },
+    "P34Editable": {
+      "walkthroughItemType": "variable",
+      "variableToSet": {
+        "variableType": "copy",
+        "variableName": "P34Editable",
+        "variableValue": "P34"
+      },
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P35"
+        }
+      ]
+    },
+    "P35": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Is this compartment <defined-term>sprinklered</defined-term> per <pdf-download-link named-dest='3.2.5.12. Automatic Sprinkler Systems'>Article 3.2.5.12.</pdf-download-link>?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Subsection 9.10.14.",
         "codeNumber": "v2-db-9.10.14."
       },
       "possibleAnswers": [
         {
-          "answerDisplayText": "<defined-term override-term='residential occupancy'>Residential</defined-term>",
-          "answerValue": "C"
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
         },
         {
-          "answerDisplayText": "<defined-term override-term='business and personal services occupancy'>Office</defined-term>",
-          "answerValue": "D"
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P35",
+              "answerValue": "true"
+            },
+            {
+              "nextLogicType": "lessThan",
+              "answerToCheck": "P34",
+              "answerValue": "1.2"
+            }
+          ],
+          "nextNavigateTo": "R1_0"
         },
         {
-          "answerDisplayText": "<defined-term override-term='mercantile occupancy'>Mercantile</defined-term>",
-          "answerValue": "E"
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P35",
+              "answerValue": "true"
+            },
+            {
+              "nextLogicType": "lessThan",
+              "answerToCheck": "P34",
+              "answerValue": "2"
+            }
+          ],
+          "nextNavigateTo": "P10"
         },
         {
-          "answerDisplayText": "<defined-term override-term='low-hazard industrial occupancy'>Low Hazard Industrial</defined-term>",
-          "answerValue": "F3"
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P35",
+              "answerValue": "true"
+            },
+            {
+              "nextLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P34",
+                  "answerValue": "9"
+                },
+                {
+                  "nextLogicType": "greaterThan",
+                  "answerToCheck": "P34",
+                  "answerValue": "9"
+                }
+              ]
+            }
+          ],
+          "nextNavigateTo": "P37"
         },
         {
-          "answerDisplayText": "<defined-term override-term='medium-hazard industrial occupancy'>Medium Hazard Industrial</defined-term>",
-          "answerValue": "F2"
+          "nextLogicType": "equal",
+          "answerToCheck": "P35",
+          "answerValue": "true",
+          "nextNavigateTo": "P9T1"
         },
         {
-          "answerDisplayText": "No <defined-term>occupancy</defined-term> or accessory building",
-          "answerValue": "none"
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P36"
+        }
+      ]
+    },
+    "P36": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Does the time from receipt of notification of a fire by the fire department until the first fire department vehicle arrives at the <defined-term>building</defined-term> exceed 10 min in 10% or more of all calls to this building?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Subsection 9.10.14.3.(1)",
+        "codeNumber": "v2-db-9.10.14.3.(1)"
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P36P34Editable"
+        }
+      ]
+    },
+    "P36P34Editable": {
+      "walkthroughItemType": "variable",
+      "variableToSet": {
+        "variableType": "number",
+        "variableName": "P34Editable",
+        "variableValue": [
+          {
+            "variableValueLogicType": "equals",
+            "answerToCheck": "P36",
+            "answerValue": "true",
+            "variableValueToSetCalculation": {
+              "answerToUse": "P34",
+              "variableValueCalculationType": "divide",
+              "calculationValueToUse": 2
+            }
+          },
+          {
+            "variableValueLogicType": "equals",
+            "answerToCheck": "P36",
+            "answerValue": "false",
+            "variableValueToSetCalculation": {
+              "answerToUse": "P34",
+              "variableValueCalculationType": "divide",
+              "calculationValueToUse": 1
+            }
+          }
+        ]
+      },
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "lessThan",
+          "answerToCheck": "P34Editable",
+          "answerValue": "1.2",
+          "nextNavigateTo": "R1_0"
+        },
+        {
+          "nextLogicType": "lessThan",
+          "answerToCheck": "P34Editable",
+          "answerValue": "2",
+          "nextNavigateTo": "P10"
+        },
+        {
+          "nextLogicType": "or",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P34Editable",
+              "answerValue": "9"
+            },
+            {
+              "nextLogicType": "greaterThan",
+              "answerToCheck": "P34Editable",
+              "answerValue": "9"
+            }
+          ],
+          "nextNavigateTo": "P37"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P9T1"
+        }
+      ]
+    },
+    "P10": {
+      "walkthroughItemType": "variable",
+      "variableToSet": {
+        "variableType": "number",
+        "variableName": "P10",
+        "variableValue": [
+          {
+            "variableValueLogicType": "fallback",
+            "variableValueToSetCalculation": {
+              "answerToUse": "P34Editable",
+              "variableValueCalculationType": "square"
+            }
+          }
+        ]
+      },
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P9T1"
+        }
+      ]
+    },
+    "P37": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Does this <defined-term>fire compartment</defined-term> face a <defined-term>street</defined-term> and is at street level?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Subsection 9.10.14.4.(9)",
+        "codeNumber": "v2-db-9.10.14.4.(9)"
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
         }
       ],
       "nextNavigationLogic": [
         {
           "nextLogicType": "equal",
-          "answerToCheck": "P1",
-          "answerValue": "C",
-          "nextNavigateTo": "R40"
+          "answerToCheck": "P37",
+          "answerValue": "true",
+          "nextNavigateTo": "P9100"
         },
         {
           "nextLogicType": "fallback",
-          "nextNavigateTo": "R51"
+          "nextNavigateTo": "P9T1"
+        }
+      ]
+    },
+    "P9100": {
+      "walkthroughItemType": "variable",
+      "variableToSet": {
+        "variableType": "number",
+        "variableName": "P9Editable",
+        "variableValue": 100
+      },
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R4_0"
+        }
+      ]
+    },
+    "P9T1": {
+      "walkthroughItemType": "variable",
+      "variableToSet": {
+        "variableType": "number",
+        "variableName": "P9",
+        "variableValue": [
+          {
+            "variableValueLogicType": "or",
+            "valuesToCheck": [
+              {
+                "variableValueLogicType": "lessThan",
+                "answerToCheck": "P34Editable",
+                "answerValue": "1.5"
+              },
+              {
+                "variableValueLogicType": "and",
+                "valuesToCheck": [
+                  {
+                    "variableValueLogicType": "lessThan",
+                    "answerToCheck": "P34Editable",
+                    "answerValue": "2"
+                  },
+                  {
+                    "variableValueLogicType": "greaterThan",
+                    "answerToCheck": "P33",
+                    "answerValue": "100"
+                  }
+                ]
+              }
+            ],
+            "variableValueToSet": 7
+          },
+          {
+            "variableValueLogicType": "or",
+            "valuesToCheck": [
+              {
+                "variableValueLogicType": "and",
+                "valuesToCheck": [
+                  {
+                    "variableValueLogicType": "lessThan",
+                    "answerToCheck": "P34Editable",
+                    "answerValue": "2"
+                  },
+                  {
+                    "variableValueLogicType": "greaterThan",
+                    "answerToCheck": "P33",
+                    "answerValue": "30"
+                  }
+                ]
+              },
+              {
+                "variableValueLogicType": "and",
+                "valuesToCheck": [
+                  {
+                    "variableValueLogicType": "lessThan",
+                    "answerToCheck": "P34Editable",
+                    "answerValue": "4"
+                  },
+                  {
+                    "variableValueLogicType": "greaterThan",
+                    "answerToCheck": "P33",
+                    "answerValue": "100"
+                  }
+                ]
+              }
+            ],
+            "variableValueToSet": 8
+          },
+          {
+            "variableValueLogicType": "or",
+            "valuesToCheck": [
+              {
+                "variableValueLogicType": "lessThan",
+                "answerToCheck": "P34Editable",
+                "answerValue": "2"
+              },
+              {
+                "variableValueLogicType": "and",
+                "valuesToCheck": [
+                  {
+                    "variableValueLogicType": "lessThan",
+                    "answerToCheck": "P34Editable",
+                    "answerValue": "4"
+                  },
+                  {
+                    "variableValueLogicType": "greaterThan",
+                    "answerToCheck": "P33",
+                    "answerValue": "50"
+                  }
+                ]
+              }
+            ],
+            "variableValueToSet": 9
+          },
+          {
+            "variableValueLogicType": "and",
+            "valuesToCheck": [
+              {
+                "variableValueLogicType": "lessThan",
+                "answerToCheck": "P34Editable",
+                "answerValue": "4"
+              },
+              {
+                "variableValueLogicType": "greaterThan",
+                "answerToCheck": "P33",
+                "answerValue": "40"
+              }
+            ],
+            "variableValueToSet": 10
+          },
+          {
+            "variableValueLogicType": "and",
+            "valuesToCheck": [
+              {
+                "variableValueLogicType": "lessThan",
+                "answerToCheck": "P34Editable",
+                "answerValue": "4"
+              },
+              {
+                "variableValueLogicType": "greaterThan",
+                "answerToCheck": "P33",
+                "answerValue": "30"
+              }
+            ],
+            "variableValueToSet": 11
+          },
+          {
+            "variableValueLogicType": "or",
+            "valuesToCheck": [
+              {
+                "variableValueLogicType": "lessThan",
+                "answerToCheck": "P34Editable",
+                "answerValue": "4"
+              },
+              {
+                "variableValueLogicType": "and",
+                "valuesToCheck": [
+                  {
+                    "variableValueLogicType": "lessThan",
+                    "answerToCheck": "P34Editable",
+                    "answerValue": "6"
+                  },
+                  {
+                    "variableValueLogicType": "greaterThan",
+                    "answerToCheck": "P33",
+                    "answerValue": "100"
+                  }
+                ]
+              }
+            ],
+            "variableValueToSet": 12
+          },
+          {
+            "variableValueLogicType": "and",
+            "valuesToCheck": [
+              {
+                "variableValueLogicType": "lessThan",
+                "answerToCheck": "P34Editable",
+                "answerValue": "6"
+              },
+              {
+                "variableValueLogicType": "greaterThan",
+                "answerToCheck": "P33",
+                "answerValue": "50"
+              }
+            ],
+            "variableValueToSet": 18
+          },
+          {
+            "variableValueLogicType": "and",
+            "valuesToCheck": [
+              {
+                "variableValueLogicType": "lessThan",
+                "answerToCheck": "P34Editable",
+                "answerValue": "8"
+              },
+              {
+                "variableValueLogicType": "greaterThan",
+                "answerToCheck": "P33",
+                "answerValue": "100"
+              }
+            ],
+            "variableValueToSet": 19
+          },
+          {
+            "variableValueLogicType": "or",
+            "valuesToCheck": [
+              {
+                "variableValueLogicType": "and",
+                "valuesToCheck": [
+                  {
+                    "variableValueLogicType": "lessThan",
+                    "answerToCheck": "P34Editable",
+                    "answerValue": "6"
+                  },
+                  {
+                    "variableValueLogicType": "greaterThan",
+                    "answerToCheck": "P33",
+                    "answerValue": "40"
+                  }
+                ]
+              },
+              {
+                "variableValueLogicType": "and",
+                "valuesToCheck": [
+                  {
+                    "variableValueLogicType": "lessThan",
+                    "answerToCheck": "P34Editable",
+                    "answerValue": "10"
+                  },
+                  {
+                    "variableValueLogicType": "greaterThan",
+                    "answerToCheck": "P33",
+                    "answerValue": "100"
+                  }
+                ]
+              }
+            ],
+            "variableValueToSet": 28
+          },
+          {
+            "variableValueLogicType": "and",
+            "valuesToCheck": [
+              {
+                "variableValueLogicType": "lessThan",
+                "answerToCheck": "P34Editable",
+                "answerValue": "6"
+              },
+              {
+                "variableValueLogicType": "greaterThan",
+                "answerToCheck": "P33",
+                "answerValue": "30"
+              }
+            ],
+            "variableValueToSet": 32
+          },
+          {
+            "variableValueLogicType": "and",
+            "valuesToCheck": [
+              {
+                "variableValueLogicType": "lessThan",
+                "answerToCheck": "P34Editable",
+                "answerValue": "8"
+              },
+              {
+                "variableValueLogicType": "greaterThan",
+                "answerToCheck": "P33",
+                "answerValue": "50"
+              }
+            ],
+            "variableValueToSet": 34
+          },
+          {
+            "variableValueLogicType": "lessThan",
+            "answerToCheck": "P34Editable",
+            "answerValue": "6",
+            "variableValueToSet": 39
+          },
+          {
+            "variableValueLogicType": "and",
+            "valuesToCheck": [
+              {
+                "variableValueLogicType": "lessThan",
+                "answerToCheck": "P34Editable",
+                "answerValue": "12"
+              },
+              {
+                "variableValueLogicType": "greaterThan",
+                "answerToCheck": "P33",
+                "answerValue": "100"
+              }
+            ],
+            "variableValueToSet": 40
+          },
+          {
+            "variableValueLogicType": "and",
+            "valuesToCheck": [
+              {
+                "variableValueLogicType": "lessThan",
+                "answerToCheck": "P34Editable",
+                "answerValue": "16"
+              },
+              {
+                "variableValueLogicType": "greaterThan",
+                "answerToCheck": "P33",
+                "answerValue": "100"
+              }
+            ],
+            "variableValueToSet": 55
+          },
+          {
+            "variableValueLogicType": "and",
+            "valuesToCheck": [
+              {
+                "variableValueLogicType": "lessThan",
+                "answerToCheck": "P34Editable",
+                "answerValue": "10"
+              },
+              {
+                "variableValueLogicType": "greaterThan",
+                "answerToCheck": "P33",
+                "answerValue": "50"
+              }
+            ],
+            "variableValueToSet": 56
+          },
+          {
+            "variableValueLogicType": "and",
+            "valuesToCheck": [
+              {
+                "variableValueLogicType": "lessThan",
+                "answerToCheck": "P34Editable",
+                "answerValue": "8"
+              },
+              {
+                "variableValueLogicType": "greaterThan",
+                "answerToCheck": "P33",
+                "answerValue": "40"
+              }
+            ],
+            "variableValueToSet": 57
+          },
+          {
+            "variableValueLogicType": "and",
+            "valuesToCheck": [
+              {
+                "variableValueLogicType": "lessThan",
+                "answerToCheck": "P34Editable",
+                "answerValue": "8"
+              },
+              {
+                "variableValueLogicType": "greaterThan",
+                "answerToCheck": "P33",
+                "answerValue": "30"
+              }
+            ],
+            "variableValueToSet": 69
+          },
+          {
+            "variableValueLogicType": "and",
+            "valuesToCheck": [
+              {
+                "variableValueLogicType": "lessThan",
+                "answerToCheck": "P34Editable",
+                "answerValue": "12"
+              },
+              {
+                "variableValueLogicType": "greaterThan",
+                "answerToCheck": "P33",
+                "answerValue": "50"
+              }
+            ],
+            "variableValueToSet": 84
+          },
+          {
+            "variableValueLogicType": "lessThan",
+            "answerToCheck": "P34Editable",
+            "answerValue": "8",
+            "variableValueToSet": 88
+          },
+          {
+            "variableValueLogicType": "and",
+            "valuesToCheck": [
+              {
+                "variableValueLogicType": "lessThan",
+                "answerToCheck": "P34Editable",
+                "answerValue": "20"
+              },
+              {
+                "variableValueLogicType": "greaterThan",
+                "answerToCheck": "P33",
+                "answerValue": "100"
+              }
+            ],
+            "variableValueToSet": 92
+          },
+          {
+            "variableValueLogicType": "fallback",
+            "variableValueToSet": 100
+          }
+        ]
+      },
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P9P35"
+        }
+      ]
+    },
+    "P9P35": {
+      "walkthroughItemType": "variable",
+      "variableToSet": {
+        "variableType": "number",
+        "variableName": "P9",
+        "variableValue": [
+          {
+            "variableValueLogicType": "equals",
+            "answerToCheck": "P35",
+            "answerValue": "true",
+            "variableValueToSetCalculation": {
+              "answerToUse": "P9",
+              "variableValueCalculationType": "then",
+              "variableValueToSetItemCalculations": [
+                {
+                  "variableValueCalculationType": "multiply",
+                  "calculationValueToUse": 2
+                },
+                {
+                  "variableValueCalculationType": "maxValue",
+                  "calculationValueToUse": 100
+                }
+              ]
+            }
+          },
+          {
+            "variableValueLogicType": "equals",
+            "answerToCheck": "P35",
+            "answerValue": "false",
+            "variableValueToSetCalculation": {
+              "answerToUse": "P9",
+              "variableValueCalculationType": "divide",
+              "calculationValueToUse": 1
+            }
+          }
+        ]
+      },
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P38"
+        }
+      ]
+    },
+    "P38": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Will all the <defined-term>unprotected openings</defined-term> be glazed with one of the following?",
+      "questionSubtext": "<ul><li>wired glass in steel frames, as described in <pdf-download-link named-dest='9.10.13.5. Wired Glass as a Closure'>Article 9.10.13.5.</pdf-download-link></li><li>glass blocks, as described in <pdf-download-link named-dest='9.10.13.7. Glass Block as a Closure'>Article 9.10.13.7.</pdf-download-link></li></ul>",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Subsection 9.10.14.4.(6)",
+        "codeNumber": "v2-db-9.10.14.4.(6)"
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P38",
+          "answerValue": "true",
+          "nextNavigateTo": "P9P38"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P9Editable"
+        }
+      ]
+    },
+    "P9Editable": {
+      "walkthroughItemType": "variable",
+      "variableToSet": {
+        "variableType": "copy",
+        "variableName": "P9Editable",
+        "variableValue": "P9"
+      },
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P35",
+          "answerValue": "false",
+          "nextNavigateTo": "R5_0"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R6_0"
+        }
+      ]
+    },
+    "P9P38": {
+      "walkthroughItemType": "variable",
+      "variableToSet": {
+        "variableType": "number",
+        "variableName": "P9Editable",
+        "variableValue": [
+          {
+            "variableValueLogicType": "fallback",
+            "variableValueToSetCalculation": {
+              "answerToUse": "P9",
+              "variableValueCalculationType": "then",
+              "variableValueToSetItemCalculations": [
+                {
+                  "variableValueCalculationType": "multiply",
+                  "calculationValueToUse": 2
+                },
+                {
+                  "variableValueCalculationType": "maxValue",
+                  "calculationValueToUse": 100
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P35",
+          "answerValue": "false",
+          "nextNavigateTo": "R5_0"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R6_0"
         }
       ]
     }
   },
   "results": {
-    "R40": {
-      "resultDisplayMessage": "<p>FPO - Based on your selections and <building-code reference='v2-db-9.10.14.4.'>Article 9.10.14.4.</building-code>, this fire compartment is permitted to have unlimited unprotected openings.</p>"
+    "R1_0": {
+      "resultDisplayMessage": "<p>Based on your selections the wall has a <defined-term>limiting distance</defined-term> of less than 1.2m, as such all openings in the wall are required to be protected by <defined-term override-term='closure'>closures</defined-term>, other than wired glass or glass block, whose <defined-term>fire-protection rating</defined-term> is in conformance with the <defined-term>fire-resistance rating</defined-term> required for the wall. (See <pdf-download-link named-dest='9.10.13.1. Closures'>Table 9.10.13.1.</pdf-download-link>)</p><p>If there are additional <defined-term override-term='exposing building face'>exposing building faces</defined-term> with <defined-term>unprotected openings</defined-term> for this <defined-term>building</defined-term> that require evaluation for compliance with the BC Building Code 2024 click \"Start Over\" below.</p>"
     },
-    "R51": {
-      "resultDisplayMessage": "<p>FPO - Based on your selection the percentage and area of unprotected openings should be calculated based on <pdf-download-link named-dest='9.10.15. Spatial Separation Between Houses'>Subsection 9.10.15.</pdf-download-link> At this time this tool does not calculate the percentage and area of unprotected openings of houses that meet the requirements of Subsection 9.10.15.</p>"
+    "R4_0": {
+      "resultDisplayMessage": "<p>Based on your selections this <defined-term>building</defined-term> meets the requirements of <building-code reference='v2-db-9.10.14.4.'>Article 9.10.14.4.</building-code>, thus this <defined-term>exposing building face</defined-term> is permitted to have unlimited <defined-term>unprotected openings</defined-term>.</p><p>If there are additional exposing building faces with unprotected openings for this building that require evaluation for compliance with the BC Building Code 2024 click \"Start Over\" below.</p>"
+    },
+    "R5_0": {
+      "resultDisplayMessage": "<p>Based on your selections the maximum aggregate percentage of <defined-term>unprotected openings</defined-term> in this <defined-term>exposing building face</defined-term> is <result-calculation id=\"1\"></result-calculation>%*, based on an exposing building face of <answer-value answer=\"P33\"></answer-value> m<sup>2</sup>, the maximum area would be <result-calculation id=\"2\"></result-calculation> m<sup>2</sup> per <building-code reference='v2-db-9.10.14.4.(1)'>Table 9.10.14.4.-A</building-code> and <building-code reference='v2-db-9.10.14.4.(1)'>Sentence 9.10.14.4.(1)</building-code>.</p><p>The maximum size of any openable windows in this exposing building face with an unobstructed opening that is 0.35 m<sup>2</sup> or greater must be installed in accordance with <pdf-download-link named-dest=\"9.9.10.1. Egress Windows or Doors for Bedrooms\">Sentences 9.9.10.1.(1)</pdf-download-link> and <pdf-download-link named-dest=\"9.9.10.1. Egress Windows or Doors for Bedrooms\">(2)</pdf-download-link> is: <result-calculation id=\"3\"></result-calculation> m<sup>2</sup>.</p><p>A ‘single room or space’ shall mean:</p><ul><li>two or more adjacent spaces having a full-height separating wall extending less than 1.5 m from the interior face of the exterior wall, or</li><li>two or more stacked spaces that are on the same storey.</li></ul><p>The spacing between individual unprotected openings described that serve a single room or space shall be not less than:</p><ul><li>2 m horizontally of another unprotected opening that is on the same exposing building face and serves the single room or space, or</li><li>2 m vertically of another unprotected opening that serves the single room or space, or another room or space on the same storey.</li></ul><p>*Note: Per <building-code reference=\"v2-db-9.10.14.4.(1)(b)\">Clause 9.10.14.4.(1)(b)</building-code> the percentage of unprotected openings is permitted to be calculated in conformance with <pdf-download-link named-dest=\"3.2.3. Spatial Separation and Exposure Protection\">Subsection 3.2.3.</pdf-download-link> At this time Subsection 3.2.3 is beyond the scope of this tool.</p><p>If there are additional exposing building faces with unprotected openings for this building that require evaluation for compliance with the BC Building Code 2024 click \"Start Over\" below.</p>",
+      "resultCalculations": [
+        {
+          "id": "1",
+          "resultCalculationType": "maxBetween",
+          "calculationValuesToUse": [
+            {
+              "resultCalculationType": "answer",
+              "answerToUse": "P9Editable"
+            },
+            {
+              "resultCalculationType": "divide",
+              "calculationValuesToUse": [
+                {
+                  "resultCalculationType": "answer",
+                  "answerToUse": "P10",
+                  "defaultValue": 0
+                },
+                {
+                  "resultCalculationType": "answer",
+                  "answerToUse": "P33"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "resultCalculationType": "maxBetween",
+          "calculationValuesToUse": [
+            {
+              "resultCalculationType": "answer",
+              "answerToUse": "P10",
+              "defaultValue": 0
+            },
+            {
+              "resultCalculationType": "multiply",
+              "calculationValuesToUse": [
+                {
+                  "resultCalculationType": "divide",
+                  "calculationValuesToUse": [
+                    {
+                      "resultCalculationType": "answer",
+                      "answerToUse": "P9Editable"
+                    },
+                    {
+                      "resultCalculationType": "number",
+                      "calculationValueToUse": 100
+                    }
+                  ]
+                },
+                {
+                  "resultCalculationType": "answer",
+                  "answerToUse": "P33"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "resultCalculationType": "minBetween",
+          "calculationValuesToUse": [
+            {
+              "resultCalculationType": "maxBetween",
+              "calculationValuesToUse": [
+                {
+                  "resultCalculationType": "logic",
+                  "resultLogicItems": [
+                    {
+                      "resultLogicType": "greaterThanOrEqual",
+                      "answerToCheck": "P34Editable",
+                      "answerValue": 2,
+                      "valueToUse": 1.88
+                    },
+                    {
+                      "resultLogicType": "greaterThanOrEqual",
+                      "answerToCheck": "P34Editable",
+                      "answerValue": 1.5,
+                      "valueToUse": 0.78
+                    },
+                    {
+                      "resultLogicType": "fallback",
+                      "valueToUse": 0.35
+                    }
+                  ]
+                },
+                {
+                  "resultCalculationType": "multiply",
+                  "calculationValuesToUse": [
+                    {
+                      "resultCalculationType": "number",
+                      "calculationValueToUse": 0.24
+                    },
+                    {
+                      "resultCalculationType": "square",
+                      "calculationValueToUse": {
+                        "resultCalculationType": "minus",
+                        "calculationValuesToUse": [
+                          {
+                            "resultCalculationType": "multiply",
+                            "calculationValuesToUse": [
+                              {
+                                "resultCalculationType": "number",
+                                "calculationValueToUse": 2
+                              },
+                              {
+                                "resultCalculationType": "answer",
+                                "answerToUse": "P34Editable"
+                              }
+                            ]
+                          },
+                          {
+                            "resultCalculationType": "number",
+                            "calculationValueToUse": 1.2
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "resultCalculationType": "maxBetween",
+              "calculationValuesToUse": [
+                {
+                  "resultCalculationType": "answer",
+                  "answerToUse": "P10",
+                  "defaultValue": 0
+                },
+                {
+                  "resultCalculationType": "multiply",
+                  "calculationValuesToUse": [
+                    {
+                      "resultCalculationType": "divide",
+                      "calculationValuesToUse": [
+                        {
+                          "resultCalculationType": "answer",
+                          "answerToUse": "P9Editable"
+                        },
+                        {
+                          "resultCalculationType": "number",
+                          "calculationValueToUse": 100
+                        }
+                      ]
+                    },
+                    {
+                      "resultCalculationType": "answer",
+                      "answerToUse": "P33"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "R6_0": {
+      "resultDisplayMessage": "<p>Based on your selections the maximum percentage of <defined-term>unprotected openings</defined-term> in this exterior wall is <result-calculation id='1'></result-calculation>%*, based on an <defined-term>exposing building face</defined-term> of <answer-value answer='P33'></answer-value> m<sup>2</sup>, the maximum area would be: <result-calculation id='2'></result-calculation> m<sup>2</sup>.</p><p>*Note: Per <building-code reference=\"v2-db-9.10.14.4.(1)(b)\">Clause 9.10.14.4.(1)(b)</building-code> the percentage of unprotected openings is permitted to be calculated in conformance with <pdf-download-link named-dest=\"3.2.3. Spatial Separation and Exposure Protection\">Subsection 3.2.3.</pdf-download-link> At this time Subsection 3.2.3 is beyond the scope of this tool.</p><p>If there are additional exposing building faces with unprotected openings for this building that require evaluation for compliance with the BC Building Code 2024 click \"Start Over\" below.</p>",
+      "resultCalculations": [
+        {
+          "id": "1",
+          "resultCalculationType": "maxBetween",
+          "calculationValuesToUse": [
+            {
+              "resultCalculationType": "answer",
+              "answerToUse": "P9Editable"
+            },
+            {
+              "resultCalculationType": "divide",
+              "calculationValuesToUse": [
+                {
+                  "resultCalculationType": "answer",
+                  "answerToUse": "P10",
+                  "defaultValue": 0
+                },
+                {
+                  "resultCalculationType": "answer",
+                  "answerToUse": "P33"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "resultCalculationType": "maxBetween",
+          "calculationValuesToUse": [
+            {
+              "resultCalculationType": "answer",
+              "answerToUse": "P10",
+              "defaultValue": 0
+            },
+            {
+              "resultCalculationType": "multiply",
+              "calculationValuesToUse": [
+                {
+                  "resultCalculationType": "divide",
+                  "calculationValuesToUse": [
+                    {
+                      "resultCalculationType": "answer",
+                      "answerToUse": "P9Editable"
+                    },
+                    {
+                      "resultCalculationType": "number",
+                      "calculationValueToUse": 100
+                    }
+                  ]
+                },
+                {
+                  "resultCalculationType": "answer",
+                  "answerToUse": "P33"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   }
 }
