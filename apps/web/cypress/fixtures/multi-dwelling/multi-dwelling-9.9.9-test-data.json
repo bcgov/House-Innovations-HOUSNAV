@@ -374,6 +374,143 @@
         }
       ],
       "result": "R1_1"
+    },
+    {
+      "title": "Question p21p17, Result R1_3",
+      "steps": [
+        {
+          "question": "P2",
+          "type": "radio",
+          "answer": "2"
+        },
+        {
+          "question": "P3",
+          "type": "checkbox",
+          "answer": "1"
+        },
+        {
+          "question": "P6",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P9",
+          "type": "checkbox",
+          "answer": "1"
+        },
+        {
+          "question": "P11",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P12",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P13",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P21",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P21P17",
+          "type": "radio",
+          "answer": "true"
+        }
+      ],
+      "result": "R1_2"
+    },
+    {
+      "title": "Question p21p5, p21p7, p21p8, Result R1_2",
+      "steps": [
+        {
+          "question": "P2",
+          "type": "radio",
+          "answer": "2"
+        },
+        {
+          "question": "P3",
+          "type": "checkbox",
+          "answer": "1"
+        },
+        {
+          "question": "P6",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P9",
+          "type": "checkbox",
+          "answer": ""
+        },
+        {
+          "question": "P10",
+          "type": "checkbox",
+          "answer": "1"
+        },
+        {
+          "question": "P11",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P12",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P13",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P14",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P15",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P17",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P20",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P21",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P21P5",
+          "type": "checkbox",
+          "answer": ""
+        },
+        {
+          "question": "P21P7",
+          "type": "checkbox",
+          "answer": "1,2"
+        },
+        {
+          "question": "P21P8",
+          "type": "checkbox",
+          "answer": ""
+        }
+      ],
+      "result": "R1_2"
     }
   ]
 }
