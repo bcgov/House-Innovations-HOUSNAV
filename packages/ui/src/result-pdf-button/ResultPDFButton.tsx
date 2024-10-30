@@ -1,6 +1,7 @@
 "use client";
 // repo
 import Icon from "@repo/ui/icon";
+import { TESTID_RESULT_PDF_BUTTON } from "@repo/constants/src/testids";
 // local
 import Image from "../image/Image";
 import "./ResultPDFButton.css";
@@ -20,6 +21,7 @@ export default function ResultPDFButton() {
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") handleDownload();
       }}
+      data-testid={TESTID_RESULT_PDF_BUTTON}
     >
       <div className="ui-ResultPDFButton--imageContainer">
         <Image

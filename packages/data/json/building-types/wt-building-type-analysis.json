@@ -1,23 +1,119 @@
 {
+  "$schema": "../../schema/walkthrough.schema.json",
   "info": {
     "title": "Building Type Analysis",
     "subtitle": "",
     "description": "Not sure? Narrow down whether your project falls under the specifications of a single- or a multi-unit dwelling.",
     "startingSectionId": "1_intro",
-    "walkthroughTitle": "FPO - Building Type Analysis"
+    "walkthroughTitle": "Building Type Analysis"
   },
   "sections": {
     "1_intro": {
-      "sectionTitle": "FPO - Introduction",
+      "sectionTitle": "Building Type Analysis",
       "sectionQuestions": [
-        "P01"
+        "P01",
+        "P02"
       ]
     }
   },
   "questions": {
     "P01": {
+      "walkthroughItemType": "multiChoiceMultiple",
+      "questionText": "Check all that apply:",
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "This project will involve construction of a new <defined-term>building</defined-term>.",
+          "answerValue": "1"
+        },
+        {
+          "answerDisplayText": "This building is a single dwelling unit.",
+          "answerValue": "2"
+        },
+        {
+          "answerDisplayText": "This building has multiple dwelling units with no other <defined-term override-term='major occupancy'>major occupancies</defined-term> (including a single-family house with a <defined-term>secondary suite</defined-term>)",
+          "answerValue": "3"
+        },
+        {
+          "answerDisplayText": "None of the above",
+          "answerValue": "4"
+        }
+      ],
+      "possibleInvalidAnswers": [
+        {
+          "invalidAnswerType": "contains",
+          "answerValue": "4",
+          "invalidAnswerLogic": [
+            {
+              "invalidAnswerLogicType": "maxNumberOfAnswers",
+              "invalidAnswerLogicValue": 1
+            }
+          ],
+          "errorMessage": "'None of the above' cannot be selected at the same time as other answers"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "doesNotContain",
+              "answerToCheck": "P01",
+              "answerValue": "3"
+            },
+            {
+              "nextLogicType": "doesNotContain",
+              "answerToCheck": "P01",
+              "answerValue": "4"
+            },
+            {
+              "nextLogicType": "containsAny",
+              "answerToCheck": "P01",
+              "answerValues": ["1"]
+            },
+            {
+              "nextLogicType": "containsAny",
+              "answerToCheck": "P01",
+              "answerValues": ["2"]
+            }
+          ],
+          "nextNavigateTo": "P02"
+        },
+        {
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "doesNotContain",
+              "answerToCheck": "P01",
+              "answerValue": "2"
+            },
+            {
+              "nextLogicType": "doesNotContain",
+              "answerToCheck": "P01",
+              "answerValue": "4"
+            },
+            {
+              "nextLogicType": "containsAny",
+              "answerToCheck": "P01",
+              "answerValues": ["1"]
+            },
+            {
+              "nextLogicType": "containsAny",
+              "answerToCheck": "P01",
+              "answerValues": ["3"]
+            }
+          ],
+          "nextNavigateTo": "P02"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R00"
+        }
+      ]
+    },
+    "P02": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "FPO - Does the Building Code apply to this structure?",
+      "questionText": "This project will meet all of the following requirements:",
+      "questionSubtext": "<ul><li>The <defined-term>building area</defined-term> of this <defined-term>building</defined-term> is not greater than 600 m<sup>2</sup></li><li>The <defined-term override-term='storey'>storeys</defined-term> in <defined-term>building height</defined-term> will be less than 4.</li></ul>",
       "possibleAnswers": [
         {
           "answerDisplayText": "Yes",
@@ -30,24 +126,58 @@
       ],
       "nextNavigationLogic": [
         {
-          "nextLogicType": "equal",
-          "answerToCheck": "P01",
-          "answerValue": "yes",
-          "nextNavigateTo": "R10"
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P02",
+              "answerValue": "yes"
+            },
+            {
+              "nextLogicType": "containsAny",
+              "answerToCheck": "P01",
+              "answerValues": ["2"]
+            }
+          ],
+          "nextNavigateTo": "R01"
+        },
+        {
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P02",
+              "answerValue": "yes"
+            },
+            {
+              "nextLogicType": "containsAny",
+              "answerToCheck": "P01",
+              "answerValues": ["3"]
+            }
+          ],
+          "nextNavigateTo": "R02"
         },
         {
           "nextLogicType": "fallback",
-          "nextNavigateTo": "R00"
+          "nextNavigateTo": "R03"
         }
       ]
     }
   },
   "results": {
     "R00": {
-      "resultDisplayMessage": "<p>FPO - You have selected an answer...</p>"
+      "resultDisplayMessage": "<p>This tool is only designed to assist users evaluating the code compliance for construction of a new single unit or multi-unit dwelling building to the BC Building Code 2024, as such this tool is not applicable to your building.</p>"
     },
-    "R10": {
-      "resultDisplayMessage": "<p>FPO - Based on the building characteristics provided, ...</p>"
+    "R01": {
+      "resultDisplayMessage": "<p>Based on your selection this building is a new <strong>single dwelling unit</strong>. Click Continue to view the associated walkthroughs.</p>",
+      "relatedBuildingType": "single-dwelling"
+    },
+    "R02": {
+      "resultDisplayMessage": "<p>Based on your selection this building is a new <strong>multi-dwelling unit</strong>. Click Continue to build your walkthrough.</p>",
+      "relatedBuildingType": "multi-dwelling"
+    },
+    "R03": {
+      "resultDisplayMessage": "<p>Based on your selection this building exceeds the maximum building area and/or building height limits for a Part 9 Building. If the building is more than 600 m<sup>2</sup> in building area and/or 3 storeys in building height, this building will be required to be designed in accordance with Parts 3, 4, 5, and 6 of the BC Building Code 2024 in place of Part 9. This tool only evaluates the Building Code compliance of buildings designed in accordance with Part 9 of the BC Building Code 2024, please contact the appropriate required design professionals for this building.</p>"
     }
   }
 }
