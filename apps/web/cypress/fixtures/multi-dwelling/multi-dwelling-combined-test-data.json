@@ -19,12 +19,22 @@
           "answer": "true"
         },
         {
-          "question": "P1",
-          "type": "checkbox",
-          "answer": "C"
+          "question": "P33",
+          "type": "input",
+          "answer": "333"
+        },
+        {
+          "question": "P34",
+          "type": "input",
+          "answer": "1"
+        },
+        {
+          "question": "P35",
+          "type": "radio",
+          "answer": "true"
         }
       ],
-      "result": "R40"
+      "result": "R1_0"
     },
     {
       "title": "transition between questions in Multi-Dwelling 9.9.9 and 9.10.14 different result scenario",
@@ -43,14 +53,38 @@
           "question": "P12",
           "type": "radio",
           "answer": "true"
+        },{
+          "question": "P33",
+          "type": "input",
+          "answer": "333"
         },
         {
-          "question": "P1",
-          "type": "checkbox",
-          "answer": "D"
+          "question": "P34",
+          "type": "input",
+          "answer": "11"
+        },
+        {
+          "question": "P35",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P36",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P37",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P38",
+          "type": "radio",
+          "answer": "false"
         }
       ],
-      "result": "R51"
+      "result": "R5_0"
     }
   ]
 }
