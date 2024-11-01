@@ -19,18 +19,18 @@
   "questions": {
     "P01": {
       "walkthroughItemType": "multiChoiceMultiple",
-      "questionText": "Check all that apply:",
+      "questionText": "Check all that apply to this proposed building project:",
       "possibleAnswers": [
         {
-          "answerDisplayText": "This project will involve construction of a new <defined-term>building</defined-term>.",
+          "answerDisplayText": "Will involve construction of a new <defined-term>building</defined-term>.",
           "answerValue": "1"
         },
         {
-          "answerDisplayText": "This building is a single dwelling unit.",
+          "answerDisplayText": "Will be a single <defined-term>dwelling unit</defined-term>.",
           "answerValue": "2"
         },
         {
-          "answerDisplayText": "This building has multiple dwelling units with no other <defined-term override-term='major occupancy'>major occupancies</defined-term> (including a single-family house with a <defined-term>secondary suite</defined-term>)",
+          "answerDisplayText": "Will be a multi-dwelling unit building with no other <defined-term override-term='major occupancy'>major occupancies</defined-term> or <defined-term override-term='secondary suite'>secondary suites</defined-term>.",
           "answerValue": "3"
         },
         {
@@ -166,18 +166,18 @@
   },
   "results": {
     "R00": {
-      "resultDisplayMessage": "<p>This tool is only designed to assist users evaluating the code compliance for construction of a new single unit or multi-unit dwelling building to the BC Building Code 2024, as such this tool is not applicable to your building.</p>"
+      "resultDisplayMessage": "<p>Based on your selection, this proposed building project is not a new single dwelling unit, or a new multi-dwelling unit <defined-term>building</defined-term> and at this time this tool is only designed to assist users to determine conformance with the requirements of the BC Building Code 2024 for single dwelling units and multi-dwelling unit buildings, as such this tool is not applicable to your proposed building project.</p>"
     },
     "R01": {
-      "resultDisplayMessage": "<p>Based on your selection this building is a new <strong>single dwelling unit</strong>. Click Continue to view the associated walkthroughs.</p>",
+      "resultDisplayMessage": "<p>Based on your selection this proposed building project is a new <strong>single dwelling unit</strong>. Click Continue to view the associated walkthroughs.</p>",
       "relatedBuildingType": "single-dwelling"
     },
     "R02": {
-      "resultDisplayMessage": "<p>Based on your selection this building is a new <strong>multi-dwelling unit</strong>. Click Continue to build your walkthrough.</p>",
+      "resultDisplayMessage": "<p>Based on your selection this proposed building project is a new <strong>multi-dwelling unit</strong> <defined-term>building</defined-term>. Click Continue to build your walkthrough.</p>",
       "relatedBuildingType": "multi-dwelling"
     },
     "R03": {
-      "resultDisplayMessage": "<p>Based on your selection this building exceeds the maximum building area and/or building height limits for a Part 9 Building. If the building is more than 600 m<sup>2</sup> in building area and/or 3 storeys in building height, this building will be required to be designed in accordance with Parts 3, 4, 5, and 6 of the BC Building Code 2024 in place of Part 9. This tool only evaluates the Building Code compliance of buildings designed in accordance with Part 9 of the BC Building Code 2024, please contact the appropriate required design professionals for this building.</p>"
+      "resultDisplayMessage": "<p>Based on your selection this proposed building project exceeds the maximum <defined-term>building area</defined-term> and/or <defined-term>building height</defined-term> limits for a Part 9 building. If the building is more than 600 m<sup>2</sup> in building area and/or 3 <defined-term override-term='storey'>storeys</defined-term> in building height, this building project will be required to be designed in accordance with Parts 3, 4, 5, and 6 of the BC Building Code 2024 and at this time this tool is only designed to assist users to determine conformance with requirements of the BC Building Code 2024 Part 9, please contact the appropriate required design professionals for this proposed building project.</p>"
     }
   }
 }
