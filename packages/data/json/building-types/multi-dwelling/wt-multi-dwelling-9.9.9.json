@@ -2488,13 +2488,13 @@
   },
   "results": {
     "R1_1": {
-      "resultDisplayMessage": "Based on your selections the height of this <defined-term>dwelling unit</defined-term> exceeds the maximum height permitted for a <defined-term>building</defined-term> constructed under the BC Building Code 2024 Part 9. Please review your selections for error, if the height of the building exceeds 3 <defined-term override-term='storey'>storeys</defined-term> the building will need to be designed in accordance with Parts 3, 4, 5, and 6 of the BC Building Code 2024 and at this time this tool is only designed to assist users to determine conformance with the requirements of the BC Building Code 2024 Part 9. If there are no errors in your selections, please contact the appropriate required design professionals for this building."
+      "resultDisplayMessage": "<p>Based on your selections the height of this <defined-term>dwelling unit</defined-term> exceeds the maximum height permitted for a <defined-term>building</defined-term> constructed under the BC Building Code 2024 Part 9. Please review your selections for error, if the height of the building exceeds 3 <defined-term override-term='storey'>storeys</defined-term> the building will need to be designed in accordance with Parts 3, 4, 5, and 6 of the BC Building Code 2024 and at this time this tool is only designed to assist users to determine conformance with the requirements of the BC Building Code 2024 Part 9. If there are no errors in your selections, please contact the appropriate required design professionals for this building.</p>"
     },
     "R1_2": {
-      "resultDisplayMessage": "Based on your selections this <defined-term>building</defined-term> project does not meet the BC Building Code 2024 requirements for means of egress from a <defined-term>dwelling unit</defined-term>."
+      "resultDisplayMessage": "<p>Based on your selections this <defined-term>building</defined-term> project does not meet the BC Building Code 2024 requirements for means of egress from a <defined-term>dwelling unit</defined-term>.</p>"
     },
     "R1_3": {
-      "resultDisplayMessage": "The evaluated <defined-term>dwelling unit</defined-term> has been deemed to satisfy the requirements of Subsection 9.9.9. of the BC Building Code 2024. If there are additional dwelling units within this <defined-term>building</defined-term> that have not been assessed to determine conformance with the egress requirements of Subsection 9.9.9 of the BC Building Code 2024 click \"Start Over\" below."
+      "resultDisplayMessage": "<p>The evaluated <defined-term>dwelling unit</defined-term> has been deemed to satisfy the requirements of Subsection 9.9.9. of the BC Building Code 2024. If there are additional dwelling units within this <defined-term>building</defined-term> that have not been assessed to determine conformance with the egress requirements of Subsection 9.9.9 of the BC Building Code 2024 click \"Start Over\" below.</p>"
     }
   }
 }
