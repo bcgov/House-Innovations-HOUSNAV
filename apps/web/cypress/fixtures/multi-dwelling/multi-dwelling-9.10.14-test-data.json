@@ -1,0 +1,113 @@
+{
+  "walkthroughs": [
+    {
+      "title": "Questions p33-p35, Result R1_0",
+      "steps": [
+        {
+          "question": "P33",
+          "type": "input",
+          "answer": "333"
+        },
+        {
+          "question": "P34",
+          "type": "input",
+          "answer": "1"
+        },
+        {
+          "question": "P35",
+          "type": "radio",
+          "answer": "true"
+        }
+      ],
+      "result": "R1_0"
+    },
+    {
+      "title": "Questions p33-p38, Result R5_0",
+      "steps": [
+        {
+          "question": "P33",
+          "type": "input",
+          "answer": "333"
+        },
+        {
+          "question": "P34",
+          "type": "input",
+          "answer": "11"
+        },
+        {
+          "question": "P35",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P36",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P37",
+          "type": "radio",
+          "answer": "false"
+        },
+        {
+          "question": "P38",
+          "type": "radio",
+          "answer": "false"
+        }
+      ],
+      "result": "R5_0"
+    },
+    {
+      "title": "Questions p33-p35, p37, Result R4_0",
+      "steps": [
+        {
+          "question": "P33",
+          "type": "input",
+          "answer": "333"
+        },
+        {
+          "question": "P34",
+          "type": "input",
+          "answer": "11"
+        },
+        {
+          "question": "P35",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P37",
+          "type": "radio",
+          "answer": "true"
+        }
+      ],
+      "result": "R4_0"
+    },
+    {
+      "title": "Questions p33-p35, p38, Result R6_0",
+      "steps": [
+        {
+          "question": "P33",
+          "type": "input",
+          "answer": "333"
+        },
+        {
+          "question": "P34",
+          "type": "input",
+          "answer": "7"
+        },
+        {
+          "question": "P35",
+          "type": "radio",
+          "answer": "true"
+        },
+        {
+          "question": "P38",
+          "type": "radio",
+          "answer": "true"
+        }
+      ],
+      "result": "R6_0"
+    }
+  ]
+}
