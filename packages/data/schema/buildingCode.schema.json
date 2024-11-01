@@ -122,6 +122,9 @@
         "description": {
           "$ref": "#/$defs/Property_Description"
         },
+        "subDescription": {
+          "type": "string"
+        },
         "clauses": {
           "type": "array",
           "items": {

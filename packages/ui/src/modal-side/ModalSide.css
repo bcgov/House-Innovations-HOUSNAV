@@ -140,6 +140,11 @@
   padding-bottom: 0;
 }
 
+.ui-ModalSide--Clauses + .ui-ModalSide--SentenceSubDescription {
+  display: block;
+  margin-bottom: var(--layout-margin-small);
+}
+
 .ui-ModalSide--Sentences > li:before {
   content: counter(countsentence) ".";
 }

@@ -44,6 +44,7 @@ export type ArticleType = {
 export type SentenceType = {
   numberReference: string;
   description: string;
+  subDescription?: string;
   clauses?: ClauseType[];
   image?: ImageModalType;
 };

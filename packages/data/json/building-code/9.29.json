@@ -1,0 +1,741 @@
+{
+  "$schema": "../../schema/buildingCode.schema.json",
+  "data": [
+    {
+      "numberReference": "v2-db-9",
+      "title": "Housing and Small Buildings",
+      "sections": [
+        {
+          "numberReference": "v2-db-9.29.",
+          "title": "Interior Wall and Ceiling Finishes",
+          "subsections": [
+            {
+              "numberReference": "v2-db-9.29.1.",
+              "title": "General",
+              "articles": [
+                {
+                  "numberReference": "v2-db-9.29.1.1.",
+                  "title": "Fire Protection and Sound Control",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.1.1.(1)",
+                      "description": "A wall or ceiling finish shall also conform to the appropriate requirements in Sections <pdf-download-link number='9.10' named-dest='Section 9.10. Fire Protection'>9.10.</pdf-download-link> and <pdf-download-link number='9.11' named-dest='Section 9.11. Sound Transmission'>9.11.</pdf-download-link>, in addition to the requirements in this Section"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "numberReference": "v2-db-9.29.2.",
+              "title": "Waterproof Wall Finish",
+              "articles": [
+                {
+                  "numberReference": "v2-db-9.29.2.1.",
+                  "title": "Where Required",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.2.1.(1)",
+                      "description": "Waterproof finish shall be provided to a height of not less than",
+                      "clauses": [
+                        {
+                          "numberReference": "v2-db-9.29.2.1.(1)(a)",
+                          "description": "1.8 m above the floor in shower stalls,"
+                        },
+                        {
+                          "numberReference": "v2-db-9.29.2.1.(1)(b)",
+                          "description": "1.2 m above the rims of bathtubs equipped with showers, and"
+                        },
+                        {
+                          "numberReference": "v2-db-9.29.2.1.(1)(c)",
+                          "description": "400 mm above the rims of bathtubs not equipped with showers."
+                        }
+                      ]
+                    }
+                  ]
+                },{
+                  "numberReference": "v2-db-9.29.2.2.",
+                  "title": "Materials",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.2.2.(1)",
+                      "description": "Waterproof finish shall consist of ceramic, plastic or metal tile, sheet vinyl, tempered hardboard, laminated thermosetting decorative sheets or linoleum."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "numberReference": "v2-db-9.29.3.",
+              "title": "Wood Furring",
+              "articles": [
+                {
+                  "numberReference": "v2-db-9.29.3.1.",
+                  "title": "Size and Spacing of Furring",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.3.1.(1)",
+                      "description": "Wood furring for the attachment of wall and ceiling finishes shall conform to <building-code-modal reference='v2-db-9.29.3.1.-a'>Table 9.29.3.1.</building-code-modal>",
+                      "image": {
+                        "fileName": "table-9.29.3.1.png",
+                        "tableName": "Table 9.29.3.1.",
+                        "numberReference": "v2-db-9.29.3.1.-a",
+                        "title": "Size and Spacing of Furring",
+                        "imageReference": "Forming Part of <building-code-modal reference='v2-db-9.29.3.1.(1)'> Sentence 9.29.3.1.(1)</building-code-modal>",
+                        "imageTable": "<table class='u-screen-reader-only'><thead><tr><th>TODO - HOUSNAV-241</th></tr></thead></table>",
+                        "imageLabel": "Size and Spacing of Furring"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.29.3.2.",
+                  "title": "Fastening",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.3.2.(1)",
+                      "description": "Furring shall be fastened to the framing or to wood blocks with not less than 51 mm nails."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "numberReference": "v2-db-9.29.4.",
+              "title": "Plastering",
+              "articles": [
+                {
+                  "numberReference": "v2-db-9.29.4.1.",
+                  "title": "Application",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.4.1.(1)",
+                      "description": "Application of plaster wall and ceiling finishes, including installation of metal or gypsum lath, shall conform to <pdf-download-link number='1.3.1.2' named-dest='1.3.1.2. Applicable Editions'>CSA A82.30-M, \"Interior Furring, Lathing and Gypsum Plastering.\"</pdf-download-link>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "numberReference": "v2-db-9.29.5.",
+              "title": "Gypsum Board Finish (Taped Joints)",
+              "articles": [
+                {
+                  "numberReference": "v2-db-9.29.5.1.",
+                  "title": "Application",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.5.1.(1)",
+                      "description": "The requirements for application of gypsum board in this Subsection apply to the single layer application of gypsum board to wood furring or framing using nails or screws."
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.5.1.(2)",
+                      "description": "Except as provided in <building-code-modal reference='v2-db-9.29.5.1.(3)'>Sentence (3)</building-code-modal>, gypsum board applications not described in this Subsection shall conform to <pdf-download-link number='1.3.1.2' named-dest='1.3.1.2. Applicable Editions'>CSA A82.31-M, \"Gypsum Board Application.\"</pdf-download-link>"
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.5.1.(3)",
+                      "description": "The application of gypsum board to flat insulating concrete form (ICF) walls shall conform to <pdf-download-link number='1.3.1.2' named-dest='1.3.1.2. Applicable Editions'>ASTM C840, \"Standard Specification for Application and Finishing of Gypsum Board.\"</pdf-download-link> (See <pdf-download-link number='a-9.29.5.1.3' named-dest='A-9.29.5.1.(3) Application of Gypsum Board to Flat ICF Walls.'>Note A-9.29.5.1.(3).</pdf-download-link>)"
+                    }
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.29.5.2.",
+                  "title": "Materials",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.5.2.(1)",
+                      "description": "Gypsum products shall conform to",
+                      "clauses": [
+                        {
+                          "numberReference": "v2-db-9.29.5.2.(1)(a)",
+                          "description": "<pdf-download-link number='1.3.1.2' named-dest='1.3.1.2. Applicable Editions'>ASTM C1178/C1178M, \"Standard Specification for Coated Glass Mat Water-Resistant Gypsum Backing Panel\"</pdf-download-link> or"
+                        },
+                        {
+                          "numberReference": "v2-db-9.29.5.2.(1)(b)",
+                          "description": "<pdf-download-link number='1.3.1.2' named-dest='1.3.1.2. Applicable Editions'>ASTM C1396/C1396M, \"Standard Specification for Gypsum Board,\"</pdf-download-link> except that the <defined-term>flame-spread rating</defined-term> of gypsum board shall be determined in accordance with <pdf-download-link number='1.3.1.2' named-dest='1.3.1.2. Applicable Editions'>CAN/ULC-S102, \"Standard Method of Test for Surface Burning Characteristics of Building Materials and Assemblies.\"</pdf-download-link>"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.29.5.3.",
+                  "title": "Maximum Spacing of Supports",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.5.3.(1)",
+                      "description": "Maximum spacing of supports for gypsum board applied as a single layer shall conform to <building-code-modal reference='v2-db-9.29.5.3.-a'>Table 9.29.5.3.</building-code-modal>",
+                      "image": {
+                        "fileName": "table-9.29.5.3.png",
+                        "tableName": "Table 9.29.5.3.",
+                        "numberReference": "v2-db-9.29.5.3.-a",
+                        "title": "Spacing of Supports for Gypsum Board",
+                        "imageReference": "Forming Part of <building-code-modal reference='v2-db-9.29.5.3.(1)'> Sentence 9.29.5.3.(1)</building-code-modal>",
+                        "imageTable": "<table class='u-screen-reader-only'><thead><tr><th>TODO - HOUSNAV-241</th></tr></thead></table>",
+                        "imageLabel": "Spacing of Supports for Gypsum Board"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.29.5.4.",
+                  "title": "Support of Insulation",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.5.4.(1)",
+                      "description": "Gypsum board supporting insulation shall be not less than 12.7 mm thick."
+                    }
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.29.5.5.",
+                  "title": "Length of Fasteners",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.5.5.(1)",
+                      "description": "The length of fasteners for gypsum board shall conform to <building-code-modal reference='v2-db-9.29.5.5.-a'>Table 9.29.5.5.</building-code-modal>, except that lesser depths of penetration are permitted for assemblies required to have a <defined-term>fire-resistance rating</defined-term> provided it can be shown, on the basis of fire tests, that such depths are adequate for the required rating.",
+                      "image": {
+                        "fileName": "table-9.29.5.5.png",
+                        "tableName": "Table 9.29.5.5.",
+                        "numberReference": "v2-db-9.29.5.5.-a",
+                        "title": "Fastener Penetration into Wood Supports",
+                        "imageReference": "Forming Part of <building-code-modal reference='v2-db-9.29.5.5.(1)'> Sentence 9.29.5.5.(1)</building-code-modal>",
+                        "imageTable": "<table class='u-screen-reader-only'><thead><tr><th>TODO - HOUSNAV-241</th></tr></thead></table>",
+                        "imageLabel": "Fastener Penetration into Wood Supports"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.29.5.6.",
+                  "title": "Nails",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.5.6.(1)",
+                      "description": "Nails for fastening gypsum board to wood supports shall conform to",
+                      "clauses": [
+                        {
+                          "numberReference": "v2-db-9.29.5.6.(1)(a)",
+                          "description": "<pdf-download-link number='1.3.1.2' named-dest='1.3.1.2. Applicable Editions'>ASTM F1667, \"Standard Specification for Driven Fasteners: Nails, Spikes, and Staples,\"</pdf-download-link> or"
+                        },
+                        {
+                          "numberReference": "v2-db-9.29.5.6.(1)(b)",
+                          "description": "<pdf-download-link number='1.3.1.2' named-dest='1.3.1.2. Applicable Editions'>CSA B111, \"Wire Nails, Spikes and Staples.\"</pdf-download-link>"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.29.5.7.",
+                  "title": "Screws",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.5.7.(1)",
+                      "description": "Screws for fastening gypsum board to wood supports shall conform to <pdf-download-link number='1.3.1.2' named-dest='1.3.1.2. Applicable Editions'>ASTM C1002, \"Standard Specification for Steel Self-Piercing Tapping Screws for the Application of Gypsum Panel Products or Metal Plaster Bases to Wood Studs or Steel Studs.\"</pdf-download-link>"
+                    }
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.29.5.8.",
+                  "title": "Spacing of Nails",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.5.8.(1)",
+                      "description": "For single-layer application on a ceiling, nails shall be spaced",
+                      "clauses": [
+                        {
+                          "numberReference": "v2-db-9.29.5.8.(1)(a)",
+                          "description": "not more than 180 mm o.c. on ceiling supports, or"
+                        },
+                        {
+                          "numberReference": "v2-db-9.29.5.8.(1)(b)",
+                          "description": "every 300 mm o.c. along ceiling supports, in pairs about 50 mm apart."
+                        }
+                      ]
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.5.8.(2)",
+                      "description": "Where the ceiling sheets are supported by the wall sheets around the perimeter of the ceiling, this support may be considered as equivalent to nailing at this location."
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.5.8.(3)",
+                      "description": "Except as required by <building-code-modal reference='v2-db-9.29.5.8.(4)'>Sentence (4)</building-code-modal>, for single-layer application on walls, nails shall be spaced",
+                      "clauses": [
+                        {
+                          "numberReference": "v2-db-9.29.5.8.(3)(a)",
+                          "description": "not more than 200 mm o.c. on vertical wall supports, or"
+                        },
+                        {
+                          "numberReference": "v2-db-9.29.5.8.(3)(b)",
+                          "description": "every 300 mm o.c. along vertical wall supports, in pairs about 50 mm apart."
+                        }
+                      ]
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.5.8.(4)",
+                      "description": "For single-layer application on walls, where gypsum board provides required bracing in <defined-term override-term='braced wall panel'>braced wall panels</defined-term>, lateral support for studs, or fire protection, nails shall be spaced not more than 200 mm o.c. on",
+                      "clauses": [
+                        {
+                          "numberReference": "v2-db-9.29.5.8.(4)(a)",
+                          "description": "vertical wall supports, and"
+                        },
+                        {
+                          "numberReference": "v2-db-9.29.5.8.(4)(b)",
+                          "description": "top and bottom plates."
+                        }
+                      ],
+                      "subDescription": "(See <pdf-download-link named-dest='9.23.10.2. Bracing and Lateral Support'>Article 9.23.10.2.</pdf-download-link> and <pdf-download-link number='9.10' named-dest='Section 9.10. Fire Protection'>Section 9.10.</pdf-download-link>)"
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.5.8.(5)",
+                      "description": "The uppermost nails on vertical wall supports shall be not more than 200 mm below the ceiling."
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.5.8.(6)",
+                      "description": "Nails shall be located not less than 10 mm from the side or edge of the board."
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.5.8.(7)",
+                      "description": "Nails shall be driven so that the heads do not puncture the paper."
+                    }
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.29.5.9.",
+                  "title": "Spacing of Screws",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.5.9.(1)",
+                      "description": "For single-layer application on a ceiling, screws shall be spaced not more than 300 mm o.c. on ceiling supports."
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.5.9.(2)",
+                      "description": "Where the ceiling sheets are supported by the wall sheets around the perimeter of the ceiling, this support may be considered as equivalent to screwing at this location."
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.5.9.(3)",
+                      "description": "Except as required by <building-code-modal reference='v2-db-9.29.5.9.(4)'>Sentence (4)</building-code-modal>, for single-layer application on walls, screws shall be spaced",
+                      "clauses": [
+                        {
+                          "numberReference": "v2-db-9.29.5.9.(3)(a)",
+                          "description": "not more than 300 mm o.c. on vertical wall supports where the supports are more than 400 mm o.c., or"
+                        },
+                        {
+                          "numberReference": "v2-db-9.29.5.9.(3)(b)",
+                          "description": "not more than 400 mm o.c. on vertical wall supports where the supports are not more than 400 mm o.c."
+                        }
+                      ]
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.5.9.(4)",
+                      "description": "Except as provided in <building-code-modal reference='v2-db-9.29.5.9.(5)'>Sentence (5)</building-code-modal>, for single-layer application on walls, where gypsum board provides required bracing in <defined-term override-term='braced wall panel'>braced wall panels</defined-term>, lateral support for studs, or fire protection, screws shall be spaced not more than 300 mm o.c. on",
+                      "clauses": [
+                        {
+                          "numberReference": "v2-db-9.29.5.9.(4)(a)",
+                          "description": "vertical wall supports, and"
+                        },
+                        {
+                          "numberReference": "v2-db-9.29.5.9.(4)(b)",
+                          "description": "top and bottom plates."
+                        }
+                      ],
+                      "subDescription": "(See <pdf-download-link named-dest='9.23.10.2. Bracing and Lateral Support'>Article 9.23.10.2.</pdf-download-link> and <pdf-download-link number='9.10' named-dest='Section 9.10. Fire Protection'>Section 9.10.</pdf-download-link>)"
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.5.9.(5)",
+                      "description": "Where a <defined-term>fire-resistance rating</defined-term> is determined based on <pdf-download-link named-dest='Fire and Sound Resistance Tables'>Table 9.10.3.1.-A</pdf-download-link>, <building-code-modal reference='v2-db-9.29.5.9.(4)'>Sentence (4)</building-code-modal> need not apply for the purpose of fire protection. "
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.5.9.(6)",
+                      "description": "Screws shall be located not less than 10 mm from the edge of the board."
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.5.9.(7)",
+                      "description": "Screws shall be driven so that the heads do not puncture the paper."
+                    }
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.29.5.10.",
+                  "title": "Low Temperature Conditions",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.5.10.(1)",
+                      "description": "In cold weather, heat shall be provided to maintain a temperature not below 10°C for 48 h prior to taping and finishing and maintained for not less than 48 h thereafter."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "numberReference": "v2-db-9.29.6.",
+              "title": "Plywood Finish",
+              "articles": [
+                {
+                  "numberReference": "v2-db-9.29.6.1.",
+                  "title": "Thickness",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.6.1.(1)",
+                      "description": "Except as provided in Sentences <building-code-modal reference='v2-db-9.29.6.1.(2)'>(2)</building-code-modal> and <building-code-modal reference='v2-db-9.29.6.1.(3)'>(3)</building-code-modal>, the minimum thickness of plywood interior finish shall conform to <building-code-modal reference='v2-db-9.29.6.1.-a'>Table 9.29.6.1.</building-code-modal>",
+                      "image": {
+                        "fileName": "table-9.29.6.1.png",
+                        "tableName": "Table 9.29.6.1.",
+                        "numberReference": "v2-db-9.29.6.1.-a",
+                        "title": "Thickness of Plywood Interior Finish",
+                        "imageReference": "Forming Part of Articles <building-code-modal reference='v2-db-9.29.6.1.'> 9.29.6.1</building-code-modal> and <building-code-modal reference='v2-db-9.29.6.2.'> 9.29.6.2</building-code-modal>",
+                        "imageTable": "<table class='u-screen-reader-only'><thead><tr><th>TODO - HOUSNAV-241</th></tr></thead></table>",
+                        "imageLabel": "Thickness of Plywood Interior Finish",
+                        "imageNotes": "(1) Thickness limits shall apply to the net effective thickness (NET) of grooved, striated, textured and/or embossed panels and to the actual thickness of flat panels."
+                      }
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.6.1.(2)",
+                      "description": "A manufacturing tolerance of −0.4 mm may be applied to the thicknesses listed in <building-code-modal reference='v2-db-9.29.6.1.-a'>Table 9.29.6.1.</building-code-modal>"
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.6.1.(3)",
+                      "description": "No minimum thickness is required where plywood is applied over continuous backing."
+                    }
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.29.6.2.",
+                  "title": "Grooved Plywood",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.6.2.(1)",
+                      "description": "Except as permitted in <building-code-modal reference='v2-db-9.29.6.2.(2)'>Sentence (2)</building-code-modal>, where plywood for interior finish is grooved, the grooves shall not extend through the face ply and into the plies below the face ply unless the groove is supported by framing or furring."
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.6.2.(2)",
+                      "description": "If the grain of the face ply is at right angles to the supporting members, the groove is permitted to extend into plies below the face ply provided the thickness of the plywood exceeds the value shown in <building-code-modal reference='v2-db-9.29.6.1.-a'>Table 9.29.6.1.</building-code-modal> by an amount equal to not less than the depth of penetration of the grooves into the plies below the face ply."
+                    }
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.29.6.3.",
+                  "title": "Nails and Staples",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.6.3.(1)",
+                      "description": "Except as provided in <building-code-modal reference='v2-db-9.29.6.3.(2)'>Sentence (2)</building-code-modal>, nails for attaching plywood finishes shall not be less than 38 mm casing or finishing nails spaced not more than 150 mm o.c. along edge supports and 300 mm o.c. along intermediate supports, except that staples providing equivalent lateral resistance may also be used."
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.6.3.(2)",
+                      "description": "Where plywood finish provides required bracing in <defined-term override-term='braced wall panel'>braced wall panels</defined-term>, the plywood shall be fastened in accordance with the fastening requirements for sheathing stated in <pdf-download-link number='9.23.3.5' named-dest='9.23.3.5. Fasteners for Sheathing or Subflooring'>Sentence 9.23.3.5.(2)</pdf-download-link>."
+                    }
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.29.6.4.",
+                  "title": "Edge Support",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.6.4.(1)",
+                      "description": "All plywood edges shall be supported by furring, blocking or framing."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "numberReference": "v2-db-9.29.7.",
+              "title": "Hardboard Finish",
+              "articles": [
+                {
+                  "numberReference": "v2-db-9.29.7.1.",
+                  "title": "Material Standard",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.7.1.(1)",
+                      "description": "Hardboard shall conform to <pdf-download-link number='1.3.1.2' named-dest='1.3.1.2. Applicable Editions'>CAN/CGSB-11.3-M, \"Hardboard.\"</pdf-download-link>"
+                    }
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.29.7.2.",
+                  "title": "Thickness",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.7.2.(1)",
+                      "description": "Hardboard shall be not less than",
+                      "clauses": [
+                        {
+                          "numberReference": "v2-db-9.29.7.2.(1)(a)",
+                          "description": "3 mm thick where applied over continuous backing,"
+                        },
+                        {
+                          "numberReference": "v2-db-9.29.7.2.(1)(b)",
+                          "description": "6 mm thick when applied over supports spaced not more than 400 mm o.c., and"
+                        },
+                        {
+                          "numberReference": "v2-db-9.29.7.2.(1)(c)",
+                          "description": "9 mm thick when applied over supports spaced not more than 600 mm o.c."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.29.7.3.",
+                  "title": "Nails",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.7.3.(1)",
+                      "description": "Nails for fastening hardboard shall be casing or finishing nails not less than 38 mm long, spaced not more than 150 mm o.c. along edge supports and 300 mm o.c. along intermediate supports."
+                    }
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.29.7.4.",
+                  "title": "Edge Support",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.7.4.(1)",
+                      "description": "All hardboard edges shall be supported by furring, blocking or framing where the backing is not continuous."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "numberReference": "v2-db-9.29.8.",
+              "title": "Insulating Fibreboard Finish",
+              "articles": [
+                {
+                  "numberReference": "v2-db-9.29.8.1.",
+                  "title": "Material Standard",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.8.1.(1)",
+                      "description": "Insulating fibreboard shall conform to <pdf-download-link number='1.3.1.2' named-dest='1.3.1.2. Applicable Editions'>CAN/ULC-S706.1, \"Standard for Wood Fibre Insulating Boards for Buildings.\"</pdf-download-link>"
+                    }
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.29.8.2.",
+                  "title": "Thickness",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.8.2.(1)",
+                      "description": "Insulating fibreboard sheets shall be not less than 11.1 mm thick on supports not more than 400 mm o.c."
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.8.2.(2)",
+                      "description": "Insulating fibreboard tile shall be not less than 12.7 mm thick on supports spaced not more than 400 mm o.c."
+                    }
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.29.8.3.",
+                  "title": "Nails",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.8.3.(1)",
+                      "description": "Nails for fastening fibreboard sheets shall be not less than 2.6 mm shank diameter casing or finishing nails of sufficient length to penetrate not less than 20 mm into the supports."
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.8.3.(2)",
+                      "description": "Nails shall be spaced not more than 100 mm o.c. along edge supports and 200 mm o.c. along intermediate supports."
+                    }
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.29.8.4.",
+                  "title": "Edge Support",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.8.4.(1)",
+                      "description": "All fibreboard edges shall be supported by blocking, furring or framing."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "numberReference": "v2-db-9.29.9.",
+              "title": "Particleboard, OSB or Waferboard Finish",
+              "articles": [
+                {
+                  "numberReference": "v2-db-9.29.9.1.",
+                  "title": "Material Standard",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.9.1.(1)",
+                      "description": "Particleboard finish shall conform to <pdf-download-link number='1.3.1.2' named-dest='1.3.1.2. Applicable Editions'>ANSI A208.1, \"Particleboard.\"</pdf-download-link>"
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.9.1.(2)",
+                      "description": "OSB or waferboard finish shall conform to",
+                      "clauses": [
+                        {
+                          "numberReference": "v2-db-9.29.9.1.(2)(a)",
+                          "description": "<pdf-download-link number='1.3.1.2' named-dest='1.3.1.2. Applicable Editions'>CSA O325, \"Construction sheathing,\"</pdf-download-link> or"
+                        },
+                        {
+                          "numberReference": "v2-db-9.29.9.1.(2)(b)",
+                          "description": "<pdf-download-link number='1.3.1.2' named-dest='1.3.1.2. Applicable Editions'>CSA O437.0, \"OSB and Waferboard.\"</pdf-download-link>"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.29.9.2.",
+                  "title": "Minimum Thickness",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.9.2.(1)",
+                      "description": "Except as provided in Sentences <building-code-modal reference='v2-db-9.29.9.2.(2)'>(2)</building-code-modal> and <building-code-modal reference='v2-db-9.29.9.2.(3)'>(3)</building-code-modal>, the minimum thickness of O-2 grade OSB used as an interior finish shall conform to that shown for plywood in <building-code-modal reference='v2-db-9.29.6.1.-a'>Table 9.29.6.1.</building-code-modal>"
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.9.2.(2)",
+                      "description": "Thicknesses listed in <building-code-modal reference='v2-db-9.29.6.1.-a'>Table 9.29.6.1.</building-code-modal> shall permit a manufacturing tolerance of −0.4 mm."
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.9.2.(3)",
+                      "description": "No minimum thickness is required where O-2 grade OSB is applied over continuous backing."
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.9.2.(4)",
+                      "description": "OSB conforming to O-1 grade, waferboard conforming to R-1 grade and particleboard shall be",
+                      "clauses": [
+                        {
+                          "numberReference": "v2-db-9.29.9.2.(4)(a)",
+                          "description": "not less than 6.35 mm thick on supports not more than 400 mm o.c.,"
+                        },
+                        {
+                          "numberReference": "v2-db-9.29.9.2.(4)(b)",
+                          "description": "not less than 9.5 mm thick on supports not more than 600 mm o.c., and"
+                        },
+                        {
+                          "numberReference": "v2-db-9.29.9.2.(4)(c)",
+                          "description": "not less than 6.35 mm thick on supports not more than 600 mm o.c. in walls where blocking is provided at midwall height."
+                        }
+                      ]
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.9.2.(5)",
+                      "description": "OSB conforming to <pdf-download-link number='1.3.1.2' named-dest='1.3.1.2. Applicable Editions'>CSA O325, \"Construction sheathing,\"</pdf-download-link> shall meet the minimum panel mark of",
+                      "clauses": [
+                        {
+                          "numberReference": "v2-db-9.29.9.2.(5)(a)",
+                          "description": "W16, on supports not more than 400 mm o.c.,"
+                        },
+                        {
+                          "numberReference": "v2-db-9.29.9.2.(5)(b)",
+                          "description": "W24, on supports not more than 600 mm o.c., and"
+                        },
+                        {
+                          "numberReference": "v2-db-9.29.9.2.(5)(c)",
+                          "description": "W16, on supports not more than 600 mm o.c. where blocking is provided at midwall height. "
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.29.9.3.",
+                  "title": "Nails",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.9.3.(1)",
+                      "description": "Except as provided in <building-code-modal reference='v2-db-9.29.9.3.(2)'>Sentence (2)</building-code-modal>, nails for fastening particleboard, OSB or waferboard shall be not less than 38 mm casing or finishing nails spaced not more than 150 mm o.c. along edge supports and 300 mm o.c. along intermediate supports."
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.9.3.(2)",
+                      "description": "Where OSB or waferboard provides required bracing in <defined-term override-term='braced wall panel'>braced wall panels</defined-term>, the OSB or waferboard shall be fastened in accordance with the fastening requirements for sheathing stated in <pdf-download-link number='9.23.3.5' named-dest='9.23.3.5. Fasteners for Sheathing or Subflooring'>Sentence 9.23.3.5.(2)</pdf-download-link>."
+                    }
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.29.9.4.",
+                  "title": "Edge Support",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.9.4.(1)",
+                      "description": "All particleboard, OSB or waferboard edges shall be supported by furring, blocking or framing."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "numberReference": "v2-db-9.29.10.",
+              "title": "Wall Tile Finish",
+              "articles": [
+                {
+                  "numberReference": "v2-db-9.29.10.1.",
+                  "title": "Tile Application",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.10.1.(1)",
+                      "description": "Ceramic tile shall be set in a mortar base or applied with an adhesive. "
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.10.1.(2)",
+                      "description": "Plastic tile shall be applied with an adhesive. "
+                    }
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.29.10.2.",
+                  "title": "Mortar Base",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.10.2.(1)",
+                      "description": "When ceramic tile is applied to a mortar base the cementitious material shall consist of one part Portland cement to not more than one-quarter part lime by volume."
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.10.2.(2)",
+                      "description": "The cementitious material described in <building-code-modal reference='v2-db-9.29.10.2.(1)'>Sentence (1)</building-code-modal> shall be mixed with not less than 3 nor more than 5 parts of aggregate per part of cementitious material by volume."
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.10.2.(3)",
+                      "description": "Mortar shall be applied over metal lath or masonry."
+                    },
+                    {
+                      "numberReference": "v2-db-9.29.10.2.(4)",
+                      "description": "Ceramic tile applied to a mortar base shall be thoroughly soaked and pressed into place forcing the mortar into the joints while the tile is wet."
+                    }
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.29.10.3.",
+                  "title": "Adhesives",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.10.3.(1)",
+                      "description": "Adhesives to attach ceramic and plastic tile shall be applied to the finish coat or brown coat of plaster that has been steel-trowelled to an even surface or to gypsum board or to masonry provided the masonry has an even surface."
+                    }
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.29.10.4.",
+                  "title": "Moisture-Resistant Backing",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.10.4.(1)",
+                      "description": "Ceramic and plastic tile installed on walls around bathtubs or showers shall be applied over moisture-resistant backing."
+                    }
+                  ]
+                },
+                {
+                  "numberReference": "v2-db-9.29.10.5.",
+                  "title": "Joints between Tiles and Bathtub",
+                  "sentences": [
+                    {
+                      "numberReference": "v2-db-9.29.10.5.(1)",
+                      "description": "The joints between wall tiles and a bathtub shall be suitably caulked with material conforming to <pdf-download-link number='1.3.1.2' named-dest='1.3.1.2. Applicable Editions'>CAN/CGSB-19.22-M, \"Mildew-Resistant Sealing Compound for Tubs and Tiles.\"</pdf-download-link>"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
