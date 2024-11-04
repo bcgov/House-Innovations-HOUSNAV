@@ -235,6 +235,11 @@ const BuildingCodeContent: React.FC<BuildingCodeContentProps> = ({
               )}
               {sentence.clauses && renderClauses(sentence.clauses)}
               {sentence.image && renderTableImage(sentence.image)}
+              {sentence.subDescription && (
+                <span className="ui-ModalSide--SentenceSubDescription">
+                  {parseStringToComponents(sentence.subDescription)}
+                </span>
+              )}
             </li>
           ))}
         </ol>

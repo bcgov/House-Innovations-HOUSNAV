@@ -231,7 +231,7 @@
                   "sentences": [
                     {
                       "numberReference": "v2-db-9.10.14.3.(1)",
-                      "description": "Except for the purpose of applying <building-code-modal reference='v2-db-9.10.14.4'>Sentences 9.10.14.4.</building-code-modal> <building-code-modal reference='v2-db-9.10.14.4.(2)'>(2)</building-code-modal>, <building-code-modal reference='v2-db-9.10.14.4.(3)'>(3)</building-code-modal>, <building-code-modal reference='v2-db-9.10.14.4.(8)'>(8)</building-code-modal> and <building-code-modal reference='v2-db-9.10.14.4.(9)'>(9)</building-code-modal>, and <pdf-download-link named-dest='9.10.14.5. Construction of Exposing Building Face and Walls above Exposing Building Face'>Sentences 9.10.14.5.(3)</pdf-download-link>, <pdf-download-link named-dest='9.10.14.5. Construction of Exposing Building Face and Walls above Exposing Building Face'>(8)</pdf-download-link> and <pdf-download-link named-dest='9.10.14.5. Construction of Exposing Building Face and Walls above Exposing Building Face'>(13)</pdf-download-link>, a <defined-term>limiting distance</defined-term> equal to half the actual <defined-term>limiting distance</defined-term> shall be used as input to the requirements of this Subsection, where (<pdf-download-link named-dest='A-3.2.3. Fire Protection Related to Limiting Distance versus Separation Between Buildings.'>See Notes A-3.2.3.</pdf-download-link> and <pdf-download-link named-dest='A-3.2.3.1.(8) Intervention Time and Limiting Distance.'>A-3.2.3.1.(8).</pdf-download-link></pdf-download-link>)",
+                      "description": "Except for the purpose of applying <building-code-modal reference='v2-db-9.10.14.4'>Sentences 9.10.14.4.</building-code-modal> <building-code-modal reference='v2-db-9.10.14.4.(2)'>(2)</building-code-modal>, <building-code-modal reference='v2-db-9.10.14.4.(3)'>(3)</building-code-modal>, <building-code-modal reference='v2-db-9.10.14.4.(8)'>(8)</building-code-modal> and <building-code-modal reference='v2-db-9.10.14.4.(9)'>(9)</building-code-modal>, and <pdf-download-link named-dest='9.10.14.5. Construction of Exposing Building Face and Walls above Exposing Building Face'>Sentences 9.10.14.5.(3)</pdf-download-link>, <pdf-download-link named-dest='9.10.14.5. Construction of Exposing Building Face and Walls above Exposing Building Face'>(8)</pdf-download-link> and <pdf-download-link named-dest='9.10.14.5. Construction of Exposing Building Face and Walls above Exposing Building Face'>(13)</pdf-download-link>, a <defined-term>limiting distance</defined-term> equal to half the actual <defined-term>limiting distance</defined-term> shall be used as input to the requirements of this Subsection, where",
                       "clauses": [
                         {
                           "numberReference": "v2-db-9.10.14.3.(1)(a)",
@@ -241,7 +241,8 @@
                           "numberReference": "v2-db-9.10.14.3.(1)(b)",
                           "description": "any storey in the <defined-term>building</defined-term> is not <defined-term>sprinklered</defined-term>."
                         }
-                      ]
+                      ],
+                      "subDescription": "(See <pdf-download-link named-dest='A-3.2.3. Fire Protection Related to Limiting Distance versus Separation Between Buildings.'>Notes A-3.2.3.</pdf-download-link> and <pdf-download-link named-dest='A-3.2.3.1.(8) Intervention Time and Limiting Distance.'>A-3.2.3.1.(8).</pdf-download-link></pdf-download-link>)"
                     }
                   ]
                 },
