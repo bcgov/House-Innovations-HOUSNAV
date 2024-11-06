@@ -1,8 +1,13 @@
 {
   "walkthroughs": [
     {
-      "title": "Questions p33-p35, Result R1_0",
+      "title": "Questions p29, p33-p35, Result R1_0",
       "steps": [
+        {
+          "question": "P29",
+          "type": "checkbox",
+          "answer": "1"
+        },
         {
           "question": "P33",
           "type": "input",
@@ -22,8 +27,13 @@
       "result": "R1_0"
     },
     {
-      "title": "Questions p33-p38, Result R5_0",
+      "title": "Questions p29, p33-p38, Result R5_0",
       "steps": [
+        {
+          "question": "P29",
+          "type": "checkbox",
+          "answer": "1"
+        },
         {
           "question": "P33",
           "type": "input",
@@ -58,8 +68,13 @@
       "result": "R5_0"
     },
     {
-      "title": "Questions p33-p35, p37, Result R4_0",
+      "title": "Questions p29, p33-p35, p37, Result R4_0",
       "steps": [
+        {
+          "question": "P29",
+          "type": "checkbox",
+          "answer": "1"
+        },
         {
           "question": "P33",
           "type": "input",
@@ -84,8 +99,13 @@
       "result": "R4_0"
     },
     {
-      "title": "Questions p33-p35, p38, Result R6_0",
+      "title": "Questions p29, p33-p35, p38, Result R6_0",
       "steps": [
+        {
+          "question": "P29",
+          "type": "checkbox",
+          "answer": "1"
+        },
         {
           "question": "P33",
           "type": "input",

@@ -19,6 +19,11 @@
           "answer": "true"
         },
         {
+          "question": "P29",
+          "type": "checkbox",
+          "answer": "1"
+        },
+        {
           "question": "P33",
           "type": "input",
           "answer": "333"
@@ -53,7 +58,13 @@
           "question": "P12",
           "type": "radio",
           "answer": "true"
-        },{
+        },
+        {
+          "question": "P29",
+          "type": "checkbox",
+          "answer": "1"
+        },
+        {
           "question": "P33",
           "type": "input",
           "answer": "333"
