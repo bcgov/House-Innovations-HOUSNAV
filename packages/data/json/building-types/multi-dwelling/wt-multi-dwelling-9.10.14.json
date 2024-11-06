@@ -11,15 +11,116 @@
     "1_9_10_14": {
       "sectionTitle": "9.10.14. Spatial Separation Between Buildings",
       "sectionQuestions": [
-        "P33", "P34", "P35", "P36", "P37", "P38"
+        "P29", "P31", "P32", "P33", "P34", "P35", "P36", "P37", "P38"
       ]
     }
   },
   "questions": {
+    "P29": {
+      "walkthroughItemType": "multiChoiceMultiple",
+      "questionText": "Select all that apply to the project <defined-term>building</defined-term>?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Subsection 9.10.14.",
+        "codeNumber": "v2-db-9.10.14."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "This <defined-term>building</defined-term> includes a <defined-term override-term='residential occupancy'>residential major occupancy</defined-term>.",
+          "answerValue": "1"
+        },
+        {
+          "answerDisplayText": "This <defined-term>building</defined-term> includes a <defined-term override-term='low-hazard industrial occupancy'>low hazard industrial major occupancy</defined-term>.",
+          "answerValue": "2"
+        },
+        {
+          "answerDisplayText": "This <defined-term>building</defined-term> is an accessory <defined-term>building</defined-term>.",
+          "answerValue": "3"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "containsAny",
+          "answerToCheck": "P29",
+          "answerValues": ["3"],
+          "nextNavigateTo": "P32"
+        },
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P29",
+          "answerValue": "2",
+          "nextNavigateTo": "P31"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P33"
+        }
+      ]
+    },
+    "P31": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Is this <defined-term>building</defined-term> a garage or carport conforming to <pdf-download-link number='9.35' named-dest='9.35. Garages and Carports'>Section 9.35</pdf-download-link> that serves not more than one <defined-term>dwelling unit</defined-term> or a house with a <defined-term>secondary suite</defined-term>?",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Sentence 9.10.14.1.(2)",
+        "codeNumber": "v2-db-9.10.14.1.(2)"
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P31",
+          "answerValue": "true",
+          "nextNavigateTo": "R0_0"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "P32"
+        }
+      ]
+    },
+    "P32": {
+      "walkthroughItemType": "multiChoice",
+      "questionText": "Is this <defined-term>building</defined-term> a detached garage or accessory <defined-term>building</defined-term> that meets all the following requirements:",
+      "questionSubtext": "<ul><li>Faces a <defined-term>dwelling unit</defined-term>.</li><li>Serves only one <defined-term>dwelling unit</defined-term>.</li><li>Is located on the same property as that <defined-term>dwelling unit</defined-term>.</li><li>The <defined-term>dwelling unit</defined-term> is the only <defined-term>major occupancy</defined-term> on the property.</li></ul>",
+      "questionCodeReference": {
+        "displayString": "Vol 2, Div B, Subsection 9.10.14.",
+        "codeNumber": "v2-db-9.10.14."
+      },
+      "possibleAnswers": [
+        {
+          "answerDisplayText": "Yes",
+          "answerValue": "true"
+        },
+        {
+          "answerDisplayText": "No",
+          "answerValue": "false"
+        }
+      ],
+      "nextNavigationLogic": [
+        {
+          "nextLogicType": "equal",
+          "answerToCheck": "P32",
+          "answerValue": "true",
+          "nextNavigateTo": "R4_0"
+        },
+        {
+          "nextLogicType": "fallback",
+          "nextNavigateTo": "R2_1"
+        }
+      ]
+    },
     "P33": {
       "walkthroughItemType": "numberFloat",
       "questionText": "What is the area of the selected <defined-term>exposing building face</defined-term> <span aria-label='in meters squared'>(m<sup>2</sup>)</span>?",
-      "questionSubtext": "<p>Answer all following questions based on one selected exposing building face that has not been evaluated yet. (It is recommended to track which exposing building faces have been evaluated.)</p><p>The area of an exposing building face is calculated by taking the exterior wall area that faces in one direction on any side of a <defined-term>building</defined-term> and calculating the total area of that exterior face from the finished ground level to the uppermost ceiling. <building-code reference='v2-db-9.10.14.2.(1)'>Sentence 9.10.14.2.(1)</building-code></p><p>Alternatively, an exterior wall may be divided into smaller exposing building faces that can be calculated separately in a building that is divided into <defined-term override-term='fire compartment'>fire compartments</defined-term> that are separated from the remainder of the building by <defined-term override-term='fire separation'>fire separations</defined-term> with <defined-term override-term='fire-resistance rating'>fire-resistance ratings</defined-term> not less than 45 min. In this circumstance the area of each exposing building face for each fire compartment is based on the area of the exposing wall of that fire compartment and calculated separately from other fire compartments. <building-code reference='v2-db-9.10.14.2.(4)'>Sentence 9.10.14.2.(4)</building-code></p>",
+      "questionSubtext": "<p>Answer all following questions based on one selected <defined-term>exposing building face</defined-term> that has not been evaluated yet. (It is recommended to track which <defined-term override-term='exposing building face'>exposing building faces</defined-term> have been evaluated.)</p><p>The area of an <defined-term>exposing building face</defined-term> is calculated by taking the exterior wall area that faces in one direction on any side of a <defined-term>building</defined-term> and calculating the total area of that exterior face from the finished ground level to the uppermost ceiling. <building-code reference='v2-db-9.10.14.2.(1)'>Sentence 9.10.14.2.(1)</building-code></p><p>Alternatively, an exterior wall may be divided into smaller <defined-term override-term='exposing building face'>exposing building faces</defined-term> that can be calculated separately in a <defined-term>building</defined-term> that is divided into <defined-term override-term='fire compartment'>fire compartments</defined-term> that are separated from the remainder of the <defined-term>building</defined-term> by <defined-term override-term='fire separation'>fire separations</defined-term> with <defined-term override-term='fire-resistance rating'>fire-resistance ratings</defined-term> not less than 45 min. In this circumstance the area of each <defined-term>exposing building face</defined-term> for each <defined-term>fire compartment</defined-term> is based on the area of the exposing wall of that <defined-term>fire compartment</defined-term> and calculated separately from other <defined-term override-term='fire compartment'>fire compartments</defined-term>. <building-code reference='v2-db-9.10.14.2.(4)'>Sentence 9.10.14.2.(4)</building-code></p>",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Sentence 9.10.14.2",
         "codeNumber": "v2-db-9.10.14.2"
@@ -154,7 +255,7 @@
     },
     "P36": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Does the time from receipt of notification of a fire by the fire department until the first fire department vehicle arrives at the <defined-term>building</defined-term> exceed 10 min in 10% or more of all calls to this building?",
+      "questionText": "Does the time from receipt of notification of a fire by the fire department until the first fire department vehicle arrives at the <defined-term>building</defined-term> exceed 10 min in 10% or more of all calls to this <defined-term>building</defined-term>?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Subsection 9.10.14.3.(1)",
         "codeNumber": "v2-db-9.10.14.3.(1)"
@@ -263,7 +364,7 @@
     },
     "P37": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Does the <defined-term>exposing building face</defined-term> of this <defined-term>fire compartment</defined-term> face a <defined-term>street</defined-term> and is at street level?",
+      "questionText": "Does the <defined-term>exposing building face</defined-term> of this <defined-term>fire compartment</defined-term> face a <defined-term>street</defined-term> and is at <defined-term>street</defined-term> level?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Subsection 9.10.14.4.(9)",
         "codeNumber": "v2-db-9.10.14.4.(9)"
@@ -829,14 +930,20 @@
     }
   },
   "results": {
+    "R0_0": {
+      "resultDisplayMessage": "<p>Based on your selection, this proposed <defined-term>building</defined-term> project is not a new single <defined-term>dwelling unit</defined-term>, or a new multi-dwelling unit <defined-term>building</defined-term> and at this time this tool is only designed to assist users to determine conformance with the requirements of the BC Building Code 2024 for single <defined-term override-term='dwelling unit'>dwelling units</defined-term> and multi-dwelling unit <defined-term override-term='building'>buildings</defined-term>, as such this tool is not applicable to your proposed <defined-term>building</defined-term> project.</p>"
+    },
     "R1_0": {
-      "resultDisplayMessage": "<p>Based on your selections the wall has a <defined-term>limiting distance</defined-term> of less than 1.2m, as such all openings in the wall are required to be protected by <defined-term override-term='closure'>closures</defined-term>, of other than wired glass or glass block, whose <defined-term>fire-protection rating</defined-term> is in conformance with the <defined-term>fire-resistance rating</defined-term> required for the wall. (See <pdf-download-link named-dest='9.10.13.1. Closures'>Table 9.10.13.1.</pdf-download-link>)</p><p>If there are additional <defined-term override-term='exposing building face'>exposing building faces</defined-term> with <defined-term>unprotected openings</defined-term> for this <defined-term>building</defined-term> that require evaluation for conformance with the BC Building Code 2024 click \"Start Over\" below.</p>"
+      "resultDisplayMessage": "<p>Based on your selections, the wall has a <defined-term>limiting distance</defined-term> of less than 1.2m, as such all openings in the wall are required to be protected by <defined-term override-term='closure'>closures</defined-term>, of other than wired glass or glass block, whose <defined-term>fire-protection rating</defined-term> is in conformance with the <defined-term>fire-resistance rating</defined-term> required for the wall. (See <pdf-download-link named-dest='9.10.13.1. Closures'>Table 9.10.13.1.</pdf-download-link>)</p><p>If there are additional <defined-term override-term='exposing building face'>exposing building faces</defined-term> with <defined-term>unprotected openings</defined-term> for this <defined-term>building</defined-term> that require evaluation for conformance with the BC Building Code 2024 click \"Start Over\" below.</p>"
+    },
+    "R2_1": {
+      "resultDisplayMessage": "Based on your selections, this <defined-term>building</defined-term> is an accessory <defined-term>building</defined-term> that does not meet the requirements of <building-code reference='v2-db-9.10.14.4.(10)'>Sentence 9.10.14.4.(10)</building-code> of BC Building Code 2024.  This tool is only designed to assist users to determine conformance with the requirements of the BC Building Code 2024 for single <defined-term override-term='dwelling unit'>dwelling units</defined-term> and multi-dwelling unit <defined-term override-term='building'>buildings</defined-term>, as such this tool is not applicable to your proposed <defined-term>building</defined-term> project."
     },
     "R4_0": {
-      "resultDisplayMessage": "<p>Based on your selections this <defined-term>building</defined-term> meets the requirements of <building-code reference='v2-db-9.10.14.4.'>Article 9.10.14.4.</building-code>, thus this <defined-term>exposing building face</defined-term> is permitted by the BC Building Code 2024 to have unlimited <defined-term>unprotected openings</defined-term>.</p><p>If there are additional exposing building faces with unprotected openings for this building that require evaluation for conformance with the BC Building Code 2024 click \"Start Over\" below.</p>"
+      "resultDisplayMessage": "<p>Based on your selections, this <defined-term>building</defined-term> meets the requirements of <building-code reference='v2-db-9.10.14.4.'>Article 9.10.14.4.</building-code>, thus this <defined-term>exposing building face</defined-term> is permitted by the BC Building Code 2024 to have unlimited <defined-term>unprotected openings</defined-term>.</p><p>If there are additional <defined-term override-term='exposing building face'>exposing building faces</defined-term> with <defined-term>unprotected openings</defined-term> for this <defined-term>building</defined-term> that require evaluation for conformance with the BC Building Code 2024 click \"Start Over\" below.</p>"
     },
     "R5_0": {
-      "resultDisplayMessage": "<p>Based on your selections the maximum aggregate percentage of <defined-term>unprotected openings</defined-term> in this <defined-term>exposing building face</defined-term> is <result-calculation id=\"1\"></result-calculation>%*, based on an exposing building face of <answer-value answer=\"P33\"></answer-value> m<sup>2</sup>, the maximum area would be <result-calculation id=\"2\"></result-calculation> m<sup>2</sup> per <building-code reference='v2-db-9.10.14.4.(1)'>Table 9.10.14.4.-A</building-code> and <building-code reference='v2-db-9.10.14.4.(1)'>Sentence 9.10.14.4.(1)</building-code>.</p><p>The maximum size of any openable windows in this exposing building face with an unobstructed opening that is 0.35 m<sup>2</sup> or greater must be installed in accordance with <pdf-download-link named-dest=\"9.9.10.1. Egress Windows or Doors for Bedrooms\">Sentences 9.9.10.1.(1)</pdf-download-link> and <pdf-download-link named-dest=\"9.9.10.1. Egress Windows or Doors for Bedrooms\">(2)</pdf-download-link> is: <result-calculation id=\"3\"></result-calculation> m<sup>2</sup>.</p><p>A ‘single room or space’ shall mean:</p><ul><li>two or more adjacent spaces having a full-height separating wall extending less than 1.5 m from the interior face of the exterior wall, or</li><li>two or more stacked spaces that are on the same storey.</li></ul><p>The spacing between individual unprotected openings described that serve a single room or space shall be not less than:</p><ul><li>2 m horizontally of another unprotected opening that is on the same exposing building face and serves the single room or space, or</li><li>2 m vertically of another unprotected opening that serves the single room or space, or another room or space on the same storey.</li></ul><p>*Note: Per <building-code reference=\"v2-db-9.10.14.4.(1)(b)\">Clause 9.10.14.4.(1)(b)</building-code> the percentage of unprotected openings of the <defined-term>exposing building face</defined-term> is permitted by the BC Building Code 2024 to be calculated in conformance with <pdf-download-link named-dest=\"3.2.3. Spatial Separation and Exposure Protection\">Subsection 3.2.3.</pdf-download-link> At this time Subsection 3.2.3 is beyond the scope of this tool.</p><p>If there are additional exposing building faces with unprotected openings for this building that require evaluation for conformance with the BC Building Code 2024 click \"Start Over\" below.</p>",
+      "resultDisplayMessage": "<p>Based on your selections, the maximum aggregate percentage of <defined-term>unprotected openings</defined-term> in this <defined-term>exposing building face</defined-term> is <result-calculation id=\"1\"></result-calculation>%*, based on an <defined-term>exposing building face</defined-term> of <answer-value answer=\"P33\"></answer-value> m<sup>2</sup>, the maximum area would be <result-calculation id=\"2\"></result-calculation> m<sup>2</sup> per <building-code reference='v2-db-9.10.14.4.(1)'>Table 9.10.14.4.-A</building-code> and <building-code reference='v2-db-9.10.14.4.(1)'>Sentence 9.10.14.4.(1)</building-code>.</p><p>The maximum size of any openable windows in this <defined-term>exposing building face</defined-term> with an unobstructed opening that is 0.35 m<sup>2</sup> or greater must be installed in accordance with <pdf-download-link named-dest=\"9.9.10.1. Egress Windows or Doors for Bedrooms\">Sentences 9.9.10.1.(1)</pdf-download-link> and <pdf-download-link named-dest=\"9.9.10.1. Egress Windows or Doors for Bedrooms\">(2)</pdf-download-link> is: <result-calculation id=\"3\"></result-calculation> m<sup>2</sup>.</p><p>A ‘single room or space’ shall mean:</p><ul><li>two or more adjacent spaces having a full-height separating wall extending less than 1.5 m from the interior face of the exterior wall, or</li><li>two or more stacked spaces that are on the same storey.</li></ul><p>The spacing between individual <defined-term>unprotected openings</defined-term> described that serve a single room or space shall be not less than:</p><ul><li>2 m horizontally of another unprotected opening that is on the same <defined-term>exposing building face</defined-term> and serves the single room or space, or</li><li>2 m vertically of another unprotected opening that serves the single room or space, or another room or space on the same storey.</li></ul><p>*Note: Per <building-code reference=\"v2-db-9.10.14.4.(1)(b)\">Clause 9.10.14.4.(1)(b)</building-code> the percentage of <defined-term>unprotected openings</defined-term> of the <defined-term>exposing building face</defined-term> is permitted by the BC Building Code 2024 to be calculated in conformance with <pdf-download-link named-dest=\"3.2.3. Spatial Separation and Exposure Protection\">Subsection 3.2.3.</pdf-download-link> At this time Subsection 3.2.3 is beyond the scope of this tool.</p><p>If there are additional <defined-term override-term='exposing building face'>exposing building faces</defined-term> with <defined-term>unprotected openings</defined-term> for this <defined-term>building</defined-term> that require evaluation for conformance with the BC Building Code 2024 click \"Start Over\" below.</p>",
       "resultCalculations": [
         {
           "id": "1",
@@ -996,7 +1103,7 @@
       ]
     },
     "R6_0": {
-      "resultDisplayMessage": "<p>Based on your selections the maximum percentage of <defined-term>unprotected openings</defined-term> in this <defined-term>exposing building face</defined-term> (exterior wall) is <result-calculation id='1'></result-calculation>%*, based on an exposing building face of <answer-value answer='P33'></answer-value> m<sup>2</sup>, the maximum total area of the exposing building face would be: <result-calculation id='2'></result-calculation> m<sup>2</sup>.</p><p>*Note: Per <building-code reference=\"v2-db-9.10.14.4.(1)(b)\">Clause 9.10.14.4.(1)(b)</building-code> the percentage of unprotected openings of the <defined-term>exposing building face</defined-term> is permitted by the BC Building Code 2024 to be calculated in conformance with <pdf-download-link named-dest=\"3.2.3. Spatial Separation and Exposure Protection\">Subsection 3.2.3.</pdf-download-link> At this time Subsection 3.2.3 is beyond the scope of this tool.</p><p>If there are additional exposing building faces with unprotected openings for this building that require evaluation for conformance with the BC Building Code 2024 click \"Start Over\" below.</p>",
+      "resultDisplayMessage": "<p>Based on your selections, the maximum percentage of <defined-term>unprotected openings</defined-term> in this <defined-term>exposing building face</defined-term> (exterior wall) is <result-calculation id='1'></result-calculation>%*, based on an <defined-term>exposing building face</defined-term> of <answer-value answer='P33'></answer-value> m<sup>2</sup>, the maximum total area of the <defined-term>exposing building face</defined-term> would be: <result-calculation id='2'></result-calculation> m<sup>2</sup>.</p><p>*Note: Per <building-code reference=\"v2-db-9.10.14.4.(1)(b)\">Clause 9.10.14.4.(1)(b)</building-code> the percentage of <defined-term>unprotected openings</defined-term> of the <defined-term>exposing building face</defined-term> is permitted by the BC Building Code 2024 to be calculated in conformance with <pdf-download-link named-dest=\"3.2.3. Spatial Separation and Exposure Protection\">Subsection 3.2.3.</pdf-download-link> At this time Subsection 3.2.3 is beyond the scope of this tool.</p><p>If there are additional <defined-term override-term='exposing building face'>exposing building faces</defined-term> with <defined-term>unprotected openings</defined-term> for this <defined-term>building</defined-term> that require evaluation for conformance with the BC Building Code 2024 click \"Start Over\" below.</p>",
       "resultCalculations": [
         {
           "id": "1",

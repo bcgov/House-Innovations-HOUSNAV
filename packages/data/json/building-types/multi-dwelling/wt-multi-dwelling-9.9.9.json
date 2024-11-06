@@ -25,7 +25,7 @@
     "P2": {
       "walkthroughItemType": "multiChoice",
       "questionText": "How many <defined-term override-term='storey'>storeys</defined-term> does this <defined-term>dwelling unit</defined-term> have?",
-      "questionSubtext": "Answer the following questions based on a single dwelling unit within the proposed <defined-term>building</defined-term> to determine it's means of egress.",
+      "questionSubtext": "Answer the following questions based on a single <defined-term>dwelling unit</defined-term> within the proposed <defined-term>building</defined-term> to determine it's <defined-term>means of egress</defined-term>.",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Article 9.9.9.1.",
         "codeNumber": "v2-db-9.9.9.1."
@@ -44,7 +44,7 @@
           "answerValue": "2"
         },
         {
-          "answerDisplayText": "2 + basement",
+          "answerDisplayText": "2 + <defined-term>basement</defined-term>",
           "answerValue": "2B"
         },
         {
@@ -52,7 +52,7 @@
           "answerValue": "3"
         },
         {
-          "answerDisplayText": "3 + basement",
+          "answerDisplayText": "3 + <defined-term>basement</defined-term>",
           "answerValue": "3B"
         },
         {
@@ -83,7 +83,7 @@
       "walkthroughItemType": "multiChoiceMultiple",
       "answersAreDynamic": true,
       "storeAnswerAsObject": true,
-      "questionText": "Which of the following <defined-term override-term='storey'>storeys</defined-term> within the <defined-term>dwelling unit</defined-term> have an egress or <defined-term>exit</defined-term> doors on that storey?",
+      "questionText": "Which of the following <defined-term override-term='storey'>storeys</defined-term> within the <defined-term>dwelling unit</defined-term> have an egress or <defined-term>exit</defined-term> doors on that <defined-term>storey</defined-term>?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Article 9.9.9.1.",
         "codeNumber": "v2-db-9.9.9.1."
@@ -307,7 +307,7 @@
       "answersAreDynamic": true,
       "storeAnswerAsObject": true,
       "isNotRequired": true,
-      "questionText": "Which <defined-term override-term='storey'>storey(s)</defined-term> with greater than 1 storey of travel to an <defined-term>exit</defined-term> of the <defined-term>dwelling unit</defined-term> have access to a balcony?",
+      "questionText": "Which <defined-term override-term='storey'>storey(s)</defined-term> with greater than 1 <defined-term>storey</defined-term> of travel to an <defined-term>exit</defined-term> of the <defined-term>dwelling unit</defined-term> have access to a balcony on that floor level?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Article 9.9.9.1.",
         "codeNumber": "v2-db-9.9.9.1."
@@ -367,7 +367,7 @@
     },
     "P6": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Is this <defined-term>dwelling unit</defined-term> above another dwelling unit?",
+      "questionText": "Is this <defined-term>dwelling unit</defined-term> above another <defined-term>dwelling unit</defined-term>?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Article 9.9.9.1.",
         "codeNumber": "v2-db-9.9.9.1."
@@ -400,7 +400,7 @@
       "answersAreDynamic": true,
       "storeAnswerAsObject": true,
       "isNotRequired": true,
-      "questionText": "Which <defined-term override-term='storey'>storey(s)</defined-term> of the <defined-term>dwelling unit</defined-term> have access to an openable window with an unobstructed opening of not less than 1m in height and 0.55m in width?",
+      "questionText": "Which <defined-term override-term='storey'>storey(s)</defined-term> of the <defined-term>dwelling unit</defined-term> have access to an openable window with an unobstructed opening of not less than 1m in height and 0.55m in width on this floor level?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Article 9.9.9.1.",
         "codeNumber": "v2-db-9.9.9.1."
@@ -844,7 +844,7 @@
       "answersAreDynamic": true,
       "storeAnswerAsObject": true,
       "isNotRequired": true,
-      "questionText": "On which <defined-term override-term='storey'>storey(s)</defined-term> is the openable window located so that the sill is not more than 1m above the floor level and not more than 7m above adjacent ground level?",
+      "questionText": "On which <defined-term override-term='storey'>storey(s)</defined-term> of the <defined-term>dwelling unit</defined-term> is the openable window located so that the sill is not more than 1m above the finish floor level and less than 7m above adjacent ground level?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Article 9.9.9.1.",
         "codeNumber": "v2-db-9.9.9.1."
@@ -1159,7 +1159,7 @@
       "answersAreDynamic": true,
       "storeAnswerAsObject": true,
       "isNotRequired": true,
-      "questionText": "On which level(s) is the door an egress door to a <defined-term>public corridor</defined-term>, enclosed <defined-term>exit</defined-term> stairway, or exterior passageway?",
+      "questionText": "On which <defined-term override-term='storey'>storey(s)</defined-term> of the <defined-term>dwelling unit</defined-term> is the door an egress door to a <defined-term>public corridor</defined-term>, enclosed <defined-term>exit</defined-term> stairway, or exterior passageway?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Article 9.9.9.1.",
         "codeNumber": "v2-db-9.9.9.1."
@@ -1222,7 +1222,7 @@
       "answersAreDynamic": true,
       "storeAnswerAsObject": true,
       "isNotRequired": true,
-      "questionText": "On which level(s) is the egress door an <defined-term>exit</defined-term> doorway that is not more than 1.5m above adjacent ground level?",
+      "questionText": "On which <defined-term override-term='storey'>storey(s)</defined-term> of the <defined-term>dwelling unit</defined-term> is the egress door an <defined-term>exit</defined-term> doorway that is not more than 1.5m above adjacent ground level?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Article 9.9.9.1.",
         "codeNumber": "v2-db-9.9.9.1."
@@ -1528,7 +1528,7 @@
     },
     "P17": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Does this part of the <defined-term>building</defined-term> meet the definition of a <defined-term>secondary suite</defined-term>?",
+      "questionText": "Does this <defined-term>dwelling unit</defined-term> meet the definition of a <defined-term>secondary suite</defined-term>?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Article 9.9.9.2.",
         "codeNumber": "v2-db-9.9.9.2."
@@ -1658,7 +1658,7 @@
     },
     "P18": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Does this <defined-term>dwelling unit</defined-term> have separate and direct access from each <defined-term >storey</defined-term> to a balcony on level(s): <answer-value answer='P5'></answer-value>?",
+      "questionText": "Does this <defined-term>dwelling unit</defined-term> have separate and direct access from each <defined-term>storey</defined-term> to a balcony on <defined-term override-term='storey'>storey(s)</defined-term>: <answer-value answer='P5'></answer-value>?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Article 9.9.9.2.",
         "codeNumber": "v2-db-9.9.9.2."
@@ -1718,7 +1718,7 @@
     },
     "P20": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Is this <defined-term>dwelling unit</defined-term> located above another dwelling unit or common space in a house with a <defined-term>secondary suite</defined-term>?",
+      "questionText": "Is this <defined-term>dwelling unit</defined-term> located above another <defined-term>dwelling unit</defined-term> or common space in a house with a <defined-term>secondary suite</defined-term>?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Article 9.9.9.3.",
         "codeNumber": "v2-db-9.9.9.3."
@@ -1748,7 +1748,7 @@
     },
     "P21": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Does the egress door of this <defined-term>dwelling unit</defined-term> open onto a shared egress facility (<defined-term>public corridor</defined-term>, exterior passageway, <defined-term>exit</defined-term> stairway, or <defined-term>ramp</defined-term>) that is served by a single exit stairway or ramp?",
+      "questionText": "Does the egress door of this <defined-term>dwelling unit</defined-term> open onto a shared egress facility (<defined-term>public corridor</defined-term>, exterior passageway, <defined-term>exit</defined-term> stairway, or <defined-term>ramp</defined-term>) that is served by a single <defined-term>exit</defined-term> stairway or <defined-term>ramp</defined-term>?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Article 9.9.9.3.",
         "codeNumber": "v2-db-9.9.9.3."
@@ -1874,12 +1874,6 @@
           "nextNavigateTo": "P21P5"
         },
         {
-          "nextLogicType": "equal",
-          "answerToCheck": "P21",
-          "answerValue": "true",
-          "nextNavigateTo": "P21P7"
-        },
-        {
           "nextLogicType": "fallback",
           "nextNavigateTo": "R1_2"
         }
@@ -1887,7 +1881,7 @@
     },
     "P21P17": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Does this part of the <defined-term>building</defined-term> meet the definition of a <defined-term>secondary suite</defined-term>?",
+      "questionText": "Does this <defined-term>dwelling unit</defined-term> meet the definition of a <defined-term>secondary suite</defined-term>?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Article 9.9.9.2.",
         "codeNumber": "v2-db-9.9.9.2."
@@ -1920,7 +1914,7 @@
       "answersAreDynamic": true,
       "storeAnswerAsObject": true,
       "isNotRequired": true,
-      "questionText": "Which <defined-term override-term='storey'>storey(s)</defined-term> with greater than 1 storey of travel to an <defined-term>exit</defined-term> of the <defined-term>dwelling unit</defined-term> have access to a balcony?",
+      "questionText": "Which <defined-term override-term='storey'>storey(s)</defined-term> with greater than 1 <defined-term>storey</defined-term> of travel to an <defined-term>exit</defined-term> of the <defined-term>dwelling unit</defined-term> have access to a balcony on that floor level?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Article 9.9.9.1.",
         "codeNumber": "v2-db-9.9.9.1."
@@ -2033,7 +2027,7 @@
       "answersAreDynamic": true,
       "storeAnswerAsObject": true,
       "isNotRequired": true,
-      "questionText": "Which <defined-term override-term='storey'>storey(s)</defined-term> of the <defined-term>dwelling unit</defined-term> have access to an openable window with an unobstructed opening of not less than 1m in height and 0.55m in width?",
+      "questionText": "Which <defined-term override-term='storey'>storey(s)</defined-term> of the <defined-term>dwelling unit</defined-term> have access to an openable window with an unobstructed opening of not less than 1m in height and 0.55m in width on this floor level?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Article 9.9.9.1.",
         "codeNumber": "v2-db-9.9.9.1."
@@ -2162,7 +2156,7 @@
       "answersAreDynamic": true,
       "storeAnswerAsObject": true,
       "isNotRequired": true,
-      "questionText": "On which <defined-term override-term='storey'>storey(s)</defined-term> is the openable window located so that the sill is not more than 1m above the floor level and not more than 7m above adjacent ground level?",
+      "questionText": "On which <defined-term override-term='storey'>storey(s)</defined-term> of the <defined-term>dwelling unit</defined-term> is the openable window located so that the sill is not more than 1m above the finish floor level and less than 7m above adjacent ground level?",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Article 9.9.9.1.",
         "codeNumber": "v2-db-9.9.9.1."
@@ -2456,8 +2450,8 @@
     },
     "P28": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "Based on the provided building characteristics, and to meet the provisions of the BC Building Code 2024, is the <defined-term>dwelling unit</defined-term> provided with an exterior passageway that has the design requirements listed below?",
-      "questionSubtext": "<ul><li>A floor assembly with a <defined-term>fire-resistance rating</defined-term> less than 45 min, and</li><li>is served by a single <defined-term>exit</defined-term> stairway or <defined-term>ramp</defined-term>, and</li><li>is located more than 1.5 m above adjacent ground level.</li></ul>",
+      "questionText": "Based on the provided <defined-term>building</defined-term> characteristics, and to meet the provisions of the BC Building Code 2024, is the <defined-term>dwelling unit</defined-term> provided with an exterior passageway that has the design requirements listed below?",
+      "questionSubtext": "<ul><li>has a floor assembly with a <defined-term>fire-resistance rating</defined-term> less than 45 min, and</li><li>is served by a single <defined-term>exit</defined-term> stairway or <defined-term>ramp</defined-term>, and</li><li>is located more than 1.5 m above adjacent ground level.</li></ul>",
       "questionCodeReference": {
         "displayString": "Vol 2, Div B, Article 9.9.9.3.",
         "codeNumber": "v2-db-9.9.9.3."
@@ -2488,13 +2482,13 @@
   },
   "results": {
     "R1_1": {
-      "resultDisplayMessage": "<p>Based on your selections the height of this <defined-term>dwelling unit</defined-term> exceeds the maximum height permitted for a <defined-term>building</defined-term> constructed under the BC Building Code 2024 Part 9. Please review your selections for error, if the height of the building exceeds 3 <defined-term override-term='storey'>storeys</defined-term> the building will need to be designed in accordance with Parts 3, 4, 5, and 6 of the BC Building Code 2024 and at this time this tool is only designed to assist users to determine conformance with the requirements of the BC Building Code 2024 Part 9. If there are no errors in your selections, please contact the appropriate required design professionals for this building.</p>"
+      "resultDisplayMessage": "<p>Based on your selections, the height of this <defined-term>dwelling unit</defined-term> exceeds the maximum height permitted for a <defined-term>building</defined-term> constructed under the BC Building Code 2024 Part 9. Please review your selections for error, if the height of the <defined-term>building</defined-term> exceeds 3 <defined-term override-term='storey'>storeys</defined-term> the <defined-term>building</defined-term> will need to be designed in accordance with Parts 3, 4, 5, and 6 of the BC Building Code 2024 and at this time this tool is only designed to assist users to determine conformance with the requirements of the BC Building Code 2024 Part 9. If there are no errors in your selections, please contact the appropriate required design professionals for this <defined-term>building</defined-term>.</p>"
     },
     "R1_2": {
-      "resultDisplayMessage": "<p>Based on your selections this <defined-term>building</defined-term> project does not meet the BC Building Code 2024 requirements for means of egress from a <defined-term>dwelling unit</defined-term>.</p>"
+      "resultDisplayMessage": "<p>Based on your selections, this proposed <defined-term>building</defined-term> project does not meet the BC Building Code 2024 requirements for <defined-term>means of egress</defined-term> from a <defined-term>dwelling unit</defined-term>.</p>"
     },
     "R1_3": {
-      "resultDisplayMessage": "<p>The evaluated <defined-term>dwelling unit</defined-term> has been deemed to satisfy the requirements of Subsection 9.9.9. of the BC Building Code 2024. If there are additional dwelling units within this <defined-term>building</defined-term> that have not been assessed to determine conformance with the egress requirements of Subsection 9.9.9 of the BC Building Code 2024 click \"Start Over\" below.</p>"
+      "resultDisplayMessage": "<p>Based on the <defined-term>building</defined-term> characteristics provided, this <defined-term>dwelling unit</defined-term> conforms with the requirements of BC Building Code 2024 for the egress of <defined-term override-term='dwelling unit'>dwelling units</defined-term> in accordance with Subsection 9.9.9. If there are additional <defined-term override-term='dwelling unit'>dwelling units</defined-term> within this <defined-term>building</defined-term> that have not been assessed to determine conformance with the egress requirements of Subsection 9.9.9 of the BC Building Code 2024 click \"Start Over\" below.</p>"
     }
   }
 }
