@@ -19,18 +19,18 @@
   "questions": {
     "P01": {
       "walkthroughItemType": "multiChoiceMultiple",
-      "questionText": "Check all that apply to this proposed building project:",
+      "questionText": "Check all that apply to this proposed <defined-term>building</defined-term> project:",
       "possibleAnswers": [
         {
           "answerDisplayText": "Will involve construction of a new <defined-term>building</defined-term>.",
           "answerValue": "1"
         },
         {
-          "answerDisplayText": "Will be a single <defined-term>dwelling unit</defined-term>.",
+          "answerDisplayText": "Will be a single residential <defined-term>dwelling unit</defined-term>.",
           "answerValue": "2"
         },
         {
-          "answerDisplayText": "Will be a multi-dwelling unit building with no other <defined-term override-term='major occupancy'>major occupancies</defined-term> or <defined-term override-term='secondary suite'>secondary suites</defined-term>.",
+          "answerDisplayText": "Will be a multi-dwelling unit <defined-term>building</defined-term> or <defined-term>secondary suite</defined-term>, and the <defined-term>building</defined-term> will contain no other <defined-term override-term='major occupancy'>major occupancies</defined-term>.",
           "answerValue": "3"
         },
         {
@@ -112,7 +112,7 @@
     },
     "P02": {
       "walkthroughItemType": "multiChoice",
-      "questionText": "This project will meet all of the following requirements:",
+      "questionText": "This proposed <defined-term>building</defined-term> project will meet all of the following requirements:",
       "questionSubtext": "<ul><li>The <defined-term>building area</defined-term> of this <defined-term>building</defined-term> is not greater than 600 m<sup>2</sup></li><li>The <defined-term override-term='storey'>storeys</defined-term> in <defined-term>building height</defined-term> will be less than 4.</li></ul>",
       "possibleAnswers": [
         {
@@ -139,7 +139,7 @@
               "answerValues": ["2"]
             }
           ],
-          "nextNavigateTo": "R01"
+          "nextNavigateTo": "R05"
         },
         {
           "nextLogicType": "and",
@@ -155,7 +155,7 @@
               "answerValues": ["3"]
             }
           ],
-          "nextNavigateTo": "R02"
+          "nextNavigateTo": "R06"
         },
         {
           "nextLogicType": "fallback",
@@ -166,18 +166,18 @@
   },
   "results": {
     "R00": {
-      "resultDisplayMessage": "<p>Based on your selection, this proposed building project is not a new single dwelling unit, or a new multi-dwelling unit <defined-term>building</defined-term> and at this time this tool is only designed to assist users to determine conformance with the requirements of the BC Building Code 2024 for single dwelling units and multi-dwelling unit buildings, as such this tool is not applicable to your proposed building project.</p>"
-    },
-    "R01": {
-      "resultDisplayMessage": "<p>Based on your selection this proposed building project is a new <strong>single dwelling unit</strong>. Click Continue to view the associated walkthroughs.</p>",
-      "relatedBuildingType": "single-dwelling"
-    },
-    "R02": {
-      "resultDisplayMessage": "<p>Based on your selection this proposed building project is a new <strong>multi-dwelling unit</strong> <defined-term>building</defined-term>. Click Continue to build your walkthrough.</p>",
-      "relatedBuildingType": "multi-dwelling"
+      "resultDisplayMessage": "<p>Based on your selection, this proposed <defined-term>building</defined-term> project is not a new single <defined-term>dwelling unit</defined-term>, or a new multi-dwelling unit <defined-term>building</defined-term> and at this time this tool is only designed to assist users to determine conformance with the requirements of the BC Building Code 2024 for single <defined-term override-term='dwelling unit'>dwelling units</defined-term> and multi-dwelling unit <defined-term override-term='building'>buildings</defined-term>, as such this tool is not applicable to your proposed <defined-term>building</defined-term> project.</p>"
     },
     "R03": {
-      "resultDisplayMessage": "<p>Based on your selection this proposed building project exceeds the maximum <defined-term>building area</defined-term> and/or <defined-term>building height</defined-term> limits for a Part 9 building. If the building is more than 600 m<sup>2</sup> in building area and/or 3 <defined-term override-term='storey'>storeys</defined-term> in building height, this building project will be required to be designed in accordance with Parts 3, 4, 5, and 6 of the BC Building Code 2024 and at this time this tool is only designed to assist users to determine conformance with requirements of the BC Building Code 2024 Part 9, please contact the appropriate required design professionals for this proposed building project.</p>"
+      "resultDisplayMessage": "<p>Based on your selection, this proposed <defined-term>building</defined-term> project exceeds the maximum <defined-term>building area</defined-term> and/or <defined-term>building height</defined-term> limits for a Part 9 <defined-term>building</defined-term>. If the <defined-term>building</defined-term> is more than 600 m<sup>2</sup> in <defined-term>building area</defined-term> and/or 3 <defined-term override-term='storey'>storeys</defined-term> in <defined-term>building height</defined-term>, this <defined-term>building</defined-term> project will be required to be designed in accordance with Parts 3, 4, 5, and 6 of the BC Building Code 2024 and at this time this tool is only designed to assist users to determine conformance with requirements of the BC Building Code 2024 Part 9, please contact the appropriate required design professionals for this proposed <defined-term>building</defined-term> project.</p>"
+    },
+    "R05": {
+      "resultDisplayMessage": "<p>Based on your selection, this proposed <defined-term>building</defined-term> project is a new <strong>single <defined-term>dwelling unit</defined-term></strong>. Click Continue to view the associated walkthroughs.</p>",
+      "relatedBuildingType": "single-dwelling"
+    },
+    "R06": {
+      "resultDisplayMessage": "<p>Based on your selection, this proposed <defined-term>building</defined-term> project is a new <strong>multi-dwelling unit</strong> <defined-term>building</defined-term>. Click Continue to build your walkthrough.</p>",
+      "relatedBuildingType": "multi-dwelling"
     }
   }
 }
