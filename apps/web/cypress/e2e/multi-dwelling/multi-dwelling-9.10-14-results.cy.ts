@@ -31,7 +31,7 @@ describe("multi dwelling: 9.10.14 results", () => {
 
     const unobstructedOpeningArea = 333;
     const totalAllowedWindowArea = 133.2;
-    const validationString = `Based on your selections the maximum aggregate percentage of unprotected openings in this exposing building face is 40%*, based on an exposing building face of ${unobstructedOpeningArea} m2, the maximum area would be ${totalAllowedWindowArea} m2 per Table 9.10.14.4.-A and Sentence 9.10.14.4.(1)`;
+    const validationString = `Based on your selections, the maximum aggregate percentage of unprotected openings in this exposing building face is 40%*, based on an exposing building face of ${unobstructedOpeningArea} m2, the maximum area would be ${totalAllowedWindowArea} m2 per Table 9.10.14.4.-A and Sentence 9.10.14.4.(1)`;
     cy.getByTestID(GET_TESTID_RESULT_ITEM(EnumWalkthroughIds._9_10_14)).should(
       "be.visible",
     );
@@ -54,7 +54,7 @@ describe("multi dwelling: 9.10.14 results", () => {
 
     const exposedBuildingFace = 333;
     const totalAllowedArea = 253.08;
-    const validationString = `Based on your selections the maximum percentage of unprotected openings in this exposing building face (exterior wall) is 76%*, based on an exposing building face of ${exposedBuildingFace} m2, the maximum total area of the exposing building face would be: ${totalAllowedArea} m2.`;
+    const validationString = `Based on your selections, the maximum percentage of unprotected openings in this exposing building face (exterior wall) is 76%*, based on an exposing building face of ${exposedBuildingFace} m2, the maximum total area of the exposing building face would be: ${totalAllowedArea} m2.`;
     cy.getByTestID(GET_TESTID_RESULT_ITEM(EnumWalkthroughIds._9_10_14)).should(
       "be.visible",
     );
