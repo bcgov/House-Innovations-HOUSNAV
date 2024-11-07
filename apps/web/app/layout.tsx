@@ -16,6 +16,7 @@ import { STR_WEBSITE_NAME } from "@repo/constants/src/constants";
 // local
 import { ClientProviders } from "./ClientProviders";
 import "./globals.css";
+import Breadcrumbs from "../components/breadcrumbs/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: `BC Gov - ${STR_WEBSITE_NAME} - Walkthroughs`,
@@ -50,7 +51,10 @@ export default function RootLayout({
             ]}
             logoSrc={"bc-logo.png"}
           />
-          <main id={ID_MAIN_CONTENT}>{children}</main>
+          <main id={ID_MAIN_CONTENT}>
+            <Breadcrumbs />
+            {children}
+          </main>
         </ClientProviders>
       </body>
     </html>

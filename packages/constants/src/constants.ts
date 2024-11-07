@@ -18,6 +18,7 @@ export enum EnumBuildingTypes {
 }
 
 export const STR_BUILDING_TYPE_ANALYSIS_ID = "building-type-analysis";
+export const STR_WALKTHROUGH_ID = "walkthrough";
 
 export const SHOW_QUESTION_LABELS =
   process.env.NEXT_PUBLIC_SHOW_QUESTION_LABELS === "yes";

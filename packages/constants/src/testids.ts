@@ -59,6 +59,10 @@ export const TESTID_HEADER_MOBILE_NAV = "header-mobile-nav";
 export const TESTID_HEADER_MOBILE_NAV_BUTTON = "header-mobile-nav-button";
 export const GET_TESTID_HEADER_NAV_ITEM = (title: string) =>
   `header-nav-item-${title}`;
+export const TESTID_BREADCRUMBS = "breadcrumbs";
+export const GET_TESTID_BREADCRUMBS_BREADCRUMB = (id: string) =>
+  `breadcrumb-${id}`;
+export const TESTID_BREADCRUMB_LAST = "breadcrumb-last";
 export const TESTID_LAYOUT_FOOTER = "layout-footer";
 export const TESTID_FOOTER = "footer";
 export const TESTID_PRE_FOOTER = "pre-footer";

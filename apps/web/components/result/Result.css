@@ -38,6 +38,10 @@
   font: var(--typography-regular-large-body);
 }
 
+.web-Result--Content strong button {
+  font: var(--typography-bold-large-body);
+}
+
 .web-Result--Content sup {
   line-height: 0;
 }
