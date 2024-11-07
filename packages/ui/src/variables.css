@@ -242,12 +242,17 @@
   --button-gap: var(--layout-padding-12);
   --header-height: 60px;
   --header-border-width: var(--layout-border-width-small);
-  --header-height-full: calc(var(--header-height) + var(--header-border-width));
+  --header-height-full: calc(
+    var(--header-height) + var(--header-border-width) +
+      var(--breadcrumbs-height)
+  );
   --header-nav-mobile-padding: var(--layout-padding-medium);
   --header-link-hover-background-color: rgba(34, 34, 34, 0.05);
   --footer-margin-block: var(--layout-margin-large);
   --footer-main-direction: column;
   --footer-main-margin-bottom: var(--layout-margin-large);
+  --breadcrumbs-height: 52px;
+  --breadcrumbs-first-padding-start: var(--layout-padding-small);
   --walkthrough-side-nav-width: 0;
   --question-container-max-width: 46.875rem; /* 750px */
   --question-container-padding-y: var(--layout-padding-medium);
@@ -359,6 +364,7 @@
 /* DESKTOP - LARGE - 1504px */
 @media (min-width: 94rem) {
   :root {
+    --breadcrumbs-first-padding-start: 0;
     --walkthrough-side-nav-width: 27.5rem; /* 440px */
     --question-container-max-width: 53.5rem; /* 856px */
   }
