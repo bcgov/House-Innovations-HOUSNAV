@@ -128,6 +128,38 @@
         }
       ],
       "result": "R6_0"
+    },
+    {
+      "title": "Questions p29, p31, Result R0_0",
+        "steps": [
+          {
+          "question": "P29",
+          "type": "checkbox",
+          "answer": "2"
+          },
+          {
+            "question": "P31",
+            "type": "radio",
+            "answer": "true"
+          }
+        ],
+        "result": "R0_0"
+    },
+    {
+      "title": "Questions p29, p32, Result R2_1",
+      "steps": [
+        {
+          "question": "P29",
+          "type": "checkbox",
+          "answer": "3"
+        },
+        {
+          "question": "P32",
+          "type": "radio",
+          "answer": "false"
+        }
+      ],
+      "result": "R2_1"
     }
   ]
 }
