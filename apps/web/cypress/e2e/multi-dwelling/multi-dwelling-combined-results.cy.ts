@@ -12,6 +12,7 @@ import {
   GET_TESTID_RESULT_ITEM,
   GET_TESTID_RESULT_PRINT_CONTENT_WALKTHROUGH,
   GET_TESTID_RESULT_RELATED_ITEM,
+  TESTID_BREADCRUMBS,
 } from "@repo/constants/src/testids";
 
 describe("multi dwelling: 9.9.9 and 9.10.14 walkthrough results", () => {
@@ -26,6 +27,8 @@ describe("multi dwelling: 9.9.9 and 9.10.14 walkthrough results", () => {
   });
 
   it("should display correct ui elements", () => {
+    cy.getByTestID(TESTID_BREADCRUMBS).should("be.visible");
+
     cy.getByTestID(GET_TESTID_RESULT_ITEM(EnumWalkthroughIds._9_9_9)).should(
       "be.visible",
     );
