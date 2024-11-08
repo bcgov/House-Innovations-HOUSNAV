@@ -10,28 +10,33 @@ import {
   findSectionTitleByQuestionId,
   SectionData,
 } from "@repo/data/useWalkthroughsData";
-// local
-import {
-  useWalkthroughState,
-  WalkthroughStoreGetQuestionAnswerValueDisplayFunctionType,
-  WalkthroughStoreGetQuestionAsDisplayFunctionType,
-} from "web/stores/WalkthroughRootStore";
-import {
-  parseStringToComponents,
-  getStringFromComponents,
-} from "web/utils/string";
-import { NavigationStoreQuestionHistoryItem } from "web/stores/NavigationStore";
-import BuildingCodeContent from "../modal-building-code-content/ModalBuildingCodeContent";
-import "./ResultPDFPrintContent.css";
 import {
   GET_TESTID_RESULT_PRINT_CONTENT_WALKTHROUGH,
   TESTID_RESULT_PRINT_CONTENT,
 } from "@repo/constants/src/testids";
+// local
+import {
+  useWalkthroughState,
+  WalkthroughStoreGetPossibleAnswersFunctionType,
+  WalkthroughStoreGetQuestionAsDisplayFunctionType,
+} from "web/stores/WalkthroughRootStore";
+import { parseStringToComponents } from "web/utils/string";
+import { NavigationStoreQuestionHistoryItem } from "web/stores/NavigationStore";
+import {
+  AnswerStoreAnswerValueIsSelectedFunctionType,
+  AnswerStoreGetAnswerValueFunctionType,
+} from "web/stores/AnswerStore";
+import { isNumber } from "web/utils/typeChecking";
+import BuildingCodeContent from "../modal-building-code-content/ModalBuildingCodeContent";
+import "./ResultPDFPrintContent.css";
 
 interface PrintQuestionData {
   questionId: string;
   questionText: string;
-  answerDisplayValue: string;
+  answersToDisplay: {
+    answerDisplayText: string;
+    isSelectedAnswer: boolean;
+  }[];
   codeReferenceNumber: string | null | undefined;
   codeReferenceDisplayText: string | null | undefined;
 }
@@ -57,7 +62,9 @@ type PrintSectionDataBySectionTitleByWalkthroughId = Record<
 const groupQuestionDataFromHistoryByWalkthroughId = (
   questionHistory: NavigationStoreQuestionHistoryItem[],
   getQuestionAsDisplayType: WalkthroughStoreGetQuestionAsDisplayFunctionType,
-  getQuestionAnswerValueDisplay: WalkthroughStoreGetQuestionAnswerValueDisplayFunctionType,
+  getPossibleAnswers: WalkthroughStoreGetPossibleAnswersFunctionType,
+  getAnswerValue: AnswerStoreGetAnswerValueFunctionType,
+  answerValueIsSelected: AnswerStoreAnswerValueIsSelectedFunctionType,
 ): QuestionDataByWalkthroughId => {
   const questionDataByWalkthroughId: QuestionDataByWalkthroughId = {};
   questionHistory.forEach((historyItem) => {
@@ -75,14 +82,35 @@ const groupQuestionDataFromHistoryByWalkthroughId = (
           walkthroughQuestionData;
       }
 
+      let answersToDisplay = getPossibleAnswers(question).map((answer) => ({
+        answerDisplayText:
+          answer.answerValueDisplay || answer.answerDisplayText,
+        isSelectedAnswer: answerValueIsSelected(
+          getAnswerValue(historyItem.walkthroughId, historyItem.questionId),
+          answer.answerValue,
+        ),
+      }));
+
+      // cover numberFloat case, they don't have possible answers
+      if (!answersToDisplay.length) {
+        const answerValue = getAnswerValue(
+          historyItem.walkthroughId,
+          historyItem.questionId,
+        );
+        if (isNumber(answerValue)) {
+          answersToDisplay = [
+            {
+              answerDisplayText: answerValue.toString(),
+              isSelectedAnswer: true,
+            },
+          ];
+        }
+      }
+
       walkthroughQuestionData.push({
         questionId: historyItem.questionId,
         questionText: question.questionText,
-        answerDisplayValue: getQuestionAnswerValueDisplay({
-          questionId: historyItem.questionId,
-          walkthroughId: historyItem.walkthroughId,
-          lineBreakOnMultiple: true,
-        }),
+        answersToDisplay: answersToDisplay,
         codeReferenceNumber: toJS(question.questionCodeReference?.codeNumber),
         codeReferenceDisplayText: toJS(
           question.questionCodeReference?.displayString,
@@ -181,34 +209,24 @@ const renderQuestionsAnswersAndCodeReferenceNumbers = (
       undefined,
       true,
     );
-    const parsedAnswer = getStringFromComponents(
-      parseStringToComponents(questionData.answerDisplayValue),
-    );
-
-    // If the answer is multiline, split it into an array so we can render it as a list
-    const answerLines = parsedAnswer.split("\n");
 
     return (
       <tr key={`${sectionIndex}-${questionIndex}`}>
-        <td
-          className={
-            sectionIndex === 0
-              ? "ui-ResultPDFPrintContent--introColumn"
-              : "ui-ResultPDFPrintContent--questionColumn"
-          }
-        >
+        <td className="ui-ResultPDFPrintContent--answerColumn">
           {parsedQuestion}
           <br />
-          <strong>Answer:</strong>{" "}
-          {answerLines.length > 1 ? (
-            <ul>
-              {answerLines.map((line, i) => (
-                <li key={i}>{line}</li>
-              ))}
-            </ul>
-          ) : (
-            <span>{parsedAnswer}</span>
-          )}
+          <ul>
+            {questionData.answersToDisplay.map(
+              ({ answerDisplayText, isSelectedAnswer }, i) => (
+                <li
+                  key={i}
+                  className={`${isSelectedAnswer ? "ui-ResultPDFPrintContent--selectedAnswer" : ""}`}
+                >
+                  {parseStringToComponents(answerDisplayText, undefined, true)}
+                </li>
+              ),
+            )}
+          </ul>
         </td>
         {questionData.rowSpan !== 0 && (
           <td
@@ -251,8 +269,9 @@ export default function ResultPDFPrintContent() {
     walkthroughsOrder,
     walkthroughsById,
     getAllSectionsByWalkthroughId,
-    getQuestionAnswerValueDisplay,
     getQuestionAsDisplayType,
+    getPossibleAnswers,
+    answerStore: { getAnswerValue, answerValueIsSelected },
   } = useWalkthroughState();
 
   // Get the question data from the question history for the PDF
@@ -260,7 +279,9 @@ export default function ResultPDFPrintContent() {
     groupQuestionDataFromHistoryByWalkthroughId(
       navigationStore.questionHistory,
       getQuestionAsDisplayType,
-      getQuestionAnswerValueDisplay,
+      getPossibleAnswers,
+      getAnswerValue,
+      answerValueIsSelected,
     );
 
   const questionDataBySectionTitleAndWalkthroughId =
@@ -322,7 +343,7 @@ export default function ResultPDFPrintContent() {
                   >
                     <thead>
                       <tr>
-                        <th className="ui-ResultPDFPrintContent--questionColumn">
+                        <th>
                           <h4 className="ui-ResultPDFPrintContent--sectionTitle">
                             {printSectionData.sectionTitle}
                           </h4>

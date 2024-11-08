@@ -14,6 +14,14 @@ export type AnswerState = Record<string, Record<string, AnswerTypes>>;
 export type AnswerToCheckValueFn = (
   answerToCheck: string,
 ) => AnswerTypes | undefined;
+export type AnswerStoreGetAnswerValueFunctionType = (
+  walkthroughId: string,
+  questionId: string,
+) => AnswerTypes | undefined;
+export type AnswerStoreAnswerValueIsSelectedFunctionType = (
+  storedAnswer: AnswerTypes | undefined,
+  answerValue: string,
+) => boolean;
 
 export const DEFAULT_ANSWER_VALUE_MULTI_CHOICE = null;
 export const DEFAULT_ANSWER_VALUE_NUMBER_FLOAT = NaN;
@@ -63,7 +71,10 @@ export class AnswerStore {
     }
   };
 
-  getAnswerValue = (walkthroughId: string, questionId: string) => {
+  getAnswerValue: AnswerStoreGetAnswerValueFunctionType = (
+    walkthroughId: string,
+    questionId: string,
+  ) => {
     return this.answers[walkthroughId]?.[questionId];
   };
 
@@ -237,6 +248,21 @@ export class AnswerStore {
 
     return this.currentAnswerValue;
   }
+
+  answerValueIsSelected: AnswerStoreAnswerValueIsSelectedFunctionType = (
+    storedAnswer,
+    answerValue,
+  ) => {
+    if (isString(storedAnswer)) {
+      return storedAnswer === answerValue;
+    } else if (isArray(storedAnswer)) {
+      return storedAnswer.includes(answerValue);
+    } else if (isObject(storedAnswer)) {
+      return storedAnswer[answerValue] === "true";
+    }
+
+    return false;
+  };
 
   getAnswerToCheckValue: AnswerToCheckValueFn = (answerToCheck: string) => {
     // answerToCheck can be in the format of "questionId.property" or just "questionId"
