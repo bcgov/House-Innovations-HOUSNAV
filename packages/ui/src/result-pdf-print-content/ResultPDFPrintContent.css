@@ -36,13 +36,20 @@
   page-break-inside: auto;
 }
 
-.ui-ResultPDFPrintContent--questionColumn ul {
-  list-style-type: disc;
+.ui-ResultPDFPrintContent--answerColumn ul {
   margin-left: 20px; /* Indent list items */
 }
 
-.ui-ResultPDFPrintContent--questionColumn li {
+.ui-ResultPDFPrintContent--answerColumn ul:has(li:only-child) {
+  margin-left: 0;
+}
+
+.ui-ResultPDFPrintContent--answerColumn li {
   display: list-item;
+  list-style: disc;
+}
+.ui-ResultPDFPrintContent--answerColumn li:only-child {
+  list-style: none;
 }
 
 .ui-ResultPDFPrintContent--walkthroughTitle {
@@ -60,16 +67,17 @@
 }
 
 /* Set fixed widths for table columns */
-.ui-ResultPDFPrintContent--introColumn {
-  width: 30%;
-}
-
-.ui-ResultPDFPrintContent--questionColumn {
+.ui-ResultPDFPrintContent--answerColumn {
   width: 30%;
 }
 
 .ui-ResultPDFPrintContent--referenceColumn {
   width: 17%;
+}
+
+.ui-ResultPDFPrintContent--selectedAnswer {
+  color: var(--icons-color-success);
+  font-weight: var(--typography-font-weights-bold);
 }
 
 /* Print styles that only need to apply when print window is open */

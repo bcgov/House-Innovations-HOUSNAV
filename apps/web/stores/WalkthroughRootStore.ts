@@ -17,6 +17,7 @@ import {
   WalkthroughJSONInterface,
   WalkthroughsDataInterface,
   SectionData,
+  PossibleAnswer,
 } from "@repo/data/useWalkthroughsData";
 import {
   EnumWalkthroughIds,
@@ -33,17 +34,9 @@ export type WalkthroughStoreGetQuestionAsDisplayFunctionType = (
   questionId: string,
 ) => QuestionDisplayData | undefined;
 
-export type WalkthroughStoreGetQuestionAnswerValueDisplayFunctionType = ({
-  questionId,
-  walkthroughId,
-  lineBreakOnMultiple,
-  returnMarkup,
-}: {
-  questionId: string;
-  walkthroughId?: string;
-  lineBreakOnMultiple?: boolean;
-  returnMarkup?: boolean;
-}) => string;
+export type WalkthroughStoreGetPossibleAnswersFunctionType = (
+  questionAsDisplayType: QuestionDisplayData,
+) => PossibleAnswer[];
 
 export class WalkthroughRootStore {
   navigationStore: NavigationStore;
@@ -261,6 +254,23 @@ export class WalkthroughRootStore {
     );
   }
 
+  getPossibleAnswers: WalkthroughStoreGetPossibleAnswersFunctionType = (
+    questionAsDisplayType: QuestionDisplayData,
+  ) => {
+    // check if current question has possible answers
+    if (!(PropertyNamePossibleAnswers in questionAsDisplayType)) return [];
+
+    try {
+      return getPossibleAnswers(
+        questionAsDisplayType[PropertyNamePossibleAnswers],
+        this.answerStore.getAnswerToCheckValue,
+      );
+    } catch (error) {
+      this.handleStateError("getPossibleAnswers", error);
+      return [];
+    }
+  };
+
   getPossibleAnswersFromMultipleChoiceMultiple = (
     walkthroughId: string,
     questionId: string,
@@ -329,71 +339,75 @@ export class WalkthroughRootStore {
     return questionAsVar;
   };
 
-  getQuestionAnswerValueDisplay: WalkthroughStoreGetQuestionAnswerValueDisplayFunctionType =
-    ({
-      questionId,
-      walkthroughId = this.navigationStore.currentWalkthroughId,
-      lineBreakOnMultiple = false,
-      returnMarkup = false,
-    }) => {
-      // Get the question object in display type format
-      const question = this.getQuestionAsDisplayType(walkthroughId, questionId);
-      if (!question) return "";
+  getQuestionAnswerValueDisplay = ({
+    questionId,
+    walkthroughId = this.navigationStore.currentWalkthroughId,
+    lineBreakOnMultiple = false,
+    returnMarkup = false,
+  }: {
+    questionId: string;
+    walkthroughId?: string;
+    lineBreakOnMultiple?: boolean;
+    returnMarkup?: boolean;
+  }) => {
+    // Get the question object in display type format
+    const question = this.getQuestionAsDisplayType(walkthroughId, questionId);
+    if (!question) return "";
 
-      const answer = this.answerStore.getAnswerValue(walkthroughId, questionId);
-      if (isString(answer) && PropertyNamePossibleAnswers in question) {
-        const matchedAnswer = question[PropertyNamePossibleAnswers].find(
-          (possibleAnswer) => possibleAnswer.answerValue === answer,
-        );
+    const answer = this.answerStore.getAnswerValue(walkthroughId, questionId);
+    if (isString(answer) && PropertyNamePossibleAnswers in question) {
+      const matchedAnswer = question[PropertyNamePossibleAnswers].find(
+        (possibleAnswer) => possibleAnswer.answerValue === answer,
+      );
 
-        const displayValue =
-          matchedAnswer?.answerValueDisplay ?? matchedAnswer?.answerDisplayText;
-        return displayValue ?? "";
-      } else if (isNumber(answer)) {
-        return answer.toString();
-      } else {
-        if (isArray(answer) && PropertyNamePossibleAnswers in question) {
-          const displayValue = answer
-            .map((answerItem) => {
-              const matchedAnswer = question.possibleAnswers.find(
-                (possibleAnswer) => possibleAnswer.answerValue === answerItem,
-              );
+      const displayValue =
+        matchedAnswer?.answerValueDisplay ?? matchedAnswer?.answerDisplayText;
+      return displayValue ?? "";
+    } else if (isNumber(answer)) {
+      return answer.toString();
+    } else {
+      if (isArray(answer) && PropertyNamePossibleAnswers in question) {
+        const displayValue = answer
+          .map((answerItem) => {
+            const matchedAnswer = question[PropertyNamePossibleAnswers].find(
+              (possibleAnswer) => possibleAnswer.answerValue === answerItem,
+            );
 
-              return (
-                matchedAnswer?.answerValueDisplay ??
-                matchedAnswer?.answerDisplayText
-              );
-            })
-            .filter(Boolean); // Filter out falsy values
+            return (
+              matchedAnswer?.answerValueDisplay ??
+              matchedAnswer?.answerDisplayText
+            );
+          })
+          .filter(Boolean); // Filter out falsy values
 
-          if (returnMarkup) {
-            return `<ul>${displayValue.map((value) => `<li>${value}</li>`).join("")}</ul>`;
-          }
-
-          return displayValue.join(lineBreakOnMultiple ? "\n" : ", ");
-        } else if (
-          isObject(answer) &&
-          answer !== null &&
-          PropertyNamePossibleAnswers in question
-        ) {
-          const displayValue = Object.entries(answer)
-            .filter(([, value]) => value === "true") // Only include entries where the value is "true"
-            .map(([key]) => {
-              const matchedAnswer = question.possibleAnswers.find(
-                (possibleAnswer) => possibleAnswer.answerValue === key,
-              );
-              return (
-                matchedAnswer?.answerValueDisplay ??
-                matchedAnswer?.answerDisplayText
-              );
-            })
-            .filter(Boolean); // Filter out falsy values
-
-          return displayValue.join(", ");
+        if (returnMarkup) {
+          return `<ul>${displayValue.map((value) => `<li>${value}</li>`).join("")}</ul>`;
         }
+
+        return displayValue.join(lineBreakOnMultiple ? "\n" : ", ");
+      } else if (
+        isObject(answer) &&
+        answer !== null &&
+        PropertyNamePossibleAnswers in question
+      ) {
+        const displayValue = Object.entries(answer)
+          .filter(([, value]) => value === "true") // Only include entries where the value is "true"
+          .map(([key]) => {
+            const matchedAnswer = question[PropertyNamePossibleAnswers].find(
+              (possibleAnswer) => possibleAnswer.answerValue === key,
+            );
+            return (
+              matchedAnswer?.answerValueDisplay ??
+              matchedAnswer?.answerDisplayText
+            );
+          })
+          .filter(Boolean); // Filter out falsy values
+
+        return displayValue.join(", ");
       }
-      return "";
-    };
+    }
+    return "";
+  };
 
   getQuestionTextByQuestionId = (walkthroughId: string, questionId: string) => {
     const question = this.getQuestionAsDisplayType(walkthroughId, questionId);
