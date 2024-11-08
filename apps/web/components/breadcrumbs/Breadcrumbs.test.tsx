@@ -4,15 +4,12 @@ import * as NextNavigation from "next/navigation";
 // repo
 import {
   GET_TESTID_BREADCRUMBS_BREADCRUMB,
+  TESTID_BREADCRUMB_HOME,
   TESTID_BREADCRUMB_LAST,
   TESTID_BREADCRUMBS,
 } from "@repo/constants/src/testids";
 import { EnumBuildingTypes } from "@repo/constants/src/constants";
-import {
-  GET_PAGE_NAME,
-  URL_HOME_TITLE,
-  URL_PATH_WALKTHROUGH,
-} from "@repo/constants/src/urls";
+import { URL_PATH_WALKTHROUGH } from "@repo/constants/src/urls";
 // local
 import { renderWithWalkthroughProvider } from "../../tests/utils";
 import Breadcrumbs from "./Breadcrumbs";
@@ -34,13 +31,9 @@ describe("Breadcrumbs", () => {
 
     expect(getByTestId(TESTID_BREADCRUMBS)).toBeInTheDocument();
     expect(getByTestId(TESTID_BREADCRUMBS).children).toHaveLength(3);
+    expect(getByTestId(TESTID_BREADCRUMB_HOME)).toBeInTheDocument();
     expect(
-      getByTestId(GET_TESTID_BREADCRUMBS_BREADCRUMB(URL_HOME_TITLE)),
-    ).toBeInTheDocument();
-    expect(
-      getByTestId(
-        GET_TESTID_BREADCRUMBS_BREADCRUMB(GET_PAGE_NAME(URL_BUILDING_TYPE)),
-      ),
+      getByTestId(GET_TESTID_BREADCRUMBS_BREADCRUMB(URL_BUILDING_TYPE)),
     ).toBeInTheDocument();
     expect(getByTestId(TESTID_BREADCRUMB_LAST)).toBeInTheDocument();
   });
@@ -56,9 +49,7 @@ describe("Breadcrumbs", () => {
 
     expect(getByTestId(TESTID_BREADCRUMBS)).toBeInTheDocument();
     expect(getByTestId(TESTID_BREADCRUMBS).children).toHaveLength(2);
-    expect(
-      getByTestId(GET_TESTID_BREADCRUMBS_BREADCRUMB(URL_HOME_TITLE)),
-    ).toBeInTheDocument();
+    expect(getByTestId(TESTID_BREADCRUMB_HOME)).toBeInTheDocument();
     expect(getByTestId(TESTID_BREADCRUMB_LAST)).toBeInTheDocument();
   });
   it("doesn't render with empty segments", () => {

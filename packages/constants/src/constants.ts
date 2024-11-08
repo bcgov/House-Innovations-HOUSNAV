@@ -17,13 +17,6 @@ export enum EnumBuildingTypes {
   MULTI_DWELLING = "multi-dwelling",
 }
 
-export enum EnumBreadcrumbIds {
-  HOME = "Home",
-  LAST = "Last",
-  MULTI_DWELLING_UNIT = "Multi-Dwelling Unit",
-  SINGLE_DWELLING_UNIT = "Single-Dwelling Unit",
-}
-
 export const STR_BUILDING_TYPE_ANALYSIS_ID = "building-type-analysis";
 export const STR_WALKTHROUGH_ID = "walkthrough";
 

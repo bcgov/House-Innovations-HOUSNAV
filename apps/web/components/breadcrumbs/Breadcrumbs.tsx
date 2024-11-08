@@ -14,6 +14,7 @@ import {
 } from "@repo/constants/src/urls";
 import {
   GET_TESTID_BREADCRUMBS_BREADCRUMB,
+  TESTID_BREADCRUMB_HOME,
   TESTID_BREADCRUMB_LAST,
   TESTID_BREADCRUMBS,
 } from "@repo/constants/src/testids";
@@ -37,7 +38,7 @@ const Breadcrumbs = () => {
       >
         <ReactAriaBreadcrumb
           className="web-Breadcrumbs--Breadcrumb"
-          data-testid={GET_TESTID_BREADCRUMBS_BREADCRUMB(URL_HOME_TITLE)}
+          data-testid={TESTID_BREADCRUMB_HOME}
         >
           <Link href={URL_PATH_HOME}>{URL_HOME_TITLE}</Link>
         </ReactAriaBreadcrumb>
@@ -45,7 +46,7 @@ const Breadcrumbs = () => {
           const isLast = index === segments.length - 1;
           const dataTestid = isLast
             ? TESTID_BREADCRUMB_LAST
-            : GET_TESTID_BREADCRUMBS_BREADCRUMB(GET_PAGE_NAME(segment));
+            : GET_TESTID_BREADCRUMBS_BREADCRUMB(segment);
 
           return (
             <ReactAriaBreadcrumb
