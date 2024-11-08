@@ -3,6 +3,7 @@ import {
   GET_TESTID_BUTTON,
   GET_TESTID_CHECKBOX_CARD,
   GET_TESTID_LINK,
+  TESTID_BREADCRUMBS,
   TESTID_BUILD_WIZARD_BEGIN_WALKTHROUGH,
   TESTID_BUILD_WIZARD_SELECT_ALL,
   TESTID_BUILD_WIZARD_TOTAL_AVAILABLE,
@@ -21,20 +22,22 @@ describe("multi dwelling: landing", () => {
   });
 
   it("should display correct ui elements", () => {
+    cy.getByTestID(TESTID_BREADCRUMBS).should("be.visible");
+
     cy.getByTestID(GET_TESTID_CHECKBOX_CARD(EnumWalkthroughIds._9_9_9)).should(
-      "exist",
+      "be.visible",
     );
     cy.getByTestID(
       GET_TESTID_CHECKBOX_CARD(EnumWalkthroughIds._9_10_14),
-    ).should("exist");
+    ).should("be.visible");
     cy.getByTestID(GET_TESTID_BUTTON(TESTID_BUILD_WIZARD_SELECT_ALL)).should(
-      "exist",
+      "be.visible",
     );
     cy.getByTestID(
       GET_TESTID_LINK(TESTID_BUILD_WIZARD_BEGIN_WALKTHROUGH),
-    ).should("exist");
-    cy.getByTestID(TESTID_BUILD_WIZARD_TOTAL_AVAILABLE).should("exist");
-    cy.getByTestID(TESTID_BUILD_WIZARD_TOTAL_SELECTED).should("exist");
+    ).should("be.visible");
+    cy.getByTestID(TESTID_BUILD_WIZARD_TOTAL_AVAILABLE).should("be.visible");
+    cy.getByTestID(TESTID_BUILD_WIZARD_TOTAL_SELECTED).should("be.visible");
   });
 
   it("should update total selected when single checkbox is selected", () => {
