@@ -1567,36 +1567,71 @@
           "nextNavigateTo": "P22"
         },
         {
+          "nextLogicType": "and",
+          "valuesToCheck": [
+            {
+              "nextLogicType": "equal",
+              "answerToCheck": "P17",
+              "answerValue": "false"
+            },
+            {
+              "nextLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P10.B",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P10.1",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P10.2",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P10.3",
+                  "answerValue": "true"
+                }
+              ]
+            },
+            {
+              "nextLogicType": "or",
+              "valuesToCheck": [
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.B",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.1",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.2",
+                  "answerValue": "true"
+                },
+                {
+                  "nextLogicType": "equal",
+                  "answerToCheck": "P5.3",
+                  "answerValue": "true"
+                }
+              ]
+            }
+          ],
+          "nextNavigateTo": "P18"
+        },
+        {
           "nextLogicType": "equal",
           "answerToCheck": "P17",
           "answerValue": "false",
           "nextNavigateTo": "R1_2"
-        },
-        {
-          "nextLogicType": "or",
-          "valuesToCheck": [
-            {
-              "nextLogicType": "equal",
-              "answerToCheck": "P10.B",
-              "answerValue": "true"
-            },
-            {
-              "nextLogicType": "equal",
-              "answerToCheck": "P10.1",
-              "answerValue": "true"
-            },
-            {
-              "nextLogicType": "equal",
-              "answerToCheck": "P10.2",
-              "answerValue": "true"
-            },
-            {
-              "nextLogicType": "equal",
-              "answerToCheck": "P10.3",
-              "answerValue": "true"
-            }
-          ],
-          "nextNavigateTo": "P18"
         },
         {
           "nextLogicType": "or",

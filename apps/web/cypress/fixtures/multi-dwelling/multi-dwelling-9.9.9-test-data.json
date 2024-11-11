@@ -1,7 +1,7 @@
 {
   "walkthroughs": [
     {
-      "title": "Questions p2-p18, p20, p28, Result R1_3",
+      "title": "Questions p2-p17, p19, p20, p28, Result R1_3",
       "steps": [
         {
           "question": "P2",
@@ -79,7 +79,7 @@
           "answer": "true"
         },
         {
-          "question": "P18",
+          "question": "P19",
           "type": "radio",
           "answer": "true"
         },
@@ -97,7 +97,7 @@
       "result": "R1_3"
     },
     {
-    "title": "Questions p19, p21, Result R1_2",
+    "title": "Questions p18, p21, Result R1_2",
       "steps": [
         {
           "question": "P2",
@@ -112,7 +112,7 @@
         {
           "question": "P5",
           "type": "checkbox",
-          "answer": ""
+          "answer": "3"
         },
         {
           "question": "P6",
@@ -120,17 +120,12 @@
           "answer": "false"
         },
         {
-          "question": "P7",
-          "type": "checkbox",
-          "answer": "3"
-        },
-        {
-          "question": "P8",
-          "type": "checkbox",
-          "answer": "3"
-        },
-        {
           "question": "P9",
+          "type": "checkbox",
+          "answer": ""
+        },
+        {
+          "question": "P10",
           "type": "checkbox",
           "answer": "1"
         },
@@ -167,10 +162,10 @@
         {
           "question": "P17",
           "type": "radio",
-          "answer": "true"
+          "answer": "false"
         },
         {
-          "question": "P19",
+          "question": "P18",
           "type": "radio",
           "answer": "true"
         },
