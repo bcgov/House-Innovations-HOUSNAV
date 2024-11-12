@@ -1,0 +1,54 @@
+.web-ResultContent--Header {
+  font-weight: bold;
+  margin-top: var(--layout-margin-xxlarge);
+}
+
+.web-ResultContent--Header.--hasBanner {
+  margin-bottom: var(--layout-margin-xxlarge);
+}
+
+.web-ResultContent {
+  padding-bottom: var(--layout-padding-xxlarge);
+  border-bottom: var(--layout-border-width-small) solid
+    var(--surface-color-border-default);
+}
+
+.web-ResultContent,
+.web-ResultContent button {
+  font: var(--typography-regular-large-body);
+}
+
+.web-ResultContent strong button {
+  font: var(--typography-bold-large-body);
+}
+
+.web-ResultContent sup {
+  line-height: 0;
+}
+
+.web-ResultContent ul {
+  padding: var(--layout-padding-medium) var(--layout-padding-medium)
+    var(--layout-padding-medium) var(--layout-padding-xlarge);
+}
+
+.web-ResultContent.--hideBottomBorder {
+  border-bottom: none;
+}
+
+.web-ResultContent--Continue {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--layout-margin-large);
+}
+
+/* Print styles that only need to apply when print window is open */
+@media print {
+  .web-ResultContent--Header,
+  .web-ResultContent--Continue {
+    display: none;
+  }
+
+  .web-ResultContent {
+    border-bottom: none;
+  }
+}

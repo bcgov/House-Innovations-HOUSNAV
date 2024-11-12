@@ -27,6 +27,7 @@ import {
   AnswerStoreGetAnswerValueFunctionType,
 } from "web/stores/AnswerStore";
 import { isNumber } from "web/utils/typeChecking";
+import ResultContent from "web/components/result-content/ResultContent";
 import BuildingCodeContent from "../modal-building-code-content/ModalBuildingCodeContent";
 import "./ResultPDFPrintContent.css";
 
@@ -310,6 +311,7 @@ export default function ResultPDFPrintContent() {
             <h3 className="ui-ResultPDFPrintContent--walkthroughTitle">
               {walkthroughsById[walkthroughId]?.info.walkthroughTitle}
             </h3>
+            <ResultContent walkthroughId={walkthroughId} />
             {Object.entries(printSectionDataBySectionTitle).map(
               ([, printSectionData], sectionIndex) => (
                 <table

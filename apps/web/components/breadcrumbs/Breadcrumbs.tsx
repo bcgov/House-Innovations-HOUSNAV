@@ -30,7 +30,7 @@ const Breadcrumbs = () => {
   }
 
   return (
-    <nav className="web-Breadcrumbs" aria-label="Breadcrumb">
+    <nav className="web-Breadcrumbs p-hide" aria-label="Breadcrumb">
       <ReactAriaBreadcrumbs
         key={segments.join("_")}
         className="u-container web-Breadcrumbs--Container"

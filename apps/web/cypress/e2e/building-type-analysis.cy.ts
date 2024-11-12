@@ -9,7 +9,7 @@ import {
   GET_TESTID_BUTTON,
   GET_TESTID_LINK,
   GET_TESTID_RESULT_BANNER,
-  TESTID_RESULT_CONTINUE,
+  TESTID_RESULT_CONTENT_CONTINUE,
   TESTID_RESULT_RETURN_TO_HOME,
   TESTID_WALKTHROUGH_FOOTER_START_OVER,
 } from "@repo/constants/src/testids";
@@ -35,7 +35,7 @@ describe("building type analysis tests", () => {
     cy.getByTestID(GET_TESTID_LINK(TESTID_RESULT_RETURN_TO_HOME)).should(
       "be.visible",
     );
-    cy.getByTestID(GET_TESTID_LINK(TESTID_RESULT_CONTINUE)).should(
+    cy.getByTestID(GET_TESTID_LINK(TESTID_RESULT_CONTENT_CONTINUE)).should(
       "be.visible",
     );
     cy.getByTestID(

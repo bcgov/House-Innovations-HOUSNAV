@@ -9,7 +9,7 @@ import {
 } from "../../support/helpers";
 import { walkthroughs } from "../../fixtures/single-dwelling/single-dwelling-9.9.9-test-data.json";
 import {
-  GET_TESTID_RESULT_ITEM,
+  GET_TESTID_RESULT_CONTENT_ITEM,
   GET_TESTID_RESULT_PRINT_CONTENT_WALKTHROUGH,
   GET_TESTID_RESULT_RELATED_ITEM,
   TESTID_BREADCRUMBS,
@@ -26,9 +26,9 @@ describe("single dwelling: 9.9.9 walkthrough results", () => {
   it("should display correct ui elements", () => {
     cy.getByTestID(TESTID_BREADCRUMBS).should("be.visible");
 
-    cy.getByTestID(GET_TESTID_RESULT_ITEM(EnumWalkthroughIds._9_9_9)).should(
-      "be.visible",
-    );
+    cy.getByTestID(
+      GET_TESTID_RESULT_CONTENT_ITEM(EnumWalkthroughIds._9_9_9),
+    ).should("be.visible");
     cy.getByTestID(
       GET_TESTID_RESULT_RELATED_ITEM(EnumBuildingTypes.MULTI_DWELLING),
     ).scrollIntoView();
