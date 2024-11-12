@@ -47,8 +47,9 @@ export const GET_TESTID_RESULT_BANNER = (id = "welcome") =>
   `result-banner-${id}`;
 export const TESTID_RESULT_PDF_BUTTON = "result-pdf-button";
 export const TESTID_RESULT_RETURN_TO_HOME = "result-return-to-home";
-export const TESTID_RESULT_CONTINUE = "result-continue";
-export const GET_TESTID_RESULT_ITEM = (id: string) => `result-item-${id}`;
+export const TESTID_RESULT_CONTENT_CONTINUE = "result-continue";
+export const GET_TESTID_RESULT_CONTENT_ITEM = (id: string) =>
+  `result-item-${id}`;
 export const GET_TESTID_RESULT_RELATED_ITEM = (id: string) =>
   `result-related-item-${id}`;
 export const TESTID_RESULT_PRINT_CONTENT = "result-print-content";
