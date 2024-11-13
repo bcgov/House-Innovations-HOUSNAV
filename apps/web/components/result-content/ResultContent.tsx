@@ -17,7 +17,13 @@ import { useWalkthroughState } from "../../stores/WalkthroughRootStore";
 import "./ResultContent.css";
 
 const ResultContent = observer(
-  ({ walkthroughId }: { walkthroughId: string }) => {
+  ({
+    walkthroughId,
+    "data-testid": testid = "",
+  }: {
+    walkthroughId: string;
+    "data-testid"?: string;
+  }) => {
     // get information from store
     const {
       getWalkthroughData,
@@ -53,7 +59,7 @@ const ResultContent = observer(
     return (
       <div
         key={`${walkthroughId}-result-content`}
-        data-testid={GET_TESTID_RESULT_CONTENT_ITEM(walkthroughId)}
+        data-testid={GET_TESTID_RESULT_CONTENT_ITEM(testid || walkthroughId)}
       >
         {showHeading && (
           <Heading
