@@ -7,6 +7,29 @@
   justify-content: center;
 }
 
+.web-Result--Notes {
+  margin-block: var(--layout-margin-xxlarge);
+  padding-block-end: var(--layout-padding-xxlarge);
+  border-block-end: var(--result-content-border-bottom);
+}
+
+.web-Result--Notes p {
+  font: var(--typography-regular-large-body);
+}
+
+.web-Result--NotesTextArea {
+  resize: none;
+  width: 100%;
+  min-height: 200px;
+  overflow: hidden;
+  padding: var(--layout-padding-medium);
+  border: var(--layout-border-width-small) solid
+    var(--surface-color-border-default);
+  border-radius: var(--layout-border-radius-medium);
+  font: var(--typography-regular-body);
+  margin-block-start: var(--layout-margin-medium);
+}
+
 .web-Result--Related {
   margin-block: var(--layout-margin-xxlarge);
 }
@@ -20,4 +43,12 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
   gap: var(--layout-padding-large);
+}
+
+/* Print styles that only need to apply when print window is open */
+@media print {
+  .web-Result--Notes {
+    padding-block-end: 0;
+    border-block-end: none;
+  }
 }

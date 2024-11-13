@@ -1,6 +1,6 @@
 // 3rd party
 import { JSX } from "react";
-import { Heading } from "react-aria-components";
+import { Heading, TextArea } from "react-aria-components";
 import { observer } from "mobx-react-lite";
 import { useParams } from "next/navigation";
 // repo
@@ -24,6 +24,7 @@ import { useWalkthroughState } from "../../stores/WalkthroughRootStore";
 import "./Result.css";
 
 const Result = observer((): JSX.Element => {
+  const textAreaCharacterLimit = 1000;
   // get related walkthroughs by building type from url pathing
   const params = useParams<Record<string, string>>();
   const relatedBuildingTypes = useBuildingTypeData({
@@ -71,6 +72,28 @@ const Result = observer((): JSX.Element => {
             >
               Return to Home
             </Link>
+          </div>
+        )}
+        {!hidePDF && (
+          <div className="web-Result--Notes">
+            <Heading level={2} className="h4" id="notes">
+              Notes
+              <p className="p-hide">
+                Type any notes in to the following textarea and they will be
+                added to the PDF when printed or downloaded. Limit of{" "}
+                {textAreaCharacterLimit} characters.
+              </p>
+            </Heading>
+            <TextArea
+              className="web-Result--NotesTextArea"
+              maxLength={textAreaCharacterLimit}
+              onInput={(event) => {
+                event.currentTarget.style.height = "";
+                event.currentTarget.style.height =
+                  event.currentTarget.scrollHeight + "px";
+              }}
+              aria-labelledby="notes"
+            ></TextArea>
           </div>
         )}
         {relatedBuildingTypes.length > 0 && !hideRelatedItems && (
