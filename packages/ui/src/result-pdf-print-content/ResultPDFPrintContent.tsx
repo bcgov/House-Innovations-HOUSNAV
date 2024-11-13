@@ -11,6 +11,7 @@ import {
   SectionData,
 } from "@repo/data/useWalkthroughsData";
 import {
+  GET_TESTID_RESULT_PDF_RESULT_CONTENT,
   GET_TESTID_RESULT_PRINT_CONTENT_WALKTHROUGH,
   TESTID_RESULT_PRINT_CONTENT,
 } from "@repo/constants/src/testids";
@@ -311,7 +312,10 @@ export default function ResultPDFPrintContent() {
             <h3 className="ui-ResultPDFPrintContent--walkthroughTitle">
               {walkthroughsById[walkthroughId]?.info.walkthroughTitle}
             </h3>
-            <ResultContent walkthroughId={walkthroughId} />
+            <ResultContent
+              walkthroughId={walkthroughId}
+              data-testid={GET_TESTID_RESULT_PDF_RESULT_CONTENT(walkthroughId)}
+            />
             {Object.entries(printSectionDataBySectionTitle).map(
               ([, printSectionData], sectionIndex) => (
                 <table

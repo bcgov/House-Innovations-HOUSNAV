@@ -55,6 +55,8 @@ export const GET_TESTID_RESULT_RELATED_ITEM = (id: string) =>
 export const TESTID_RESULT_PRINT_CONTENT = "result-print-content";
 export const GET_TESTID_RESULT_PRINT_CONTENT_WALKTHROUGH = (id: string) =>
   `result-print-content-walkthrough-${id}`;
+export const GET_TESTID_RESULT_PDF_RESULT_CONTENT = (id: string) =>
+  `result-pdf-result-content-${id}`;
 export const TESTID_HEADER = "header";
 export const TESTID_HEADER_MOBILE_NAV = "header-mobile-nav";
 export const TESTID_HEADER_MOBILE_NAV_BUTTON = "header-mobile-nav-button";
