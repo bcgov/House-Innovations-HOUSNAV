@@ -9,8 +9,7 @@
 
 .web-ResultContent {
   padding-bottom: var(--layout-padding-xxlarge);
-  border-bottom: var(--layout-border-width-small) solid
-    var(--surface-color-border-default);
+  border-bottom: var(--result-content-border-bottom);
 }
 
 .web-ResultContent,

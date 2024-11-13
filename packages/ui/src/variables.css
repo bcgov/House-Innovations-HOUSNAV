@@ -297,6 +297,8 @@
   --modal-bc-sentence-padding-end: calc(var(--layout-margin-small) * 2);
   --modal-bc-indent: 114px;
   --modal-side-number-padding: 8%;
+  --result-content-border-bottom: var(--layout-border-width-small) solid
+    var(--surface-color-border-default);
   --print-content-table-th-td-border: 2px solid #000;
   --pdf-result-download-image-border-radius: 8px 0px 0px 8px;
   --pdf-result-download-container-border: 1px solid
