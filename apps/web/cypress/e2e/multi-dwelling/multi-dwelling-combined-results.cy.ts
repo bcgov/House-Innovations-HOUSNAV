@@ -44,7 +44,7 @@ describe("multi dwelling: 9.9.9 and 9.10.14 walkthrough results", () => {
       GET_TESTID_RESULT_RELATED_ITEM(EnumBuildingTypes.SINGLE_DWELLING),
     ).scrollIntoView();
     cy.getByTestID(
-      GET_TESTID_RESULT_CONTENT_ITEM(EnumWalkthroughIds._9_10_14),
+      GET_TESTID_RESULT_RELATED_ITEM(EnumBuildingTypes.SINGLE_DWELLING),
     ).should("be.visible");
     //should display correct print content
     cy.getByTestID(
