@@ -10,9 +10,11 @@ import {
 import { walkthroughs } from "../../fixtures/multi-dwelling/multi-dwelling-combined-test-data.json";
 import {
   GET_TESTID_RESULT_CONTENT_ITEM,
+  GET_TESTID_RESULT_PDF_RESULT_CONTENT,
   GET_TESTID_RESULT_PRINT_CONTENT_WALKTHROUGH,
   GET_TESTID_RESULT_RELATED_ITEM,
   TESTID_BREADCRUMBS,
+  TESTID_RESULT_NOTES,
 } from "@repo/constants/src/testids";
 
 describe("multi dwelling: 9.9.9 and 9.10.14 walkthrough results", () => {
@@ -53,6 +55,12 @@ describe("multi dwelling: 9.9.9 and 9.10.14 walkthrough results", () => {
     cy.getByTestID(
       GET_TESTID_RESULT_PRINT_CONTENT_WALKTHROUGH(EnumWalkthroughIds._9_10_14),
     ).should("be.hidden");
+    cy.getByTestID(
+      GET_TESTID_RESULT_CONTENT_ITEM(
+        GET_TESTID_RESULT_PDF_RESULT_CONTENT(EnumWalkthroughIds._9_10_14),
+      ),
+    ).should("be.hidden");
+    cy.getByTestID(TESTID_RESULT_NOTES).should("be.visible");
   });
 
   it("should be able to navigate to related item landing page", () => {

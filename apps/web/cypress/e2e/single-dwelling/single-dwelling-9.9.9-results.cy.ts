@@ -10,9 +10,11 @@ import {
 import { walkthroughs } from "../../fixtures/single-dwelling/single-dwelling-9.9.9-test-data.json";
 import {
   GET_TESTID_RESULT_CONTENT_ITEM,
+  GET_TESTID_RESULT_PDF_RESULT_CONTENT,
   GET_TESTID_RESULT_PRINT_CONTENT_WALKTHROUGH,
   GET_TESTID_RESULT_RELATED_ITEM,
   TESTID_BREADCRUMBS,
+  TESTID_RESULT_NOTES,
 } from "@repo/constants/src/testids";
 
 describe("single dwelling: 9.9.9 walkthrough results", () => {
@@ -39,6 +41,12 @@ describe("single dwelling: 9.9.9 walkthrough results", () => {
     cy.getByTestID(
       GET_TESTID_RESULT_PRINT_CONTENT_WALKTHROUGH(EnumWalkthroughIds._9_9_9),
     ).should("be.hidden");
+    cy.getByTestID(
+      GET_TESTID_RESULT_CONTENT_ITEM(
+        GET_TESTID_RESULT_PDF_RESULT_CONTENT(EnumWalkthroughIds._9_9_9),
+      ),
+    ).should("be.hidden");
+    cy.getByTestID(TESTID_RESULT_NOTES).should("be.visible");
   });
 
   it("should be able to navigate to related item landing page", () => {
