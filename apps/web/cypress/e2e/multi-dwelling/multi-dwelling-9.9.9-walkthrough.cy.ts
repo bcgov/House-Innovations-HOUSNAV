@@ -48,14 +48,16 @@ describe("multi dwelling: 9.9.9 walkthrough", () => {
         p5AnswerValue = step.answer;
       }
       if (step.question === "P18") {
-        cy.getByTestID(TESTID_QUESTION).contains(
-          `Does this dwelling unit have separate and direct access from each storey to a balcony on storey(s): ${p5AnswerValue}?`,
-        );
         break;
       }
       answerCurrentQuestion(step);
       navigateToNextQuestion();
     }
+    //we should always break on P18 so if this fails either we have the wrong number in the question or we're
+    //not breaking on P18
+    cy.getByTestID(TESTID_QUESTION).contains(
+      `Does this dwelling unit have separate and direct access from each storey to a balcony on storey(s): ${p5AnswerValue}?`,
+    );
   });
 
   it("default state should be accessible", () => {
