@@ -1,5 +1,5 @@
 // 3rd party
-import { JSX } from "react";
+import { JSX, useEffect, useRef } from "react";
 import { Heading, TextArea } from "react-aria-components";
 import { observer } from "mobx-react-lite";
 import { useParams } from "next/navigation";
@@ -9,6 +9,7 @@ import {
   TESTID_RESULT,
   GET_TESTID_RESULT_BANNER,
   TESTID_RESULT_RETURN_TO_HOME,
+  TESTID_RESULT_NOTES,
 } from "@repo/constants/src/testids";
 import { EnumBuildingTypes } from "@repo/constants/src/constants";
 import { URLS_GET_BUILDING_TYPE } from "@repo/constants/src/urls";
@@ -24,6 +25,8 @@ import { useWalkthroughState } from "../../stores/WalkthroughRootStore";
 import "./Result.css";
 
 const Result = observer((): JSX.Element => {
+  // add ref for text area
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const textAreaCharacterLimit = 1000;
   // get related walkthroughs by building type from url pathing
   const params = useParams<Record<string, string>>();
@@ -36,6 +39,26 @@ const Result = observer((): JSX.Element => {
     walkthroughsOrder,
     resultsDisplay: { hideRelatedItems, hidePDF, hideBanner, showReturnToHome },
   } = useWalkthroughState();
+
+  // resize text area before print so it is the correct size in the PDF
+  useEffect(() => {
+    const handleBeforePrint = () => {
+      if (textAreaRef.current) {
+        textAreaRef.current.style.position = "absolute"; // positioning is required to get the correct scroll height on all device sizes
+        textAreaRef.current.style.width = "686px"; // 686px is the width of available space for the text area in the PDF
+        textAreaRef.current.style.height = "";
+        textAreaRef.current.style.height =
+          textAreaRef.current.scrollHeight + "px";
+        textAreaRef.current.style.position = "static";
+        textAreaRef.current.style.width = "100%";
+      }
+    };
+
+    window.addEventListener("beforeprint", handleBeforePrint);
+    return () => {
+      window.removeEventListener("beforeprint", handleBeforePrint);
+    };
+  }, []);
 
   return (
     <div data-testid={TESTID_RESULT} className="web-Result">
@@ -79,7 +102,7 @@ const Result = observer((): JSX.Element => {
             <Heading level={2} className="h4" id="notes">
               Notes
               <p className="p-hide">
-                Type any notes in to the following textarea and they will be
+                Type any notes in to the following text area and they will be
                 added to the PDF when printed or downloaded. Limit of{" "}
                 {textAreaCharacterLimit} characters.
               </p>
@@ -92,6 +115,8 @@ const Result = observer((): JSX.Element => {
                 event.currentTarget.style.height =
                   event.currentTarget.scrollHeight + "px";
               }}
+              data-testid={TESTID_RESULT_NOTES}
+              ref={textAreaRef}
               aria-labelledby="notes"
             ></TextArea>
           </div>
