@@ -38,7 +38,7 @@ describe("multi dwelling: 9.9.9 walkthrough", () => {
     ).should("be.hidden");
   });
 
-  it.only("validate p18 shows value from previous question p5", () => {
+  it("validate p18 shows value from previous question p5", () => {
     // This walkthrough should hit both P5 and P18
     const walkthroughContainingP5P18 = getWalkthrough(walkthroughs, 1);
     let p5AnswerValue = "";
