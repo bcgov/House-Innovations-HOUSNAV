@@ -47,6 +47,7 @@ export const GET_TESTID_RESULT_BANNER = (id = "welcome") =>
   `result-banner-${id}`;
 export const TESTID_RESULT_PDF_BUTTON = "result-pdf-button";
 export const TESTID_RESULT_RETURN_TO_HOME = "result-return-to-home";
+export const TESTID_RESULT_NOTES = "result-notes";
 export const TESTID_RESULT_CONTENT_CONTINUE = "result-continue";
 export const GET_TESTID_RESULT_CONTENT_ITEM = (id: string) =>
   `result-item-${id}`;
