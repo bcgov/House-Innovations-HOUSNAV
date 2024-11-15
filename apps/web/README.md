@@ -16,7 +16,7 @@ This project uses a combination of custom components and components from the `@r
 
 ### State Management
 
-The overall state of this application is managed using MobX. The store files are located in `/stores`. The walkthrough application is wrapped in a MobX `Provider` in the walkthrough page at `/walkthrough/[id]/page.tsx`. Mobx lets individual components subscribe to the store and re-render when the parts of the store they are interested in change.
+The overall state of this application is managed using MobX. The store files are located in `/stores`. The walkthrough application is wrapped in a MobX `Provider` in the walkthrough page at `/app/[buildingType]/walkthrough/page.tsx`. Mobx lets individual components subscribe to the store and re-render when the parts of the store they are interested in change.
 
 #### Root Store
 
