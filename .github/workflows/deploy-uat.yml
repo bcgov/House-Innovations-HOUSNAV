@@ -20,6 +20,13 @@ jobs:
         run: echo "PR_NUMBER=$(gh api /repos/bcgov/House-Innovations-HOUSNAV/commits/${{ github.sha }}/pulls | jq -r '.[0].number')" >> $GITHUB_ENV
         env:
           GH_TOKEN: ${{ github.token }}
+
+      - name: Install OpenShift CLI (oc)
+        run: |
+          curl -LO https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux.tar.gz
+          tar -xzf openshift-client-linux.tar.gz
+          sudo mv oc kubectl /usr/local/bin/
+          oc version
         
       - name: Login to OpenShift with CLI
         run: oc login --token=${{ secrets.OPENSHIFT_SERVICEACCOUNT_TOKEN }} --server=${{ secrets.OPENSHIFT_SERVER }}
